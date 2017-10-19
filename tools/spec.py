@@ -10,6 +10,7 @@ specs={"framerate":40           , # Hz
       "height":0.1              , # m
       "blade_number":10         ,
       "rotation_speed":None     , # rpm
+      "tip_speed": None         , # m/s
       "bandwidth":None          , # Mo/s
       "nominal_power":None      , # Watt
       "bytes_per_LED":2         ,
@@ -30,6 +31,7 @@ bandwidthSensibility     = ["LED_number_per_blade", "blade_number",\
                             "framerate", "bytes_per_LED"]
 powerSensibility         = ["LED_number_per_blade", "blade_number",\
                             "voltage", "LED_power"]
+tipSpeedSensibility      = ["rotation_speed", "radius"]
 
 # Check if the specs required to compute a specific spec are defined
 def checkSensibility(sensibilityList):
@@ -90,6 +92,13 @@ def computePower():
                              * specs["LED_number_per_blade"] * specs["voltage"]\
                              + specs["engine_power"]
 
+def computeTipSpeed():
+    if not checkSensibility(tipSpeedSensibility):
+        return None
+    specs["tip_speed"] = specs["rotation_speed"] * 2*math.pi*specs["radius"] / 60
+
+
+
 def fillSpec():
     if specs["LED_number_per_blade"] == None:
         computeLedNumber()
@@ -109,6 +118,8 @@ def fillSpec():
         computeBandwidth()
     if specs["nominal_power"] == None:
         computePower()
+    if specs["tip_speed"] == None:
+        computeTipSpeed()
 
 def printSpec():
     for s in specs:
