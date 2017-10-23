@@ -17,6 +17,8 @@ specs={"framerate":40           , # Hz
       "LED_power":0.010         , # A
       "voltage":3.3             , # V
       "engine_power":0          , # Watt
+      "matrix_number_of_voxels": None,
+      "matrix_bandwidth": None,   # Mo/s
       }
 
 ledNumberSensibility     = ["resolution", "radius"]
@@ -32,6 +34,9 @@ bandwidthSensibility     = ["LED_number_per_blade", "blade_number",\
 powerSensibility         = ["LED_number_per_blade", "blade_number",\
                             "voltage", "LED_power"]
 tipSpeedSensibility      = ["rotation_speed", "radius"]
+matrixNumberOfVoxelsSensibility = ["LED_number_per_blade", "blade_number"]
+matrixBandwidthSensibility = ["matrix_number_of_voxels", "framerate", "bytes_per_LED"]
+
 
 # Check if the specs required to compute a specific spec are defined
 def checkSensibility(sensibilityList):
@@ -97,6 +102,19 @@ def computeTipSpeed():
         return None
     specs["tip_speed"] = specs["rotation_speed"] * 2*math.pi*specs["radius"] / 60
 
+def computeMatrixNumberOfVoxels():
+    if not checkSensibility(matrixNumberOfVoxelsSensibility):
+        return None
+    specs["matrix_number_of_voxels"] = specs["LED_number_per_blade"]**2 * specs["blade_number"]
+
+def computeMatrixBandwidth():
+    if not checkSensibility(matrixBandwidthSensibility):
+        return None
+    specs["matrix_bandwidth"] = specs["matrix_number_of_voxels"] \
+            * specs["bytes_per_LED"] \
+            * specs["framerate"] \
+            / (1024*1024)
+
 
 
 def fillSpec():
@@ -120,6 +138,10 @@ def fillSpec():
         computePower()
     if specs["tip_speed"] == None:
         computeTipSpeed()
+    if specs["matrix_number_of_voxels"] == None:
+        computeMatrixNumberOfVoxels()
+    if specs["matrix_bandwidth"] == None:
+        computeMatrixBandwidth()
 
 def printSpec():
     for s in specs:
