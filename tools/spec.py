@@ -1,4 +1,4 @@
-# SpyROSE spec computation
+# SpiROSE spec computation
 # Try to fill the dictionnary specs and then print it
 
 import math
@@ -41,10 +41,7 @@ matrix_bandwidth_sensibility        = ["matrix_number_of_voxels", "framerate",\
 
 # Check if the specs required to compute_ a specific spec are defined
 def check_sensibility(sensibility_list):
-    for s in sensibility_list:
-        if specs[s] == None:
-            return False
-    return True
+    return all(specs[s] is not None for s in sensibility_list)
 
 def compute_LED_number():
     if not check_sensibility(LED_number_sensibility):
@@ -119,34 +116,34 @@ def compute_matrix_bandwidth():
 
 
 def fill_spec():
-    if specs["LED_number_per_blade"] == None:
+    if specs["LED_number_per_blade"] is None:
         compute_LED_number()
-    if specs["blade_number"] == None:
+    if specs["blade_number"] is None:
         compute_blade_number()
-    if specs["height"] == None:
+    if specs["height"] is None:
         compute_height()
-    if specs["radius"] == None:
+    if specs["radius"] is None:
         compute_radius()
-    if specs["resolution"] == None:
+    if specs["resolution"] is None:
         compute_resolution()
-    if specs["framerate"] == None:
+    if specs["framerate"] is None:
         compute_framerate()
-    if specs["rotation_speed"] == None:
+    if specs["rotation_speed"] is None:
         compute_rotation_speed()
-    if specs["bandwidth"] == None:
+    if specs["bandwidth"] is None:
         compute_bandwidth()
-    if specs["nominal_power"] == None:
+    if specs["nominal_power"] is None:
         compute_power()
-    if specs["tip_speed"] == None:
+    if specs["tip_speed"] is None:
         compute_tip_speed()
-    if specs["matrix_number_of_voxels"] == None:
+    if specs["matrix_number_of_voxels"] is None:
         compute_matrix_number_of_voxels()
-    if specs["matrix_bandwidth"] == None:
+    if specs["matrix_bandwidth"] is None:
         compute_matrix_bandwidth()
 
 def print_spec():
     for s in specs:
-        print(s + " : " + str(specs[s]))
+        print("{} : {}".format(s, specs[s]))
 
 def main():
     fill_spec()
