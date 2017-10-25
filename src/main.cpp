@@ -41,6 +41,9 @@
 #include <GLFW/glfw3.h>
 
 void readFile(const std::string &filename, std::string &contents);
+void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
+
+bool wireframe = false;
 
 #ifdef OS_WIN32
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
@@ -59,6 +62,9 @@ int main(int argc, char *argv[]) {
 
     GLFWwindow *window = glfwCreateWindow(1280, 720, "ROSE", nullptr, nullptr);
     glfwMakeContextCurrent(window);
+
+    glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
+    glfwSetKeyCallback(window, onKey);
 
 #ifndef OS_OSX
     // Load GLEW
@@ -112,8 +118,11 @@ int main(int argc, char *argv[]) {
         glfwSwapBuffers(window);
         glfwPollEvents();
 
-        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS)
-            glfwSetWindowShouldClose(window, GL_TRUE);
+        glClear(GL_COLOR_BUFFER_BIT);
+        if (wireframe)
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        else
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
         // Rendering
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / sizeof(float));
@@ -131,4 +140,17 @@ void readFile(const std::string &filename, std::string &contents) {
 
     contents.assign((std::istreambuf_iterator<char>(s)),
                     std::istreambuf_iterator<char>());
+}
+
+void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
+    if (action != GLFW_PRESS) return;
+
+    switch (key) {
+        case GLFW_KEY_ESCAPE:
+            glfwSetWindowShouldClose(window, GL_TRUE);
+            break;
+        case GLFW_KEY_Z:
+            wireframe = !wireframe;
+            break;
+    }
 }
