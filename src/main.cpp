@@ -31,7 +31,12 @@
 
 #define GLEW_STATIC
 #define GL3_PROTOTYPES 1
+#ifdef OS_OSX
+#include <OpenGL/gl3.h>
+#include <OpenGL/gl3ext.h>
+#else
 #include <GL/glew.h>
+#endif
 #define GLFW_INCLUDE_GLCOREARB
 #include <GLFW/glfw3.h>
 
@@ -55,9 +60,11 @@ int main(int argc, char *argv[]) {
     GLFWwindow *window = glfwCreateWindow(1280, 720, "ROSE", nullptr, nullptr);
     glfwMakeContextCurrent(window);
 
+#ifndef OS_OSX
     // Load GLEW
     glewExperimental = GL_TRUE;
     glewInit();
+#endif
 
     // Main VAO
     GLuint vao;
