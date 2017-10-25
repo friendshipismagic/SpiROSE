@@ -73,12 +73,12 @@ int main(int argc, char *argv[]) {
 
     // Test buffer
     float vertices[3 * 12 * 2] = {0};
-    for (int i = 0; i < 12; i += 6) {
-        vertices[i] = vertices[i + 1] = 0;
-        vertices[i + 2] = sin(2.f * M_PI * float(i) / 12.f) * 0.5f;
-        vertices[i + 3] = cos(2.f * M_PI * float(i) / 12.f) * 0.5f;
-        vertices[i + 4] = sin(2.f * M_PI * float(i + 1) / 12.f) * 0.5f;
-        vertices[i + 5] = cos(2.f * M_PI * float(i + 1) / 12.f) * 0.5f;
+    for (int i = 0; i < 12; i++) {
+        vertices[i * 6] = vertices[i * 6 + 1] = 0;
+        vertices[i * 6 + 2] = sin(2.f * M_PI * float(i) / 12.f) * 0.5f;
+        vertices[i * 6 + 3] = cos(2.f * M_PI * float(i) / 12.f) * 0.5f;
+        vertices[i * 6 + 4] = sin(2.f * M_PI * float(i + 1) / 12.f) * 0.5f;
+        vertices[i * 6 + 5] = cos(2.f * M_PI * float(i + 1) / 12.f) * 0.5f;
     }
 
     GLuint buf;
