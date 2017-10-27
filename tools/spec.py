@@ -3,71 +3,74 @@
 
 import math
 
-specs={"framerate":40           , # Hz
-      "LED_number_per_blade":32 ,
-      "resolution":(0.005, 0.01), # m
-      "radius":0.25             , # m
-      "height":0.1              , # m
-      "blade_number":10         ,
-      "rotation_speed":None     , # rpm
-      "tip_speed": None         , # m/s
-      "bandwidth":None          , # Mo/s
-      "nominal_power":None      , # Watt
-      "bytes_per_LED":2         ,
-      "LED_power":0.010         , # A
-      "voltage":3.3             , # V
-      "engine_power":0          , # Watt
-      "matrix_number_of_voxels": None,
-      "matrix_bandwidth": None,   # Mo/s
+specs={"resolution"     : (0.00225, 0.00225), # m
+      "framerate"       : 30   , # Hz
+      "LED_per_face"    : None ,
+      "LED_per_column"  : None ,
+      "LED_per_row"     : None ,
+      "radius"          : 0.2  , # m
+      "height"          : 0.2  , # m
+      "rotation_speed"  : None , # rpm
+      "tip_speed"       : None , # m/s
+      "bandwidth"       : None , # Mo/s
+      "nominal_power"   : None , # Watt
+      "bytes_per_LED"   : 2    ,
+      "LED_power"       : 0.01 , # A
+      "voltage"         : 5.5  , # V
+      "engine_power"    : 0    , # Watt
+      "number_of_voxels": None ,
       }
 
-LED_number_sensibility     = ["resolution", "radius"]
-blade_number_sensibility   = ["resolution", "height"]
-radius_sensibility         = ["resolution", "LED_number_per_blade"]
-height_sensibility         = ["resolution", "blade_number"]
-resolution_sensibility     = ["LED_number_per_blade", "height", "radius",\
-                              "blade_number"]
-rotation_speed_sensibility = ["framerate"]
-framerate_sensibility      = ["rotation_speed"]
-bandwidth_sensibility      = ["LED_number_per_blade", "blade_number",\
-                              "framerate", "bytes_per_LED"]
-power_sensibility          = ["LED_number_per_blade", "blade_number",\
-                              "voltage", "LED_power"]
-tip_speed_sensibility      = ["rotation_speed", "radius"]
-matrix_number_of_voxels_sensibility = ["LED_number_per_blade", "blade_number"]
-matrix_bandwidth_sensibility        = ["matrix_number_of_voxels", "framerate",\
-                                       "bytes_per_LED"]
+LED_per_face_sensibility     = ["LED_per_row", "LED_per_column"]
+LED_per_row_sensibility      = ["resolution", "radius"]
+LED_per_column_sensibility   = ["resolution", "radius"]
+radius_sensibility           = ["resolution", "LED_per_row"]
+height_sensibility           = ["resolution", "LED_per_column"]
+resolution_sensibility       = ["LED_per_row", "LED_per_column",\
+                                "height", "radius"]
+rotation_speed_sensibility   = ["framerate"]
+framerate_sensibility        = ["rotation_speed"]
+bandwidth_sensibility        = ["number_of_voxels", "framerate",\
+                                "bytes_per_LED"]
+power_sensibility            = ["LED_per_face", "voltage", "LED_power",\
+                                "engine_power"]
+tip_speed_sensibility        = ["rotation_speed", "radius"]
+number_of_voxels_sensibility = ["LED_per_row", "LED_per_column", "resolution"]
 
-
-# Check if the specs required to compute_ a specific spec are defined
+# Check if the specs required to compute a specific spec are defined
 def check_sensibility(sensibility_list):
     return all(specs[s] is not None for s in sensibility_list)
 
-def compute_LED_number():
-    if not check_sensibility(LED_number_sensibility):
+def compute_LED_per_row():
+    if not check_sensibility(LED_per_row_sensibility):
         return None
-    specs["LED_number_per_blade"] = specs["radius"] // specs["resolution"][0]
+    specs["LED_per_row"] = math.floor(specs["radius"] / specs["resolution"][0])
 
-def compute_blade_number():
-    if not check_sensibility(blade_number_sensibility):
+def compute_LED_per_column():
+    if not check_sensibility(LED_per_column_sensibility):
         return None
-    specs["blade_number"] = specs["height"] // specs["resolution"][1]
+    specs["LED_per_column"] = math.floor(specs["height"] / specs["resolution"][1])
+
+def compute_LED_per_face():
+    if not check_sensibility(LED_per_face_sensibility):
+        return None
+    specs["LED_per_face"] = specs["LED_per_row"] * specs["LED_per_column"]
 
 def compute_height():
     if not check_sensibility(height_sensibility):
         return None
-    specs["height"] = specs["blade_number"] * specs["resolution"][1]
+    specs["height"] = specs["LED_per_column"] * specs["resolution"][1]
 
 def compute_radius():
     if not check_sensibility(radius_sensibility):
         return None
-    specs["radius"] = specs["LED_number_per_blade"] * specs["resolution"][0]
+    specs["radius"] = specs["LED_per_row"] * specs["resolution"][0]
 
 def compute_resolution():
     if not check_sensibility(resolution_sensibility):
         return None
-    specs["resolution"] = (specs["LED_number_per_blade"] // specs["radius"],\
-                           specs["height"] // specs["blade_number"])
+    specs["resolution"] = (specs["radius"] / specs["LED_per_row"],\
+                           specs["height"] / specs["LED_per_column"])
 
 def compute_framerate():
     if not check_sensibility(framerate_sensibility):
@@ -79,47 +82,42 @@ def compute_rotation_speed():
         return None
     specs["rotation_speed"] = specs["framerate"] * 60
 
-def compute_bandwidth():
-    if not check_sensibility(bandwidth_sensibility):
-        return None
-    specs["bandwidth"] = math.ceil(\
-                         2 * math.pi * specs["radius"] / specs["resolution"][0]\
-                         * 2 * specs["LED_number_per_blade"]\
-                         * specs["blade_number"] * specs["bytes_per_LED"]\
-                         * specs["framerate"] / (1024**2))
-
 def compute_power():
     if not check_sensibility(power_sensibility):
         return None
-    specs["nominal_power"] = 2 * specs["blade_number"] * specs["LED_power"]\
-                             * specs["LED_number_per_blade"] * specs["voltage"]\
-                             + specs["engine_power"]
+    specs["nominal_power"] = 2 * specs["LED_per_face"]\
+                               * specs["voltage"] * specs["LED_power"]\
+                               + specs["engine_power"]
 
 def compute_tip_speed():
     if not check_sensibility(tip_speed_sensibility):
         return None
-    specs["tip_speed"] = specs["rotation_speed"] * 2*math.pi*specs["radius"] / 60
+    specs["tip_speed"] = round(2 * math.pi * specs["radius"]\
+                                 * specs["rotation_speed"] / 60, 2)
 
-def compute_matrix_number_of_voxels():
-    if not check_sensibility(matrix_number_of_voxels_sensibility):
+def compute_number_of_voxels():
+    if not check_sensibility(number_of_voxels_sensibility):
         return None
-    specs["matrix_number_of_voxels"] = specs["LED_number_per_blade"]**2 * specs["blade_number"]
+    voxel_per_row = 0;
+    for i in range(1, math.ceil(specs["LED_per_row"] / 2)+1):
+        voxel_per_row += math.ceil(2 * math.pi * i)
+    specs["number_of_voxels"] = 2 * voxel_per_row * specs["LED_per_column"];
 
-def compute_matrix_bandwidth():
-    if not check_sensibility(matrix_bandwidth_sensibility):
+def compute_bandwidth():
+    if not check_sensibility(bandwidth_sensibility):
         return None
-    specs["matrix_bandwidth"] = specs["matrix_number_of_voxels"] \
-            * specs["bytes_per_LED"] \
-            * specs["framerate"] \
-            / (1024*1024)
-
-
+    specs["bandwidth"] = math.ceil(specs["number_of_voxels"]\
+                         * specs["bytes_per_LED"]\
+                         * specs["framerate"]\
+                         / (1024*1024))
 
 def fill_spec():
-    if specs["LED_number_per_blade"] is None:
-        compute_LED_number()
-    if specs["blade_number"] is None:
-        compute_blade_number()
+    if specs["LED_per_row"] is None:
+        compute_LED_per_row()
+    if specs["LED_per_column"] is None:
+        compute_LED_per_column()
+    if specs["LED_per_face"] is None:
+        compute_LED_per_face()
     if specs["height"] is None:
         compute_height()
     if specs["radius"] is None:
@@ -130,16 +128,14 @@ def fill_spec():
         compute_framerate()
     if specs["rotation_speed"] is None:
         compute_rotation_speed()
-    if specs["bandwidth"] is None:
-        compute_bandwidth()
     if specs["nominal_power"] is None:
         compute_power()
     if specs["tip_speed"] is None:
         compute_tip_speed()
-    if specs["matrix_number_of_voxels"] is None:
-        compute_matrix_number_of_voxels()
-    if specs["matrix_bandwidth"] is None:
-        compute_matrix_bandwidth()
+    if specs["number_of_voxels"] is None:
+        compute_number_of_voxels()
+    if specs["bandwidth"] is None:
+        compute_bandwidth()
 
 def print_spec():
     for s in specs:
