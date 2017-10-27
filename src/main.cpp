@@ -93,18 +93,23 @@ int main(int argc, char *argv[]) {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
     // Shaders
-    std::string fss, vss;
+    std::string fss, vss, gss;
     readFile("shader/basic.fs", fss);
     readFile("shader/basic.vs", vss);
-    const char *_fss = fss.c_str(), *_vss = vss.c_str();
+    readFile("shader/basic.gs", gss);
+    const char *_fss = fss.c_str(), *_vss = vss.c_str(), *_gss = gss.c_str();
     GLuint vs = glCreateShader(GL_VERTEX_SHADER),
-           fs = glCreateShader(GL_FRAGMENT_SHADER), prog = glCreateProgram();
+           fs = glCreateShader(GL_FRAGMENT_SHADER),
+           gs = glCreateShader(GL_GEOMETRY_SHADER), prog = glCreateProgram();
     glShaderSource(vs, 1, &_vss, NULL);
     glShaderSource(fs, 1, &_fss, NULL);
+    glShaderSource(gs, 1, &_gss, NULL);
     glCompileShader(vs);
     glCompileShader(fs);
+    glCompileShader(gs);
     glAttachShader(prog, vs);
     glAttachShader(prog, fs);
+    glAttachShader(prog, gs);
     glBindFragDataLocation(prog, 0, "fragColor");
     glLinkProgram(prog);
     glUseProgram(prog);
