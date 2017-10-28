@@ -11,6 +11,20 @@ vec3 intersect(in vec3 p1, in vec3 p2) {
     return d * (p2 - p1) + p1;
 }
 
+bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
+    float area = (-p1.y * p2.x + p0.y * (p2.x - p1.x) + p0.x * (p1.y - p2.y) +
+                  p1.x * p2.y) /
+                 2,
+          sA = sign(area),
+          s = (p0.y * p2.x - p0.x * p2.y + (p2.y - p0.y) * p.x +
+               (p0.x - p2.x) * p.y) *
+              sA,
+          t = (p0.x * p1.y - p0.y * p1.x + (p0.y - p1.y) * p.x +
+               (p1.x - p0.x) * p.y) *
+              sA;
+    return s > 0 && t > 0 && (s + t) < 2 * area * sA;
+}
+
 void main() {
     fColor = vec3(1);
 
@@ -19,13 +33,71 @@ void main() {
 
     // If the triangle is not being cut
     if ((v1.x >= 0 && v2.x >= 0 && v3.x >= 0) ||
-        (v1.x <= 0 && v2.x <= 0 && v3.x <= 0)) {
+        (v1.x <= 0 && v2.x <= 0 && v3.x <= 0) ||
+        (v1.y >= 0 && v2.y >= 0 && v3.y >= 0)) {
         // Emit it without modification
         for (int i = 0; i < 3; i++) {
             gl_Position = gl_in[i].gl_Position;
             EmitVertex();
         }
         EndPrimitive();
+        return;
+    }
+
+    // Simple case : one vertex is opposite of the y = 0 plane AND origin is in
+    // the triangle
+    if (isInTriangle(vec2(0), v1.xy, v2.xy, v3.xy)) {
+        // Find the two that intersect the cut plane
+        vec3 d1, d2, u;
+
+        if (v1.y < v2.y && v1.y < v3.y) {
+            d1 = v1;
+            d2 = v2;
+            u = v3;
+        }
+        if (v2.y < v1.y && v2.y < v3.y) {
+            d1 = v2;
+            d2 = v3;
+            u = v1;
+        }
+        if (v3.y < v1.y && v3.y < v2.y) {
+            d1 = v3;
+            d2 = v1;
+            u = v2;
+        }
+
+        // If d1 and d2 are on the same side, swap u and d2
+        if (d1.x * d2.x > 0) {
+            vec3 temp = u;
+            u = d2;
+            d2 = temp;
+        }
+        // If d2 and u are on the same side and u is lower than d2, swap them
+        if (d2.x * u.x > 0 && u.y < d2.y) {
+            vec3 temp = u;
+            u = d2;
+            d2 = temp;
+        }
+
+        gl_Position = vec4(u, 1);
+        EmitVertex();
+        gl_Position = vec4(d1, 1);
+        EmitVertex();
+        gl_Position = vec4(0, 0, 0, 1);
+        EmitVertex();
+        gl_Position = vec4(intersect(d1, d2), 1);
+        EmitVertex();
+        EndPrimitive();
+        gl_Position = vec4(intersect(d1, d2), 1);
+        EmitVertex();
+        gl_Position = vec4(0, 0, 0, 1);
+        EmitVertex();
+        gl_Position = vec4(d2, 1);
+        EmitVertex();
+        gl_Position = vec4(u, 1);
+        EmitVertex();
+        EndPrimitive();
+
         return;
     }
 
