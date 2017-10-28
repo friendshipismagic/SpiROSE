@@ -97,8 +97,11 @@ def compute_number_of_voxels():
     if not check_sensibility(number_of_voxels_sensibility):
         return None
     voxel_per_row = 0;
+    ratio = specs["resolution"][0] / specs["resolution"][1]
+    # The n-th LED on a semi-row is at distance n*resolution[0] from the center,
+    # hence it produces 2*pi*n*resolution[0]/resolution[1] voxels
     for i in range(1, specs["LED_per_row"] // 2 + 1):
-        voxel_per_row += math.ceil(2 * math.pi * i)
+        voxel_per_row += math.ceil(2 * math.pi * i * ratio)
     specs["number_of_voxels"] = 2 * voxel_per_row * specs["LED_per_column"];
 
 def compute_bandwidth():
