@@ -40,6 +40,9 @@
 #define GLFW_INCLUDE_GLCOREARB
 #include <GLFW/glfw3.h>
 
+#include <glm/glm.hpp>
+#include <glm/gtx/transform.hpp>
+
 void readFile(const std::string &filename, std::string &contents);
 void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
 
@@ -111,13 +114,23 @@ int main(int argc, char *argv[]) {
     glEnableVertexAttribArray(inPositionLoc);
 
     // Get time uniform
-    GLint timePosition = glGetUniformLocation(prog, "time");
+    GLint timePosition = glGetUniformLocation(prog, "time"),
+          matMVPosition = glGetUniformLocation(prog, "matMV");
+
+    // Matricies
+    glm::mat4 matModel = glm::mat4(1.0f);
 
     while (!glfwWindowShouldClose(window)) {
         glfwSwapBuffers(window);
         glfwPollEvents();
 
-        glUniform1f(timePosition, (float)glfwGetTime() / 10.f);
+        float time = glfwGetTime();
+
+        glUniform1f(timePosition, time / 10.f);
+        matModel = glm::translate(glm::vec3(
+            (float)sin(time / 3.f) / 2.f, (float)sin(time * 5.f) / 20.f, 0.f));
+        matModel = glm::rotate(matModel, time, glm::vec3(0, 0, 1));
+        glUniformMatrix4fv(matMVPosition, 1, GL_FALSE, &matModel[0][0]);
 
         glClear(GL_COLOR_BUFFER_BIT);
         if (wireframe)
