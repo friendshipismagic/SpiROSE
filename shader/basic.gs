@@ -133,18 +133,13 @@ void main() {
 
         vec3 d = intersect(b, c);
 
-        gl_Position = vec4(a, 1);
-        EmitVertex();
         gl_Position = vec4(b, 1);
         EmitVertex();
-        gl_Position = vec4(d, 1);
+        gl_Position = vec4(a, 1);
         EmitVertex();
-        EndPrimitive();
         gl_Position = vec4(d, 1);
         EmitVertex();
         gl_Position = vec4(c, 1);
-        EmitVertex();
-        gl_Position = vec4(a, 1);
         EmitVertex();
         EndPrimitive();
         return;
@@ -183,21 +178,9 @@ void main() {
     EmitVertex();
     gl_Position = vec4(m2, 1);
     EmitVertex();
-    EndPrimitive();
-
-    gl_Position = vec4(l1, 1);
-    EmitVertex();
-    gl_Position = vec4(m1, 1);
-    EmitVertex();
-    gl_Position = vec4(m2, 1);
-    EmitVertex();
-    EndPrimitive();
-
     gl_Position = vec4(l1, 1);
     EmitVertex();
     gl_Position = vec4(l2, 1);
-    EmitVertex();
-    gl_Position = vec4(m2, 1);
     EmitVertex();
     EndPrimitive();
 }
