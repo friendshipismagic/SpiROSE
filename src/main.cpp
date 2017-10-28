@@ -83,10 +83,12 @@ int main(int argc, char *argv[]) {
     float vertices[3 * 12 * 2] = {0};
     for (int i = 0; i < 12; i++) {
         vertices[i * 6] = vertices[i * 6 + 1] = 0;
-        vertices[i * 6 + 2] = sin(2.f * M_PI * float(i) / 12.f) * 0.5f;
-        vertices[i * 6 + 3] = cos(2.f * M_PI * float(i) / 12.f) * 0.5f;
-        vertices[i * 6 + 4] = sin(2.f * M_PI * float(i + 1) / 12.f) * 0.5f;
-        vertices[i * 6 + 5] = cos(2.f * M_PI * float(i + 1) / 12.f) * 0.5f;
+        vertices[i * 6 + 2] = sin(2.f * M_PI * (0.5f + float(i)) / 12.f) * 0.5f;
+        vertices[i * 6 + 3] = cos(2.f * M_PI * (0.5f + float(i)) / 12.f) * 0.5f;
+        vertices[i * 6 + 4] =
+            sin(2.f * M_PI * (0.5f + float(i + 1)) / 12.f) * 0.5f;
+        vertices[i * 6 + 5] =
+            cos(2.f * M_PI * (0.5f + float(i + 1)) / 12.f) * 0.5f;
     }
 
     GLuint buf;
@@ -108,9 +110,14 @@ int main(int argc, char *argv[]) {
     glVertexAttribPointer(inPositionLoc, 2, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(inPositionLoc);
 
+    // Get time uniform
+    GLint timePosition = glGetUniformLocation(prog, "time");
+
     while (!glfwWindowShouldClose(window)) {
         glfwSwapBuffers(window);
         glfwPollEvents();
+
+        glUniform1f(timePosition, (float)glfwGetTime() / 10.f);
 
         glClear(GL_COLOR_BUFFER_BIT);
         if (wireframe)
