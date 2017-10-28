@@ -15,8 +15,7 @@ specs={"resolution"     : (0.00225, 0.00225), # m
       "bandwidth"       : None , # Mo/s
       "nominal_power"   : None , # Watt
       "bytes_per_LED"   : 2    ,
-      "LED_power"       : 0.01 , # A
-      "voltage"         : 5.5  , # V
+      "LED_power"       : 0.0465, # A
       "engine_power"    : 0    , # Watt
       "number_of_voxels": None ,
       }
@@ -32,8 +31,7 @@ rotation_speed_sensibility   = ["framerate"]
 framerate_sensibility        = ["rotation_speed"]
 bandwidth_sensibility        = ["number_of_voxels", "framerate",\
                                 "bytes_per_LED"]
-power_sensibility            = ["LED_per_face", "voltage", "LED_power",\
-                                "engine_power"]
+power_sensibility            = ["LED_per_face", "LED_power", "engine_power"]
 tip_speed_sensibility        = ["rotation_speed", "radius"]
 number_of_voxels_sensibility = ["LED_per_row", "LED_per_column", "resolution"]
 
@@ -86,7 +84,7 @@ def compute_power():
     if not check_sensibility(power_sensibility):
         return None
     specs["nominal_power"] = 2 * specs["LED_per_face"]\
-                               * specs["voltage"] * specs["LED_power"]\
+                               * specs["LED_power"]\
                                + specs["engine_power"]
 
 def compute_tip_speed():
@@ -99,7 +97,7 @@ def compute_number_of_voxels():
     if not check_sensibility(number_of_voxels_sensibility):
         return None
     voxel_per_row = 0;
-    for i in range(1, math.ceil(specs["LED_per_row"] / 2)+1):
+    for i in range(1, specs["LED_per_row"] // 2 + 1):
         voxel_per_row += math.ceil(2 * math.pi * i)
     specs["number_of_voxels"] = 2 * voxel_per_row * specs["LED_per_column"];
 
