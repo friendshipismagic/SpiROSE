@@ -3,10 +3,6 @@
 in vec2 position;
 
 uniform float time;
+uniform mat4 matMV;
 
-void main() {
-    gl_Position = vec4(position, 0.0, 1.0);
-
-    gl_Position.x += sin(time) / 2;
-    gl_Position.y += sin(time * 5.3) / 20;
-}
+void main() { gl_Position = matMV * vec4(position, 0.0, 1.0); }
