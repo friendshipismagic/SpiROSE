@@ -30,11 +30,23 @@ void main() {
 
     vec3 v1 = gl_in[0].gl_Position.xyz, v2 = gl_in[1].gl_Position.xyz,
          v3 = gl_in[2].gl_Position.xyz;
+    bool originInTriangle = isInTriangle(vec2(0), v1.xy, v2.xy, v3.xy);
+
+    // Intermediate points to test collisions
+    vec3 v12 = intersect(v1, v2), v13 = intersect(v1, v3),
+         v23 = intersect(v1, v2);
+    bool v12c =
+             v12.y <= 0 && v12.x >= min(v1.x, v2.x) && v12.x <= max(v1.x, v2.x),
+         v13c =
+             v13.y <= 0 && v13.x >= min(v1.x, v3.x) && v13.x <= max(v1.x, v3.x),
+         v23c =
+             v23.y <= 0 && v23.x >= min(v1.x, v2.x) && v23.x <= max(v1.x, v2.x);
 
     // If the triangle is not being cut
     if ((v1.x >= 0 && v2.x >= 0 && v3.x >= 0) ||
         (v1.x <= 0 && v2.x <= 0 && v3.x <= 0) ||
-        (v1.y >= 0 && v2.y >= 0 && v3.y >= 0)) {
+        (v1.y >= 0 && v2.y >= 0 && v3.y >= 0) ||
+        !(v12c || v13c || v23c) && !originInTriangle) {
         // Emit it without modification
         for (int i = 0; i < 3; i++) {
             gl_Position = gl_in[i].gl_Position;
@@ -46,7 +58,7 @@ void main() {
 
     // Simple case : one vertex is opposite of the y = 0 plane AND origin is in
     // the triangle
-    if (isInTriangle(vec2(0), v1.xy, v2.xy, v3.xy)) {
+    if (originInTriangle) {
         // Find the two that intersect the cut plane
         vec3 d1, d2, u;
 
