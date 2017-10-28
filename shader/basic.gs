@@ -3,12 +3,17 @@
 layout(triangles) in;
 layout(triangle_strip, max_vertices = 9) out;
 
+in vec3 vColor[];  // Output from vertex shader for each vertex
+out vec3 fColor;   // Output to fragment shader
+
 vec3 intersect(in vec3 p1, in vec3 p2) {
     float d = -p1.x / (p2 - p1).x;
     return d * (p2 - p1) + p1;
 }
 
 void main() {
+    fColor = vec3(1);
+
     vec3 v1 = gl_in[0].gl_Position.xyz, v2 = gl_in[1].gl_Position.xyz,
          v3 = gl_in[2].gl_Position.xyz;
     vec3 vecX = vec3(v1.x, v2.x, v3.x);
