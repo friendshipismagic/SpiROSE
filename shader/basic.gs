@@ -16,11 +16,10 @@ void main() {
 
     vec3 v1 = gl_in[0].gl_Position.xyz, v2 = gl_in[1].gl_Position.xyz,
          v3 = gl_in[2].gl_Position.xyz;
-    vec3 vecX = vec3(v1.x, v2.x, v3.x);
 
     // If the triangle is not being cut
-    if ((vecX.x >= 0 && vecX.y >= 0 && vecX.z >= 0) ||
-        (vecX.x <= 0 && vecX.y <= 0 && vecX.z <= 0)) {
+    if ((v1.x >= 0 && v2.x >= 0 && v3.x >= 0) ||
+        (v1.x <= 0 && v2.x <= 0 && v3.x <= 0)) {
         // Emit it without modification
         for (int i = 0; i < 3; i++) {
             gl_Position = gl_in[i].gl_Position;
@@ -31,14 +30,14 @@ void main() {
     }
 
     // Simple case : one vertex is on the slicing plane
-    if (vecX.x == 0 || vecX.y == 0 || vecX.z == 0) {
+    if (v1.x == 0 || v2.x == 0 || v3.x == 0) {
         vec3 a, b, c;
 
-        if (vecX.x == 0) {
+        if (v1.x == 0) {
             a = v1.xyz;
             b = v2.xyz;
             c = v3.xyz;
-        } else if (vecX.y == 0) {
+        } else if (v2.x == 0) {
             a = v2.xyz;
             b = v1.xyz;
             c = v3.xyz;
@@ -67,21 +66,24 @@ void main() {
         return;
     }
 
+#ifdef DISABLE_OTHERS
+    return;
+#endif
     // Vertices on each side. Whatever the real side is, we'll consider that
     // left is the side with two vertices.
     vec3 l1, l2, r, right = vec3(1, 0, 0);
 
-    if (vecX.x * vecX.y > 0) {
+    if (v1.x * v2.x > 0) {
         l1 = v1;
         l2 = v2;
         r = v3;
     }
-    if (vecX.x * vecX.z > 0) {
+    if (v1.x * v3.x > 0) {
         l1 = v1;
         l2 = v3;
         r = v2;
     }
-    if (vecX.y * vecX.z > 0) {
+    if (v2.x * v3.x > 0) {
         l1 = v2;
         l2 = v3;
         r = v1;
