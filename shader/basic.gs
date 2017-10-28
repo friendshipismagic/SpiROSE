@@ -35,12 +35,15 @@ void main() {
     // Intermediate points to test collisions
     vec3 v12 = intersect(v1, v2), v13 = intersect(v1, v3),
          v23 = intersect(v1, v2);
-    bool v12c =
-             v12.y <= 0 && v12.x >= min(v1.x, v2.x) && v12.x <= max(v1.x, v2.x),
-         v13c =
-             v13.y <= 0 && v13.x >= min(v1.x, v3.x) && v13.x <= max(v1.x, v3.x),
-         v23c =
-             v23.y <= 0 && v23.x >= min(v2.x, v3.x) && v23.x <= max(v2.x, v3.x);
+    bool v12c = v12.y <= 0 && v12.x >= min(v1.x, v2.x) &&
+                v12.x <= max(v1.x, v2.x) && v12.y >= min(v1.y, v2.y) &&
+                v12.y <= max(v1.y, v2.y),
+         v13c = v13.y <= 0 && v13.x >= min(v1.x, v3.x) &&
+                v13.x <= max(v1.x, v3.x) && v13.y >= min(v1.y, v3.y) &&
+                v13.y <= max(v1.y, v3.y),
+         v23c = v23.y <= 0 && v23.x >= min(v2.x, v3.x) &&
+                v23.x <= max(v2.x, v3.x) && v23.y >= min(v2.y, v3.y) &&
+                v23.y <= max(v2.y, v3.y);
 
     // If the triangle is not being cut
     if ((v1.x >= 0 && v2.x >= 0 && v3.x >= 0) ||
