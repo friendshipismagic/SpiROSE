@@ -5,6 +5,7 @@ import math
 
 specs={"resolution"     : (0.00225, 0.00225), # m
       "framerate"       : 30   , # Hz
+      "face_number"     : 2    , # 1 or 2
       "LED_per_face"    : None ,
       "LED_per_column"  : None ,
       "LED_per_row"     : None ,
@@ -33,7 +34,8 @@ bandwidth_sensibility        = ["number_of_voxels", "framerate",\
                                 "bytes_per_LED"]
 power_sensibility            = ["LED_per_face", "LED_power", "engine_power"]
 tip_speed_sensibility        = ["rotation_speed", "radius"]
-number_of_voxels_sensibility = ["LED_per_row", "LED_per_column", "resolution"]
+number_of_voxels_sensibility = ["LED_per_row", "LED_per_column",\
+                                "resolution", "face_number"]
 
 # Check if the specs required to compute a specific spec are defined
 def check_sensibility(sensibility_list):
@@ -102,7 +104,8 @@ def compute_number_of_voxels():
     # hence it produces 2*pi*n*resolution[0]/resolution[1] voxels
     for i in range(1, specs["LED_per_row"] // 2 + 1):
         voxel_per_row += math.ceil(2 * math.pi * i * ratio)
-    specs["number_of_voxels"] = 2 * voxel_per_row * specs["LED_per_column"];
+    specs["number_of_voxels"] = voxel_per_row * specs["LED_per_column"]\
+                                * specs["face_number"]
 
 def compute_bandwidth():
     if not check_sensibility(bandwidth_sensibility):
