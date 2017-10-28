@@ -4,8 +4,9 @@ layout(triangles) in;
 layout(triangle_strip, max_vertices = 8) out;
 
 void main() {
-    vec3 vecX = vec3(gl_in[0].gl_Position.x, gl_in[1].gl_Position.x,
-                     gl_in[2].gl_Position.x);
+    vec3 v1 = gl_in[0].gl_Position.xyz, v2 = gl_in[1].gl_Position.xyz,
+         v3 = gl_in[2].gl_Position.xyz;
+    vec3 vecX = vec3(v1.x, v2.x, v3.x);
 
     // If the triangle is not being cut
     if ((vecX.x >= 0 && vecX.y >= 0 && vecX.z >= 0) ||
@@ -24,17 +25,17 @@ void main() {
         vec3 a, b, c;
 
         if (vecX.x == 0) {
-            a = gl_in[0].gl_Position.xyz;
-            b = gl_in[1].gl_Position.xyz;
-            c = gl_in[2].gl_Position.xyz;
+            a = v1.xyz;
+            b = v2.xyz;
+            c = v3.xyz;
         } else if (vecX.y == 0) {
-            a = gl_in[1].gl_Position.xyz;
-            b = gl_in[0].gl_Position.xyz;
-            c = gl_in[2].gl_Position.xyz;
+            a = v2.xyz;
+            b = v1.xyz;
+            c = v3.xyz;
         } else {
-            a = gl_in[2].gl_Position.xyz;
-            b = gl_in[0].gl_Position.xyz;
-            c = gl_in[1].gl_Position.xyz;
+            a = v3.xyz;
+            b = v1.xyz;
+            c = v2.xyz;
         }
 
         gl_Position = vec4(a, 1);
