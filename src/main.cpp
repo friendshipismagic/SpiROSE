@@ -43,6 +43,8 @@
 void readFile(const std::string &filename, std::string &contents);
 void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
 
+GLuint loadShader(GLenum type, const char *filename);
+
 bool wireframe = false;
 
 #ifdef OS_WIN32
@@ -93,23 +95,10 @@ int main(int argc, char *argv[]) {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
     // Shaders
-    std::string fss, vss, gss;
-    readFile("shader/basic.fs", fss);
-    readFile("shader/basic.vs", vss);
-    readFile("shader/basic.gs", gss);
-    const char *_fss = fss.c_str(), *_vss = vss.c_str(), *_gss = gss.c_str();
-    GLuint vs = glCreateShader(GL_VERTEX_SHADER),
-           fs = glCreateShader(GL_FRAGMENT_SHADER),
-           gs = glCreateShader(GL_GEOMETRY_SHADER), prog = glCreateProgram();
-    glShaderSource(vs, 1, &_vss, NULL);
-    glShaderSource(fs, 1, &_fss, NULL);
-    glShaderSource(gs, 1, &_gss, NULL);
-    glCompileShader(vs);
-    glCompileShader(fs);
-    glCompileShader(gs);
-    glAttachShader(prog, vs);
-    glAttachShader(prog, fs);
-    glAttachShader(prog, gs);
+    GLuint prog = glCreateProgram();
+    glAttachShader(prog, loadShader(GL_VERTEX_SHADER, "shader/basic.vs"));
+    glAttachShader(prog, loadShader(GL_GEOMETRY_SHADER, "shader/basic.gs"));
+    glAttachShader(prog, loadShader(GL_FRAGMENT_SHADER, "shader/basic.fs"));
     glBindFragDataLocation(prog, 0, "fragColor");
     glLinkProgram(prog);
     glUseProgram(prog);
@@ -158,4 +147,33 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             wireframe = !wireframe;
             break;
     }
+}
+
+GLuint loadShader(GLenum type, const char *filename) {
+    std::string source;
+    readFile(filename, source);
+    const char *csource = source.c_str();
+    GLuint shader = glCreateShader(type);
+    glShaderSource(shader, 1, &csource, NULL);
+    glCompileShader(shader);
+
+    GLint isOk;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &isOk);
+    if (!isOk) {
+        std::cerr << "[ERR] Shader " << filename << " compilation error"
+                  << std::endl;
+
+        // Getting the log
+        GLint len = 0;
+        GLchar *buf = NULL;
+        glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &len);
+        buf = new GLchar[len];
+        glGetShaderInfoLog(shader, len, NULL, buf);
+        std::cerr << buf << std::endl;
+        glDeleteShader(shader);
+
+        return 0;
+    }
+
+    return shader;
 }
