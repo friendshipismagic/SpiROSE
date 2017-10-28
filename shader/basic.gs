@@ -1,7 +1,7 @@
 #version 410 core
 
 layout(triangles) in;
-layout(triangle_strip, max_vertices = 8) out;
+layout(triangle_strip, max_vertices = 9) out;
 
 vec3 intersect(in vec3 p1, in vec3 p2) {
     float d = -p1.x / (p2 - p1).x;
@@ -62,9 +62,51 @@ void main() {
         return;
     }
 
-    for (int i = 0; i < 3; i++) {
-        gl_Position = gl_in[i].gl_Position;
-        EmitVertex();
+    // Vertices on each side. Whatever the real side is, we'll consider that
+    // left is the side with two vertices.
+    vec3 l1, l2, r, right = vec3(1, 0, 0);
+
+    if (vecX.x * vecX.y > 0) {
+        l1 = v1;
+        l2 = v2;
+        r = v3;
     }
+    if (vecX.x * vecX.z > 0) {
+        l1 = v1;
+        l2 = v3;
+        r = v2;
+    }
+    if (vecX.y * vecX.z > 0) {
+        l1 = v2;
+        l2 = v3;
+        r = v1;
+    }
+
+    // Middle-ground vertices
+    vec3 m1 = intersect(r, l1), m2 = intersect(r, l2);
+
+    // Rightmost triangle
+    gl_Position = vec4(r, 1);
+    EmitVertex();
+    gl_Position = vec4(m1, 1);
+    EmitVertex();
+    gl_Position = vec4(m2, 1);
+    EmitVertex();
+    EndPrimitive();
+
+    gl_Position = vec4(l1, 1);
+    EmitVertex();
+    gl_Position = vec4(m1, 1);
+    EmitVertex();
+    gl_Position = vec4(m2, 1);
+    EmitVertex();
+    EndPrimitive();
+
+    gl_Position = vec4(l1, 1);
+    EmitVertex();
+    gl_Position = vec4(l2, 1);
+    EmitVertex();
+    gl_Position = vec4(m2, 1);
+    EmitVertex();
     EndPrimitive();
 }
