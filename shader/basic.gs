@@ -40,7 +40,7 @@ void main() {
          v13c =
              v13.y <= 0 && v13.x >= min(v1.x, v3.x) && v13.x <= max(v1.x, v3.x),
          v23c =
-             v23.y <= 0 && v23.x >= min(v1.x, v2.x) && v23.x <= max(v1.x, v2.x);
+             v23.y <= 0 && v23.x >= min(v2.x, v3.x) && v23.x <= max(v2.x, v3.x);
 
     // If the triangle is not being cut
     if ((v1.x >= 0 && v2.x >= 0 && v3.x >= 0) ||
