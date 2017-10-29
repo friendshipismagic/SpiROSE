@@ -25,6 +25,35 @@ bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
     return s > 0 && t > 0 && (s + t) < 2 * area * sA;
 }
 
+const vec3 zero = vec3(0);
+// Functions for emitting vertices as strips
+void strip3(in vec3 v1, in vec3 v2, in vec3 v3) {
+    if (v1 == zero || v2 == zero || v3 == zero) {
+        vec3 tmp;
+        if (v2 == zero) {
+            tmp = v2;
+            v2 = v1;
+            v1 = tmp;
+        } else if (v3 == zero) {
+            tmp = v3;
+            v3 = v1;
+            v1 = tmp;
+        }
+
+        gl_Position = vec4(v1 + normalize(v2) / 10, 1);
+        EmitVertex();
+        gl_Position = vec4(v1 + normalize(v3) / 10, 1);
+    } else
+        gl_Position = vec4(v1, 1);
+    EmitVertex();
+
+    gl_Position = vec4(v2, 1);
+    EmitVertex();
+    gl_Position = vec4(v3, 1);
+    EmitVertex();
+    EndPrimitive();
+}
+
 void main() {
     fColor = vec3(1);
 
@@ -50,12 +79,11 @@ void main() {
         (v1.x <= 0 && v2.x <= 0 && v3.x <= 0) ||
         (v1.y >= 0 && v2.y >= 0 && v3.y >= 0) ||
         !(v12c || v13c || v23c) && !originInTriangle) {
+#ifdef DISABLE_OTHERS
+        return;
+#endif
         // Emit it without modification
-        for (int i = 0; i < 3; i++) {
-            gl_Position = gl_in[i].gl_Position;
-            EmitVertex();
-        }
-        EndPrimitive();
+        strip3(v1, v2, v3);
         return;
     }
 
