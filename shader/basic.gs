@@ -4,11 +4,25 @@ layout(triangles) in;
 layout(triangle_strip, max_vertices = 42) out;
 
 in vec3 color[];  // Output from vertex shader for each vertex
+in vec2 tex[];
+
 out vec3 fColor;  // Output to fragment shader
+out vec2 fTexture;
+
+struct Vertex {
+    vec3 p;  // Position
+    vec3 c;  // Color
+    vec2 t;  // Texture
+};
 
 vec3 intersect(in vec3 p1, in vec3 p2) {
     float d = -p1.x / (p2 - p1).x;
     return d * (p2 - p1) + p1;
+}
+Vertex intersect(in Vertex v1, in Vertex v2) {
+    float d = -v1.p.x / (v2.p - v1.p).x;
+    return Vertex(d * (v2.p - v1.p) + v1.p, d * (v2.c - v1.c) + v1.c,
+                  d * (v2.t - v1.t) + v1.t);
 }
 
 bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
@@ -24,9 +38,18 @@ bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
               sA;
     return s > 0 && t > 0 && (s + t) < 2 * area * sA;
 }
+bool isInTriangle(in vec2 p, in Vertex p0, in Vertex p1, in Vertex p2) {
+    return isInTriangle(p, p0.p.xy, p1.p.xy, p2.p.xy);
+}
 
 void emit(in vec3 v) {
     gl_Position = vec4(v, 1);
+    EmitVertex();
+}
+void emit(in Vertex v) {
+    gl_Position = vec4(v.p, 1);
+    fColor = v.c;
+    fTexture = v.t;
     EmitVertex();
 }
 
@@ -52,36 +75,53 @@ vec3 transform(in vec3 v, in float sign) {
 }
 vec3 transform(in vec3 v) { return transform(v, v); }
 
+Vertex transform(in Vertex v, in Vertex ref) {
+    return Vertex(transform(v.p, ref.p), v.c, v.t);
+}
+Vertex transform(in Vertex v, in float sign) {
+    return Vertex(transform(v.p, sign), v.c, v.t);
+}
+Vertex transform(in Vertex v) { return Vertex(transform(v.p, v.p), v.c, v.t); }
+
 void swap(inout vec3 v1, inout vec3 v2) {
     vec3 tmp = v1;
     v1 = v2;
     v2 = tmp;
 }
+void swap(inout Vertex v1, inout Vertex v2) {
+    Vertex tmp = v1;
+    v1 = v2;
+    v2 = tmp;
+}
+
 const vec3 zero = vec3(0);
 void main() {
-    fColor = (color[0] + color[1] + color[2]) / 3;
+    Vertex v1 = Vertex(gl_in[0].gl_Position.xyz, color[0], tex[0]),
+           v2 = Vertex(gl_in[1].gl_Position.xyz, color[1], tex[1]),
+           v3 = Vertex(gl_in[2].gl_Position.xyz, color[2], tex[2]);
 
-    vec3 v1 = gl_in[0].gl_Position.xyz, v2 = gl_in[1].gl_Position.xyz,
-         v3 = gl_in[2].gl_Position.xyz;
-    bool originInTriangle = isInTriangle(vec2(0), v1.xy, v2.xy, v3.xy);
+    bool originInTriangle = isInTriangle(vec2(0), v1, v2, v3);
 
     // Intermediate points to test collisions
-    vec3 v12 = intersect(v1, v2), v13 = intersect(v1, v3),
-         v23 = intersect(v1, v2);
-    bool v12c = v12.y <= 0 && v12.x >= min(v1.x, v2.x) &&
-                v12.x <= max(v1.x, v2.x) && v12.y >= min(v1.y, v2.y) &&
-                v12.y <= max(v1.y, v2.y),
-         v13c = v13.y <= 0 && v13.x >= min(v1.x, v3.x) &&
-                v13.x <= max(v1.x, v3.x) && v13.y >= min(v1.y, v3.y) &&
-                v13.y <= max(v1.y, v3.y),
-         v23c = v23.y <= 0 && v23.x >= min(v2.x, v3.x) &&
-                v23.x <= max(v2.x, v3.x) && v23.y >= min(v2.y, v3.y) &&
-                v23.y <= max(v2.y, v3.y);
+    Vertex v12 = intersect(v1, v2), v13 = intersect(v1, v3),
+           v23 = intersect(v1, v2);
+    bool v12c = v12.p.y <= 0 && v12.p.x >= min(v1.p.x, v2.p.x) &&
+                v12.p.x <= max(v1.p.x, v2.p.x) &&
+                v12.p.y >= min(v1.p.y, v2.p.y) &&
+                v12.p.y <= max(v1.p.y, v2.p.y),
+         v13c = v13.p.y <= 0 && v13.p.x >= min(v1.p.x, v3.p.x) &&
+                v13.p.x <= max(v1.p.x, v3.p.x) &&
+                v13.p.y >= min(v1.p.y, v3.p.y) &&
+                v13.p.y <= max(v1.p.y, v3.p.y),
+         v23c = v23.p.y <= 0 && v23.p.x >= min(v2.p.x, v3.p.x) &&
+                v23.p.x <= max(v2.p.x, v3.p.x) &&
+                v23.p.y >= min(v2.p.y, v3.p.y) &&
+                v23.p.y <= max(v2.p.y, v3.p.y);
 
     // If the triangle is not being cut
-    if ((v1.x >= 0 && v2.x >= 0 && v3.x >= 0) ||
-        (v1.x <= 0 && v2.x <= 0 && v3.x <= 0) ||
-        (v1.y >= 0 && v2.y >= 0 && v3.y >= 0) ||
+    if ((v1.p.x >= 0 && v2.p.x >= 0 && v3.p.x >= 0) ||
+        (v1.p.x <= 0 && v2.p.x <= 0 && v3.p.x <= 0) ||
+        (v1.p.y >= 0 && v2.p.y >= 0 && v3.p.y >= 0) ||
         !(v12c || v13c || v23c) && !originInTriangle) {
 #ifdef DISABLE_OTHERS
         return;
@@ -103,127 +143,127 @@ void main() {
     // the triangle
     if (originInTriangle) {
         // Find the two that intersect the cut plane
-        vec3 d1, d2, u;
+        Vertex d1, d2, u;
 
-        if (v1.y < v2.y && v1.y < v3.y) {
+        if (v1.p.y < v2.p.y && v1.p.y < v3.p.y) {
             d1 = v1;
             d2 = v2;
             u = v3;
         }
-        if (v2.y < v1.y && v2.y < v3.y) {
+        if (v2.p.y < v1.p.y && v2.p.y < v3.p.y) {
             d1 = v2;
             d2 = v3;
             u = v1;
         }
-        if (v3.y < v1.y && v3.y < v2.y) {
+        if (v3.p.y < v1.p.y && v3.p.y < v2.p.y) {
             d1 = v3;
             d2 = v1;
             u = v2;
         }
 
         // If d1 and d2 are on the same side, swap u and d2
-        if (d1.x * d2.x > 0) swap(u, d2);
+        if (d1.p.x * d2.p.x > 0) swap(u, d2);
         // If d2 and u are on the same side and u is lower than d2, swap them
-        if (d2.x * u.x > 0 && u.y < d2.y) swap(u, d2);
+        if (d2.p.x * u.p.x > 0 && u.p.y < d2.p.y) swap(u, d2);
 
-        vec3 m = intersect(d1, d2);
+        Vertex m = intersect(d1, d2);
 
-        emit(transform(zero, -sign(d1.x)));
-        emit(transform(m, -sign(d1.x)));
-        emit(transform(zero, d1));
+        emit(transform(zero, -sign(d1.p.x)));
+        emit(transform(m, -sign(d1.p.x)));
+        emit(transform(zero, d1.p));
         emit(transform(d1));
-        emit(transform(zero, u));
+        emit(transform(zero, u.p));
         emit(transform(u));
-        emit(transform(zero, d2));
+        emit(transform(zero, d2.p));
         emit(transform(d2));
-        emit(transform(zero, -sign(d2.x)));
-        emit(transform(m, -sign(d2.x)));
+        emit(transform(zero, -sign(d2.p.x)));
+        emit(transform(m, -sign(d2.p.x)));
         EndPrimitive();
         doTransform = false;
-        emit(transform(zero, -sign(d1.x)));
-        emit(transform(m, -sign(d1.x)));
-        emit(transform(zero, d1));
+        emit(transform(zero, -sign(d1.p.x)));
+        emit(transform(m, -sign(d1.p.x)));
+        emit(transform(zero, d1.p));
         emit(transform(d1));
-        emit(transform(zero, u));
+        emit(transform(zero, u.p));
         emit(transform(u));
-        emit(transform(zero, d2));
+        emit(transform(zero, d2.p));
         emit(transform(d2));
-        emit(transform(zero, -sign(d2.x)));
-        emit(transform(m, -sign(d2.x)));
+        emit(transform(zero, -sign(d2.p.x)));
+        emit(transform(m, -sign(d2.p.x)));
         EndPrimitive();
         return;
     }
 
     // Simple case : one vertex is on the slicing plane
-    if (v1.x == 0 || v2.x == 0 || v3.x == 0) {
-        vec3 a, b, c;
+    if (v1.p.x == 0 || v2.p.x == 0 || v3.p.x == 0) {
+        Vertex a, b, c;
 
-        if (v1.x == 0) {
-            a = v1.xyz;
-            b = v2.xyz;
-            c = v3.xyz;
-        } else if (v2.x == 0) {
-            a = v2.xyz;
-            b = v1.xyz;
-            c = v3.xyz;
+        if (v1.p.x == 0) {
+            a = v1;
+            b = v2;
+            c = v3;
+        } else if (v2.p.x == 0) {
+            a = v2;
+            b = v1;
+            c = v3;
         } else {
-            a = v3.xyz;
-            b = v1.xyz;
-            c = v2.xyz;
+            a = v3;
+            b = v1;
+            c = v2;
         }
 
-        vec3 d = intersect(b, c);
+        Vertex d = intersect(b, c);
 
         emit(transform(b));
-        emit(transform(a, -sign(b)));
-        emit(transform(d, -sign(b)));
+        emit(transform(a, -sign(b.p.x)));
+        emit(transform(d, -sign(b.p.x)));
         EndPrimitive();
         emit(transform(c));
-        emit(transform(a, -sign(c)));
-        emit(transform(d, -sign(c)));
+        emit(transform(a, -sign(c.p.x)));
+        emit(transform(d, -sign(c.p.x)));
         EndPrimitive();
         doTransform = false;
         emit(transform(b));
-        emit(transform(a, -sign(b)));
-        emit(transform(d, -sign(b)));
+        emit(transform(a, -sign(b.p.x)));
+        emit(transform(d, -sign(b.p.x)));
         EndPrimitive();
         emit(transform(c));
-        emit(transform(a, -sign(c)));
-        emit(transform(d, -sign(c)));
+        emit(transform(a, -sign(c.p.x)));
+        emit(transform(d, -sign(c.p.x)));
         EndPrimitive();
         return;
     }
 
     // Vertices on each side. Whatever the real side is, we'll consider that
     // left is the side with two vertices.
-    vec3 l1, l2, r, right = vec3(1, 0, 0);
+    Vertex l1, l2, r;
 
-    if (v1.x * v2.x > 0) {
+    if (v1.p.x * v2.p.x > 0) {
         l1 = v1;
         l2 = v2;
         r = v3;
     }
-    if (v1.x * v3.x > 0) {
+    if (v1.p.x * v3.p.x > 0) {
         l1 = v1;
         l2 = v3;
         r = v2;
     }
-    if (v2.x * v3.x > 0) {
+    if (v2.p.x * v3.p.x > 0) {
         l1 = v2;
         l2 = v3;
         r = v1;
     }
 
     // Middle-ground vertices
-    vec3 m1 = intersect(r, l1), m2 = intersect(r, l2);
+    Vertex m1 = intersect(r, l1), m2 = intersect(r, l2);
 
     // Rightmost triangle
     emit(transform(r));
-    emit(transform(m1, -sign(r.x)));
-    emit(transform(m2, -sign(r.x)));
+    emit(transform(m1, -sign(r.p.x)));
+    emit(transform(m2, -sign(r.p.x)));
     EndPrimitive();
-    emit(transform(m1, -sign(l1.x)));
-    emit(transform(m2, -sign(l2.x)));
+    emit(transform(m1, -sign(l1.p.x)));
+    emit(transform(m2, -sign(l2.p.x)));
     emit(transform(l1));
     emit(transform(l2));
     EndPrimitive();
