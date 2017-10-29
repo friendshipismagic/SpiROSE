@@ -52,6 +52,45 @@ void strip3(in vec3 v1, in vec3 v2, in vec3 v3) {
     EmitVertex();
     EndPrimitive();
 }
+void strip4(in vec3 v1, in vec3 v2, in vec3 v3, in vec3 v4) {
+    if (v1 == zero || v2 == zero || v3 == zero || v4 == zero) {
+        if (v4 == zero) swap(v1, v4);
+        if (v3 == zero) swap(v2, v3);
+
+        if (v2 == zero) {
+            gl_Position = vec4(v2 + normalize(v1) / 10, 1);
+            EmitVertex();
+            gl_Position = vec4(v1, 1);
+            EmitVertex();
+            gl_Position = vec4(v2 + normalize(v3) / 10, 1);
+            EmitVertex();
+            gl_Position = vec4(v3, 1);
+            EmitVertex();
+            gl_Position = vec4(v2 + normalize(v4) / 10, 1);
+            EmitVertex();
+        } else if (v1 == zero) {
+            gl_Position = vec4(v1 + normalize(v3) / 10, 1);
+            EmitVertex();
+            gl_Position = vec4(v1 + normalize(v2) / 10, 1);
+            EmitVertex();
+            gl_Position = vec4(v2, 1);
+            EmitVertex();
+            gl_Position = vec4(v3, 1);
+            EmitVertex();
+        }
+    } else {
+        gl_Position = vec4(v1, 1);
+        EmitVertex();
+        gl_Position = vec4(v2, 1);
+        EmitVertex();
+        gl_Position = vec4(v3, 1);
+        EmitVertex();
+    }
+
+    gl_Position = vec4(v4, 1);
+    EmitVertex();
+    EndPrimitive();
+}
 
 void main() {
     fColor = vec3(1);
@@ -113,25 +152,8 @@ void main() {
         // If d2 and u are on the same side and u is lower than d2, swap them
         if (d2.x * u.x > 0 && u.y < d2.y) swap(u, d2);
 
-        gl_Position = vec4(u, 1);
-        EmitVertex();
-        gl_Position = vec4(d1, 1);
-        EmitVertex();
-        gl_Position = vec4(0, 0, 0, 1);
-        EmitVertex();
-        gl_Position = vec4(intersect(d1, d2), 1);
-        EmitVertex();
-        EndPrimitive();
-        gl_Position = vec4(intersect(d1, d2), 1);
-        EmitVertex();
-        gl_Position = vec4(0, 0, 0, 1);
-        EmitVertex();
-        gl_Position = vec4(d2, 1);
-        EmitVertex();
-        gl_Position = vec4(u, 1);
-        EmitVertex();
-        EndPrimitive();
-
+        strip4(u, d1, zero, intersect(d1, d2));
+        strip4(intersect(d1, d2), zero, d2, u);
         return;
     }
 
@@ -155,15 +177,7 @@ void main() {
 
         vec3 d = intersect(b, c);
 
-        gl_Position = vec4(b, 1);
-        EmitVertex();
-        gl_Position = vec4(a, 1);
-        EmitVertex();
-        gl_Position = vec4(d, 1);
-        EmitVertex();
-        gl_Position = vec4(c, 1);
-        EmitVertex();
-        EndPrimitive();
+        strip4(b, a, d, c);
         return;
     }
 
