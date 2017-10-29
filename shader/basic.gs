@@ -25,20 +25,19 @@ bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
     return s > 0 && t > 0 && (s + t) < 2 * area * sA;
 }
 
+void swap(inout vec3 v1, inout vec3 v2) {
+    vec3 tmp = v1;
+    v1 = v2;
+    v2 = tmp;
+}
 const vec3 zero = vec3(0);
 // Functions for emitting vertices as strips
 void strip3(in vec3 v1, in vec3 v2, in vec3 v3) {
     if (v1 == zero || v2 == zero || v3 == zero) {
-        vec3 tmp;
-        if (v2 == zero) {
-            tmp = v2;
-            v2 = v1;
-            v1 = tmp;
-        } else if (v3 == zero) {
-            tmp = v3;
-            v3 = v1;
-            v1 = tmp;
-        }
+        if (v2 == zero)
+            swap(v1, v2);
+        else if (v3 == zero)
+            swap(v1, v3);
 
         gl_Position = vec4(v1 + normalize(v2) / 10, 1);
         EmitVertex();
@@ -110,17 +109,9 @@ void main() {
         }
 
         // If d1 and d2 are on the same side, swap u and d2
-        if (d1.x * d2.x > 0) {
-            vec3 temp = u;
-            u = d2;
-            d2 = temp;
-        }
+        if (d1.x * d2.x > 0) swap(u, d2);
         // If d2 and u are on the same side and u is lower than d2, swap them
-        if (d2.x * u.x > 0 && u.y < d2.y) {
-            vec3 temp = u;
-            u = d2;
-            d2 = temp;
-        }
+        if (d2.x * u.x > 0 && u.y < d2.y) swap(u, d2);
 
         gl_Position = vec4(u, 1);
         EmitVertex();
