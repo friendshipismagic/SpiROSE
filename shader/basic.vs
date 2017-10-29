@@ -1,4 +1,4 @@
-#version 440 core
+#version 410 core
 
 in vec2 position;
 out vec3 color;
