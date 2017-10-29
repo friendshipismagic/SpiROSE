@@ -49,6 +49,9 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
 GLuint loadShader(GLenum type, const char *filename);
 
 bool wireframe = false;
+GLuint prog = 0;
+
+void loadShaders();
 
 #ifdef OS_WIN32
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
@@ -100,13 +103,7 @@ int main(int argc, char *argv[]) {
     glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
 
     // Shaders
-    GLuint prog = glCreateProgram();
-    glAttachShader(prog, loadShader(GL_VERTEX_SHADER, "shader/basic.vs"));
-    glAttachShader(prog, loadShader(GL_GEOMETRY_SHADER, "shader/basic.gs"));
-    glAttachShader(prog, loadShader(GL_FRAGMENT_SHADER, "shader/basic.fs"));
-    glBindFragDataLocation(prog, 0, "fragColor");
-    glLinkProgram(prog);
-    glUseProgram(prog);
+    loadShaders();
 
     // Send vertex to shader
     GLint inPositionLoc = glGetAttribLocation(prog, "position");
@@ -166,6 +163,9 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
         case GLFW_KEY_Z:
             wireframe = !wireframe;
             break;
+        case GLFW_KEY_R:
+            loadShaders();
+            break;
     }
 }
 
@@ -196,4 +196,14 @@ GLuint loadShader(GLenum type, const char *filename) {
     }
 
     return shader;
+}
+
+void loadShaders() {
+    prog = glCreateProgram();
+    glAttachShader(prog, loadShader(GL_VERTEX_SHADER, "shader/basic.vs"));
+    glAttachShader(prog, loadShader(GL_GEOMETRY_SHADER, "shader/basic.gs"));
+    glAttachShader(prog, loadShader(GL_FRAGMENT_SHADER, "shader/basic.fs"));
+    glBindFragDataLocation(prog, 0, "fragColor");
+    glLinkProgram(prog);
+    glUseProgram(prog);
 }
