@@ -1,7 +1,7 @@
 #version 410 core
 
 layout(triangles) in;
-layout(triangle_strip, max_vertices = 9) out;
+layout(triangle_strip, max_vertices = 42) out;
 
 in vec3 vColor[];  // Output from vertex shader for each vertex
 out vec3 fColor;   // Output to fragment shader
@@ -25,73 +25,39 @@ bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
     return s > 0 && t > 0 && (s + t) < 2 * area * sA;
 }
 
+void emit(in vec3 v) {
+    gl_Position = vec4(v, 1);
+    EmitVertex();
+}
+
+bool doTransform = true;
+
+// Does the magic
+const float M_PI = 3.14159265359;
+vec3 transform(in vec3 v, in vec3 ref) {
+    if (!doTransform) return v;
+
+    float l = length(v), angle = atan(ref.x / -ref.y);
+
+    if (ref.y == 0) angle = ref.x > 0 ? M_PI / 2 : 3 * M_PI / 2;
+    if (ref.y > 0) angle += M_PI;
+    if (ref.y < 0 && ref.x < 0) angle += 4 * M_PI / 2;
+
+    return vec3(angle / (2 * M_PI) / 2, l, v.z) + vec3(0.5, 0, 0);
+}
+vec3 transform(in vec3 v, in float sign) {
+    if (!doTransform) return v;
+
+    return vec3(max(sign, 0) / 2, length(v), v.z) + vec3(0.5, 0, 0);
+}
+vec3 transform(in vec3 v) { return transform(v, v); }
+
 void swap(inout vec3 v1, inout vec3 v2) {
     vec3 tmp = v1;
     v1 = v2;
     v2 = tmp;
 }
 const vec3 zero = vec3(0);
-// Functions for emitting vertices as strips
-void strip3(in vec3 v1, in vec3 v2, in vec3 v3) {
-    if (v1 == zero || v2 == zero || v3 == zero) {
-        if (v2 == zero)
-            swap(v1, v2);
-        else if (v3 == zero)
-            swap(v1, v3);
-
-        gl_Position = vec4(v1 + normalize(v2) / 10, 1);
-        EmitVertex();
-        gl_Position = vec4(v1 + normalize(v3) / 10, 1);
-    } else
-        gl_Position = vec4(v1, 1);
-    EmitVertex();
-
-    gl_Position = vec4(v2, 1);
-    EmitVertex();
-    gl_Position = vec4(v3, 1);
-    EmitVertex();
-    EndPrimitive();
-}
-void strip4(in vec3 v1, in vec3 v2, in vec3 v3, in vec3 v4) {
-    if (v1 == zero || v2 == zero || v3 == zero || v4 == zero) {
-        if (v4 == zero) swap(v1, v4);
-        if (v3 == zero) swap(v2, v3);
-
-        if (v2 == zero) {
-            gl_Position = vec4(v2 + normalize(v1) / 10, 1);
-            EmitVertex();
-            gl_Position = vec4(v1, 1);
-            EmitVertex();
-            gl_Position = vec4(v2 + normalize(v3) / 10, 1);
-            EmitVertex();
-            gl_Position = vec4(v3, 1);
-            EmitVertex();
-            gl_Position = vec4(v2 + normalize(v4) / 10, 1);
-            EmitVertex();
-        } else if (v1 == zero) {
-            gl_Position = vec4(v1 + normalize(v3) / 10, 1);
-            EmitVertex();
-            gl_Position = vec4(v1 + normalize(v2) / 10, 1);
-            EmitVertex();
-            gl_Position = vec4(v2, 1);
-            EmitVertex();
-            gl_Position = vec4(v3, 1);
-            EmitVertex();
-        }
-    } else {
-        gl_Position = vec4(v1, 1);
-        EmitVertex();
-        gl_Position = vec4(v2, 1);
-        EmitVertex();
-        gl_Position = vec4(v3, 1);
-        EmitVertex();
-    }
-
-    gl_Position = vec4(v4, 1);
-    EmitVertex();
-    EndPrimitive();
-}
-
 void main() {
     fColor = vec3(1);
 
@@ -121,7 +87,13 @@ void main() {
         return;
 #endif
         // Emit it without modification
-        strip3(v1, v2, v3);
+        emit(transform(v1));
+        emit(transform(v2));
+        emit(transform(v3));
+        doTransform = false;
+        emit(transform(v1));
+        emit(transform(v2));
+        emit(transform(v3));
         return;
     }
 
@@ -152,8 +124,31 @@ void main() {
         // If d2 and u are on the same side and u is lower than d2, swap them
         if (d2.x * u.x > 0 && u.y < d2.y) swap(u, d2);
 
-        strip4(u, d1, zero, intersect(d1, d2));
-        strip4(intersect(d1, d2), zero, d2, u);
+        vec3 m = intersect(d1, d2);
+
+        emit(transform(zero, -sign(d1.x)));
+        emit(transform(m, -sign(d1.x)));
+        emit(transform(zero, d1));
+        emit(transform(d1));
+        emit(transform(zero, u));
+        emit(transform(u));
+        emit(transform(zero, d2));
+        emit(transform(d2));
+        emit(transform(zero, -sign(d2.x)));
+        emit(transform(m, -sign(d2.x)));
+        EndPrimitive();
+        doTransform = false;
+        emit(transform(zero, -sign(d1.x)));
+        emit(transform(m, -sign(d1.x)));
+        emit(transform(zero, d1));
+        emit(transform(d1));
+        emit(transform(zero, u));
+        emit(transform(u));
+        emit(transform(zero, d2));
+        emit(transform(d2));
+        emit(transform(zero, -sign(d2.x)));
+        emit(transform(m, -sign(d2.x)));
+        EndPrimitive();
         return;
     }
 
@@ -177,13 +172,24 @@ void main() {
 
         vec3 d = intersect(b, c);
 
-        strip4(b, a, d, c);
+        emit(transform(b));
+        emit(transform(a, -sign(b)));
+        emit(transform(d, -sign(b)));
+        EndPrimitive();
+        emit(transform(c));
+        emit(transform(a, -sign(c)));
+        emit(transform(d, -sign(c)));
+        doTransform = false;
+        emit(transform(b));
+        emit(transform(a, -sign(b)));
+        emit(transform(d, -sign(b)));
+        EndPrimitive();
+        emit(transform(c));
+        emit(transform(a, -sign(c)));
+        emit(transform(d, -sign(c)));
         return;
     }
 
-#ifdef DISABLE_OTHERS
-    return;
-#endif
     // Vertices on each side. Whatever the real side is, we'll consider that
     // left is the side with two vertices.
     vec3 l1, l2, r, right = vec3(1, 0, 0);
@@ -208,15 +214,23 @@ void main() {
     vec3 m1 = intersect(r, l1), m2 = intersect(r, l2);
 
     // Rightmost triangle
-    gl_Position = vec4(r, 1);
-    EmitVertex();
-    gl_Position = vec4(m1, 1);
-    EmitVertex();
-    gl_Position = vec4(m2, 1);
-    EmitVertex();
-    gl_Position = vec4(l1, 1);
-    EmitVertex();
-    gl_Position = vec4(l2, 1);
-    EmitVertex();
+    emit(transform(r));
+    emit(transform(m1, -sign(r.x)));
+    emit(transform(m2, -sign(r.x)));
+    EndPrimitive();
+    emit(transform(m1, -sign(l1.x)));
+    emit(transform(m2, -sign(l2.x)));
+    emit(transform(l1));
+    emit(transform(l2));
+    EndPrimitive();
+
+    emit(r);
+    emit(m1);
+    emit(m2);
+    EndPrimitive();
+    emit(m1);
+    emit(m2);
+    emit(l1);
+    emit(l2);
     EndPrimitive();
 }
