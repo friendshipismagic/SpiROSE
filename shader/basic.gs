@@ -24,6 +24,20 @@ Vertex intersect(in Vertex v1, in Vertex v2) {
     return Vertex(d * (v2.p - v1.p) + v1.p, d * (v2.c - v1.c) + v1.c,
                   d * (v2.t - v1.t) + v1.t);
 }
+Vertex intersect(in Vertex v1, in Vertex v2, in Vertex v3) {
+    vec2 p = vec2(0), p0 = v1.p.xy, p1 = v2.p.xy, p2 = v3.p.xy;
+
+    vec2 e0 = p1 - p0, e1 = p2 - p0, e2 = p - p0;
+    float d00 = dot(e0, e0), d01 = dot(e0, e1), d11 = dot(e1, e1),
+          d20 = dot(e2, e0), d21 = dot(e2, e1);
+    float d = d00 * d11 - d01 * d01;
+    float v = (d11 * d20 - d01 * d21) / d, w = (d00 * d21 - d01 * d20) / d,
+          u = 1.0 - v - w;
+
+    return Vertex(vec3(0, 0, u * v1.p.z + v * v2.p.z + w * v3.p.z),
+                  u * v1.c + v * v2.c + w * v3.c,
+                  u * v1.t + v * v2.t + w * v3.t);
+}
 
 bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
     float area = (-p1.y * p2.x + p0.y * (p2.x - p1.x) + p0.x * (p1.y - p2.y) +
@@ -166,15 +180,15 @@ void main() {
         // If d2 and u are on the same side and u is lower than d2, swap them
         if (d2.p.x * u.p.x > 0 && u.p.y < d2.p.y) swap(u, d2);
 
-        Vertex m = intersect(d1, d2);
+        Vertex m = intersect(d1, d2), zero = intersect(v1, v2, v2);
 
         emit(transform(zero, -sign(d1.p.x)));
         emit(transform(m, -sign(d1.p.x)));
-        emit(transform(zero, d1.p));
+        emit(transform(zero, d1));
         emit(transform(d1));
-        emit(transform(zero, u.p));
+        emit(transform(zero, u));
         emit(transform(u));
-        emit(transform(zero, d2.p));
+        emit(transform(zero, d2));
         emit(transform(d2));
         emit(transform(zero, -sign(d2.p.x)));
         emit(transform(m, -sign(d2.p.x)));
@@ -182,11 +196,11 @@ void main() {
         doTransform = false;
         emit(transform(zero, -sign(d1.p.x)));
         emit(transform(m, -sign(d1.p.x)));
-        emit(transform(zero, d1.p));
+        emit(transform(zero, d1));
         emit(transform(d1));
-        emit(transform(zero, u.p));
+        emit(transform(zero, u));
         emit(transform(u));
-        emit(transform(zero, d2.p));
+        emit(transform(zero, d2));
         emit(transform(d2));
         emit(transform(zero, -sign(d2.p.x)));
         emit(transform(m, -sign(d2.p.x)));
