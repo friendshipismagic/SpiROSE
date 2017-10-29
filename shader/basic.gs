@@ -90,10 +90,12 @@ void main() {
         emit(transform(v1));
         emit(transform(v2));
         emit(transform(v3));
+        EndPrimitive();
         doTransform = false;
         emit(transform(v1));
         emit(transform(v2));
         emit(transform(v3));
+        EndPrimitive();
         return;
     }
 
@@ -179,6 +181,7 @@ void main() {
         emit(transform(c));
         emit(transform(a, -sign(c)));
         emit(transform(d, -sign(c)));
+        EndPrimitive();
         doTransform = false;
         emit(transform(b));
         emit(transform(a, -sign(b)));
@@ -187,6 +190,7 @@ void main() {
         emit(transform(c));
         emit(transform(a, -sign(c)));
         emit(transform(d, -sign(c)));
+        EndPrimitive();
         return;
     }
 
