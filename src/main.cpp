@@ -86,15 +86,48 @@ int main(int argc, char *argv[]) {
     glBindVertexArray(vao);
 
     // Test buffer
-    float vertices[3 * 12 * 2] = {0};
-    for (int i = 0; i < 12; i++) {
-        vertices[i * 6] = vertices[i * 6 + 1] = 0;
-        vertices[i * 6 + 2] = sin(2.f * M_PI * (0.5f + float(i)) / 12.f) * 0.5f;
-        vertices[i * 6 + 3] = cos(2.f * M_PI * (0.5f + float(i)) / 12.f) * 0.5f;
-        vertices[i * 6 + 4] =
-            sin(2.f * M_PI * (0.5f + float(i + 1)) / 12.f) * 0.5f;
-        vertices[i * 6 + 5] =
-            cos(2.f * M_PI * (0.5f + float(i + 1)) / 12.f) * 0.5f;
+    const int nSteps = 12, nDisks = 10;
+    float vertices[3 * nSteps * 2 * nDisks * 2] = {0};
+    for (int j = 0; j < nDisks; j++) {
+        for (int i = 0; i < nSteps; i++) {
+            vertices[(j * nSteps + i) * 12 + 0] =
+                sin(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) * float(j) *
+                0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 1] =
+                cos(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) * float(j) *
+                0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 2] =
+                sin(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) *
+                float(j + 1) * 0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 3] =
+                cos(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) *
+                float(j + 1) * 0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 4] =
+                sin(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
+                float(j + 1) * 0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 5] =
+                cos(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
+                float(j + 1) * 0.5f / float(nDisks);
+
+            vertices[(j * nSteps + i) * 12 + 6] =
+                sin(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
+                float(j) * 0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 7] =
+                cos(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
+                float(j) * 0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 8] =
+                sin(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) * float(j) *
+                0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 9] =
+                cos(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) * float(j) *
+                0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 10] =
+                sin(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
+                float(j + 1) * 0.5f / float(nDisks);
+            vertices[(j * nSteps + i) * 12 + 11] =
+                cos(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
+                float(j + 1) * 0.5f / float(nDisks);
+        }
     }
 
     GLuint buf;
