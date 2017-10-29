@@ -9,31 +9,31 @@ specs={"resolution"     : (0.00225, 0.00225), # m
       "LED_per_face"    : None ,
       "LED_per_column"  : None ,
       "LED_per_row"     : None ,
-      "radius"          : 0.2  , # m
+      "width"           : 0.2  , # m
       "height"          : 0.2  , # m
       "rotation_speed"  : None , # rpm
       "tip_speed"       : None , # m/s
       "bandwidth"       : None , # Mo/s
       "nominal_power"   : None , # Watt
       "bytes_per_LED"   : 2    ,
-      "LED_power"       : 0.0465, # A
+      "LED_power"       : 0.0465, # Watt
       "engine_power"    : 0    , # Watt
       "number_of_voxels": None ,
       }
 
 LED_per_face_sensibility     = ["LED_per_row", "LED_per_column"]
-LED_per_row_sensibility      = ["resolution", "radius"]
-LED_per_column_sensibility   = ["resolution", "radius"]
-radius_sensibility           = ["resolution", "LED_per_row"]
+LED_per_row_sensibility      = ["resolution", "width"]
+LED_per_column_sensibility   = ["resolution", "width"]
+width_sensibility           = ["resolution", "LED_per_row"]
 height_sensibility           = ["resolution", "LED_per_column"]
 resolution_sensibility       = ["LED_per_row", "LED_per_column",\
-                                "height", "radius"]
+                                "height", "width"]
 rotation_speed_sensibility   = ["framerate"]
 framerate_sensibility        = ["rotation_speed"]
 bandwidth_sensibility        = ["number_of_voxels", "framerate",\
                                 "bytes_per_LED"]
 power_sensibility            = ["LED_per_face", "LED_power", "engine_power"]
-tip_speed_sensibility        = ["rotation_speed", "radius"]
+tip_speed_sensibility        = ["rotation_speed", "width"]
 number_of_voxels_sensibility = ["LED_per_row", "LED_per_column",\
                                 "resolution", "face_number"]
 
@@ -44,7 +44,7 @@ def check_sensibility(sensibility_list):
 def compute_LED_per_row():
     if not check_sensibility(LED_per_row_sensibility):
         return None
-    specs["LED_per_row"] = math.floor(specs["radius"] / specs["resolution"][0])
+    specs["LED_per_row"] = math.floor(specs["width"] / specs["resolution"][0])
 
 def compute_LED_per_column():
     if not check_sensibility(LED_per_column_sensibility):
@@ -61,15 +61,15 @@ def compute_height():
         return None
     specs["height"] = specs["LED_per_column"] * specs["resolution"][1]
 
-def compute_radius():
-    if not check_sensibility(radius_sensibility):
+def compute_width():
+    if not check_sensibility(width_sensibility):
         return None
-    specs["radius"] = specs["LED_per_row"] * specs["resolution"][0]
+    specs["width"] = specs["LED_per_row"] * specs["resolution"][0]
 
 def compute_resolution():
     if not check_sensibility(resolution_sensibility):
         return None
-    specs["resolution"] = (specs["radius"] / specs["LED_per_row"],\
+    specs["resolution"] = (specs["width"] / specs["LED_per_row"],\
                            specs["height"] / specs["LED_per_column"])
 
 def compute_framerate():
@@ -92,7 +92,7 @@ def compute_power():
 def compute_tip_speed():
     if not check_sensibility(tip_speed_sensibility):
         return None
-    specs["tip_speed"] = round(2 * math.pi * specs["radius"]\
+    specs["tip_speed"] = round(2 * math.pi * specs["width"] / 2\
                                  * specs["rotation_speed"] / 60, 2)
 
 def compute_number_of_voxels():
@@ -124,8 +124,8 @@ def fill_spec():
         compute_LED_per_face()
     if specs["height"] is None:
         compute_height()
-    if specs["radius"] is None:
-        compute_radius()
+    if specs["width"] is None:
+        compute_width()
     if specs["resolution"] is None:
         compute_resolution()
     if specs["framerate"] is None:
