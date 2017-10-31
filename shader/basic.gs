@@ -27,6 +27,8 @@ Vertex intersect(in Vertex v1, in Vertex v2) {
 Vertex intersect(in Vertex v1, in Vertex v2, in Vertex v3) {
     vec2 p = vec2(0), p0 = v1.p.xy, p1 = v2.p.xy, p2 = v3.p.xy;
 
+    // Compute the barycentric coordinates inside the triangle of the
+    // x, y = 0, 0 point to interpolate color and texture coordinates
     vec2 e0 = p1 - p0, e1 = p2 - p0, e2 = p - p0;
     float d00 = dot(e0, e0), d01 = dot(e0, e1), d11 = dot(e1, e1),
           d20 = dot(e2, e0), d21 = dot(e2, e1);
@@ -180,7 +182,7 @@ void main() {
         // If d2 and u are on the same side and u is lower than d2, swap them
         if (d2.p.x * u.p.x > 0 && u.p.y < d2.p.y) swap(u, d2);
 
-        Vertex m = intersect(d1, d2), zero = intersect(v1, v2, v2);
+        Vertex m = intersect(d1, d2), zero = intersect(v1, v2, v3);
 
         emit(transform(zero, -sign(d1.p.x)));
         emit(transform(m, -sign(d1.p.x)));
