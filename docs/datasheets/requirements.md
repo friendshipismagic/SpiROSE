@@ -28,3 +28,10 @@ No HDCP in the chip, so that we don't have NDA, agreements or stuff like this to
 use the chip.
 
 Without optimisation, approx. 4Mpx@30fps, so 800x600px@30fps is good enough.
+
+# Single Board Computer
+
+5GHz WiFi, GPU (for OpenGL processing) with OpenGL ES 3.2 minimum, HDMI output.
+
+A good reference is
+[the firefly RK3399](http://en.t-firefly.com/Product/Rk3399.html)
