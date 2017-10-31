@@ -18,6 +18,13 @@ of at least 27kb.
 I/O Count:
 
  - LED drivers: SCK+MOSI per driver, around 15 drivers = 30 I/O.
- - RGB input: 2 pixels/clock, 24b per pixel, 48 I/O for RGB + 1 I/O for clock.
+ - RGB input: 2 pixels/clock, 48 I/O for RGB + 7 I/O for CTL + 1 I/O for clock.
 
-Total: 79 I/O
+Total: 86 I/O
+
+# HDMI to RGB
+
+No HDCP in the chip, so that we don't have NDA, agreements or stuff like this to
+use the chip.
+
+Without optimisation, approx. 4Mpx@30fps, so 800x600px@30fps is good enough.
