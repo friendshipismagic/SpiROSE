@@ -154,7 +154,7 @@ int main(int argc, char *argv[]) {
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f),
-              matView = glm::lookAt(glm::vec3(-1.f, 1.f, 1.f), glm::vec3(0.f),
+              matView = glm::lookAt(glm::vec3(1.f, 0.f, 1.f), glm::vec3(0.f),
                                     glm::vec3(0.f, 0.f, 1.f)),
               matProjection =
                   glm::perspective(glm::radians(90.f), 16.f / 9.f, .1f, 100.f);
@@ -167,6 +167,9 @@ int main(int argc, char *argv[]) {
         glfwPollEvents();
 
         float time = glfwGetTime();
+
+        glm::mat4 matV = glm::rotate(matView, time, glm::vec3(0.f, 0.f, 1.f));
+        glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matV[0][0]);
 
         glUniform1f(timePosition, time / 10.f);
         matModel = glm::translate(glm::vec3(
