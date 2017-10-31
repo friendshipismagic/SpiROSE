@@ -9,6 +9,8 @@ in vec2 tex[];
 out vec3 fColor;  // Output to fragment shader
 out vec2 fTexture;
 
+uniform mat4 matProjection, matView;
+
 struct Vertex {
     vec3 p;  // Position
     vec3 c;  // Color
@@ -59,11 +61,11 @@ bool isInTriangle(in vec2 p, in Vertex p0, in Vertex p1, in Vertex p2) {
 }
 
 void emit(in vec3 v) {
-    gl_Position = vec4(v, 1);
+    gl_Position = matProjection * matView * vec4(v, 1);
     EmitVertex();
 }
 void emit(in Vertex v) {
-    gl_Position = vec4(v.p, 1);
+    gl_Position = matProjection * matView * vec4(v.p, 1);
     fColor = v.c;
     fTexture = v.t;
     EmitVertex();

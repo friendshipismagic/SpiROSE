@@ -81,6 +81,8 @@ int main(int argc, char *argv[]) {
     glewInit();
 #endif
 
+    glViewport(0, 0, 1280, 720);
+
     // Main VAO
     GLuint vao;
     glGenVertexArrays(1, &vao);
@@ -146,10 +148,19 @@ int main(int argc, char *argv[]) {
 
     // Get time uniform
     GLint timePosition = glGetUniformLocation(prog, "time"),
-          matMVPosition = glGetUniformLocation(prog, "matMV");
+          matMPosition = glGetUniformLocation(prog, "matModel"),
+          matVPosition = glGetUniformLocation(prog, "matView"),
+          matPPosition = glGetUniformLocation(prog, "matProjection");
 
     // Matricies
-    glm::mat4 matModel = glm::mat4(1.0f);
+    glm::mat4 matModel = glm::mat4(1.f),
+              matView = glm::lookAt(glm::vec3(-1.f, 1.f, 1.f), glm::vec3(0.f),
+                                    glm::vec3(0.f, 0.f, 1.f)),
+              matProjection =
+                  glm::perspective(glm::radians(90.f), 16.f / 9.f, .1f, 100.f);
+
+    glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
+    glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matProjection[0][0]);
 
     while (!glfwWindowShouldClose(window)) {
         glfwSwapBuffers(window);
@@ -161,7 +172,7 @@ int main(int argc, char *argv[]) {
         matModel = glm::translate(glm::vec3(
             (float)sin(time / 3.f) / 2.f, (float)sin(time * 5.f) / 20.f, 0.f));
         matModel = glm::rotate(matModel, time, glm::vec3(0, 0, 1));
-        glUniformMatrix4fv(matMVPosition, 1, GL_FALSE, &matModel[0][0]);
+        glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
 
         glClear(GL_COLOR_BUFFER_BIT);
         if (wireframe)
