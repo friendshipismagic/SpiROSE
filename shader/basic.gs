@@ -92,7 +92,7 @@ const float M_PI = 3.14159265359;
 vec3 transform(in vec3 v, in vec3 ref) {
     if (!doTransform) return v;
 
-    float l = length(v), angle = atan(ref.x / -ref.y);
+    float l = length(v.xy), angle = atan(ref.x / -ref.y);
 
     if (ref.y == 0) angle = ref.x > 0 ? M_PI / 2 : 3 * M_PI / 2;
     if (ref.y > 0) angle += M_PI;
