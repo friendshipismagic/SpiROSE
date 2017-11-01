@@ -71,13 +71,16 @@ bool isInTriangle(in vec2 p, in Vertex p0, in Vertex p1, in Vertex p2) {
     return isInTriangle(p, p0.p.xy, p1.p.xy, p2.p.xy);
 }
 
+bool overrideColor = false;
+vec3 overColor = vec3(1);
+
 void emit(in vec3 v) {
     gl_Position = matProjection * matView * vec4(v, 1);
     EmitVertex();
 }
 void emit(in Vertex v) {
     gl_Position = matProjection * matView * vec4(v.p, 1);
-    fColor = v.c;
+    fColor = overrideColor ? overColor : v.c;
     fTexture = v.t;
     EmitVertex();
 }
