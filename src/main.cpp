@@ -87,67 +87,47 @@ int main(int argc, char *argv[]) {
 
     glViewport(0, 0, 1280, 720);
 
+    // Load suzanne
+    tinyobj::attrib_t attrib;
+    std::vector<tinyobj::shape_t> shapes;
+    std::vector<tinyobj::material_t> materials;
+    std::string err;
+    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err,
+                                "mesh/suzanne.obj");
+    if (!err.empty()) std::cerr << "[ERR] " << err << std::endl;
+    if (!ret) return -1;
+
+    // Use first mesh
+    auto &mesh = shapes[0].mesh;
+
     // Main VAO
     GLuint vao;
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
 
-    // Test buffer
-    const int nSteps = 12, nDisks = 10;
-    float vertices[3 * nSteps * 2 * nDisks * 2] = {0};
-    for (int j = 0; j < nDisks; j++) {
-        for (int i = 0; i < nSteps; i++) {
-            vertices[(j * nSteps + i) * 12 + 0] =
-                sin(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) * float(j) *
-                0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 1] =
-                cos(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) * float(j) *
-                0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 2] =
-                sin(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) *
-                float(j + 1) * 0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 3] =
-                cos(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) *
-                float(j + 1) * 0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 4] =
-                sin(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
-                float(j + 1) * 0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 5] =
-                cos(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
-                float(j + 1) * 0.5f / float(nDisks);
-
-            vertices[(j * nSteps + i) * 12 + 6] =
-                sin(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
-                float(j) * 0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 7] =
-                cos(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
-                float(j) * 0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 8] =
-                sin(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) * float(j) *
-                0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 9] =
-                cos(2.f * M_PI * (0.5f + float(i)) / float(nSteps)) * float(j) *
-                0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 10] =
-                sin(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
-                float(j + 1) * 0.5f / float(nDisks);
-            vertices[(j * nSteps + i) * 12 + 11] =
-                cos(2.f * M_PI * (0.5f + float(i + 1)) / float(nSteps)) *
-                float(j + 1) * 0.5f / float(nDisks);
-        }
-    }
-
+    // Vertex buffer
     GLuint buf;
     glGenBuffers(1, &buf);
     glBindBuffer(GL_ARRAY_BUFFER, buf);
-    glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_DYNAMIC_DRAW);
+    glBufferData(GL_ARRAY_BUFFER, attrib.vertices.size() * sizeof(float),
+                 &attrib.vertices[0], GL_DYNAMIC_DRAW);
+
+    // Index buffer
+    unsigned int *indexes = new unsigned int[mesh.indices.size()];
+    for (unsigned int i = 0; i < mesh.indices.size(); i++)
+        indexes[i] = (unsigned int)mesh.indices[i].vertex_index;
+    GLuint ibuf;
+    glGenBuffers(1, &ibuf);
+    glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ibuf);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, mesh.indices.size() * sizeof(int),
+                 indexes, GL_DYNAMIC_DRAW);
 
     // Shaders
     loadShaders();
 
     // Send vertex to shader
     GLint inPositionLoc = glGetAttribLocation(prog, "position");
-    glVertexAttribPointer(inPositionLoc, 2, GL_FLOAT, GL_FALSE, 0, 0);
+    glVertexAttribPointer(inPositionLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(inPositionLoc);
 
     // Get time uniform
@@ -185,6 +165,7 @@ int main(int argc, char *argv[]) {
         matModel = glm::translate(glm::vec3(
             (float)sin(time / 3.f) / 2.f, (float)sin(time * 5.f) / 20.f, 0.f));
         matModel = glm::rotate(matModel, time, glm::vec3(0, 0, 1));
+        matModel = glm::scale(matModel, glm::vec3(.5f));
         glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
 
         glClear(GL_COLOR_BUFFER_BIT);
@@ -194,7 +175,7 @@ int main(int argc, char *argv[]) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
         // Rendering
-        glDrawArrays(GL_TRIANGLES, 0, sizeof(vertices) / sizeof(float));
+        glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
     }
 
     glfwTerminate();
