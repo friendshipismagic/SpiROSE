@@ -42,18 +42,25 @@
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
+#include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtx/transform.hpp>
 
 #include <tinyobjloader/tiny_obj_loader.h>
 
 void readFile(const std::string &filename, std::string &contents);
 void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
+void onButton(GLFWwindow *window, int button, int action, int mods);
+void onMove(GLFWwindow *window, double x, double y);
 
 GLuint loadShader(GLenum type, const char *filename);
 
-bool wireframe = false, pause = false;
-float time = 0.f, zoom = 1.f;
+bool wireframe = false, pause = false, clicking = false;
+float time = 0.f;
 GLuint prog = 0;
+
+// Camera data
+float yaw = 0.f, pitch = M_PI / 2.f, zoom = 2.f;
+glm::vec3 camForward, camRight, camLook;
 
 void loadShaders();
 
@@ -78,6 +85,8 @@ int main(int argc, char *argv[]) {
 
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
     glfwSetKeyCallback(window, onKey);
+    glfwSetMouseButtonCallback(window, onButton);
+    glfwSetCursorPosCallback(window, onMove);
 
 #ifndef OS_OSX
     // Load GLEW
@@ -86,6 +95,7 @@ int main(int argc, char *argv[]) {
 #endif
 
     glViewport(0, 0, 1280, 720);
+    glEnable(GL_DEPTH_TEST);
 
     // Load suzanne
     tinyobj::attrib_t attrib;
@@ -156,10 +166,9 @@ int main(int argc, char *argv[]) {
 
         if (!pause) time = glfwGetTime();
 
-        // glm::mat4 matV = glm::rotate(matView, time, glm::vec3(0.f,
-        // 0.f, 1.f));
-        glm::mat4 matV = glm::scale(matView, zoom * glm::vec3(1.f, 1.f, 1.f));
-        glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matV[0][0]);
+        matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
+                              -glm::cross(camRight, camLook));
+        glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
 
         glUniform1f(timePosition, time / 10.f);
         matModel = glm::translate(glm::vec3(
@@ -168,7 +177,7 @@ int main(int argc, char *argv[]) {
         matModel = glm::scale(matModel, glm::vec3(.5f));
         glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
 
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         if (wireframe)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
@@ -237,6 +246,34 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             zoom -= 0.01;
             break;
     }
+}
+void onButton(GLFWwindow *window, int button, int action, int mods) {
+    if (button == GLFW_MOUSE_BUTTON_LEFT) clicking = action == GLFW_PRESS;
+}
+void onMove(GLFWwindow *window, double x, double y) {
+    static double lastX = 0, lastY = 0;
+    double dx = x - lastX, dy = y - lastY;
+    lastX = x;
+    lastY = y;
+
+    if (!clicking) return;
+
+    yaw -= dx / 250.f;
+    pitch -= dy / 250.f;
+
+    // Keep yaw between 0 and 2pi
+    yaw = yaw > 2.0 * M_PI ? yaw - 2.0 * M_PI
+                           : (yaw < 0.0 ? yaw + 2.0 * M_PI : yaw);
+    // Keep pitch between -pi/2 and pi/2
+    pitch = fmax(fmin(pitch, M_PI / 2.0), -M_PI / 2.0);
+
+    // Recompute camera vectors
+    camForward =
+        glm::rotate(glm::vec3(1.f, 0.f, 0.f), yaw, glm::vec3(0.f, 0.f, 1.f));
+    camRight = glm::vec3(-camForward.y, camForward.x, 0.f);
+    camLook = glm::rotate(
+        glm::rotate(glm::vec3(1.f, 0.f, 0.f), -pitch, glm::vec3(0.f, 1.f, 0.f)),
+        yaw, glm::vec3(0.f, 0.f, 1.f));
 }
 
 GLuint loadShader(GLenum type, const char *filename) {
