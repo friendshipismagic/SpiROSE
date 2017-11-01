@@ -103,7 +103,7 @@ vec3 transform(in vec3 v, in vec3 ref) {
 vec3 transform(in vec3 v, in float sign) {
     if (!doTransform) return v;
 
-    return vec3(max(sign, 0) / 2, length(v), v.z) + vec3(0.5, 0, 0);
+    return vec3(max(sign, 0) / 2, length(v.xy), v.z) + vec3(0.5, 0, 0);
 }
 vec3 transform(in vec3 v) { return transform(v, v); }
 
