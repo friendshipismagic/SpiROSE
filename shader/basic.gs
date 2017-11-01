@@ -33,6 +33,7 @@ Vertex intersect(in Vertex v1, in Vertex v2, in Vertex v3) {
 
     // Compute the barycentric coordinates inside the triangle of the
     // x, y = 0, 0 point to interpolate color and texture coordinates
+    // Taken from https://gamedev.stackexchange.com/a/23745
     vec2 e0 = p1 - p0, e1 = p2 - p0, e2 = p - p0;
     float d00 = dot(e0, e0), d01 = dot(e0, e1), d11 = dot(e1, e1),
           d20 = dot(e2, e0), d21 = dot(e2, e1);
