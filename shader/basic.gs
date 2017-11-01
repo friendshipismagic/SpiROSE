@@ -168,27 +168,29 @@ void main() {
 
         // Find the two that intersect the cut plane
         Vertex d1, d2, u;
+        bool d1uc;
 
-        if (v1.p.y < v2.p.y && v1.p.y < v3.p.y) {
+        if (v1.p.x * v2.p.x > 0) {
             d1 = v1;
             d2 = v2;
             u = v3;
-        }
-        if (v2.p.y < v1.p.y && v2.p.y < v3.p.y) {
+            d1uc = v13c;
+        } else if (v1.p.x * v3.p.x > 0) {
+            d1 = v1;
+            d2 = v3;
+            u = v2;
+            d1uc = v12c;
+        } else if (v2.p.x * v3.p.x > 0) {
             d1 = v2;
             d2 = v3;
             u = v1;
-        }
-        if (v3.p.y < v1.p.y && v3.p.y < v2.p.y) {
-            d1 = v3;
-            d2 = v1;
-            u = v2;
+            d1uc = v12c;
         }
 
-        // If d1 and d2 are on the same side, swap u and d2
-        if (d1.p.x * d2.p.x > 0) swap(u, d2);
-        // If d2 and u are on the same side and u is lower than d2, swap them
-        if (d2.p.x * u.p.x > 0 && u.p.y < d2.p.y) swap(u, d2);
+        if (d1uc)
+            swap(d2, u);
+        else
+            swap(d1, u);
 
         Vertex m = intersect(d1, d2), zero = intersect(v1, v2, v3);
 
