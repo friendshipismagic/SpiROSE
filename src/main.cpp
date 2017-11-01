@@ -48,7 +48,8 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
 
 GLuint loadShader(GLenum type, const char *filename);
 
-bool wireframe = false;
+bool wireframe = false, pause = false;
+float time = 0.f;
 GLuint prog = 0;
 
 void loadShaders();
@@ -166,7 +167,7 @@ int main(int argc, char *argv[]) {
         glfwSwapBuffers(window);
         glfwPollEvents();
 
-        float time = glfwGetTime();
+        if (!pause) time = glfwGetTime();
 
         glm::mat4 matV = glm::rotate(matView, time, glm::vec3(0.f, 0.f, 1.f));
         glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matV[0][0]);
@@ -202,6 +203,16 @@ void readFile(const std::string &filename, std::string &contents) {
 }
 
 void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
+    if (action == GLFW_REPEAT) {
+        switch (key) {
+            case GLFW_KEY_RIGHT:
+                time += 0.01;
+                break;
+            case GLFW_KEY_LEFT:
+                time -= 0.01;
+                break;
+        }
+    }
     if (action != GLFW_PRESS) return;
 
     switch (key) {
@@ -213,6 +224,15 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             break;
         case GLFW_KEY_R:
             loadShaders();
+            break;
+        case GLFW_KEY_P:
+            pause = !pause;
+            break;
+        case GLFW_KEY_RIGHT:
+            time += 0.01;
+            break;
+        case GLFW_KEY_LEFT:
+            time -= 0.01;
             break;
     }
 }
