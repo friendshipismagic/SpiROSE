@@ -1,10 +1,11 @@
 EXE = rose-renderer-poc
 SRCDIR = src
-CXXSRC = $(SRCDIR)/main.cpp
+CXXSRC = $(SRCDIR)/main.cpp $(SRCDIR)/tiny_obj_loader.cpp
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -iquote$(SRCDIR) -MMD -MP \
-           -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS
+           -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS \
+           -isystem./lib
 
 LDLIBS =
 LDFLAGS = -flto
@@ -56,6 +57,12 @@ run: $(EXE)
 	./$(EXE)
 clean:
 	rm -f $(OBJS) $(DEPS) $(EXE)
+
+dep: lib/tinyobjloader
+lib:
+	mkdir lib
+lib/tinyobjloader: lib
+	git clone https://github.com/syoyo/tinyobjloader.git lib/tinyobjloader
 
 .clang_complete: $(CXXSRC)
 	$(MAKE) \

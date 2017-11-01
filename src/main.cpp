@@ -25,6 +25,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <vector>
 #ifdef OS_WIN32
 #include <windows.h>
 #endif
@@ -42,6 +43,8 @@
 
 #include <glm/glm.hpp>
 #include <glm/gtx/transform.hpp>
+
+#include <tinyobjloader/tiny_obj_loader.h>
 
 void readFile(const std::string &filename, std::string &contents);
 void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
