@@ -49,7 +49,7 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
 GLuint loadShader(GLenum type, const char *filename);
 
 bool wireframe = false, pause = false;
-float time = 0.f;
+float time = 0.f, zoom = 1.f;
 GLuint prog = 0;
 
 void loadShaders();
@@ -155,8 +155,8 @@ int main(int argc, char *argv[]) {
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f),
-              matView = glm::lookAt(glm::vec3(1.f, 0.f, 1.f), glm::vec3(0.f),
-                                    glm::vec3(0.f, 0.f, 1.f)),
+              matView = glm::lookAt(glm::vec3(0.f, -1.f, 1.f) / 2.f,
+                                    glm::vec3(0.f), glm::vec3(0.f, 0.f, 1.f)),
               matProjection =
                   glm::perspective(glm::radians(90.f), 16.f / 9.f, .1f, 100.f);
 
@@ -167,9 +167,15 @@ int main(int argc, char *argv[]) {
         glfwSwapBuffers(window);
         glfwPollEvents();
 
+        glUseProgram(prog);
+        glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
+        glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matProjection[0][0]);
+
         if (!pause) time = glfwGetTime();
 
-        glm::mat4 matV = glm::rotate(matView, time, glm::vec3(0.f, 0.f, 1.f));
+        // glm::mat4 matV = glm::rotate(matView, time, glm::vec3(0.f,
+        // 0.f, 1.f));
+        glm::mat4 matV = glm::scale(matView, zoom * glm::vec3(1.f, 1.f, 1.f));
         glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matV[0][0]);
 
         glUniform1f(timePosition, time / 10.f);
@@ -211,6 +217,12 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             case GLFW_KEY_LEFT:
                 time -= 0.01;
                 break;
+            case GLFW_KEY_UP:
+                zoom += 0.01;
+                break;
+            case GLFW_KEY_DOWN:
+                zoom -= 0.01;
+                break;
         }
     }
     if (action != GLFW_PRESS) return;
@@ -233,6 +245,12 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             break;
         case GLFW_KEY_LEFT:
             time -= 0.01;
+            break;
+        case GLFW_KEY_UP:
+            zoom += 0.01;
+            break;
+        case GLFW_KEY_DOWN:
+            zoom -= 0.01;
             break;
     }
 }
