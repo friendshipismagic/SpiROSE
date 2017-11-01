@@ -11,6 +11,8 @@ out vec2 fTexture;
 
 uniform mat4 matProjection, matView;
 
+// #define DISABLE_OTHERS
+
 struct Vertex {
     vec3 p;  // Position
     vec3 c;  // Color
@@ -157,6 +159,10 @@ void main() {
     // Simple case : one vertex is opposite of the y = 0 plane AND origin is in
     // the triangle
     if (originInTriangle) {
+#ifdef DISABLE_OTHERS
+        return;
+#endif
+
         // Find the two that intersect the cut plane
         Vertex d1, d2, u;
 
@@ -211,6 +217,10 @@ void main() {
 
     // Simple case : one vertex is on the slicing plane
     if (v1.p.x == 0 || v2.p.x == 0 || v3.p.x == 0) {
+#ifdef DISABLE_OTHERS
+        return;
+#endif
+
         Vertex a, b, c;
 
         if (v1.p.x == 0) {
@@ -248,6 +258,10 @@ void main() {
         EndPrimitive();
         return;
     }
+
+#ifdef DISABLE_OTHERS
+    return;
+#endif
 
     // Vertices on each side. Whatever the real side is, we'll consider that
     // left is the side with two vertices.
