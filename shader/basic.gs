@@ -43,6 +43,15 @@ Vertex intersect(in Vertex v1, in Vertex v2, in Vertex v3) {
                   u * v1.t + v * v2.t + w * v3.t);
 }
 
+// Tests whether the line described by the two points intersects our cutting
+// plane between those two points
+bool intersects(in vec3 p1, in vec3 p2) {
+    vec3 p = intersect(p1, p2);
+    return p.y <= 0 && p.x >= min(p1.x, p2.x) && p.x <= max(p1.x, p2.x) &&
+           p.y >= min(p1.y, p2.y) && p.y <= max(p1.y, p2.y);
+}
+bool intersects(in Vertex v1, in Vertex v2) { return intersects(v1.p, v2.p); }
+
 bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
     float area = (-p1.y * p2.x + p0.y * (p2.x - p1.x) + p0.x * (p1.y - p2.y) +
                   p1.x * p2.y) /
@@ -121,20 +130,8 @@ void main() {
     bool originInTriangle = isInTriangle(vec2(0), v1, v2, v3);
 
     // Intermediate points to test collisions
-    Vertex v12 = intersect(v1, v2), v13 = intersect(v1, v3),
-           v23 = intersect(v1, v2);
-    bool v12c = v12.p.y <= 0 && v12.p.x >= min(v1.p.x, v2.p.x) &&
-                v12.p.x <= max(v1.p.x, v2.p.x) &&
-                v12.p.y >= min(v1.p.y, v2.p.y) &&
-                v12.p.y <= max(v1.p.y, v2.p.y),
-         v13c = v13.p.y <= 0 && v13.p.x >= min(v1.p.x, v3.p.x) &&
-                v13.p.x <= max(v1.p.x, v3.p.x) &&
-                v13.p.y >= min(v1.p.y, v3.p.y) &&
-                v13.p.y <= max(v1.p.y, v3.p.y),
-         v23c = v23.p.y <= 0 && v23.p.x >= min(v2.p.x, v3.p.x) &&
-                v23.p.x <= max(v2.p.x, v3.p.x) &&
-                v23.p.y >= min(v2.p.y, v3.p.y) &&
-                v23.p.y <= max(v2.p.y, v3.p.y);
+    bool v12c = intersects(v1, v2), v13c = intersects(v1, v3),
+         v23c = intersects(v2, v3);
 
     // If the triangle is not being cut
     if ((v1.p.x >= 0 && v2.p.x >= 0 && v3.p.x >= 0) ||
