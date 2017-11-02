@@ -55,7 +55,7 @@ void onMove(GLFWwindow *window, double x, double y);
 GLuint loadShader(GLenum type, const char *filename);
 
 bool wireframe = false, pause = false, clicking = false;
-float time = 0.f;
+float t = 0.f;
 GLuint progVoxel, progOffscreen;
 
 // Camera data
@@ -74,8 +74,8 @@ int main(int argc, char *argv[]) {
     glfwInit();
 
     glfwWindowHint(GLFW_SAMPLES, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
@@ -196,7 +196,7 @@ int main(int argc, char *argv[]) {
         glfwSwapBuffers(window);
         glfwPollEvents();
 
-        if (!pause) time = glfwGetTime();
+        if (!pause) t = glfwGetTime();
 
         //// Voxelization
         glBindVertexArray(vao);
@@ -209,10 +209,10 @@ int main(int argc, char *argv[]) {
                               glm::vec3(0.f, 1.f, 0.f));
         glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
 
-        glUniform1f(timePosition, time / 10.f);
-        matModel = glm::translate(glm::vec3(
-            (float)sin(time / 3.f) / 2.f, (float)sin(time * 5.f) / 20.f, 0.f));
-        matModel = glm::rotate(matModel, time, glm::vec3(0, 0, 1));
+        glUniform1f(timePosition, t / 10.f);
+        matModel = glm::translate(glm::vec3((float)sin(t / 3.f) / 2.f,
+                                            (float)sin(t * 5.f) / 20.f, 0.f));
+        matModel = glm::rotate(matModel, t, glm::vec3(0, 0, 1));
         matModel = glm::scale(matModel, glm::vec3(.5f));
         glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
 
@@ -258,10 +258,10 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
     if (action == GLFW_REPEAT) {
         switch (key) {
             case GLFW_KEY_RIGHT:
-                time += 0.01;
+                t += 0.01;
                 break;
             case GLFW_KEY_LEFT:
-                time -= 0.01;
+                t -= 0.01;
                 break;
             case GLFW_KEY_UP:
                 zoom += 0.01;
@@ -287,10 +287,10 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             pause = !pause;
             break;
         case GLFW_KEY_RIGHT:
-            time += 0.01;
+            t += 0.01;
             break;
         case GLFW_KEY_LEFT:
-            time -= 0.01;
+            t -= 0.01;
             break;
         case GLFW_KEY_UP:
             zoom += 0.01;
