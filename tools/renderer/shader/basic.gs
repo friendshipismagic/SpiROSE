@@ -6,6 +6,7 @@ layout(triangle_strip, max_vertices = 42) out;
 in vec3 color[];  // Output from vertex shader for each vertex
 in vec2 tex[];
 
+out vec4 fPosition;
 out vec3 fColor;  // Output to fragment shader
 out vec2 fTexture;
 
@@ -76,11 +77,13 @@ bool overrideColor = false;
 vec3 overColor = vec3(1);
 
 void emit(in vec3 v) {
-    gl_Position = matProjection * matView * vec4(v, 1);
+    fPosition = matProjection * matView * vec4(v, 1);
+    gl_Position = fPosition;
     EmitVertex();
 }
 void emit(in Vertex v) {
-    gl_Position = matProjection * matView * vec4(v.p, 1);
+    fPosition = matProjection * matView * vec4(v.p, 1);
+    gl_Position = fPosition;
     fColor = overrideColor ? overColor : v.c;
     fTexture = v.t;
     EmitVertex();

@@ -59,7 +59,7 @@ float time = 0.f;
 GLuint prog = 0;
 
 // Camera data
-float yaw = 0.f, pitch = M_PI / 2.f, zoom = 2.f;
+float yaw = 0.f, pitch = M_PI / 4.f, zoom = 2.f;
 glm::vec3 camForward, camRight, camLook;
 
 void loadShaders();
@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
 #endif
 
     glViewport(0, 0, 1280, 720);
-    glEnable(GL_DEPTH_TEST);
+    // glEnable(GL_DEPTH_TEST);
 
     // Load suzanne
     tinyobj::attrib_t attrib;
@@ -147,14 +147,18 @@ int main(int argc, char *argv[]) {
           matPPosition = glGetUniformLocation(prog, "matProjection");
 
     // Matricies
-    glm::mat4 matModel = glm::mat4(1.f),
-              matView = glm::lookAt(glm::vec3(0.f, -1.f, 1.f) / 2.f,
-                                    glm::vec3(0.f), glm::vec3(0.f, 0.f, 1.f)),
+    glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
               matProjection =
-                  glm::perspective(glm::radians(90.f), 16.f / 9.f, .1f, 100.f);
+                  glm::perspective(glm::radians(90.f), 16.f / 9.f, .1f, 100.f),
+              matOrtho = glm::ortho(-1.f, 1.f, -1.f, 1.f, -1.f, 1.f);
 
     glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
     glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matProjection[0][0]);
+
+    // Simulate mouse move
+    clicking = true;
+    onMove(window, 0, 0);
+    clicking = false;
 
     while (!glfwWindowShouldClose(window)) {
         glfwSwapBuffers(window);
@@ -168,6 +172,8 @@ int main(int argc, char *argv[]) {
 
         matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
                               -glm::cross(camRight, camLook));
+        matView = glm::lookAt(glm::vec3(0.f, 0.f, 1.f), glm::vec3(0.f),
+                              glm::vec3(0.f, 1.f, 0.f));
         glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
 
         glUniform1f(timePosition, time / 10.f);
@@ -182,6 +188,8 @@ int main(int argc, char *argv[]) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glEnable(GL_COLOR_LOGIC_OP);
+        glLogicOp(GL_XOR);
 
         // Rendering
         glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
@@ -259,7 +267,7 @@ void onMove(GLFWwindow *window, double x, double y) {
     if (!clicking) return;
 
     yaw -= dx / 250.f;
-    pitch -= dy / 250.f;
+    pitch += dy / 250.f;
 
     // Keep yaw between 0 and 2pi
     yaw = yaw > 2.0 * M_PI ? yaw - 2.0 * M_PI
@@ -272,7 +280,7 @@ void onMove(GLFWwindow *window, double x, double y) {
         glm::rotate(glm::vec3(1.f, 0.f, 0.f), yaw, glm::vec3(0.f, 0.f, 1.f));
     camRight = glm::vec3(-camForward.y, camForward.x, 0.f);
     camLook = glm::rotate(
-        glm::rotate(glm::vec3(1.f, 0.f, 0.f), -pitch, glm::vec3(0.f, 1.f, 0.f)),
+        glm::rotate(glm::vec3(1.f, 0.f, 0.f), pitch, glm::vec3(0.f, 1.f, 0.f)),
         yaw, glm::vec3(0.f, 0.f, 1.f));
 }
 
