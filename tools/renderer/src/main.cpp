@@ -155,6 +155,19 @@ int main(int argc, char *argv[]) {
     glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
     glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matProjection[0][0]);
 
+    // Framebuffer to store our voxel thingy
+    GLuint fbo, texVoxelBuf;
+    glGenFramebuffers(1, &fbo);
+    glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+    glGenTextures(1, &texVoxelBuf);
+    glBindTexture(GL_TEXTURE_2D, texVoxelBuf);
+    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGB, GL_UNSIGNED_BYTE,
+                 NULL);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D,
+                           texVoxelBuf, 0);
+
     // Simulate mouse move
     clicking = true;
     onMove(window, 0, 0);
@@ -184,7 +197,6 @@ int main(int argc, char *argv[]) {
         matModel = glm::scale(matModel, glm::vec3(.5f));
         glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
 
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         if (wireframe)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
@@ -193,7 +205,11 @@ int main(int argc, char *argv[]) {
         glLogicOp(GL_XOR);
 
         // Rendering
+        glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+        glBindVertexArray(vao);
         glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
+        glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
 
     glfwTerminate();
