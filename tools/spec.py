@@ -5,6 +5,8 @@ import math
 
 specs={"resolution"     : (0.00225, 0.00225), # m
       "framerate"       : 30  , # Hz
+      "horizontal_staggering":False,
+      "vertical_staggering":True,
       "face_number"     : 2    , # 1 or 2
       "LED_per_face"    : None ,
       "LED_per_column"  : None ,
@@ -54,12 +56,15 @@ def check_sensibility(sensibility_list):
 def compute_LED_per_row():
     if not check_sensibility(LED_per_row_sensibility):
         return None
-    specs["LED_per_row"] = math.floor(specs["width"] / specs["resolution"][0])
+    specs["LED_per_row"] = math.floor(specs["width"] / specs["resolution"][0]\
+                           / (2 if specs["horizontal_staggering"] else 1))
 
 def compute_LED_per_column():
     if not check_sensibility(LED_per_column_sensibility):
         return None
-    specs["LED_per_column"] = math.floor(specs["height"] / specs["resolution"][1])
+    specs["LED_per_column"] = math.floor(specs["height"]\
+                              / specs["resolution"][1]\
+                              / (2 if specs["vertical_staggering"] else 1))
 
 def compute_LED_per_face():
     if not check_sensibility(LED_per_face_sensibility):
@@ -69,18 +74,22 @@ def compute_LED_per_face():
 def compute_height():
     if not check_sensibility(height_sensibility):
         return None
-    specs["height"] = specs["LED_per_column"] * specs["resolution"][1]
+    specs["height"] = specs["LED_per_column"] * specs["resolution"][1]\
+                      * (2 if specs["vertical_staggering"] else 1)
 
 def compute_width():
     if not check_sensibility(width_sensibility):
         return None
-    specs["width"] = specs["LED_per_row"] * specs["resolution"][0]
+    specs["width"] = specs["LED_per_row"] * specs["resolution"][0]\
+                     * (2 if specs["horizontal_staggering"] else 1)
 
 def compute_resolution():
     if not check_sensibility(resolution_sensibility):
         return None
-    specs["resolution"] = (specs["width"] / specs["LED_per_row"],\
-                           specs["height"] / specs["LED_per_column"])
+    specs["resolution"] = (specs["width"] / specs["LED_per_row"]\
+                           / (2 if specs["horizontal_staggering"] else 1),\
+                           specs["height"] / specs["LED_per_column"]\
+                           / (2 if specs["vertical_staggering"] else 1))
 
 def compute_framerate():
     if not check_sensibility(framerate_sensibility):
@@ -143,8 +152,6 @@ def compute_outermost_driver_bandwidth():
     specs["outermost_driver_bandwidth"] = specs["multiplexing"] * horizontal_voxel\
                                 * specs["framerate"]\
                                 * specs["driver_bit_per_LED"] / (1000*1000)
-
-
 
 def fill_spec():
     if specs["LED_per_row"] is None:
