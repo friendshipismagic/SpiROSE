@@ -56,7 +56,7 @@ GLuint loadShader(GLenum type, const char *filename);
 
 bool wireframe = false, pause = false, clicking = false;
 float time = 0.f;
-GLuint progVoxel;
+GLuint progVoxel, progOffscreen;
 
 // Camera data
 float yaw = 0.f, pitch = M_PI / 4.f, zoom = 2.f;
@@ -168,6 +168,25 @@ int main(int argc, char *argv[]) {
     glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D,
                            texVoxelBuf, 0);
 
+    // Small square to texture with the final image
+    GLuint vaoSquare, vboSquare;
+    glGenVertexArrays(1, &vaoSquare);
+    glBindVertexArray(vaoSquare);
+    float vert[] = {// Interlave pos and UV
+                    -1, -1, 0, 0, 1, 1, 1, 1, -1, 1,  0, 1,
+                    -1, -1, 0, 0, 1, 1, 1, 1, 1,  -1, 1, 0};
+    glGenBuffers(1, &vboSquare);
+    glBindBuffer(GL_ARRAY_BUFFER, vboSquare);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
+    GLint inSquarePosLoc = glGetAttribLocation(progOffscreen, "in_Pos"),
+          inSquareUVLoc = glGetAttribLocation(progOffscreen, "in_UV");
+    glVertexAttribPointer(inSquarePosLoc, 2, GL_FLOAT, GL_FALSE,
+                          4 * sizeof(float), 0);
+    glVertexAttribPointer(inSquareUVLoc, 2, GL_FLOAT, GL_FALSE,
+                          4 * sizeof(float), (void *)(2 * sizeof(float)));
+    glEnableVertexAttribArray(inSquarePosLoc);
+    glEnableVertexAttribArray(inSquareUVLoc);
+
     // Simulate mouse move
     clicking = true;
     onMove(window, 0, 0);
@@ -210,6 +229,15 @@ int main(int argc, char *argv[]) {
         glBindVertexArray(vao);
         glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
+
+        //// Displaying the voxel texture
+        glViewport(0, 0, 32, 32);
+        glClear(GL_COLOR_BUFFER_BIT);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glDisable(GL_COLOR_LOGIC_OP);
+        glBindVertexArray(vaoSquare);
+        glUseProgram(progOffscreen);
+        glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
     }
 
     glfwTerminate();
@@ -340,4 +368,13 @@ void loadShaders() {
     glBindFragDataLocation(progVoxel, 0, "fragColor");
     glLinkProgram(progVoxel);
     glUseProgram(progVoxel);
+
+    progOffscreen = glCreateProgram();
+    glAttachShader(progOffscreen,
+                   loadShader(GL_VERTEX_SHADER, "shader/offscreen.vs"));
+    glAttachShader(progOffscreen,
+                   loadShader(GL_FRAGMENT_SHADER, "shader/offscreen.fs"));
+    glBindFragDataLocation(progOffscreen, 0, "out_Color");
+    glLinkProgram(progOffscreen);
+    glUseProgram(progOffscreen);
 }
