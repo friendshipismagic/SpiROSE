@@ -56,7 +56,7 @@ GLuint loadShader(GLenum type, const char *filename);
 
 bool wireframe = false, pause = false, clicking = false;
 float time = 0.f;
-GLuint prog = 0;
+GLuint progVoxel;
 
 // Camera data
 float yaw = 0.f, pitch = M_PI / 4.f, zoom = 2.f;
@@ -136,15 +136,15 @@ int main(int argc, char *argv[]) {
     loadShaders();
 
     // Send vertex to shader
-    GLint inPositionLoc = glGetAttribLocation(prog, "position");
+    GLint inPositionLoc = glGetAttribLocation(progVoxel, "position");
     glVertexAttribPointer(inPositionLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(inPositionLoc);
 
     // Get time uniform
-    GLint timePosition = glGetUniformLocation(prog, "time"),
-          matMPosition = glGetUniformLocation(prog, "matModel"),
-          matVPosition = glGetUniformLocation(prog, "matView"),
-          matPPosition = glGetUniformLocation(prog, "matProjection");
+    GLint timePosition = glGetUniformLocation(progVoxel, "time"),
+          matMPosition = glGetUniformLocation(progVoxel, "matModel"),
+          matVPosition = glGetUniformLocation(progVoxel, "matView"),
+          matPPosition = glGetUniformLocation(progVoxel, "matProjection");
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
@@ -164,11 +164,12 @@ int main(int argc, char *argv[]) {
         glfwSwapBuffers(window);
         glfwPollEvents();
 
-        glUseProgram(prog);
-        glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
-        glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matProjection[0][0]);
-
         if (!pause) time = glfwGetTime();
+
+        //// Voxelization
+        glBindVertexArray(vao);
+        glUseProgram(progVoxel);
+        glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matOrtho[0][0]);
 
         matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
                               -glm::cross(camRight, camLook));
@@ -314,11 +315,13 @@ GLuint loadShader(GLenum type, const char *filename) {
 }
 
 void loadShaders() {
-    prog = glCreateProgram();
-    glAttachShader(prog, loadShader(GL_VERTEX_SHADER, "shader/basic.vs"));
-    glAttachShader(prog, loadShader(GL_GEOMETRY_SHADER, "shader/basic.gs"));
-    glAttachShader(prog, loadShader(GL_FRAGMENT_SHADER, "shader/basic.fs"));
-    glBindFragDataLocation(prog, 0, "fragColor");
-    glLinkProgram(prog);
-    glUseProgram(prog);
+    progVoxel = glCreateProgram();
+    glAttachShader(progVoxel, loadShader(GL_VERTEX_SHADER, "shader/voxel.vs"));
+    glAttachShader(progVoxel,
+                   loadShader(GL_GEOMETRY_SHADER, "shader/voxel.gs"));
+    glAttachShader(progVoxel,
+                   loadShader(GL_FRAGMENT_SHADER, "shader/voxel.fs"));
+    glBindFragDataLocation(progVoxel, 0, "fragColor");
+    glLinkProgram(progVoxel);
+    glUseProgram(progVoxel);
 }
