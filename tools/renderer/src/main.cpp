@@ -56,7 +56,7 @@ GLuint loadShader(GLenum type, const char *filename);
 
 bool doWireframe = false, pause = false, clicking = false, doVoxelize = true;
 float t = 0.f;
-GLuint progVoxel, progOffscreen;
+GLuint progVoxel, progOffscreen, progGenerate;
 
 // Camera data
 float yaw = 0.f, pitch = M_PI / 4.f, zoom = 2.f;
@@ -145,6 +145,9 @@ int main(int argc, char *argv[]) {
           matMPosition = glGetUniformLocation(progVoxel, "matModel"),
           matVPosition = glGetUniformLocation(progVoxel, "matView"),
           matPPosition = glGetUniformLocation(progVoxel, "matProjection");
+    GLint matMPositionGen = glGetUniformLocation(progGenerate, "matModel"),
+          matVPositionGen = glGetUniformLocation(progGenerate, "matView"),
+          matPPositionGen = glGetUniformLocation(progGenerate, "matProjection");
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
@@ -187,6 +190,28 @@ int main(int argc, char *argv[]) {
     glEnableVertexAttribArray(inSquarePosLoc);
     glEnableVertexAttribArray(inSquareUVLoc);
 
+    // Set of points to render the voxels
+    float voxPoints[32 * 32 * 32 * 3] = {0.f};
+    for (int i = 0; i < 32; i++)
+        for (int j = 0; j < 32; j++)
+            for (int k = 0; k < 32; k++) {
+                voxPoints[3 * (32 * (i * 32 + j) + k) + 0] =
+                    float(i) / 16.f - 1.f;
+                voxPoints[3 * (32 * (i * 32 + j) + k) + 1] =
+                    float(j) / 16.f - 1.f;
+                voxPoints[3 * (32 * (i * 32 + j) + k) + 2] =
+                    float(k) / 16.f - 1.f;
+            }
+    GLuint vaoVox, vboVox;
+    glGenVertexArrays(1, &vaoVox);
+    glBindVertexArray(vaoVox);
+    glGenBuffers(1, &vboVox);
+    glBindBuffer(GL_ARRAY_BUFFER, vboVox);
+    glBufferData(GL_ARRAY_BUFFER, sizeof(voxPoints), voxPoints, GL_STATIC_DRAW);
+    GLint inVoxPosLoc = glGetAttribLocation(progGenerate, "in_Pos");
+    glVertexAttribPointer(inVoxPosLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(inVoxPosLoc);
+
     // Simulate mouse move
     clicking = true;
     onMove(window, 0, 0);
@@ -209,8 +234,6 @@ int main(int argc, char *argv[]) {
         glUseProgram(progVoxel);
         glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matOrtho[0][0]);
 
-        matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
-                              -glm::cross(camRight, camLook));
         matView = glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
                               glm::vec3(0.f, 1.f, 0.f));
         glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
@@ -242,11 +265,30 @@ int main(int argc, char *argv[]) {
         glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+        glDisable(GL_COLOR_LOGIC_OP);
+        //// Display 3D voxels
+        glViewport(0, 0, 1280, 720);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+        if (doWireframe)
+            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        else
+            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glUseProgram(progGenerate);
+
+        glUniformMatrix4fv(matPPositionGen, 1, GL_FALSE, &matProjection[0][0]);
+        matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
+                              -glm::cross(camRight, camLook));
+        glUniformMatrix4fv(matVPositionGen, 1, GL_FALSE, &matView[0][0]);
+        glUniformMatrix4fv(matMPositionGen, 1, GL_FALSE, &matModel[0][0]);
+
+        glBindVertexArray(vaoVox);
+        glDrawArrays(GL_TRIANGLES, 0, sizeof(voxPoints) / sizeof(float));
+
         //// Displaying the voxel texture
         glViewport(0, 0, 32, 32);
         glClear(GL_COLOR_BUFFER_BIT);
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glDisable(GL_COLOR_LOGIC_OP);
         glBindVertexArray(vaoSquare);
         glUseProgram(progOffscreen);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
@@ -392,4 +434,15 @@ void loadShaders() {
     glBindFragDataLocation(progOffscreen, 0, "out_Color");
     glLinkProgram(progOffscreen);
     glUseProgram(progOffscreen);
+
+    progGenerate = glCreateProgram();
+    glAttachShader(progGenerate,
+                   loadShader(GL_VERTEX_SHADER, "shader/generate.vs"));
+    glAttachShader(progGenerate,
+                   loadShader(GL_GEOMETRY_SHADER, "shader/generate.gs"));
+    glAttachShader(progGenerate,
+                   loadShader(GL_FRAGMENT_SHADER, "shader/generate.fs"));
+    glBindFragDataLocation(progGenerate, 0, "out_Color");
+    glLinkProgram(progGenerate);
+    glUseProgram(progGenerate);
 }
