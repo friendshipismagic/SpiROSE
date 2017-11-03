@@ -196,11 +196,11 @@ int main(int argc, char *argv[]) {
         for (int j = 0; j < 32; j++)
             for (int k = 0; k < 32; k++) {
                 voxPoints[3 * (32 * (i * 32 + j) + k) + 0] =
-                    float(i) / 16.f - 1.f;
+                    (float(i) - 15.5f) / 16.f;
                 voxPoints[3 * (32 * (i * 32 + j) + k) + 1] =
-                    float(j) / 16.f - 1.f;
+                    (float(j) - 15.5f) / 16.f;
                 voxPoints[3 * (32 * (i * 32 + j) + k) + 2] =
-                    float(k) / 16.f - 1.f;
+                    (float(k) - 15.5f) / 16.f;
             }
     GLuint vaoVox, vboVox;
     glGenVertexArrays(1, &vaoVox);
@@ -280,10 +280,11 @@ int main(int argc, char *argv[]) {
         matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
                               -glm::cross(camRight, camLook));
         glUniformMatrix4fv(matVPositionGen, 1, GL_FALSE, &matView[0][0]);
+        matModel = glm::mat4(1.f);
         glUniformMatrix4fv(matMPositionGen, 1, GL_FALSE, &matModel[0][0]);
 
         glBindVertexArray(vaoVox);
-        glDrawArrays(GL_TRIANGLES, 0, sizeof(voxPoints) / sizeof(float));
+        glDrawArrays(GL_POINTS, 0, sizeof(voxPoints) / sizeof(float) / 3);
 
         //// Displaying the voxel texture
         glViewport(0, 0, 32, 32);

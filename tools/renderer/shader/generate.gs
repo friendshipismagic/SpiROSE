@@ -1,6 +1,6 @@
 #version 410 core
 
-layout(triangles) in;
+layout(points) in;
 layout(triangle_strip, max_vertices = 14) out;
 
 uniform mat4 matProjection, matView;
@@ -37,17 +37,19 @@ void cube(in vec3 p) {
 
 void main() {
     // Fetching back our bit
-    emit(gl_in[0].gl_Position.xyz);
-    emit(gl_in[1].gl_Position.xyz);
-    emit(gl_in[2].gl_Position.xyz);
+    vec3 p = gl_in[0].gl_Position.xyz;
+    cube(p);
+    EndPrimitive();
     return;
 
-    vec3 vert;
+    /*
+	vec3 vert;
 
-    if (abs(vert.z) > 1) return;
+	if (abs(vert.z) > 1) return;
 
-    ivec4 c = ivec4(texture(voxels, vert.xy * 2 - vec2(1)) * 256);
-    int bits = c.r | (c.g << 8) | (c.b << 16) | (c.a << 24);
+	ivec4 c = ivec4(texture(voxels, vert.xy * 2 - vec2(1)) * 256);
+	int bits = c.r | (c.g << 8) | (c.b << 16) | (c.a << 24);
 
-    if ((bits & (1 << (1 - int((vert.z + 1) / 2)))) != 0) cube(vert);
+	if ((bits & (1 << (1 - int((vert.z + 1) / 2)))) != 0) cube(vert);
 }
+
