@@ -205,7 +205,7 @@ int main(int argc, char *argv[]) {
 
         matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
                               -glm::cross(camRight, camLook));
-        matView = glm::lookAt(glm::vec3(0.f, 0.f, 1.f), glm::vec3(0.f),
+        matView = glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
                               glm::vec3(0.f, 1.f, 0.f));
         glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
 
@@ -213,7 +213,6 @@ int main(int argc, char *argv[]) {
         matModel = glm::translate(glm::vec3((float)sin(t / 3.f) / 2.f,
                                             (float)sin(t * 5.f) / 20.f, 0.f));
         matModel = glm::rotate(matModel, t, glm::vec3(0, 0, 1));
-        matModel = glm::scale(matModel, glm::vec3(.5f));
         glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
 
         if (wireframe)
