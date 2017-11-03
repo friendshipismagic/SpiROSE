@@ -54,7 +54,7 @@ void onMove(GLFWwindow *window, double x, double y);
 
 GLuint loadShader(GLenum type, const char *filename);
 
-bool wireframe = false, pause = false, clicking = false;
+bool doWireframe = false, pause = false, clicking = false, doVoxelize = true;
 float t = 0.f;
 GLuint progVoxel, progOffscreen;
 
@@ -198,6 +198,12 @@ int main(int argc, char *argv[]) {
 
         if (!pause) t = glfwGetTime();
 
+        std::string title = "ROSE /// voxelize = ";
+        title += std::to_string(doVoxelize);
+        title += " / wireframe ";
+        title += std::to_string(doWireframe);
+        glfwSetWindowTitle(window, title.c_str());
+
         //// Voxelization
         glBindVertexArray(vao);
         glUseProgram(progVoxel);
@@ -215,12 +221,19 @@ int main(int argc, char *argv[]) {
         matModel = glm::rotate(matModel, t, glm::vec3(0, 0, 1));
         glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
 
-        if (wireframe)
+        if (doWireframe)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glEnable(GL_COLOR_LOGIC_OP);
-        glLogicOp(GL_XOR);
+
+        if (doVoxelize) {
+            glEnable(GL_COLOR_LOGIC_OP);
+            glLogicOp(GL_XOR);
+            glDisable(GL_DEPTH_TEST);
+        } else {
+            glDisable(GL_COLOR_LOGIC_OP);
+            glEnable(GL_DEPTH_TEST);
+        }
 
         // Rendering
         glBindFramebuffer(GL_FRAMEBUFFER, fbo);
@@ -277,7 +290,7 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             glfwSetWindowShouldClose(window, GL_TRUE);
             break;
         case GLFW_KEY_Z:
-            wireframe = !wireframe;
+            doWireframe = !doWireframe;
             break;
         case GLFW_KEY_R:
             loadShaders();
@@ -296,6 +309,9 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             break;
         case GLFW_KEY_DOWN:
             zoom -= 0.01;
+            break;
+        case GLFW_KEY_V:
+            doVoxelize = !doVoxelize;
             break;
     }
 }
