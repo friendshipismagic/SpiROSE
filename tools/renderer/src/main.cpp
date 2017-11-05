@@ -148,7 +148,8 @@ int main(int argc, char *argv[]) {
           doPizzaPosition = glGetUniformLocation(progVoxel, "doPizza");
     GLint matMPositionGen = glGetUniformLocation(progGenerate, "matModel"),
           matVPositionGen = glGetUniformLocation(progGenerate, "matView"),
-          matPPositionGen = glGetUniformLocation(progGenerate, "matProjection");
+          matPPositionGen = glGetUniformLocation(progGenerate, "matProjection"),
+          doPizzaPositionGen = glGetUniformLocation(progGenerate, "doPizza");
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
@@ -287,6 +288,7 @@ int main(int argc, char *argv[]) {
         glUniformMatrix4fv(matVPositionGen, 1, GL_FALSE, &matView[0][0]);
         matModel = glm::mat4(1.f);
         glUniformMatrix4fv(matMPositionGen, 1, GL_FALSE, &matModel[0][0]);
+        glUniform1ui(doPizzaPositionGen, doPizza);
 
         glBindVertexArray(vaoVox);
         glDrawArrays(GL_POINTS, 0, sizeof(voxPoints) / sizeof(float) / 3);

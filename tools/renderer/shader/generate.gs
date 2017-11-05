@@ -4,11 +4,23 @@ layout(points) in;
 layout(triangle_strip, max_vertices = 14) out;
 
 uniform mat4 matProjection, matView;
+uniform bool doPizza;
 
 in vec4 vColor[];
 out vec4 color;
 
+const float M_PI = 3.14159265359;
 void emit(in vec3 v) {
+    // Reversing the pizza transform ?
+    if (doPizza) {
+        // Get back x, y in [0, 1] range
+        vec2 thetal = v.xy * 0.5 + 0.5;
+        // x in [0, 2pi] range
+        thetal.x *= M_PI * 2;
+        // polar -> cartesian
+        v = vec3(sin(thetal.x), -cos(thetal.x), v.z);
+        v.xy *= thetal.y;
+    }
     gl_Position = matProjection * matView * vec4(v, 1);
     EmitVertex();
 }
