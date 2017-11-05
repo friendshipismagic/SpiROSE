@@ -4,7 +4,9 @@ layout(points) in;
 layout(triangle_strip, max_vertices = 14) out;
 
 uniform mat4 matProjection, matView;
-uniform sampler2D voxels;
+
+in vec4 vColor[];
+out vec4 color;
 
 void emit(in vec3 v) {
     gl_Position = matProjection * matView * vec4(v, 1);
@@ -41,13 +43,13 @@ void main() {
     cube(p);
     EndPrimitive();
     return;
+    ivec4 c = ivec4(vColor[0] * 256);
 
     /*
 	vec3 vert;
 
 	if (abs(vert.z) > 1) return;
 
-	ivec4 c = ivec4(texture(voxels, vert.xy * 2 - vec2(1)) * 256);
 	int bits = c.r | (c.g << 8) | (c.b << 16) | (c.a << 24);
 
 	if ((bits & (1 << (1 - int((vert.z + 1) / 2)))) != 0) cube(vert);
