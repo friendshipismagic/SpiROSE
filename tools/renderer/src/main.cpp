@@ -54,7 +54,8 @@ void onMove(GLFWwindow *window, double x, double y);
 
 GLuint loadShader(GLenum type, const char *filename);
 
-bool doWireframe = false, pause = false, clicking = false, doVoxelize = true;
+bool doWireframe = false, pause = false, clicking = false, doVoxelize = true,
+     doPizza = false;
 float t = 0.f;
 GLuint progVoxel, progOffscreen, progGenerate;
 
@@ -73,7 +74,6 @@ int main(int argc, char *argv[]) {
     // Load GLFW
     glfwInit();
 
-    glfwWindowHint(GLFW_SAMPLES, 4);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -144,7 +144,8 @@ int main(int argc, char *argv[]) {
     GLint timePosition = glGetUniformLocation(progVoxel, "time"),
           matMPosition = glGetUniformLocation(progVoxel, "matModel"),
           matVPosition = glGetUniformLocation(progVoxel, "matView"),
-          matPPosition = glGetUniformLocation(progVoxel, "matProjection");
+          matPPosition = glGetUniformLocation(progVoxel, "matProjection"),
+          doPizzaPosition = glGetUniformLocation(progVoxel, "doPizza");
     GLint matMPositionGen = glGetUniformLocation(progGenerate, "matModel"),
           matVPositionGen = glGetUniformLocation(progGenerate, "matView"),
           matPPositionGen = glGetUniformLocation(progGenerate, "matProjection");
@@ -227,12 +228,15 @@ int main(int argc, char *argv[]) {
         title += std::to_string(doVoxelize);
         title += " / wireframe ";
         title += std::to_string(doWireframe);
+        title += " / doPizza ";
+        title += std::to_string(doPizza);
         glfwSetWindowTitle(window, title.c_str());
 
         //// Voxelization
         glBindVertexArray(vao);
         glUseProgram(progVoxel);
         glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matOrtho[0][0]);
+        glUniform1ui(doPizzaPosition, doPizza);
 
         matView = glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
                               glm::vec3(0.f, 1.f, 0.f));
@@ -355,6 +359,9 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             break;
         case GLFW_KEY_V:
             doVoxelize = !doVoxelize;
+            break;
+        case GLFW_KEY_C:
+            doPizza = !doPizza;
             break;
     }
 }

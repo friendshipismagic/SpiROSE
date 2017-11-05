@@ -11,6 +11,7 @@ out vec3 fColor;  // Output to fragment shader
 out vec2 fTexture;
 
 uniform mat4 matProjection, matView;
+uniform bool doPizza;
 
 // #define DISABLE_OTHERS
 
@@ -94,20 +95,16 @@ bool doTransform = true;
 // Does the magic
 const float M_PI = 3.14159265359;
 vec3 transform(in vec3 v, in vec3 ref) {
-    if (!doTransform) return v;
-
     float l = length(v.xy), angle = atan(ref.x / -ref.y);
 
     if (ref.y == 0) angle = ref.x > 0 ? M_PI / 2 : 3 * M_PI / 2;
     if (ref.y > 0) angle += M_PI;
     if (ref.y < 0 && ref.x < 0) angle += 4 * M_PI / 2;
 
-    return vec3(angle / (2 * M_PI) / 2, l, v.z) + vec3(0.5, 0, 0);
+    return vec3(angle / M_PI - 1.0, l * 2.0 - 1.0, v.z);
 }
 vec3 transform(in vec3 v, in float sign) {
-    if (!doTransform) return v;
-
-    return vec3(max(sign, 0) / 2, length(v.xy), v.z) + vec3(0.5, 0, 0);
+    return vec3(max(sign, 0) * 2.0 - 1.0, length(v.xy) * 2.0 - 1.0, v.z);
 }
 vec3 transform(in vec3 v) { return transform(v, v); }
 
@@ -136,6 +133,14 @@ void main() {
            v2 = Vertex(gl_in[1].gl_Position.xyz, color[1], tex[1]),
            v3 = Vertex(gl_in[2].gl_Position.xyz, color[2], tex[2]);
 
+    if (!doPizza) {
+        emit(v1);
+        emit(v2);
+        emit(v3);
+        EndPrimitive();
+        return;
+    }
+
     bool originInTriangle = isInTriangle(vec2(0), v1, v2, v3);
 
     // Intermediate points to test collisions
@@ -151,11 +156,6 @@ void main() {
         return;
 #endif
         // Emit it without modification
-        emit(transform(v1));
-        emit(transform(v2));
-        emit(transform(v3));
-        EndPrimitive();
-        doTransform = false;
         emit(transform(v1));
         emit(transform(v2));
         emit(transform(v3));
@@ -209,18 +209,6 @@ void main() {
         emit(transform(zero, -sign(d2.p.x)));
         emit(transform(m, -sign(d2.p.x)));
         EndPrimitive();
-        doTransform = false;
-        emit(transform(zero, -sign(d1.p.x)));
-        emit(transform(m, -sign(d1.p.x)));
-        emit(transform(zero, d1));
-        emit(transform(d1));
-        emit(transform(zero, u));
-        emit(transform(u));
-        emit(transform(zero, d2));
-        emit(transform(d2));
-        emit(transform(zero, -sign(d2.p.x)));
-        emit(transform(m, -sign(d2.p.x)));
-        EndPrimitive();
         return;
     }
 
@@ -248,15 +236,6 @@ void main() {
 
         Vertex d = intersect(b, c);
 
-        emit(transform(b));
-        emit(transform(a, -sign(b.p.x)));
-        emit(transform(d, -sign(b.p.x)));
-        EndPrimitive();
-        emit(transform(c));
-        emit(transform(a, -sign(c.p.x)));
-        emit(transform(d, -sign(c.p.x)));
-        EndPrimitive();
-        doTransform = false;
         emit(transform(b));
         emit(transform(a, -sign(b.p.x)));
         emit(transform(d, -sign(b.p.x)));
@@ -304,15 +283,5 @@ void main() {
     emit(transform(m2, -sign(l2.p.x)));
     emit(transform(l1));
     emit(transform(l2));
-    EndPrimitive();
-
-    emit(r);
-    emit(m1);
-    emit(m2);
-    EndPrimitive();
-    emit(m1);
-    emit(m2);
-    emit(l1);
-    emit(l2);
     EndPrimitive();
 }
