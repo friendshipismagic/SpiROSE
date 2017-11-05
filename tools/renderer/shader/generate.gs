@@ -13,9 +13,9 @@ void emit(in vec3 v) {
     EmitVertex();
 }
 
-vec3 v[8] = vec3[](vec3(1, 1, 0) / 32, vec3(0, 1, 0) / 32, vec3(1, 0, 0) / 32,
-                   vec3(0, 0, 0) / 32, vec3(1, 1, 1) / 32, vec3(0, 1, 1) / 32,
-                   vec3(0, 0, 1) / 32, vec3(1, 0, 1) / 32);
+vec3 v[8] = vec3[](vec3(1, 1, 0) / 16, vec3(0, 1, 0) / 16, vec3(1, 0, 0) / 16,
+                   vec3(0, 0, 0) / 16, vec3(1, 1, 1) / 16, vec3(0, 1, 1) / 16,
+                   vec3(0, 0, 1) / 16, vec3(1, 0, 1) / 16);
 
 // Thanks to the following paper on how to make a cube with a single triangle
 // strip http://www.cs.umd.edu/gvil/papers/av_ts.pdf

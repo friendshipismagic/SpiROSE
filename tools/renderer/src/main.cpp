@@ -272,6 +272,7 @@ int main(int argc, char *argv[]) {
         glDisable(GL_COLOR_LOGIC_OP);
         //// Display 3D voxels
         glViewport(0, 0, 1280, 720);
+        glEnable(GL_DEPTH_TEST);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         if (doWireframe)
@@ -292,8 +293,6 @@ int main(int argc, char *argv[]) {
 
         //// Displaying the voxel texture
         glViewport(0, 0, 32, 32);
-        glClear(GL_COLOR_BUFFER_BIT);
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glBindVertexArray(vaoSquare);
         glUseProgram(progOffscreen);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
