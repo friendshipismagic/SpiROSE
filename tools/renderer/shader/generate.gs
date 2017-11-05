@@ -54,9 +54,9 @@ void main() {
     vec3 vert = gl_in[0].gl_Position.xyz;
 
     // Convert the input float to an int that we can work with
-    ivec4 c = ivec4(vColor[0] * 256);
-    // Original render had -z pointing up, thus we need to invert Z
-    float z = 1 - (vert.z / 2 + 0.5);
+    ivec4 c = ivec4(vColor[0] * 255);
+    // Map back to [0, 1]
+    float z = vert.z / 2 + 0.5;
 
     // Get our bitwise position
     int p = 1 << int(mod(z * 32, 8));
