@@ -39,19 +39,33 @@ void cube(in vec3 p) {
 
 void main() {
     // Fetching back our bit
-    vec3 p = gl_in[0].gl_Position.xyz;
-    cube(p);
-    EndPrimitive();
-    return;
+    vec3 vert = gl_in[0].gl_Position.xyz;
+
+    // Convert the input float to an int that we can work with
     ivec4 c = ivec4(vColor[0] * 256);
+    // Original render had -z pointing up, thus we need to invert Z
+    float z = 1 - (vert.z / 2 + 0.5);
 
-    /*
-	vec3 vert;
+    // Get our bitwise position
+    int p = 1 << int(mod(z * 32, 8));
 
-	if (abs(vert.z) > 1) return;
+    // To help visualisation
+    color.rgb = vert.xyz / 2.0 + 0.5;
+    color.a = 1;
 
-	int bits = c.r | (c.g << 8) | (c.b << 16) | (c.a << 24);
+    // Fetch the correct channel
+    // Note, this can be done without a single if by using the step function and
+    // a bunch of multiplications
+    int v;
+    if (z < 0.25)
+        v = c.r;
+    else if (z < 0.50)
+        v = c.g;
+    else if (z < 0.75)
+        v = c.b;
+    else
+        v = c.a;
 
-	if ((bits & (1 << (1 - int((vert.z + 1) / 2)))) != 0) cube(vert);
+    // If the bit is one, then output a cube
+    if ((v & p) != 0) cube(vert);
 }
-
