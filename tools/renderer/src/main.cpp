@@ -249,10 +249,7 @@ int main(int argc, char *argv[]) {
         matModel = glm::rotate(matModel, t, glm::vec3(0, 0, 1));
         glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
 
-        if (doWireframe)
-            glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-        else
-            glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
         if (doVoxelize) {
             glEnable(GL_COLOR_LOGIC_OP);
@@ -297,6 +294,7 @@ int main(int argc, char *argv[]) {
         glViewport(0, 0, 32, 32);
         glBindVertexArray(vaoSquare);
         glUseProgram(progOffscreen);
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
     }
 
