@@ -17,14 +17,14 @@ specs={"resolution"     : (0.00225, 0.00225), # m
       "tip_speed"       : None , # m/s
       "bandwidth"       : None , # Mo/s
       "nominal_power"   : None , # Watt
-      "bytes_per_LED"   : 3    ,
+      "bytes_per_LED"   : 2    ,
       "LED_power"       : 0.0465, # Watt
       "engine_power"    : 0   , # Watt
       "number_of_voxels":None ,
       "number_of_driver":None ,
-      "outermost_driver_bandwidth":None , # MHz
+      "driver_bandwidth":None , # MHz
       "multiplexing"    :8    ,
-      "driver_bit_per_LED":30 ,
+      "driver_bit_per_LED":27 ,
       "driver_channels":16,
       }
 
@@ -41,13 +41,12 @@ bandwidth_sensibility        = ["number_of_voxels", "framerate",\
                                 "bytes_per_LED"]
 power_sensibility            = ["LED_per_face", "LED_power", "engine_power"]
 tip_speed_sensibility        = ["rotation_speed", "width"]
-number_of_voxels_sensibility = ["LED_per_row", "LED_per_column",\
-                                "resolution", "face_number"]
+number_of_voxels_sensibility = ["LED_per_face", "width", "resolution"]
 number_of_driver_sensibility = ["LED_per_face", "multiplexing",\
                                 "driver_channels"]
-outermost_driver_bandwidth_sensibility = ["LED_per_row", "multiplexing",\
+driver_bandwidth_sensibility = ["width", "multiplexing",\
                                 "driver_channels", "driver_bit_per_LED",\
-                                "framerate"]
+                                "framerate", "resolution"]
 
 # Check if the specs required to compute a specific spec are defined
 def check_sensibility(sensibility_list):
@@ -117,19 +116,14 @@ def compute_tip_speed():
 def compute_number_of_voxels():
     if not check_sensibility(number_of_voxels_sensibility):
         return None
-    voxel_per_row = 0;
-    ratio = specs["resolution"][0] / specs["resolution"][1]
-    # The n-th LED on a semi-row is at distance n*resolution[0] from the center,
-    # hence it produces 2*pi*n*resolution[0]/resolution[1] voxels
-    for i in range(1, specs["LED_per_row"] // 2 + 1):
-        voxel_per_row += math.ceil(2 * math.pi * i * ratio)
-    specs["number_of_voxels"] = voxel_per_row * specs["LED_per_column"]\
-                                * specs["face_number"]
+    refresh_number = math.ceil(math.pi*specs["width"] / specs["resolution"][0])
+    specs["number_of_voxels"] = refresh_number * specs["LED_per_face"]
 
 def compute_bandwidth():
     if not check_sensibility(bandwidth_sensibility):
         return None
     specs["bandwidth"] = math.ceil(specs["number_of_voxels"]\
+                         * specs["face_number"]\
                          * specs["bytes_per_LED"]\
                          * specs["framerate"]\
                          / (1024*1024))
@@ -138,20 +132,18 @@ def compute_number_of_driver():
     if not check_sensibility(number_of_driver_sensibility):
         return None
     led_per_driver = specs["multiplexing"] * specs["driver_channels"]
-    specs["number_of_driver"] = 2 * specs["LED_per_face"] / led_per_driver
+    specs["number_of_driver"] = specs["face_number"]\
+                                * specs["LED_per_face"] / led_per_driver
 
-def compute_outermost_driver_bandwidth():
-    if not check_sensibility(outermost_driver_bandwidth_sensibility):
+def compute_driver_bandwidth():
+    if not check_sensibility(driver_bandwidth_sensibility):
         return None
-    # First we compute the worst number of voxel we have to drive horizontally
-    # (hence the outermost ones)
-    led_per_semi_row = specs["LED_per_row"] // 2
-    horizontal_voxel = 0
-    for i in range(led_per_semi_row-specs["driver_channels"], led_per_semi_row+1):
-        horizontal_voxel += math.ceil(2 * math.pi * i);
-    specs["outermost_driver_bandwidth"] = specs["multiplexing"] * horizontal_voxel\
+    led_per_driver = specs["multiplexing"] * specs["driver_channels"]
+    refresh_number = math.ceil(math.pi*specs["width"] / specs["resolution"][0])
+    specs["driver_bandwidth"] = led_per_driver * refresh_number\
                                 * specs["framerate"]\
-                                * specs["driver_bit_per_LED"] / (1000*1000)
+                                * specs["driver_bit_per_LED"]\
+                                / (1000*1000)
 
 def fill_spec():
     if specs["LED_per_row"] is None:
@@ -180,8 +172,8 @@ def fill_spec():
         compute_bandwidth()
     if specs["number_of_driver"] is None:
         compute_number_of_driver()
-    if specs["outermost_driver_bandwidth"] is None:
-        compute_outermost_driver_bandwidth()
+    if specs["driver_bandwidth"] is None:
+        compute_driver_bandwidth()
 
 def print_spec():
     for s in specs:
