@@ -25,6 +25,7 @@ Get the single *tiny* library and build :
 - `left`/`right` to scroll animation (no effect if animation is not paused)
 - `r` to reload the shaders
 - `w` to toggle wireframe (useful to see the cut)
+- `c` to toggle the pizza transform
 
 ## What's implemented
 
