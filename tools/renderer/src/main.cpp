@@ -198,11 +198,11 @@ int main(int argc, char *argv[]) {
         for (int j = 0; j < 32; j++)
             for (int k = 0; k < 32; k++) {
                 voxPoints[3 * (32 * (i * 32 + j) + k) + 0] =
-                    (float(i) - 15.5f) / 16.f;
+                    (float(i) - 16.f) / 16.f;
                 voxPoints[3 * (32 * (i * 32 + j) + k) + 1] =
-                    (float(j) - 15.5f) / 16.f;
+                    (float(j) - 16.f) / 16.f;
                 voxPoints[3 * (32 * (i * 32 + j) + k) + 2] =
-                    (float(k) - 15.5f) / 16.f;
+                    (float(k) - 16.f) / 16.f;
             }
     GLuint vaoVox, vboVox;
     glGenVertexArrays(1, &vaoVox);
