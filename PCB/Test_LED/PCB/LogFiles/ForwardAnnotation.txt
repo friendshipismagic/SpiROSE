@@ -1,0 +1,299 @@
+
+                               Forward Annotation
+                               ------------------
+
+                       04:31 PM Monday, November 06, 2017
+                  Job Name: E:\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+
+
+Version:  01.01.00
+
+     A new Target PDB will be created from the Central Library to satisfy the parts
+      requirements of the iCDB.
+
+     The schematic source is a Common Data Base.
+
+     The AllowAlphaRefDes status indicates that reference
+      designators containing all alpha characters should be deleted
+      and the relevant symbols repackaged.
+
+
+
+     Common Data Base has been read
+
+     Target PDB Name: Work\Layout_Temp\PartsDB.pdb
+
+     Number of Part Numbers: 2
+          Part Numb: 20-0073 -> Vend Part: 20-0073 
+          Part Numb: 40-0307 -> Vend Part: 40-0307 
+
+     Number of Part Names: 0
+
+     Number of Part Labels: 0
+
+
+     Checking for value differences between symbol properties and PartsDB properties
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP716:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0307
+      Symbol Property: Cout HT = 5.11
+     PartsDB Property: Cout HT = 5,11
+
+     Checking the validity of the packaging of prepackaged schematic
+      symbols.  Only the first error in symbols having the same
+      Reference Designator will be reported.
+
+     The packaging of all prepackaged schematic symbols is consistent
+      with the Parts DataBase data for the cross mapping of
+      symbol pin names to Part Number pin numbers.
+      Symbols that were not prepackaged will now be packaged correctly.
+      
+     No errors in Existing Schematic Packaging.
+
+     WARNING: Unable to find the following cell(s) in central library
+	(_VB_DRILL_DRAWING_)THRU
+	(_VB_DRILL_SYMBOLS_)THRU
+	DXF_SVG battery
+	
+
+
+     The Common DataBase has been read and will be packaged.
+     Clustering 129 Symbols:
+             129  ****************************
+             100  **************************************************
+              50  **************************************************
+     Clustering is Complete
+
+     Packager Assignments successfully completed
+
+
+
+     58 nets were found containing 562 pins
+     129 components were found
+
+     Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
+     A formatted Schematic Netlist has been created.
+
+     The Logic DataBase has been compiled from the Schematic Design.
+      Use Netload to bring the Component Design into sync.
+
+     This Logic Data was Compiled with 2 warnings.
+      Erroneous results may occur if not fixed.
+
+                                     NetLoad
+                                     -------
+
+                       04:31 PM Monday, November 06, 2017
+                  Job Name: E:\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+
+
+Version:  02.11.12
+
+	Netloading the Layout.  Unused components will be deleted.
+
+	Unconnected pins will be set to net "(Net0)".
+
+	Schematic reference designator changes will be forward annotated.
+
+
+     The following 128 components have not been placed:
+
+        D1
+        D2
+        D3
+        D4
+        D5
+        D6
+        D7
+        D8
+        D9
+        D10
+        D11
+        D12
+        D13
+        D14
+        D15
+        D16
+        D17
+        D18
+        D19
+        D20
+        D21
+        D22
+        D23
+        D24
+        D25
+        D26
+        D27
+        D28
+        D29
+        D30
+        D31
+        D32
+        D33
+        D34
+        D35
+        D36
+        D37
+        D38
+        D39
+        D40
+        D41
+        D42
+        D43
+        D44
+        D45
+        D46
+        D47
+        D48
+        D49
+        D50
+        D51
+        D52
+        D53
+        D54
+        D55
+        D56
+        D57
+        D58
+        D59
+        D60
+        D61
+        D62
+        D63
+        D64
+        D65
+        D66
+        D67
+        D68
+        D69
+        D70
+        D71
+        D72
+        D73
+        D74
+        D75
+        D76
+        D77
+        D78
+        D79
+        D80
+        D81
+        D82
+        D83
+        D84
+        D85
+        D86
+        D87
+        D88
+        D89
+        D90
+        D91
+        D92
+        D93
+        D94
+        D95
+        D96
+        D97
+        D98
+        D99
+        D100
+        D101
+        D102
+        D103
+        D104
+        D105
+        D106
+        D107
+        D108
+        D109
+        D110
+        D111
+        D112
+        D113
+        D114
+        D115
+        D116
+        D117
+        D118
+        D119
+        D120
+        D121
+        D122
+        D123
+        D124
+        D125
+        D126
+        D127
+        D128
+
+     Netload completed successfully with 0 warning(s).
+     
+     Back Annotating...
+
+  Updating Logic Database...
+
+     Version:  99.00.05
+
+     No changes made to Existing Schematic Packaging.
+
+
+     There is no symbol data to be back annotated to the schematic source.
+
+
+     The Logic DataBase has been updated and the Common DataBase has
+      automatically been brought into sync with the Logic DataBase.
+      Please proceed with your design.
+
+     Finished updating the Logic Database.
+
+     Creating a formatted Schematic Netlist (LogFiles\AfterBakAnnoNetlist.txt)...
+     A formatted Schematic Netlist has been created.
+
+            Creating a new netlist text file (LogFiles\KeyinNetList.txt)
+            from the Logic Database (Work\Layout_Temp\LogicDB.lgc)...
+  A new netlist text file has been generated.
+
+
+
+                 Beginning Netload on the Layout Design.
+           ---------------------------------------------------
+
+Some nets were completely deleted from the Layout Design....
+	Deleted net XSIG011161, which has no pins, from the Layout Design.
+	Deleted net XSIG011162, which has no pins, from the Layout Design.
+	Deleted net XSIG011165, which has no pins, from the Layout Design.
+	Deleted net XSIG011166, which has no pins, from the Layout Design.
+	Deleted net XSIG011168, which has no pins, from the Layout Design.
+	Deleted net XSIG011169, which has no pins, from the Layout Design.
+	Deleted net XSIG011171, which has no pins, from the Layout Design.
+	Deleted net XSIG011172, which has no pins, from the Layout Design.
+	Deleted net XSIG011174, which has no pins, from the Layout Design.
+	Deleted net XSIG011175, which has no pins, from the Layout Design.
+	Deleted net XSIG011177, which has no pins, from the Layout Design.
+	Deleted net XSIG011178, which has no pins, from the Layout Design.
+	Deleted net XSIG011180, which has no pins, from the Layout Design.
+	Deleted net XSIG011181, which has no pins, from the Layout Design.
+	Deleted net XSIG011183, which has no pins, from the Layout Design.
+	Deleted net XSIG011184, which has no pins, from the Layout Design.
+	Deleted net XSIG011186, which has no pins, from the Layout Design.
+	Deleted net XSIG011187, which has no pins, from the Layout Design.
+	Deleted net XSIG011189, which has no pins, from the Layout Design.
+	Deleted net XSIG011190, which has no pins, from the Layout Design.
+	Deleted net XSIG011192, which has no pins, from the Layout Design.
+	Deleted net XSIG011193, which has no pins, from the Layout Design.
+	Deleted net XSIG011195, which has no pins, from the Layout Design.
+	Deleted net XSIG011197, which has no pins, from the Layout Design.
+	Deleted net XSIG011200, which has no pins, from the Layout Design.
+	Deleted net XSIG011201, which has no pins, from the Layout Design.
+	Deleted net XSIG011203, which has no pins, from the Layout Design.
+	Deleted net XSIG011204, which has no pins, from the Layout Design.
+	Deleted net XSIG011206, which has no pins, from the Layout Design.
+	Deleted net XSIG011207, which has no pins, from the Layout Design.
+
+Forward-Annotation on the Layout Design has been successfully completed.
+
+There were 0 reassignments of nets.
+There were 0 traces broken back.
+There were 30 nets removed from the Layout Design.
