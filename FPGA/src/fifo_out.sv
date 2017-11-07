@@ -1,9 +1,8 @@
-module driver #(parameter MULTIPLEXING = 8, parameter CHANNELS = 48, parameter DATA_WIDTH = 9)
+module fifo_out #(parameter DATA_WIDTH = 9)
 (
     input wire clk,
     input wire nrst,
-    output logic[DATA_WIDTH-1:0] data,
-    output logic lat
+    output logic[DATA_WIDTH-1:0] data
 );
 
 always_ff@(posedge clk or negedge nrst)
