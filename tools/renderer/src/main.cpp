@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
     std::vector<tinyobj::material_t> materials;
     std::string err;
     bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err,
-                                "mesh/suzanne.obj");
+                                "mesh/suzanne-tight.obj");
     if (!err.empty()) std::cerr << "[ERR] " << err << std::endl;
     if (!ret) return -1;
 
