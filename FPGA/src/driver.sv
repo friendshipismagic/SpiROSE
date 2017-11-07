@@ -2,7 +2,8 @@ module driver #(parameter MULTIPLEXING = 8, parameter CHANNELS = 48, parameter D
 (
     input wire clk,
     input wire nrst,
-    output logic[DATA_WIDTH-1:0] data,
+    input logic[DATA_WIDTH-1:0] voxel_in,
+    output logic[DATA_WIDTH-1:0] voxel_out,
     output logic lat
 );
 
