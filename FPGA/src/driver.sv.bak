@@ -1,0 +1,18 @@
+module driver #(parameter MULTIPLEXING = 8, parameter CHANNELS = 48)
+(
+    clk,
+    reset,
+    GCLK, // PWM reference clock
+    SCLK, // Serial data shift clock
+    SIN,  // Serial data input for the common shift register
+    LAT  // Latch of the common shift register
+);
+
+input clk;
+input reset;
+output GCLK;
+output SCLK;
+output SIN;
+output LAT;
+
+endmodule
