@@ -18,7 +18,7 @@
 	GFXDEMO					= 
 	#GFXDRIVERS				=
 	GFXSINGLEMAKE			= no
-	GFXSRC +=	main.c
+	GFXSRC +=
 
 # ChibiOS settings
 ifeq ($(OPT_OS),chibios)
@@ -48,12 +48,13 @@ STMHAL		= STM32/STM32F7xx_HAL_Driver
 
 ARCH     = arm-none-eabi-
 SRCFLAGS = -ggdb -O1
-CFLAGS   = -Wall -Wextra
+#The following flags are used only for libraries
+CFLAGS   = -Wno-duplicate-decl-specifier -Wno-misleading-indentation -Wno-unused-parameter
 CXXFLAGS = -fno-rtti
 ASFLAGS  =
 LDFLAGS  = --specs=rdimon.specs   -Wl,--start-group -lgcc -lc -lm -lrdimon -Wl,--end-group
 
-SRC      = 
+SRC      = main.c
 
 OBJS     =
 DEFS     = GFX_OS_HEAP_SIZE=40960
@@ -63,6 +64,10 @@ INCPATH  = Include
 
 LIBPATH  =
 LDSCRIPT =
+
+# For user source c files, compile with warning treated as errors and with all warnings
+OBJDIR = .build/obj
+$(OBJDIR)/$(SRC:.c=.o): CFLAGS = -Werror
 
 ##############################################################################################
 # These should be at the end

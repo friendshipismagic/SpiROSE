@@ -11,6 +11,7 @@ before_script:
 
 lint_lower_tower:
   stage: lint
+  image: rfc1149/rose-dev
   script:
     - cd LCD_Display
     - make lint
