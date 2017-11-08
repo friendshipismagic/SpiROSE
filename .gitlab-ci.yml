@@ -1,0 +1,32 @@
+image: tuetuopay/glfw
+
+stages:
+  - lint
+  - build
+  - test
+  - host
+
+variables:
+  - RENDERER_POC_DIR: "tools/renderer"
+
+lint_renderer-poc:
+  stage: lint
+  script:
+    - cd $RENDERER_POC_DIR
+    - make lint
+build_renderer-poc:
+  stage: build
+  script:
+    - cd $RENDERER_POC_DIR
+    - make build
+test_renderer-poc:
+  stage: test
+  script:
+    - cd $RENDERER_POC_DIR
+    - make test
+host_renderer-poc:
+  stage: host
+  script:
+    - cd $RENDERER_POC_DIR
+    - make host
+
