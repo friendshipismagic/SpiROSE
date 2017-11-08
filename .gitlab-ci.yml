@@ -8,6 +8,7 @@ stages:
 
 variables:
   SBC_DIR: "SBC"
+  FPGA_DIR: "FPGA"
 
 before_script:
     - git submodule init
@@ -63,3 +64,27 @@ host_sbc:
    script:
    - cd $SBC_DIR
    - make host
+
+lint_fpga:
+  stage: lint
+  script:
+    - cd $FPGA_DIR
+    - make lint
+
+build_fpga:
+  stage: build
+  script:
+    - cd $FPGA_DIR
+    - make
+
+test_fpga:
+  stage: test
+  script:
+     - cd $FPGA_DIR
+     - make test
+
+host_fpga:
+  stage: host
+  script:
+    - cd $FPGA_DIR
+    - make host
