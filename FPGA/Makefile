@@ -1,10 +1,11 @@
 SRC_DIR=src
 TOP_LEVEL=top.sv
+LINTER_ARGS=--lint-only -Wall
 
 lint:
 	@echo "Running lint tests"
 	make -C lib -f driver_cmd.mk lint
-	@verilator --lint-only $(TOP_LEVEL) -y $(SRC_DIR)
+	@verilator $(LINTER_ARGS) $(TOP_LEVEL) -y $(SRC_DIR)
 
 build :
 	@echo "Building fpga target"
