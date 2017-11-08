@@ -4,6 +4,7 @@ TOP_LEVEL=top.sv
 lint:
 	@echo "Running lint tests"
 	make -C lib -f driver_cmd.mk lint
+	@verilator --lint-only $(TOP_LEVEL) -y $(SRC_DIR)
 
 build :
 	@echo "Building fpga target"
