@@ -1,7 +1,9 @@
+SRC_DIR=src
+TOP_LEVEL=top.sv
+
 lint:
 	@echo "Running lint tests"
 	make -C lib -f driver_cmd.mk lint
-	make -C sim gen
 
 build :
 	@echo "Building fpga target"
