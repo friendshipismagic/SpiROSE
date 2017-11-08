@@ -18,6 +18,7 @@ build_renderer-poc:
   stage: build
   script:
     - cd $RENDERER_POC_DIR
+    - make dep
     - make build
 test_renderer-poc:
   stage: test
