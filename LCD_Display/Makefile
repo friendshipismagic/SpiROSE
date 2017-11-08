@@ -74,6 +74,9 @@ include $(GFXLIB)/tools/gmake_scripts/compiler_gcc.mk
 
 lint:
 	@echo "Running lint tests"
+	# TODO: move files into a subdir to do recursive globbing
+	clang-format -i *.c *.h
+	git status --porcelain | grep -e "^ M" && exit 1 || exit 0
 
 test:
 	@echo "Running lower base tests"
