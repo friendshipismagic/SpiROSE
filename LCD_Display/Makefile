@@ -71,4 +71,14 @@ LDSCRIPT =
 include $(GFXLIB)/tools/gmake_scripts/library_ugfx.mk
 include $(GFXLIB)/tools/gmake_scripts/os_$(OPT_OS).mk
 include $(GFXLIB)/tools/gmake_scripts/compiler_gcc.mk
+
+lint:
+	@echo "Running lint tests"
+
+test:
+	@echo "Running lower base tests"
+
+host:
+	@echo "Running lower base host tests"
+
 # *** EOF ***
