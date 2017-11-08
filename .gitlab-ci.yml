@@ -75,7 +75,7 @@ build_fpga:
   stage: build
   script:
     - cd $FPGA_DIR
-    - make
+    - make build
 
 test_fpga:
   stage: test
