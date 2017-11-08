@@ -70,3 +70,11 @@ lib/tinyobjloader: lib
 		CXX="~/.vim/bin/cc_args.py $(CXX)" \
 		-B -j$(shell grep -c "^processor" /proc/cpuinfo)
 
+lint:
+	@echo "Lint"
+build: all
+test:
+	@echo "Test"
+host:
+	@echo "Host"
+
