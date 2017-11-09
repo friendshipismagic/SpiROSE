@@ -1,4 +1,4 @@
-module fifo_in #(parameter DATA_WIDTH = 9)
+module fifo_in #(parameter DATA_WIDTH = 27)
 (
     input wire clk,
     input wire nrst,
