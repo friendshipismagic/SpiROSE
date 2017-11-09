@@ -57,7 +57,7 @@ GLuint loadShader(GLenum type, const char *filename);
 bool doWireframe = false, pause = false, clicking = false, doVoxelize = true,
      doPizza = false;
 float t = 0.f;
-GLuint progVoxel, progOffscreen, progGenerate;
+GLuint progVoxel, progOffscreen, progGenerate, progInterlace;
 
 // Camera data
 float yaw = 0.f, pitch = M_PI / 4.f, zoom = 2.f;
@@ -150,6 +150,7 @@ int main(int argc, char *argv[]) {
           matVPositionGen = glGetUniformLocation(progGenerate, "matView"),
           matPPositionGen = glGetUniformLocation(progGenerate, "matProjection"),
           doPizzaPositionGen = glGetUniformLocation(progGenerate, "doPizza");
+    GLint doPizzaPositionInt = glGetUniformLocation(progInterlace, "doPizza");
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
@@ -290,11 +291,18 @@ int main(int argc, char *argv[]) {
         glBindVertexArray(vaoVox);
         glDrawArrays(GL_POINTS, 0, sizeof(voxPoints) / sizeof(float) / 3);
 
+        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+        //// Interlace voxels
+        glViewport(32, 0, 32 * 8, 32 * 4);
+        glBindVertexArray(vaoSquare);
+        glUseProgram(progInterlace);
+        glUniform1ui(doPizzaPositionInt, doPizza);
+        glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
+
         //// Displaying the voxel texture
         glViewport(0, 0, 32, 32);
         glBindVertexArray(vaoSquare);
         glUseProgram(progOffscreen);
-        glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
     }
 
@@ -452,4 +460,13 @@ void loadShaders() {
     glBindFragDataLocation(progGenerate, 0, "out_Color");
     glLinkProgram(progGenerate);
     glUseProgram(progGenerate);
+
+    progInterlace = glCreateProgram();
+    glAttachShader(progInterlace,
+                   loadShader(GL_VERTEX_SHADER, "shader/offscreen.vs"));
+    glAttachShader(progInterlace,
+                   loadShader(GL_FRAGMENT_SHADER, "shader/interlace.fs"));
+    glBindFragDataLocation(progInterlace, 0, "out_Color");
+    glLinkProgram(progInterlace);
+    glUseProgram(progInterlace);
 }
