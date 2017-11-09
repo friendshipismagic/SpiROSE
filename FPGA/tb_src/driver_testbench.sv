@@ -1,19 +1,19 @@
-module driver_testbench #(parameter DATA_WIDTH = 27);
+module driver_testbench #(parameter DATA_WIDTH = 48);
 
 logic clk, nrst, lat;
-logic [DATA_WIDTH -1:0] voxel_in, voxel_out;
+logic [DATA_WIDTH -1:0] bit_group_in, bit_group_out;
 
-driver #(.DATA_WIDTH(DATA_WIDTH)) mce (
+driver_controller #(.DATA_WIDTH(DATA_WIDTH)) dc (
     .clk(clk),
     .nrst(nrst),
-    .voxel_in(voxel_in),
-    .voxel_out(voxel_out),
+    .bit_group_in(bit_group_in),
+    .bit_group_out(bit_group_out),
     .lat(lat)
 );
 
 initial
 begin
-    logic [DATA_WIDTH - 1:0] voxel;
+    logic [DATA_WIDTH - 1:0] bit_group;
 
     repeat(1000)
     begin

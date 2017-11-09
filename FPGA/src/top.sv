@@ -1,15 +1,17 @@
-module top #(parameter DATA_WIDTH = 27) (
+module top #(parameter DATA_WIDTH = 48) (
    input logic clk,
    input logic nrst,
-   input logic [DATA_WIDTH - 1:0] voxel_in,
-   output logic [DATA_WIDTH - 1:0] voxel_out,
+   input logic [DATA_WIDTH - 1:0] bit_group_in,
+   output logic [DATA_WIDTH - 1:0] bit_group_out,
    output logic lat
 );
 
-driver #(.DATA_WIDTH(DATA_WIDTH)) driver_1 (.clk(clk),
-                                            .nrst(nrst),
-                                            .voxel_in(voxel_in),
-                                            .voxel_out(voxel_out),
-                                            .lat(lat));
+driver_controller #(.DATA_WIDTH(DATA_WIDTH)) driver_1 (
+    .clk(clk),
+    .nrst(nrst),
+    .bit_group_in(bit_group_in),
+    .bit_group_out(bit_group_out),
+    .lat(lat)
+);
 
 endmodule
