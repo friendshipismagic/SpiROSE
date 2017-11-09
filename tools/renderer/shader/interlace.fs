@@ -19,8 +19,8 @@ void main() {
 
     vec3 fragPos = vec3(refreshNo, refreshMod.x * 8, refreshMod.y * 4);
 
-    if (doPizza && 1 == 2) {
-        fragPos.x *= M_PI * 4;
+    if (!doPizza) {
+        fragPos.x *= M_PI * 2;
         fragPos.xy =
             vec2(sin(fragPos.x), -cos(fragPos.x)) * fragPos.y / 2.0 + 0.5;
     }
