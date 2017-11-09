@@ -1,4 +1,4 @@
-module driver #(parameter MULTIPLEXING = 8, parameter CHANNELS = 48, parameter DATA_WIDTH = 9)
+module driver #(parameter MULTIPLEXING = 8, parameter CHANNELS = 48, parameter DATA_WIDTH = 27)
 (
     input wire clk,
     input wire nrst,
@@ -9,9 +9,13 @@ module driver #(parameter MULTIPLEXING = 8, parameter CHANNELS = 48, parameter D
 
 always_ff@(posedge clk or negedge nrst)
     if(!nrst)
+    begin
         lat <= 0;
+        voxel_out <= 0;
+    end
     else
     begin
+        voxel_out <= voxel_in;
     end
 
 endmodule
