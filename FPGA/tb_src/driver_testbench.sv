@@ -1,14 +1,16 @@
 module driver_testbench #(parameter DATA_WIDTH = 48);
 
-logic clk, nrst, lat;
-logic [DATA_WIDTH -1:0] bit_group_in, bit_group_out;
+logic clk, nrst, lat, gclk, sclk;
+logic bit_in, sin;
 
-driver_controller #(.DATA_WIDTH(DATA_WIDTH)) dc (
+driver_controller #(.DATA_WIDTH(DATA_WIDTH)) driver_1 (
     .clk(clk),
     .nrst(nrst),
-    .bit_group_in(bit_group_in),
-    .bit_group_out(bit_group_out),
-    .lat(lat)
+    .bit_in(bit_in),
+    .sin(sin),
+    .lat(lat),
+    .gclk(gclk),
+    .sclk(sclk)
 );
 
 initial
@@ -16,9 +18,10 @@ begin
     logic [DATA_WIDTH - 1:0] bit_group;
 
     repeat(1000)
-    begin
+begin
     $display("Everything went fine");
     $finish;
+end
 end
 
 endmodule
