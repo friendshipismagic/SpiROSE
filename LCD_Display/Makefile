@@ -54,7 +54,7 @@ CXXFLAGS = -fno-rtti
 ASFLAGS  =
 LDFLAGS  = --specs=rdimon.specs   -Wl,--start-group -lgcc -lc -lm -lrdimon -Wl,--end-group
 
-SRC      = main.c
+SRC      = main.c widget.c
 
 OBJS     =
 DEFS     = GFX_OS_HEAP_SIZE=40960
