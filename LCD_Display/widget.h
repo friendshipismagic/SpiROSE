@@ -2,7 +2,7 @@
 #define _WIDGET_H
 
 typedef enum type type;
-enum type { BUTTON, SLIDER, CONTAINER };
+enum type { BUTTON, SLIDER, CONTAINER, LABEL };
 
 GHandle genericWidgetCreation(type widget, int width_, int height_, int x_,
                               int y_, char *text_, GHandle parent_,

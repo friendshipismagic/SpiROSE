@@ -33,5 +33,9 @@ GHandle genericWidgetCreation(type widget, int width_, int height_, int x_,
         (void)parent_;
         return gwinContainerCreate(0, &wi, 0);
     }
+    if (widget == LABEL) {
+        wi.g.parent = parent_;
+        return gwinLabelCreate(0, &wi);
+    }
     return 0;
 }

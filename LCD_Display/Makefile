@@ -50,6 +50,8 @@ ARCH     = arm-none-eabi-
 SRCFLAGS = -ggdb -O1
 #The following flags are used only for libraries
 CFLAGS   = -Wno-duplicate-decl-specifier -Wno-misleading-indentation -Wno-unused-parameter
+#CPROJECT_FLAGS is specific to the user source files to treat warnings as error
+PROJECT_FLAGS = -Werror
 CXXFLAGS = -fno-rtti
 ASFLAGS  =
 LDFLAGS  = --specs=rdimon.specs   -Wl,--start-group -lgcc -lc -lm -lrdimon -Wl,--end-group
@@ -67,7 +69,7 @@ LDSCRIPT =
 
 # For user source c files, compile with warning treated as errors and with all warnings
 OBJDIR = .build/obj
-$(OBJDIR)/$(SRC:.c=.o): CFLAGS = -Werror
+$(OBJDIR)/$(SRC:.c=.o): CFLAGS = $(PROJECT_FLAGS)
 
 ##############################################################################################
 # These should be at the end

@@ -23,6 +23,7 @@ static GHandle gButton1;
 static GHandle gButton2;
 static GHandle slider;
 static GHandle console;
+static GHandle label;
 
 static gdispImage myImage;
 
@@ -62,8 +63,8 @@ int main(void) {
     // Initialization of the display
     gfxInit();
 
-    // Import the needed font, '*' means the first in the font list
-    font = gdispOpenFont("*");
+    // Import the OpenSans custom fonts
+    font = gdispOpenFont("OpenSans_Bold16");
 
     // All widgets that have a text parameter will use this font by default
     gwinSetDefaultFont(font);
@@ -108,7 +109,6 @@ int main(void) {
                    ((GEventGWinButton *)pe)->gwin == menuControls) {
             gwinHide(debugContainer);
             gwinHide(demoContainer);
-            gwinHide(mainContainer);
             gwinShow(mainContainer);
             // TODO : Send stop command to SBC
             gwinPrintf(console, "DEBUG MENU BUTTON pressed\n");
@@ -117,6 +117,7 @@ int main(void) {
             gwinHide(mainContainer);
             gwinHide(debugContainer);
             gwinShow(demoContainer);
+            gwinSetText(label, "NEW LABEL", 0);
             // TODO : Send stop command to SBC
             gwinPrintf(console, "DEBUG MENU BUTTON pressed\n");
         }
@@ -131,7 +132,6 @@ static void widgetCreation(void) {
     gdispImageOpenFile(&myImage, "degrade_bleu.png");
 
     // Container creation
-
     menuContainer = genericWidgetCreation(CONTAINER, WIDTH, 40, 0, HEIGHT - 40,
                                           "menuContainer", NULL, NULL, NULL);
 
@@ -144,6 +144,7 @@ static void widgetCreation(void) {
     demoContainer = genericWidgetCreation(CONTAINER, WIDTH, HEIGHT - 40, 0, 0,
                                           "debugContainer", NULL, NULL, NULL);
 
+    // Menu creation, using touching buttons
     menuControls = genericWidgetCreation(BUTTON, 160, 40, 0, 0, "CONTROLS",
                                          menuContainer, NULL, NULL);
     menuDemo = genericWidgetCreation(BUTTON, 160, 40, 160, 0, "DEMO",
@@ -163,7 +164,11 @@ static void widgetCreation(void) {
     slider = genericWidgetCreation(SLIDER, WIDTH - 40, 40, 20, 120, "ROTATION",
                                    mainContainer, NULL, NULL);
 
-    // The container and all its children are visible
+    // Label Creation
+    label = genericWidgetCreation(LABEL, 100, 100, 100, 100, "YOUPI",
+                                  demoContainer, NULL, NULL);
+
+    // The main container and all its children are visible
     gwinShow(mainContainer);
     gwinHide(debugContainer);
     gwinHide(demoContainer);
