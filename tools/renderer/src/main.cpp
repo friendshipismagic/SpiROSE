@@ -82,10 +82,17 @@ int main(int argc, char *argv[]) {
 #endif
     // Command line options
     char c;
-    while ((c = getopt(argc, argv, "s")) != -1) switch (c) {
-            case 's':
+    while ((c = getopt(argc, argv, "wpc")) != -1) switch (c) {
+            case 'w':
+                renderOptions.wireframe = true;
+                break;
+            case 'p':
                 renderOptions.pause = true;
                 break;
+            case 'c':
+                renderOptions.pizza = true;
+                break;
+
             case '?':
             default:
                 return -1;
