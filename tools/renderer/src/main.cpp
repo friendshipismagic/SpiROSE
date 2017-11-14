@@ -55,8 +55,13 @@ void onMove(GLFWwindow *window, double x, double y);
 
 GLuint loadShader(GLenum type, const char *filename);
 
-bool doWireframe = false, pause = false, clicking = false, doVoxelize = true,
-     doPizza = false;
+typedef struct RenderOptions {
+    bool wireframe, pause, voxelize, pizza;
+} RenderOptions;
+RenderOptions renderOptions = {
+    .wireframe = false, .pause = false, .voxelize = true, .pizza = false};
+
+bool clicking = false;
 float t = 0.f;
 GLuint progVoxel, progOffscreen, progGenerate, progInterlace;
 
@@ -79,7 +84,7 @@ int main(int argc, char *argv[]) {
     char c;
     while ((c = getopt(argc, argv, "s")) != -1) switch (c) {
             case 's':
-                pause = true;
+                renderOptions.pause = true;
                 break;
             case '?':
             default:
@@ -240,21 +245,21 @@ int main(int argc, char *argv[]) {
         glfwSwapBuffers(window);
         glfwPollEvents();
 
-        if (!pause) t = glfwGetTime();
+        if (!renderOptions.pause) t = glfwGetTime();
 
         std::string title = "ROSE /// voxelize = ";
-        title += std::to_string(doVoxelize);
+        title += std::to_string(renderOptions.voxelize);
         title += " / wireframe ";
-        title += std::to_string(doWireframe);
+        title += std::to_string(renderOptions.wireframe);
         title += " / doPizza ";
-        title += std::to_string(doPizza);
+        title += std::to_string(renderOptions.pizza);
         glfwSetWindowTitle(window, title.c_str());
 
         //// Voxelization
         glBindVertexArray(vao);
         glUseProgram(progVoxel);
         glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matOrtho[0][0]);
-        glUniform1ui(doPizzaPosition, doPizza);
+        glUniform1ui(doPizzaPosition, renderOptions.pizza);
 
         matView = glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
                               glm::vec3(0.f, 1.f, 0.f));
@@ -268,7 +273,7 @@ int main(int argc, char *argv[]) {
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-        if (doVoxelize) {
+        if (renderOptions.voxelize) {
             glEnable(GL_COLOR_LOGIC_OP);
             glLogicOp(GL_XOR);
             glDisable(GL_DEPTH_TEST);
@@ -290,7 +295,7 @@ int main(int argc, char *argv[]) {
         glEnable(GL_DEPTH_TEST);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        if (doWireframe)
+        if (renderOptions.wireframe)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
@@ -302,7 +307,7 @@ int main(int argc, char *argv[]) {
         glUniformMatrix4fv(matVPositionGen, 1, GL_FALSE, &matView[0][0]);
         matModel = glm::mat4(1.f);
         glUniformMatrix4fv(matMPositionGen, 1, GL_FALSE, &matModel[0][0]);
-        glUniform1ui(doPizzaPositionGen, doPizza);
+        glUniform1ui(doPizzaPositionGen, renderOptions.pizza);
 
         glBindVertexArray(vaoVox);
         glDrawArrays(GL_POINTS, 0, sizeof(voxPoints) / sizeof(float) / 3);
@@ -312,7 +317,7 @@ int main(int argc, char *argv[]) {
         glViewport(32, 0, 32 * 8, 32 * 4);
         glBindVertexArray(vaoSquare);
         glUseProgram(progInterlace);
-        glUniform1ui(doPizzaPositionInt, doPizza);
+        glUniform1ui(doPizzaPositionInt, renderOptions.pizza);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
 
         //// Displaying the voxel texture
@@ -360,13 +365,13 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             glfwSetWindowShouldClose(window, GL_TRUE);
             break;
         case GLFW_KEY_Z:
-            doWireframe = !doWireframe;
+            renderOptions.wireframe = !renderOptions.wireframe;
             break;
         case GLFW_KEY_R:
             loadShaders();
             break;
         case GLFW_KEY_P:
-            pause = !pause;
+            renderOptions.pause = !renderOptions.pause;
             break;
         case GLFW_KEY_RIGHT:
             t += 0.01;
@@ -381,10 +386,10 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             zoom -= 0.01;
             break;
         case GLFW_KEY_V:
-            doVoxelize = !doVoxelize;
+            renderOptions.voxelize = !renderOptions.voxelize;
             break;
         case GLFW_KEY_C:
-            doPizza = !doPizza;
+            renderOptions.pizza = !renderOptions.pizza;
             break;
     }
 }
