@@ -56,10 +56,10 @@ void onMove(GLFWwindow *window, double x, double y);
 GLuint loadShader(GLenum type, const char *filename);
 
 typedef struct RenderOptions {
-    bool wireframe, pause, voxelize, pizza;
+    bool wireframe, pause, pizza;
 } RenderOptions;
 RenderOptions renderOptions = {
-    .wireframe = false, .pause = false, .voxelize = true, .pizza = false};
+    .wireframe = false, .pause = false, .pizza = false};
 
 bool clicking = false;
 float t = 0.f;
@@ -254,11 +254,11 @@ int main(int argc, char *argv[]) {
 
         if (!renderOptions.pause) t = glfwGetTime();
 
-        std::string title = "ROSE /// voxelize = ";
-        title += std::to_string(renderOptions.voxelize);
-        title += " / wireframe ";
+        std::string title = "ROSE /// [w] wireframe ";
         title += std::to_string(renderOptions.wireframe);
-        title += " / doPizza ";
+        title += " / [p] pause ";
+        title += std::to_string(renderOptions.pause);
+        title += " / [c] pizza ";
         title += std::to_string(renderOptions.pizza);
         glfwSetWindowTitle(window, title.c_str());
 
@@ -280,14 +280,9 @@ int main(int argc, char *argv[]) {
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-        if (renderOptions.voxelize) {
-            glEnable(GL_COLOR_LOGIC_OP);
-            glLogicOp(GL_XOR);
-            glDisable(GL_DEPTH_TEST);
-        } else {
-            glDisable(GL_COLOR_LOGIC_OP);
-            glEnable(GL_DEPTH_TEST);
-        }
+        glEnable(GL_COLOR_LOGIC_OP);
+        glLogicOp(GL_XOR);
+        glDisable(GL_DEPTH_TEST);
 
         // Rendering
         glBindFramebuffer(GL_FRAMEBUFFER, fbo);
@@ -391,9 +386,6 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             break;
         case GLFW_KEY_DOWN:
             zoom -= 0.01;
-            break;
-        case GLFW_KEY_V:
-            renderOptions.voxelize = !renderOptions.voxelize;
             break;
         case GLFW_KEY_C:
             renderOptions.pizza = !renderOptions.pizza;
