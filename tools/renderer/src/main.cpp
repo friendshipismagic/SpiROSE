@@ -21,6 +21,7 @@
  * IN THE SOFTWARE.
  **/
 
+#include <unistd.h>
 #include <cmath>
 #include <fstream>
 #include <iostream>
@@ -68,9 +69,24 @@ void loadShaders();
 #ifdef OS_WIN32
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
                    LPSTR lpCmdLine, int nCmdShow) {
+    // Declared in stdlib.h, populated by windows itself...
+    int argc = __argc;
+    char **argv = __argv;
 #else
 int main(int argc, char *argv[]) {
 #endif
+    // Command line options
+    char c;
+    while ((c = getopt(argc, argv, "s")) != -1) switch (c) {
+            case 's':
+                pause = true;
+                break;
+            case '?':
+            default:
+                return -1;
+                break;
+        }
+
     // Load GLFW
     glfwInit();
 
