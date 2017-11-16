@@ -27,6 +27,7 @@ specs={"resolution"     : (0.00225, 0.00225), # m
       "driver_bit_per_LED":27 ,
       "driver_channels":16,
       "slice_number":256,
+      "fpga_memory":1161216, # bit
       }
 
 LED_per_face_sensibility     = ["LED_per_row", "LED_per_column"]
@@ -149,27 +150,29 @@ def compute_driver_bandwidth():
 def fpga_requirement():
     ''' We check the following constraints (see wiki for details):
         * m < n, m = 2^r
-        * (v2 + dv)t - m + 1 < v2*t < (v2 + dv)t + m - 1
+        * (v2 + dv)t + 2*m - n < v2*t < (v2 + dv)t + m
         Here v2 and dv are in slice/s, and a slice is nb_led*nb_bit_rgb bit
     '''
     dv_max = []
     v2 = specs["rotation_speed"] / 60 * specs["slice_number"]
-    for n in range (1, specs["slice_number"] // 2 + 1):
-        m = 1
-        while m < n:
-            # dv is the delta v between the reading and th writing
-            dv = 0
-            # t is when we have read a whole semi-turn
-            t = 128 / v2
-            within_requirement = True
-            while within_requirement:
-                dv += 1
-                # check that we don't write before we read
-                within_requirement &= (v2 + dv)*t < v2*t + m - 1
-                # check thta we don't read before we write
-                within_requirement &=  v2*t < (v2 + dv)*t + m - 1
-            dv_max.append((dv, n, m))
-            m *= 2
+    slice_size = specs["face_number"] * specs["LED_per_face"]\
+                 * specs["bytes_per_LED"]*8
+    n = specs["fpga_memory"] // slice_size
+    m = 1
+    while m < n:
+        # dv is the delta v between the reading and the writing
+        dv = 0
+        # t is when we have read a whole semi-turn
+        t = 128 / v2
+        within_requirement = True
+        while within_requirement:
+            dv += 1
+            # check that we don't write before we read
+            within_requirement &= (v2 + dv)*t + 2*m - n < v2*t
+            # check thta we don't read before we write
+            within_requirement &=  v2*t < (v2 + dv)*t + m
+        dv_max.append((int(dv*100/v2), n, m))
+        m *= 2
     print("FPGA delta v max within requirement:" + str(dv_max))
 
 def fill_spec():
