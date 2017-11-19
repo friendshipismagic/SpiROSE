@@ -14,6 +14,38 @@ class Driver : public sc_module {
         SC_CTHREAD(handle_lat, gclk);
     }
 
+    sc_bv<2> get_lodth() const { return fc_data.read()(1, 0); }
+
+    sc_bv<2> get_td0() const { return fc_data.read()(3, 2); }
+
+    auto get_group() const { return fc_data.read().bit(4); }
+
+    auto get_xrefresh() const { return fc_data.read().bit(5); }
+
+    auto get_sel_gck_edge() const { return fc_data.read().bit(6); }
+
+    auto get_sel_pchg() const { return fc_data.read().bit(7); }
+
+    auto get_espwm() const { return fc_data.read().bit(8); }
+
+    auto get_lgse3() const { return fc_data.read().bit(9); }
+
+    auto get_sel_sck_edge() const { return fc_data.read().bit(10); }
+
+    sc_bv<3> get_lgse1() const { return fc_data.read()(13, 11); }
+
+    sc_bv<9> get_ccb() const { return fc_data.read()(22, 14); }
+
+    sc_bv<9> get_ccg() const { return fc_data.read()(31, 23); }
+
+    sc_bv<9> get_ccr() const { return fc_data.read()(40, 32); }
+
+    sc_bv<3> get_bc() const { return fc_data.read()(43, 41); }
+
+    auto get_poker_mode() const { return fc_data.read().bit(44); }
+
+    sc_bv<3> get_lgse2() const { return fc_data.read()(47, 45); }
+
     void handle_sin() {
         while (true) {
             wait();
