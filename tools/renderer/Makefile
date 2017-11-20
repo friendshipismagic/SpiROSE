@@ -58,12 +58,6 @@ run: $(EXE)
 clean:
 	rm -f $(OBJS) $(DEPS) $(EXE)
 
-dep: lib/tinyobjloader
-lib:
-	mkdir lib
-lib/tinyobjloader: lib
-	git clone https://github.com/syoyo/tinyobjloader.git lib/tinyobjloader
-
 .clang_complete: $(CXXSRC)
 	$(MAKE) \
 		CC="~/.vim/bin/cc_args.py $(CC)" \
