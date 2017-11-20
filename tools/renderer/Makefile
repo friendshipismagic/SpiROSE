@@ -66,7 +66,7 @@ clean:
 
 lint:
 	find . \( -regex '.*\.[vgf]s' -or -regex '.*\.[ch]\(pp\)*' \) -not -path './lib*' -exec clang-format -i '{}' \;
-	git status --porcelain | grep -e "^ M" && git diff || exit 0
+	git status --porcelain | grep -e "^ M" && ( git diff; exit 1 ) || exit 0
 build: all
 test:
 	@echo "Test"
