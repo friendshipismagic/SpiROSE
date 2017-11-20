@@ -5,12 +5,12 @@ import math
 
 specs={"resolution"     : (0.00225, 0.00225), # m
       "framerate"       : 30  , # Hz
-      "horizontal_staggering":False,
-      "vertical_staggering":True,
+      "horizontal_staggering":True,
+      "vertical_staggering":False,
       "face_number"     : 2    , # 1 or 2
       "LED_per_face"    : None ,
-      "LED_per_column"  : None ,
-      "LED_per_row"     : None ,
+      "LED_per_column"  : 48 ,
+      "LED_per_row"     : 40 ,
       "width"           : 0.187  , # m
       "height"          : 0.105  , # m
       "rotation_speed"  : None , # rpm
@@ -26,6 +26,8 @@ specs={"resolution"     : (0.00225, 0.00225), # m
       "multiplexing"    :8    ,
       "driver_bit_per_LED":27 ,
       "driver_channels":16,
+      "slice_number":256,
+      "fpga_MK9_block":126, # Each MK9 block contains 8192 bits
       }
 
 LED_per_face_sensibility     = ["LED_per_row", "LED_per_column"]
@@ -145,6 +147,34 @@ def compute_driver_bandwidth():
                                 * specs["driver_bit_per_LED"]\
                                 / (1000*1000)
 
+def fpga_requirement():
+    ''' We check the following constraints (see wiki for details):
+        * m < n, m = 2^r
+        * (v2 + dv)t + 2*m - n < v2*t < (v2 + dv)t + m
+        Here v2 and dv are in slice/s, and a slice is nb_led*nb_bit_rgb bit
+    '''
+    dv_max = []
+    v2 = specs["rotation_speed"] / 60 * specs["slice_number"]
+    slice_size = specs["face_number"] * specs["LED_per_face"]\
+                 * specs["bytes_per_LED"]*8
+    n = specs["fpga_MK9_block"] * 8192 // slice_size
+    m = 1
+    while m < n:
+        # dv is the delta v between the reading and the writing
+        dv = 0
+        # t is when we have read a whole semi-turn
+        t = 128 / v2
+        within_requirement = True
+        while within_requirement:
+            dv += 1
+            # check that we don't write before we read
+            within_requirement &= (v2 + dv)*t + 2*m - n < v2*t
+            # check thta we don't read before we write
+            within_requirement &=  v2*t < (v2 + dv)*t + m
+        dv_max.append((int(dv*100/v2), n, m))
+        m *= 2
+    print("FPGA delta v max within requirement:" + str(dv_max))
+
 def fill_spec():
     if specs["LED_per_row"] is None:
         compute_LED_per_row()
@@ -182,6 +212,7 @@ def print_spec():
 def main():
     fill_spec()
     print_spec()
+    fpga_requirement()
 
 if __name__ == "__main__":
     main()
