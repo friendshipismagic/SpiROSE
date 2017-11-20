@@ -2,10 +2,13 @@
 
 #include <systemc.h>
 
+constexpr auto GS_COUNTER_ORIGIN = 15;
+
 class Driver : public sc_module {
     SC_HAS_PROCESS(Driver);
 
     enum driver_mode_t { MODE_DATA, MODE_FCWRT };
+    enum driver_bank_t { GS1, GS2 };
 
     public:
     inline Driver(const sc_module_name& name)
@@ -54,24 +57,30 @@ class Driver : public sc_module {
     }
 
     void handle_lat() {
+        gs_counter = GS_COUNTER_ORIGIN;
         while (true) {
             wait();
             if (lat) {
                 lat_counter = lat_counter.read() + 1;
             } else if (lat_counter == 1) {
                 // WRTGS, write to GS data at the GS counter position
+                write_to_bank(GS1, gs_counter.read(), shift_reg);
 
-                // Calculate the slice where to write in GS
-                int end = 48 * (1 + gs_counter.read()) - 1;
-
-                // We need to extract the data from signal to apply range
-                // operator
-                auto vec = gs1_data.read();
-                vec(end, end - 47) = shift_reg.read()(47, 0);
-
-                gs1_data.write(vec);
             } else if (lat_counter == 3) {
-                // LATGS, write to GS data and latch GS1 to GS2
+                // LATGS, write to GS data
+                write_to_bank(GS1, gs_counter.read(), shift_reg);
+                if (get_xrefresh() == 0) {
+                    // latch GS1 to GS2 when gs_counter = 65536
+                    if (gs_counter == 65536) {
+                        gs2_data = gs1_data;
+                    }
+                } else {
+                    // latch GS1 to GS2
+                    // reset gs_counter
+                    // TODO: outx = 0
+                    gs2_data = gs1_data;
+                    gs_counter = GS_COUNTER_ORIGIN;
+                }
             } else if (lat_counter == 5) {
                 // WRTFC
             } else if (lat_counter == 15) {
@@ -89,6 +98,19 @@ class Driver : public sc_module {
     sc_in<bool> lat;
 
     private:
+    void write_to_bank(driver_bank_t bank, int buffer_id,
+                       const sc_bv<48>& buffer) {
+        // Calculate the slice where to write in GS
+        int end = 48 * (1 + buffer_id) - 1;
+
+        // We need to extract the data from signal to apply range
+        // operator
+        auto& gs = (bank == GS1) ? gs1_data : gs2_data;
+        auto vec = gs.read();
+        vec(end, end - 47) = buffer(47, 0);
+        gs.write(vec);
+    }
+
     sc_signal<sc_bv<48>> shift_reg;
     sc_signal<sc_bv<48>> fc_data;
     sc_signal<sc_bv<768>> gs1_data;
