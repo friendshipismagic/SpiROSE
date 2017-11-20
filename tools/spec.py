@@ -27,7 +27,7 @@ specs={"resolution"     : (0.00225, 0.00225), # m
       "driver_bit_per_LED":27 ,
       "driver_channels":16,
       "slice_number":256,
-      "fpga_memory":1161216, # bit
+      "fpga_MK9_block":126, # Each MK9 block contains 8192 bits
       }
 
 LED_per_face_sensibility     = ["LED_per_row", "LED_per_column"]
@@ -157,7 +157,7 @@ def fpga_requirement():
     v2 = specs["rotation_speed"] / 60 * specs["slice_number"]
     slice_size = specs["face_number"] * specs["LED_per_face"]\
                  * specs["bytes_per_LED"]*8
-    n = specs["fpga_memory"] // slice_size
+    n = specs["fpga_MK9_block"] * 8192 // slice_size
     m = 1
     while m < n:
         # dv is the delta v between the reading and the writing
