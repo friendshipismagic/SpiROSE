@@ -12,7 +12,7 @@
 // Altera or its authorized distributors.  Please refer to the 
 // applicable agreement for further details.
 
-module EP3C40 (
+module top_module (
 	input clk_50, 
 	input nrst,
 
