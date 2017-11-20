@@ -69,6 +69,9 @@ GLuint progVoxel, progOffscreen, progGenerate, progInterlace;
 float yaw = 0.f, pitch = M_PI / 4.f, zoom = 2.f;
 glm::vec3 camForward, camRight, camLook;
 
+// Real framebuffer width and height taking high-DPI scaling into account
+int fbWidth, fbHeight;
+
 void loadShaders();
 
 #ifdef OS_WIN32
@@ -110,6 +113,7 @@ int main(int argc, char *argv[]) {
 
     GLFWwindow *window = glfwCreateWindow(1280, 720, "ROSE", nullptr, nullptr);
     glfwMakeContextCurrent(window);
+    glfwGetFramebufferSize(window, &fbWidth, &fbHeight);
 
     glfwSetInputMode(window, GLFW_STICKY_KEYS, GLFW_TRUE);
     glfwSetKeyCallback(window, onKey);
@@ -122,7 +126,7 @@ int main(int argc, char *argv[]) {
     glewInit();
 #endif
 
-    glViewport(0, 0, 1280, 720);
+    glViewport(0, 0, fbWidth, fbHeight);
     // glEnable(GL_DEPTH_TEST);
 
     // Load suzanne
@@ -293,7 +297,7 @@ int main(int argc, char *argv[]) {
 
         glDisable(GL_COLOR_LOGIC_OP);
         //// Display 3D voxels
-        glViewport(0, 0, 1280, 720);
+        glViewport(0, 0, fbWidth, fbHeight);
         glEnable(GL_DEPTH_TEST);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
