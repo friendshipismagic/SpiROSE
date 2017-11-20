@@ -15,7 +15,7 @@ variables:
 
 lint_renderer-poc:
   stage: lint
-  image: rfc1149/rose-dev
+  image: tuetuopay/clang
   script:
     - cd $RENDERER_POC_DIR
     - make lint
