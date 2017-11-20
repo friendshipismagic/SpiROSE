@@ -8,6 +8,7 @@ stages:
 
 variables:
   SBC_DIR: "SBC"
+  RENDERER_POC_DIR: "tools/renderer"
 
 before_script:
     - git submodule init
@@ -65,3 +66,29 @@ host_sbc:
    script:
    - cd $SBC_DIR
    - make host
+
+lint_renderer-poc:
+  stage: lint
+  image: tuetuopay/clang
+  script:
+    - cd $RENDERER_POC_DIR
+    - make lint
+build_renderer-poc:
+  stage: build
+  image: tuetuopay/glfw
+  script:
+    - cd $RENDERER_POC_DIR
+    - make build
+test_renderer-poc:
+  stage: test
+  image: tuetuopay/glfw
+  script:
+    - cd $RENDERER_POC_DIR
+    - make test
+host_renderer-poc:
+  stage: host
+  image: tuetuopay/glfw
+  script:
+    - cd $RENDERER_POC_DIR
+    - make host
+
