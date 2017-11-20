@@ -21,15 +21,36 @@ struct Vertex {
     vec2 t;  // Texture
 };
 
+/**
+ * Computes the intersection of the segment [p1, p2] with the plane x = 0
+ * @param p1       First point of the segment
+ * @param p2       Second point of the segment
+ * @returns        Point at the intersection
+ */
 vec3 intersect(in vec3 p1, in vec3 p2) {
     float d = -p1.x / (p2 - p1).x;
     return d * (p2 - p1) + p1;
 }
+/**
+ * Intersects the segment [v1, v1] and the x = 0 plane, while also interpolating
+ * the vertex attributes (color and texture coordinates)
+ * @param v1       First vertex of the segment
+ * @param v2       Second vertex of the segment
+ * @returns        Interpolated vertex
+ */
 Vertex intersect(in Vertex v1, in Vertex v2) {
     float d = -v1.p.x / (v2.p - v1.p).x;
     return Vertex(d * (v2.p - v1.p) + v1.p, d * (v2.c - v1.c) + v1.c,
                   d * (v2.t - v1.t) + v1.t);
 }
+/**
+ * Computes the intersection of the triangle [v1, v2, v3] and the line
+ * x = y = 0, and the interpolated color and texture values
+ * @param v1       First vertex of the triangle
+ * @param v2       Second vertex of the triangle
+ * @param v3       Third vertex of the triangle
+ * @returns        Interpolated vertex
+ */
 Vertex intersect(in Vertex v1, in Vertex v2, in Vertex v3) {
     vec2 p = vec2(0), p0 = v1.p.xy, p1 = v2.p.xy, p2 = v3.p.xy;
 
