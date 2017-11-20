@@ -47,7 +47,7 @@ set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
 set_global_assignment -name DEVICE_FILTER_PACKAGE "ANY QFP"
 set_global_assignment -name DEVICE_FILTER_PIN_COUNT 240
-set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.3-V LVCMOS"
+set_global_assignment -name STRATIX_DEVICE_IO_STANDARD "3.0-V LVCMOS"
 set_global_assignment -name CYCLONEIII_CONFIGURATION_SCHEME "PASSIVE SERIAL"
 set_global_assignment -name USE_CONFIGURATION_DEVICE OFF
 set_global_assignment -name CRC_ERROR_OPEN_DRAIN OFF
@@ -62,321 +62,115 @@ set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -
 set_global_assignment -name OUTPUT_IO_TIMING_FAR_END_VMEAS "HALF SIGNAL SWING" -fall
 set_global_assignment -name RESERVE_DATA0_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name RESERVE_DATA1_AFTER_CONFIGURATION "USE AS REGULAR IO"
-set_global_assignment -name VERILOG_FILE EP3C40.v
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
 
-set_location_assignment PIN_6   -to GPIO1
-set_location_assignment PIN_9   -to GPIO2
-set_location_assignment PIN_12  -to GPIO3
-set_location_assignment PIN_13  -to GPIO4
-set_location_assignment PIN_14  -to GPIO5
-set_location_assignment PIN_18  -to GPIO6
-set_location_assignment PIN_21  -to GPIO7
-set_location_assignment PIN_22  -to GPIO8
-set_location_assignment PIN_37  -to GPIO9
-set_location_assignment PIN_24  -to GPIO10
-set_location_assignment PIN_38  -to GPIO11
-set_location_assignment PIN_39  -to GPIO12
-set_location_assignment PIN_41  -to GPIO13
-set_location_assignment PIN_43  -to GPIO14
-set_location_assignment PIN_44  -to GPIO15
-set_location_assignment PIN_45  -to GPIO16
-set_location_assignment PIN_46  -to GPIO17
-set_location_assignment PIN_49  -to GPIO18
-set_location_assignment PIN_52  -to GPIO19
-set_location_assignment PIN_50  -to GPIO20
-set_location_assignment PIN_51  -to GPIO21
-set_location_assignment PIN_55  -to GPIO22
-set_location_assignment PIN_56  -to GPIO23
-set_location_assignment PIN_57  -to GPIO24
-set_location_assignment PIN_63  -to GPIO25
-set_location_assignment PIN_68  -to GPIO26
-set_location_assignment PIN_73  -to GPIO27
-set_location_assignment PIN_76  -to GPIO28
-set_location_assignment PIN_78  -to GPIO29
-set_location_assignment PIN_80  -to GPIO30
-set_location_assignment PIN_81  -to GPIO31
-set_location_assignment PIN_82  -to GPIO32
-set_location_assignment PIN_83  -to GPIO33
-set_location_assignment PIN_84  -to GPIO34
-set_location_assignment PIN_87  -to GPIO35
-set_location_assignment PIN_88  -to GPIO36
-set_location_assignment PIN_93  -to GPIO37
-set_location_assignment PIN_94  -to GPIO38
-set_location_assignment PIN_95  -to GPIO39
-set_location_assignment PIN_98  -to GPIO40
-set_location_assignment PIN_99  -to GPIO41
-set_location_assignment PIN_100 -to GPIO42
-set_location_assignment PIN_103 -to GPIO43
-set_location_assignment PIN_106 -to GPIO44
-set_location_assignment PIN_107 -to GPIO45
-set_location_assignment PIN_110 -to GPIO46
-set_location_assignment PIN_111 -to GPIO47
-set_location_assignment PIN_112 -to GPIO48
-set_location_assignment PIN_113 -to GPIO49
-set_location_assignment PIN_114 -to GPIO50
-set_location_assignment PIN_126 -to GPIO51
-set_location_assignment PIN_127 -to GPIO52
-set_location_assignment PIN_128 -to GPIO53
-set_location_assignment PIN_131 -to GPIO54
-set_location_assignment PIN_132 -to GPIO55
-set_location_assignment PIN_134 -to GPIO56
-set_location_assignment PIN_133 -to GPIO57
-set_location_assignment PIN_135 -to GPIO58
-set_location_assignment PIN_137 -to GPIO59
-set_location_assignment PIN_139 -to GPIO60
-set_location_assignment PIN_142 -to GPIO61
-set_location_assignment PIN_143 -to GPIO62
-set_location_assignment PIN_144 -to GPIO63
-set_location_assignment PIN_145 -to GPIO64
-set_location_assignment PIN_146 -to GPIO65
-set_location_assignment PIN_159 -to GPIO66
-set_location_assignment PIN_160 -to GPIO67
-set_location_assignment PIN_161 -to GPIO68
-set_location_assignment PIN_164 -to GPIO69
-set_location_assignment PIN_166 -to GPIO70
-set_location_assignment PIN_169 -to GPIO71
-set_location_assignment PIN_171 -to GPIO72
-set_location_assignment PIN_173 -to GPIO73
-set_location_assignment PIN_176 -to GPIO74
-set_location_assignment PIN_177 -to GPIO75
-set_location_assignment PIN_187 -to GPIO76
-set_location_assignment PIN_188 -to GPIO77
-set_location_assignment PIN_189 -to GPIO78
-set_location_assignment PIN_194 -to GPIO79
-set_location_assignment PIN_195 -to GPIO80
-set_location_assignment PIN_196 -to GPIO81
-set_location_assignment PIN_197 -to GPIO82
-set_location_assignment PIN_200 -to GPIO83
-set_location_assignment PIN_201 -to GPIO84
-set_location_assignment PIN_202 -to GPIO85
-set_location_assignment PIN_203 -to GPIO86
-set_location_assignment PIN_207 -to GPIO87
-set_location_assignment PIN_214 -to GPIO88
-set_location_assignment PIN_216 -to GPIO89
-set_location_assignment PIN_217 -to GPIO90
-set_location_assignment PIN_218 -to GPIO91
-set_location_assignment PIN_219 -to GPIO92
-set_location_assignment PIN_221 -to GPIO93
-set_location_assignment PIN_223 -to GPIO94
-set_location_assignment PIN_224 -to GPIO95
-set_location_assignment PIN_226 -to GPIO96
-set_location_assignment PIN_230 -to GPIO97
-set_location_assignment PIN_231 -to GPIO98
-set_location_assignment PIN_232 -to GPIO99
-set_location_assignment PIN_235 -to GPIO100
-set_location_assignment PIN_236 -to GPIO101
-set_location_assignment PIN_183 -to GPIO102
-set_location_assignment PIN_184 -to GPIO103
 
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO1
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO2
-set_instance_assignment -name RESERVE_PIN AS_INPUT_TRI_STATED -to GPIO3
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO4
-set_instance_assignment -name RESERVE_PIN AS_INPUT_TRI_STATED -to GPIO5
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO6
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO7
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO8
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO9
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO10
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO11
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO12
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO13
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO14
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO15
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO16
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO17
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO18
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO19
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO20
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO21
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO22
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO23
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO24
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO25
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO26
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO27
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO28
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO29
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO30
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO31
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO32
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO33
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO34
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO35
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO36
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO37
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO38
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO39
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO40
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO41
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO42
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO43
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO44
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO45
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO46
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO47
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO48
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO49
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO50
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO51
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO52
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO53
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO54
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO55
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO56
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO57
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO58
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO59
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO60
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO61
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO62
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO63
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO64
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO65
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO66
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO67
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO68
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO69
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO70
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO71
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO72
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO73
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO74
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO75
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO76
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO77
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO78
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO79
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO80
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO81
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO82
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO83
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO84
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO85
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO86
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO87
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO88
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO89
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO90
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO91
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO92
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO93
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO94
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO95
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO96
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO97
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO98
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO99
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO100
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO101
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO102
-set_instance_assignment -name RESERVE_PIN AS_BIDIRECTIONAL -to GPIO103
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO1
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO2
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO3
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO4
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO5
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO6
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO7
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO8
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO9
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO10
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO11
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO12
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO13
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO14
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO15
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO16
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO17
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO18
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO19
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO20
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO21
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO22
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO23
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO24
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO25
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO26
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO27
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO28
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO29
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO30
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO31
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO32
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO33
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO34
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO35
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO36
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO37
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO38
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO39
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO40
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO41
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO42
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO43
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO44
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO45
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO46
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO47
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO48
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO49
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO50
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO51
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO52
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO53
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO54
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO55
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO56
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO57
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO58
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO59
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO60
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO61
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO62
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO63
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO64
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO65
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO66
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO67
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO68
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO69
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO70
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO71
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO72
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO73
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO74
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO75
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO76
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO77
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO78
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO79
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO80
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO81
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO82
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO83
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO84
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO85
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO86
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO87
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO88
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO89
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO90
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO91
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO92
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO93
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO94
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO95
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO96
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO97
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO98
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO99
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO100
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO101
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO102
-set_instance_assignment -name IO_STANDARD "3.3-V LVCMOS" -to GPIO103
 
+set_global_assignment -name VERILOG_INPUT_VERSION SYSTEMVERILOG_2005
+set_global_assignment -name VERILOG_SHOW_LMF_MAPPING_MESSAGES OFF
+set_global_assignment -name POWER_PRESET_COOLING_SOLUTION "NO HEAT SINK WITH 400 LFPM AIRFLOW"
+set_global_assignment -name POWER_BOARD_THERMAL_MODEL "NONE (CONSERVATIVE)"
+set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS ON
+set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
+set_global_assignment -name FLOW_ENABLE_IO_ASSIGNMENT_ANALYSIS ON
+set_global_assignment -name EDA_DESIGN_ENTRY_SYNTHESIS_TOOL "<None>"
+set_global_assignment -name EDA_INPUT_DATA_FORMAT EDIF -section_id eda_design_synthesis
+set_global_assignment -name EDA_SIMULATION_TOOL "ModelSim (SystemVerilog)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT "SYSTEMVERILOG HDL" -section_id eda_simulation
+set_global_assignment -name EDA_FORMAL_VERIFICATION_TOOL "<None>"
+set_global_assignment -name EDA_BOARD_DESIGN_TIMING_TOOL "Stamp (Timing)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT STAMP -section_id eda_board_design_timing
+set_global_assignment -name EDA_BOARD_DESIGN_SYMBOL_TOOL "<None>"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT NONE -section_id eda_board_design_symbol
+set_global_assignment -name EDA_BOARD_DESIGN_SIGNAL_INTEGRITY_TOOL "IBIS (Signal Integrity)"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT IBIS -section_id eda_board_design_signal_integrity
+set_global_assignment -name EDA_BOARD_DESIGN_BOUNDARY_SCAN_TOOL "<None>"
+set_global_assignment -name EDA_OUTPUT_DATA_FORMAT NONE -section_id eda_board_design_boundary_scan
+set_global_assignment -name EDA_TIME_SCALE "1 ps" -section_id eda_simulation
+set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
+set_global_assignment -name SYSTEMVERILOG_FILE EP3C40.sv
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to clk_50
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to enc0
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to enc1
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to hsync
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to lat
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to mux[7]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to mux[6]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to mux[5]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to mux[4]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to mux[3]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to mux[2]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to mux[1]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to mux[0]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[23]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[22]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[21]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[20]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[19]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[18]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[17]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[16]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[15]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[14]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[13]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[12]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[11]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[10]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[9]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[8]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[7]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[6]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[5]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[4]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[3]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[2]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[1]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb[0]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rgb_clk
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to rx
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sclk
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[29]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[28]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[27]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[26]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[25]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[24]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[23]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[22]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[21]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[20]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[19]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[18]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[17]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[16]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[15]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[14]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[13]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[12]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[11]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[10]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[9]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[8]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[7]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[6]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[5]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[4]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[3]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[2]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[1]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to sin[0]
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to tx
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to vsync
+set_global_assignment -name SDC_FILE EP3C40.sdc
+set_global_assignment -name SMART_RECOMPILE ON
+set_global_assignment -name DISABLE_OCP_HW_EVAL ON
+set_global_assignment -name CYCLONEII_OPTIMIZATION_TECHNIQUE SPEED
+set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON
+set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
+set_global_assignment -name ENABLE_INIT_DONE_OUTPUT ON
+set_global_assignment -name GENERATE_JBC_FILE ON
+set_global_assignment -name CONFIGURATION_VCCIO_LEVEL 3.3V
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
