@@ -65,7 +65,7 @@ clean:
 		-B -j$(shell grep -c "^processor" /proc/cpuinfo)
 
 lint:
-	clang-format -i src/*.{c,cpp,h,hpp} shader/*.{vs,gs,fs}
+	find . \( -regex '.*\.[vgf]s' -or -regex '.*\.[ch]\(pp\)*' \) -not -path './lib*' -exec clang-format -i '{}' \;
 	git status --porcelain | grep -e "^ M" && exit 1 || exit 0
 build: all
 test:
