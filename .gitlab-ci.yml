@@ -1,15 +1,20 @@
-image: tuetuopay/arm-none-eabi
+image: rfc1149/rose-dev
+
 stages:
   - lint
   - build
   - test
   - host
 
+variables:
+  SBC_DIR: "SBC"
+
 before_script:
     - git submodule init
     - git submodule update
 
 lint_lower_tower:
+  image: tuetuopay/arm-none-eabi
   stage: lint
   image: rfc1149/rose-dev
   script:
@@ -17,19 +22,46 @@ lint_lower_tower:
     - make lint
 
 build_lower_tower:
+  image: tuetuopay/arm-none-eabi
   stage: build
   script:
     - cd LCD_Display
     - make
 
 test_lower_tower:
+  image: tuetuopay/arm-none-eabi
   stage: test
   script:
     - cd LCD_Display
     - make test
 
 host_lower_tower:
+  image: tuetuopay/arm-none-eabi
   stage: host
   script:
     - cd LCD_Display
     - make host
+
+lint_sbc:
+  stage: lint
+  script:
+  - cd $SBC_DIR
+  - make lint
+
+build_sbc:
+  stage: build
+  script:
+  - cd $SBC_DIR
+  - make build
+
+test_sbc:
+  stage: test
+  script:
+  - cd $SBC_DIR
+  - make test
+
+host_sbc:
+   stage: host
+   script:
+   - cd $SBC_DIR
+   - make host
