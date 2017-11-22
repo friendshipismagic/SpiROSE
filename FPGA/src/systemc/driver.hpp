@@ -2,7 +2,8 @@
 
 #include <systemc.h>
 
-constexpr auto GS_COUNTER_ORIGIN = 15;
+constexpr auto GS_ADDR_COUNTER_ORIGIN = 15;
+constexpr auto LINE_COUNTER_ORIGIN = 0;
 
 class Driver : public sc_module {
     SC_HAS_PROCESS(Driver);
@@ -57,7 +58,8 @@ class Driver : public sc_module {
     }
 
     void handle_lat() {
-        gs_counter = GS_COUNTER_ORIGIN;
+        gs_addr_counter = GS_ADDR_COUNTER_ORIGIN;
+        ;
         while (true) {
             wait();
             if (lat) {
@@ -76,11 +78,12 @@ class Driver : public sc_module {
                     }
                 } else {
                     // latch GS1 to GS2
-                    // reset gs_counter
+                    // reset gs_addr_counter
                     // TODO: outx = 0
                     gs2_data = gs1_data;
-                    gs_counter = GS_COUNTER_ORIGIN;
                 }
+                gs_addr_counter = GS_ADDR_COUNTER_ORIGIN;
+                line_counter = line_counter.read() + 1;
             } else if (lat_counter == 5) {
                 // WRTFC
             } else if (lat_counter == 7) {
@@ -89,6 +92,9 @@ class Driver : public sc_module {
                 // READFC
             } else if (lat_counter == 13) {
                 // TMGRST
+                gs_data_counter = 0;
+                line_counter = 0;
+                // TODO: force output off
             } else if (lat_counter == 15) {
                 // FCWRTEN, enable to write to FC data latch
                 current_mode = MODE_FCWRT;
@@ -123,6 +129,8 @@ class Driver : public sc_module {
     sc_signal<sc_bv<768>> gs2_data;
 
     sc_signal<int> lat_counter;
-    sc_signal<int> gs_counter;
+    sc_signal<int> gs_addr_counter;
+    sc_signal<int> gs_data_counter;
+    sc_signal<int> line_counter;
     sc_signal<driver_mode_t> current_mode;
 };
