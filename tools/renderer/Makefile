@@ -58,12 +58,6 @@ run: $(EXE)
 clean:
 	rm -f $(OBJS) $(DEPS) $(EXE)
 
-.clang_complete: $(CXXSRC)
-	$(MAKE) \
-		CC="~/.vim/bin/cc_args.py $(CC)" \
-		CXX="~/.vim/bin/cc_args.py $(CXX)" \
-		-B -j$(shell grep -c "^processor" /proc/cpuinfo)
-
 lint:
 	find . \( -regex '.*\.[vgf]s' -or -regex '.*\.[ch]\(pp\)*' \) -not -path './lib*' -exec clang-format -i '{}' \;
 	git status --porcelain | grep -e "^ M" && exit 1 || exit 0
