@@ -12,7 +12,7 @@ module top_module (
 	output [29:0] sin,
 	
 	//Columns multiplexers
-	output [7:0] mux,
+	output [7:0] mux_out,
 	
 	// UART
 	input rx,
@@ -32,14 +32,6 @@ module top_module (
 			sclk <= 1'b0;
 			lat <= 1'b0;
 			sin <= 30'b0;
-		end
-
-	// Column multiplexers
-	always @(posedge clk_50)
-		if(~nrst) begin
-			mux <= 8'b0;
-		end else begin
-			mux <= 8'b0;
 		end
 
 	// UART
