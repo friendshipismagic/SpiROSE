@@ -66,14 +66,14 @@ class Driver : public sc_module {
                 lat_counter = lat_counter.read() + 1;
             } else if (lat_counter == 1) {
                 // WRTGS, write to GS data at the GS counter position
-                write_to_bank(GS1, gs_counter.read(), shift_reg);
-
+                write_to_bank(GS1, gs_addr_counter.read(), shift_reg);
+                gs_addr_counter = gs_addr_counter.read() - 1;
             } else if (lat_counter == 3) {
                 // LATGS, write to GS data
-                write_to_bank(GS1, gs_counter.read(), shift_reg);
+                write_to_bank(GS1, gs_addr_counter.read(), shift_reg);
                 if (get_xrefresh() == 0) {
-                    // latch GS1 to GS2 when gs_counter = 65536
-                    if (gs_counter == 65536) {
+                    // latch GS1 to GS2 when gs_addr_counter = 65536
+                    if (gs_addr_counter == 0) {
                         gs2_data = gs1_data;
                     }
                 } else {
@@ -86,10 +86,22 @@ class Driver : public sc_module {
                 line_counter = line_counter.read() + 1;
             } else if (lat_counter == 5) {
                 // WRTFC
+                fc_data = shift_reg;
             } else if (lat_counter == 7) {
                 // LINERESET
+                write_to_bank(GS1, gs_addr_counter.read(), shift_reg);
+                line_counter = 0;
+                gs_addr_counter = GS_ADDR_COUNTER_ORIGIN;
+                if (get_xrefresh() == 0) {
+                    // TODO: copy everything when GS counter is 65536;
+                } else {
+                    gs2_data.write(gs1_data);
+                    gs_data_counter = 0;
+                    // TODO: OUTx forced off
+                }
             } else if (lat_counter == 11) {
                 // READFC
+                shift_reg.write(fc_data);
             } else if (lat_counter == 13) {
                 // TMGRST
                 gs_data_counter = 0;
