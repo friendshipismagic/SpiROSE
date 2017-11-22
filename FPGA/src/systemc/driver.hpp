@@ -83,6 +83,12 @@ class Driver : public sc_module {
                 }
             } else if (lat_counter == 5) {
                 // WRTFC
+            } else if (lat_counter == 7) {
+                // LINERESET
+            } else if (lat_counter == 11) {
+                // READFC
+            } else if (lat_counter == 13) {
+                // TMGRST
             } else if (lat_counter == 15) {
                 // FCWRTEN, enable to write to FC data latch
                 current_mode = MODE_FCWRT;
