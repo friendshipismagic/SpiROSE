@@ -1,5 +1,5 @@
 SRC_DIR=src
-TOP_LEVEL=top.sv
+TOP_LEVEL=top_module.sv
 LINTER=verilator
 LINTER_ARGS=--lint-only -Wall
 
