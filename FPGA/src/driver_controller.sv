@@ -48,7 +48,7 @@ module driver_controller #(parameter BLANKING_TIME = 512 - 9*48
  */
 enum logic[1:0] {STALL, CONFIG, STREAM, LOD} drivers_state;
 logic [7:0] drivers_state_int_counter;
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk_33)
    if(~nrst) begin
       drivers_state <= STALL;
       drivers_state_int_counter <= '0;
@@ -91,7 +91,7 @@ always_ff @(posedge clk_33 or negedge nrst)
  * In STREAM state, it corresponds to the number of data bits already sent.
  */
 logic [9:0] sclk_data_counter;
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk_33)
    if(~nrst) begin
       sclk_data_counter <= '0;
    end else begin
@@ -109,7 +109,7 @@ always_ff @(posedge clk_33 or negedge nrst)
  * This blanking is necessary only when displaying data, thus in STREAM mode.
  */
 logic blanking_period;
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk_33)
    if(~nrst) begin
       blanking_period <= '0;
    end else begin
@@ -154,7 +154,7 @@ assign driver_gclk = clk_33 & nrst &
  */
 enum [2:0] {NO_LAT, FCWRTEN, WRTFC, WRTGS, LATGS} lat_command;
 logic [3:0] lat_internal_counter;
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk_33)
    if(~nrst) begin
       driver_lat <= '0;
       lat_internal_counter <= '0;
@@ -204,7 +204,7 @@ always_ff @(posedge clk_33 or negedge nrst)
  * switch drivers to configuration mode.
  */
 logic begin_config;
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk_33)
    if(~nrst) begin
       lat_command <= NO_LAT;
       begin_config <= 1'b1;
@@ -250,7 +250,7 @@ always_ff @(posedge clk_33 or negedge nrst)
  *
  */
 logic [9:0] drivers_conf_internal_counter;
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk_33)
    if(~nrst) begin
       drivers_sin <= '0;
    end else begin

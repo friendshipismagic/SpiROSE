@@ -17,7 +17,7 @@ localparam DRIVE_CLOCK_CYCLES = $rtoi(DRIVE_TIME / 0.03);
  */
 logic [$clog2(DRIVE_CLOCK_CYCLES)-1:0] switch_counter;
 
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk_33)
    if(~nrst) begin
       switch_counter <= '0;
    end else begin
@@ -27,7 +27,7 @@ always_ff @(posedge clk_33 or negedge nrst)
       end
    end
 
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk_33)
    if(~nrst) begin
       mux_out <= 8'b0;
    end else begin
