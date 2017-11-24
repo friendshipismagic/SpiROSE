@@ -25,6 +25,7 @@ module driver_main_controller (
  * LOD is the LED Open Detection procedure
  */
 enum logic[1:0] {STALL, CONFIG, STREAM, LOD} drivers_state;
+// TODO
 
 /*
  * SCLK Data send counter. This counter counts the number of clock cycles
@@ -74,9 +75,10 @@ assign driver_sclk = clk_33 & nrst & ~blanking_period;
  * The GSCLK clock must be enabled only when the device is in STREAM and LOD
  * modes. The clock must be enabled after the GS data bank have already been
  * written.
- * TODO
+ * TODO check GS data default value (SLVUAF0 p.16)
  */
-assign driver_gclk = clk_33 & nrst;
+assign driver_gclk = clk_33 & nrst &
+   (drivers_state == STREAM || drivers_state == LOD);
 
 /*
  * driver_lat drives the LAT of the drivers.
@@ -89,12 +91,52 @@ assign driver_gclk = clk_33 & nrst;
  * - WRTGS command (1 SCLK rising edge) for writing to GS latch
  * - LATGS command (3 SCLK rising edges) for doing a WTYGS, then writing the
  *   first GS bank to the second
+ *
+ *   To send a LAT command, write the command in lat_command when the
+ *   lat_command is in NO_LAT.
  */
 enum [2:0] {NO_LAT, FCWRTEN, WRTFC, WRTGS, LATGS} lat_command;
+logic lat_internal_counter;
 always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
       driver_lat <= '0;
+      lat_internal_counter <= '0;
    end else begin
+      case(lat_command)
+         NO_LAT: begin
+            driver_lat <= 1'b0;
+            lat_internal_counter <= 1'b0;
+         end
+
+         FCWRTEN: begin
+            driver_lat <= 1'b1;
+            lat_internal_counter <= lat_internal_counter + 1;
+            // 1 clock shift
+            if(lat_internal_counter == 15 - 1)
+               lat_command <= NO_LAT;
+         end
+
+         WRTFC: begin
+            driver_lat <= 1'b1;
+            lat_internal_counter <= lat_internal_counter + 1;
+            // 1 clock shift
+            if(lat_internal_counter == 5 - 1)
+               lat_command <= NO_LAT;
+         end
+
+         WRTGS: begin
+            driver_lat <= 1'b1;
+         end
+
+         LATGS: begin
+            driver_lat <= 1'b1;
+            lat_internal_counter <= lat_internal_counter + 1;
+            if(lat_internal_counter == 3 - 1)
+               lat_command <= NO_LAT;
+         end
+
+         default: driver_lat <= '0;
+      endcase
    end
 
 /*
@@ -106,6 +148,7 @@ always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
       drivers_sin <= '0;
    end else begin
+      // TODO
    end
 
 endmodule
