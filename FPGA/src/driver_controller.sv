@@ -49,7 +49,7 @@ module driver_controller #(parameter BLANKING_TIME = 512 - 9*48
  * LOD for 1 clock cycle (TODO), then waits for framebuffer sync signal
  * STREAM until reset
  */
-enum logic[1:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD} drivers_state;
+enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD} drivers_state;
 logic [7:0] drivers_config_counter;
 always_ff @(posedge clk_33)
     if(~nrst) begin
@@ -215,9 +215,7 @@ always_ff @(posedge clk_33)
  */
 always_comb begin
     case(drivers_state)
-        STALL, PREPARE_CONFIG: begin
-            drivers_sin = '0;
-        end
+      
         CONFIG: begin
             for(int i = 0; i < 30; i++) begin
                 drivers_sin[i] = serialized_conf[47 - sclk_data_counter];
@@ -227,9 +225,11 @@ always_comb begin
             drivers_sin = framebuffer_dat;
         end
         LOD: begin
+			   drivers_sin = '0;
             // TODO
         end
         default: begin
+			   drivers_sin = '0;
         end
     endcase
 end
