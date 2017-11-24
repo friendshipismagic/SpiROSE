@@ -41,7 +41,7 @@ module driver_main_controller #(parameter BLANKING_TIME = 512 - 9*48
  * STREAM until reset
  */
 enum logic[1:0] {STALL, CONFIG, STREAM, LOD} drivers_state;
-logic [] drivers_state_int_counter;
+logic [7:0] drivers_state_int_counter;
 always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
       drivers_state <= STALL;
