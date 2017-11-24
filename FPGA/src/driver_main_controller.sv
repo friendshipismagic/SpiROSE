@@ -1,4 +1,5 @@
-module driver_main_controller (
+module driver_main_controller #(parameter BLANKING_TIME = 512 - 9*48
+)(
    input clk_33,
    input nrst,
 
@@ -25,7 +26,10 @@ module driver_main_controller (
  * LOD is the LED Open Detection procedure
  */
 enum logic[1:0] {STALL, CONFIG, STREAM, LOD} drivers_state;
-// TODO
+always_ff @(posegde clk_33 or negedge nrst)
+   if(~nrst) begin
+   end else begin
+   end
 
 /*
  * SCLK Data send counter. This counter counts the number of clock cycles
@@ -52,14 +56,13 @@ always_ff @(posedge clk_33 or negedge nrst)
  * to avoid latching issues.
  * This blanking is necessary only when displaying data, thus in STREAM mode.
  */
-localparam blanking_sclk_start = 9*48;
 logic blanking_period;
 always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
       blanking_period <= '0;
    end else begin
       if(drivers_state == STREAM) begin
-         blanking_period <= sclk_data_counter >= blanking_sclk_start;
+         blanking_period <= sclk_data_counter < BLANKING_TIME;
       end
    end
 
