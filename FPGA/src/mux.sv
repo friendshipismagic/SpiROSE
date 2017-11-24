@@ -6,10 +6,10 @@ module mux #(parameter DRIVE_TIME = 10)
    input nrst,
 
    output [7:0] mux_out
-)
+);
 
 // Convert the drive time into clock cycles
-localparam DRIVE_CLOCK_CYCLES = DRIVE_TIME / 0.02;
+localparam DRIVE_CLOCK_CYCLES = $rtoi(DRIVE_TIME / 0.02);
 
 /*
  * Counter for switching. 50 MHz (20ns) clock is used, the multiplexing can go
@@ -19,31 +19,30 @@ logic [$clog2(DRIVE_CLOCK_CYCLES)-1:0] switch_counter;
 
 always_ff @(posedge clk_50 or negedge nrst)
    if(~nrst) begin
-      err <= 1'b0;
       switch_counter <= '0;
    end else begin
       switch_counter <= switch_counter + 1'b1;
       if(switch_counter == DRIVE_CLOCK_CYCLES) begin
          switch_counter <= '0;
       end
-
    end
 
 always_ff @(posedge clk_50 or negedge nrst)
    if(~nrst) begin
-      mux <= 8'b0;
+      mux_out <= 8'b0;
    end else begin
       if(switch_counter == '0) begin
-         case(mux)
-            8'b00000000: mux <= 8'b00000001;
-            8'b00000001: mux <= 8'b00000010;
-            8'b00000010: mux <= 8'b00000100;
-            8'b00000100: mux <= 8'b00001000;
-            8'b00001000: mux <= 8'b00010000;
-            8'b00010000: mux <= 8'b00100000;
-            8'b00100000: mux <= 8'b01000000;
-            8'b01000000: mux <= 8'b10000000;
-            8'b10000000: mux <= 8'b00000001;
+         case(mux_out)
+            8'b00000000: mux_out <= 8'b00000001;
+            8'b00000001: mux_out <= 8'b00000010;
+            8'b00000010: mux_out <= 8'b00000100;
+            8'b00000100: mux_out <= 8'b00001000;
+            8'b00001000: mux_out <= 8'b00010000;
+            8'b00010000: mux_out <= 8'b00100000;
+            8'b00100000: mux_out <= 8'b01000000;
+            8'b01000000: mux_out <= 8'b10000000;
+            8'b10000000: mux_out <= 8'b00000001;
+            default:mux_out <= 8'b0;
          endcase
       end
    end

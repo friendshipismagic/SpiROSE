@@ -41,5 +41,4 @@ module top_module (
 		end else begin
 			tx <= rx;
 		end
-	
 endmodule
