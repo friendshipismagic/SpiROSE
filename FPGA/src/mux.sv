@@ -2,22 +2,22 @@
 // CAUTION: the LEDs overdrive cannot exceed 10µs at full value
 module mux #(parameter DRIVE_TIME = 10)
 (
-   input clk_50,
+   input clk_33,
    input nrst,
 
    output [7:0] mux_out
 );
 
-// Convert the drive time into clock cycles
-localparam DRIVE_CLOCK_CYCLES = $rtoi(DRIVE_TIME / 0.02);
+// Convert the drive time into clock cycles. 30 ns ~ 33.33MHz
+localparam DRIVE_CLOCK_CYCLES = $rtoi(DRIVE_TIME / 0.03);
 
 /*
- * Counter for switching. 50 MHz (20ns) clock is used, the multiplexing can go
+ * Counter for switching. 33 MHz (30ns) clock is used, the multiplexing can go
  * up to DRIVE_CLOCK_CYCLES.
  */
 logic [$clog2(DRIVE_CLOCK_CYCLES)-1:0] switch_counter;
 
-always_ff @(posedge clk_50 or negedge nrst)
+always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
       switch_counter <= '0;
    end else begin
@@ -27,7 +27,7 @@ always_ff @(posedge clk_50 or negedge nrst)
       end
    end
 
-always_ff @(posedge clk_50 or negedge nrst)
+always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
       mux_out <= 8'b0;
    end else begin
