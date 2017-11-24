@@ -30,6 +30,9 @@ module driver_main_controller #(parameter BLANKING_TIME = 512 - 9*48
  * CONFIG state is the configuration state
  * STREAM state is the state used to stream LEDs data to the drivers
  * LOD is the LED Open Detection procedure
+ *
+ * The STREAM state considers the framebuffer_dat to be already synchronised,
+ * it is necessary to synchronise it before the transition to this state.
  */
 enum logic[1:0] {STALL, CONFIG, STREAM, LOD} drivers_state;
 always_ff @(posegde clk_33 or negedge nrst)
@@ -69,6 +72,8 @@ always_ff @(posedge clk_33 or negedge nrst)
    end else begin
       if(drivers_state == STREAM) begin
          blanking_period <= sclk_data_counter < BLANKING_TIME;
+      end else begin
+         blanking_period <= 1'b0;
       end
    end
 
@@ -149,10 +154,59 @@ always_ff @(posedge clk_33 or negedge nrst)
    end
 
 /*
+ * LAT Commands sender. Sends FCWRTEN and WRTFC on CONFIG state, and WRTGS and
+ * LATGS on STREAM state (TODO for LOD state)
+ *
+ * begin_config is a micro-state used to send the initialization command to
+ * switch drivers to configuration mode.
+ */
+logic begin_config;
+always_ff @(posedge clk_33 or negedge nrst)
+   if(~nrst) begin
+      lat_command <= NO_LAT;
+      begin_config <= 1'b1;
+   end else begin
+      case(drivers_state)
+         STALL: begin
+            // If driver is stalled, there is nothing to send
+         end
+
+         CONFIG: begin
+            begin_config <= 1'b0;
+            if(begin_config) begin
+               lat_command <= FCWRTEN;
+            end
+            // Send the WRTFC during the 5 last bits to trigger latch at EOT
+            if(sclk_data_counter >= 47 - 5) begin
+               lat_command <= WRTFC;
+            end
+         end
+
+         STREAM: begin
+            // Send 8 WRTGS, 1 every 48 SCLK cycles, except for the last one
+            // Send 1 LATGS, at the end
+            if((sclk_data_counter % 48 == 47) &&
+               (sclk_data_counter != 9*48 - 1)) begin
+               lat_command <= WRTGS;
+            end else if(sclk_data_counter == 9*48 - 3) begin
+               lat_command <= LATGS;
+            end
+         end
+
+         LOD: begin
+            // TODO
+         end
+
+         default: lat_command <= NO_LAT;
+      endcase
+   end
+
+/*
  * drivers_sin write the LEDs data or the configuration data depending on the
  * current running state
  *
  */
+logic [9:0] drivers_conf_internal_counter;
 always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
       drivers_sin <= '0;
@@ -160,12 +214,17 @@ always_ff @(posedge clk_33 or negedge nrst)
       case(drivers_state)
          STALL: begin
             drivers_sin <= 30'b0;
+            drivers_conf_internal_counter <= '0;
          end
          CONFIG: begin
+            drivers_sin <= serialized_conf[47 - drivers_conf_internal_counter];
+            drivers_conf_internal_counter <= drivers_conf_internal_counter + 1;
          end
          STREAM: begin
+            drivers_sin <= framebuffer_dat;
          end
          LOD: begin
+            // TODO
          end
          default:
       endcase
