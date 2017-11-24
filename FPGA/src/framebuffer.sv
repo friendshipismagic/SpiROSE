@@ -22,10 +22,37 @@ module  framebuffer #(
 
 localparam MULTIPLEXING = 8;
 localparam LED_PER_DRIVER = 16;
-localparam DRIVER_IMAGE_SIZE = LED_PER_DRIVER*MULTIPLEXING;
 localparam ROW_SIZE = 80;
 localparam COLUMN_SIZE = 48;
 localparam IMAGE_SIZE = ROW_SIZE*COLUMN_SIZE;
+
+/*
+ * The drivers are layout as follow:
+ * |++++++++++++++++++++||++++++++++++++++++++|     |++++++++++++++++++++|
+ * | driver 1 (8*16 led)|| driver 3 (8*16 led)| ... | driver 9 (8*16 led)|
+ * |++++++++++++++++++++||++++++++++++++++++++|     |++++++++++++++++++++|
+ *          ...
+ * |++++++++++++++++++++||++++++++++++++++++++|     |++++++++++++++++++++|
+ * | driver21 (8*16 led)|| driver23 (8*16 led)| ... | driver30 (8*16 led)|
+ * |++++++++++++++++++++||++++++++++++++++++++|     |++++++++++++++++++++|
+ *
+ * Driver 1 and 2 are intertwined as follow:
+ * d1_pixel1  d2_pixel1  ... d1_pixel8  d2 pixel_8
+ *                       ...
+ * d1_pixel73 d2_pixel73 ... d1_pixel80 d2 pixel_80
+ *
+ * - The base address for driver 2 is the same as driver 1 plus one.
+ * - For driver 3 the base address is 2*MULTIPLEXING.
+ * - For driver 10 the base address is ROW_SIZE*LED_PER_DRIVER. Thus on each
+ *   line of driver the offset increases by ROW_SIZE*LED_PER_DRIVER.
+ */
+localparam [29:0] [31:0] DRIVER_BASE = DRIVER_BASE_CALC();
+function [29:0] [31:0] DRIVER_BASE_CALC();
+    for(int i = 0 ; i < 29; i++) begin
+        int driver_line = i / 10;
+        DRIVER_BASE_CALC[i] = i*2*MULTIPLEXING + i%2 + driver_line*ROW_SIZE*LED_PER_DRIVER;
+    end
+endfunction
 
 /*
  * The two framebuffers, while one is reading the ram the other is sending
@@ -79,13 +106,20 @@ always_ff @(posedge clk_33)
         end
     end
 
-// Read the buffer to send data to the driver main controller
+/*
+ * Read the writing_buffer to send data to the driver main controller.
+ *
+ * If a driver start at address n, his first voxel is at address n, the second
+ * one is at address n+2 becasue of the interleaving described above, hence we
+ * add 2*mul_idx to the base address to get the right column. Then we add
+ * led_idx*ROW_SIZE to get the right line.
+ */
 always_ff @(posedge clk_33)
     if(~nrst) begin
         data <= '0;
     end else begin
         for(int i = 0; i < 30; ++i) begin
-            data[i] <= writing_buffer[ROW_SIZE*led_idx + mul_idx][bit_idx];
+            data[i] <= writing_buffer[DRIVER_BASE[i] + 2*mul_idx + led_idx*ROW_SIZE][bit_idx];
         end
     end
 
