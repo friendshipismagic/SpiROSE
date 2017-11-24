@@ -102,7 +102,9 @@ void Driver::handle_lat() {
             }
         } else if (lat_counter == 11) {
             // READFC
-            shift_reg.write(fc_data);
+            // It's the following line, but we can't do it because it is driven
+            // TODO: write an handle_sout using either fc_data or shift_reg
+            // by handle_sin shift_reg.write(fc_data);
         } else if (lat_counter == 13) {
             // TMGRST
             gs_data_counter = 0;
@@ -117,13 +119,23 @@ void Driver::handle_lat() {
 
 void Driver::write_to_bank(driver_bank_t bank, int buffer_id,
                            const sc_bv<48>& buffer) {
-    // Calculate the slice where to write in GS
-    int end = 48 * (1 + buffer_id) - 1;
-
-    // We need to extract the data from signal to apply range
-    // operator
     auto& gs = (bank == GS1) ? gs1_data : gs2_data;
     auto vec = gs.read();
-    vec(end, end - 47) = buffer(47, 0);
+    if (!get_poker_mode()) {
+        // Calculate the slice where to write in GS
+        int end = 48 * (1 + buffer_id) - 1;
+
+        // We need to extract the data from signal to apply range
+        // operator
+        vec(end, end - 47) = buffer(47, 0);
+    } else {
+        // i is the buffer iterator from end to start
+        for (int i = 16; i >= 0; --i) {
+            // j is the current color of the pixel
+            for (int j = 0; j < 3; ++i) {
+                vec[i * 48 - (16 - buffer_id) - j * 16] = buffer[i];
+            }
+        }
+    }
     gs.write(vec);
 }
