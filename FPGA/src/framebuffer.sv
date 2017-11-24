@@ -49,14 +49,38 @@ localparam [2:0] [15:0] COLOR_BASE = '{0,5,11};
  *   line of driver the offset increases by ROW_SIZE*LED_PER_DRIVER.
  */
 localparam IMAGE_SIZE_LOG = $clog2(IMAGE_SIZE);
-localparam [29:0] [IMAGE_SIZE_LOG-1:0] DRIVER_BASE = DRIVER_BASE_CALC();
-function [29:0] [IMAGE_SIZE_LOG-1:0] DRIVER_BASE_CALC();
-    for(int i = 0 ; i < 29; i++) begin
-        int driver_line = i / 10;
-        DRIVER_BASE_CALC[i] = IMAGE_SIZE_LOG'(i*2*MULTIPLEXING + i%2
-                                        + driver_line*ROW_SIZE*LED_PER_DRIVER);
-    end
-endfunction
+localparam [29:0] [IMAGE_SIZE_LOG-1:0] DRIVER_BASE = '{
+    0*2*MULTIPLEXING + 0 + 0*ROW_SIZE*LED_PER_DRIVER,
+    0*2*MULTIPLEXING + 1 + 0*ROW_SIZE*LED_PER_DRIVER,
+    1*2*MULTIPLEXING + 0 + 0*ROW_SIZE*LED_PER_DRIVER,
+    1*2*MULTIPLEXING + 1 + 0*ROW_SIZE*LED_PER_DRIVER,
+    2*2*MULTIPLEXING + 0 + 0*ROW_SIZE*LED_PER_DRIVER,
+    2*2*MULTIPLEXING + 1 + 0*ROW_SIZE*LED_PER_DRIVER,
+    3*2*MULTIPLEXING + 0 + 0*ROW_SIZE*LED_PER_DRIVER,
+    3*2*MULTIPLEXING + 1 + 0*ROW_SIZE*LED_PER_DRIVER,
+    4*2*MULTIPLEXING + 0 + 0*ROW_SIZE*LED_PER_DRIVER,
+    4*2*MULTIPLEXING + 1 + 0*ROW_SIZE*LED_PER_DRIVER,
+    0*2*MULTIPLEXING + 0 + 1*ROW_SIZE*LED_PER_DRIVER,
+    0*2*MULTIPLEXING + 1 + 1*ROW_SIZE*LED_PER_DRIVER,
+    1*2*MULTIPLEXING + 0 + 1*ROW_SIZE*LED_PER_DRIVER,
+    1*2*MULTIPLEXING + 1 + 1*ROW_SIZE*LED_PER_DRIVER,
+    2*2*MULTIPLEXING + 0 + 1*ROW_SIZE*LED_PER_DRIVER,
+    2*2*MULTIPLEXING + 1 + 1*ROW_SIZE*LED_PER_DRIVER,
+    3*2*MULTIPLEXING + 0 + 1*ROW_SIZE*LED_PER_DRIVER,
+    3*2*MULTIPLEXING + 1 + 1*ROW_SIZE*LED_PER_DRIVER,
+    4*2*MULTIPLEXING + 0 + 1*ROW_SIZE*LED_PER_DRIVER,
+    4*2*MULTIPLEXING + 1 + 1*ROW_SIZE*LED_PER_DRIVER,
+	0*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+	0*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
+	1*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+	1*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
+	2*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+	2*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
+	3*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+	3*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
+	4*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+	4*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER
+};
 
 /*
  * The two framebuffers, while one is reading the ram the other is sending
@@ -64,8 +88,6 @@ endfunction
  */
 logic [RAM_DATA_WIDTH-1:0] buffer1 [IMAGE_SIZE-1:0];
 logic [RAM_DATA_WIDTH-1:0] buffer2 [IMAGE_SIZE-1:0];
-wire  [RAM_DATA_WIDTH-1:0] reading_buffer [IMAGE_SIZE-1:0];
-wire  [RAM_DATA_WIDTH-1:0] writing_buffer [IMAGE_SIZE-1:0];
 
 // The index of the buffer we are currently using
 logic current_buffer;
@@ -99,7 +121,6 @@ wire[RAM_ADDR_WIDTH-1:0] image_start_addr;
 assign sync = (blanking_cnt == BLANKING_CYCLES-2) && (mul_idx == 0);
 
 // Read ram to fill the reading buffer
-assign reading_buffer = current_buffer ? buffer1 : buffer2;
 assign has_reached_end = write_idx == IMAGE_SIZE-1;
 assign image_start_addr = enc_position*IMAGE_SIZE + RAM_BASE;
 assign new_image = enc_sync;
@@ -119,7 +140,11 @@ always_ff @(posedge clk_33)
         end else if(~has_reached_end) begin
             ram_addr <= ram_addr + 1'b1;
             write_idx <= write_idx + 1'b1;
-            reading_buffer[write_idx] <= ram_data;
+				if(current_buffer) begin
+					buffer1[write_idx] <= ram_data;
+				end else begin
+					buffer2[write_idx] <= ram_data;
+				end
         end
     end
 
@@ -135,7 +160,6 @@ always_ff @(posedge clk_33)
  * green color for instance we get bits 10 to 5. The red and blue color have
  * 5 bits instead of 6, hence we need to substract 1 to color_addr.
  */
-assign writing_buffer = current_buffer ? buffer2 : buffer1;
 assign voxel_addr = 2*mul_idx + led_idx*ROW_SIZE;
 assign color_bit_idx = (bit_idx >= 3) ? bit_idx - 3 : 0;
 assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]) - 4'(rgb_idx != 1);
@@ -155,7 +179,11 @@ always_ff @(posedge clk_33)
         if(~blanking
             && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
             for(int i = 0; i < 30; ++i) begin
-                data[i] <= writing_buffer[DRIVER_BASE[i] + voxel_addr][color_addr];
+					if(current_buffer) begin
+						data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr][color_addr];
+					end else begin
+						data[i] <= buffer1[DRIVER_BASE[i] + voxel_addr][color_addr];
+					end
             end
         end
     end
