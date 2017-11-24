@@ -48,11 +48,13 @@ localparam [2:0] [15:0] COLOR_BASE = '{0,5,11};
  * - For driver 10 the base address is ROW_SIZE*LED_PER_DRIVER. Thus on each
  *   line of driver the offset increases by ROW_SIZE*LED_PER_DRIVER.
  */
-localparam [29:0] [31:0] DRIVER_BASE = DRIVER_BASE_CALC();
-function [29:0] [31:0] DRIVER_BASE_CALC();
+localparam IMAGE_SIZE_LOG = $clog2(IMAGE_SIZE);
+localparam [29:0] [IMAGE_SIZE_LOG-1:0] DRIVER_BASE = DRIVER_BASE_CALC();
+function [29:0] [IMAGE_SIZE_LOG-1:0] DRIVER_BASE_CALC();
     for(int i = 0 ; i < 29; i++) begin
         int driver_line = i / 10;
-        DRIVER_BASE_CALC[i] = i*2*MULTIPLEXING + i%2 + driver_line*ROW_SIZE*LED_PER_DRIVER;
+        DRIVER_BASE_CALC[i] = IMAGE_SIZE_LOG'(i*2*MULTIPLEXING + i%2
+                                        + driver_line*ROW_SIZE*LED_PER_DRIVER);
     end
 endfunction
 
@@ -68,7 +70,7 @@ wire  [RAM_DATA_WIDTH-1:0] writing_buffer [IMAGE_SIZE-1:0];
 // The index of the buffer we are currently using
 logic current_buffer;
 // The write index of the buffer reading the ram
-logic [$clog2(IMAGE_SIZE)-1:0] write_idx;
+logic [IMAGE_SIZE_LOG-1:0] write_idx;
 // The column we are currently sending
 logic [$clog2(MULTIPLEXING)-1:0] mul_idx;
 // The led we are currently sending data to
@@ -77,12 +79,15 @@ logic [$clog2(LED_PER_DRIVER)-1:0] led_idx;
 logic [$clog2(POKER_MODE)-1:0] bit_idx;
 // The color we are currently sending
 logic [1:0] rgb_idx;
+
+// We need to do BLANKING_CYCLES cycles of blanking each time we change column
+wire blanking;
 logic [$clog2(BLANKING_CYCLES)-1:0] blanking_cnt;
 
 // The three following wires help to compute the correct voxel and bit address
 wire [$clog2(RAM_DATA_WIDTH)-1:0] color_addr;
-wire [$clog2(IMAGE_SIZE)-1:0] voxel_addr;
-wire  [$clog2(POKER_MODE)-1:0] color_bit_idx;
+wire [IMAGE_SIZE_LOG-1:0] voxel_addr;
+wire [$clog2(POKER_MODE)-1:0] color_bit_idx;
 // Indicates that we have written a whole slice in the buffer
 wire has_reached_end;
 // Indicates that the buffers need to be swapped
@@ -133,7 +138,8 @@ always_ff @(posedge clk_33)
 assign writing_buffer = current_buffer ? buffer2 : buffer1;
 assign voxel_addr = 2*mul_idx + led_idx*ROW_SIZE;
 assign color_bit_idx = (bit_idx >= 3) ? bit_idx - 3 : 0;
-assign color_addr = color_bit_idx + COLOR_BASE[rgb_idx] - (rgb_idx != 1);
+assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]) - 4'(rgb_idx != 1);
+assign blanking = (blanking_cnt != 0);
 
 always_ff @(posedge clk_33)
     if(~nrst) begin
@@ -146,7 +152,8 @@ always_ff @(posedge clk_33)
          * rgb_idx == 1 means we are sending the green color which has 6 bits
          * instead of 5.
          */
-        if(bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3)) begin
+        if(~blanking
+            && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
             for(int i = 0; i < 30; ++i) begin
                 data[i] <= writing_buffer[DRIVER_BASE[i] + voxel_addr][color_addr];
             end
@@ -175,13 +182,13 @@ always_ff @(posedge clk_33)
             rgb_idx <= rgb_idx + 1'b1;
             if(rgb_idx == 2) begin
                 led_idx <= led_idx + 1'b1;
-                if(led_idx == LED_PER_DRIVER-1) begin
+                if(led_idx == 4'(LED_PER_DRIVER-1)) begin
                     led_idx <= '0;
                     bit_idx <= bit_idx - 1'b1;
                     if(bit_idx == 0) begin
                         bit_idx <= POKER_MODE-1;
                         mul_idx <= mul_idx + 1'b1;
-                        if(mul_idx == MULTIPLEXING-1) begin
+                        if(mul_idx == 3'(MULTIPLEXING-1)) begin
                             mul_idx <= '0;
                             blanking_cnt <= BLANKING_CYCLES-1;
                         end
