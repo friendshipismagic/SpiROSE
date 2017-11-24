@@ -19,6 +19,12 @@ module driver_main_controller #(parameter BLANKING_TIME = 512 - 9*48
 );
 
 /*
+ * Default configuration for drivers
+ * To change the default configuration, please go to drivers_conf.sv
+ */
+`include "drivers_conf.sv"
+
+/*
  * List of the possible states of the drivers
  * STALL state is the initial state, whe the drivers are not configured
  * CONFIG state is the configuration state
@@ -151,7 +157,18 @@ always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
       drivers_sin <= '0;
    end else begin
-      // TODO
+      case(drivers_state)
+         STALL: begin
+            drivers_sin <= 30'b0;
+         end
+         CONFIG: begin
+         end
+         STREAM: begin
+         end
+         LOD: begin
+         end
+         default:
+      endcase
    end
 
 endmodule
