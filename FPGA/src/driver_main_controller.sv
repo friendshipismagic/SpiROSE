@@ -33,11 +33,48 @@ module driver_main_controller #(parameter BLANKING_TIME = 512 - 9*48
  *
  * The STREAM state considers the framebuffer_dat to be already synchronised,
  * it is necessary to synchronise it before the transition to this state.
+ *
+ * Boot-time transition is:
+ * STALL for 1 clock cycle
+ * CONFIG for 15+48 clock cycles
+ * LOD for 1 clock cycle (TODO), then waits for framebuffer sync signal
+ * STREAM until reset
  */
 enum logic[1:0] {STALL, CONFIG, STREAM, LOD} drivers_state;
-always_ff @(posegde clk_33 or negedge nrst)
+logic [] drivers_state_int_counter;
+always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
+      drivers_state <= STALL;
+      drivers_state_int_counter <= '0;
    end else begin
+      case(drivers_state)
+         STALL: begin
+            drivers_state <= CONFIG;
+         end
+
+         CONFIG: begin
+            drivers_state_int_counter <= drivers_state_int_counter + 1;
+            if(drivers_state_int_counter == 48+15) begin
+               drivers_state <= LOD;
+            end
+         end
+
+         LOD: begin
+            // TODO
+            if(framebuffer_sync) begin
+               drivers_state <= STREAM;
+            end
+         end
+
+         STREAM: begin
+            // Final state, nothing to do
+         end
+
+         default: begin
+            drivers_state <= STALL;
+            drivers_state_internal_counter <= '0;
+         end
+      endcase
    end
 
 /*
@@ -222,6 +259,7 @@ always_ff @(posedge clk_33 or negedge nrst)
          end
          STREAM: begin
             drivers_sin <= framebuffer_dat;
+            drivers_conf_internal_counter <= '0;
          end
          LOD: begin
             // TODO
