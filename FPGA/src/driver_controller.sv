@@ -152,7 +152,7 @@ assign driver_gclk = clk_33 & nrst &
  *   To send a LAT command, write the command in lat_command when the
  *   lat_command is in NO_LAT.
  */
-enum [2:0] {NO_LAT, FCWRTEN, WRTFC, WRTGS, LATGS} lat_command;
+enum logic[2:0] {NO_LAT, FCWRTEN, WRTFC, WRTGS, LATGS} lat_command;
 logic [3:0] lat_internal_counter;
 always_ff @(posedge clk_33)
    if(~nrst) begin
