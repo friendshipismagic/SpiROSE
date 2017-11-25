@@ -4,8 +4,8 @@ module top_module (
     input nrst,
 
     // RGB bus
-    // input [23:0] rgb,
-    // input hsync, vsync, rgb_clk,
+    input [23:0] rgb,
+    input hsync, vsync, rgb_clk,
 
     // Driver output
     output sclk,
@@ -28,6 +28,12 @@ module top_module (
     input enc0, enc1
 );
 
+/*
+ * Default configuration for drivers
+ * To change the default configuration, please go to drivers_conf.sv
+ */
+`include "drivers_conf.sv"
+
 // Driver output
 driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
     .clk_33(clk_33),
@@ -39,7 +45,8 @@ driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
     .driver_lat(lat),
     .drivers_sin(sin),
     .driver_sout(sout),
-    .driver_sout_mux(sout_mux)
+    .driver_sout_mux(sout_mux),
+    .serialized_conf(serialized_conf)
 );
 
 endmodule

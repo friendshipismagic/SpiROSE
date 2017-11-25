@@ -15,21 +15,18 @@ module driver_controller #(parameter BLANKING_TIME = 512 - 9*48
    input framebuffer_sync,
 
    // Drivers direct output
-   output driver_sclk,
-   output driver_gclk,
-   output driver_lat,
-   output [29:0] drivers_sin,
+   output reg driver_sclk,
+   output reg driver_gclk,
+   output reg driver_lat,
+   output reg [29:0] drivers_sin,
 
    // LOD procedure
    input driver_sout,
-   output [4:0] driver_sout_mux
-);
+   output reg [4:0] driver_sout_mux,
 
-/*
- * Default configuration for drivers
- * To change the default configuration, please go to drivers_conf.sv
- */
-`include "drivers_conf.sv"
+   // Default configuration structure
+   input [47:0] serialized_conf
+);
 
 /*
  * List of the possible states of the drivers
@@ -63,7 +60,7 @@ always_ff @(posedge clk_33)
 
             PREPARE_CONFIG: begin
                 drivers_config_counter <= drivers_config_counter + 1;
-                if(drivers_config_counter == FCWRTEN) begin
+                if(drivers_config_counter == 15) begin
                     drivers_state <= CONFIG;
                     drivers_config_counter <= '0;
                 end
@@ -215,7 +212,6 @@ always_ff @(posedge clk_33)
  */
 always_comb begin
     case(drivers_state)
-      
         CONFIG: begin
             for(int i = 0; i < 30; i++) begin
                 drivers_sin[i] = serialized_conf[47 - sclk_data_counter];
@@ -225,11 +221,12 @@ always_comb begin
             drivers_sin = framebuffer_dat;
         end
         LOD: begin
-			   drivers_sin = '0;
-            // TODO
+            drivers_sin = '0;
+            // TODO: LOD procedure
+            driver_sout_mux = 5'(driver_sout);
         end
         default: begin
-			   drivers_sin = '0;
+            drivers_sin = '0;
         end
     endcase
 end
