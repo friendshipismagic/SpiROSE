@@ -24,6 +24,7 @@
 # Clock constraints
 
 create_clock -name "clk_50" -period 20.000ns [get_ports {clk_50}]
+create_clock -name "clk_33" -period 30.000ns [get_ports {clk_33}]
 create_clock -name "rgb" -period 20.000ns [get_ports {rgb_clk}]
 
 
