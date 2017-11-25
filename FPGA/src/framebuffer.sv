@@ -9,12 +9,12 @@ module framebuffer #(
     input nrst,
 
     // Data and sync signal for the driver main controller
-    output[29:0] data,
-    output       sync,
+    output reg [29:0] data,
+    output reg        sync,
 
     // Ram access
-    output[RAM_ADDR_WIDTH-1:0] ram_addr,
-    input [RAM_DATA_WIDTH-1:0] ram_data,
+    output reg [RAM_ADDR_WIDTH-1:0] ram_addr,
+    input      [RAM_DATA_WIDTH-1:0] ram_data,
 
     // Encoder position and sync signal
     input[7:0] enc_position,
