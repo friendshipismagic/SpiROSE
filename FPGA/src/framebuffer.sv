@@ -70,16 +70,16 @@ localparam [29:0] [IMAGE_SIZE_LOG-1:0] DRIVER_BASE = '{
     3*2*MULTIPLEXING + 1 + 1*ROW_SIZE*LED_PER_DRIVER,
     4*2*MULTIPLEXING + 0 + 1*ROW_SIZE*LED_PER_DRIVER,
     4*2*MULTIPLEXING + 1 + 1*ROW_SIZE*LED_PER_DRIVER,
-	0*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
-	0*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
-	1*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
-	1*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
-	2*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
-	2*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
-	3*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
-	3*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
-	4*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
-	4*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER
+    0*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+    0*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
+    1*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+    1*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
+    2*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+    2*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
+    3*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+    3*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER,
+    4*2*MULTIPLEXING + 0 + 2*ROW_SIZE*LED_PER_DRIVER,
+    4*2*MULTIPLEXING + 1 + 2*ROW_SIZE*LED_PER_DRIVER
 };
 
 /*
@@ -88,6 +88,17 @@ localparam [29:0] [IMAGE_SIZE_LOG-1:0] DRIVER_BASE = '{
  */
 logic [RAM_DATA_WIDTH-1:0] buffer1 [IMAGE_SIZE-1:0];
 logic [RAM_DATA_WIDTH-1:0] buffer2 [IMAGE_SIZE-1:0];
+/*
+ * CAUTION: Fill the buffers with 0 at runtime. This remove the verilator error
+ * about large for loop but means that they won't be initialized again at
+ * reset, thus this have to be removed in the latets design.
+ */
+initial begin
+    for(int i = 0; i < IMAGE_SIZE; i++) begin
+        buffer1[i] = '0;
+        buffer2[i] = '0;
+    end
+end
 
 // The index of the buffer we are currently using
 logic current_buffer;
@@ -127,10 +138,6 @@ assign new_image = enc_sync;
 
 always_ff @(posedge clk_33)
     if(~nrst) begin
-        for(int i = 0; i < IMAGE_SIZE; ++i) begin
-            buffer1[i] = '0;
-            buffer2[i] = '0;
-        end
         write_idx <= '0;
     end else begin
         if(new_image) begin
@@ -140,11 +147,11 @@ always_ff @(posedge clk_33)
         end else if(~has_reached_end) begin
             ram_addr <= ram_addr + 1'b1;
             write_idx <= write_idx + 1'b1;
-				if(current_buffer) begin
-					buffer1[write_idx] <= ram_data;
-				end else begin
-					buffer2[write_idx] <= ram_data;
-				end
+            if(current_buffer) begin
+                buffer1[write_idx] <= ram_data;
+            end else begin
+                buffer2[write_idx] <= ram_data;
+            end
         end
     end
 
@@ -179,11 +186,11 @@ always_ff @(posedge clk_33)
         if(~blanking
             && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
             for(int i = 0; i < 30; ++i) begin
-					if(current_buffer) begin
-						data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr][color_addr];
-					end else begin
-						data[i] <= buffer1[DRIVER_BASE[i] + voxel_addr][color_addr];
-					end
+                if(current_buffer) begin
+                    data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr][color_addr];
+                end else begin
+                    data[i] <= buffer1[DRIVER_BASE[i] + voxel_addr][color_addr];
+                end
             end
         end
     end
