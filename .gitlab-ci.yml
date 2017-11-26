@@ -11,8 +11,8 @@ variables:
   FPGA_DIR: "FPGA"
 
 before_script:
-    - git submodule init
-    - git submodule update
+  - git submodule init
+  - git submodule update
 
 lint_lower_tower:
   stage: lint
@@ -44,47 +44,58 @@ host_lower_tower:
 lint_sbc:
   stage: lint
   script:
-  - cd $SBC_DIR
-  - make lint
+    - cd $SBC_DIR
+    - make lint
 
 build_sbc:
   stage: build
   script:
-  - cd $SBC_DIR
-  - make build
+    - cd $SBC_DIR
+    - make build
 
 test_sbc:
   stage: test
   script:
-  - cd $SBC_DIR
-  - make test
+    - cd $SBC_DIR
+    - make test
 
 host_sbc:
    stage: host
    script:
-   - cd $SBC_DIR
-   - make host
+     - cd $SBC_DIR
+     - make host
 
 lint_fpga:
   stage: lint
+  image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
     - make lint
 
 build_fpga:
   stage: build
+  image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
     - make build
 
 test_fpga:
   stage: test
+  image: tuetuopay/verilator
   script:
-     - cd $FPGA_DIR
-     - make test
+    - cd $FPGA_DIR
+    - make build
+
+test_fpga:
+  stage: test
+  image: tuetuopay/verilator
+  script:
+    - cd $FPGA_DIR
+    - make test
 
 host_fpga:
   stage: host
+  image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
     - make host
