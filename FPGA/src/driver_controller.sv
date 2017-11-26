@@ -105,7 +105,6 @@ always_ff @(posedge clk_33)
         sclk_data_counter <= '0;
     end else begin
         case(drivers_state)
-
             CONFIG: begin
                 sclk_data_counter <= sclk_data_counter + 1'b1;
                 if(sclk_data_counter == 47)
@@ -215,12 +214,12 @@ always_comb begin
         CONFIG: begin
             for(int i = 0; i < 30; i++) begin
                 drivers_sin[i] = serialized_conf[47 - sclk_data_counter];
-					 driver_sout_mux <= '0;
+                driver_sout_mux = '0;
             end
         end
         STREAM: begin
             drivers_sin = framebuffer_dat;
-				driver_sout_mux <= '0;
+            driver_sout_mux = '0;
         end
         LOD: begin
             drivers_sin = '0;
@@ -229,7 +228,7 @@ always_comb begin
         end
         default: begin
             drivers_sin = '0;
-				driver_sout_mux <= '0;
+            driver_sout_mux = '0;
         end
     endcase
 end
