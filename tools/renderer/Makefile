@@ -53,8 +53,10 @@ $(EXE): $(OBJS)
 	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
 -include $(DEPS)
 
+RUNFLAGS = -x
+
 run: $(EXE)
-	./$(EXE)
+	./$(EXE) $(RUNFLAGS)
 clean:
 	rm -f $(OBJS) $(DEPS) $(EXE)
 
