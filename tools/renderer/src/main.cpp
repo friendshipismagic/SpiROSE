@@ -57,10 +57,10 @@ void onMove(GLFWwindow *window, double x, double y);
 GLuint loadShader(GLenum type, const std::string &filename);
 
 typedef struct RenderOptions {
-    bool wireframe, pause, pizza;
+    bool wireframe, pause, pizza, useXor;
 } RenderOptions;
 RenderOptions renderOptions = {
-    .wireframe = false, .pause = false, .pizza = false};
+    .wireframe = false, .pause = false, .pizza = false, .useXor = false};
 
 bool clicking = false;
 float t = 0.f;
@@ -72,6 +72,8 @@ glm::vec3 camForward, camRight, camLook;
 
 // Real framebuffer width and height taking high-DPI scaling into account
 int fbWidth, fbHeight;
+
+#define N_BUF_NO_XOR (32 / 4)
 
 void loadShaders();
 
@@ -86,7 +88,7 @@ int main(int argc, char *argv[]) {
 #endif
     // Command line options
     char c;
-    while ((c = getopt(argc, argv, "wpc")) != -1) switch (c) {
+    while ((c = getopt(argc, argv, "wpcx")) != -1) switch (c) {
             case 'w':
                 renderOptions.wireframe = true;
                 break;
@@ -95,6 +97,9 @@ int main(int argc, char *argv[]) {
                 break;
             case 'c':
                 renderOptions.pizza = true;
+                break;
+            case 'x':
+                renderOptions.useXor = true;
                 break;
 
             case '?':
@@ -195,17 +200,37 @@ int main(int argc, char *argv[]) {
     glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matProjection[0][0]);
 
     // Framebuffer to store our voxel thingy
-    GLuint fbo, texVoxelBuf;
+    GLuint fbo, texVoxelBuf, texVoxelBufs[N_BUF_NO_XOR];
     glGenFramebuffers(1, &fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-    glGenTextures(1, &texVoxelBuf);
-    glBindTexture(GL_TEXTURE_2D, texVoxelBuf);
-    glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGB, GL_UNSIGNED_BYTE,
-                 NULL);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-    glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-    glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D,
-                           texVoxelBuf, 0);
+    if (renderOptions.useXor) {
+        glGenTextures(1, &texVoxelBuf);
+        glBindTexture(GL_TEXTURE_2D, texVoxelBuf);
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGB,
+                     GL_UNSIGNED_BYTE, NULL);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
+                               GL_TEXTURE_2D, texVoxelBuf, 0);
+    } else {
+        glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
+        for (int i = 0; i < N_BUF_NO_XOR; i++) {
+            glBindTexture(GL_TEXTURE_2D + i, texVoxelBufs[i]);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA4, 32, 32, 0, GL_RGB,
+                         GL_UNSIGNED_BYTE, NULL);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i,
+                                   GL_TEXTURE_2D, texVoxelBufs[i], 0);
+        }
+        GLenum drawBuffers[N_BUF_NO_XOR];
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            drawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
+        glDrawBuffers(N_BUF_NO_XOR, drawBuffers);
+    }
+    // Test framebuffer status
+    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+        std::cerr << "[ERR] Incomplete framebuffer" << std::endl;
 
     // Small square to texture with the final image
     GLuint vaoSquare, vboSquare;
@@ -265,6 +290,8 @@ int main(int argc, char *argv[]) {
         title += std::to_string(renderOptions.pause);
         title += " / [c] pizza ";
         title += std::to_string(renderOptions.pizza);
+        title += " / [x] xor ";
+        title += std::to_string(renderOptions.useXor);
         glfwSetWindowTitle(window, title.c_str());
 
         //// Voxelization
@@ -463,8 +490,15 @@ void loadShaders() {
     progVoxel = glCreateProgram();
     glAttachShader(progVoxel, loadShader(GL_VERTEX_SHADER, "voxel"));
     glAttachShader(progVoxel, loadShader(GL_GEOMETRY_SHADER, "voxel"));
-    glAttachShader(progVoxel, loadShader(GL_FRAGMENT_SHADER, "voxel"));
-    glBindFragDataLocation(progVoxel, 0, "fragColor");
+    if (renderOptions.useXor) {
+        glAttachShader(progVoxel, loadShader(GL_FRAGMENT_SHADER, "voxel"));
+        glBindFragDataLocation(progVoxel, 0, "fragColor");
+    } else {
+        glAttachShader(progVoxel, loadShader(GL_FRAGMENT_SHADER, "voxel-xor"));
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            glBindFragDataLocation(progVoxel, i,
+                                   ("fragColor" + std::to_string(i)).c_str());
+    }
     glLinkProgram(progVoxel);
     glUseProgram(progVoxel);
 
