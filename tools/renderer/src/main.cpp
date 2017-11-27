@@ -54,7 +54,7 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
 void onButton(GLFWwindow *window, int button, int action, int mods);
 void onMove(GLFWwindow *window, double x, double y);
 
-GLuint loadShader(GLenum type, const char *filename);
+GLuint loadShader(GLenum type, const std::string &filename);
 
 typedef struct RenderOptions {
     bool wireframe, pause, pizza;
