@@ -25,6 +25,7 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#include <map>
 #include <string>
 #include <vector>
 #ifdef OS_WIN32
@@ -425,9 +426,13 @@ void onMove(GLFWwindow *window, double x, double y) {
         yaw, glm::vec3(0.f, 0.f, 1.f));
 }
 
-GLuint loadShader(GLenum type, const char *filename) {
-    std::string source;
-    readFile(filename, source);
+GLuint loadShader(GLenum type, const std::string &filename) {
+    // Determine shader extension
+    const std::map<GLenum, std::string> exts = {{GL_VERTEX_SHADER, "vs"},
+                                                {GL_GEOMETRY_SHADER, "gs"},
+                                                {GL_FRAGMENT_SHADER, "fs"}};
+    std::string path = "shader/" + filename + "." + exts.at(type), source;
+    readFile(path, source);
     const char *csource = source.c_str();
     GLuint shader = glCreateShader(type);
     glShaderSource(shader, 1, &csource, NULL);
@@ -456,40 +461,31 @@ GLuint loadShader(GLenum type, const char *filename) {
 
 void loadShaders() {
     progVoxel = glCreateProgram();
-    glAttachShader(progVoxel, loadShader(GL_VERTEX_SHADER, "shader/voxel.vs"));
-    glAttachShader(progVoxel,
-                   loadShader(GL_GEOMETRY_SHADER, "shader/voxel.gs"));
-    glAttachShader(progVoxel,
-                   loadShader(GL_FRAGMENT_SHADER, "shader/voxel.fs"));
+    glAttachShader(progVoxel, loadShader(GL_VERTEX_SHADER, "voxel"));
+    glAttachShader(progVoxel, loadShader(GL_GEOMETRY_SHADER, "voxel"));
+    glAttachShader(progVoxel, loadShader(GL_FRAGMENT_SHADER, "voxel"));
     glBindFragDataLocation(progVoxel, 0, "fragColor");
     glLinkProgram(progVoxel);
     glUseProgram(progVoxel);
 
     progOffscreen = glCreateProgram();
-    glAttachShader(progOffscreen,
-                   loadShader(GL_VERTEX_SHADER, "shader/offscreen.vs"));
-    glAttachShader(progOffscreen,
-                   loadShader(GL_FRAGMENT_SHADER, "shader/offscreen.fs"));
+    glAttachShader(progOffscreen, loadShader(GL_VERTEX_SHADER, "offscreen"));
+    glAttachShader(progOffscreen, loadShader(GL_FRAGMENT_SHADER, "offscreen"));
     glBindFragDataLocation(progOffscreen, 0, "out_Color");
     glLinkProgram(progOffscreen);
     glUseProgram(progOffscreen);
 
     progGenerate = glCreateProgram();
-    glAttachShader(progGenerate,
-                   loadShader(GL_VERTEX_SHADER, "shader/generate.vs"));
-    glAttachShader(progGenerate,
-                   loadShader(GL_GEOMETRY_SHADER, "shader/generate.gs"));
-    glAttachShader(progGenerate,
-                   loadShader(GL_FRAGMENT_SHADER, "shader/generate.fs"));
+    glAttachShader(progGenerate, loadShader(GL_VERTEX_SHADER, "generate"));
+    glAttachShader(progGenerate, loadShader(GL_GEOMETRY_SHADER, "generate"));
+    glAttachShader(progGenerate, loadShader(GL_FRAGMENT_SHADER, "generate"));
     glBindFragDataLocation(progGenerate, 0, "out_Color");
     glLinkProgram(progGenerate);
     glUseProgram(progGenerate);
 
     progInterlace = glCreateProgram();
-    glAttachShader(progInterlace,
-                   loadShader(GL_VERTEX_SHADER, "shader/offscreen.vs"));
-    glAttachShader(progInterlace,
-                   loadShader(GL_FRAGMENT_SHADER, "shader/interlace.fs"));
+    glAttachShader(progInterlace, loadShader(GL_VERTEX_SHADER, "offscreen"));
+    glAttachShader(progInterlace, loadShader(GL_FRAGMENT_SHADER, "interlace"));
     glBindFragDataLocation(progInterlace, 0, "out_Color");
     glLinkProgram(progInterlace);
     glUseProgram(progInterlace);
