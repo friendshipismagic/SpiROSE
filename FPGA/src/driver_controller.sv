@@ -11,7 +11,7 @@ module driver_controller #(parameter BLANKING_TIME = 512 - 9*48
 
    // Framebuffer access, 30b wide
    input [29:0] framebuffer_dat,
-       // Indicate the beginning of a new slice
+   // Indicate the beginning of a new slice
    input framebuffer_sync,
 
    // Drivers direct output

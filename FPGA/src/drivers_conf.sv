@@ -45,7 +45,7 @@ drivers_conf_t drivers_conf = '{
    CCB: 9'b1_0000_0000,
    CCG: 9'b1_0000_0000,
    CCR: 9'b1_0000_0000,
-   BC: 3'b100,
+   BC: 3'b000,
    POKER_TRANS_MODE: 1'b1,
    LGSE2: 3'b000
 };
