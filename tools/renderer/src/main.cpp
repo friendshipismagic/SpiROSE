@@ -189,6 +189,7 @@ int main(int argc, char *argv[]) {
           matPPositionGen = glGetUniformLocation(progGenerate, "matProjection"),
           doPizzaPositionGen = glGetUniformLocation(progGenerate, "doPizza");
     GLint doPizzaPositionInt = glGetUniformLocation(progInterlace, "doPizza");
+    GLint useXorPositionOff = glGetUniformLocation(progOffscreen, "useXor");
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
@@ -215,6 +216,7 @@ int main(int argc, char *argv[]) {
     } else {
         glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
         for (int i = 0; i < N_BUF_NO_XOR; i++) {
+            glActiveTexture(GL_TEXTURE0 + i);
             glBindTexture(GL_TEXTURE_2D + i, texVoxelBufs[i]);
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA4, 32, 32, 0, GL_RGB,
                          GL_UNSIGNED_BYTE, NULL);
@@ -312,8 +314,13 @@ int main(int argc, char *argv[]) {
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
-        glEnable(GL_COLOR_LOGIC_OP);
-        glLogicOp(GL_XOR);
+        if (renderOptions.useXor) {
+            glEnable(GL_COLOR_LOGIC_OP);
+            glLogicOp(GL_XOR);
+        } else {
+            glEnable(GL_BLEND);
+            glBlendFunc(GL_ONE, GL_ONE);
+        }
         glDisable(GL_DEPTH_TEST);
 
         // Rendering
@@ -323,7 +330,7 @@ int main(int argc, char *argv[]) {
         glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
-        glDisable(GL_COLOR_LOGIC_OP);
+        glDisable(renderOptions.useXor ? GL_COLOR_LOGIC_OP : GL_BLEND);
         //// Display 3D voxels
         glViewport(0, 0, fbWidth, fbHeight);
         glEnable(GL_DEPTH_TEST);
@@ -355,9 +362,13 @@ int main(int argc, char *argv[]) {
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
 
         //// Displaying the voxel texture
-        glViewport(0, 0, 32, 32);
+        if (renderOptions.useXor)
+            glViewport(0, 0, 32, 32);
+        else
+            glViewport(0, 0, 32 * 4, 32 * 2);
         glBindVertexArray(vaoSquare);
         glUseProgram(progOffscreen);
+        glUniform1ui(useXorPositionOff, renderOptions.useXor);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
     }
 
