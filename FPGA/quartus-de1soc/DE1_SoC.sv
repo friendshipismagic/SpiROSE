@@ -168,7 +168,6 @@ assign  vga_b         =  '1;       // 10bits de Bleu
 //    Tous les ports en entrees/sorties mis au 3e etat       /////////
 //////////////////////////////////////////////////////////////////////
 assign gpio_0        = 'z;
-assign gpio_1        = 'z;
 assign adc_cs_n      = 'z;
 assign dram_dq       = 'z;
 assign fpga_i2c_sdat = 'z;
@@ -195,12 +194,20 @@ clk_33 main_clk_33 (
 
 // Project pins assignment
 wire nrst            = key[0] & lock;
-//wire sclk            = gpio_0[8];
-//wire gclk            = gpio_0[7];
-//wire lat             = gpio_0[6];
-//wire sin      [29:0] = gpio_1[29:0];
-//wire sout            = gpio_0[5];
-//wire sout_mux [4:0]  = gpio_0[4:0];
+wire sout            = gpio_0[35];
+wire gclk;
+wire sclk;
+wire lat;
+wire [29:0] sin;
+wire [4:0] sout_mux  = gpio_0[4:0];
+
+assign gpio_1[35]   = gclk;
+assign gpio_1[33]   = sclk;
+assign gpio_1[31]   = lat;
+assign gpio_1[29:0] = sin;
+
+// Muxer, no muxer :) on 10 - 24
+assign gpio_1[30] = 1'b1;
 
 // Heartbeat LED
 logic[24:0] heartbeat_counter;
@@ -216,19 +223,28 @@ always_ff @(posedge clock_33)
 		end
 	end
 
+wire framebuffer_data, framebuffer_sync;
+// Framebuffer emulator, to test driver controller
+framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(80)) main_fb_emulator (
+	.clk_33(clock_33),
+	.nrst(nrst),
+	.data(framebuffer_data),
+	.sync(framebuffer_sync)
+);
+
 // Driver output
-//driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
-//    .clk_33(clk_33),
-//    .nrst(nrst),
-//    .framebuffer_dat(framebuffer_dat),
-//    .framebuffer_sync(framebuffer_sync),
-//    .driver_sclk(sclk),
-//    .driver_gclk(gclk),
-//    .driver_lat(lat),
-//    .drivers_sin(sin),
-//    .driver_sout(sout),
-//    .driver_sout_mux(sout_mux),
-//    .serialized_conf(serialized_conf)
-//);
+driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
+    .clk_33(clock_33),
+    .nrst(nrst),
+    .framebuffer_dat(framebuffer_data),
+    .framebuffer_sync(framebuffer_sync),
+    .driver_sclk(sclk),
+    .driver_gclk(gclk),
+    .driver_lat(lat),
+    .drivers_sin(sin),
+    .driver_sout(sout),
+    .driver_sout_mux(sout_mux),
+    .serialized_conf(serialized_conf)
+);
 
 endmodule
