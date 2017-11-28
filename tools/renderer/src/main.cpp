@@ -183,7 +183,8 @@ int main(int argc, char *argv[]) {
           matMPosition = glGetUniformLocation(progVoxel, "matModel"),
           matVPosition = glGetUniformLocation(progVoxel, "matView"),
           matPPosition = glGetUniformLocation(progVoxel, "matProjection"),
-          doPizzaPosition = glGetUniformLocation(progVoxel, "doPizza");
+          doPizzaPosition = glGetUniformLocation(progVoxel, "doPizza"),
+          useXorPosition = glGetUniformLocation(progVoxel, "useXor");
     GLint matMPositionGen = glGetUniformLocation(progGenerate, "matModel"),
           matVPositionGen = glGetUniformLocation(progGenerate, "matView"),
           matPPositionGen = glGetUniformLocation(progGenerate, "matProjection"),
@@ -301,6 +302,7 @@ int main(int argc, char *argv[]) {
         glUseProgram(progVoxel);
         glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matOrtho[0][0]);
         glUniform1ui(doPizzaPosition, renderOptions.pizza);
+        glUniform1ui(useXorPosition, renderOptions.useXor);
 
         matView = glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
                               glm::vec3(0.f, 1.f, 0.f));
@@ -433,6 +435,9 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
         case GLFW_KEY_C:
             renderOptions.pizza = !renderOptions.pizza;
             break;
+        case GLFW_KEY_X:
+            renderOptions.useXor = !renderOptions.useXor;
+            break;
     }
 }
 void onButton(GLFWwindow *window, int button, int action, int mods) {
@@ -501,15 +506,8 @@ void loadShaders() {
     progVoxel = glCreateProgram();
     glAttachShader(progVoxel, loadShader(GL_VERTEX_SHADER, "voxel"));
     glAttachShader(progVoxel, loadShader(GL_GEOMETRY_SHADER, "voxel"));
-    if (renderOptions.useXor) {
-        glAttachShader(progVoxel, loadShader(GL_FRAGMENT_SHADER, "voxel"));
-        glBindFragDataLocation(progVoxel, 0, "fragColor");
-    } else {
-        glAttachShader(progVoxel, loadShader(GL_FRAGMENT_SHADER, "voxel-xor"));
-        for (int i = 0; i < N_BUF_NO_XOR; i++)
-            glBindFragDataLocation(progVoxel, i,
-                                   ("fragColor" + std::to_string(i)).c_str());
-    }
+    glAttachShader(progVoxel, loadShader(GL_FRAGMENT_SHADER, "voxel"));
+    glBindFragDataLocation(progVoxel, 0, "fragColor");
     glLinkProgram(progVoxel);
     glUseProgram(progVoxel);
 
