@@ -23,6 +23,8 @@ class Driver : public sc_module {
         SC_CTHREAD(handle_gclk, gclk);
     }
 
+    /* Driver state getters */
+
     sc_bv<2> get_lodth() const;
 
     sc_bv<2> get_td0() const;
@@ -55,26 +57,36 @@ class Driver : public sc_module {
 
     sc_bv<3> get_lgse2() const;
 
-    void handle_sin();
-    void handle_lat();
-    void handle_gclk();
-    void check_assert();
-
-    sc_in<bool> gclk;
-    sc_in<bool> sclk;
-    sc_in<bool> nrst;
-
-    sc_in<bool> sin;
-    sc_in<bool> lat;
-
     GSBuff get_gs1_data() const;
+
     GSBuff get_gs2_data() const;
 
     FCBuff get_fc_data() const;
 
+    /* SystemC processes */
+
+    void handle_sin();
+
+    void handle_lat();
+
+    void handle_gclk();
+
+    void check_assert();
+
+    /* SystemC public signals */
+
+    sc_in<bool> gclk;
+    sc_in<bool> sclk;
+    sc_in<bool> nrst;
+    sc_in<bool> sin;
+    sc_in<bool> lat;
+
     private:
     void write_to_bank(driver_bank_t bank, int buffer_id,
                        const sc_bv<48>& buffer);
+
+    /* Driver internal state */
+
     sc_signal<sc_bv<48>> shift_reg;
     sc_signal<FCBuff> fc_data;
     sc_signal<GSBuff> gs1_data;
