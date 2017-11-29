@@ -46,38 +46,38 @@ module driver_controller #(parameter BLANKING_TIME = 512 - 9*48
  * LOD for 1 clock cycle (TODO), then waits for framebuffer sync signal
  * STREAM until reset
  */
-enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD} drivers_state;
-logic [7:0] drivers_config_counter;
+enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD} driver_state;
+logic [7:0] driver_state_counter;
 always_ff @(posedge clk_33)
     if(~nrst) begin
-        drivers_state <= STALL;
-        drivers_config_counter <= '0;
+        driver_state <= STALL;
+        driver_state_counter <= '0;
     end else begin
-        case(drivers_state)
+        case(driver_state)
             STALL: begin
-                drivers_state <= CONFIG;
+                driver_state <= PREPARE_CONFIG;
             end
 
             PREPARE_CONFIG: begin
-                drivers_config_counter <= drivers_config_counter + 1;
-                if(drivers_config_counter == 15) begin
-                    drivers_state <= CONFIG;
-                    drivers_config_counter <= '0;
+                driver_state_counter <= driver_state_counter + 1'b1;
+                if(driver_state_counter == 14) begin
+                    driver_state <= CONFIG;
+                    driver_state_counter <= '0;
                 end
             end
 
             CONFIG: begin
-                drivers_config_counter <= drivers_config_counter + 1;
-                if(drivers_config_counter == 48) begin
-                    drivers_state <= LOD;
-                    drivers_config_counter <= '0;
+                driver_state_counter <= driver_state_counter + 1'b1;
+                if(driver_state_counter == 47) begin
+                    driver_state <= LOD;
+                    driver_state_counter <= '0;
                 end
             end
 
             LOD: begin
                 // TODO
                 if(framebuffer_sync) begin
-                    drivers_state <= STREAM;
+                    driver_state <= STREAM;
                 end
             end
 
@@ -86,37 +86,32 @@ always_ff @(posedge clk_33)
             end
 
             default: begin
-                drivers_state <= STALL;
-                drivers_config_counter <= '0;
+                driver_state <= STALL;
+                driver_state_counter <= '0;
             end
         endcase
     end
 
 /*
+ * TODO
  * SCLK Data send counter. This counter counts the number of clock cycles
  * after FCWRTEN and LATGS commands.
  * In CONFIG state, it corresponds to the number of bits to write into
  * configuration buffer.
  * In STREAM state, it corresponds to the number of data bits already sent.
  */
-logic [9:0] sclk_data_counter;
+logic [9:0] segment_counter;
 always_ff @(posedge clk_33)
     if(~nrst) begin
-        sclk_data_counter <= '0;
+        segment_counter <= '0;
     end else begin
-        case(drivers_state)
-            CONFIG: begin
-                sclk_data_counter <= sclk_data_counter + 1'b1;
-                if(sclk_data_counter == 47)
-                    sclk_data_counter <= '0;
-            end
-
+        case(driver_state)
             STREAM: begin
-                sclk_data_counter <= sclk_data_counter + 1'b1;
-                if(sclk_data_counter == 9*48+BLANKING_TIME)
-                    sclk_data_counter <= '0;
+                segment_counter <= segment_counter + 1'b1;
+                if(segment_counter == 512 - 1)
+                    segment_counter <= '0;
             end
-            default: sclk_data_counter <= '0;
+            default: segment_counter <= '0;
         endcase
     end
 
@@ -128,8 +123,45 @@ always_ff @(posedge clk_33)
  * This blanking is necessary only when displaying data, thus in STREAM mode.
  */
 wire blanking_period;
-assign blanking_period = nrst & (drivers_state == STREAM)
-                         & (sclk_data_counter < BLANKING_TIME);
+assign blanking_period = nrst & (segment_counter < BLANKING_TIME);
+
+/*
+ *
+ */
+logic [7:0] shift_register_counter;
+always_ff @(posedge clk_33)
+    if(~nrst) begin
+        shift_register_counter <= '0;
+    end else begin
+        case(driver_state)
+            CONFIG: begin
+                shift_register_counter <= shift_register_counter + 1'b1;
+                if(shift_register_counter == 47) begin
+                    shift_register_counter <= '0;
+                end
+            end
+
+            LOD: begin
+                // TODO
+				shift_register_counter <= '0;
+            end
+
+            STREAM: begin
+                // Final state
+				shift_register_counter <= '0;
+				if(~blanking_period) begin
+					shift_register_counter <= shift_register_counter + 1'b1;
+					if(shift_register_counter == 47) begin
+						shift_register_counter <= '0;
+					end
+				end
+            end
+
+            default: begin
+                shift_register_counter <= '0;
+            end
+        endcase
+    end
 
 /*
  * driver_sclk drives the SCLK of the drivers.
@@ -146,7 +178,7 @@ assign driver_sclk = clk_33 & nrst & ~blanking_period;
  * TODO check GS data default value (SLVUAF0 p.16)
  */
 assign driver_gclk = clk_33 & nrst
-                     & (drivers_state == STREAM || drivers_state == LOD);
+                     & (driver_state == STREAM || driver_state == LOD);
 
 /*
  * driver_lat drives the LAT of the drivers.
@@ -164,56 +196,53 @@ assign driver_gclk = clk_33 & nrst
  * LATGS on STREAM state (TODO for LOD state)
  */
 localparam FCWRTEN=15, WRTFC=5, WRTGS=1, LATGS=3, NO_LAT=0;
-always_ff @(posedge clk_33)
-    if(~nrst) begin
-        driver_lat <= '0;
-    end else begin
-        case(drivers_state)
-            STALL: begin
-                driver_lat <= '0;
-            end
+always_comb begin
+    case(driver_state)
+        STALL: begin
+            driver_lat = '0;
+        end
 
-            PREPARE_CONFIG: begin
-                driver_lat <= 1'b1;
-            end
+        PREPARE_CONFIG: begin
+            driver_lat = 1'b1;
+        end
 
-            CONFIG: begin
-                driver_lat <= 1'b0;
-                // Send the WRTFC during the 5 last bits to trigger latch at EOT
-                if(sclk_data_counter >= 47 - WRTFC) begin
-                    driver_lat <= 1'b1;
-                end
+        CONFIG: begin
+            driver_lat = 1'b0;
+            // Send the WRTFC during the 5 last bits to trigger latch at EOT
+            if(shift_register_counter >= 48 - WRTFC) begin
+                driver_lat = 1'b1;
             end
+        end
 
-            STREAM: begin
-                driver_lat <= 1'b0;
-                // Send 8 WRTGS, 1 every 48 SCLK cycles, except for the last one
-                // Send 1 LATGS, at the end
-                // TODO: LINERESET
-                if((sclk_data_counter % 48 >= 47 - WRTGS)
-                    || (sclk_data_counter >= 9*48-1 - LATGS)) begin
-                    driver_lat <= 1'b1;
-                end
+        STREAM: begin
+            driver_lat = 1'b0;
+            // Send 8 WRTGS, 1 every 48 SCLK cycles, except for the last one
+            // Send 1 LATGS, at the end
+            // TODO: LINERESET
+            if((shift_register_counter >= 48 - WRTGS)
+                || (segment_counter >= 512 - LATGS)) begin
+                driver_lat = 1'b1;
             end
+        end
 
-            LOD: begin
-                driver_lat <= 1'b0;
-                // TODO
-            end
+        LOD: begin
+            driver_lat = 1'b0;
+            // TODO
+        end
 
-            default: driver_lat <= 1'b0;
-        endcase
-    end
+        default: driver_lat = 1'b0;
+    endcase
+end
 
 /*
  * drivers_sin write the LEDs data or the configuration data depending on the
  * current running state.
  */
 always_comb begin
-    case(drivers_state)
+    case(driver_state)
         CONFIG: begin
             for(int i = 0; i < 30; i++) begin
-                drivers_sin[i] = serialized_conf[47 - sclk_data_counter];
+                drivers_sin[i] = serialized_conf[47 - shift_register_counter];
                 driver_sout_mux = '0;
             end
         end
