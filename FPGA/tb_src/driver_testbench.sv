@@ -56,7 +56,7 @@ begin
 	nrst = 1;
 
 	// Wait for configuration + start of first frame
-	repeat(1000) @(posedge clk_33);
+	repeat(2000) @(posedge clk_33);
 
     $display("Everything went fine");
     $finish;
