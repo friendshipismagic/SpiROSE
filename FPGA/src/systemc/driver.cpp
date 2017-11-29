@@ -69,6 +69,7 @@ void Driver::handle_lat() {
             // WRTGS, write to GS data at the GS counter position
             write_to_bank(GS1, gs_addr_counter.read(), shift_reg);
             gs_addr_counter = gs_addr_counter.read() - 1;
+            lat_counter = 0;
         } else if (lat_counter == 3) {
             // LATGS, write to GS data
             write_to_bank(GS1, gs_addr_counter.read(), shift_reg);
@@ -79,15 +80,17 @@ void Driver::handle_lat() {
                 }
             } else {
                 // latch GS1 to GS2
-                // reset gs_addr_counter
-                // TODO: outx = 0
+                // reset gs_addr_counter (right after the else)
+                // TODO: put outx = 0 if we need to test it
                 gs2_data = gs1_data;
             }
             gs_addr_counter = GS_ADDR_COUNTER_ORIGIN;
             line_counter = line_counter.read() + 1;
+            lat_counter = 0;
         } else if (lat_counter == 5) {
             // WRTFC
             fc_data = shift_reg;
+            lat_counter = 0;
         } else if (lat_counter == 7) {
             // LINERESET
             write_to_bank(GS1, gs_addr_counter.read(), shift_reg);
@@ -100,19 +103,25 @@ void Driver::handle_lat() {
                 gs_data_counter = 0;
                 // TODO: OUTx forced off
             }
+            lat_counter = 0;
         } else if (lat_counter == 11) {
             // READFC
             // It's the following line, but we can't do it because it is driven
-            // TODO: write an handle_sout using either fc_data or shift_reg
+            // TODO: handle_sout using either fc_data or shift_reg (later)
             // by handle_sin shift_reg.write(fc_data);
+            lat_counter = 0;
         } else if (lat_counter == 13) {
             // TMGRST
             gs_data_counter = 0;
             line_counter = 0;
-            // TODO: force output off
+            // TODO: force output off if we need to test it
+            lat_counter = 0;
         } else if (lat_counter == 15) {
             // FCWRTEN, enable to write to FC data latch
             current_mode = MODE_FCWRT;
+            lat_counter = 0;
+        } else {
+            assert(lat_counter == 0 && "Invalid lat counter value");
         }
     }
 }
