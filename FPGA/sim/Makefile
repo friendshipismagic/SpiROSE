@@ -12,6 +12,7 @@ sim: $(TESTS)
 test: sim
 
 gen: $(addsuffix .gen,$(SIMULATIONS))
+build: gen
 
 %.test: %.simu.gen
 	./$*.simu
