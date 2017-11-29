@@ -144,6 +144,13 @@ void Driver::write_to_bank(driver_bank_t bank, int buffer_id,
         for (int i = 16; i >= 0; --i) {
             // j is the current color of the pixel
             for (int j = 0; j < 3; ++i) {
+                // + in this context, buffer_id is the bit number of the poker
+                // mode.
+                // + i*48 gives the buffer of 48 bits in which we must write
+                // 16 - buffer_id will reverse the bit order so that we write
+                // the MSB first
+                // + the 48 bits buffer is splitted into three 16 bits parts,
+                // one for each color, so j*16 translates to the right buffer
                 vec[i * 48 - (16 - buffer_id) - j * 16] = buffer[i];
             }
         }
