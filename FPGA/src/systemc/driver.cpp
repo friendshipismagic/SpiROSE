@@ -117,6 +117,17 @@ void Driver::handle_lat() {
     }
 }
 
+void Driver::handle_gclk() {
+    if (get_xrefresh() == 0) {
+        // auto-refresh is enabled, so we automatically latch in the end
+        std::cout << "xrefresh is activated and shouldn't be" << std::endl;
+    } else {
+        // auto-refresh is disabled, we shut everything off as soon as we reach
+        // the end of the counter
+        gs_data_counter = gs_data_counter.read() + 1;
+    }
+}
+
 void Driver::write_to_bank(driver_bank_t bank, int buffer_id,
                            const sc_bv<48>& buffer) {
     auto& gs = (bank == GS1) ? gs1_data : gs2_data;
@@ -139,3 +150,7 @@ void Driver::write_to_bank(driver_bank_t bank, int buffer_id,
     }
     gs.write(vec);
 }
+
+Driver::GSBuff Driver::get_gs1_data() const { return gs1_data.read(); }
+Driver::GSBuff Driver::get_gs2_data() const { return gs2_data.read(); }
+Driver::FCBuff Driver::get_fc_data() const { return fc_data.read(); }

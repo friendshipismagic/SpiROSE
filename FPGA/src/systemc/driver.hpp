@@ -12,11 +12,15 @@ class Driver : public sc_module {
     enum driver_bank_t { GS1, GS2 };
 
     public:
+    using GSBuff = sc_bv<768>;
+    using FCBuff = sc_bv<48>;
+
     inline Driver(const sc_module_name& name)
         : sc_module(name), gclk("gclk"), sclk("sclk"), sin("sin"), lat("lat") {
         SC_CTHREAD(handle_sin, sclk);
         SC_CTHREAD(handle_lat, sclk);
         SC_CTHREAD(check_assert, sclk);
+        SC_CTHREAD(handle_gclk, gclk);
     }
 
     sc_bv<2> get_lodth() const;
@@ -53,6 +57,7 @@ class Driver : public sc_module {
 
     void handle_sin();
     void handle_lat();
+    void handle_gclk();
     void check_assert();
 
     sc_in<bool> gclk;
@@ -62,13 +67,18 @@ class Driver : public sc_module {
     sc_in<bool> sin;
     sc_in<bool> lat;
 
+    GSBuff get_gs1_data() const;
+    GSBuff get_gs2_data() const;
+
+    FCBuff get_fc_data() const;
+
     private:
     void write_to_bank(driver_bank_t bank, int buffer_id,
                        const sc_bv<48>& buffer);
     sc_signal<sc_bv<48>> shift_reg;
     sc_signal<sc_bv<48>> fc_data;
-    sc_signal<sc_bv<768>> gs1_data;
-    sc_signal<sc_bv<768>> gs2_data;
+    sc_signal<GSBuff> gs1_data;
+    sc_signal<GSBuff> gs2_data;
 
     sc_signal<int> lat_counter;
     sc_signal<int> gs_addr_counter;
