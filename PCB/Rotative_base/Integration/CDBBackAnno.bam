@@ -1,61 +1,84 @@
 
-/* Sym: 03C52390  Path 1: Schematic1  Page 1: Schematic1(1) */
+/* Sym: 035C8048  Path 1: Schematic1  Page 1: Schematic1(1) */
 CHANGE 'Schematic1(1)' 	INSTANCE
-  SELECT COMP XCMP550                 /* Reference Desig is C3 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C3'         /* Reference Desig was (null) */
-  SELECT COMP XCMP548                 /* Reference Desig is C2 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C2'         /* Reference Desig was (null) */
-  SELECT COMP XCMP547                 /* Reference Desig is C1 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C1'         /* Reference Desig was (null) */
-  SELECT COMP XCMP544                 /* Reference Desig is C5 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '10uF' 
-    PARAM 'Tolerance' = '20%' 
-    PARAM 'Description' = 'Capacitor Ceramic X5R / 10uF / 6.3V / ±20% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 10uF X5R 6.3V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1759393 ' 
-    PARAM 'Cout HT' = '0.117' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C5'         /* Reference Desig was (null) */
-  SELECT EXT XCMP681                  /* Reference Desig is J1 */
-    PARAM 'Part Name' = 'MINI_SWD_CONNECTOR' 
-    PARAM 'Description' = 'Dual row 1.27 CMS 2x5 points connector, Samtec FTSH-105-01-L-DV ' 
-    PARAM 'Part Label' = 'FTSH-105-01-L-DV' 
-    PARAM 'Code Fournisseur' = 'Fa : 1667759' 
-    PARAM 'Cout HT' = '1.96' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'J1'         /* Reference Desig was (null) */
-  SELECT COMP XCMP670                 /* Reference Desig is C4 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C4'         /* Reference Desig was (null) */
+  SELECT COMP XCMP716                 /* Reference Desig is U1 */
+    PARAM 'Part Name' = 'EP3C40' 
+    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
+    PARAM 'Part Label' = 'EP3C40Q240C8N' 
+    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
+    PARAM 'Cout HT' = '83.4' 
+
+/* Sym: 035D2B38  Path 1: Schematic1  Page 2: Schematic1(2) */
+CHANGE 'Schematic1(2)' 	INSTANCE
+  SELECT COMP XCMP724                 /* Reference Desig is R3 */
+    PARAM 'Part Name' = 'RES_0603_E24' 
+    PARAM 'Value' = '10K ' 
+    PARAM 'Tolerance' = '5%' 
+    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
+    PARAM 'Part Label' = 'RES_10k_0603' 
+    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
+    PARAM 'Cout HT' = '0.045' 
+  SELECT COMP XCMP721                 /* Reference Desig is R1 */
+    PARAM 'Part Name' = 'RES_0603_E24' 
+    PARAM 'Value' = '10K ' 
+    PARAM 'Tolerance' = '5%' 
+    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
+    PARAM 'Part Label' = 'RES_10k_0603' 
+    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
+    PARAM 'Cout HT' = '0.045' 
+  SELECT COMP XCMP717                 /* Reference Desig is U1 */
+    PARAM 'Part Name' = 'EP3C40' 
+    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
+    PARAM 'Part Label' = 'EP3C40Q240C8N' 
+    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
+    PARAM 'Cout HT' = '83.4' 
+
+/* Sym: 035D2838  Path 1: Schematic1  Page 3: Schematic1(3) */
+CHANGE 'Schematic1(3)' 	INSTANCE
+  SELECT COMP XCMP718                 /* Reference Desig is U1 */
+    PARAM 'Part Name' = 'EP3C40' 
+    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
+    PARAM 'Part Label' = 'EP3C40Q240C8N' 
+    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
+    PARAM 'Cout HT' = '83.4' 
+
+/* Sym: 035DA6D8  Path 1: Schematic1  Page 4: Schematic1(4) */
+CHANGE 'Schematic1(4)' 	INSTANCE
+  SELECT COMP XCMP722                 /* Reference Desig is R2 */
+    PARAM 'Part Name' = 'RES_0603_E24' 
+    PARAM 'Value' = '10K ' 
+    PARAM 'Tolerance' = '5%' 
+    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
+    PARAM 'Part Label' = 'RES_10k_0603' 
+    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
+    PARAM 'Cout HT' = '0.045' 
+  SELECT COMP XCMP719                 /* Reference Desig is U1 */
+    PARAM 'Part Name' = 'EP3C40' 
+    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
+    PARAM 'Part Label' = 'EP3C40Q240C8N' 
+    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
+    PARAM 'Cout HT' = '83.4' 
+
+/* Sym: 035DFC20  Path 1: Schematic1  Page 5: Schematic1(5) */
+CHANGE 'Schematic1(5)' 	INSTANCE
+  SELECT COMP XCMP720                 /* Reference Desig is U1 */
+    PARAM 'Part Name' = 'EP3C40' 
+    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
+    PARAM 'Part Label' = 'EP3C40Q240C8N' 
+    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
+    PARAM 'Cout HT' = '83.4' 
+
+/* Sym: 035DEB48  Path 1: Schematic1  Page 6: Schematic1(6) */
+CHANGE 'Schematic1(6)' 	INSTANCE
+  SELECT EXT XCMP725                  /* Reference Desig is J1 */
+    PARAM 'Part Name' = 'MXM-314' 
+    PARAM 'Description' = 'MXM Connecteur, 314 pts, JAE Electronics MM70-314-310B1-1-R300' 
+    PARAM 'Part Label' = 'MM70-314-310B1-1-R300' 
+    PARAM 'Code Fournisseur' = 'Mouser : 656-MM70314310B11R' 
+    PARAM 'Cout HT' = '5.5' 
+  SELECT EXT XCMP726                  /* Reference Desig is J1 */
+    PARAM 'Part Name' = 'MXM-314' 
+    PARAM 'Description' = 'MXM Connecteur, 314 pts, JAE Electronics MM70-314-310B1-1-R300' 
+    PARAM 'Part Label' = 'MM70-314-310B1-1-R300' 
+    PARAM 'Code Fournisseur' = 'Mouser : 656-MM70314310B11R' 
+    PARAM 'Cout HT' = '5.5' 

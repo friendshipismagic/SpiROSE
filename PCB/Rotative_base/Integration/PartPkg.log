@@ -2,21 +2,21 @@
                                     Packager
                                     --------
 
-                       02:27 PM Sunday, November 12, 2017
-               Job Name: F:\Project_template\Project_template.prj
+                      04:19 PM Wednesday, November 29, 2017
+Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: "C:\mentorgraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uF:\Project_template\Default\default.icdb" -k -CleanBuild "-jF:\Project_template\Project_template.prj" "
+        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uC:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb" -k -CleanBuild "-jC:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj" "
 
-     The Common Database is at "F:\Project_template\Default\default.icdb".
+     The Common Database is at "C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb".
 
      The Root of this design is "Schematic1".
 
      The Front End Snapshot of this design is "DCDV".
 
-     The PCB Design Path of this design is at "F:\Project_template\PCB\PCB.pcb".
+     The PCB Design Path of this design is at "C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
 
@@ -78,62 +78,14 @@
 
 
 
-    WARNING: Block Schematic1, Page 1, Symbol XCMP670:
-     Reference designator removal.
-     The Reference Designator "C" is being removed
-     from Symbol.  Such 'all alpha' designators that are
-     not instance properties are usually built into symbols and are 
-     not intended as a request to be packaged in the same pack with 
-     symbols of like designators.
-
-    WARNING: Block Schematic1, Page 1, Symbol XCMP681:
-     Reference designator removal.
-     The Reference Designator "J" is being removed
-     from Symbol.  Such 'all alpha' designators that are
-     not instance properties are usually built into symbols and are 
-     not intended as a request to be packaged in the same pack with 
-     symbols of like designators.
-
-    WARNING: Block Schematic1, Page 1, Symbol XCMP544:
-     Reference designator removal.
-     The Reference Designator "C" is being removed
-     from Symbol.  Such 'all alpha' designators that are
-     not instance properties are usually built into symbols and are 
-     not intended as a request to be packaged in the same pack with 
-     symbols of like designators.
-
-    WARNING: Block Schematic1, Page 1, Symbol XCMP547:
-     Reference designator removal.
-     The Reference Designator "C" is being removed
-     from Symbol.  Such 'all alpha' designators that are
-     not instance properties are usually built into symbols and are 
-     not intended as a request to be packaged in the same pack with 
-     symbols of like designators.
-
-    WARNING: Block Schematic1, Page 1, Symbol XCMP548:
-     Reference designator removal.
-     The Reference Designator "C" is being removed
-     from Symbol.  Such 'all alpha' designators that are
-     not instance properties are usually built into symbols and are 
-     not intended as a request to be packaged in the same pack with 
-     symbols of like designators.
-
-    WARNING: Block Schematic1, Page 1, Symbol XCMP550:
-     Reference designator removal.
-     The Reference Designator "C" is being removed
-     from Symbol.  Such 'all alpha' designators that are
-     not instance properties are usually built into symbols and are 
-     not intended as a request to be packaged in the same pack with 
-     symbols of like designators.
-
      Common Data Base has been read
 
      Target PDB Name: Integration\LocalPartsDB.pdb
 
      Number of Part Numbers: 3
-          Part Numb: 10-0057 -> Vend Part: 10-0057 
-          Part Numb: 10-0103 -> Vend Part: 10-0103 
-          Part Numb: 70-0081 -> Vend Part: 70-0081 
+          Part Numb: 00-0098 -> Vend Part: 00-0098 
+          Part Numb: 40-0310 -> Vend Part: 40-0310 
+          Part Numb: 70-0101 -> Vend Part: 70-0101 
 
      Number of Part Names: 0
 
@@ -155,16 +107,16 @@
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 6 Symbols:
-               6  *****
+     Clustering 10 Symbols:
+              10  *********
      Clustering is Complete
 
      Packager Assignments successfully completed
 
 
 
-     5 nets were found containing 17 pins
-     6 components were found
+     78 nets were found containing 280 pins
+     5 components were found
 
      Parsed netlist - Augmenting..
 
@@ -174,14 +126,11 @@
 
      Checking Pins....
 
-     Testing of Packaging has been completed with 6 warnings.
-      Erroneous results may occur if not fixed.
+     Packaging has been successfully tested with no errors or warnings.
 
      Updating the Common DataBase
 
      A BAM WasIs List: Integration\CDBBackAnno.bam has been created.
-     There have been 6 reference designator changes.
-     The BAM file will list all of the from-to changes.
 
 The Common DataBase has been successfully updated.
 
@@ -191,5 +140,3 @@ The Common DataBase has been successfully updated.
      An unused pin and gate report has been written to Integration\UnusedPins.txt
      An unused gate report for gates not in schematic has been written to Integration\UnusedGates.txt
      An augmented pin report has been written to Integration\AugmentedPins.txt.
-
-     There have been 6 warnings.
