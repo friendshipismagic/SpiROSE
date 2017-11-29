@@ -76,7 +76,7 @@ class Driver : public sc_module {
     void write_to_bank(driver_bank_t bank, int buffer_id,
                        const sc_bv<48>& buffer);
     sc_signal<sc_bv<48>> shift_reg;
-    sc_signal<sc_bv<48>> fc_data;
+    sc_signal<FCBuff> fc_data;
     sc_signal<GSBuff> gs1_data;
     sc_signal<GSBuff> gs2_data;
 
