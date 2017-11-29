@@ -2,6 +2,11 @@
 
 #include <systemc.h>
 
+// From the TCL5957 application note
+// external : http://www.ti.com/lit/ug/slvuaf0/slvuaf0.pdf
+// internal :
+// https://gitlab.telecom-paristech.fr/ROSE/2018/SpiROSE/blob/master/docs/datasheets/slvuaf0.pdf
+
 constexpr auto GS_ADDR_COUNTER_ORIGIN = 15;
 constexpr auto LINE_COUNTER_ORIGIN = 0;
 
