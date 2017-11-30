@@ -1,7 +1,7 @@
 export SYSTEMC_INCLUDE ?= /usr/include/
 export SYSTEMC_LIBDIR ?= /usr/lib/
 
-MODULES =
+MODULES = driver_controller
 
 SIMULATIONS = $(addsuffix .simu,$(MODULES))
 TESTS = $(addsuffix .test,$(MODULES))

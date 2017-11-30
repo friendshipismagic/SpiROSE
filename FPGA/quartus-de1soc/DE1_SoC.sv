@@ -184,15 +184,24 @@ assign ps2_dat2      = 'z;
  */
 `include "drivers_conf.sv"
 
-// 33 MHz clock generator
-wire clock_33, lock;
-clk_33 main_clk_33 (
+// 66 MHz clock generator
+wire clock_66, lock;
+clk_66 main_clk_66 (
 	.refclk(clock_50),
 	.rst(sw[0]),
-	.outclk_0(clock_33),
+	.outclk_0(clock_66),
 	.locked(lock)
 );
 
+// 33 MHz clock generator
+logic clock_33;
+always_ff @(negedge clock_66)
+	if(~nrst) begin
+		clock_33 <= '1;
+	end else begin
+		clock_33 <= ~ clock_33;
+		end
+	
 // Project pins assignment
 wire nrst            = key[0] & lock;
 wire sout            = gpio_0[35];
@@ -206,10 +215,10 @@ assign gpio_1[35]   = gclk;
 assign gpio_1[33]   = sclk;
 assign gpio_1[31]   = lat;
 assign gpio_1[29]   = sin[0];
-assign gpio_1[28]   = sin[0];
+/*assign gpio_1[28]   = sin[0];
 assign gpio_1[27]   = sin[0];
 assign gpio_1[26]   = sin[0];
-assign gpio_1[25]   = sin[0];
+assign gpio_1[25]   = sin[0];*/
 
 assign gpio_0[10] = sw[9];
 assign gpio_0[12] = sw[8];
@@ -220,20 +229,34 @@ assign gpio_0[20] = sw[4];
 assign gpio_0[22] = sw[3];
 assign gpio_0[24] = sw[2];
 
-// Heartbeat LED
-logic[24:0] heartbeat_counter;
-always_ff @(posedge clock_33)
+// Heartbeat LED 66MHz
+logic[24:0] heartbeat_counter_66;
+always_ff @(posedge clock_66)
 	if(~nrst) begin
 		ledr[0] <= '0;
-		heartbeat_counter <= '0;
+		heartbeat_counter_66 <= '0;
 	end else begin
-		heartbeat_counter <= heartbeat_counter + 1'b1;
-		if(heartbeat_counter == 3_300_000) begin
+		heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
+		if(heartbeat_counter_66 == 3_000_000) begin
 			ledr[0] <= ~ledr[0];
-			heartbeat_counter <= '0;
+			heartbeat_counter_66 <= '0;
 		end
 	end
 
+// Heartbeat LED 33MHz
+logic[24:0] heartbeat_counter_33;
+always_ff @(posedge clock_33)
+	if(~nrst) begin
+		ledr[1] <= '0;
+		heartbeat_counter_33 <= '0;
+	end else begin
+		heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
+		if(heartbeat_counter_33 == 3_000_000) begin
+			ledr[1] <= ~ledr[1];
+			heartbeat_counter_33 <= '0;
+		end
+	end
+	
 wire framebuffer_data, framebuffer_sync;
 // Framebuffer emulator, to test driver controller
 framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(80)) main_fb_emulator (
@@ -245,7 +268,8 @@ framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(80)) main_fb_emulator (
 
 // Driver output
 driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
-    .clk_hse(clock_33),
+    .clk_hse(clock_66),
+	 .clk_lse(clock_33),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_data),
     .framebuffer_sync(framebuffer_sync),

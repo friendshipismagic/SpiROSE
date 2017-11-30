@@ -20,13 +20,17 @@ LDFLAGS = -L$(SYSTEMC_LIBDIR)
 LINK.o = g++ $(LDFLAGS) $(TARGET_ARCH)
 LDLIBS = -lsystemc
 
-VPATH = ../src/ ../src/systemc ../tb_src/ ../tb_src/systemc ./obj_dir/ $(VERILATOR_ROOT)
+VPATH = ../src/ ../src/systemc ../tb_src/ ../tb_src/systemc ./obj_dir/ $(VERILATOR_ROOT) ../lib
 export VPATH
 
 CPPFLAGS = -I../src/systemc/ \
 		   -I./obj_dir/ \
+		   -I../lib/ \
 		   -I$(VERILATOR_ROOT) \
 		   -I$(SYSTEMC_INCLUDE)
+
+CXXFLAGS = -DSC_INCLUDE_DYNAMIC_PROCESSES -g
+
 export CPPFLAGS
 
 obj_dir/V$(MODULE).h: $(MODULE).sv

@@ -61,7 +61,7 @@ always_ff @(posedge clk_hse)
  * LOD for 1 clock cycle (TODO), then waits for framebuffer sync signal
  * STREAM until reset
  */
-enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD} driver_state;
+enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD, PREPARE_DUMP_CONFIG, DUMP_CONFIG} driver_state;
 logic [7:0] driver_state_counter;
 always_ff @(posedge clk_lse)
     if(~nrst) begin
@@ -89,6 +89,27 @@ always_ff @(posedge clk_lse)
                  */
                 driver_state_counter <= driver_state_counter + 1'b1;
                 if(driver_state_counter == 48) begin
+                    driver_state <= PREPARE_DUMP_CONFIG;
+                    driver_state_counter <= '0;
+                end
+            end
+
+            PREPARE_DUMP_CONFIG: begin
+                // Here we wait 11 cycle to send the READFC command
+                driver_state_counter <= driver_state_counter + 1'b1;
+                if(driver_state_counter == 10) begin
+                    driver_state <= DUMP_CONFIG;
+                    driver_state_counter <= '0;
+                end
+            end
+
+            DUMP_CONFIG: begin
+                /*
+                 * Here we wait 5 cycles to meet the timing requirement, and
+                 * then 47 cycle to read the config data.
+                 */
+                driver_state_counter <= driver_state_counter + 1'b1;
+                if(driver_state_counter == 47+5) begin
                     driver_state <= LOD;
                     driver_state_counter <= '0;
                 end
@@ -168,20 +189,27 @@ always_ff @(posedge clk_lse)
                 end
             end
 
+            DUMP_CONFIG: begin
+                shift_register_counter <= shift_register_counter + 1'b1;
+                if(shift_register_counter == 47+5) begin
+                    shift_register_counter <= '0;
+                end
+            end
+
             LOD: begin
                 // TODO
-				shift_register_counter <= '0;
+                shift_register_counter <= '0;
             end
 
             STREAM: begin
                 // Final state
-				shift_register_counter <= '0;
-				if(~blanking_period) begin
-					shift_register_counter <= shift_register_counter + 1'b1;
-					if(shift_register_counter == 48) begin
-						shift_register_counter <= '0;
-					end
-				end
+                shift_register_counter <= '0;
+                if(~blanking_period) begin
+                    shift_register_counter <= shift_register_counter + 1'b1;
+                    if(shift_register_counter == 48) begin
+                        shift_register_counter <= '0;
+                    end
+                end
             end
 
             default: begin
@@ -214,6 +242,19 @@ always_comb begin
             end
             driver_gclk = '0;
         end
+
+        DUMP_CONFIG: begin
+            driver_sclk = clk_lse_quad;
+            /*
+             * After the READFC command we pause SCLK for five cycles to meet
+             * timing requirement
+             */
+            if(shift_register_counter < 5) begin
+                driver_sclk = '0;
+            end
+            driver_gclk = '0;
+        end
+
         STREAM: begin
             /*
              * After the WRTGS command we pause SCLK for one cycle to meet
@@ -260,14 +301,14 @@ end
  * Sends FCWRTEN on PREPARE_CONFIG state, WRTFC on CONFIG state, and WRTGS and
  * LATGS on STREAM state (TODO for LOD state)
  */
-localparam FCWRTEN=15, WRTFC=5, WRTGS=1, LATGS=3, NO_LAT=0;
+localparam FCWRTEN=15, READFC=11, WRTFC=5, WRTGS=1, LATGS=3, NO_LAT=0;
 always_comb begin
     case(driver_state)
         STALL: begin
             driver_lat = '0;
         end
 
-        PREPARE_CONFIG: begin
+        PREPARE_CONFIG, PREPARE_DUMP_CONFIG: begin
             driver_lat = 1'b1;
         end
 
@@ -277,6 +318,10 @@ always_comb begin
             if(shift_register_counter >= 49 - WRTFC) begin
                 driver_lat = 1'b1;
             end
+        end
+
+        DUMP_CONFIG: begin
+            driver_lat = '0;
         end
 
         STREAM: begin
@@ -306,11 +351,13 @@ end
 always_comb begin
     case(driver_state)
         CONFIG: begin
+            driver_sout_mux = '0;
             if(shift_register_counter != 0) begin
                 for(int i = 0; i < 30; i++) begin
                     drivers_sin[i] = serialized_conf[48-shift_register_counter];
-                    driver_sout_mux = '0;
                 end
+            end else begin
+                drivers_sin = '0;
             end
         end
         STREAM: begin

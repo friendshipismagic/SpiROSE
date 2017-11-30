@@ -1,6 +1,6 @@
 MODULE := driver_controller
 
-OBJS += tb_$(MODULE).o
+OBJS += tb_$(MODULE).o driver.o driver_cmd.o
 
 -include base_testbench.mk
 

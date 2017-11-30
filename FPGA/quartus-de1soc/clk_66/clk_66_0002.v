@@ -1,5 +1,5 @@
 `timescale 1ns/10ps
-module  clk_33_0002(
+module  clk_66_0002(
 
 	// interface 'refclk'
 	input wire refclk,
@@ -19,7 +19,7 @@ module  clk_33_0002(
 		.reference_clock_frequency("50.0 MHz"),
 		.operation_mode("direct"),
 		.number_of_clocks(1),
-		.output_clock_frequency0("3.300000 MHz"),
+		.output_clock_frequency0("6.600000 MHz"),
 		.phase_shift0("0 ps"),
 		.duty_cycle0(50),
 		.output_clock_frequency1("0 MHz"),
