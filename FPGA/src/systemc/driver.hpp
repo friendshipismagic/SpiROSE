@@ -27,61 +27,61 @@ class Driver : public sc_module {
 
     inline Driver(const sc_module_name& name)
         : sc_module(name), gclk("gclk"), sclk("sclk"), sin("sin"), lat("lat") {
-        SC_CTHREAD(handle_sin, sclk);
-        SC_CTHREAD(handle_lat, sclk);
-        SC_CTHREAD(check_assert, sclk);
-        SC_CTHREAD(handle_gclk, gclk);
+        SC_CTHREAD(handleSin, sclk);
+        SC_CTHREAD(handleLat, sclk);
+        SC_CTHREAD(checkAssert, sclk);
+        SC_CTHREAD(handleGclk, gclk);
     }
 
     /* Driver state getters */
 
-    sc_bv<2> get_lodth() const;
+    sc_bv<2> getLodth() const;
 
-    sc_bv<2> get_td0() const;
+    sc_bv<2> getTd0() const;
 
-    bool get_group() const;
+    bool getGroup() const;
 
-    bool get_xrefresh() const;
+    bool getXrefreshDisabled() const;
 
-    bool get_sel_gck_edge() const;
+    bool getSelGckEdge() const;
 
-    bool get_sel_pchg() const;
+    bool getSelPchg() const;
 
-    bool get_espwm() const;
+    bool getEspwm() const;
 
-    bool get_lgse3() const;
+    bool getLgse3() const;
 
-    bool get_sel_sck_edge() const;
+    bool getSelSckEdge() const;
 
-    sc_bv<3> get_lgse1() const;
+    sc_bv<3> getLgse1() const;
 
-    sc_bv<9> get_ccb() const;
+    sc_bv<9> getCcb() const;
 
-    sc_bv<9> get_ccg() const;
+    sc_bv<9> getCcg() const;
 
-    sc_bv<9> get_ccr() const;
+    sc_bv<9> getCcr() const;
 
-    sc_bv<3> get_bc() const;
+    sc_bv<3> getBc() const;
 
-    bool get_poker_mode() const;
+    bool getPokerMode() const;
 
-    sc_bv<3> get_lgse2() const;
+    sc_bv<3> getLgse2() const;
 
-    GSBuff get_gs1_data() const;
+    GSBuff getGs1Data() const;
 
-    GSBuff get_gs2_data() const;
+    GSBuff getGs2Data() const;
 
-    RegBuff get_fc_data() const;
+    RegBuff getFcData() const;
 
     /* SystemC processes */
 
-    void handle_sin();
+    void handleSin();
 
-    void handle_lat();
+    void handleLat();
 
-    void handle_gclk();
+    void handleGclk();
 
-    void check_assert();
+    void checkAssert();
 
     /* SystemC public signals */
 
@@ -92,19 +92,18 @@ class Driver : public sc_module {
     sc_in<bool> lat;
 
     private:
-    void write_to_bank(driver_bank_t bank, int buffer_id,
-                       const RegBuff& buffer);
+    void writeToBank(driver_bank_t bank, int bufferId, const RegBuff& buffer);
 
     /* Driver internal state */
 
-    sc_signal<RegBuff> shift_reg;
-    sc_signal<RegBuff> fc_data;
-    sc_signal<GSBuff> gs1_data;
-    sc_signal<GSBuff> gs2_data;
+    sc_signal<RegBuff> shiftReg;
+    sc_signal<RegBuff> fcData;
+    sc_signal<GSBuff> gs1Data;
+    sc_signal<GSBuff> gs2Data;
 
-    sc_signal<int> lat_counter;
-    sc_signal<int> gs_addr_counter;
-    sc_signal<int> gs_data_counter;
-    sc_signal<int> line_counter;
-    sc_signal<driver_mode_t> current_mode;
+    sc_signal<int> latCounter;
+    sc_signal<int> gsAddrCounter;
+    sc_signal<int> gsDataCounter;
+    sc_signal<int> lineCounter;
+    sc_signal<driver_mode_t> currentMode;
 };
