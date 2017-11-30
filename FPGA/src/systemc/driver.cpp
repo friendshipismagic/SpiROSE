@@ -138,21 +138,21 @@ void Driver::handle_gclk() {
 }
 
 void Driver::write_to_bank(driver_bank_t bank, int buffer_id,
-                           const sc_bv<48>& buffer) {
+                           const RegBuff& buffer) {
     auto& gs = (bank == GS1) ? gs1_data : gs2_data;
     auto vec = gs.read();
     if (!get_poker_mode()) {
         // Calculate the slice where to write in GS
-        int end = 48 * (1 + buffer_id) - 1;
+        int end = REG_SIZE * (1 + buffer_id) - 1;
 
         // We need to extract the data from signal to apply range
         // operator
-        vec(end, end - 47) = buffer(47, 0);
+        vec(end, end - REG_SIZE + 1) = buffer(REG_SIZE - 1, 0);
     } else {
         // i is the buffer iterator from end to start
-        for (int i = 16; i >= 0; --i) {
+        for (int i = GS_NB_BUFFER; i > 0; --i) {
             // j is the current color of the pixel
-            for (int j = 0; j < 3; ++i) {
+            for (int j = 0; j < GS_NB_COLOR; ++i) {
                 // + in this context, buffer_id is the bit number of the poker
                 // mode.
                 // + i*48 gives the buffer of 48 bits in which we must write
@@ -160,7 +160,8 @@ void Driver::write_to_bank(driver_bank_t bank, int buffer_id,
                 // the MSB first
                 // + the 48 bits buffer is splitted into three 16 bits parts,
                 // one for each color, so j*16 translates to the right buffer
-                vec[i * 48 - (16 - buffer_id) - j * 16] = buffer[i];
+                auto idx = i * REG_SIZE - (GS_NB_BUFFER - buffer_id) - j * 16;
+                vec[idx] = buffer[i];
             }
         }
     }
@@ -169,4 +170,4 @@ void Driver::write_to_bank(driver_bank_t bank, int buffer_id,
 
 Driver::GSBuff Driver::get_gs1_data() const { return gs1_data.read(); }
 Driver::GSBuff Driver::get_gs2_data() const { return gs2_data.read(); }
-Driver::FCBuff Driver::get_fc_data() const { return fc_data.read(); }
+Driver::RegBuff Driver::get_fc_data() const { return fc_data.read(); }

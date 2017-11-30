@@ -17,8 +17,13 @@ class Driver : public sc_module {
     enum driver_bank_t { GS1, GS2 };
 
     public:
-    using GSBuff = sc_bv<768>;
-    using FCBuff = sc_bv<48>;
+    static constexpr auto REG_SIZE = 48;
+    static constexpr auto GS_SIZE = 768;
+    static constexpr auto GS_NB_BUFFER = 16;
+    static constexpr auto GS_NB_COLOR = 3;
+
+    using GSBuff = sc_bv<GS_SIZE>;
+    using RegBuff = sc_bv<REG_SIZE>;
 
     inline Driver(const sc_module_name& name)
         : sc_module(name), gclk("gclk"), sclk("sclk"), sin("sin"), lat("lat") {
@@ -66,7 +71,7 @@ class Driver : public sc_module {
 
     GSBuff get_gs2_data() const;
 
-    FCBuff get_fc_data() const;
+    RegBuff get_fc_data() const;
 
     /* SystemC processes */
 
@@ -88,12 +93,12 @@ class Driver : public sc_module {
 
     private:
     void write_to_bank(driver_bank_t bank, int buffer_id,
-                       const sc_bv<48>& buffer);
+                       const RegBuff& buffer);
 
     /* Driver internal state */
 
-    sc_signal<sc_bv<48>> shift_reg;
-    sc_signal<FCBuff> fc_data;
+    sc_signal<RegBuff> shift_reg;
+    sc_signal<RegBuff> fc_data;
     sc_signal<GSBuff> gs1_data;
     sc_signal<GSBuff> gs2_data;
 
