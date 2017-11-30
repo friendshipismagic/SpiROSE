@@ -41,7 +41,7 @@ sc_bv<3> Driver::get_lgse2() const { return fc_data.read()(47, 45); }
 void Driver::check_assert() {
     while (true) {
         // Can't use XREFRESH and ESPWM in poker mode, p17, 3.4.3
-        if (get_poker_mode() && (!get_xrefresh() || !get_espwm())) {
+        if (get_poker_mode() && (get_xrefresh() || get_espwm())) {
             std::cout << "FATAL: XREFRESH(" << get_xrefresh() << ") "
                       << "and ESPWM(" << get_espwm() << ") "
                       << "have to be 0 in poker mode" << std::endl;
