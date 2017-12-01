@@ -1,19 +1,23 @@
-
-build:
-	@echo build
+lint:
+	@echo "Running lint tests"
+	make -C lib -f driver_cmd.mk lint
 	make -C sim gen
 
-lint:
-	@echo lint
+build :
+	@echo "Building fpga target"
+	make -C lib -f driver_cmd.mk build
+	make -C sim build
 
 test:
-	@echo test
+	@echo "Running fpga tests"
+	make -C lib -f driver_cmd.mk test
 	make -C sim sim
 
 host:
-	@echo host
+	@echo "Running fpga host tests"
 
 clean:
 	make -C sim clean
+	make -C lib -f driver_cmd.mk clean
 
 .PHONY: build lint test host clean

@@ -60,10 +60,10 @@ test_sbc:
     - make test
 
 host_sbc:
-   stage: host
-   script:
-     - cd $SBC_DIR
-     - make host
+  stage: host
+  script:
+    - cd $SBC_DIR
+    - make host
 
 lint_fpga:
   stage: lint
@@ -74,13 +74,6 @@ lint_fpga:
 
 build_fpga:
   stage: build
-  image: tuetuopay/verilator
-  script:
-    - cd $FPGA_DIR
-    - make build
-
-test_fpga:
-  stage: test
   image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
