@@ -168,7 +168,7 @@ always_ff @(posedge clk_33)
  * There is no difference between the configuration mode and the stream mode.
  * The SCLK is on when device is not in reset and not in blanking mode.
  */
-assign driver_sclk = clk_33 & nrst & ~blanking_period;
+assign driver_sclk = clk_33 & nrst;
 
 /*
  * driver_gclk drives the GSCLK of the drivers.

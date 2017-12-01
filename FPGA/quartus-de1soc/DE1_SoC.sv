@@ -167,7 +167,8 @@ assign  vga_b         =  '1;       // 10bits de Bleu
 //////////////////////////////////////////////////////////////////////
 //    Tous les ports en entrees/sorties mis au 3e etat       /////////
 //////////////////////////////////////////////////////////////////////
-assign gpio_0        = 'z;
+//assign gpio_0        = 'z;
+//assign gpio_1        = 'z;
 assign adc_cs_n      = 'z;
 assign dram_dq       = 'z;
 assign fpga_i2c_sdat = 'z;
@@ -204,10 +205,20 @@ wire [4:0] sout_mux  = gpio_0[4:0];
 assign gpio_1[35]   = gclk;
 assign gpio_1[33]   = sclk;
 assign gpio_1[31]   = lat;
-assign gpio_1[29:0] = sin;
+assign gpio_1[29]   = sin[0];
+assign gpio_1[28]   = sin[0];
+assign gpio_1[27]   = sin[0];
+assign gpio_1[26]   = sin[0];
+assign gpio_1[25]   = sin[0];
 
-// Muxer, no muxer :) on 10 - 24
-assign gpio_1[30] = 1'b1;
+assign gpio_0[10] = sw[9];
+assign gpio_0[12] = sw[8];
+assign gpio_0[14] = sw[7];
+assign gpio_0[16] = sw[6];
+assign gpio_0[18] = sw[5];
+assign gpio_0[20] = sw[4];
+assign gpio_0[22] = sw[3];
+assign gpio_0[24] = sw[2];
 
 // Heartbeat LED
 logic[24:0] heartbeat_counter;
@@ -217,7 +228,7 @@ always_ff @(posedge clock_33)
 		heartbeat_counter <= '0;
 	end else begin
 		heartbeat_counter <= heartbeat_counter + 1'b1;
-		if(heartbeat_counter == 33_000_000) begin
+		if(heartbeat_counter == 3_300_000) begin
 			ledr[0] <= ~ledr[0];
 			heartbeat_counter <= '0;
 		end
