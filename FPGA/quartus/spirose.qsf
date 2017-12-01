@@ -41,7 +41,7 @@ set_global_assignment -name DEVICE EP3C40Q240C8
 set_global_assignment -name TOP_LEVEL_ENTITY top_module
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION "13.0 SP1"
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "11:08:45  NOVEMBER 20, 2017"
-set_global_assignment -name LAST_QUARTUS_VERSION "13.0 SP1"
+set_global_assignment -name LAST_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -165,13 +165,101 @@ set_global_assignment -name DISABLE_OCP_HW_EVAL ON
 set_global_assignment -name CYCLONEII_OPTIMIZATION_TECHNIQUE SPEED
 set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
-set_global_assignment -name ENABLE_INIT_DONE_OUTPUT ON
+set_global_assignment -name ENABLE_INIT_DONE_OUTPUT OFF
 set_global_assignment -name GENERATE_JBC_FILE ON
-set_global_assignment -name CONFIGURATION_VCCIO_LEVEL 3.3V
+set_global_assignment -name CONFIGURATION_VCCIO_LEVEL 3.0V
 
 set_global_assignment -name SDC_FILE spirose.sdc
 set_global_assignment -name SYSTEMVERILOG_FILE ../src/top_module.sv
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+set_location_assignment PIN_39 -to tx
+set_location_assignment PIN_46 -to rx
+set_location_assignment PIN_50 -to LED_R
+set_location_assignment PIN_56 -to LED_G
+set_location_assignment PIN_63 -to LED_B
+set_location_assignment PIN_149 -to rgb_clk
+set_location_assignment PIN_160 -to hsync
+set_location_assignment PIN_164 -to vsync
+set_location_assignment PIN_93 -to rgb[0]
+set_location_assignment PIN_94 -to rgb[1]
+set_location_assignment PIN_98 -to rgb[2]
+set_location_assignment PIN_99 -to rgb[3]
+set_location_assignment PIN_100 -to rgb[4]
+set_location_assignment PIN_103 -to rgb[5]
+set_location_assignment PIN_106 -to rgb[6]
+set_location_assignment PIN_113 -to rgb[9]
+set_location_assignment PIN_117 -to rgb[10]
+set_location_assignment PIN_118 -to rgb[11]
+set_location_assignment PIN_126 -to rgb[12]
+set_location_assignment PIN_127 -to rgb[13]
+set_location_assignment PIN_128 -to rgb[14]
+set_location_assignment PIN_131 -to rgb[15]
+set_location_assignment PIN_132 -to rgb[16]
+set_location_assignment PIN_134 -to rgb[17]
+set_location_assignment PIN_135 -to rgb[18]
+set_location_assignment PIN_137 -to rgb[19]
+set_location_assignment PIN_143 -to rgb[20]
+set_location_assignment PIN_144 -to rgb[21]
+set_location_assignment PIN_145 -to rgb[22]
+set_location_assignment PIN_159 -to rgb[23]
+set_location_assignment PIN_69 -to LVDS[0]p
+set_location_assignment PIN_70 -to LVDS[0]n
+set_location_assignment PIN_81 -to LVDS[1]p
+set_location_assignment PIN_82 -to LVDS[1]n
+set_location_assignment PIN_89 -to "LVDS-LCKp"
+set_location_assignment PIN_90 -to LVDS_CLKn
+set_location_assignment PIN_87 -to LVDS[2]p
+set_location_assignment PIN_88 -to LVDS[2]n
+set_location_assignment PIN_166 -to sin[0]
+set_location_assignment PIN_171 -to sin[1]
+set_location_assignment PIN_176 -to sin[2]
+set_location_assignment PIN_183 -to sin[3]
+set_location_assignment PIN_185 -to sin[4]
+set_location_assignment PIN_186 -to sin[5]
+set_location_assignment PIN_187 -to sin[6]
+set_location_assignment PIN_188 -to sin[7]
+set_location_assignment PIN_194 -to sin[8]
+set_location_assignment PIN_196 -to sin[9]
+set_location_assignment PIN_197 -to sin[10]
+set_location_assignment PIN_200 -to sin[11]
+set_location_assignment PIN_201 -to sin[12]
+set_location_assignment PIN_202 -to sin[13]
+set_location_assignment PIN_207 -to sin[14]
+set_location_assignment PIN_239 -to sclk
+set_location_assignment PIN_240 -to gclk
+set_location_assignment PIN_214 -to lat
+set_location_assignment PIN_217 -to sin[15]
+set_location_assignment PIN_218 -to sin[16]
+set_location_assignment PIN_219 -to sin[17]
+set_location_assignment PIN_221 -to sin[18]
+set_location_assignment PIN_224 -to sin[19]
+set_location_assignment PIN_226 -to sin[20]
+set_location_assignment PIN_231 -to sin[21]
+set_location_assignment PIN_232 -to sin[22]
+set_location_assignment PIN_236 -to sin[23]
+set_location_assignment PIN_9 -to sin[24]
+set_location_assignment PIN_12 -to sin[25]
+set_location_assignment PIN_14 -to sin[26]
+set_location_assignment PIN_21 -to sin[27]
+set_location_assignment PIN_37 -to sin[28]
+set_location_assignment PIN_38 -to sin[29]
+set_location_assignment PIN_31 -to clk_50
+set_location_assignment PIN_41 -to mux[0]
+set_location_assignment PIN_43 -to mux[1]
+set_location_assignment PIN_49 -to mux[2]
+set_location_assignment PIN_51 -to mux[3]
+set_location_assignment PIN_52 -to mux[4]
+set_location_assignment PIN_55 -to mux[5]
+set_location_assignment PIN_57 -to mux[6]
+set_location_assignment PIN_68 -to mux[7]
+set_location_assignment PIN_44 -to enc0
+set_location_assignment PIN_45 -to enc1
+set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
+set_global_assignment -name ENABLE_NCE_PIN OFF
+set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+set_location_assignment PIN_111 -to gpio_diff
+set_location_assignment PIN_112 -to gpio_vref
+
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

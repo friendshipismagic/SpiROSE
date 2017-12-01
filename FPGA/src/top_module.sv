@@ -18,7 +18,7 @@ module top_module (
 
 	// RGB bus
 	input [23:0] rgb,
-	input hsync, vsync, rgb_clk, 
+	input hsync, vsync, rgb_clk,
 	
 	// Driver output
 	output sclk, 
@@ -46,7 +46,7 @@ module top_module (
 		end else begin
 			sclk <= 1'b0;
 			lat <= 1'b0;
-			sin <= 30'b0;
+			sin <= '0;
 		end
 
 	// Column multiplexers

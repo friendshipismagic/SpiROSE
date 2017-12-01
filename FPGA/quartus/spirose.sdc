@@ -26,6 +26,9 @@
 create_clock -name "clk_50" -period 20.000ns [get_ports {clk_50}]
 create_clock -name "rgb" -period 20.000ns [get_ports {rgb_clk}]
 
+# Pin delay
+set_input_delay -clock "rgb" -max 3ns [get_ports {gpio_vref}]
+set_input_delay -clock "rgb" -max 3ns [get_ports {gpio_diff}]
 
 # Automatically constrain PLL and other generated clocks
 derive_pll_clocks -create_base_clocks
