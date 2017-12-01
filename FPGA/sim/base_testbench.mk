@@ -4,7 +4,7 @@ export SYSTEMC_LIBDIR ?= /usr/lib/
 SV_MODULE_PATH = ../src
 
 VERILATOR = verilator
-VERILATOR_ROOT = /usr/share/verilator/include/
+VERILATOR_ROOT ?= /usr/share/verilator/include/
 VERILATOR_FLAGS = --sc --trace
 VERILATOR_BASE = verilated.o verilated_vcd_c.o verilated_vcd_sc.o
 VERILATOR_OBJS = obj_dir/V$(MODULE).o obj_dir/V$(MODULE)__Syms.o
@@ -16,15 +16,17 @@ DEPS = $(subst .o,.d,$(OBJS))
 deps:
 	echo $(DEPS)
 
-LDLIBS = -lsystemc -lstdc++
+LDFLAGS = -L$(SYSTEMC_LIBDIR)
+LINK.o = g++ $(LDFLAGS) $(TARGET_ARCH)
+LDLIBS = -lsystemc
 
 VPATH = ../src/ ../src/systemc ../tb_src/ ../tb_src/systemc ./obj_dir/ $(VERILATOR_ROOT)
 export VPATH
 
-CPPFLAGS = -I/usr/share/verilator/include/ \
-		   -I../src/systemc/ \
+CPPFLAGS = -I../src/systemc/ \
 		   -I./obj_dir/ \
-		   -I$(VERILATOR_ROOT)
+		   -I$(VERILATOR_ROOT) \
+		   -I$(SYSTEMC_INCLUDE)
 export CPPFLAGS
 
 obj_dir/V$(MODULE).h: $(MODULE).sv
