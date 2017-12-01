@@ -1,8 +1,8 @@
 #include <systemc.h>
-#include "driver_cmd.h"
 
 #include "driver.hpp"
 #include "assert.h"
+#include "driver_cmd.h"
 
 int sc_main(int, char**) {
     const sc_time T(10, SC_NS);
@@ -26,21 +26,34 @@ int sc_main(int, char**) {
     static driver_sequence_t writeConfigSequence;
     static driver_sequence_t* pokerSequence;
 
+    static sc_bv<768> gs1Data;
+    static sc_bv<768> gs2Data;
+
+    // Assign configuration values to be sent ot the driver module
+    testConfig = {3,3,0,1,1,1,1,1,0,4,128,128,128,7,1,5};
+
+    for (int i = 0; i < 16; i++) {
+        for (int j = 0; j < 3; j++) {
+            testData[i].color[j] = rand() % 256;
+        }
+    }
+
     Driver driver("driver");
 
-    // bind the signals...
+    // bind the signals
     driver.gclk(gclk);
     driver.sclk(clk);
     driver.nrst(nrst);
     driver.sin(sin);
     driver.lat(lat);
 
-    sc_trace_file *wf = sc_create_vcd_trace_file("driverTest");
-    sc_trace(wf, clk, "clk");
-    sc_trace(wf, nrst, "nrst");
-    sc_trace(wf, sin, "sin");
-    sc_trace(wf, lat, "lat");
-    sc_trace(wf, gclk, "gclk");
+    // The following lins need to be uncommented if traces are wanted
+    //sc_trace_file *wf = sc_create_vcd_trace_file("driverTest");
+    //sc_trace(wf, clk, "clk");
+    //sc_trace(wf, nrst, "nrst");
+    //sc_trace(wf, sin, "sin");
+    //sc_trace(wf, lat, "lat");
+    //sc_trace(wf, gclk, "gclk");
 
     sc_start(T);
 
@@ -55,53 +68,65 @@ int sc_main(int, char**) {
         // Send the configuration write enable to the driver
         configWriteEnableSequence = make_FCWRTEN();
 
-        for (int i = 0; i < configWriteEnable.length; i++) {
-            sin = configWriteEnableSequence.sin[i];
-            lat = configWriteEnableSequence.lat[i];
+        for (int i = 0; i < (uint8_t) configWriteEnableSequence.size; i++) {
+            sin.write(configWriteEnableSequence.sin[i]);
+            lat.write(configWriteEnableSequence.lat[i]);
             sc_start(T);
         }
 
         // Send the configuration sequence to the driver
         writeConfigSequence = make_WRTCFG(testConfig);
 
-        for (int i = 0; i < writeConfigSequence.length; i++) {
-            sin = writeConfigSequence.sin[i];
-            lat = writeConfigSequence.lat[i];
+        for (int i = 0; i < (uint8_t) writeConfigSequence.size; i++) {
+            sin.write(writeConfigSequence.sin[i]);
+            lat.write(writeConfigSequence.lat[i]);
             sc_start(T);
         }
 
         // Test the configuration register FC
-        assert(testConfig.LODVTH       == (uint32_t) getLodth());
-        assert(testConfig.SEL_TD0      == (uint32_t) getTd0());
-        assert(testConfig.SEL_GDLY     == (uint32_t) getGroup());
-        assert(testConfig.XREFRESH     == (uint32_t) getXrefreshDisabled());
-        assert(testConfig.SEL_GCK_EDGE == (uint32_t) getSelGckEdge());
-        assert(testConfig.SEL_PCHG     == (uint32_t) getSelPchg());
-        assert(testConfig.ESPWM        == (uint32_t) getGetEspwm());
-        assert(testConfig.LGSE3        == (uint32_t) getLgse3());
-        assert(testConfig.SEL_SCK_EDGE == (uint32_t) getSelSckEdge());
-        assert(testConfig.LGSE1        == (uint32_t) getLgse1());
-        assert(testConfig.CCB          == (uint32_t) getCcb());
-        assert(testConfig.CCG          == (uint32_t) getCcg());
-        assert(testConfig.CCR          == (uint32_t) getCcr());
-        assert(testConfig.BC           == (uint32_t) getBc());
-        assert(testConfig.POKER        == (uint32_t) getPokerMode());
-        assert(testConfig.LGSE2        == (uint32_t) getLgse2());
+        assert(testConfig.LODVTH       ==  driver.getLodth().to_uint());
+        assert(testConfig.SEL_TD0      ==  driver.getTd0().to_uint());
+        assert(testConfig.SEL_GDLY     ==  driver.getGroup());
+        assert(testConfig.XREFRESH     ==  driver.getXrefreshDisabled());
+        assert(testConfig.SEL_GCK_EDGE ==  driver.getSelGckEdge());
+        assert(testConfig.SEL_PCHG     ==  driver.getSelPchg());
+        assert(testConfig.ESPWM        ==  driver.getEspwm());
+        assert(testConfig.LGSE3        ==  driver.getLgse3());
+        assert(testConfig.SEL_SCK_EDGE ==  driver.getSelSckEdge());
+        assert(testConfig.LGSE1        ==  driver.getLgse1().to_uint());
+        assert(testConfig.CCB          ==  driver.getCcb().to_uint());
+        assert(testConfig.CCG          ==  driver.getCcg().to_uint());
+        assert(testConfig.CCR          ==  driver.getCcr().to_uint());
+        assert(testConfig.BC           ==  driver.getBc().to_uint());
+        assert(testConfig.POKER        ==  driver.getPokerMode());
+        assert(testConfig.LGSE2        ==  driver.getLgse2().to_uint());
         
 
         // Send the data to the driver in poker mode
         pokerSequence = make_poker_data(testData);
 
         for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < pokerSequence[i].length; j++) {
-                sin = pokerSequence[i].sin[j];
-                lat = pokerSequence[i].lat[j];
+            for (int j = 0; j < (uint8_t) pokerSequence[i].size; j++) {
+                sin.write(pokerSequence[i].sin[j]);
+                lat.write(pokerSequence[i].lat[j]);
                 sc_start(T);
             }
             sc_start(T);
         }
 
-        // TODO: Testing the driver internals
+        // Testing the driver internals
+        gs1Data = driver.getGs1Data();
+        gs2Data = driver.getGs2Data();
+
+        for (int outputNb = 0; outputNb < 48; outputNb++) {
+            for (int j = 0; j < 9; j++) {
+                // Verify that the data in the 768-bit latch registers
+                assert(gs1Data(outputNb * 16 + 7, outputNb * 16 + 7 + 8).to_uint() 
+                        == testData[outputNb / 3].color[outputNb % 3]);
+                assert(gs2Data(outputNb * 16 + 7, outputNb * 16 + 7 + 8).to_uint() 
+                        == testData[outputNb / 3].color[outputNb % 3]);
+            }
+        }
     }
 
     return EXIT_SUCCESS;
