@@ -48,6 +48,7 @@
 #include <glm/gtx/transform.hpp>
 
 #include <tinyobjloader/tiny_obj_loader.h>
+#include "tga.h"
 
 void readFile(const std::string &filename, std::string &contents);
 void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
@@ -62,7 +63,7 @@ typedef struct RenderOptions {
 RenderOptions renderOptions = {
     .wireframe = false, .pause = false, .pizza = false, .useXor = false};
 
-bool clicking = false;
+bool clicking = false, doDump = false;
 float t = 0.f;
 GLuint progVoxel, progOffscreen, progGenerate, progInterlace;
 
@@ -330,6 +331,19 @@ int main(int argc, char *argv[]) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glBindVertexArray(vao);
         glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
+
+        // Dump the FBO if required
+        if (doDump) {
+            GLuint pixels[32 * 32 * 4] = {0};
+            glPixelStorei(GL_PACK_ALIGNMENT, 1);
+            if (renderOptions.useXor) {
+                // Use BGRA as TGA swaps red and blue
+                glReadPixels(0, 0, 32, 32, GL_BGRA, GL_UNSIGNED_BYTE, pixels);
+                saveTGA("output.tga", pixels, 32, 32, 32);
+                std::cout << "[INFO] Dumped FBO to output.tga" << std::endl;
+            }
+            doDump = false;
+        }
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         glDisable(renderOptions.useXor ? GL_COLOR_LOGIC_OP : GL_BLEND);
@@ -437,6 +451,9 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
             break;
         case GLFW_KEY_X:
             renderOptions.useXor = !renderOptions.useXor;
+            break;
+        case GLFW_KEY_S:
+            doDump = true;
             break;
     }
 }
