@@ -20,7 +20,7 @@ void main() {
         out_Color = texture(tex0, ex_UV);
     else {
         // Modulus coordinates
-        vec2 uv = mod(ex_UV * vec2(4, 2), vec2(4, 2)) / vec2(4, 2);
+        vec2 uv = mod(ex_UV * vec2(4, 2), 1);
 
         // BST like structure
         if (ex_UV.y < 0.5) {
