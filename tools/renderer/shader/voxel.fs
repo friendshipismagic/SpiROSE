@@ -39,8 +39,7 @@ void main() {
             if (z > float(a) / 32) val.a |= 1 << (a - 24);
 
         fragColor0 = vec4(val) / 255.0;
-    }
-    else {
+    } else {
         setOutput(z, 0, fragColor0);
         setOutput(z, 1, fragColor1);
         setOutput(z, 2, fragColor2);
