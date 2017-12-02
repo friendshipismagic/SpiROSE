@@ -55,6 +55,10 @@
 #define LGSE2_IDX (45)
 #define LGSE2_SIZE (3)
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 driver_sequence_t make_sequence(size_t length) {
     return (driver_sequence_t){length, calloc(length, 1), calloc(length, 1)};
 }
@@ -184,5 +188,9 @@ void free_sequences(driver_sequence_t* seqs[]) {
     }
     free(seqs);
 }
+
+#ifdef __cplusplus
+}  // extern "C"
+#endif
 
 #undef BIT

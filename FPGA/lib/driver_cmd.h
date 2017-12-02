@@ -76,6 +76,10 @@ typedef struct {
     uint8_t color[3];
 } rgb_t;
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /*
  * Dynamically creates a sequence of the given length. The returned sequence
  * must be freed with free_sequence.
@@ -167,5 +171,9 @@ void free_sequence(driver_sequence_t* seq);
  * \param seqs the array of sequence to free
  */
 void free_sequences(driver_sequence_t* seq[]);
+
+#ifdef __cplusplus
+}  // extern "C"
+#endif
 
 #endif
