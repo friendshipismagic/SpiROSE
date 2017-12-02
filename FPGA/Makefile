@@ -1,6 +1,7 @@
 lint:
 	@echo "Running lint tests"
 	make -C lib -f driver_cmd.mk lint
+	make -C tb_sc -f tb_driver.mk lint
 	make -C sim gen
 
 build :
