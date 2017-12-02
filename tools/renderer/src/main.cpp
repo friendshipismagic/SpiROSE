@@ -220,7 +220,7 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < N_BUF_NO_XOR; i++) {
             glActiveTexture(GL_TEXTURE0 + i);
             glBindTexture(GL_TEXTURE_2D + i, texVoxelBufs[i]);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA4, 32, 32, 0, GL_RGB,
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGB,
                          GL_UNSIGNED_BYTE, NULL);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -337,11 +337,21 @@ int main(int argc, char *argv[]) {
             GLuint pixels[32 * 32 * 4] = {0};
             glPixelStorei(GL_PACK_ALIGNMENT, 1);
             if (renderOptions.useXor) {
+                glReadBuffer(GL_COLOR_ATTACHMENT0);
                 // Use BGRA as TGA swaps red and blue
                 glReadPixels(0, 0, 32, 32, GL_BGRA, GL_UNSIGNED_BYTE, pixels);
                 saveTGA("output.tga", pixels, 32, 32, 32);
                 std::cout << "[INFO] Dumped FBO to output.tga" << std::endl;
-            }
+            } else
+                for (int i = 0; i < N_BUF_NO_XOR; i++) {
+                    glReadBuffer(GL_COLOR_ATTACHMENT0 + i);
+                    glReadPixels(0, 0, 32, 32, GL_BGRA, GL_UNSIGNED_BYTE,
+                                 pixels);
+                    saveTGA("output" + std::to_string(i) + ".tga", pixels, 32,
+                            32, 32);
+                    std::cout << "[INFO] Dumped FBO layer " << i << " to output"
+                              << i << ".tga" << std::endl;
+                }
             doDump = false;
         }
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
@@ -371,7 +381,7 @@ int main(int argc, char *argv[]) {
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         //// Interlace voxels
-        glViewport(32, 0, 32 * 8, 32 * 4);
+        glViewport(renderOptions.useXor ? 32 : (32 * 4), 0, 32 * 8, 32 * 4);
         glBindVertexArray(vaoSquare);
         glUseProgram(progInterlace);
         glUniform1ui(doPizzaPositionInt, renderOptions.pizza);
