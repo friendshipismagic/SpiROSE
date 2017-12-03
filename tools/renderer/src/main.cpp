@@ -193,6 +193,11 @@ int main(int argc, char *argv[]) {
     GLint doPizzaPositionInt = glGetUniformLocation(progInterlace, "doPizza");
     GLint useXorPositionOff = glGetUniformLocation(progOffscreen, "useXor");
 
+    GLint texPositionOff[N_BUF_NO_XOR] = {0};
+    for (int i = 0; i < N_BUF_NO_XOR; i++)
+        texPositionOff[i] = glGetUniformLocation(
+            progOffscreen, ("tex" + std::to_string(i)).c_str());
+
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
               matProjection =
@@ -219,7 +224,7 @@ int main(int argc, char *argv[]) {
         glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
         for (int i = 0; i < N_BUF_NO_XOR; i++) {
             glActiveTexture(GL_TEXTURE0 + i);
-            glBindTexture(GL_TEXTURE_2D + i, texVoxelBufs[i]);
+            glBindTexture(GL_TEXTURE_2D, texVoxelBufs[i]);
             glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGB,
                          GL_UNSIGNED_BYTE, NULL);
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
@@ -395,6 +400,8 @@ int main(int argc, char *argv[]) {
         glBindVertexArray(vaoSquare);
         glUseProgram(progOffscreen);
         glUniform1ui(useXorPositionOff, renderOptions.useXor);
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            glUniform1i(texPositionOff[i], i);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
     }
 
