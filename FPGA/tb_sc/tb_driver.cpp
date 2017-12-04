@@ -3,6 +3,15 @@
 #include "driver.hpp"
 #include "driver_cmd.h"
 
+void sendSequence(driver_sequence_t seq, sc_signal<bool> *sin, 
+        sc_signal<bool> *lat, sc_time T) {
+    for (int i = 0; i < (uint8_t)seq.size; i++) {
+        sin->write(seq.sin[i]);
+        lat->write(seq.lat[i]);
+        sc_start(T);
+    }
+}
+
 int sc_main(int, char**) {
     const sc_time T(10, SC_NS);
 
@@ -16,7 +25,8 @@ int sc_main(int, char**) {
     sc_signal<bool> nrst("nrst");
     sc_signal<bool> sin("sin");
     sc_signal<bool> lat("lat");
-    sc_signal<bool> gclk("gclk");
+    // For now, sending false for gclk
+    sc_clock gclk("gclk", T, 0.5, simulation_time, true);
 
     static rgb_t testData[16];
     static driver_config_t testConfig;
@@ -61,33 +71,31 @@ int sc_main(int, char**) {
 
     sc_start(T);
 
+    configWriteEnableSequence = make_FCWRTEN();
+
     // Resets the module
     nrst = 0;
     sc_start(T);
     nrst = 1;
     sc_start(T);
 
-    while (sc_time_stamp() < simulation_time) {
-        // Send the configuration write enable to the driver
-        configWriteEnableSequence = make_FCWRTEN();
+    /*
+     * TODO: Testing random configuration sequences for potential side effects
+     * in the driver code
+     */
 
+    while (sc_time_stamp() < simulation_time) {
+        
+        // Send the configuration write enable to the driver
         printf("Sending FC write enable sequence to the driver...");
-        for (int i = 0; i < (uint8_t)configWriteEnableSequence.size; i++) {
-            sin.write(configWriteEnableSequence.sin[i]);
-            lat.write(configWriteEnableSequence.lat[i]);
-            sc_start(T);
-        }
+        sendSequence(configWriteEnableSequence, &sin, &lat, T);
         printf("DONE\n");
 
         // Send the configuration sequence to the driver
         writeConfigSequence = make_WRTCFG(testConfig);
 
         printf("Sending configuration sequence to the driver...");
-        for (int i = 0; i < (uint8_t)writeConfigSequence.size; i++) {
-            sin.write(writeConfigSequence.sin[i]);
-            lat.write(writeConfigSequence.lat[i]);
-            sc_start(T);
-        }
+        sendSequence(writeConfigSequence, &sin, &lat, T);
         lat.write(0);
         sc_start(T);
         printf("DONE\n");
@@ -117,11 +125,8 @@ int sc_main(int, char**) {
 
         printf("Sending 9 sequences of data (9-bit poker mode)...\n");
         for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < (uint8_t)pokerSequence[i].size; j++) {
-                sin.write(pokerSequence[i].sin[j]);
-                lat.write(pokerSequence[i].lat[j]);
-                sc_start(T);
-            }
+            sendSequence(pokerSequence[i], &sin, &lat, T);
+            // TODO: print the shift register value
         }
         printf("DONE\n");
 
@@ -133,15 +138,15 @@ int sc_main(int, char**) {
             // Verify that the data in the 768-bit latch registers
             printf(
                 "Read data number %d, gs1Data (got) = %x,"
-                "testData (expected) = %x\n",
+                " testData (expected) = %x\n",
                 outputNb,
                 gs1Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint(),
                 testData[outputNb / 3].color[outputNb % 3]);
             assert(
-                gs1Data(outputNb * 16 + 7, outputNb * 16 + 7 + 8).to_uint() ==
+                gs1Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint() ==
                 testData[outputNb / 3].color[outputNb % 3]);
             assert(
-                gs2Data(outputNb * 16 + 7, outputNb * 16 + 7 + 8).to_uint() ==
+                gs2Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint() ==
                 testData[outputNb / 3].color[outputNb % 3]);
         }
     }
