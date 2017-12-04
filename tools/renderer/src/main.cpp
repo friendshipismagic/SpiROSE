@@ -89,7 +89,7 @@ int main(int argc, char *argv[]) {
 #endif
     // Command line options
     char c;
-    while ((c = getopt(argc, argv, "wpcx")) != -1) switch (c) {
+    while ((c = getopt(argc, argv, "wpcxt:")) != -1) switch (c) {
             case 'w':
                 renderOptions.wireframe = true;
                 break;
@@ -101,6 +101,9 @@ int main(int argc, char *argv[]) {
                 break;
             case 'x':
                 renderOptions.useXor = true;
+                break;
+            case 't':
+                t = atof(optarg);
                 break;
 
             case '?':
@@ -300,6 +303,8 @@ int main(int argc, char *argv[]) {
         title += std::to_string(renderOptions.pizza);
         title += " / [x] xor ";
         title += std::to_string(renderOptions.useXor);
+        title += " / time ";
+        title += std::to_string(t);
         glfwSetWindowTitle(window, title.c_str());
 
         //// Voxelization
