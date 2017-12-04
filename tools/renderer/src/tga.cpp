@@ -35,9 +35,9 @@ void saveTGA(const std::string &filename, void *pixels, int bpp, int w, int h) {
                          .colorMaps = {0},
                          .spec = {.xOrigin = 0,
                                   .yOrigin = 0,
-                                  .width = w,
-                                  .height = h,
-                                  .bpp = bpp,
+                                  .width = (uint16_t)w,
+                                  .height = (uint16_t)h,
+                                  .bpp = (uint8_t)bpp,
                                   .descriptor = 0}};
     fwrite(&header, sizeof(header), 1, fo);
 
