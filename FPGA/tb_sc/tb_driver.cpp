@@ -130,15 +130,19 @@ int sc_main(int, char**) {
         gs2Data = driver.getGs2Data();
 
         for (int outputNb = 0; outputNb < 48; outputNb++) {
-            for (int j = 0; j < 9; j++) {
-                // Verify that the data in the 768-bit latch registers
-                assert(gs1Data(outputNb * 16 + 7, outputNb * 16 + 7 + 8)
-                           .to_uint() ==
-                       testData[outputNb / 3].color[outputNb % 3]);
-                assert(gs2Data(outputNb * 16 + 7, outputNb * 16 + 7 + 8)
-                           .to_uint() ==
-                       testData[outputNb / 3].color[outputNb % 3]);
-            }
+            // Verify that the data in the 768-bit latch registers
+            printf(
+                "Read data number %d, gs1Data (got) = %d,"
+                "testData (expected) = %d\n",
+                outputNb,
+                gs1Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint(),
+                testData[outputNb / 3].color[outputNb % 3]);
+            assert(
+                gs1Data(outputNb * 16 + 7, outputNb * 16 + 7 + 8).to_uint() ==
+                testData[outputNb / 3].color[outputNb % 3]);
+            assert(
+                gs2Data(outputNb * 16 + 7, outputNb * 16 + 7 + 8).to_uint() ==
+                testData[outputNb / 3].color[outputNb % 3]);
         }
     }
 
