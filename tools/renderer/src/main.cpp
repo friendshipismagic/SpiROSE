@@ -392,7 +392,7 @@ int main(int argc, char *argv[]) {
         glBindVertexArray(vaoSquare);
         glUseProgram(progInterlace);
         glUniform1ui(doPizzaPositionInt, renderOptions.pizza);
-        glUniform1ui(useXorPositionInt, renderOption.useXor);
+        glUniform1ui(useXorPositionInt, renderOptions.useXor);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
             glUniform1i(texPositionInt[i], i);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
