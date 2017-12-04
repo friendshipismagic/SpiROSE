@@ -61,7 +61,6 @@ void Driver::handleLat() {
     gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
 
     while (true) {
-        wait();
         if (lat) {
             latCounter = latCounter.read() + 1;
         } else if (latCounter == 1) {
@@ -76,17 +75,16 @@ void Driver::handleLat() {
             auto bank = gs1Data.read();
             updateBank(bank, gsAddrCounter.read(), shiftReg);
             gs1Data.write(bank);
-            gs2Data.write(bank);
             if (getXrefreshDisabled() == 0) {
                 // latch GS1 to GS2 when gs_addr_counter = 65536
                 if (gsAddrCounter == 0) {
-                    gs2Data = gs1Data;
+                    gs2Data.write(bank);
                 }
             } else {
                 // latch GS1 to GS2
                 // reset gs_addr_counter (right after the else)
                 // TODO: put outx = 0 if we need to test it
-                gs2Data = gs1Data;
+                gs2Data.write(bank);
             }
             gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
             lineCounter = lineCounter.read() + 1;
@@ -95,6 +93,7 @@ void Driver::handleLat() {
             // WRTFC
             fcData = shiftReg;
             latCounter = 0;
+            gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
         } else if (latCounter == 7) {
             // LINERESET
             auto bank = gs1Data.read();
@@ -119,6 +118,7 @@ void Driver::handleLat() {
             latCounter = 0;
         } else if (latCounter == 13) {
             // TMGRST
+            gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
             gsDataCounter = 0;
             lineCounter = 0;
             // TODO: force output off if we need to test it
@@ -130,6 +130,8 @@ void Driver::handleLat() {
         } else {
             assert(latCounter == 0 && "Invalid lat counter value");
         }
+
+        wait();
     }
 }
 
@@ -155,7 +157,7 @@ void Driver::updateBank(Driver::GSBuff& bank, int bufferId,
         bank(end, end - REG_SIZE + 1) = buffer(REG_SIZE - 1, 0);
     } else {
         // i is the buffer iterator from end to start
-        for (int i = GS_NB_BUFFER; i > 0; --i) {
+        for (int i = GS_NB_BUFFER + 1; i > 0; --i) {
             // j is the current color of the pixel
             for (int j = 0; j < GS_NB_COLOR; ++j) {
                 // + in this context, buffer_id is the bit number of the poker
@@ -166,12 +168,34 @@ void Driver::updateBank(Driver::GSBuff& bank, int bufferId,
                 // + the 48 bits buffer is splitted into three 16 bits parts,
                 // one for each color, so j*16 translates to the right buffer
                 auto idx = i * REG_SIZE - (GS_NB_BUFFER - bufferId) - j * 16;
-                bank[idx] = buffer[i];
+                bank[idx] = buffer[i * 3 - j - 1];
             }
         }
+        std::cout << "New GS bank : " << std::endl;
+        displayBank(bank);
+        std::cout << "Reg data : " << std::endl;
+        displayReg(buffer);
+        std::cout << "Buffer id : " << bufferId << std::endl;
     }
 }
 
 Driver::GSBuff Driver::getGs1Data() const { return gs1Data.read(); }
 Driver::GSBuff Driver::getGs2Data() const { return gs2Data.read(); }
 Driver::RegBuff Driver::getFcData() const { return fcData.read(); }
+
+void Driver::displayBank(const Driver::GSBuff& bank) {
+    for (int i = 0; i < GS_NB_BUFFER; ++i) {
+        for (int j = 0; j < 3; ++j)
+            std::cout << bank(767 - REG_SIZE * i - j * 16,
+                              768 - REG_SIZE * i - (j + 1) * 16)
+                      << " ";
+        std::cout << std::endl;
+    }
+}
+
+void Driver::displayReg(const Driver::RegBuff& buffer) {
+    for (int i = 0; i < 3; ++i) {
+        std::cout << buffer(47 - i * 16, 48 - (i + 1) * 16) << " ";
+    }
+    std::cout << std::endl;
+}

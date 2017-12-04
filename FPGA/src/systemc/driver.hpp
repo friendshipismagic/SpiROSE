@@ -91,6 +91,10 @@ class Driver : public sc_module {
     sc_in<bool> sin;
     sc_in<bool> lat;
 
+    static void displayBank(const GSBuff& bank);
+
+    static void displayReg(const RegBuff& buffer);
+
     private:
     void updateBank(Driver::GSBuff& bank, int bufferId, const RegBuff& buffer);
 
