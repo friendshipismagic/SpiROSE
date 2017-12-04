@@ -1,6 +1,5 @@
 #include <systemc.h>
-
-#include "assert.h"
+#include <cassert>
 #include "driver.hpp"
 #include "driver_cmd.h"
 

@@ -6,7 +6,7 @@ SYSTEMC_MODULES_DIR = ../src/systemc/
 FPGALIB = ../lib
 
 CPPFLAGS = -I$(SYSTEMC_INCLUDE) -I$(SYSTEMC_MODULES_DIR) -I$(FPGALIB)
-CXXFLAGS = -Wall -Wextra -Werror -std=c++11 -g
+CXXFLAGS = -Wall -Wextra -Werror -std=c++11 -g -DSC_DISABLE_API_VERSION_CHECK
 
 LDFLAGS = -L"$(SYSTEMC_LIBDIR)" -L"$(FPGALIB)"
 LDLIBS = -lsystemc
