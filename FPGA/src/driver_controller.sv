@@ -6,7 +6,7 @@
 
 module driver_controller #(parameter BLANKING_TIME = 512 - 9*48
 )(
-   input clk_33,
+   input clk_hse,
    input nrst,
 
    // Framebuffer access, 30b wide
@@ -28,6 +28,22 @@ module driver_controller #(parameter BLANKING_TIME = 512 - 9*48
    input [47:0] serialized_conf
 );
 
+logic clk_lse;
+logic clk_lse_quad;
+always_ff @(posedge clk_hse)
+    if(~nrst) begin
+        clk_lse <= '0;
+    end else begin
+        clk_lse <= ~clk_lse;
+    end
+
+always_ff @(negedge clk_hse)
+    if(~nrst) begin
+        clk_lse_quad <= '0;
+    end else begin
+        clk_lse_quad <= ~clk_lse_quad;
+    end
+
 /*
  * List of the possible states of the drivers
  * STALL state is the initial state, whe the drivers are not configured
@@ -48,7 +64,7 @@ module driver_controller #(parameter BLANKING_TIME = 512 - 9*48
  */
 enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD} driver_state;
 logic [7:0] driver_state_counter;
-always_ff @(posedge clk_33)
+always_ff @(posedge clk_lse_quad)
     if(~nrst) begin
         driver_state <= STALL;
         driver_state_counter <= '0;
@@ -101,7 +117,7 @@ always_ff @(posedge clk_33)
  * In STREAM state, it corresponds to the number of data bits already sent.
  */
 logic [9:0] segment_counter;
-always_ff @(posedge clk_33)
+always_ff @(posedge clk_lse_quad)
     if(~nrst) begin
         segment_counter <= '0;
     end else begin
@@ -129,7 +145,7 @@ assign blanking_period = nrst & (segment_counter < BLANKING_TIME);
  *
  */
 logic [7:0] shift_register_counter;
-always_ff @(posedge clk_33)
+always_ff @(posedge clk_lse_quad)
     if(~nrst) begin
         shift_register_counter <= '0;
     end else begin
@@ -168,7 +184,7 @@ always_ff @(posedge clk_33)
  * There is no difference between the configuration mode and the stream mode.
  * The SCLK is on when device is not in reset and not in blanking mode.
  */
-assign driver_sclk = clk_33 & nrst;
+assign driver_sclk = clk_lse & nrst;
 
 /*
  * driver_gclk drives the GSCLK of the drivers.
@@ -177,7 +193,7 @@ assign driver_sclk = clk_33 & nrst;
  * written.
  * TODO check GS data default value (SLVUAF0 p.16)
  */
-assign driver_gclk = clk_33 & nrst
+assign driver_gclk = clk_lse & nrst
                      & (driver_state == STREAM || driver_state == LOD);
 
 /*

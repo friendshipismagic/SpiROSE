@@ -29,7 +29,7 @@ framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(80)) main_fb_emulator (
 
 // Device Under Test
 driver_controller #(.BLANKING_TIME(80)) dut (
-    .clk_33(clk_33),
+    .clk_hse(clk_33),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_data),
     .framebuffer_sync(framebuffer_sync),

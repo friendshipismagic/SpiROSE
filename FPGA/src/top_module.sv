@@ -36,7 +36,7 @@ module top_module (
 
 // Driver output
 driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
-    .clk_33(clk_33),
+    .clk_hse(clk_33),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_dat),
     .framebuffer_sync(framebuffer_sync),
