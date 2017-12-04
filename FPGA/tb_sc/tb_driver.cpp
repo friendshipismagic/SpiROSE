@@ -29,7 +29,7 @@ int sc_main(int, char**) {
     static sc_bv<768> gs2Data;
 
     // Assign configuration values to be sent to the driver module
-    testConfig = {3, 3, 0, 0, 1, 1, 0, 1, 0, 4, 127, 127, 127, 7, 1, 5};
+    testConfig = {3, 3, 0, 1, 1, 1, 1, 1, 0, 4, 127, 127, 127, 7, 1, 5};
 
     for (int i = 0; i < 16; i++) {
         for (int j = 0; j < 3; j++) {
