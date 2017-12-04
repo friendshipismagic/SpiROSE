@@ -51,14 +51,22 @@ void main() {
     if (useXor)
         color = ivec4(texture(tex0, fragPos.xy) * 255);
     else {
-        if (fragPos.z < 1/8)      color = ivec4(texture(tex0, fragPos.xy) * 255);
-        else if (fragPos.z < 2/8) color = ivec4(texture(tex1, fragPos.xy) * 255);
-        else if (fragPos.z < 3/8) color = ivec4(texture(tex2, fragPos.xy) * 255);
-        else if (fragPos.z < 4/8) color = ivec4(texture(tex3, fragPos.xy) * 255);
-        else if (fragPos.z < 5/8) color = ivec4(texture(tex4, fragPos.xy) * 255);
-        else if (fragPos.z < 6/8) color = ivec4(texture(tex5, fragPos.xy) * 255);
-        else if (fragPos.z < 7/8) color = ivec4(texture(tex6, fragPos.xy) * 255);
-        else if (fragPos.z < 8/8) color = ivec4(texture(tex7, fragPos.xy) * 255);
+        if (fragPos.z < 1 / 8)
+            color = ivec4(texture(tex0, fragPos.xy) * 255);
+        else if (fragPos.z < 2 / 8)
+            color = ivec4(texture(tex1, fragPos.xy) * 255);
+        else if (fragPos.z < 3 / 8)
+            color = ivec4(texture(tex2, fragPos.xy) * 255);
+        else if (fragPos.z < 4 / 8)
+            color = ivec4(texture(tex3, fragPos.xy) * 255);
+        else if (fragPos.z < 5 / 8)
+            color = ivec4(texture(tex4, fragPos.xy) * 255);
+        else if (fragPos.z < 6 / 8)
+            color = ivec4(texture(tex5, fragPos.xy) * 255);
+        else if (fragPos.z < 7 / 8)
+            color = ivec4(texture(tex6, fragPos.xy) * 255);
+        else if (fragPos.z < 8 / 8)
+            color = ivec4(texture(tex7, fragPos.xy) * 255);
     }
 
     int p = 1 << int(mod(fragPos.z * 32, 8));

@@ -22,13 +22,21 @@ void main() {
     if (useXor)
         vColor = texture(voxels0, (gl_Position.xy / 2 + 0.5));
     else {
-        if (gl_Position.z < 1/8)      vColor = texture(voxels0, (gl_Position.xy / 2 + 0.5));
-        else if (gl_Position.z < 2/8) vColor = texture(voxels1, (gl_Position.xy / 2 + 0.5));
-        else if (gl_Position.z < 3/8) vColor = texture(voxels2, (gl_Position.xy / 2 + 0.5));
-        else if (gl_Position.z < 4/8) vColor = texture(voxels3, (gl_Position.xy / 2 + 0.5));
-        else if (gl_Position.z < 5/8) vColor = texture(voxels4, (gl_Position.xy / 2 + 0.5));
-        else if (gl_Position.z < 6/8) vColor = texture(voxels5, (gl_Position.xy / 2 + 0.5));
-        else if (gl_Position.z < 7/8) vColor = texture(voxels6, (gl_Position.xy / 2 + 0.5));
-        else if (gl_Position.z < 8/8) vColor = texture(voxels7, (gl_Position.xy / 2 + 0.5));
+        if (gl_Position.z < 1 / 8)
+            vColor = texture(voxels0, (gl_Position.xy / 2 + 0.5));
+        else if (gl_Position.z < 2 / 8)
+            vColor = texture(voxels1, (gl_Position.xy / 2 + 0.5));
+        else if (gl_Position.z < 3 / 8)
+            vColor = texture(voxels2, (gl_Position.xy / 2 + 0.5));
+        else if (gl_Position.z < 4 / 8)
+            vColor = texture(voxels3, (gl_Position.xy / 2 + 0.5));
+        else if (gl_Position.z < 5 / 8)
+            vColor = texture(voxels4, (gl_Position.xy / 2 + 0.5));
+        else if (gl_Position.z < 6 / 8)
+            vColor = texture(voxels5, (gl_Position.xy / 2 + 0.5));
+        else if (gl_Position.z < 7 / 8)
+            vColor = texture(voxels6, (gl_Position.xy / 2 + 0.5));
+        else if (gl_Position.z < 8 / 8)
+            vColor = texture(voxels7, (gl_Position.xy / 2 + 0.5));
     }
 }
