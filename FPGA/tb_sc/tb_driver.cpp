@@ -132,8 +132,8 @@ int sc_main(int, char**) {
         for (int outputNb = 0; outputNb < 48; outputNb++) {
             // Verify that the data in the 768-bit latch registers
             printf(
-                "Read data number %d, gs1Data (got) = %d,"
-                "testData (expected) = %d\n",
+                "Read data number %d, gs1Data (got) = %x,"
+                "testData (expected) = %x\n",
                 outputNb,
                 gs1Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint(),
                 testData[outputNb / 3].color[outputNb % 3]);
