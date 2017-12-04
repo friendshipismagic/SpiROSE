@@ -190,17 +190,26 @@ int main(int argc, char *argv[]) {
     GLint timePosition = glGetUniformLocation(program[1].voxel, "time"),
           matMPosition = glGetUniformLocation(program[1].voxel, "matModel"),
           matVPosition = glGetUniformLocation(program[1].voxel, "matView"),
-          matPPosition = glGetUniformLocation(program[1].voxel, "matProjection"),
+          matPPosition =
+              glGetUniformLocation(program[1].voxel, "matProjection"),
           doPizzaPosition = glGetUniformLocation(program[1].voxel, "doPizza"),
           useXorPosition = glGetUniformLocation(program[1].voxel, "useXor");
-    GLint matMPositionGen = glGetUniformLocation(program[1].generate, "matModel"),
-          matVPositionGen = glGetUniformLocation(program[1].generate, "matView"),
-          matPPositionGen = glGetUniformLocation(program[1].generate, "matProjection"),
-          doPizzaPositionGen = glGetUniformLocation(program[1].generate, "doPizza"),
-          useXorPositionGen = glGetUniformLocation(program[1].generate, "useXor");
-    GLint doPizzaPositionInt = glGetUniformLocation(program[1].interlace, "doPizza"),
-          useXorPositionInt = glGetUniformLocation(program[1].interlace, "useXor");
-    GLint useXorPositionOff = glGetUniformLocation(program[1].offscreen, "useXor");
+    GLint matMPositionGen =
+              glGetUniformLocation(program[1].generate, "matModel"),
+          matVPositionGen =
+              glGetUniformLocation(program[1].generate, "matView"),
+          matPPositionGen =
+              glGetUniformLocation(program[1].generate, "matProjection"),
+          doPizzaPositionGen =
+              glGetUniformLocation(program[1].generate, "doPizza"),
+          useXorPositionGen =
+              glGetUniformLocation(program[1].generate, "useXor");
+    GLint doPizzaPositionInt =
+              glGetUniformLocation(program[1].interlace, "doPizza"),
+          useXorPositionInt =
+              glGetUniformLocation(program[1].interlace, "useXor");
+    GLint useXorPositionOff =
+        glGetUniformLocation(program[1].offscreen, "useXor");
 
     GLint texPositionOff[N_BUF_NO_XOR] = {0};
     for (int i = 0; i < N_BUF_NO_XOR; i++)
@@ -551,33 +560,71 @@ GLuint loadShader(GLenum type, const std::string &filename) {
 }
 
 void loadShaders() {
+    GLuint voxelV = loadShader(GL_VERTEX_SHADER, "voxel"),
+           voxelG = loadShader(GL_GEOMETRY_SHADER, "voxel"),
+           voxelFX = loadShader(GL_FRAGMENT_SHADER, "voxel"),
+           voxelF = loadShader(GL_FRAGMENT_SHADER, "voxel-noxor"),
+           offscreenV = loadShader(GL_VERTEX_SHADER, "offscreen"),
+           offscreenFX = loadShader(GL_FRAGMENT_SHADER, "offscreen"),
+           offscreenF = loadShader(GL_FRAGMENT_SHADER, "offscreen-noxor"),
+           generateVX = loadShader(GL_VERTEX_SHADER, "generate"),
+           generateV = loadShader(GL_VERTEX_SHADER, "generate-noxor"),
+           generateG = loadShader(GL_GEOMETRY_SHADER, "generate"),
+           generateF = loadShader(GL_FRAGMENT_SHADER, "generate"),
+           interlaceFX = loadShader(GL_FRAGMENT_SHADER, "interlace"),
+           interlaceF = loadShader(GL_FRAGMENT_SHADER, "interlace-noxor");
+
+    // Load non-XOR shaders
+    program[0].voxel = glCreateProgram();
+    glAttachShader(program[0].voxel, voxelV);
+    glAttachShader(program[0].voxel, voxelG);
+    glAttachShader(program[0].voxel, voxelF);
+    glBindFragDataLocation(program[0].voxel, 0, "fragColor");
+    glLinkProgram(program[0].voxel);
+
+    program[0].offscreen = glCreateProgram();
+    glAttachShader(program[0].offscreen, offscreenV);
+    glAttachShader(program[0].offscreen, offscreenF);
+    glBindFragDataLocation(program[0].offscreen, 0, "out_Color");
+    glLinkProgram(program[0].offscreen);
+
+    program[0].generate = glCreateProgram();
+    glAttachShader(program[0].generate, generateV);
+    glAttachShader(program[0].generate, generateG);
+    glAttachShader(program[0].generate, generateF);
+    glBindFragDataLocation(program[0].generate, 0, "out_Color");
+    glLinkProgram(program[0].generate);
+
+    program[0].interlace = glCreateProgram();
+    glAttachShader(program[0].interlace, offscreenV);
+    glAttachShader(program[0].interlace, interlaceF);
+    glBindFragDataLocation(program[0].interlace, 0, "out_Color");
+    glLinkProgram(program[0].interlace);
+
+    // Load XOR shaders
     program[1].voxel = glCreateProgram();
-    glAttachShader(program[1].voxel, loadShader(GL_VERTEX_SHADER, "voxel"));
-    glAttachShader(program[1].voxel, loadShader(GL_GEOMETRY_SHADER, "voxel"));
-    glAttachShader(program[1].voxel, loadShader(GL_FRAGMENT_SHADER, "voxel"));
+    glAttachShader(program[1].voxel, voxelV);
+    glAttachShader(program[1].voxel, voxelG);
+    glAttachShader(program[1].voxel, voxelFX);
     glBindFragDataLocation(program[1].voxel, 0, "fragColor");
     glLinkProgram(program[1].voxel);
-    glUseProgram(program[1].voxel);
 
     program[1].offscreen = glCreateProgram();
-    glAttachShader(program[1].offscreen, loadShader(GL_VERTEX_SHADER, "offscreen"));
-    glAttachShader(program[1].offscreen, loadShader(GL_FRAGMENT_SHADER, "offscreen"));
+    glAttachShader(program[1].offscreen, offscreenV);
+    glAttachShader(program[1].offscreen, offscreenFX);
     glBindFragDataLocation(program[1].offscreen, 0, "out_Color");
     glLinkProgram(program[1].offscreen);
-    glUseProgram(program[1].offscreen);
 
     program[1].generate = glCreateProgram();
-    glAttachShader(program[1].generate, loadShader(GL_VERTEX_SHADER, "generate"));
-    glAttachShader(program[1].generate, loadShader(GL_GEOMETRY_SHADER, "generate"));
-    glAttachShader(program[1].generate, loadShader(GL_FRAGMENT_SHADER, "generate"));
+    glAttachShader(program[1].generate, generateVX);
+    glAttachShader(program[1].generate, generateG);
+    glAttachShader(program[1].generate, generateF);
     glBindFragDataLocation(program[1].generate, 0, "out_Color");
     glLinkProgram(program[1].generate);
-    glUseProgram(program[1].generate);
 
     program[1].interlace = glCreateProgram();
-    glAttachShader(program[1].interlace, loadShader(GL_VERTEX_SHADER, "offscreen"));
-    glAttachShader(program[1].interlace, loadShader(GL_FRAGMENT_SHADER, "interlace"));
+    glAttachShader(program[1].interlace, offscreenV);
+    glAttachShader(program[1].interlace, interlaceFX);
     glBindFragDataLocation(program[1].interlace, 0, "out_Color");
     glLinkProgram(program[1].interlace);
-    glUseProgram(program[1].interlace);
 }
