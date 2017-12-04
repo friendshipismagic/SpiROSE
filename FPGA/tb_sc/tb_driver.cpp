@@ -38,9 +38,6 @@ int sc_main(int, char**) {
     static sc_bv<768> gs1Data;
     static sc_bv<768> gs2Data;
 
-    // Assign configuration values to be sent to the driver module
-    testConfig = {3, 3, 0, 1, 1, 1, 1, 1, 0, 4, 127, 127, 127, 7, 1, 5};
-
     for (int i = 0; i < 16; i++) {
         for (int j = 0; j < 3; j++) {
             testData[i].color[j] = rand() % 256;
@@ -80,9 +77,25 @@ int sc_main(int, char**) {
     sc_start(T);
 
     /*
-     * TODO: Testing random configuration sequences for potential side effects
-     * in the driver code
+     * Testing random configuration sequences for potential side effects
+     * in the driver code (keeping XREFRESH and ESPWM disabled
      */
+    for (int i = 0; i < 10; i++) {
+        testConfig = {
+            (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(), 1,
+            (uint32_t)rand(), (uint32_t)rand(), 1, (uint32_t)rand(),
+            (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(),
+            (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(),
+        };
+        sendSequence(configWriteEnableSequence, &sin, &lat, T);
+        writeConfigSequence = make_WRTCFG(testConfig);
+        sendSequence(writeConfigSequence, &sin, &lat, T);
+        lat.write(0);
+        sc_start(T);
+    }
+
+    // Assign configuration values to be sent to the driver module
+    testConfig = {3, 3, 0, 1, 1, 1, 1, 1, 0, 4, 127, 127, 127, 7, 1, 5};
 
     while (sc_time_stamp() < simulation_time) {
         
@@ -129,6 +142,9 @@ int sc_main(int, char**) {
             // TODO: print the shift register value
         }
         printf("DONE\n");
+        sc_start(T);
+        for (int i = 0; i < 16; i++) {
+            cout << 
 
         // Testing the driver internals
         gs1Data = driver.getGs1Data();
@@ -136,18 +152,24 @@ int sc_main(int, char**) {
 
         for (int outputNb = 0; outputNb < 48; outputNb++) {
             // Verify that the data in the 768-bit latch registers
+            auto expectedGS1 = 
+                gs1Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint();
+            auto expectedGS2 = 
+                gs2Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint();
+            auto readData = testData[outputNb / 3].color[outputNb % 3];
+
+            if (outputNb % 3 == 0) {
+                printf("Read data: R%d, G%d, B%d\n", outputNb/3, outputNb/3, outputNb/3);
+            }
+
             printf(
-                "Read data number %d, gs1Data (got) = %x,"
+                "gs1Data (read) = %x,"
                 " testData (expected) = %x\n",
-                outputNb,
-                gs1Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint(),
-                testData[outputNb / 3].color[outputNb % 3]);
-            assert(
-                gs1Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint() ==
-                testData[outputNb / 3].color[outputNb % 3]);
-            assert(
-                gs2Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint() ==
-                testData[outputNb / 3].color[outputNb % 3]);
+                expectedGS1,
+                readData);
+
+            assert(expectedGS1 == readData);
+            assert(expectedGS2 == readData);
         }
     }
 
