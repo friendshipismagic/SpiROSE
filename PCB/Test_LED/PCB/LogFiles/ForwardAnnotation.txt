@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                      05:34 PM Thursday, November 09, 2017
-                  Job Name: E:\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+                       03:58 PM Sunday, November 12, 2017
+   Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -23,9 +23,11 @@ Version:  01.01.00
 
      Target PDB Name: Work\Layout_Temp\PartsDB.pdb
 
-     Number of Part Numbers: 2
+     Number of Part Numbers: 4
+          Part Numb: 02-0098 -> Vend Part: 02-0098 
           Part Numb: 20-0073 -> Vend Part: 20-0073 
           Part Numb: 40-0307 -> Vend Part: 40-0307 
+          Part Numb: 70-0029 -> Vend Part: 70-0029 
 
      Number of Part Names: 0
 
@@ -2356,6 +2358,24 @@ Version:  01.01.00
       Symbol Property: Cout HT = 0.366
      PartsDB Property: Cout HT = 366m
 
+    WARNING: Block Schematic1, Page 2, Symbol XCMP1117:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 02-0098
+      Symbol Property: Cout HT = 0.0004346
+     PartsDB Property: Cout HT = 434,6u
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1116:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 02-0098
+      Symbol Property: Cout HT = 0.0004346
+     PartsDB Property: Cout HT = 434,6u
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1115:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 02-0098
+      Symbol Property: Cout HT = 0.0004346
+     PartsDB Property: Cout HT = 434,6u
+
      Checking the validity of the packaging of prepackaged schematic
       symbols.  Only the first error in symbols having the same
       Reference Designator will be reported.
@@ -2369,14 +2389,14 @@ Version:  01.01.00
 
      WARNING: Unable to find the following cell(s) in central library
 	(_VB_DRILL_DRAWING_)THRU
-	(_VB_DRILL_SYMBOLS_)THRU
 	DXF_SVG battery
 	
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 387 Symbols:
-             387  ************************************
+     Clustering 415 Symbols:
+             415  **************
+             400  **************************************************
              350  **************************************************
              300  **************************************************
              250  **************************************************
@@ -2390,8 +2410,8 @@ Version:  01.01.00
 
 
 
-     156 nets were found containing 1686 pins
-     387 components were found
+     178 nets were found containing 1738 pins
+     415 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -2399,14 +2419,14 @@ Version:  01.01.00
      The Logic DataBase has been compiled from the Schematic Design.
       Use Netload to bring the Component Design into sync.
 
-     This Logic Data was Compiled with 388 warnings.
+     This Logic Data was Compiled with 391 warnings.
       Erroneous results may occur if not fixed.
 
                                      NetLoad
                                      -------
 
-                      05:34 PM Thursday, November 09, 2017
-                  Job Name: E:\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+                       03:58 PM Sunday, November 12, 2017
+   Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -2417,6 +2437,37 @@ Version:  02.11.12
 
 	Schematic reference designator changes will be forward annotated.
 
+
+     The following 28 components have not been placed:
+
+        J1
+        J2
+        J3
+        J4
+        J5
+        J6
+        J7
+        J8
+        J9
+        J10
+        J11
+        J12
+        J13
+        J14
+        J15
+        J16
+        J17
+        J18
+        J19
+        J20
+        J21
+        J22
+        J23
+        J24
+        J25
+        R1
+        R2
+        R3
 
      Netload completed successfully with 0 warning(s).
      
@@ -2449,9 +2500,21 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
+	Assigned net DRV0_G13 to a trace which was originally on net DRV0_G14.
+	Assigned net DRV0_G13 to a via which was originally on net DRV0_G14.
+	Unresolvable short found at point (19150000, 118900000).
+	Unresolvable short found at point (19150000, 118900000).
+	Assigned net DRV0_G12 to a trace which was originally on net DRV0_G15.
+	Assigned net DRV0_G14 to a trace which was originally on net DRV0_G1.
+	Assigned net DRV0_R13 to a trace which was originally on net DRV0_R14.
+	Assigned net DRV0_R13 to a via which was originally on net DRV0_R14.
+	Unresolvable short found at point (19150000, 118050000).
+	Unresolvable short found at point (19150000, 118050000).
+	Broke back a trace from the point (12776651, 129255204).
+	Assigned net DRV0_R14 to a trace which was originally on net DRV0_R1.
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
-There were 0 reassignments of nets.
-There were 0 traces broken back.
+There were 7 reassignments of nets.
+There were 1 traces broken back.
 There were 0 nets removed from the Layout Design.
