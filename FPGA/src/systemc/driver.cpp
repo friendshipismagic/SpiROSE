@@ -151,7 +151,7 @@ void Driver::writeToBank(driver_bank_t bank, int bufferId,
         // i is the buffer iterator from end to start
         for (int i = GS_NB_BUFFER; i > 0; --i) {
             // j is the current color of the pixel
-            for (int j = 0; j < GS_NB_COLOR; ++i) {
+            for (int j = 0; j < GS_NB_COLOR; ++j) {
                 // + in this context, buffer_id is the bit number of the poker
                 // mode.
                 // + i*48 gives the buffer of 48 bits in which we must write
