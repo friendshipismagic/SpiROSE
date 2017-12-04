@@ -66,12 +66,17 @@ void Driver::handleLat() {
             latCounter = latCounter.read() + 1;
         } else if (latCounter == 1) {
             // WRTGS, write to GS data at the GS counter position
-            writeToBank(GS1, gsAddrCounter.read(), shiftReg);
+            auto bank = gs1Data.read();
+            updateBank(bank, gsAddrCounter.read(), shiftReg);
+            gs1Data.write(bank);
             gsAddrCounter = gsAddrCounter.read() - 1;
             latCounter = 0;
         } else if (latCounter == 3) {
             // LATGS, write to GS data
-            writeToBank(GS1, gsAddrCounter.read(), shiftReg);
+            auto bank = gs1Data.read();
+            updateBank(bank, gsAddrCounter.read(), shiftReg);
+            gs1Data.write(bank);
+            gs2Data.write(bank);
             if (getXrefreshDisabled() == 0) {
                 // latch GS1 to GS2 when gs_addr_counter = 65536
                 if (gsAddrCounter == 0) {
@@ -92,7 +97,10 @@ void Driver::handleLat() {
             latCounter = 0;
         } else if (latCounter == 7) {
             // LINERESET
-            writeToBank(GS1, gsAddrCounter.read(), shiftReg);
+            auto bank = gs1Data.read();
+            updateBank(bank, gsAddrCounter.read(), shiftReg);
+            gs2Data.write(bank);
+            gs1Data.write(bank);
             lineCounter = 0;
             gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
             if (getXrefreshDisabled() == 0) {
@@ -136,17 +144,15 @@ void Driver::handleGclk() {
     }
 }
 
-void Driver::writeToBank(driver_bank_t bank, int bufferId,
-                         const RegBuff& buffer) {
-    auto& gs = (bank == GS1) ? gs1Data : gs2Data;
-    auto vec = gs.read();
+void Driver::updateBank(Driver::GSBuff& bank, int bufferId,
+                        const RegBuff& buffer) {
     if (!getPokerMode()) {
         // Calculate the slice where to write in GS
         int end = REG_SIZE * (1 + bufferId) - 1;
 
         // We need to extract the data from signal to apply range
         // operator
-        vec(end, end - REG_SIZE + 1) = buffer(REG_SIZE - 1, 0);
+        bank(end, end - REG_SIZE + 1) = buffer(REG_SIZE - 1, 0);
     } else {
         // i is the buffer iterator from end to start
         for (int i = GS_NB_BUFFER; i > 0; --i) {
@@ -160,11 +166,10 @@ void Driver::writeToBank(driver_bank_t bank, int bufferId,
                 // + the 48 bits buffer is splitted into three 16 bits parts,
                 // one for each color, so j*16 translates to the right buffer
                 auto idx = i * REG_SIZE - (GS_NB_BUFFER - bufferId) - j * 16;
-                vec[idx] = buffer[i];
+                bank[idx] = buffer[i];
             }
         }
     }
-    gs.write(vec);
 }
 
 Driver::GSBuff Driver::getGs1Data() const { return gs1Data.read(); }
