@@ -4,8 +4,16 @@ in vec2 ex_UV;
 
 out vec4 out_Color;
 
-uniform sampler2D tex;
+uniform sampler2D tex0;
+uniform sampler2D tex1;
+uniform sampler2D tex2;
+uniform sampler2D tex3;
+uniform sampler2D tex4;
+uniform sampler2D tex5;
+uniform sampler2D tex6;
+uniform sampler2D tex7;
 uniform bool doPizza;
+uniform bool useXor;
 
 const float M_PI = 3.14159265359;
 
@@ -38,7 +46,21 @@ void main() {
             0.5 + vec2(sin(refreshNo), -cos(refreshNo)) * (fragPos.y - 0.5);
 
     // As usual, decode our voxel thingy
-    ivec4 color = ivec4(texture(tex, fragPos.xy) * 255);
+    ivec4 color;
+
+    if (useXor)
+        color = ivec4(texture(tex0, fragPos.xy) * 255);
+    else {
+        if (fragPos.z < 1/8)      color = ivec4(texture(tex0, fragPos.xy) * 255);
+        else if (fragPos.z < 2/8) color = ivec4(texture(tex1, fragPos.xy) * 255);
+        else if (fragPos.z < 3/8) color = ivec4(texture(tex2, fragPos.xy) * 255);
+        else if (fragPos.z < 4/8) color = ivec4(texture(tex3, fragPos.xy) * 255);
+        else if (fragPos.z < 5/8) color = ivec4(texture(tex4, fragPos.xy) * 255);
+        else if (fragPos.z < 6/8) color = ivec4(texture(tex5, fragPos.xy) * 255);
+        else if (fragPos.z < 7/8) color = ivec4(texture(tex6, fragPos.xy) * 255);
+        else if (fragPos.z < 8/8) color = ivec4(texture(tex7, fragPos.xy) * 255);
+    }
+
     int p = 1 << int(mod(fragPos.z * 32, 8));
     int v;
     if (fragPos.z < 0.25)

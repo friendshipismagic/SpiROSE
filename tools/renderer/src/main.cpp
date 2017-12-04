@@ -189,14 +189,24 @@ int main(int argc, char *argv[]) {
     GLint matMPositionGen = glGetUniformLocation(progGenerate, "matModel"),
           matVPositionGen = glGetUniformLocation(progGenerate, "matView"),
           matPPositionGen = glGetUniformLocation(progGenerate, "matProjection"),
-          doPizzaPositionGen = glGetUniformLocation(progGenerate, "doPizza");
-    GLint doPizzaPositionInt = glGetUniformLocation(progInterlace, "doPizza");
+          doPizzaPositionGen = glGetUniformLocation(progGenerate, "doPizza"),
+          useXorPositionGen = glGetUniformLocation(progGenerate, "useXor");
+    GLint doPizzaPositionInt = glGetUniformLocation(progInterlace, "doPizza"),
+          useXorPositionInt = glGetUniformLocation(progInterlace, "useXor");
     GLint useXorPositionOff = glGetUniformLocation(progOffscreen, "useXor");
 
     GLint texPositionOff[N_BUF_NO_XOR] = {0};
     for (int i = 0; i < N_BUF_NO_XOR; i++)
         texPositionOff[i] = glGetUniformLocation(
             progOffscreen, ("tex" + std::to_string(i)).c_str());
+    GLint texPositionGen[N_BUF_NO_XOR] = {0};
+    for (int i = 0; i < N_BUF_NO_XOR; i++)
+        texPositionGen[i] = glGetUniformLocation(
+            progGenerate, ("voxels" + std::to_string(i)).c_str());
+    GLint texPositionInt[N_BUF_NO_XOR] = {0};
+    for (int i = 0; i < N_BUF_NO_XOR; i++)
+        texPositionInt[i] = glGetUniformLocation(
+            progInterlace, ("tex" + std::to_string(i)).c_str());
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
@@ -208,35 +218,24 @@ int main(int argc, char *argv[]) {
     glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matProjection[0][0]);
 
     // Framebuffer to store our voxel thingy
-    GLuint fbo, texVoxelBuf, texVoxelBufs[N_BUF_NO_XOR];
+    GLuint fbo, texVoxelBufs[N_BUF_NO_XOR];
     glGenFramebuffers(1, &fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-    if (renderOptions.useXor) {
-        glGenTextures(1, &texVoxelBuf);
-        glBindTexture(GL_TEXTURE_2D, texVoxelBuf);
+    glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
+    for (int i = 0; i < N_BUF_NO_XOR; i++) {
+        glActiveTexture(GL_TEXTURE0 + i);
+        glBindTexture(GL_TEXTURE_2D, texVoxelBufs[i]);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGB,
                      GL_UNSIGNED_BYTE, NULL);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-                               GL_TEXTURE_2D, texVoxelBuf, 0);
-    } else {
-        glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
-        for (int i = 0; i < N_BUF_NO_XOR; i++) {
-            glActiveTexture(GL_TEXTURE0 + i);
-            glBindTexture(GL_TEXTURE_2D, texVoxelBufs[i]);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGB,
-                         GL_UNSIGNED_BYTE, NULL);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i,
-                                   GL_TEXTURE_2D, texVoxelBufs[i], 0);
-        }
-        GLenum drawBuffers[N_BUF_NO_XOR];
-        for (int i = 0; i < N_BUF_NO_XOR; i++)
-            drawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
-        glDrawBuffers(N_BUF_NO_XOR, drawBuffers);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i,
+                               GL_TEXTURE_2D, texVoxelBufs[i], 0);
     }
+    GLenum drawBuffers[N_BUF_NO_XOR];
+    for (int i = 0; i < N_BUF_NO_XOR; i++)
+        drawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
+    glDrawBuffers(N_BUF_NO_XOR, drawBuffers);
     // Test framebuffer status
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
         std::cerr << "[ERR] Incomplete framebuffer" << std::endl;
@@ -380,6 +379,9 @@ int main(int argc, char *argv[]) {
         matModel = glm::mat4(1.f);
         glUniformMatrix4fv(matMPositionGen, 1, GL_FALSE, &matModel[0][0]);
         glUniform1ui(doPizzaPositionGen, renderOptions.pizza);
+        glUniform1ui(useXorPositionGen, renderOptions.useXor);
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            glUniform1i(texPositionGen[i], i);
 
         glBindVertexArray(vaoVox);
         glDrawArrays(GL_POINTS, 0, sizeof(voxPoints) / sizeof(float) / 3);
@@ -390,6 +392,9 @@ int main(int argc, char *argv[]) {
         glBindVertexArray(vaoSquare);
         glUseProgram(progInterlace);
         glUniform1ui(doPizzaPositionInt, renderOptions.pizza);
+        glUniform1ui(useXorPositionInt, renderOption.useXor);
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            glUniform1i(texPositionInt[i], i);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
 
         //// Displaying the voxel texture
