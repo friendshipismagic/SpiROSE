@@ -65,7 +65,11 @@ RenderOptions renderOptions = {
 
 bool clicking = false, doDump = false;
 float t = 0.f;
-GLuint progVoxel, progOffscreen, progGenerate, progInterlace;
+
+// 0 is useXor == false, 1 is useXor == true
+struct {
+    GLuint voxel, offscreen, generate, interlace;
+} program[2] = {{0}};
 
 // Camera data
 float yaw = 0.f, pitch = M_PI / 4.f, zoom = 2.f;
@@ -178,38 +182,38 @@ int main(int argc, char *argv[]) {
     loadShaders();
 
     // Send vertex to shader
-    GLint inPositionLoc = glGetAttribLocation(progVoxel, "position");
+    GLint inPositionLoc = glGetAttribLocation(program[1].voxel, "position");
     glVertexAttribPointer(inPositionLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(inPositionLoc);
 
     // Get time uniform
-    GLint timePosition = glGetUniformLocation(progVoxel, "time"),
-          matMPosition = glGetUniformLocation(progVoxel, "matModel"),
-          matVPosition = glGetUniformLocation(progVoxel, "matView"),
-          matPPosition = glGetUniformLocation(progVoxel, "matProjection"),
-          doPizzaPosition = glGetUniformLocation(progVoxel, "doPizza"),
-          useXorPosition = glGetUniformLocation(progVoxel, "useXor");
-    GLint matMPositionGen = glGetUniformLocation(progGenerate, "matModel"),
-          matVPositionGen = glGetUniformLocation(progGenerate, "matView"),
-          matPPositionGen = glGetUniformLocation(progGenerate, "matProjection"),
-          doPizzaPositionGen = glGetUniformLocation(progGenerate, "doPizza"),
-          useXorPositionGen = glGetUniformLocation(progGenerate, "useXor");
-    GLint doPizzaPositionInt = glGetUniformLocation(progInterlace, "doPizza"),
-          useXorPositionInt = glGetUniformLocation(progInterlace, "useXor");
-    GLint useXorPositionOff = glGetUniformLocation(progOffscreen, "useXor");
+    GLint timePosition = glGetUniformLocation(program[1].voxel, "time"),
+          matMPosition = glGetUniformLocation(program[1].voxel, "matModel"),
+          matVPosition = glGetUniformLocation(program[1].voxel, "matView"),
+          matPPosition = glGetUniformLocation(program[1].voxel, "matProjection"),
+          doPizzaPosition = glGetUniformLocation(program[1].voxel, "doPizza"),
+          useXorPosition = glGetUniformLocation(program[1].voxel, "useXor");
+    GLint matMPositionGen = glGetUniformLocation(program[1].generate, "matModel"),
+          matVPositionGen = glGetUniformLocation(program[1].generate, "matView"),
+          matPPositionGen = glGetUniformLocation(program[1].generate, "matProjection"),
+          doPizzaPositionGen = glGetUniformLocation(program[1].generate, "doPizza"),
+          useXorPositionGen = glGetUniformLocation(program[1].generate, "useXor");
+    GLint doPizzaPositionInt = glGetUniformLocation(program[1].interlace, "doPizza"),
+          useXorPositionInt = glGetUniformLocation(program[1].interlace, "useXor");
+    GLint useXorPositionOff = glGetUniformLocation(program[1].offscreen, "useXor");
 
     GLint texPositionOff[N_BUF_NO_XOR] = {0};
     for (int i = 0; i < N_BUF_NO_XOR; i++)
         texPositionOff[i] = glGetUniformLocation(
-            progOffscreen, ("tex" + std::to_string(i)).c_str());
+            program[1].offscreen, ("tex" + std::to_string(i)).c_str());
     GLint texPositionGen[N_BUF_NO_XOR] = {0};
     for (int i = 0; i < N_BUF_NO_XOR; i++)
         texPositionGen[i] = glGetUniformLocation(
-            progGenerate, ("voxels" + std::to_string(i)).c_str());
+            program[1].generate, ("voxels" + std::to_string(i)).c_str());
     GLint texPositionInt[N_BUF_NO_XOR] = {0};
     for (int i = 0; i < N_BUF_NO_XOR; i++)
         texPositionInt[i] = glGetUniformLocation(
-            progInterlace, ("tex" + std::to_string(i)).c_str());
+            program[1].interlace, ("tex" + std::to_string(i)).c_str());
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
@@ -253,8 +257,8 @@ int main(int argc, char *argv[]) {
     glGenBuffers(1, &vboSquare);
     glBindBuffer(GL_ARRAY_BUFFER, vboSquare);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
-    GLint inSquarePosLoc = glGetAttribLocation(progOffscreen, "in_Pos"),
-          inSquareUVLoc = glGetAttribLocation(progOffscreen, "in_UV");
+    GLint inSquarePosLoc = glGetAttribLocation(program[1].offscreen, "in_Pos"),
+          inSquareUVLoc = glGetAttribLocation(program[1].offscreen, "in_UV");
     glVertexAttribPointer(inSquarePosLoc, 2, GL_FLOAT, GL_FALSE,
                           4 * sizeof(float), 0);
     glVertexAttribPointer(inSquareUVLoc, 2, GL_FLOAT, GL_FALSE,
@@ -280,7 +284,7 @@ int main(int argc, char *argv[]) {
     glGenBuffers(1, &vboVox);
     glBindBuffer(GL_ARRAY_BUFFER, vboVox);
     glBufferData(GL_ARRAY_BUFFER, sizeof(voxPoints), voxPoints, GL_STATIC_DRAW);
-    GLint inVoxPosLoc = glGetAttribLocation(progGenerate, "in_Pos");
+    GLint inVoxPosLoc = glGetAttribLocation(program[1].generate, "in_Pos");
     glVertexAttribPointer(inVoxPosLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(inVoxPosLoc);
 
@@ -309,7 +313,7 @@ int main(int argc, char *argv[]) {
 
         //// Voxelization
         glBindVertexArray(vao);
-        glUseProgram(progVoxel);
+        glUseProgram(program[1].voxel);
         glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matOrtho[0][0]);
         glUniform1ui(doPizzaPosition, renderOptions.pizza);
         glUniform1ui(useXorPosition, renderOptions.useXor);
@@ -375,7 +379,7 @@ int main(int argc, char *argv[]) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glUseProgram(progGenerate);
+        glUseProgram(program[1].generate);
 
         glUniformMatrix4fv(matPPositionGen, 1, GL_FALSE, &matProjection[0][0]);
         matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
@@ -395,7 +399,7 @@ int main(int argc, char *argv[]) {
         //// Interlace voxels
         glViewport(renderOptions.useXor ? 32 : (32 * 4), 0, 32 * 8, 32 * 4);
         glBindVertexArray(vaoSquare);
-        glUseProgram(progInterlace);
+        glUseProgram(program[1].interlace);
         glUniform1ui(doPizzaPositionInt, renderOptions.pizza);
         glUniform1ui(useXorPositionInt, renderOptions.useXor);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
@@ -408,7 +412,7 @@ int main(int argc, char *argv[]) {
         else
             glViewport(0, 0, 32 * 4, 32 * 2);
         glBindVertexArray(vaoSquare);
-        glUseProgram(progOffscreen);
+        glUseProgram(program[1].offscreen);
         glUniform1ui(useXorPositionOff, renderOptions.useXor);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
             glUniform1i(texPositionOff[i], i);
@@ -547,33 +551,33 @@ GLuint loadShader(GLenum type, const std::string &filename) {
 }
 
 void loadShaders() {
-    progVoxel = glCreateProgram();
-    glAttachShader(progVoxel, loadShader(GL_VERTEX_SHADER, "voxel"));
-    glAttachShader(progVoxel, loadShader(GL_GEOMETRY_SHADER, "voxel"));
-    glAttachShader(progVoxel, loadShader(GL_FRAGMENT_SHADER, "voxel"));
-    glBindFragDataLocation(progVoxel, 0, "fragColor");
-    glLinkProgram(progVoxel);
-    glUseProgram(progVoxel);
+    program[1].voxel = glCreateProgram();
+    glAttachShader(program[1].voxel, loadShader(GL_VERTEX_SHADER, "voxel"));
+    glAttachShader(program[1].voxel, loadShader(GL_GEOMETRY_SHADER, "voxel"));
+    glAttachShader(program[1].voxel, loadShader(GL_FRAGMENT_SHADER, "voxel"));
+    glBindFragDataLocation(program[1].voxel, 0, "fragColor");
+    glLinkProgram(program[1].voxel);
+    glUseProgram(program[1].voxel);
 
-    progOffscreen = glCreateProgram();
-    glAttachShader(progOffscreen, loadShader(GL_VERTEX_SHADER, "offscreen"));
-    glAttachShader(progOffscreen, loadShader(GL_FRAGMENT_SHADER, "offscreen"));
-    glBindFragDataLocation(progOffscreen, 0, "out_Color");
-    glLinkProgram(progOffscreen);
-    glUseProgram(progOffscreen);
+    program[1].offscreen = glCreateProgram();
+    glAttachShader(program[1].offscreen, loadShader(GL_VERTEX_SHADER, "offscreen"));
+    glAttachShader(program[1].offscreen, loadShader(GL_FRAGMENT_SHADER, "offscreen"));
+    glBindFragDataLocation(program[1].offscreen, 0, "out_Color");
+    glLinkProgram(program[1].offscreen);
+    glUseProgram(program[1].offscreen);
 
-    progGenerate = glCreateProgram();
-    glAttachShader(progGenerate, loadShader(GL_VERTEX_SHADER, "generate"));
-    glAttachShader(progGenerate, loadShader(GL_GEOMETRY_SHADER, "generate"));
-    glAttachShader(progGenerate, loadShader(GL_FRAGMENT_SHADER, "generate"));
-    glBindFragDataLocation(progGenerate, 0, "out_Color");
-    glLinkProgram(progGenerate);
-    glUseProgram(progGenerate);
+    program[1].generate = glCreateProgram();
+    glAttachShader(program[1].generate, loadShader(GL_VERTEX_SHADER, "generate"));
+    glAttachShader(program[1].generate, loadShader(GL_GEOMETRY_SHADER, "generate"));
+    glAttachShader(program[1].generate, loadShader(GL_FRAGMENT_SHADER, "generate"));
+    glBindFragDataLocation(program[1].generate, 0, "out_Color");
+    glLinkProgram(program[1].generate);
+    glUseProgram(program[1].generate);
 
-    progInterlace = glCreateProgram();
-    glAttachShader(progInterlace, loadShader(GL_VERTEX_SHADER, "offscreen"));
-    glAttachShader(progInterlace, loadShader(GL_FRAGMENT_SHADER, "interlace"));
-    glBindFragDataLocation(progInterlace, 0, "out_Color");
-    glLinkProgram(progInterlace);
-    glUseProgram(progInterlace);
+    program[1].interlace = glCreateProgram();
+    glAttachShader(program[1].interlace, loadShader(GL_VERTEX_SHADER, "offscreen"));
+    glAttachShader(program[1].interlace, loadShader(GL_FRAGMENT_SHADER, "interlace"));
+    glBindFragDataLocation(program[1].interlace, 0, "out_Color");
+    glLinkProgram(program[1].interlace);
+    glUseProgram(program[1].interlace);
 }
