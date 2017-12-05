@@ -67,7 +67,7 @@ bool clicking = false, doDump = false;
 float t = 0.f;
 
 // 0 is useXor == false, 1 is useXor == true
-struct {
+struct Program {
     GLuint voxel, offscreen, generate, interlace;
 } program[2] = {{0}};
 
@@ -182,47 +182,54 @@ int main(int argc, char *argv[]) {
     loadShaders();
 
     // Send vertex to shader
-    GLint inPositionLoc = glGetAttribLocation(program[1].voxel, "position");
-    glVertexAttribPointer(inPositionLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    glEnableVertexAttribArray(inPositionLoc);
+    struct Uniform {
+        struct {
+            GLint position, time, matM, matV, matP, doPizza;
+        } voxel;
+        struct {
+            GLint matM, matV, matP, doPizza;
+            GLint tex[N_BUF_NO_XOR];
+        } generate;
+        struct {
+            GLint doPizza;
+            GLint tex[N_BUF_NO_XOR];
+        } interlace;
+        struct {
+            GLint tex[N_BUF_NO_XOR];
+        } offscreen;
+    } uniforms[2];
 
-    // Get time uniform
-    GLint timePosition = glGetUniformLocation(program[1].voxel, "time"),
-          matMPosition = glGetUniformLocation(program[1].voxel, "matModel"),
-          matVPosition = glGetUniformLocation(program[1].voxel, "matView"),
-          matPPosition =
-              glGetUniformLocation(program[1].voxel, "matProjection"),
-          doPizzaPosition = glGetUniformLocation(program[1].voxel, "doPizza"),
-          useXorPosition = glGetUniformLocation(program[1].voxel, "useXor");
-    GLint matMPositionGen =
-              glGetUniformLocation(program[1].generate, "matModel"),
-          matVPositionGen =
-              glGetUniformLocation(program[1].generate, "matView"),
-          matPPositionGen =
-              glGetUniformLocation(program[1].generate, "matProjection"),
-          doPizzaPositionGen =
-              glGetUniformLocation(program[1].generate, "doPizza"),
-          useXorPositionGen =
-              glGetUniformLocation(program[1].generate, "useXor");
-    GLint doPizzaPositionInt =
-              glGetUniformLocation(program[1].interlace, "doPizza"),
-          useXorPositionInt =
-              glGetUniformLocation(program[1].interlace, "useXor");
-    GLint useXorPositionOff =
-        glGetUniformLocation(program[1].offscreen, "useXor");
+    for (int i = 0; i < 2; i++) {
+        struct Uniform *u = &uniforms[i];
+        struct Program *s = &program[i];
 
-    GLint texPositionOff[N_BUF_NO_XOR] = {0};
-    for (int i = 0; i < N_BUF_NO_XOR; i++)
-        texPositionOff[i] = glGetUniformLocation(
-            program[1].offscreen, ("tex" + std::to_string(i)).c_str());
-    GLint texPositionGen[N_BUF_NO_XOR] = {0};
-    for (int i = 0; i < N_BUF_NO_XOR; i++)
-        texPositionGen[i] = glGetUniformLocation(
-            program[1].generate, ("voxels" + std::to_string(i)).c_str());
-    GLint texPositionInt[N_BUF_NO_XOR] = {0};
-    for (int i = 0; i < N_BUF_NO_XOR; i++)
-        texPositionInt[i] = glGetUniformLocation(
-            program[1].interlace, ("tex" + std::to_string(i)).c_str());
+        u->voxel.position = glGetAttribLocation(s->voxel, "position");
+        glVertexAttribPointer(u->voxel.position, 3, GL_FLOAT, GL_FALSE, 0, 0);
+        glEnableVertexAttribArray(u->voxel.position);
+
+        u->voxel.time = glGetUniformLocation(s->voxel, "time");
+        u->voxel.matM = glGetUniformLocation(s->voxel, "matModel");
+        u->voxel.matV = glGetUniformLocation(s->voxel, "matView");
+        u->voxel.matP = glGetUniformLocation(s->voxel, "matProjection");
+        u->voxel.doPizza = glGetUniformLocation(s->voxel, "doPizza");
+
+        u->generate.matM = glGetUniformLocation(s->generate, "matModel");
+        u->generate.matV = glGetUniformLocation(s->generate, "matView");
+        u->generate.matP = glGetUniformLocation(s->generate, "matProjection");
+        u->generate.doPizza = glGetUniformLocation(s->generate, "doPizza");
+
+        u->interlace.doPizza = glGetUniformLocation(s->interlace, "doPizza");
+
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            u->offscreen.tex[i] = glGetUniformLocation(
+                s->offscreen, ("tex" + std::to_string(i)).c_str());
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            u->generate.tex[i] = glGetUniformLocation(
+                s->generate, ("voxels" + std::to_string(i)).c_str());
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            u->interlace.tex[i] = glGetUniformLocation(
+                s->interlace, ("tex" + std::to_string(i)).c_str());
+    }
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
@@ -230,8 +237,10 @@ int main(int argc, char *argv[]) {
                   glm::perspective(glm::radians(90.f), 16.f / 9.f, .1f, 100.f),
               matOrtho = glm::ortho(-1.f, 1.f, -1.f, 1.f, -1.f, 1.f);
 
-    glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
-    glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matProjection[0][0]);
+    glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matV, 1, GL_FALSE,
+                       &matView[0][0]);
+    glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matP, 1, GL_FALSE,
+                       &matProjection[0][0]);
 
     // Framebuffer to store our voxel thingy
     GLuint fbo, texVoxelBufs[N_BUF_NO_XOR];
@@ -323,19 +332,22 @@ int main(int argc, char *argv[]) {
         //// Voxelization
         glBindVertexArray(vao);
         glUseProgram(program[renderOptions.useXor].voxel);
-        glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matOrtho[0][0]);
-        glUniform1ui(doPizzaPosition, renderOptions.pizza);
-        glUniform1ui(useXorPosition, renderOptions.useXor);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matP, 1,
+                           GL_FALSE, &matOrtho[0][0]);
+        glUniform1ui(uniforms[renderOptions.useXor].voxel.doPizza,
+                     renderOptions.pizza);
 
         matView = glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
                               glm::vec3(0.f, 1.f, 0.f));
-        glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matV, 1,
+                           GL_FALSE, &matView[0][0]);
 
-        glUniform1f(timePosition, t / 10.f);
+        glUniform1f(uniforms[renderOptions.useXor].voxel.time, t / 10.f);
         matModel = glm::translate(glm::vec3((float)sin(t / 3.f) / 2.f,
                                             (float)sin(t * 5.f) / 20.f, 0.f));
         matModel = glm::rotate(matModel, t, glm::vec3(0, 0, 1));
-        glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matM, 1,
+                           GL_FALSE, &matModel[0][0]);
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
@@ -390,16 +402,19 @@ int main(int argc, char *argv[]) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         glUseProgram(program[renderOptions.useXor].generate);
 
-        glUniformMatrix4fv(matPPositionGen, 1, GL_FALSE, &matProjection[0][0]);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].generate.matP, 1,
+                           GL_FALSE, &matProjection[0][0]);
         matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
                               -glm::cross(camRight, camLook));
-        glUniformMatrix4fv(matVPositionGen, 1, GL_FALSE, &matView[0][0]);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].generate.matV, 1,
+                           GL_FALSE, &matView[0][0]);
         matModel = glm::mat4(1.f);
-        glUniformMatrix4fv(matMPositionGen, 1, GL_FALSE, &matModel[0][0]);
-        glUniform1ui(doPizzaPositionGen, renderOptions.pizza);
-        glUniform1ui(useXorPositionGen, renderOptions.useXor);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].generate.matM, 1,
+                           GL_FALSE, &matModel[0][0]);
+        glUniform1ui(uniforms[renderOptions.useXor].generate.doPizza,
+                     renderOptions.pizza);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
-            glUniform1i(texPositionGen[i], i);
+            glUniform1i(uniforms[renderOptions.useXor].generate.tex[i], i);
 
         glBindVertexArray(vaoVox);
         glDrawArrays(GL_POINTS, 0, sizeof(voxPoints) / sizeof(float) / 3);
@@ -409,10 +424,10 @@ int main(int argc, char *argv[]) {
         glViewport(renderOptions.useXor ? 32 : (32 * 4), 0, 32 * 8, 32 * 4);
         glBindVertexArray(vaoSquare);
         glUseProgram(program[renderOptions.useXor].interlace);
-        glUniform1ui(doPizzaPositionInt, renderOptions.pizza);
-        glUniform1ui(useXorPositionInt, renderOptions.useXor);
+        glUniform1ui(uniforms[renderOptions.useXor].interlace.doPizza,
+                     renderOptions.pizza);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
-            glUniform1i(texPositionInt[i], i);
+            glUniform1i(uniforms[renderOptions.useXor].interlace.tex[i], i);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
 
         //// Displaying the voxel texture
@@ -422,9 +437,8 @@ int main(int argc, char *argv[]) {
             glViewport(0, 0, 32 * 4, 32 * 2);
         glBindVertexArray(vaoSquare);
         glUseProgram(program[renderOptions.useXor].offscreen);
-        glUniform1ui(useXorPositionOff, renderOptions.useXor);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
-            glUniform1i(texPositionOff[i], i);
+            glUniform1i(uniforms[renderOptions.useXor].offscreen.tex[i], i);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
     }
 
