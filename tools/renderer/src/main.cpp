@@ -93,7 +93,8 @@ int main(int argc, char *argv[]) {
 #endif
     // Command line options
     char c;
-    while ((c = getopt(argc, argv, "wpcxt:")) != -1) switch (c) {
+    std::string meshFile = "mesh/suzanne-tight.obj";
+    while ((c = getopt(argc, argv, "wpcxt:m:")) != -1) switch (c) {
             case 'w':
                 renderOptions.wireframe = true;
                 break;
@@ -108,6 +109,9 @@ int main(int argc, char *argv[]) {
                 break;
             case 't':
                 t = atof(optarg);
+                break;
+            case 'm':
+                meshFile = optarg;
                 break;
 
             case '?':
@@ -148,8 +152,8 @@ int main(int argc, char *argv[]) {
     std::vector<tinyobj::shape_t> shapes;
     std::vector<tinyobj::material_t> materials;
     std::string err;
-    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err,
-                                "mesh/suzanne-tight.obj");
+    bool ret =
+        tinyobj::LoadObj(&attrib, &shapes, &materials, &err, meshFile.c_str());
     if (!err.empty()) std::cerr << "[ERR] " << err << std::endl;
     if (!ret) return -1;
 
