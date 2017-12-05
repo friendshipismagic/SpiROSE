@@ -160,25 +160,27 @@ int sc_main(int, char **) {
         gs2Data = driver.getGs2Data();
 
         for (int outputNb = 0; outputNb < 48; outputNb++) {
-            // Verify that the data in the 768-bit latch registers
-            auto expectedGS1 =
+            // Verify that data in the 768-bit latch registers
+            auto readDataGS1 =
                 gs1Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint();
-            auto expectedGS2 =
+            auto readDataGS2 =
                 gs2Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint();
-            auto readData = testData[outputNb / 3].color[outputNb % 3];
+            auto expectedData = testData[outputNb / 3].color[outputNb % 3];
 
             if (outputNb % 3 == 0) {
                 printf("Read data: R%d, G%d, B%d\n", outputNb / 3, outputNb / 3,
                        outputNb / 3);
             }
 
-            printf(
-                "gs1Data (read) = %x,"
-                " testData (expected) = %x\n",
-                expectedGS1, readData);
+            std::cout << "Expected data :" << sc_bv<16>(expectedData)
+                      << std::endl;
+            std::cout << "Read GS1 data :" << sc_bv<16>(readDataGS1)
+                      << std::endl;
+            std::cout << "Read GS2 data :" << sc_bv<16>(readDataGS2)
+                      << std::endl;
 
-            assert(expectedGS1 == readData);
-            assert(expectedGS2 == readData);
+            assert(expectedData == readDataGS1);
+            assert(expectedData == readDataGS2);
         }
     }
 
