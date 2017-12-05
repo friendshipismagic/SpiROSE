@@ -322,7 +322,7 @@ int main(int argc, char *argv[]) {
 
         //// Voxelization
         glBindVertexArray(vao);
-        glUseProgram(program[1].voxel);
+        glUseProgram(program[renderOptions.useXor].voxel);
         glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matOrtho[0][0]);
         glUniform1ui(doPizzaPosition, renderOptions.pizza);
         glUniform1ui(useXorPosition, renderOptions.useXor);
@@ -388,7 +388,7 @@ int main(int argc, char *argv[]) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glUseProgram(program[1].generate);
+        glUseProgram(program[renderOptions.useXor].generate);
 
         glUniformMatrix4fv(matPPositionGen, 1, GL_FALSE, &matProjection[0][0]);
         matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
@@ -408,7 +408,7 @@ int main(int argc, char *argv[]) {
         //// Interlace voxels
         glViewport(renderOptions.useXor ? 32 : (32 * 4), 0, 32 * 8, 32 * 4);
         glBindVertexArray(vaoSquare);
-        glUseProgram(program[1].interlace);
+        glUseProgram(program[renderOptions.useXor].interlace);
         glUniform1ui(doPizzaPositionInt, renderOptions.pizza);
         glUniform1ui(useXorPositionInt, renderOptions.useXor);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
@@ -421,7 +421,7 @@ int main(int argc, char *argv[]) {
         else
             glViewport(0, 0, 32 * 4, 32 * 2);
         glBindVertexArray(vaoSquare);
-        glUseProgram(program[1].offscreen);
+        glUseProgram(program[renderOptions.useXor].offscreen);
         glUniform1ui(useXorPositionOff, renderOptions.useXor);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
             glUniform1i(texPositionOff[i], i);
