@@ -19,7 +19,7 @@ int sc_main(int, char **) {
     const unsigned int MAIN_DIV = 4;
     const unsigned int DIV_RATIO = 1;
 
-    sc_time simulation_time = T * STEPS * MAIN_DIV * DIV_RATIO * 1024 * 2;
+    sc_time simulation_time = T * STEPS * MAIN_DIV * DIV_RATIO * 20 * 2;
 
     sc_clock clk("clk", T);
     sc_signal<bool> nrst("nrst");
@@ -59,12 +59,12 @@ int sc_main(int, char **) {
     driver.lat(lat);
 
     // The following lins need to be uncommented if traces are wanted
-    // sc_trace_file *wf = sc_create_vcd_trace_file("driverTest");
-    // sc_trace(wf, clk, "clk");
-    // sc_trace(wf, nrst, "nrst");
-    // sc_trace(wf, sin, "sin");
-    // sc_trace(wf, lat, "lat");
-    // sc_trace(wf, gclk, "gclk");
+    sc_trace_file *wf = sc_create_vcd_trace_file("driverTest");
+    sc_trace(wf, clk, "clk");
+    sc_trace(wf, nrst, "nrst");
+    sc_trace(wf, sin, "sin");
+    sc_trace(wf, lat, "lat");
+    sc_trace(wf, gclk, "gclk");
 
     sc_start(T);
 
@@ -152,6 +152,7 @@ int sc_main(int, char **) {
             sendSequence(pokerSequence[i], &sin, &lat, T);
             // TODO: print the shift register value
         }
+        lat.write(0);
         printf("DONE\n");
         sc_start(T);
 
@@ -183,6 +184,8 @@ int sc_main(int, char **) {
             assert(expectedData == readDataGS2);
         }
     }
+
+    sc_close_vcd_trace_file(wf);
 
     return EXIT_SUCCESS;
 }
