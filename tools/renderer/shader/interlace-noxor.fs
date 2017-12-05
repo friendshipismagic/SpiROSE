@@ -45,36 +45,36 @@ void main() {
             0.5 + vec2(sin(refreshNo), -cos(refreshNo)) * (fragPos.y - 0.5);
 
     // As usual, decode our voxel thingy
-    ivec4 color;
+    vec4 color;
+    if (fragPos.z < 1.0 / 8.0)
+        color = texture(tex0, fragPos.xy);
+    else if (fragPos.z < 2.0 / 8.0)
+        color = texture(tex1, fragPos.xy);
+    else if (fragPos.z < 3.0 / 8.0)
+        color = texture(tex2, fragPos.xy);
+    else if (fragPos.z < 4.0 / 8.0)
+        color = texture(tex3, fragPos.xy);
+    else if (fragPos.z < 5.0 / 8.0)
+        color = texture(tex4, fragPos.xy);
+    else if (fragPos.z < 6.0 / 8.0)
+        color = texture(tex5, fragPos.xy);
+    else if (fragPos.z < 7.0 / 8.0)
+        color = texture(tex6, fragPos.xy);
+    else if (fragPos.z < 8.0 / 8.0)
+        color = texture(tex7, fragPos.xy);
 
-    if (fragPos.z < 1 / 8)
-        color = ivec4(texture(tex0, fragPos.xy) * 255);
-    else if (fragPos.z < 2 / 8)
-        color = ivec4(texture(tex1, fragPos.xy) * 255);
-    else if (fragPos.z < 3 / 8)
-        color = ivec4(texture(tex2, fragPos.xy) * 255);
-    else if (fragPos.z < 4 / 8)
-        color = ivec4(texture(tex3, fragPos.xy) * 255);
-    else if (fragPos.z < 5 / 8)
-        color = ivec4(texture(tex4, fragPos.xy) * 255);
-    else if (fragPos.z < 6 / 8)
-        color = ivec4(texture(tex5, fragPos.xy) * 255);
-    else if (fragPos.z < 7 / 8)
-        color = ivec4(texture(tex6, fragPos.xy) * 255);
-    else if (fragPos.z < 8 / 8)
-        color = ivec4(texture(tex7, fragPos.xy) * 255);
-
-    int p = 1 << int(mod(fragPos.z * 32, 8));
-    int v;
-    if (fragPos.z < 0.25)
+    // Get our height in the texture
+    float z = mod(fragPos.z * 8, 1);
+    float v;
+    if (z < 0.25)
         v = color.r;
-    else if (fragPos.z < 0.50)
+    else if (z < 0.50)
         v = color.g;
-    else if (fragPos.z < 0.75)
+    else if (z < 0.75)
         v = color.b;
     else
         v = color.a;
 
     out_Color = vec4(0);
-    if ((v & p) != 0) out_Color = vec4(1);
+    if (abs(mod(v * 255, 2) - 1) < 0.005) out_Color = vec4(1);
 }
