@@ -4,9 +4,11 @@
  *  - Add LINE_RESET operation
  */
 
-module driver_controller #(parameter BLANKING_TIME = 512 - 9*49
+module driver_controller #(
+    parameter BLANKING_TIME=72
 )(
    input clk_hse,
+   input clk_lse,
    input nrst,
 
    // Framebuffer access, 30b wide
@@ -28,16 +30,13 @@ module driver_controller #(parameter BLANKING_TIME = 512 - 9*49
    input [47:0] serialized_conf
 );
 
-logic clk_lse;
+/*
+ * Here we create a quadrature-phase clock based on clk_lse. It will be use to
+ * split the lat/sin/state logic from the sclk/gclk logic in order to meet the
+ * timing requirement of the driver.
+ */
 logic clk_lse_quad;
 always_ff @(posedge clk_hse)
-    if(~nrst) begin
-        clk_lse <= '0;
-    end else begin
-        clk_lse <= ~clk_lse;
-    end
-
-always_ff @(negedge clk_hse)
     if(~nrst) begin
         clk_lse_quad <= '0;
     end else begin
@@ -58,13 +57,13 @@ always_ff @(negedge clk_hse)
  * Boot-time transition is:
  * STALL for 1 clock cycle
  * PREPARE_CONFIG fo 15 cycles
- * CONFIG for 48 clock cycles
+ * CONFIG for 48+1 clock cycles
  * LOD for 1 clock cycle (TODO), then waits for framebuffer sync signal
  * STREAM until reset
  */
 enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD} driver_state;
 logic [7:0] driver_state_counter;
-always_ff @(posedge clk_lse_quad or posedge framebuffer_sync)
+always_ff @(posedge clk_lse or negedge nrst)
     if(~nrst) begin
         driver_state <= STALL;
         driver_state_counter <= '0;
@@ -75,6 +74,7 @@ always_ff @(posedge clk_lse_quad or posedge framebuffer_sync)
             end
 
             PREPARE_CONFIG: begin
+                // Here we wait 15 cycle to send the FCWRTEN command
                 driver_state_counter <= driver_state_counter + 1'b1;
                 if(driver_state_counter == 14) begin
                     driver_state <= CONFIG;
@@ -83,6 +83,10 @@ always_ff @(posedge clk_lse_quad or posedge framebuffer_sync)
             end
 
             CONFIG: begin
+                /*
+                 * Here we wait 1 cycle to meet the timing requirement, and
+                 * then 47 cycle to send the config data.
+                 */
                 driver_state_counter <= driver_state_counter + 1'b1;
                 if(driver_state_counter == 48) begin
                     driver_state <= LOD;
@@ -109,15 +113,14 @@ always_ff @(posedge clk_lse_quad or posedge framebuffer_sync)
     end
 
 /*
- * TODO
- * SCLK Data send counter. This counter counts the number of clock cycles
- * after FCWRTEN and LATGS commands.
- * In CONFIG state, it corresponds to the number of bits to write into
- * configuration buffer.
- * In STREAM state, it corresponds to the number of data bits already sent.
+ * GCLK cycle counter. This counter counts the number of GCLK clock cycles in
+ * STREAM state. In 9-bit poker mode a segment should be 512 cycle. To meet the
+ * timing requirement it is necessary to pause GCLK for one cycle after a LATGS
+ * or LINERESET, thus the segment counter goes up to 512 instead of 511 to
+ * count this extra one cycle.
  */
-logic [9:0] segment_counter;
-always_ff @(posedge clk_lse_quad)
+logic [10:0] segment_counter;
+always_ff @(posedge clk_lse)
     if(~nrst) begin
         segment_counter <= '0;
     end else begin
@@ -132,20 +135,28 @@ always_ff @(posedge clk_lse_quad)
     end
 
 /*
- * Blanking mode. The GCLK must be 512 clock cycles, but we send
- * 9(bits) * 48 (R+G+B channel) = 432 SCLK cycles. Thus we need to wait for
- * 512 - 432 = 80 SCLK cycles. This blanking time should be done at the begining
- * to avoid latching issues.
+ * Blanking mode. The GCLK segment must be 512 clock cycles, but we send
+ * 9(bits) * 48 (R+G+B channel) + 8 timing cycle = 440 SCLK cycles. Thus we
+ * need to wait for 512 - 440 = 72 SCLK cycles. This blanking time should be
+ * done at the beginning to avoid latching issues.
+ *
+ * CAUTION : the framebuffer assumes that the blanking is done at the beginning
+ * of a segment.
+ *
  * This blanking is necessary only when displaying data, thus in STREAM mode.
  */
 wire blanking_period;
 assign blanking_period = nrst & (segment_counter < BLANKING_TIME);
 
 /*
- *
+ * SCLK data counter. This counter counts the number of SCLK clock cycles in
+ * STREAM and CONFIG state. In 9-bit poker mode a segment should be 512 cycle.
+ * To meet the timing requirement it is necessary to pause SCLK for one cycle
+ * after a WRTGS or WRTFC, thus the counter goes up to 48 instead of 47 to
+ * count this extra one cycle.
  */
 logic [7:0] shift_register_counter;
-always_ff @(posedge clk_lse_quad)
+always_ff @(posedge clk_lse)
     if(~nrst) begin
         shift_register_counter <= '0;
     end else begin
@@ -184,28 +195,41 @@ always_ff @(posedge clk_lse_quad)
  * There is no difference between the configuration mode and the stream mode.
  * The SCLK is on when device is not in reset and not in blanking mode.
  *
- * Driver_gclk drives the GSCLK of the drivers.
- * The GSCLK clock must be enabled only when the device is in STREAM and LOD
+ * driver_gclk drives the GCLK of the drivers.
+ * The GCLK clock must be enabled only when the device is in STREAM and LOD
  * modes. The clock must be enabled after the GS data bank have already been
  * written.
  * TODO check GS data default value (SLVUAF0 p.16)
  */
-
 always_comb begin
     case(driver_state)
         CONFIG: begin
-            driver_sclk <= clk_lse;
+            driver_sclk <= clk_lse_quad;
+            /*
+             * After the WRTFC command we pause SCLK for one cycle to meet
+             * timing requirement
+             */
             if(shift_register_counter == 0) begin
                 driver_sclk <= '0;
             end
             driver_gclk <= '0;
         end
         STREAM: begin
-            driver_sclk <= clk_lse & ~blanking_period;
+            /*
+             * After the WRTGS command we pause SCLK for one cycle to meet
+             * timing requirement. After a LATGS we need more than one cycle
+             * thus it is easier to just pause SCLK for the whole blanking
+             * period.
+             */
+            driver_sclk <= clk_lse_quad & ~blanking_period;
             if(shift_register_counter == 0) begin
                 driver_sclk <= '0;
             end
-            driver_gclk <= clk_lse;
+            driver_gclk <= clk_lse_quad;
+            /*
+             * After the LATGS command we pause GCLK for one cycle to meet
+             * timing requirement
+             */
             if(segment_counter == 0) begin
                 driver_gclk <= '0;
             end
@@ -215,7 +239,7 @@ always_comb begin
             driver_gclk <= '0;
         end
         default: begin
-            driver_sclk <= '0;
+            driver_sclk <= clk_lse_quad;
             driver_gclk <= '0;
         end
     endcase
@@ -282,9 +306,11 @@ end
 always_comb begin
     case(driver_state)
         CONFIG: begin
-            for(int i = 0; i < 30; i++) begin
-                drivers_sin[i] = serialized_conf[48 - shift_register_counter];
-                driver_sout_mux = '0;
+            if(shift_register_counter != 0) begin
+                for(int i = 0; i < 30; i++) begin
+                    drivers_sin[i] = serialized_conf[48-shift_register_counter];
+                    driver_sout_mux = '0;
+                end
             end
         end
         STREAM: begin

@@ -245,7 +245,7 @@ framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(80)) main_fb_emulator (
 
 // Driver output
 driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
-    .clk_33(clock_33),
+    .clk_hse(clock_33),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_data),
     .framebuffer_sync(framebuffer_sync),
