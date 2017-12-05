@@ -37,4 +37,6 @@ void main() {
         else
             out_Color = texture(tex7, uv);
     }
+
+    out_Color *= 20;
 }
