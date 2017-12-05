@@ -584,7 +584,8 @@ void loadShaders() {
            offscreenF = loadShader(GL_FRAGMENT_SHADER, "offscreen-noxor"),
            generateVX = loadShader(GL_VERTEX_SHADER, "generate"),
            generateV = loadShader(GL_VERTEX_SHADER, "generate-noxor"),
-           generateG = loadShader(GL_GEOMETRY_SHADER, "generate"),
+           generateGX = loadShader(GL_GEOMETRY_SHADER, "generate"),
+           generateG = loadShader(GL_GEOMETRY_SHADER, "generate-noxor"),
            generateF = loadShader(GL_FRAGMENT_SHADER, "generate"),
            interlaceFX = loadShader(GL_FRAGMENT_SHADER, "interlace"),
            interlaceF = loadShader(GL_FRAGMENT_SHADER, "interlace-noxor");
@@ -632,7 +633,7 @@ void loadShaders() {
 
     program[1].generate = glCreateProgram();
     glAttachShader(program[1].generate, generateVX);
-    glAttachShader(program[1].generate, generateG);
+    glAttachShader(program[1].generate, generateGX);
     glAttachShader(program[1].generate, generateF);
     glBindFragDataLocation(program[1].generate, 0, "out_Color");
     glLinkProgram(program[1].generate);
