@@ -147,7 +147,7 @@ driver_sequence_t* make_poker_data(const rgb_t data[DRIVER_NB_BUFFER]) {
     driver_sequence_t* seqs =
         malloc((DRIVER_POKER_SIZE + 1) * sizeof(driver_sequence_t));
     for (int i = 0; i < DRIVER_POKER_SIZE; ++i) {
-        seqs[i] = make_poker_sequence(data, i);
+        seqs[DRIVER_POKER_SIZE - 1 - i] = make_poker_sequence(data, i);
     }
     seqs[DRIVER_POKER_SIZE] = make_sequence(0);
     return seqs;
@@ -158,8 +158,7 @@ driver_sequence_t make_poker_sequence(const rgb_t data[DRIVER_NB_BUFFER],
     driver_sequence_t seq = make_sequence(DRIVER_REG_SIZE);
 
     // Unless the nineth bit is read, send a WRTGS, else a LATGS
-    enum latch_t latch =
-        bitNumber < DRIVER_POKER_SIZE - 1 ? LATCH_WRTGS : LATCH_LATGS;
+    enum latch_t latch = bitNumber >= 1 ? LATCH_WRTGS : LATCH_LATGS;
     for (unsigned int i = 0; i < latch; ++i) {
         seq.lat[DRIVER_REG_SIZE - 1 - i] = 1;
     }
@@ -172,8 +171,6 @@ driver_sequence_t make_poker_sequence(const rgb_t data[DRIVER_NB_BUFFER],
                 value;
         }
     }
-
-
 
     return seq;
 }
