@@ -170,7 +170,7 @@ void free_sequence(driver_sequence_t* seq);
  *
  * \param seqs the array of sequence to free
  */
-void free_sequences(driver_sequence_t* seq[]);
+void free_sequences(driver_sequence_t* seqs[]);
 
 #ifdef __cplusplus
 }  // extern "C"
