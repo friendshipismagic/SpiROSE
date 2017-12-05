@@ -16,21 +16,24 @@ uniform sampler2D voxels7;
 void main() {
     gl_Position = matModel * vec4(in_Pos, 1);
 
+    // Map back to [0, 1]
+    vec3 p = gl_Position.xyz / 2 + 0.5;
+
     // Fetch the texel that concerns us.
-    if (gl_Position.z < 1 / 8)
-        vColor = texture(voxels0, (gl_Position.xy / 2 + 0.5));
-    else if (gl_Position.z < 2 / 8)
-        vColor = texture(voxels1, (gl_Position.xy / 2 + 0.5));
-    else if (gl_Position.z < 3 / 8)
-        vColor = texture(voxels2, (gl_Position.xy / 2 + 0.5));
-    else if (gl_Position.z < 4 / 8)
-        vColor = texture(voxels3, (gl_Position.xy / 2 + 0.5));
-    else if (gl_Position.z < 5 / 8)
-        vColor = texture(voxels4, (gl_Position.xy / 2 + 0.5));
-    else if (gl_Position.z < 6 / 8)
-        vColor = texture(voxels5, (gl_Position.xy / 2 + 0.5));
-    else if (gl_Position.z < 7 / 8)
-        vColor = texture(voxels6, (gl_Position.xy / 2 + 0.5));
-    else if (gl_Position.z < 8 / 8)
-        vColor = texture(voxels7, (gl_Position.xy / 2 + 0.5));
+    if (p.z < 1.0 / 8.0)
+        vColor = texture(voxels0, p.xy);
+    else if (p.z < 2.0 / 8.0)
+        vColor = texture(voxels1, p.xy);
+    else if (p.z < 3.0 / 8.0)
+        vColor = texture(voxels2, p.xy);
+    else if (p.z < 4.0 / 8.0)
+        vColor = texture(voxels3, p.xy);
+    else if (p.z < 5.0 / 8.0)
+        vColor = texture(voxels4, p.xy);
+    else if (p.z < 6.0 / 8.0)
+        vColor = texture(voxels5, p.xy);
+    else if (p.z < 7.0 / 8.0)
+        vColor = texture(voxels6, p.xy);
+    else if (p.z < 8.0 / 8.0)
+        vColor = texture(voxels7, p.xy);
 }
