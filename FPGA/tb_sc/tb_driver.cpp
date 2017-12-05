@@ -3,8 +3,8 @@
 #include "driver.hpp"
 #include "driver_cmd.h"
 
-void sendSequence(driver_sequence_t seq, sc_signal<bool> *sin, 
-        sc_signal<bool> *lat, sc_time T) {
+void sendSequence(driver_sequence_t seq, sc_signal<bool> *sin,
+                  sc_signal<bool> *lat, sc_time T) {
     for (int i = 0; i < (uint8_t)seq.size; i++) {
         sin->write(seq.sin[i]);
         lat->write(seq.lat[i]);
@@ -12,7 +12,7 @@ void sendSequence(driver_sequence_t seq, sc_signal<bool> *sin,
     }
 }
 
-int sc_main(int, char**) {
+int sc_main(int, char **) {
     const sc_time T(10, SC_NS);
 
     const unsigned int STEPS = 256;
@@ -33,7 +33,7 @@ int sc_main(int, char**) {
 
     static driver_sequence_t configWriteEnableSequence;
     static driver_sequence_t writeConfigSequence;
-    static driver_sequence_t* pokerSequence;
+    static driver_sequence_t *pokerSequence;
 
     static sc_bv<768> gs1Data;
     static sc_bv<768> gs2Data;
@@ -82,10 +82,22 @@ int sc_main(int, char**) {
      */
     for (int i = 0; i < 10; i++) {
         testConfig = {
-            (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(), 1,
-            (uint32_t)rand(), (uint32_t)rand(), 1, (uint32_t)rand(),
-            (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(),
-            (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(), (uint32_t)rand(),
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            1,
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            1,
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            (uint32_t)rand(),
+            (uint32_t)rand(),
         };
         sendSequence(configWriteEnableSequence, &sin, &lat, T);
         writeConfigSequence = make_WRTCFG(testConfig);
@@ -98,7 +110,6 @@ int sc_main(int, char**) {
     testConfig = {3, 3, 0, 1, 1, 1, 1, 1, 0, 4, 127, 127, 127, 7, 1, 5};
 
     while (sc_time_stamp() < simulation_time) {
-        
         // Send the configuration write enable to the driver
         printf("Sending FC write enable sequence to the driver...");
         sendSequence(configWriteEnableSequence, &sin, &lat, T);
@@ -150,21 +161,21 @@ int sc_main(int, char**) {
 
         for (int outputNb = 0; outputNb < 48; outputNb++) {
             // Verify that the data in the 768-bit latch registers
-            auto expectedGS1 = 
+            auto expectedGS1 =
                 gs1Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint();
-            auto expectedGS2 = 
+            auto expectedGS2 =
                 gs2Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint();
             auto readData = testData[outputNb / 3].color[outputNb % 3];
 
             if (outputNb % 3 == 0) {
-                printf("Read data: R%d, G%d, B%d\n", outputNb/3, outputNb/3, outputNb/3);
+                printf("Read data: R%d, G%d, B%d\n", outputNb / 3, outputNb / 3,
+                       outputNb / 3);
             }
 
             printf(
                 "gs1Data (read) = %x,"
                 " testData (expected) = %x\n",
-                expectedGS1,
-                readData);
+                expectedGS1, readData);
 
             assert(expectedGS1 == readData);
             assert(expectedGS2 == readData);
