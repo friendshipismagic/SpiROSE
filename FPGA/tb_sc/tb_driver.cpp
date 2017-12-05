@@ -143,8 +143,6 @@ int sc_main(int, char**) {
         }
         printf("DONE\n");
         sc_start(T);
-        for (int i = 0; i < 16; i++) {
-            cout << 
 
         // Testing the driver internals
         gs1Data = driver.getGs1Data();
