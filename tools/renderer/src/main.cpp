@@ -330,6 +330,7 @@ int main(int argc, char *argv[]) {
         glfwSetWindowTitle(window, title.c_str());
 
         //// Voxelization
+        glViewport(0, 0, 32, 32);
         glBindVertexArray(vao);
         glUseProgram(program[renderOptions.useXor].voxel);
         glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matP, 1,
