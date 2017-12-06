@@ -55,6 +55,10 @@
 #define LGSE2_IDX (45)
 #define LGSE2_SIZE (3)
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 driver_sequence_t make_sequence(size_t length) {
     return (driver_sequence_t){length, calloc(length, 1), calloc(length, 1)};
 }
@@ -99,7 +103,9 @@ driver_sequence_t make_WRTCFG(driver_config_t c) {
 
 driver_sequence_t make_FCWRTEN() {
     driver_sequence_t seq = make_sequence(LATCH_FCWRTEN);
-    for (int i = 0; i < LATCH_FCWRTEN; ++i) seq.lat[i] = 1;
+    for (int i = 0; i < LATCH_FCWRTEN; ++i) {
+        seq.lat[i] = 1;
+    }
     return seq;
 }
 
@@ -108,7 +114,9 @@ driver_sequence_t* make_normal_data(const rgb_t data[]) {
         malloc((DRIVER_NB_BUFFER + 1) * sizeof(driver_sequence_t));
     for (int i = 0; i < DRIVER_NB_BUFFER; ++i) {
         enum latch_t latch = LATCH_WRTGS;
-        if (i == DRIVER_NB_BUFFER - 1) latch = LATCH_LATGS;
+        if (i == DRIVER_NB_BUFFER - 1) {
+            latch = LATCH_LATGS;
+        }
         seqs[i] = make_normal_sequence(&data[i], latch);
     }
     seqs[DRIVER_NB_BUFFER] = make_sequence(0);
@@ -139,30 +147,28 @@ driver_sequence_t* make_poker_data(const rgb_t data[DRIVER_NB_BUFFER]) {
     driver_sequence_t* seqs =
         malloc((DRIVER_POKER_SIZE + 1) * sizeof(driver_sequence_t));
     for (int i = 0; i < DRIVER_POKER_SIZE; ++i) {
-        seqs[i] = make_poker_sequence(data, i);
+        seqs[DRIVER_POKER_SIZE - 1 - i] = make_poker_sequence(data, i);
     }
     seqs[DRIVER_POKER_SIZE] = make_sequence(0);
     return seqs;
 }
 
 driver_sequence_t make_poker_sequence(const rgb_t data[DRIVER_NB_BUFFER],
-                                      int bit_number) {
+                                      int bitNumber) {
     driver_sequence_t seq = make_sequence(DRIVER_REG_SIZE);
 
     // Unless the nineth bit is read, send a WRTGS, else a LATGS
-    enum latch_t latch =
-        bit_number < DRIVER_POKER_SIZE - 1 ? LATCH_WRTGS : LATCH_LATGS;
+    enum latch_t latch = bitNumber >= 1 ? LATCH_WRTGS : LATCH_LATGS;
     for (unsigned int i = 0; i < latch; ++i) {
         seq.lat[DRIVER_REG_SIZE - 1 - i] = 1;
     }
 
-    // j is the buffer iterator
-    for (int j = 0; j < DRIVER_NB_BUFFER; ++j) {
-        // k is the color iterator
-        for (int k = 0; k < DRIVER_NB_COLOR; ++k) {
-            const uint8_t value = BIT(data[j].color[k], bit_number);
+    for (int buffIt = 0; buffIt < DRIVER_NB_BUFFER; ++buffIt) {
+        for (int color = 0; color < DRIVER_NB_COLOR; ++color) {
+            const uint8_t value = BIT(data[buffIt].color[color], bitNumber);
             // Higher OUTX number is presented first
-            seq.sin[DRIVER_REG_SIZE - 1 - (j * DRIVER_NB_COLOR + k)] = value;
+            seq.sin[DRIVER_REG_SIZE - 1 - (buffIt * DRIVER_NB_COLOR + color)] =
+                value;
         }
     }
 
@@ -184,5 +190,9 @@ void free_sequences(driver_sequence_t* seqs[]) {
     }
     free(seqs);
 }
+
+#ifdef __cplusplus
+}  // extern "C"
+#endif
 
 #undef BIT

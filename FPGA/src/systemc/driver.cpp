@@ -39,10 +39,10 @@ sc_bv<3> Driver::getLgse2() const { return fcData.read()(47, 45); }
 void Driver::checkAssert() {
     while (true) {
         // Can't use XREFRESH and ESPWM in poker mode, p17, 3.4.3
-        if (getPokerMode() && (getXrefreshDisabled() || getEspwm())) {
+        if (getPokerMode() && (!getXrefreshDisabled() || !getEspwm())) {
             std::cout << "FATAL: XREFRESH(" << getXrefreshDisabled() << ") "
                       << "and ESPWM(" << getEspwm() << ") "
-                      << "have to be 0 (deactivated) in poker mode"
+                      << "have to be 1 (deactivated) in poker mode"
                       << std::endl;
             exit(-1);
         }
@@ -61,27 +61,31 @@ void Driver::handleLat() {
     gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
 
     while (true) {
-        wait();
         if (lat) {
             latCounter = latCounter.read() + 1;
         } else if (latCounter == 1) {
             // WRTGS, write to GS data at the GS counter position
-            writeToBank(GS1, gsAddrCounter.read(), shiftReg);
+            auto bank = gs1Data.read();
+            updateBank(bank, gsAddrCounter.read(), shiftReg);
+            gs1Data.write(bank);
             gsAddrCounter = gsAddrCounter.read() - 1;
             latCounter = 0;
         } else if (latCounter == 3) {
             // LATGS, write to GS data
-            writeToBank(GS1, gsAddrCounter.read(), shiftReg);
+            auto bank = gs1Data.read();
+            updateBank(bank, gsAddrCounter.read(), shiftReg);
+            gs1Data.write(bank);
+
+            // We will be using poker mode so no need to support Xrefresh
+            assert(getXrefreshDisabled());
+
             if (getXrefreshDisabled() == 0) {
-                // latch GS1 to GS2 when gs_addr_counter = 65536
-                if (gsAddrCounter == 0) {
-                    gs2Data = gs1Data;
-                }
+                // TODO: we do not handle Xrefresh mode, not used
             } else {
                 // latch GS1 to GS2
-                // reset gs_addr_counter (right after the else)
+                // reset gsAddrCounter (right after the else)
                 // TODO: put outx = 0 if we need to test it
-                gs2Data = gs1Data;
+                gs2Data.write(bank);
             }
             gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
             lineCounter = lineCounter.read() + 1;
@@ -90,12 +94,21 @@ void Driver::handleLat() {
             // WRTFC
             fcData = shiftReg;
             latCounter = 0;
+            gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
         } else if (latCounter == 7) {
             // LINERESET
-            writeToBank(GS1, gsAddrCounter.read(), shiftReg);
+            auto bank = gs1Data.read();
+            updateBank(bank, gsAddrCounter.read(), shiftReg);
+            gs2Data.write(bank);
+            gs1Data.write(bank);
             lineCounter = 0;
             gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
+
+            // We will be using poker mode so no need to support Xrefresh
+            assert(getXrefreshDisabled());
+
             if (getXrefreshDisabled() == 0) {
+                // TODO: we do not handle Xrefresh mode, not used
                 // TODO: copy everything when GS counter is 65536;
             } else {
                 gs2Data.write(gs1Data);
@@ -111,6 +124,7 @@ void Driver::handleLat() {
             latCounter = 0;
         } else if (latCounter == 13) {
             // TMGRST
+            gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
             gsDataCounter = 0;
             lineCounter = 0;
             // TODO: force output off if we need to test it
@@ -122,6 +136,8 @@ void Driver::handleLat() {
         } else {
             assert(latCounter == 0 && "Invalid lat counter value");
         }
+
+        wait();
     }
 }
 
@@ -136,22 +152,20 @@ void Driver::handleGclk() {
     }
 }
 
-void Driver::writeToBank(driver_bank_t bank, int bufferId,
-                         const RegBuff& buffer) {
-    auto& gs = (bank == GS1) ? gs1Data : gs2Data;
-    auto vec = gs.read();
+void Driver::updateBank(Driver::GSBuff& bank, int bufferId,
+                        const RegBuff& buffer) {
     if (!getPokerMode()) {
         // Calculate the slice where to write in GS
         int end = REG_SIZE * (1 + bufferId) - 1;
 
         // We need to extract the data from signal to apply range
         // operator
-        vec(end, end - REG_SIZE + 1) = buffer(REG_SIZE - 1, 0);
+        bank(end, end - REG_SIZE + 1) = buffer(REG_SIZE - 1, 0);
     } else {
         // i is the buffer iterator from end to start
-        for (int i = GS_NB_BUFFER; i > 0; --i) {
+        for (int i = GS_NB_BUFFER + 1; i > 0; --i) {
             // j is the current color of the pixel
-            for (int j = 0; j < GS_NB_COLOR; ++i) {
+            for (int j = 0; j < GS_NB_COLOR; ++j) {
                 // + in this context, buffer_id is the bit number of the poker
                 // mode.
                 // + i*48 gives the buffer of 48 bits in which we must write
@@ -160,13 +174,34 @@ void Driver::writeToBank(driver_bank_t bank, int bufferId,
                 // + the 48 bits buffer is splitted into three 16 bits parts,
                 // one for each color, so j*16 translates to the right buffer
                 auto idx = i * REG_SIZE - (GS_NB_BUFFER - bufferId) - j * 16;
-                vec[idx] = buffer[i];
+                bank[idx] = buffer[i * 3 - j - 1];
             }
         }
+        std::cout << "New GS bank : " << std::endl;
+        displayBank(bank);
+        std::cout << "Reg data : " << std::endl;
+        displayReg(buffer);
+        std::cout << "Buffer id : " << bufferId << std::endl;
     }
-    gs.write(vec);
 }
 
 Driver::GSBuff Driver::getGs1Data() const { return gs1Data.read(); }
 Driver::GSBuff Driver::getGs2Data() const { return gs2Data.read(); }
 Driver::RegBuff Driver::getFcData() const { return fcData.read(); }
+
+void Driver::displayBank(const Driver::GSBuff& bank) {
+    for (int i = 0; i < GS_NB_BUFFER; ++i) {
+        for (int j = 0; j < 3; ++j)
+            std::cout << bank(767 - REG_SIZE * i - j * 16,
+                              768 - REG_SIZE * i - (j + 1) * 16)
+                      << " ";
+        std::cout << std::endl;
+    }
+}
+
+void Driver::displayReg(const Driver::RegBuff& buffer) {
+    for (int i = 0; i < 3; ++i) {
+        std::cout << buffer(47 - i * 16, 48 - (i + 1) * 16) << " ";
+    }
+    std::cout << std::endl;
+}

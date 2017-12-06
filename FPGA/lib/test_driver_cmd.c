@@ -158,7 +158,7 @@ int main(void) {
                     reconstructedSingleData |=
                         (sequence_poker[k].sin[(DRIVER_REG_SIZE - 1) -
                                                (DRIVER_NB_COLOR * j + i)]
-                         << k);
+                         << (DRIVER_POKER_SIZE - k - 1));
                 }
                 assert(reconstructedSingleData == rgbTest[j].color[i]);
             }
