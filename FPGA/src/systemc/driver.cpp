@@ -75,14 +75,15 @@ void Driver::handleLat() {
             auto bank = gs1Data.read();
             updateBank(bank, gsAddrCounter.read(), shiftReg);
             gs1Data.write(bank);
+
+            // We will be using poker mode so no need to support Xrefresh
+            assert(getXrefreshDisabled());
+
             if (getXrefreshDisabled() == 0) {
-                // latch GS1 to GS2 when gs_addr_counter = 65536
-                if (gsAddrCounter == 0) {
-                    gs2Data.write(bank);
-                }
+                // TODO: we do not handle Xrefresh mode, not used
             } else {
                 // latch GS1 to GS2
-                // reset gs_addr_counter (right after the else)
+                // reset gsAddrCounter (right after the else)
                 // TODO: put outx = 0 if we need to test it
                 gs2Data.write(bank);
             }
@@ -102,7 +103,12 @@ void Driver::handleLat() {
             gs1Data.write(bank);
             lineCounter = 0;
             gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
+
+            // We will be using poker mode so no need to support Xrefresh
+            assert(getXrefreshDisabled());
+
             if (getXrefreshDisabled() == 0) {
+                // TODO: we do not handle Xrefresh mode, not used
                 // TODO: copy everything when GS counter is 65536;
             } else {
                 gs2Data.write(gs1Data);
