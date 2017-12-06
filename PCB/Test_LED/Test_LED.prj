@@ -23,7 +23,7 @@ KEY UpdateJobPrefsDB "CAD"
 KEY UpdateNetClassDB "Sync"
 KEY UpdateNetPropsDB "Sync"
 KEY UseCES "1"
-KEY VBPCBForwardAnno "1"
+KEY VBPCBForwardAnno "0"
 KEY DisableECOChanges "0"
 ENDSECTION
 SECTION ACEPlusFilePaths
@@ -237,7 +237,7 @@ VALUE "IEEE"
 ENDLIST
 LIST VerilogSimulationLibraries
 ENDLIST
-KEY CentralLibrary "E:\Central_Libs\ENST.lmc"
+KEY CentralLibrary "F:\Central_Libs\ENST.lmc"
 KEY SearchPathScheme "(Default)"
 ENDSECTION
 SECTION IngrElecTechnologyInfo

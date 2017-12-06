@@ -2,13 +2,13 @@
                                     Packager
                                     --------
 
-                       08:49 AM Monday, December 04, 2017
+                      02:24 PM Wednesday, December 06, 2017
    Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb" -k -CleanBuild "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj" "
+        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj" -CleanBuild -NoFill"
 
      The Common Database is at "C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb".
 
@@ -19,14 +19,12 @@
      The PCB Design Path of this design is at "C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
-      However, "F:\Central_Libs\ENST.lmc" does not exist.
 
      The Disable Repackage status indicates that 
       Repackaging should be allowed.
 
-     A new Target PDB was to be created from the Central Library to satisfy the parts
-      requirements of the iCDB.  However, since there is no Central Library,
-      the Local PDB will be searched to satisfy the parts requirements of the iCDB.
+     A new Target PDB will be created from the Central Library to satisfy the parts
+      requirements of the iCDB.
 
      The AllowAlphaRefDes status indicates that reference
       designators containing all alpha characters should be deleted
@@ -36,10 +34,41 @@
       numbers will be checked for packaged symbols and mapped correctly
       for unpackaged symbols.
 
-     Since a Central Library does not exist, there are no properties that have
-      been checked off in a Property Definition Editor to be found at Library 
-      Manager/Common Properties to be checked for value differences between the
-      PartsDB and the non-null properties on symbols.
+     Properties that have been checked off in the Property Definition Editor
+      found at Library Manager/Common Properties will be checked for value
+      differences between the PartsDB and the non-null properties on symbols.
+     Those properties checked off (other than Part Number)
+      will not be transferred from the PartsDB to symbols.
+     The following properties were checked off in the Property Definition Editor:
+       "Parametric"
+       "Value2"
+       "Attachment"
+       "Verification Statut"
+       "Commentaire"
+       "Option"
+       "ESR"
+       "Imax"
+       "Cout HT"
+       "Vf"
+       "Code Fournisseur"
+       "Boitier"
+       "Iac max"
+       "Voltage"
+       "Dielectric"
+       "Techno"
+       "IBIS"
+       "Model Suffix"
+       "Part Label"
+       "VHDL Model"
+       "Verilog Model"
+       "Supply Rename"
+       "Description"
+       "Simulation Model"
+       "Ref Designator"
+       "Tolerance"
+       "Part Number"
+       "Value"
+       "Part Name"
 
 	Checking for errors in the ICDB...
 
@@ -51,11 +80,9 @@
 
      Target PDB Name: Integration\LocalPartsDB.pdb
 
-     WARNING:  There are no PartsDB partitions from which to extract parts.
-      Proceeding using the data in the local PartsDB "Integration\LocalPartsDB.pdb".
-
-     Number of Part Numbers: 4
+     Number of Part Numbers: 5
           Part Numb: 02-0098 -> Vend Part: 02-0098 
+          Part Numb: 10-0060 -> Vend Part: 10-0060 
           Part Numb: 20-0073 -> Vend Part: 20-0073 
           Part Numb: 40-0307 -> Vend Part: 40-0307 
           Part Numb: 70-0029 -> Vend Part: 70-0029 
@@ -67,7 +94,6 @@
 
      Checking for value differences between non-null symbol properties and PartsDB properties,
       but only for those properties checked off in the Property Definition Editor
-     Since no properties were checked off, no symbols will be checked.
 
      Checking the validity of the packaging of prepackaged schematic
       symbols.  Only the first error in symbols having the same
@@ -81,8 +107,8 @@
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 415 Symbols:
-             415  **************
+     Clustering 417 Symbols:
+             417  ****************
              400  **************************************************
              350  **************************************************
              300  **************************************************
@@ -97,8 +123,8 @@
 
 
 
-     178 nets were found containing 1738 pins
-     415 components were found
+     175 nets were found containing 1742 pins
+     417 components were found
 
      Parsed netlist - Augmenting..
 
@@ -108,8 +134,7 @@
 
      Checking Pins....
 
-     Testing of Packaging has been completed with 1 warnings.
-      Erroneous results may occur if not fixed.
+     Packaging has been successfully tested with no errors or warnings.
 
      Updating the Common DataBase
 
@@ -123,5 +148,3 @@ The Common DataBase has been successfully updated.
      An unused pin and gate report has been written to Integration\UnusedPins.txt
      An unused gate report for gates not in schematic has been written to Integration\UnusedGates.txt
      An augmented pin report has been written to Integration\AugmentedPins.txt.
-
-     There have been 1 warnings.
