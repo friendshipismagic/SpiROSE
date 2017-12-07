@@ -29,6 +29,19 @@ module top_module (
 );
 
 /*
+ * Interconnect signals
+ */
+wire [29:0] framebuffer_dat;
+wire        framebuffer_sync;
+
+/*
+ * Temporary zone where interconnect wires are driven while unused
+ */
+assign framebuffer_dat = 30'h0;
+assign framebuffer_sync = 1'b0;
+assign mux_out = 8'h00;
+
+/*
  * Default configuration for drivers
  * To change the default configuration, please go to drivers_conf.sv
  */
