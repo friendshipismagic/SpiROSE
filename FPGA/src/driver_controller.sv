@@ -63,7 +63,7 @@ always_ff @(posedge clk_hse)
  */
 enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD} driver_state;
 logic [7:0] driver_state_counter;
-always_ff @(posedge clk_lse or negedge nrst)
+always_ff @(posedge clk_lse)
     if(~nrst) begin
         driver_state <= STALL;
         driver_state_counter <= '0;
