@@ -204,15 +204,15 @@ always_ff @(posedge clk_lse)
 always_comb begin
     case(driver_state)
         CONFIG: begin
-            driver_sclk <= clk_lse_quad;
+            driver_sclk = clk_lse_quad;
             /*
              * After the WRTFC command we pause SCLK for one cycle to meet
              * timing requirement
              */
             if(shift_register_counter == 0) begin
-                driver_sclk <= '0;
+                driver_sclk = '0;
             end
-            driver_gclk <= '0;
+            driver_gclk = '0;
         end
         STREAM: begin
             /*
@@ -221,26 +221,26 @@ always_comb begin
              * thus it is easier to just pause SCLK for the whole blanking
              * period.
              */
-            driver_sclk <= clk_lse_quad & ~blanking_period;
+            driver_sclk = clk_lse_quad & ~blanking_period;
             if(shift_register_counter == 0) begin
-                driver_sclk <= '0;
+                driver_sclk = '0;
             end
-            driver_gclk <= clk_lse_quad;
+            driver_gclk = clk_lse_quad;
             /*
              * After the LATGS command we pause GCLK for one cycle to meet
              * timing requirement
              */
             if(segment_counter == 0) begin
-                driver_gclk <= '0;
+                driver_gclk = '0;
             end
         end
         LOD: begin
-            driver_sclk <= '0;
-            driver_gclk <= '0;
+            driver_sclk = '0;
+            driver_gclk = '0;
         end
         default: begin
-            driver_sclk <= clk_lse_quad;
-            driver_gclk <= '0;
+            driver_sclk = clk_lse_quad;
+            driver_gclk = '0;
         end
     endcase
 end
