@@ -3,9 +3,11 @@ module top_module (
     input clk_33,
     input nrst,
 
+/* verilator lint_off UNUSED */
     // RGB bus
     input [23:0] rgb,
     input hsync, vsync, rgb_clk,
+/* verilator lint_on UNUSED */
 
     // Driver output
     output sclk,
@@ -24,8 +26,10 @@ module top_module (
     // input rx,
     // output tx,
 
+/* verilator lint_off UNUSED */
     // Encoder
     input enc0, enc1
+/* verilator lint_on UNUSED */
 );
 
 /*
