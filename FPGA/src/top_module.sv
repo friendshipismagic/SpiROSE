@@ -34,11 +34,15 @@ module top_module (
 wire [29:0] framebuffer_dat;
 wire        framebuffer_sync;
 
+// DONT KEEP THIS ONE
+wire        clk_lse;
+
 /*
  * Temporary zone where interconnect wires are driven while unused
  */
 assign framebuffer_dat = 30'h0;
 assign framebuffer_sync = 1'b0;
+assign clk_lse = 1'b0;
 assign mux_out = 8'h00;
 
 /*
@@ -50,6 +54,7 @@ assign mux_out = 8'h00;
 // Driver output
 driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
     .clk_hse(clk_33),
+    .clk_lse(clk_lse),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_dat),
     .framebuffer_sync(framebuffer_sync),
