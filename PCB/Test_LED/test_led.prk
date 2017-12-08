@@ -1,6 +1,6 @@
 SECTION VBPCBIndicators
 KEY AllowAlpha "0"
-KEY CADBackAnno "1"
+KEY CADBackAnno "0"
 KEY CDBCRunning "0"
 KEY DisableBackAnnoChanges "0"
 KEY DisableRepackage "0"
@@ -23,7 +23,7 @@ KEY UpdateJobPrefsDB "CAD"
 KEY UpdateNetClassDB "Sync"
 KEY UpdateNetPropsDB "Sync"
 KEY UseCES "1"
-KEY VBPCBForwardAnno "0"
+KEY VBPCBForwardAnno "1"
 KEY DisableECOChanges "0"
 ENDSECTION
 SECTION ACEPlusFilePaths
@@ -124,8 +124,10 @@ SECTION Default
 LIST All(*.*)
 ENDLIST
 LIST BlockSymbols(*.blk)
+VALUE "design_definition\graphics\uBlock.blk"
 ENDLIST
 LIST BlockViewMap
+VALUE "UBLOCK,design_definition\graphics\uBlock.sbk,,0"
 VALUE "SCHEMATIC1,design_definition\graphics\Schematic1.sbk,,0"
 ENDLIST
 LIST FPGA(*.fpk)
@@ -135,6 +137,7 @@ ENDLIST
 LIST Schematics(*.sbk)
 VALUE "design_definition\graphics\Schematic1.sbk"
 VALUE "design_definition\graphics\TP_STM32_PAUL.sbk"
+VALUE "design_definition\graphics\uBlock.sbk"
 ENDLIST
 LIST StateDiagrams(*.sdg)
 ENDLIST
