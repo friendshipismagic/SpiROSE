@@ -2,21 +2,21 @@
                                     Packager
                                     --------
 
-                       02:14 PM Sunday, November 12, 2017
-              Job Name: C:\t\Project_template\Project_template.prj
+                      06:38 PM Wednesday, December 06, 2017
+ Job Name: C:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\Rotative_base.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: ""C:\mentorgraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  -jC:\t\Project_template\Project_template.prj -CleanBuild -NoFill"
+        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  -jC:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\Rotative_base.prj -CleanBuild -NoFill"
 
-     The Common Database is at "C:\t\Project_template\Default\default.icdb".
+     The Common Database is at "C:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\Default\default.icdb".
 
      The Root of this design is "Schematic1".
 
      The Front End Snapshot of this design is "DCDV".
 
-     The PCB Design Path of this design is at "C:\t\Project_template\PCB\PCB.pcb".
+     The PCB Design Path of this design is at "C:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
 
@@ -80,10 +80,29 @@
 
      Target PDB Name: Integration\LocalPartsDB.pdb
 
-     Number of Part Numbers: 3
+     Number of Part Numbers: 22
+          Part Numb: 00-0062 -> Vend Part: 00-0062 
+          Part Numb: 00-0084 -> Vend Part: 00-0084 
+          Part Numb: 00-0098 -> Vend Part: 00-0098 
+          Part Numb: 10-0027 -> Vend Part: 10-0027 
+          Part Numb: 10-0032 -> Vend Part: 10-0032 
+          Part Numb: 10-0045 -> Vend Part: 10-0045 
           Part Numb: 10-0057 -> Vend Part: 10-0057 
+          Part Numb: 10-0068 -> Vend Part: 10-0068 
+          Part Numb: 10-0075 -> Vend Part: 10-0075 
+          Part Numb: 10-0087 -> Vend Part: 10-0087 
+          Part Numb: 10-0095 -> Vend Part: 10-0095 
+          Part Numb: 10-0101 -> Vend Part: 10-0101 
+          Part Numb: 10-0102 -> Vend Part: 10-0102 
           Part Numb: 10-0103 -> Vend Part: 10-0103 
-          Part Numb: 70-0081 -> Vend Part: 70-0081 
+          Part Numb: 40-0226 -> Vend Part: 40-0226 
+          Part Numb: 40-0227 -> Vend Part: 40-0227 
+          Part Numb: 40-0310 -> Vend Part: 40-0310 
+          Part Numb: 50-0023 -> Vend Part: 50-0023 
+          Part Numb: 70-0002 -> Vend Part: 70-0002 
+          Part Numb: 70-0068 -> Vend Part: 70-0068 
+          Part Numb: 70-0101 -> Vend Part: 70-0101 
+          Part Numb: 80-0043 -> Vend Part: 80-0043 
 
      Number of Part Names: 0
 
@@ -105,16 +124,18 @@
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 6 Symbols:
-               6  *****
+     Clustering 114 Symbols:
+             114  *************
+             100  **************************************************
+              50  **************************************************
      Clustering is Complete
 
      Packager Assignments successfully completed
 
 
 
-     5 nets were found containing 17 pins
-     6 components were found
+     110 nets were found containing 518 pins
+     109 components were found
 
      Parsed netlist - Augmenting..
 

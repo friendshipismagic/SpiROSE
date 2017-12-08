@@ -2,21 +2,21 @@
                                     Packager
                                     --------
 
-                       06:44 PM Friday, December 01, 2017
-Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj
+                      06:38 PM Wednesday, December 06, 2017
+ Job Name: C:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\Rotative_base.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uC:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb" -k -CleanBuild "-jC:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj" "
+        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  -jC:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\Rotative_base.prj -CleanBuild -NoFill"
 
-     The Common Database is at "C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb".
+     The Common Database is at "C:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\Default\default.icdb".
 
      The Root of this design is "Schematic1".
 
      The Front End Snapshot of this design is "DCDV".
 
-     The PCB Design Path of this design is at "C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb".
+     The PCB Design Path of this design is at "C:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
 
@@ -37,10 +37,8 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
      Properties that have been checked off in the Property Definition Editor
       found at Library Manager/Common Properties will be checked for value
       differences between the PartsDB and the non-null properties on symbols.
-     Those properties checked off will be transferred from the PartsDB to all
-      symbols, both packaged and unpackaged.  However, the property values
-      transferred will be limited to the precision specified in the Notation
-      Settings dialog.
+     Those properties checked off (other than Part Number)
+      will not be transferred from the PartsDB to symbols.
      The following properties were checked off in the Property Definition Editor:
        "Parametric"
        "Value2"
@@ -82,7 +80,7 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
 
      Target PDB Name: Integration\LocalPartsDB.pdb
 
-     Number of Part Numbers: 20
+     Number of Part Numbers: 22
           Part Numb: 00-0062 -> Vend Part: 00-0062 
           Part Numb: 00-0084 -> Vend Part: 00-0084 
           Part Numb: 00-0098 -> Vend Part: 00-0098 
@@ -101,6 +99,8 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
           Part Numb: 40-0227 -> Vend Part: 40-0227 
           Part Numb: 40-0310 -> Vend Part: 40-0310 
           Part Numb: 50-0023 -> Vend Part: 50-0023 
+          Part Numb: 70-0002 -> Vend Part: 70-0002 
+          Part Numb: 70-0068 -> Vend Part: 70-0068 
           Part Numb: 70-0101 -> Vend Part: 70-0101 
           Part Numb: 80-0043 -> Vend Part: 80-0043 
 
@@ -124,8 +124,9 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 95 Symbols:
-              95  ********************************************
+     Clustering 114 Symbols:
+             114  *************
+             100  **************************************************
               50  **************************************************
      Clustering is Complete
 
@@ -133,8 +134,8 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
 
 
 
-     85 nets were found containing 459 pins
-     90 components were found
+     110 nets were found containing 518 pins
+     109 components were found
 
      Parsed netlist - Augmenting..
 
