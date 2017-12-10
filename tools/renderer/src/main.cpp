@@ -552,9 +552,9 @@ GLuint loadShader(GLenum type, const std::string &filename) {
                                                 {GL_FRAGMENT_SHADER, "fs"}};
     std::string path = "shader/" + filename + "." + exts.at(type), source;
     readFile(path, source);
-    const char *csource = source.c_str();
+    const char *csource[] = {"#version 330 core\n\n", source.c_str()};
     GLuint shader = glCreateShader(type);
-    glShaderSource(shader, 1, &csource, NULL);
+    glShaderSource(shader, sizeof(csource) / sizeof(char *), csource, NULL);
     glCompileShader(shader);
 
     GLint isOk;

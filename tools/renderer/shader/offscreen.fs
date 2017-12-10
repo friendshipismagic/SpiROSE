@@ -1,5 +1,3 @@
-#version 330 core
-
 in vec2 ex_UV;
 
 out vec4 out_Color;

@@ -1,5 +1,3 @@
-#version 410 core
-
 in vec4 fPosition;
 in vec3 fColor;
 out vec4 fragColor;
