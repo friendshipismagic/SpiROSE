@@ -12,20 +12,21 @@ void emit(in vec3 v) {
     // Reversing the pizza transform ?
     if (doPizza) {
         // Get back x, y in [0, 1] range
-        vec2 thetal = v.xy * 0.5 + 0.5;
+        vec2 thetal = v.xy * 0.5 + vec2(0.5);
         // x in [0, 2pi] range
-        thetal.x *= M_PI * 2;
+        thetal.x *= M_PI * 2.0;
         // polar -> cartesian
         v = vec3(sin(thetal.x), -cos(thetal.x), v.z);
         v.xy *= thetal.y;
     }
-    gl_Position = matProjection * matView * vec4(v, 1);
+    gl_Position = matProjection * matView * vec4(v, 1.0);
     EmitVertex();
 }
 
-vec3 v[8] = vec3[](vec3(1, 1, 0) / 16, vec3(0, 1, 0) / 16, vec3(1, 0, 0) / 16,
-                   vec3(0, 0, 0) / 16, vec3(1, 1, 1) / 16, vec3(0, 1, 1) / 16,
-                   vec3(0, 0, 1) / 16, vec3(1, 0, 1) / 16);
+vec3 v[8] = vec3[](vec3(1.0, 1.0, 0.0) / 16.0, vec3(0.0, 1.0, 0.0) / 16.0,
+                   vec3(1.0, 0.0, 0.0) / 16.0, vec3(0.0, 0.0, 0.0) / 16.0,
+                   vec3(1.0, 1.0, 1.0) / 16.0, vec3(0.0, 1.0, 1.0) / 16.0,
+                   vec3(0.0, 0.0, 1.0) / 16.0, vec3(1.0, 0.0, 1.0) / 16.0);
 
 // Thanks to the following paper on how to make a cube with a single triangle
 // strip http://www.cs.umd.edu/gvil/papers/av_ts.pdf
@@ -52,16 +53,16 @@ void main() {
     vec3 vert = gl_in[0].gl_Position.xyz;
 
     // Convert the input float to an int that we can work with
-    ivec4 c = ivec4(vColor[0] * 255);
+    ivec4 c = ivec4(vColor[0] * 255.0);
     // Map back to [0, 1]
-    float z = vert.z / 2 + 0.5;
+    float z = vert.z / 2.0 + 0.5;
 
     // Get our bitwise position
-    int p = 1 << int(mod(z * 32, 8));
+    int p = 1 << int(mod(z * 32.0, 8.0));
 
     // To help visualisation
-    color.rgb = vert.xyz / 2.0 + 0.5;
-    color.a = 1;
+    color.rgb = vert.xyz / 2.0 + vec3(0.5);
+    color.a = 1.0;
 
     // Fetch the correct channel
     // Note, this can be done without a single if by using the step function and

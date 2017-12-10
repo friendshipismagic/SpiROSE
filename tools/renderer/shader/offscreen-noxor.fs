@@ -13,7 +13,7 @@ uniform sampler2D tex7;
 
 void main() {
     // Modulus coordinates
-    vec2 uv = mod(ex_UV * vec2(4, 2), 1);
+    vec2 uv = mod(ex_UV * vec2(4.0, 2.0), 1.0);
 
     // BST like structure
     if (ex_UV.y < 0.5) {
@@ -36,5 +36,5 @@ void main() {
             out_Color = texture(tex7, uv);
     }
 
-    out_Color *= 20;
+    out_Color *= 20.0;
 }

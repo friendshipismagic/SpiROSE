@@ -11,10 +11,10 @@ layout(location = 7) out vec4 fragColor7;
 
 // Used in non-xor mode
 void setOutput(in float z, in int layer, out vec4 frag) {
-    frag.r = step(z, float(layer * 4 + 0) / 32) / 255;
-    frag.g = step(z, float(layer * 4 + 1) / 32) / 255;
-    frag.b = step(z, float(layer * 4 + 2) / 32) / 255;
-    frag.a = step(z, float(layer * 4 + 3) / 32) / 255;
+    frag.r = step(z, (float(layer) * 4.0 + 0.0) / 32.0) / 255.0;
+    frag.g = step(z, (float(layer) * 4.0 + 1.0) / 32.0) / 255.0;
+    frag.b = step(z, (float(layer) * 4.0 + 2.0) / 32.0) / 255.0;
+    frag.a = step(z, (float(layer) * 4.0 + 3.0) / 32.0) / 255.0;
 }
 
 void main() {

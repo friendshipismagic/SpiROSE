@@ -21,7 +21,7 @@ void main() {
      * our 3D z position.
      * And xy will be xy in 3D :)
      */
-    vec3 fragPos = vec3(refreshNo, refreshMod.x * 8, refreshMod.y * 4);
+    vec3 fragPos = vec3(refreshNo, refreshMod.x * 8.0, refreshMod.y * 4.0);
 
     if (doPizza) {
         /* In pizza mode, the voxel texture only represents half of a slice.
@@ -29,16 +29,16 @@ void main() {
          * slice
          */
         if (fragPos.y < 0.5) fragPos.x += 0.5;
-        fragPos.y = abs(fragPos.y - 0.5) * 2;
+        fragPos.y = abs(fragPos.y - 0.5) * 2.0;
     } else
         // Just polar coordinates from the (0.5, 0.5) point as origin
         fragPos.xy =
             0.5 + vec2(sin(refreshNo), -cos(refreshNo)) * (fragPos.y - 0.5);
 
     // As usual, decode our voxel thingy
-    ivec4 color = ivec4(texture(tex, fragPos.xy) * 255);
+    ivec4 color = ivec4(texture(tex, fragPos.xy) * 255.0);
 
-    int p = 1 << int(mod(fragPos.z * 32, 8));
+    int p = 1 << int(mod(fragPos.z * 32.0, 8.0));
     int v;
     if (fragPos.z < 0.25)
         v = color.r;
@@ -49,6 +49,6 @@ void main() {
     else
         v = color.a;
 
-    out_Color = vec4(0);
-    if ((v & p) != 0) out_Color = vec4(1);
+    out_Color = vec4(0.0);
+    if ((v & p) != 0) out_Color = vec4(1.0);
 }

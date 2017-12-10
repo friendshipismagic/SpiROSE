@@ -12,10 +12,10 @@ uniform sampler2D voxels6;
 uniform sampler2D voxels7;
 
 void main() {
-    gl_Position = matModel * vec4(in_Pos, 1);
+    gl_Position = matModel * vec4(in_Pos, 1.0);
 
     // Map back to [0, 1]
-    vec3 p = gl_Position.xyz / 2 + 0.5;
+    vec3 p = gl_Position.xyz / 2.0 + 0.5;
 
     // Fetch the texel that concerns us.
     if (p.z < 1.0 / 8.0)

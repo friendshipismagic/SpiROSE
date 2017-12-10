@@ -28,7 +28,7 @@ void main() {
      * our 3D z position.
      * And xy will be xy in 3D :)
      */
-    vec3 fragPos = vec3(refreshNo, refreshMod.x * 8, refreshMod.y * 4);
+    vec3 fragPos = vec3(refreshNo, refreshMod.x * 8.0, refreshMod.y * 4.0);
 
     if (doPizza) {
         /* In pizza mode, the voxel texture only represents half of a slice.
@@ -36,7 +36,7 @@ void main() {
          * slice
          */
         if (fragPos.y < 0.5) fragPos.x += 0.5;
-        fragPos.y = abs(fragPos.y - 0.5) * 2;
+        fragPos.y = abs(fragPos.y - 0.5) * 2.0;
     } else
         // Just polar coordinates from the (0.5, 0.5) point as origin
         fragPos.xy =
@@ -62,7 +62,7 @@ void main() {
         color = texture(tex7, fragPos.xy);
 
     // Get our height in the texture
-    float z = mod(fragPos.z * 8, 1);
+    float z = mod(fragPos.z * 8.0, 1.0);
     float v;
     if (z < 0.25)
         v = color.r;
@@ -73,6 +73,6 @@ void main() {
     else
         v = color.a;
 
-    out_Color = vec4(0);
-    if (abs(mod(v * 255, 2) - 1) < 0.005) out_Color = vec4(1);
+    out_Color = vec4(0.0);
+    if (abs(mod(v * 255.0, 2.0) - 1.0) < 0.005) out_Color = vec4(1.0);
 }
