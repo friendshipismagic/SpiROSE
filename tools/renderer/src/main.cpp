@@ -32,6 +32,11 @@
 #include <windows.h>
 #endif
 
+#ifdef GLES
+#define GLFW_INCLUDE_ES31
+#define GLFW_INCLUDE_GLEXT
+#define GL_BGRA GL_RGBA
+#else
 #define GLEW_STATIC
 #define GL3_PROTOTYPES 1
 #ifdef OS_OSX
@@ -41,6 +46,7 @@
 #include <GL/glew.h>
 #endif
 #define GLFW_INCLUDE_GLCOREARB
+#endif
 #include <GLFW/glfw3.h>
 
 #include <glm/glm.hpp>
@@ -54,6 +60,7 @@ void readFile(const std::string &filename, std::string &contents);
 void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
 void onButton(GLFWwindow *window, int button, int action, int mods);
 void onMove(GLFWwindow *window, double x, double y);
+void onGLFWError(int code, const char *desc);
 
 GLuint loadShader(GLenum type, const std::string &filename);
 
@@ -123,10 +130,19 @@ int main(int argc, char *argv[]) {
     // Load GLFW
     glfwInit();
 
+    glfwSetErrorCallback(onGLFWError);
+
+#ifdef GLES
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
+    glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
+#else
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);
     glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
     glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+#endif
     glfwWindowHint(GLFW_RESIZABLE, GL_FALSE);
 
     GLFWwindow *window = glfwCreateWindow(1280, 720, "ROSE", nullptr, nullptr);
@@ -138,7 +154,7 @@ int main(int argc, char *argv[]) {
     glfwSetMouseButtonCallback(window, onButton);
     glfwSetCursorPosCallback(window, onMove);
 
-#ifndef OS_OSX
+#if !defined(OS_OSX) && !defined(GLES)
     // Load GLEW
     glewExperimental = GL_TRUE;
     glewInit();
@@ -354,11 +370,15 @@ int main(int argc, char *argv[]) {
         glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matM, 1,
                            GL_FALSE, &matModel[0][0]);
 
+#ifndef GLES
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+#endif
 
         if (renderOptions.useXor) {
+#ifndef GLES
             glEnable(GL_COLOR_LOGIC_OP);
             glLogicOp(GL_XOR);
+#endif
         } else {
             glEnable(GL_BLEND);
             glBlendFunc(GL_ONE, GL_ONE);
@@ -395,16 +415,22 @@ int main(int argc, char *argv[]) {
         }
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
+#ifndef GLES
         glDisable(renderOptions.useXor ? GL_COLOR_LOGIC_OP : GL_BLEND);
+#else
+        glDisable(GL_BLEND);
+#endif
         //// Display 3D voxels
         glViewport(0, 0, fbWidth, fbHeight);
         glEnable(GL_DEPTH_TEST);
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+#ifndef GLES
         if (renderOptions.wireframe)
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+#endif
         glUseProgram(program[renderOptions.useXor].generate);
 
         glUniformMatrix4fv(uniforms[renderOptions.useXor].generate.matP, 1,
@@ -424,7 +450,9 @@ int main(int argc, char *argv[]) {
         glBindVertexArray(vaoVox);
         glDrawArrays(GL_POINTS, 0, sizeof(voxPoints) / sizeof(float) / 3);
 
+#ifndef GLES
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+#endif
         //// Interlace voxels
         glViewport(renderOptions.useXor ? 32 : (32 * 4), 0, 32 * 8, 32 * 4);
         glBindVertexArray(vaoSquare);
@@ -548,7 +576,9 @@ void onMove(GLFWwindow *window, double x, double y) {
 GLuint loadShader(GLenum type, const std::string &filename) {
     // Determine shader extension
     const std::map<GLenum, std::string> exts = {{GL_VERTEX_SHADER, "vs"},
+#ifdef GL_GEOMETRY_SHADER
                                                 {GL_GEOMETRY_SHADER, "gs"},
+#endif
                                                 {GL_FRAGMENT_SHADER, "fs"}};
     std::string path = "shader/" + filename + "." + exts.at(type), source;
     readFile(path, source);
@@ -580,7 +610,6 @@ GLuint loadShader(GLenum type, const std::string &filename) {
 
 void loadShaders() {
     GLuint voxelV = loadShader(GL_VERTEX_SHADER, "voxel"),
-           voxelG = loadShader(GL_GEOMETRY_SHADER, "voxel"),
            voxelFX = loadShader(GL_FRAGMENT_SHADER, "voxel"),
            voxelF = loadShader(GL_FRAGMENT_SHADER, "voxel-noxor"),
            offscreenV = loadShader(GL_VERTEX_SHADER, "offscreen"),
@@ -588,63 +617,93 @@ void loadShaders() {
            offscreenF = loadShader(GL_FRAGMENT_SHADER, "offscreen-noxor"),
            generateVX = loadShader(GL_VERTEX_SHADER, "generate"),
            generateV = loadShader(GL_VERTEX_SHADER, "generate-noxor"),
-           generateGX = loadShader(GL_GEOMETRY_SHADER, "generate"),
-           generateG = loadShader(GL_GEOMETRY_SHADER, "generate-noxor"),
            generateF = loadShader(GL_FRAGMENT_SHADER, "generate"),
            interlaceFX = loadShader(GL_FRAGMENT_SHADER, "interlace"),
            interlaceF = loadShader(GL_FRAGMENT_SHADER, "interlace-noxor");
+#ifdef GL_GEOMETRY_SHADER
+    GLuint voxelG = loadShader(GL_GEOMETRY_SHADER, "voxel"),
+           generateGX = loadShader(GL_GEOMETRY_SHADER, "generate"),
+           generateG = loadShader(GL_GEOMETRY_SHADER, "generate-noxor");
+#endif
 
     // Load non-XOR shaders
     program[0].voxel = glCreateProgram();
     glAttachShader(program[0].voxel, voxelV);
+#ifdef GL_GEOMETRY_SHADER
     glAttachShader(program[0].voxel, voxelG);
+#endif
     glAttachShader(program[0].voxel, voxelF);
+#ifndef GLES
     glBindFragDataLocation(program[0].voxel, 0, "fragColor");
+#endif
     glLinkProgram(program[0].voxel);
 
     program[0].offscreen = glCreateProgram();
     glAttachShader(program[0].offscreen, offscreenV);
     glAttachShader(program[0].offscreen, offscreenF);
+#ifndef GLES
     glBindFragDataLocation(program[0].offscreen, 0, "out_Color");
+#endif
     glLinkProgram(program[0].offscreen);
 
     program[0].generate = glCreateProgram();
     glAttachShader(program[0].generate, generateV);
+#ifdef GL_GEOMETRY_SHADER
     glAttachShader(program[0].generate, generateG);
+#endif
     glAttachShader(program[0].generate, generateF);
+#ifndef GLES
     glBindFragDataLocation(program[0].generate, 0, "out_Color");
+#endif
     glLinkProgram(program[0].generate);
 
     program[0].interlace = glCreateProgram();
     glAttachShader(program[0].interlace, offscreenV);
     glAttachShader(program[0].interlace, interlaceF);
+#ifndef GLES
     glBindFragDataLocation(program[0].interlace, 0, "out_Color");
+#endif
     glLinkProgram(program[0].interlace);
 
     // Load XOR shaders
     program[1].voxel = glCreateProgram();
     glAttachShader(program[1].voxel, voxelV);
+#ifdef GL_GEOMETRY_SHADER
     glAttachShader(program[1].voxel, voxelG);
+#endif
     glAttachShader(program[1].voxel, voxelFX);
+#ifndef GLES
     glBindFragDataLocation(program[1].voxel, 0, "fragColor");
+#endif
     glLinkProgram(program[1].voxel);
 
     program[1].offscreen = glCreateProgram();
     glAttachShader(program[1].offscreen, offscreenV);
     glAttachShader(program[1].offscreen, offscreenFX);
+#ifndef GLES
     glBindFragDataLocation(program[1].offscreen, 0, "out_Color");
+#endif
     glLinkProgram(program[1].offscreen);
 
     program[1].generate = glCreateProgram();
     glAttachShader(program[1].generate, generateVX);
+#ifdef GL_GEOMETRY_SHADER
     glAttachShader(program[1].generate, generateGX);
+#endif
     glAttachShader(program[1].generate, generateF);
+#ifndef GLES
     glBindFragDataLocation(program[1].generate, 0, "out_Color");
+#endif
     glLinkProgram(program[1].generate);
 
     program[1].interlace = glCreateProgram();
     glAttachShader(program[1].interlace, offscreenV);
     glAttachShader(program[1].interlace, interlaceFX);
+#ifndef GLES
     glBindFragDataLocation(program[1].interlace, 0, "out_Color");
+#endif
     glLinkProgram(program[1].interlace);
+}
+void onGLFWError(int code, const char *desc) {
+    std::cerr << "[ERR] GLFW error " << code << ": " << desc << std::endl;
 }
