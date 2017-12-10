@@ -582,7 +582,16 @@ GLuint loadShader(GLenum type, const std::string &filename) {
                                                 {GL_FRAGMENT_SHADER, "fs"}};
     std::string path = "shader/" + filename + "." + exts.at(type), source;
     readFile(path, source);
-    const char *csource[] = {"#version 330 core\n\n", source.c_str()};
+    const char *csource[] = {
+// GL and GLES have different version syntaxes...
+#ifdef GLES
+        "#version 300 es\n\n",
+        // GLES needs an explicit float precision declaration
+        "precision highp float;\n",
+#else
+        "#version 330 core\n\n",
+#endif
+        source.c_str()};
     GLuint shader = glCreateShader(type);
     glShaderSource(shader, sizeof(csource) / sizeof(char *), csource, NULL);
     glCompileShader(shader);
@@ -590,8 +599,8 @@ GLuint loadShader(GLenum type, const std::string &filename) {
     GLint isOk;
     glGetShaderiv(shader, GL_COMPILE_STATUS, &isOk);
     if (!isOk) {
-        std::cerr << "[ERR] Shader " << filename << " compilation error"
-                  << std::endl;
+        std::cerr << "[ERR] Shader " << filename << "." << exts.at(type)
+                  << " compilation error" << std::endl;
 
         // Getting the log
         GLint len = 0;
