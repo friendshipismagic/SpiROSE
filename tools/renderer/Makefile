@@ -31,8 +31,15 @@ else
 
 	UNAME = $(shell uname -s)
 	ifeq ($(UNAME),Linux)
-		LDLIBS += $(WINDOW_BACKEND_LIB) -lGLEW -lm -lGL
+		UNAME_P := $(shell uname -p)
+		LDLIBS += $(WINDOW_BACKEND_LIB) -lm
 		CXXFLAGS += -DOS_LINUX
+		ifeq ($(UNAME_P),armv7l)
+			LDLIBS += -lEGL -lGLESv2
+			CPPFLAGS += -DGLES
+		else
+			LDLIBS += -lGLEW -lGL
+		endif
 	endif
 	ifeq ($(UNAME),Darwin)
 		LDLIBS += -framework OpenGL $(WINDOW_BACKEND_LIB)
