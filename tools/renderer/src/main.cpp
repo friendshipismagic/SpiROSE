@@ -92,7 +92,7 @@ int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance,
 int main(int argc, char *argv[]) {
 #endif
     // Command line options
-    char c;
+    int c;
     std::string meshFile = "mesh/suzanne-tight.obj";
     while ((c = getopt(argc, argv, "wpcxt:m:")) != -1) switch (c) {
             case 'w':
