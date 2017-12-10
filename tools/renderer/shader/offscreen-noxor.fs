@@ -1,6 +1,6 @@
 in vec2 ex_UV;
 
-out vec4 out_Color;
+layout(location = 0) out vec4 out_Color;
 
 uniform sampler2D tex0;
 uniform sampler2D tex1;

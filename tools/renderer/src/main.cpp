@@ -633,17 +633,11 @@ void loadShaders() {
     glAttachShader(program[0].voxel, voxelG);
 #endif
     glAttachShader(program[0].voxel, voxelF);
-#ifndef GLES
-    glBindFragDataLocation(program[0].voxel, 0, "fragColor");
-#endif
     glLinkProgram(program[0].voxel);
 
     program[0].offscreen = glCreateProgram();
     glAttachShader(program[0].offscreen, offscreenV);
     glAttachShader(program[0].offscreen, offscreenF);
-#ifndef GLES
-    glBindFragDataLocation(program[0].offscreen, 0, "out_Color");
-#endif
     glLinkProgram(program[0].offscreen);
 
     program[0].generate = glCreateProgram();
@@ -652,17 +646,11 @@ void loadShaders() {
     glAttachShader(program[0].generate, generateG);
 #endif
     glAttachShader(program[0].generate, generateF);
-#ifndef GLES
-    glBindFragDataLocation(program[0].generate, 0, "out_Color");
-#endif
     glLinkProgram(program[0].generate);
 
     program[0].interlace = glCreateProgram();
     glAttachShader(program[0].interlace, offscreenV);
     glAttachShader(program[0].interlace, interlaceF);
-#ifndef GLES
-    glBindFragDataLocation(program[0].interlace, 0, "out_Color");
-#endif
     glLinkProgram(program[0].interlace);
 
     // Load XOR shaders
@@ -672,17 +660,11 @@ void loadShaders() {
     glAttachShader(program[1].voxel, voxelG);
 #endif
     glAttachShader(program[1].voxel, voxelFX);
-#ifndef GLES
-    glBindFragDataLocation(program[1].voxel, 0, "fragColor");
-#endif
     glLinkProgram(program[1].voxel);
 
     program[1].offscreen = glCreateProgram();
     glAttachShader(program[1].offscreen, offscreenV);
     glAttachShader(program[1].offscreen, offscreenFX);
-#ifndef GLES
-    glBindFragDataLocation(program[1].offscreen, 0, "out_Color");
-#endif
     glLinkProgram(program[1].offscreen);
 
     program[1].generate = glCreateProgram();
@@ -691,17 +673,11 @@ void loadShaders() {
     glAttachShader(program[1].generate, generateGX);
 #endif
     glAttachShader(program[1].generate, generateF);
-#ifndef GLES
-    glBindFragDataLocation(program[1].generate, 0, "out_Color");
-#endif
     glLinkProgram(program[1].generate);
 
     program[1].interlace = glCreateProgram();
     glAttachShader(program[1].interlace, offscreenV);
     glAttachShader(program[1].interlace, interlaceFX);
-#ifndef GLES
-    glBindFragDataLocation(program[1].interlace, 0, "out_Color");
-#endif
     glLinkProgram(program[1].interlace);
 }
 void onGLFWError(int code, const char *desc) {

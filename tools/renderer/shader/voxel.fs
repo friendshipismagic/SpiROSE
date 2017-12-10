@@ -1,6 +1,6 @@
 in vec4 fPosition;
 in vec3 fColor;
-out vec4 fragColor;
+layout(location = 0) out vec4 fragColor;
 
 void main() {
     // Determine a bitmask from the z position (aka distance from camera aka
