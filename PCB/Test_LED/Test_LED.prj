@@ -124,10 +124,8 @@ SECTION Default
 LIST All(*.*)
 ENDLIST
 LIST BlockSymbols(*.blk)
-VALUE "design_definition\graphics\uBlock.blk"
 ENDLIST
 LIST BlockViewMap
-VALUE "UBLOCK,design_definition\graphics\uBlock.sbk,,0"
 VALUE "SCHEMATIC1,design_definition\graphics\Schematic1.sbk,,0"
 ENDLIST
 LIST FPGA(*.fpk)
@@ -137,7 +135,6 @@ ENDLIST
 LIST Schematics(*.sbk)
 VALUE "design_definition\graphics\Schematic1.sbk"
 VALUE "design_definition\graphics\TP_STM32_PAUL.sbk"
-VALUE "design_definition\graphics\uBlock.sbk"
 ENDLIST
 LIST StateDiagrams(*.sdg)
 ENDLIST

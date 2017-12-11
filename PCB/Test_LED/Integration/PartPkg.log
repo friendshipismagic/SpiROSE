@@ -2,13 +2,13 @@
                                     Packager
                                     --------
 
-                       06:41 PM Friday, December 08, 2017
+                       01:45 PM Friday, December 08, 2017
    Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj" -CleanBuild -NoFill"
+        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb" -k -CleanBuild "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj" "
 
      The Common Database is at "C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb".
 
@@ -20,14 +20,6 @@
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
 
-     The SchematicDesignBackAnno status indicates that the
-      Common DataBase is not available to receive updates.
-     !THE iCDB WILL NOT BE UPDATED!
-
-     Back annotation will not take place to the Common DataBase, however a
-      BAM file will be created for reading purposes or processing through
-      BAM Plus.
-
      The Disable Repackage status indicates that 
       Repackaging should be allowed.
 
@@ -38,13 +30,6 @@
       designators containing all alpha characters should be deleted
       and the relevant symbols repackaged.
 
-     Back annotation will not take place to the Common DataBase, however a
-      BAM file will be created for reading purposes or processing through
-      BAM Plus.  This -y option is useful in conjunction with the -i or -m
-      options where the intent is only to test a new PDB against the 
-      schematic symbols.
-     !THE iCDB WILL NOT BE UPDATED!
-
      The cross mapping of symbol pin names to Part Number pin
       numbers will be checked for packaged symbols and mapped correctly
       for unpackaged symbols.
@@ -52,8 +37,10 @@
      Properties that have been checked off in the Property Definition Editor
       found at Library Manager/Common Properties will be checked for value
       differences between the PartsDB and the non-null properties on symbols.
-     Those properties checked off (other than Part Number)
-      will not be transferred from the PartsDB to symbols.
+     Those properties checked off will be transferred from the PartsDB to all
+      symbols, both packaged and unpackaged.  However, the property values
+      transferred will be limited to the precision specified in the Notation
+      Settings dialog.
      The following properties were checked off in the Property Definition Editor:
        "Parametric"
        "Value2"
@@ -84,6 +71,10 @@
        "Part Number"
        "Value"
        "Part Name"
+
+	Checking for errors in the ICDB...
+
+	No errors found.  Proceeding with packaging...
 
 
 
@@ -124,8 +115,8 @@
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 2026 Symbols:
-            2026  *************************
+     Clustering 2029 Symbols:
+            2029  ****************************
             2000  **************************************************
             1950  **************************************************
             1900  **************************************************
@@ -172,8 +163,8 @@
 
 
 
-     919 nets were found containing 8765 pins
-     2026 components were found
+     860 nets were found containing 8773 pins
+     2029 components were found
 
      Parsed netlist - Augmenting..
 
@@ -185,17 +176,15 @@
 
      Packaging has been successfully tested with no errors or warnings.
 
-     Writing Integration\CDBBackAnno.bam for BAMPlus
+     Updating the Common DataBase
 
      A BAM WasIs List: Integration\CDBBackAnno.bam has been created.
 
-    REMEMBER, the Common DataBase is not in sync with the schematic
-    until Packager is run again under conditions that permit the direct
-    updating of the Common DataBase.
+The Common DataBase has been successfully updated.
 
      Packager finished successfully.
-     !THE iCDB HAS NOT BEEN UPDATED!
+     !THE iCDB IS UP-TO-DATE!
      
-     An unused pin report has been written to Integration\UnusedPins.txt
+     An unused pin and gate report has been written to Integration\UnusedPins.txt
      An unused gate report for gates not in schematic has been written to Integration\UnusedGates.txt
      An augmented pin report has been written to Integration\AugmentedPins.txt.
