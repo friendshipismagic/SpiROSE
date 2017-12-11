@@ -2,13 +2,13 @@
                                     Packager
                                     --------
 
-                       01:45 PM Friday, December 08, 2017
+                       09:31 AM Monday, December 11, 2017
    Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb" -k -CleanBuild "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj" "
+        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj" -CleanBuild -NoFill"
 
      The Common Database is at "C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb".
 
@@ -37,10 +37,8 @@
      Properties that have been checked off in the Property Definition Editor
       found at Library Manager/Common Properties will be checked for value
       differences between the PartsDB and the non-null properties on symbols.
-     Those properties checked off will be transferred from the PartsDB to all
-      symbols, both packaged and unpackaged.  However, the property values
-      transferred will be limited to the precision specified in the Notation
-      Settings dialog.
+     Those properties checked off (other than Part Number)
+      will not be transferred from the PartsDB to symbols.
      The following properties were checked off in the Property Definition Editor:
        "Parametric"
        "Value2"
