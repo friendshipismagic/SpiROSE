@@ -48,6 +48,7 @@
 #include <glm/gtx/transform.hpp>
 
 #include <tinyobjloader/tiny_obj_loader.h>
+#include "tga.h"
 
 void readFile(const std::string &filename, std::string &contents);
 void onKey(GLFWwindow *window, int key, int scancode, int action, int mods);
@@ -62,9 +63,13 @@ typedef struct RenderOptions {
 RenderOptions renderOptions = {
     .wireframe = false, .pause = false, .pizza = false, .useXor = false};
 
-bool clicking = false;
+bool clicking = false, doDump = false;
 float t = 0.f;
-GLuint progVoxel, progOffscreen, progGenerate, progInterlace;
+
+// 0 is useXor == false, 1 is useXor == true
+struct Program {
+    GLuint voxel, offscreen, generate, interlace;
+} program[2] = {{0}};
 
 // Camera data
 float yaw = 0.f, pitch = M_PI / 4.f, zoom = 2.f;
@@ -88,7 +93,8 @@ int main(int argc, char *argv[]) {
 #endif
     // Command line options
     char c;
-    while ((c = getopt(argc, argv, "wpcx")) != -1) switch (c) {
+    std::string meshFile = "mesh/suzanne-tight.obj";
+    while ((c = getopt(argc, argv, "wpcxt:m:")) != -1) switch (c) {
             case 'w':
                 renderOptions.wireframe = true;
                 break;
@@ -100,6 +106,12 @@ int main(int argc, char *argv[]) {
                 break;
             case 'x':
                 renderOptions.useXor = true;
+                break;
+            case 't':
+                t = atof(optarg);
+                break;
+            case 'm':
+                meshFile = optarg;
                 break;
 
             case '?':
@@ -140,8 +152,8 @@ int main(int argc, char *argv[]) {
     std::vector<tinyobj::shape_t> shapes;
     std::vector<tinyobj::material_t> materials;
     std::string err;
-    bool ret = tinyobj::LoadObj(&attrib, &shapes, &materials, &err,
-                                "mesh/suzanne-tight.obj");
+    bool ret =
+        tinyobj::LoadObj(&attrib, &shapes, &materials, &err, meshFile.c_str());
     if (!err.empty()) std::cerr << "[ERR] " << err << std::endl;
     if (!ret) return -1;
 
@@ -174,23 +186,54 @@ int main(int argc, char *argv[]) {
     loadShaders();
 
     // Send vertex to shader
-    GLint inPositionLoc = glGetAttribLocation(progVoxel, "position");
-    glVertexAttribPointer(inPositionLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    glEnableVertexAttribArray(inPositionLoc);
+    struct Uniform {
+        struct {
+            GLint position, time, matM, matV, matP, doPizza;
+        } voxel;
+        struct {
+            GLint matM, matV, matP, doPizza;
+            GLint tex[N_BUF_NO_XOR];
+        } generate;
+        struct {
+            GLint doPizza;
+            GLint tex[N_BUF_NO_XOR];
+        } interlace;
+        struct {
+            GLint tex[N_BUF_NO_XOR];
+        } offscreen;
+    } uniforms[2];
 
-    // Get time uniform
-    GLint timePosition = glGetUniformLocation(progVoxel, "time"),
-          matMPosition = glGetUniformLocation(progVoxel, "matModel"),
-          matVPosition = glGetUniformLocation(progVoxel, "matView"),
-          matPPosition = glGetUniformLocation(progVoxel, "matProjection"),
-          doPizzaPosition = glGetUniformLocation(progVoxel, "doPizza"),
-          useXorPosition = glGetUniformLocation(progVoxel, "useXor");
-    GLint matMPositionGen = glGetUniformLocation(progGenerate, "matModel"),
-          matVPositionGen = glGetUniformLocation(progGenerate, "matView"),
-          matPPositionGen = glGetUniformLocation(progGenerate, "matProjection"),
-          doPizzaPositionGen = glGetUniformLocation(progGenerate, "doPizza");
-    GLint doPizzaPositionInt = glGetUniformLocation(progInterlace, "doPizza");
-    GLint useXorPositionOff = glGetUniformLocation(progOffscreen, "useXor");
+    for (int i = 0; i < 2; i++) {
+        struct Uniform *u = &uniforms[i];
+        struct Program *s = &program[i];
+
+        u->voxel.position = glGetAttribLocation(s->voxel, "position");
+        glVertexAttribPointer(u->voxel.position, 3, GL_FLOAT, GL_FALSE, 0, 0);
+        glEnableVertexAttribArray(u->voxel.position);
+
+        u->voxel.time = glGetUniformLocation(s->voxel, "time");
+        u->voxel.matM = glGetUniformLocation(s->voxel, "matModel");
+        u->voxel.matV = glGetUniformLocation(s->voxel, "matView");
+        u->voxel.matP = glGetUniformLocation(s->voxel, "matProjection");
+        u->voxel.doPizza = glGetUniformLocation(s->voxel, "doPizza");
+
+        u->generate.matM = glGetUniformLocation(s->generate, "matModel");
+        u->generate.matV = glGetUniformLocation(s->generate, "matView");
+        u->generate.matP = glGetUniformLocation(s->generate, "matProjection");
+        u->generate.doPizza = glGetUniformLocation(s->generate, "doPizza");
+
+        u->interlace.doPizza = glGetUniformLocation(s->interlace, "doPizza");
+
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            u->offscreen.tex[i] = glGetUniformLocation(
+                s->offscreen, ("tex" + std::to_string(i)).c_str());
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            u->generate.tex[i] = glGetUniformLocation(
+                s->generate, ("voxels" + std::to_string(i)).c_str());
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            u->interlace.tex[i] = glGetUniformLocation(
+                s->interlace, ("tex" + std::to_string(i)).c_str());
+    }
 
     // Matricies
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
@@ -198,39 +241,30 @@ int main(int argc, char *argv[]) {
                   glm::perspective(glm::radians(90.f), 16.f / 9.f, .1f, 100.f),
               matOrtho = glm::ortho(-1.f, 1.f, -1.f, 1.f, -1.f, 1.f);
 
-    glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
-    glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matProjection[0][0]);
+    glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matV, 1, GL_FALSE,
+                       &matView[0][0]);
+    glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matP, 1, GL_FALSE,
+                       &matProjection[0][0]);
 
     // Framebuffer to store our voxel thingy
-    GLuint fbo, texVoxelBuf, texVoxelBufs[N_BUF_NO_XOR];
+    GLuint fbo, texVoxelBufs[N_BUF_NO_XOR];
     glGenFramebuffers(1, &fbo);
     glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-    if (renderOptions.useXor) {
-        glGenTextures(1, &texVoxelBuf);
-        glBindTexture(GL_TEXTURE_2D, texVoxelBuf);
+    glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
+    for (int i = 0; i < N_BUF_NO_XOR; i++) {
+        glActiveTexture(GL_TEXTURE0 + i);
+        glBindTexture(GL_TEXTURE_2D, texVoxelBufs[i]);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGB,
                      GL_UNSIGNED_BYTE, NULL);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0,
-                               GL_TEXTURE_2D, texVoxelBuf, 0);
-    } else {
-        glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
-        for (int i = 0; i < N_BUF_NO_XOR; i++) {
-            glActiveTexture(GL_TEXTURE0 + i);
-            glBindTexture(GL_TEXTURE_2D + i, texVoxelBufs[i]);
-            glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA4, 32, 32, 0, GL_RGB,
-                         GL_UNSIGNED_BYTE, NULL);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i,
-                                   GL_TEXTURE_2D, texVoxelBufs[i], 0);
-        }
-        GLenum drawBuffers[N_BUF_NO_XOR];
-        for (int i = 0; i < N_BUF_NO_XOR; i++)
-            drawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
-        glDrawBuffers(N_BUF_NO_XOR, drawBuffers);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i,
+                               GL_TEXTURE_2D, texVoxelBufs[i], 0);
     }
+    GLenum drawBuffers[N_BUF_NO_XOR];
+    for (int i = 0; i < N_BUF_NO_XOR; i++)
+        drawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
+    glDrawBuffers(N_BUF_NO_XOR, drawBuffers);
     // Test framebuffer status
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
         std::cerr << "[ERR] Incomplete framebuffer" << std::endl;
@@ -245,8 +279,8 @@ int main(int argc, char *argv[]) {
     glGenBuffers(1, &vboSquare);
     glBindBuffer(GL_ARRAY_BUFFER, vboSquare);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
-    GLint inSquarePosLoc = glGetAttribLocation(progOffscreen, "in_Pos"),
-          inSquareUVLoc = glGetAttribLocation(progOffscreen, "in_UV");
+    GLint inSquarePosLoc = glGetAttribLocation(program[1].offscreen, "in_Pos"),
+          inSquareUVLoc = glGetAttribLocation(program[1].offscreen, "in_UV");
     glVertexAttribPointer(inSquarePosLoc, 2, GL_FLOAT, GL_FALSE,
                           4 * sizeof(float), 0);
     glVertexAttribPointer(inSquareUVLoc, 2, GL_FLOAT, GL_FALSE,
@@ -272,7 +306,7 @@ int main(int argc, char *argv[]) {
     glGenBuffers(1, &vboVox);
     glBindBuffer(GL_ARRAY_BUFFER, vboVox);
     glBufferData(GL_ARRAY_BUFFER, sizeof(voxPoints), voxPoints, GL_STATIC_DRAW);
-    GLint inVoxPosLoc = glGetAttribLocation(progGenerate, "in_Pos");
+    GLint inVoxPosLoc = glGetAttribLocation(program[1].generate, "in_Pos");
     glVertexAttribPointer(inVoxPosLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
     glEnableVertexAttribArray(inVoxPosLoc);
 
@@ -295,24 +329,30 @@ int main(int argc, char *argv[]) {
         title += std::to_string(renderOptions.pizza);
         title += " / [x] xor ";
         title += std::to_string(renderOptions.useXor);
+        title += " / time ";
+        title += std::to_string(t);
         glfwSetWindowTitle(window, title.c_str());
 
         //// Voxelization
+        glViewport(0, 0, 32, 32);
         glBindVertexArray(vao);
-        glUseProgram(progVoxel);
-        glUniformMatrix4fv(matPPosition, 1, GL_FALSE, &matOrtho[0][0]);
-        glUniform1ui(doPizzaPosition, renderOptions.pizza);
-        glUniform1ui(useXorPosition, renderOptions.useXor);
+        glUseProgram(program[renderOptions.useXor].voxel);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matP, 1,
+                           GL_FALSE, &matOrtho[0][0]);
+        glUniform1ui(uniforms[renderOptions.useXor].voxel.doPizza,
+                     renderOptions.pizza);
 
         matView = glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
                               glm::vec3(0.f, 1.f, 0.f));
-        glUniformMatrix4fv(matVPosition, 1, GL_FALSE, &matView[0][0]);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matV, 1,
+                           GL_FALSE, &matView[0][0]);
 
-        glUniform1f(timePosition, t / 10.f);
+        glUniform1f(uniforms[renderOptions.useXor].voxel.time, t / 10.f);
         matModel = glm::translate(glm::vec3((float)sin(t / 3.f) / 2.f,
                                             (float)sin(t * 5.f) / 20.f, 0.f));
         matModel = glm::rotate(matModel, t, glm::vec3(0, 0, 1));
-        glUniformMatrix4fv(matMPosition, 1, GL_FALSE, &matModel[0][0]);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matM, 1,
+                           GL_FALSE, &matModel[0][0]);
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
@@ -330,6 +370,29 @@ int main(int argc, char *argv[]) {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glBindVertexArray(vao);
         glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
+
+        // Dump the FBO if required
+        if (doDump) {
+            GLuint pixels[32 * 32 * 4] = {0};
+            glPixelStorei(GL_PACK_ALIGNMENT, 1);
+            if (renderOptions.useXor) {
+                glReadBuffer(GL_COLOR_ATTACHMENT0);
+                // Use BGRA as TGA swaps red and blue
+                glReadPixels(0, 0, 32, 32, GL_BGRA, GL_UNSIGNED_BYTE, pixels);
+                saveTGA("output.tga", pixels, 32, 32, 32);
+                std::cout << "[INFO] Dumped FBO to output.tga" << std::endl;
+            } else
+                for (int i = 0; i < N_BUF_NO_XOR; i++) {
+                    glReadBuffer(GL_COLOR_ATTACHMENT0 + i);
+                    glReadPixels(0, 0, 32, 32, GL_BGRA, GL_UNSIGNED_BYTE,
+                                 pixels);
+                    saveTGA("output" + std::to_string(i) + ".tga", pixels, 32,
+                            32, 32);
+                    std::cout << "[INFO] Dumped FBO layer " << i << " to output"
+                              << i << ".tga" << std::endl;
+                }
+            doDump = false;
+        }
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
         glDisable(renderOptions.useXor ? GL_COLOR_LOGIC_OP : GL_BLEND);
@@ -342,25 +405,34 @@ int main(int argc, char *argv[]) {
             glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
         else
             glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
-        glUseProgram(progGenerate);
+        glUseProgram(program[renderOptions.useXor].generate);
 
-        glUniformMatrix4fv(matPPositionGen, 1, GL_FALSE, &matProjection[0][0]);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].generate.matP, 1,
+                           GL_FALSE, &matProjection[0][0]);
         matView = glm::lookAt(camLook * -zoom, glm::vec3(0.f),
                               -glm::cross(camRight, camLook));
-        glUniformMatrix4fv(matVPositionGen, 1, GL_FALSE, &matView[0][0]);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].generate.matV, 1,
+                           GL_FALSE, &matView[0][0]);
         matModel = glm::mat4(1.f);
-        glUniformMatrix4fv(matMPositionGen, 1, GL_FALSE, &matModel[0][0]);
-        glUniform1ui(doPizzaPositionGen, renderOptions.pizza);
+        glUniformMatrix4fv(uniforms[renderOptions.useXor].generate.matM, 1,
+                           GL_FALSE, &matModel[0][0]);
+        glUniform1ui(uniforms[renderOptions.useXor].generate.doPizza,
+                     renderOptions.pizza);
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            glUniform1i(uniforms[renderOptions.useXor].generate.tex[i], i);
 
         glBindVertexArray(vaoVox);
         glDrawArrays(GL_POINTS, 0, sizeof(voxPoints) / sizeof(float) / 3);
 
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
         //// Interlace voxels
-        glViewport(32, 0, 32 * 8, 32 * 4);
+        glViewport(renderOptions.useXor ? 32 : (32 * 4), 0, 32 * 8, 32 * 4);
         glBindVertexArray(vaoSquare);
-        glUseProgram(progInterlace);
-        glUniform1ui(doPizzaPositionInt, renderOptions.pizza);
+        glUseProgram(program[renderOptions.useXor].interlace);
+        glUniform1ui(uniforms[renderOptions.useXor].interlace.doPizza,
+                     renderOptions.pizza);
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            glUniform1i(uniforms[renderOptions.useXor].interlace.tex[i], i);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
 
         //// Displaying the voxel texture
@@ -369,8 +441,9 @@ int main(int argc, char *argv[]) {
         else
             glViewport(0, 0, 32 * 4, 32 * 2);
         glBindVertexArray(vaoSquare);
-        glUseProgram(progOffscreen);
-        glUniform1ui(useXorPositionOff, renderOptions.useXor);
+        glUseProgram(program[renderOptions.useXor].offscreen);
+        for (int i = 0; i < N_BUF_NO_XOR; i++)
+            glUniform1i(uniforms[renderOptions.useXor].offscreen.tex[i], i);
         glDrawArrays(GL_TRIANGLES, 0, sizeof(vert) / sizeof(float));
     }
 
@@ -438,6 +511,9 @@ void onKey(GLFWwindow *window, int key, int scancode, int action, int mods) {
         case GLFW_KEY_X:
             renderOptions.useXor = !renderOptions.useXor;
             break;
+        case GLFW_KEY_S:
+            doDump = true;
+            break;
     }
 }
 void onButton(GLFWwindow *window, int button, int action, int mods) {
@@ -503,33 +579,72 @@ GLuint loadShader(GLenum type, const std::string &filename) {
 }
 
 void loadShaders() {
-    progVoxel = glCreateProgram();
-    glAttachShader(progVoxel, loadShader(GL_VERTEX_SHADER, "voxel"));
-    glAttachShader(progVoxel, loadShader(GL_GEOMETRY_SHADER, "voxel"));
-    glAttachShader(progVoxel, loadShader(GL_FRAGMENT_SHADER, "voxel"));
-    glBindFragDataLocation(progVoxel, 0, "fragColor");
-    glLinkProgram(progVoxel);
-    glUseProgram(progVoxel);
+    GLuint voxelV = loadShader(GL_VERTEX_SHADER, "voxel"),
+           voxelG = loadShader(GL_GEOMETRY_SHADER, "voxel"),
+           voxelFX = loadShader(GL_FRAGMENT_SHADER, "voxel"),
+           voxelF = loadShader(GL_FRAGMENT_SHADER, "voxel-noxor"),
+           offscreenV = loadShader(GL_VERTEX_SHADER, "offscreen"),
+           offscreenFX = loadShader(GL_FRAGMENT_SHADER, "offscreen"),
+           offscreenF = loadShader(GL_FRAGMENT_SHADER, "offscreen-noxor"),
+           generateVX = loadShader(GL_VERTEX_SHADER, "generate"),
+           generateV = loadShader(GL_VERTEX_SHADER, "generate-noxor"),
+           generateGX = loadShader(GL_GEOMETRY_SHADER, "generate"),
+           generateG = loadShader(GL_GEOMETRY_SHADER, "generate-noxor"),
+           generateF = loadShader(GL_FRAGMENT_SHADER, "generate"),
+           interlaceFX = loadShader(GL_FRAGMENT_SHADER, "interlace"),
+           interlaceF = loadShader(GL_FRAGMENT_SHADER, "interlace-noxor");
 
-    progOffscreen = glCreateProgram();
-    glAttachShader(progOffscreen, loadShader(GL_VERTEX_SHADER, "offscreen"));
-    glAttachShader(progOffscreen, loadShader(GL_FRAGMENT_SHADER, "offscreen"));
-    glBindFragDataLocation(progOffscreen, 0, "out_Color");
-    glLinkProgram(progOffscreen);
-    glUseProgram(progOffscreen);
+    // Load non-XOR shaders
+    program[0].voxel = glCreateProgram();
+    glAttachShader(program[0].voxel, voxelV);
+    glAttachShader(program[0].voxel, voxelG);
+    glAttachShader(program[0].voxel, voxelF);
+    glBindFragDataLocation(program[0].voxel, 0, "fragColor");
+    glLinkProgram(program[0].voxel);
 
-    progGenerate = glCreateProgram();
-    glAttachShader(progGenerate, loadShader(GL_VERTEX_SHADER, "generate"));
-    glAttachShader(progGenerate, loadShader(GL_GEOMETRY_SHADER, "generate"));
-    glAttachShader(progGenerate, loadShader(GL_FRAGMENT_SHADER, "generate"));
-    glBindFragDataLocation(progGenerate, 0, "out_Color");
-    glLinkProgram(progGenerate);
-    glUseProgram(progGenerate);
+    program[0].offscreen = glCreateProgram();
+    glAttachShader(program[0].offscreen, offscreenV);
+    glAttachShader(program[0].offscreen, offscreenF);
+    glBindFragDataLocation(program[0].offscreen, 0, "out_Color");
+    glLinkProgram(program[0].offscreen);
 
-    progInterlace = glCreateProgram();
-    glAttachShader(progInterlace, loadShader(GL_VERTEX_SHADER, "offscreen"));
-    glAttachShader(progInterlace, loadShader(GL_FRAGMENT_SHADER, "interlace"));
-    glBindFragDataLocation(progInterlace, 0, "out_Color");
-    glLinkProgram(progInterlace);
-    glUseProgram(progInterlace);
+    program[0].generate = glCreateProgram();
+    glAttachShader(program[0].generate, generateV);
+    glAttachShader(program[0].generate, generateG);
+    glAttachShader(program[0].generate, generateF);
+    glBindFragDataLocation(program[0].generate, 0, "out_Color");
+    glLinkProgram(program[0].generate);
+
+    program[0].interlace = glCreateProgram();
+    glAttachShader(program[0].interlace, offscreenV);
+    glAttachShader(program[0].interlace, interlaceF);
+    glBindFragDataLocation(program[0].interlace, 0, "out_Color");
+    glLinkProgram(program[0].interlace);
+
+    // Load XOR shaders
+    program[1].voxel = glCreateProgram();
+    glAttachShader(program[1].voxel, voxelV);
+    glAttachShader(program[1].voxel, voxelG);
+    glAttachShader(program[1].voxel, voxelFX);
+    glBindFragDataLocation(program[1].voxel, 0, "fragColor");
+    glLinkProgram(program[1].voxel);
+
+    program[1].offscreen = glCreateProgram();
+    glAttachShader(program[1].offscreen, offscreenV);
+    glAttachShader(program[1].offscreen, offscreenFX);
+    glBindFragDataLocation(program[1].offscreen, 0, "out_Color");
+    glLinkProgram(program[1].offscreen);
+
+    program[1].generate = glCreateProgram();
+    glAttachShader(program[1].generate, generateVX);
+    glAttachShader(program[1].generate, generateGX);
+    glAttachShader(program[1].generate, generateF);
+    glBindFragDataLocation(program[1].generate, 0, "out_Color");
+    glLinkProgram(program[1].generate);
+
+    program[1].interlace = glCreateProgram();
+    glAttachShader(program[1].interlace, offscreenV);
+    glAttachShader(program[1].interlace, interlaceFX);
+    glBindFragDataLocation(program[1].interlace, 0, "out_Color");
+    glLinkProgram(program[1].interlace);
 }

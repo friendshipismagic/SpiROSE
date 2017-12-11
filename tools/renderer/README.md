@@ -14,7 +14,8 @@ And the usual stuff : git, make, gcc, g++, ...
 
 Get the single *tiny* library and build :
 
-    make dep
+    git submodule init
+    git submodule update
     make run
 
 ## Controls

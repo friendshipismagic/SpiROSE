@@ -1,6 +1,6 @@
 EXE = rose-renderer-poc
 SRCDIR = src
-CXXSRC = $(SRCDIR)/main.cpp $(SRCDIR)/tiny_obj_loader.cpp
+CXXSRC = $(SRCDIR)/main.cpp $(SRCDIR)/tiny_obj_loader.cpp $(SRCDIR)/tga.cpp
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -iquote$(SRCDIR) -MMD -MP \
