@@ -65,7 +65,7 @@ lint:
 	git status --porcelain | grep -e "^ M" && exit 1 || exit 0
 build: all
 test:
-	@echo "Test"
+	/bin/sh tests/tests.sh
 host:
 	@echo "Host"
 
