@@ -60,6 +60,11 @@ $(EXE): $(OBJS)
 	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
 -include $(DEPS)
 
+# Artifact target
+ARTIFACT = renderer-poc.tar.gz
+$(ARTIFACT): $(EXE) mesh shader
+	tar czvf $@ --transform 's,^,renderer/,' $^ mesh shader
+
 RUNFLAGS = -x
 
 run: $(EXE)
@@ -75,4 +80,5 @@ test:
 	@echo "Test"
 host:
 	@echo "Host"
+bundle: $(ARTIFACT)
 

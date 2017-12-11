@@ -5,6 +5,7 @@ stages:
   - build
   - test
   - host
+  - bundle
 
 variables:
   SBC_DIR: "SBC"
@@ -91,4 +92,16 @@ host_renderer-poc:
   script:
     - cd $RENDERER_POC_DIR
     - make host
+bundle_renderer-poc:
+  stage: bundle
+  image: tuetuopay/glfw
+  script:
+    - cd $RENDERER_POC_DIR
+    - make bundle
+  artifacts:
+    paths:
+      - $RENDERER_POC_DIR/renderer-poc.tar.gz
+    expire_in: 1 week
+  only:
+    - master
 
