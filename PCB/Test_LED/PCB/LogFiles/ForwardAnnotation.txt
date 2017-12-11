@@ -2,7 +2,7 @@
                                Forward Annotation
                                ------------------
 
-                       03:40 PM Monday, December 11, 2017
+                       05:26 PM Monday, December 11, 2017
    Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -61,8 +61,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 2029 Symbols:
-            2029  ****************************
+     Clustering 2041 Symbols:
+            2041  ****************************************
             2000  **************************************************
             1950  **************************************************
             1900  **************************************************
@@ -109,8 +109,8 @@ Version:  01.01.00
 
 
 
-     860 nets were found containing 8773 pins
-     2029 components were found
+     860 nets were found containing 8797 pins
+     2041 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -124,7 +124,7 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       03:40 PM Monday, December 11, 2017
+                       05:26 PM Monday, December 11, 2017
    Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -137,14 +137,32 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     The following 54 components have not been placed:
+	WARNING:  "C22" is being forward annotated to "C34".
 
-        C16
-        C17
-        C18
-        C19
-        C20
-        C21
+	WARNING:  "C23" is being forward annotated to "C35".
+
+	WARNING:  "C24" is being forward annotated to "C36".
+
+	WARNING:  "C25" is being forward annotated to "C37".
+
+	WARNING:  "C26" is being forward annotated to "C38".
+
+	WARNING:  "C27" is being forward annotated to "C39".
+
+	WARNING:  "C30" is being forward annotated to "C42".
+
+	WARNING:  "C28" is being forward annotated to "C40".
+
+	WARNING:  "C29" is being forward annotated to "C41".
+
+	WARNING:  "C31" is being forward annotated to "C43".
+
+	WARNING:  "C32" is being forward annotated to "C44".
+
+	WARNING:  "C33" is being forward annotated to "C45".
+
+     The following 12 components have not been placed:
+
         C22
         C23
         C24
@@ -157,44 +175,8 @@ Version:  02.11.12
         C31
         C32
         C33
-        J3
-        J4
-        J5
-        J6
-        J7
-        J8
-        J12
-        J17
-        J22
-        L1
-        L2
-        L3
-        L4
-        L5
-        L6
-        PT1
-        PT2
-        PT3
-        U4
-        U5
-        U6
-        U7
-        U8
-        U9
-        U10
-        U11
-        U12
-        U13
-        U14
-        U15
-        U16
-        U17
-        U18
-        U19
-        U20
-        U21
 
-     Netload completed successfully with 0 warning(s).
+     Netload completed successfully with 12 warning(s).
      
      Back Annotating...
 

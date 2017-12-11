@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/11/17 17:21:35
+! Created 12/11/17 18:40:30
 !
 
 .Global_Constants 863 2
@@ -3971,8 +3971,8 @@
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
 	"[VirtualGlobal].iDC.SplitViewHeight.0" "150"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "117"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "579"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "121"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "575"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -3987,8 +3987,8 @@
 
 .view "PCB"
     ..extrema
-	(-66829935,-38166862)		! (xmin, ymin)
-	(138657720,62983088)		! (xmax, ymax)
+	(27371216,13095691)		! (xmin, ymin)
+	(190782892,93534016)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
