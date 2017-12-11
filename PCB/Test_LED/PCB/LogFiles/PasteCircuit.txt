@@ -2,7 +2,7 @@
                                 Circuit Paste log
                                 -----------------
 
-                       09:32 AM Monday, December 11, 2017
+                       03:45 PM Monday, December 11, 2017
    Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
          Clipboard: C:\Users\mentor\AppData\Local\Temp\mgc_icc_clipboard_tmp\Layout\
@@ -25,11 +25,14 @@ Checking Netlist Map completed
 Updating Local Libraries
 ------------------------
 
-    WARNING: 1 cells exist in Local Library. Clipboard data is ignored:
-       LRTBR48G
+    WARNING: 1 padstacks exist in the Local Library. Clipboard data is ignored:
+       VIA0.6
 
-    WARNING: 1 Part Numbers exist in the Local Library. Clipboard data is ignored:
-       20-0073
+    WARNING: 4 cells exist in Local Library. Clipboard data is ignored:
+       C0402, LRTBR48G, QFN56E_050_800_800_100, R0402
+
+    WARNING: 4 Part Numbers exist in the Local Library. Clipboard data is ignored:
+       02-0098, 10-0060, 20-0073, 40-0307
 
 Library update is not required
 
@@ -51,15 +54,53 @@ Placing Components
 ------------------
 
 Component placement complete
-    1 Components were placed:
-       D386
+    393 Components were placed:
+       C13, C14, C15, D1537, D1538, D1539, D1540, D1541, D1542, D1543, D1544, D1545, 
+       D1546, D1547, D1548, D1549, D1550, D1551, D1552, D1553, D1554, D1555, D1556, 
+       D1557, D1558, D1559, D1560, D1561, D1562, D1563, D1564, D1565, D1566, D1567, 
+       D1568, D1569, D1570, D1571, D1572, D1573, D1574, D1575, D1576, D1577, D1578, 
+       D1579, D1580, D1581, D1582, D1583, D1584, D1585, D1586, D1587, D1588, D1589, 
+       D1590, D1591, D1592, D1593, D1594, D1595, D1596, D1597, D1598, D1599, D1600, 
+       D1601, D1602, D1603, D1604, D1605, D1606, D1607, D1608, D1609, D1610, D1611, 
+       D1612, D1613, D1614, D1615, D1616, D1617, D1618, D1619, D1620, D1621, D1622, 
+       D1623, D1624, D1625, D1626, D1627, D1628, D1629, D1630, D1631, D1632, D1633, 
+       D1634, D1635, D1636, D1637, D1638, D1639, D1640, D1641, D1642, D1643, D1644, 
+       D1645, D1646, D1647, D1648, D1649, D1650, D1651, D1652, D1653, D1654, D1655, 
+       D1656, D1657, D1658, D1659, D1660, D1661, D1662, D1663, D1664, D1665, D1666, 
+       D1667, D1668, D1669, D1670, D1671, D1672, D1673, D1674, D1675, D1676, D1677, 
+       D1678, D1679, D1680, D1681, D1682, D1683, D1684, D1685, D1686, D1687, D1688, 
+       D1689, D1690, D1691, D1692, D1693, D1694, D1695, D1696, D1697, D1698, D1699, 
+       D1700, D1701, D1702, D1703, D1704, D1705, D1706, D1707, D1708, D1709, D1710, 
+       D1711, D1712, D1713, D1714, D1715, D1716, D1717, D1718, D1719, D1720, D1721, 
+       D1722, D1723, D1724, D1725, D1726, D1727, D1728, D1729, D1730, D1731, D1732, 
+       D1733, D1734, D1735, D1736, D1737, D1738, D1739, D1740, D1741, D1742, D1743, 
+       D1744, D1745, D1746, D1747, D1748, D1749, D1750, D1751, D1752, D1753, D1754, 
+       D1755, D1756, D1757, D1758, D1759, D1760, D1761, D1762, D1763, D1764, D1765, 
+       D1766, D1767, D1768, D1769, D1770, D1771, D1772, D1773, D1774, D1775, D1776, 
+       D1777, D1778, D1779, D1780, D1781, D1782, D1783, D1784, D1785, D1786, D1787, 
+       D1788, D1789, D1790, D1791, D1792, D1793, D1794, D1795, D1796, D1797, D1798, 
+       D1799, D1800, D1801, D1802, D1803, D1804, D1805, D1806, D1807, D1808, D1809, 
+       D1810, D1811, D1812, D1813, D1814, D1815, D1816, D1817, D1818, D1819, D1820, 
+       D1821, D1822, D1823, D1824, D1825, D1826, D1827, D1828, D1829, D1830, D1831, 
+       D1832, D1833, D1834, D1835, D1836, D1837, D1838, D1839, D1840, D1841, D1842, 
+       D1843, D1844, D1845, D1846, D1847, D1848, D1849, D1850, D1851, D1852, D1853, 
+       D1854, D1855, D1856, D1857, D1858, D1859, D1860, D1861, D1862, D1863, D1864, 
+       D1865, D1866, D1867, D1868, D1869, D1870, D1871, D1872, D1873, D1874, D1875, 
+       D1876, D1877, D1878, D1879, D1880, D1881, D1882, D1883, D1884, D1885, D1886, 
+       D1887, D1888, D1889, D1890, D1891, D1892, D1893, D1894, D1895, D1896, D1897, 
+       D1898, D1899, D1900, D1901, D1902, D1903, D1904, D1905, D1906, D1907, D1908, 
+       D1909, D1910, D1911, D1912, D1913, D1914, D1915, D1916, D1917, D1918, D1919, 
+       D1920, R13, R14, R15, U13, U14, U15
 
 
 Loading net items
 -----------------
 
 Loading of Net items complete
-    0 objects were created
+    4853 objects were created
+        1 plane shapes
+        3206 traces
+        1646 vias
 
 
 Loading Fiducials

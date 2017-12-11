@@ -2,18 +2,36 @@
              Paste from Layout Clipboard - Instantiation Wizard Log
              ------------------------------------------------------
 
-                       09:14 AM Monday, December 11, 2017
+                       11:42 AM Monday, December 11, 2017
    Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
 --------------------
 
-09:12 AM Monday, December 11, 2017
+11:41 AM Monday, December 11, 2017
 
-Failed to find equivalent parts
+Found partial set of equivalent parts
 
-There is no candidates for 1 components:
-   D252
+Equivalent circuit not found for 256 components:
+   D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, D16, D17, 
+   D18, D19, D20, D21, D22, D23, D24, D25, D26, D27, D28, D29, D30, D31, D32, 
+   D33, D34, D35, D36, D37, D38, D39, D40, D41, D42, D43, D44, D45, D46, D47, 
+   D48, D49, D50, D51, D52, D53, D54, D55, D56, D57, D58, D59, D60, D61, D62, 
+   D63, D64, D65, D66, D67, D68, D69, D70, D71, D72, D73, D74, D75, D76, D77, 
+   D78, D79, D80, D81, D82, D83, D84, D85, D86, D87, D88, D89, D90, D91, D92, 
+   D93, D94, D95, D96, D97, D98, D99, D100, D101, D102, D103, D104, D105, D106, 
+   D107, D108, D109, D110, D111, D112, D113, D114, D115, D116, D117, D118, D119, 
+   D120, D121, D122, D123, D124, D125, D126, D127, D128, D129, D130, D131, D132, 
+   D133, D134, D135, D136, D137, D138, D139, D140, D141, D142, D143, D144, D145, 
+   D146, D147, D148, D149, D150, D151, D152, D153, D154, D155, D156, D157, D158, 
+   D159, D160, D161, D162, D163, D164, D165, D166, D167, D168, D169, D170, D171, 
+   D172, D173, D174, D175, D176, D177, D178, D179, D180, D181, D182, D183, D184, 
+   D185, D186, D187, D188, D189, D190, D191, D192, D193, D194, D195, D196, D197, 
+   D198, D199, D200, D201, D202, D203, D204, D205, D206, D207, D208, D209, D210, 
+   D211, D212, D213, D214, D215, D216, D217, D218, D219, D220, D221, D222, D223, 
+   D224, D225, D226, D227, D228, D229, D230, D231, D232, D233, D234, D235, D236, 
+   D237, D238, D239, D240, D241, D242, D243, D244, D245, D246, D247, D248, D249, 
+   D250, D251, D252, D253, D254, D255, D256
 
 
 
@@ -21,12 +39,26 @@ Ref Des map checking results
 ----------------------------
 
     UNMAPPED COMPONENTS:
-           D252
-    1 unmapped component(s) found
-
-    UNMAPPED NETS:
-           DRV1_B11, DRV1_G11, DRV1_R11, MUL7
-    4 unmapped net(s) found
+           D1, D2, D3, D4, D5, D6, D7, D8, D9, D10, D11, D12, D13, D14, D15, D16, D17, 
+           D18, D19, D20, D21, D22, D23, D24, D25, D26, D27, D28, D29, D30, D31, D32, 
+           D33, D34, D35, D36, D37, D38, D39, D40, D41, D42, D43, D44, D45, D46, D47, 
+           D48, D49, D50, D51, D52, D53, D54, D55, D56, D57, D58, D59, D60, D61, D62, 
+           D63, D64, D65, D66, D67, D68, D69, D70, D71, D72, D73, D74, D75, D76, D77, 
+           D78, D79, D80, D81, D82, D83, D84, D85, D86, D87, D88, D89, D90, D91, D92, 
+           D93, D94, D95, D96, D97, D98, D99, D100, D101, D102, D103, D104, D105, D106, 
+           D107, D108, D109, D110, D111, D112, D113, D114, D115, D116, D117, D118, D119, 
+           D120, D121, D122, D123, D124, D125, D126, D127, D128, D129, D130, D131, D132, 
+           D133, D134, D135, D136, D137, D138, D139, D140, D141, D142, D143, D144, D145, 
+           D146, D147, D148, D149, D150, D151, D152, D153, D154, D155, D156, D157, D158, 
+           D159, D160, D161, D162, D163, D164, D165, D166, D167, D168, D169, D170, D171, 
+           D172, D173, D174, D175, D176, D177, D178, D179, D180, D181, D182, D183, D184, 
+           D185, D186, D187, D188, D189, D190, D191, D192, D193, D194, D195, D196, D197, 
+           D198, D199, D200, D201, D202, D203, D204, D205, D206, D207, D208, D209, D210, 
+           D211, D212, D213, D214, D215, D216, D217, D218, D219, D220, D221, D222, D223, 
+           D224, D225, D226, D227, D228, D229, D230, D231, D232, D233, D234, D235, D236, 
+           D237, D238, D239, D240, D241, D242, D243, D244, D245, D246, D247, D248, D249, 
+           D250, D251, D252, D253, D254, D255, D256
+    256 unmapped component(s) found
 
 
     0 Error(s)
@@ -36,11 +68,575 @@ Ref Des map checking results
 Ref Des map
 -----------
     Clp Ref Des     Design Ref Des 
+    C1              C4             
+    C2              C5             
+    C3              C6             
+    D1              [unmapped]     
+    D2              [unmapped]     
+    D3              [unmapped]     
+    D4              [unmapped]     
+    D5              [unmapped]     
+    D6              [unmapped]     
+    D7              [unmapped]     
+    D8              [unmapped]     
+    D9              [unmapped]     
+    D10             [unmapped]     
+    D11             [unmapped]     
+    D12             [unmapped]     
+    D13             [unmapped]     
+    D14             [unmapped]     
+    D15             [unmapped]     
+    D16             [unmapped]     
+    D17             [unmapped]     
+    D18             [unmapped]     
+    D19             [unmapped]     
+    D20             [unmapped]     
+    D21             [unmapped]     
+    D22             [unmapped]     
+    D23             [unmapped]     
+    D24             [unmapped]     
+    D25             [unmapped]     
+    D26             [unmapped]     
+    D27             [unmapped]     
+    D28             [unmapped]     
+    D29             [unmapped]     
+    D30             [unmapped]     
+    D31             [unmapped]     
+    D32             [unmapped]     
+    D33             [unmapped]     
+    D34             [unmapped]     
+    D35             [unmapped]     
+    D36             [unmapped]     
+    D37             [unmapped]     
+    D38             [unmapped]     
+    D39             [unmapped]     
+    D40             [unmapped]     
+    D41             [unmapped]     
+    D42             [unmapped]     
+    D43             [unmapped]     
+    D44             [unmapped]     
+    D45             [unmapped]     
+    D46             [unmapped]     
+    D47             [unmapped]     
+    D48             [unmapped]     
+    D49             [unmapped]     
+    D50             [unmapped]     
+    D51             [unmapped]     
+    D52             [unmapped]     
+    D53             [unmapped]     
+    D54             [unmapped]     
+    D55             [unmapped]     
+    D56             [unmapped]     
+    D57             [unmapped]     
+    D58             [unmapped]     
+    D59             [unmapped]     
+    D60             [unmapped]     
+    D61             [unmapped]     
+    D62             [unmapped]     
+    D63             [unmapped]     
+    D64             [unmapped]     
+    D65             [unmapped]     
+    D66             [unmapped]     
+    D67             [unmapped]     
+    D68             [unmapped]     
+    D69             [unmapped]     
+    D70             [unmapped]     
+    D71             [unmapped]     
+    D72             [unmapped]     
+    D73             [unmapped]     
+    D74             [unmapped]     
+    D75             [unmapped]     
+    D76             [unmapped]     
+    D77             [unmapped]     
+    D78             [unmapped]     
+    D79             [unmapped]     
+    D80             [unmapped]     
+    D81             [unmapped]     
+    D82             [unmapped]     
+    D83             [unmapped]     
+    D84             [unmapped]     
+    D85             [unmapped]     
+    D86             [unmapped]     
+    D87             [unmapped]     
+    D88             [unmapped]     
+    D89             [unmapped]     
+    D90             [unmapped]     
+    D91             [unmapped]     
+    D92             [unmapped]     
+    D93             [unmapped]     
+    D94             [unmapped]     
+    D95             [unmapped]     
+    D96             [unmapped]     
+    D97             [unmapped]     
+    D98             [unmapped]     
+    D99             [unmapped]     
+    D100            [unmapped]     
+    D101            [unmapped]     
+    D102            [unmapped]     
+    D103            [unmapped]     
+    D104            [unmapped]     
+    D105            [unmapped]     
+    D106            [unmapped]     
+    D107            [unmapped]     
+    D108            [unmapped]     
+    D109            [unmapped]     
+    D110            [unmapped]     
+    D111            [unmapped]     
+    D112            [unmapped]     
+    D113            [unmapped]     
+    D114            [unmapped]     
+    D115            [unmapped]     
+    D116            [unmapped]     
+    D117            [unmapped]     
+    D118            [unmapped]     
+    D119            [unmapped]     
+    D120            [unmapped]     
+    D121            [unmapped]     
+    D122            [unmapped]     
+    D123            [unmapped]     
+    D124            [unmapped]     
+    D125            [unmapped]     
+    D126            [unmapped]     
+    D127            [unmapped]     
+    D128            [unmapped]     
+    D129            [unmapped]     
+    D130            [unmapped]     
+    D131            [unmapped]     
+    D132            [unmapped]     
+    D133            [unmapped]     
+    D134            [unmapped]     
+    D135            [unmapped]     
+    D136            [unmapped]     
+    D137            [unmapped]     
+    D138            [unmapped]     
+    D139            [unmapped]     
+    D140            [unmapped]     
+    D141            [unmapped]     
+    D142            [unmapped]     
+    D143            [unmapped]     
+    D144            [unmapped]     
+    D145            [unmapped]     
+    D146            [unmapped]     
+    D147            [unmapped]     
+    D148            [unmapped]     
+    D149            [unmapped]     
+    D150            [unmapped]     
+    D151            [unmapped]     
+    D152            [unmapped]     
+    D153            [unmapped]     
+    D154            [unmapped]     
+    D155            [unmapped]     
+    D156            [unmapped]     
+    D157            [unmapped]     
+    D158            [unmapped]     
+    D159            [unmapped]     
+    D160            [unmapped]     
+    D161            [unmapped]     
+    D162            [unmapped]     
+    D163            [unmapped]     
+    D164            [unmapped]     
+    D165            [unmapped]     
+    D166            [unmapped]     
+    D167            [unmapped]     
+    D168            [unmapped]     
+    D169            [unmapped]     
+    D170            [unmapped]     
+    D171            [unmapped]     
+    D172            [unmapped]     
+    D173            [unmapped]     
+    D174            [unmapped]     
+    D175            [unmapped]     
+    D176            [unmapped]     
+    D177            [unmapped]     
+    D178            [unmapped]     
+    D179            [unmapped]     
+    D180            [unmapped]     
+    D181            [unmapped]     
+    D182            [unmapped]     
+    D183            [unmapped]     
+    D184            [unmapped]     
+    D185            [unmapped]     
+    D186            [unmapped]     
+    D187            [unmapped]     
+    D188            [unmapped]     
+    D189            [unmapped]     
+    D190            [unmapped]     
+    D191            [unmapped]     
+    D192            [unmapped]     
+    D193            [unmapped]     
+    D194            [unmapped]     
+    D195            [unmapped]     
+    D196            [unmapped]     
+    D197            [unmapped]     
+    D198            [unmapped]     
+    D199            [unmapped]     
+    D200            [unmapped]     
+    D201            [unmapped]     
+    D202            [unmapped]     
+    D203            [unmapped]     
+    D204            [unmapped]     
+    D205            [unmapped]     
+    D206            [unmapped]     
+    D207            [unmapped]     
+    D208            [unmapped]     
+    D209            [unmapped]     
+    D210            [unmapped]     
+    D211            [unmapped]     
+    D212            [unmapped]     
+    D213            [unmapped]     
+    D214            [unmapped]     
+    D215            [unmapped]     
+    D216            [unmapped]     
+    D217            [unmapped]     
+    D218            [unmapped]     
+    D219            [unmapped]     
+    D220            [unmapped]     
+    D221            [unmapped]     
+    D222            [unmapped]     
+    D223            [unmapped]     
+    D224            [unmapped]     
+    D225            [unmapped]     
+    D226            [unmapped]     
+    D227            [unmapped]     
+    D228            [unmapped]     
+    D229            [unmapped]     
+    D230            [unmapped]     
+    D231            [unmapped]     
+    D232            [unmapped]     
+    D233            [unmapped]     
+    D234            [unmapped]     
+    D235            [unmapped]     
+    D236            [unmapped]     
+    D237            [unmapped]     
+    D238            [unmapped]     
+    D239            [unmapped]     
+    D240            [unmapped]     
+    D241            [unmapped]     
+    D242            [unmapped]     
+    D243            [unmapped]     
+    D244            [unmapped]     
+    D245            [unmapped]     
+    D246            [unmapped]     
+    D247            [unmapped]     
+    D248            [unmapped]     
+    D249            [unmapped]     
+    D250            [unmapped]     
+    D251            [unmapped]     
     D252            [unmapped]     
+    D253            [unmapped]     
+    D254            [unmapped]     
+    D255            [unmapped]     
+    D256            [unmapped]     
+    D257            D385           
+    D258            D386           
+    D259            D387           
+    D260            D388           
+    D261            D389           
+    D262            D390           
+    D263            D391           
+    D264            D392           
+    D265            D393           
+    D266            D394           
+    D267            D395           
+    D268            D396           
+    D269            D397           
+    D270            D398           
+    D271            D399           
+    D272            D400           
+    D273            D401           
+    D274            D402           
+    D275            D403           
+    D276            D404           
+    D277            D405           
+    D278            D406           
+    D279            D407           
+    D280            D408           
+    D281            D409           
+    D282            D410           
+    D283            D411           
+    D284            D412           
+    D285            D413           
+    D286            D414           
+    D287            D415           
+    D288            D416           
+    D289            D417           
+    D290            D418           
+    D291            D419           
+    D292            D420           
+    D293            D421           
+    D294            D422           
+    D295            D423           
+    D296            D424           
+    D297            D425           
+    D298            D426           
+    D299            D427           
+    D300            D428           
+    D301            D429           
+    D302            D430           
+    D303            D431           
+    D304            D432           
+    D305            D433           
+    D306            D434           
+    D307            D435           
+    D308            D436           
+    D309            D437           
+    D310            D438           
+    D311            D439           
+    D312            D440           
+    D313            D441           
+    D314            D442           
+    D315            D443           
+    D316            D444           
+    D317            D445           
+    D318            D446           
+    D319            D447           
+    D320            D448           
+    D321            D449           
+    D322            D450           
+    D323            D451           
+    D324            D452           
+    D325            D453           
+    D326            D454           
+    D327            D455           
+    D328            D456           
+    D329            D457           
+    D330            D458           
+    D331            D459           
+    D332            D460           
+    D333            D461           
+    D334            D462           
+    D335            D463           
+    D336            D464           
+    D337            D465           
+    D338            D466           
+    D339            D467           
+    D340            D468           
+    D341            D469           
+    D342            D470           
+    D343            D471           
+    D344            D472           
+    D345            D473           
+    D346            D474           
+    D347            D475           
+    D348            D476           
+    D349            D477           
+    D350            D478           
+    D351            D479           
+    D352            D480           
+    D353            D481           
+    D354            D482           
+    D355            D483           
+    D356            D484           
+    D357            D485           
+    D358            D486           
+    D359            D487           
+    D360            D488           
+    D361            D489           
+    D362            D490           
+    D363            D491           
+    D364            D492           
+    D365            D493           
+    D366            D494           
+    D367            D495           
+    D368            D496           
+    D369            D497           
+    D370            D498           
+    D371            D499           
+    D372            D500           
+    D373            D501           
+    D374            D502           
+    D375            D503           
+    D376            D504           
+    D377            D505           
+    D378            D506           
+    D379            D507           
+    D380            D508           
+    D381            D509           
+    D382            D510           
+    D383            D511           
+    D384            D512           
+    R1              R5             
+    R2              R6             
+    R3              R4             
+    U1              U5             
+    U2              U6             
+    U3              U4             
 
 Nets map
 --------
-    DRV1_G12        DRV1_G12       
-    DRV1_G13        DRV1_G13       
-    DRV1_R12        DRV1_R12       
-    DRV1_R13        DRV1_R13       
+    Clp Net Name    Design Net Name
+    GND             GND            
+    MUL0            MUL0           
+    MUL1            MUL1           
+    MUL2            MUL2           
+    MUL3            MUL3           
+    MUL4            MUL4           
+    MUL5            MUL5           
+    MUL6            MUL6           
+    MUL7            MUL7           
+    UB0D0_B0        UB1D0_B2       
+    UB0D0_B1        UB1D0_B5       
+    UB0D0_B2        UB1D0_B8       
+    UB0D0_B3        UB1D0_B6       
+    UB0D0_B4        UB1D0_B9       
+    UB0D0_B5        UB1D0_B7       
+    UB0D0_B6        UB1D0_B10      
+    UB0D0_B7        UB1D0_B11      
+    UB0D0_B8        UB1D0_B14      
+    UB0D0_B9        UB1D0_B12      
+    UB0D0_B10       UB1D0_B15      
+    UB0D0_B11       UB1D0_B13      
+    UB0D0_B12       UB1D0_B0       
+    UB0D0_B13       UB1D0_B3       
+    UB0D0_B14       UB1D0_B1       
+    UB0D0_B15       UB1D0_B4       
+    UB0D0_G0        UB1D0_G7       
+    UB0D0_G1        UB1D0_G6       
+    UB0D0_G2        UB1D0_G9       
+    UB0D0_G3        UB1D0_G10      
+    UB0D0_G4        UB1D0_G12      
+    UB0D0_G5        UB1D0_G11      
+    UB0D0_G6        UB1D0_G14      
+    UB0D0_G7        UB1D0_G15      
+    UB0D0_G8        UB1D0_G3       
+    UB0D0_G9        UB1D0_G13      
+    UB0D0_G10       UB1D0_G0       
+    UB0D0_G11       UB1D0_G1       
+    UB0D0_G12       UB1D0_G5       
+    UB0D0_G13       UB1D0_G4       
+    UB0D0_G14       UB1D0_G2       
+    UB0D0_G15       UB1D0_G8       
+    UB0D0_GCLK      UB1D0_GCLK     
+    UB0D0_LAT       UB1D0_LAT      
+    UB0D0_R0        UB1D0_R7       
+    UB0D0_R1        UB1D0_R6       
+    UB0D0_R2        UB1D0_R9       
+    UB0D0_R3        UB1D0_R10      
+    UB0D0_R4        UB1D0_R12      
+    UB0D0_R5        UB1D0_R11      
+    UB0D0_R6        UB1D0_R14      
+    UB0D0_R7        UB1D0_R15      
+    UB0D0_R8        UB1D0_R3       
+    UB0D0_R9        UB1D0_R13      
+    UB0D0_R10       UB1D0_R0       
+    UB0D0_R11       UB1D0_R1       
+    UB0D0_R12       UB1D0_R5       
+    UB0D0_R13       UB1D0_R4       
+    UB0D0_R14       UB1D0_R2       
+    UB0D0_R15       UB1D0_R8       
+    UB0D0_SCLK      UB1D0_SCLK     
+    UB0D0_SIN       UB1D0_SIN      
+    UB0D0_SOUT      UB1D0_SOUT     
+    UB0D1_B0        UB1D1_B14      
+    UB0D1_B1        UB1D1_B12      
+    UB0D1_B2        UB1D1_B15      
+    UB0D1_B3        UB1D1_B13      
+    UB0D1_B4        UB1D1_B0       
+    UB0D1_B5        UB1D1_B3       
+    UB0D1_B6        UB1D1_B1       
+    UB0D1_B7        UB1D1_B4       
+    UB0D1_B8        UB1D1_B2       
+    UB0D1_B9        UB1D1_B8       
+    UB0D1_B10       UB1D1_B5       
+    UB0D1_B11       UB1D1_B6       
+    UB0D1_B12       UB1D1_B9       
+    UB0D1_B13       UB1D1_B7       
+    UB0D1_B14       UB1D1_B10      
+    UB0D1_B15       UB1D1_B11      
+    UB0D1_G0        UB1D1_G12      
+    UB0D1_G1        UB1D1_G11      
+    UB0D1_G2        UB1D1_G14      
+    UB0D1_G3        UB1D1_G15      
+    UB0D1_G4        UB1D1_G3       
+    UB0D1_G5        UB1D1_G13      
+    UB0D1_G6        UB1D1_G0       
+    UB0D1_G7        UB1D1_G1       
+    UB0D1_G8        UB1D1_G5       
+    UB0D1_G9        UB1D1_G4       
+    UB0D1_G10       UB1D1_G2       
+    UB0D1_G11       UB1D1_G8       
+    UB0D1_G12       UB1D1_G7       
+    UB0D1_G13       UB1D1_G6       
+    UB0D1_G14       UB1D1_G9       
+    UB0D1_G15       UB1D1_G10      
+    UB0D1_GCLK      UB1D1_GCLK     
+    UB0D1_LAT       UB1D1_LAT      
+    UB0D1_R0        UB1D1_R12      
+    UB0D1_R1        UB1D1_R11      
+    UB0D1_R2        UB1D1_R14      
+    UB0D1_R3        UB1D1_R15      
+    UB0D1_R4        UB1D1_R3       
+    UB0D1_R5        UB1D1_R13      
+    UB0D1_R6        UB1D1_R0       
+    UB0D1_R7        UB1D1_R1       
+    UB0D1_R8        UB1D1_R5       
+    UB0D1_R9        UB1D1_R4       
+    UB0D1_R10       UB1D1_R2       
+    UB0D1_R11       UB1D1_R8       
+    UB0D1_R12       UB1D1_R7       
+    UB0D1_R13       UB1D1_R6       
+    UB0D1_R14       UB1D1_R9       
+    UB0D1_R15       UB1D1_R10      
+    UB0D1_SCLK      UB1D1_SCLK     
+    UB0D1_SIN       UB1D1_SIN      
+    UB0D1_SOUT      UB1D1_SOUT     
+    UB0D2_B0        UB1D2_B0       
+    UB0D2_B1        UB1D2_B1       
+    UB0D2_B2        UB1D2_B2       
+    UB0D2_B3        UB1D2_B3       
+    UB0D2_B4        UB1D2_B4       
+    UB0D2_B5        UB1D2_B5       
+    UB0D2_B6        UB1D2_B6       
+    UB0D2_B7        UB1D2_B7       
+    UB0D2_B8        UB1D2_B8       
+    UB0D2_B9        UB1D2_B9       
+    UB0D2_B10       UB1D2_B10      
+    UB0D2_B11       UB1D2_B11      
+    UB0D2_B12       UB1D2_B12      
+    UB0D2_B13       UB1D2_B13      
+    UB0D2_B14       UB1D2_B14      
+    UB0D2_B15       UB1D2_B15      
+    UB0D2_G0        UB1D2_G0       
+    UB0D2_G1        UB1D2_G1       
+    UB0D2_G2        UB1D2_G2       
+    UB0D2_G3        UB1D2_G3       
+    UB0D2_G4        UB1D2_G4       
+    UB0D2_G5        UB1D2_G5       
+    UB0D2_G6        UB1D2_G6       
+    UB0D2_G7        UB1D2_G7       
+    UB0D2_G8        UB1D2_G8       
+    UB0D2_G9        UB1D2_G9       
+    UB0D2_G10       UB1D2_G10      
+    UB0D2_G11       UB1D2_G11      
+    UB0D2_G12       UB1D2_G12      
+    UB0D2_G13       UB1D2_G13      
+    UB0D2_G14       UB1D2_G14      
+    UB0D2_G15       UB1D2_G15      
+    UB0D2_GCLK      UB1D2_GCLK     
+    UB0D2_LAT       UB1D2_LAT      
+    UB0D2_R0        UB1D2_R0       
+    UB0D2_R1        UB1D2_R1       
+    UB0D2_R2        UB1D2_R2       
+    UB0D2_R3        UB1D2_R3       
+    UB0D2_R4        UB1D2_R4       
+    UB0D2_R5        UB1D2_R5       
+    UB0D2_R6        UB1D2_R6       
+    UB0D2_R7        UB1D2_R7       
+    UB0D2_R8        UB1D2_R8       
+    UB0D2_R9        UB1D2_R9       
+    UB0D2_R10       UB1D2_R10      
+    UB0D2_R11       UB1D2_R11      
+    UB0D2_R12       UB1D2_R12      
+    UB0D2_R13       UB1D2_R13      
+    UB0D2_R14       UB1D2_R14      
+    UB0D2_R15       UB1D2_R15      
+    UB0D2_SCLK      UB1D2_SCLK     
+    UB0D2_SIN       UB1D2_SIN      
+    UB0D2_SOUT      UB1D2_SOUT     
+    VCC             VCC            
+    XSIG012334      XSIG031656     
+    XSIG012335      XSIG031657     
+    XSIG012336      XSIG032218     
+    XSIG012337      XSIG032219     
+    XSIG020563      XSIG021136     
+    XSIG020564      XSIG021137     
