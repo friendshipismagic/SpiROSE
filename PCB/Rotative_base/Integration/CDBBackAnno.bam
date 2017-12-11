@@ -1,0 +1,18 @@
+
+/* Sym: 061117E0  Path 1: Schematic1  Page 1: Schematic1(1) */
+CHANGE 'Schematic1(1)' 	INSTANCE
+  SELECT COMP XCMP949                 /* Reference Desig is C49 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C49'         /* Reference Desig was (null) */
+  SELECT COMP XCMP948                 /* Reference Desig is C25 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C25'         /* Reference Desig was (null) */
+  SELECT COMP XCMP952                 /* Reference Desig is C56 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C56'         /* Reference Desig was (null) */
+  SELECT COMP XCMP951                 /* Reference Desig is C55 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C55'         /* Reference Desig was (null) */
+  SELECT COMP XCMP950                 /* Reference Desig is C54 */
+    PARAM 23 = DELETE                    /* Component Fix flag */
+    PARAM 15 = 'C54'         /* Reference Desig was (null) */

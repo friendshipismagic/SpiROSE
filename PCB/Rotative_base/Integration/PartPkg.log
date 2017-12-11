@@ -2,29 +2,31 @@
                                     Packager
                                     --------
 
-                      06:38 PM Wednesday, December 06, 2017
- Job Name: C:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\Rotative_base.prj
+                       09:38 AM Monday, December 11, 2017
+            Job Name: D:\SpiROSE\PCB\Rotative_base\Rotative_base.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  -jC:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\Rotative_base.prj -CleanBuild -NoFill"
+        Commandline is: "D:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uD:\SpiROSE\PCB\Rotative_base\Default\default.icdb" -k -CleanBuild "-jD:\SpiROSE\PCB\Rotative_base\Rotative_base.prj" "
 
-     The Common Database is at "C:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\Default\default.icdb".
+     The Common Database is at "D:\SpiROSE\PCB\Rotative_base\Default\default.icdb".
 
      The Root of this design is "Schematic1".
 
      The Front End Snapshot of this design is "DCDV".
 
-     The PCB Design Path of this design is at "C:\Users\Vincent\Desktop\ROSE\PCB\PCB\Rotative_base\PCB\PCB.pcb".
+     The PCB Design Path of this design is at "D:\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
+      However, "F:\Central_Libs\ENST.lmc" does not exist.
 
      The Disable Repackage status indicates that 
       Repackaging should be allowed.
 
-     A new Target PDB will be created from the Central Library to satisfy the parts
-      requirements of the iCDB.
+     A new Target PDB was to be created from the Central Library to satisfy the parts
+      requirements of the iCDB.  However, since there is no Central Library,
+      the Local PDB will be searched to satisfy the parts requirements of the iCDB.
 
      The AllowAlphaRefDes status indicates that reference
       designators containing all alpha characters should be deleted
@@ -34,41 +36,10 @@
       numbers will be checked for packaged symbols and mapped correctly
       for unpackaged symbols.
 
-     Properties that have been checked off in the Property Definition Editor
-      found at Library Manager/Common Properties will be checked for value
-      differences between the PartsDB and the non-null properties on symbols.
-     Those properties checked off (other than Part Number)
-      will not be transferred from the PartsDB to symbols.
-     The following properties were checked off in the Property Definition Editor:
-       "Parametric"
-       "Value2"
-       "Attachment"
-       "Verification Statut"
-       "Commentaire"
-       "Option"
-       "ESR"
-       "Imax"
-       "Cout HT"
-       "Vf"
-       "Code Fournisseur"
-       "Boitier"
-       "Iac max"
-       "Voltage"
-       "Dielectric"
-       "Techno"
-       "IBIS"
-       "Model Suffix"
-       "Part Label"
-       "VHDL Model"
-       "Verilog Model"
-       "Supply Rename"
-       "Description"
-       "Simulation Model"
-       "Ref Designator"
-       "Tolerance"
-       "Part Number"
-       "Value"
-       "Part Name"
+     Since a Central Library does not exist, there are no properties that have
+      been checked off in a Property Definition Editor to be found at Library 
+      Manager/Common Properties to be checked for value differences between the
+      PartsDB and the non-null properties on symbols.
 
 	Checking for errors in the ICDB...
 
@@ -76,11 +47,54 @@
 
 
 
+    WARNING: Block Schematic1, Page 1, Symbol XCMP948:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP949:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP950:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP951:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP952:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
      Common Data Base has been read
 
      Target PDB Name: Integration\LocalPartsDB.pdb
 
-     Number of Part Numbers: 22
+     WARNING:  There are no PartsDB partitions from which to extract parts.
+      Proceeding using the data in the local PartsDB "Integration\LocalPartsDB.pdb".
+
+     Number of Part Numbers: 20
           Part Numb: 00-0062 -> Vend Part: 00-0062 
           Part Numb: 00-0084 -> Vend Part: 00-0084 
           Part Numb: 00-0098 -> Vend Part: 00-0098 
@@ -89,9 +103,7 @@
           Part Numb: 10-0045 -> Vend Part: 10-0045 
           Part Numb: 10-0057 -> Vend Part: 10-0057 
           Part Numb: 10-0068 -> Vend Part: 10-0068 
-          Part Numb: 10-0075 -> Vend Part: 10-0075 
           Part Numb: 10-0087 -> Vend Part: 10-0087 
-          Part Numb: 10-0095 -> Vend Part: 10-0095 
           Part Numb: 10-0101 -> Vend Part: 10-0101 
           Part Numb: 10-0102 -> Vend Part: 10-0102 
           Part Numb: 10-0103 -> Vend Part: 10-0103 
@@ -111,6 +123,7 @@
 
      Checking for value differences between non-null symbol properties and PartsDB properties,
       but only for those properties checked off in the Property Definition Editor
+     Since no properties were checked off, no symbols will be checked.
 
      Checking the validity of the packaging of prepackaged schematic
       symbols.  Only the first error in symbols having the same
@@ -124,8 +137,8 @@
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 114 Symbols:
-             114  *************
+     Clustering 110 Symbols:
+             110  *********
              100  **************************************************
               50  **************************************************
      Clustering is Complete
@@ -134,8 +147,8 @@
 
 
 
-     110 nets were found containing 518 pins
-     109 components were found
+     117 nets were found containing 517 pins
+     105 components were found
 
      Parsed netlist - Augmenting..
 
@@ -145,11 +158,14 @@
 
      Checking Pins....
 
-     Packaging has been successfully tested with no errors or warnings.
+     Testing of Packaging has been completed with 6 warnings.
+      Erroneous results may occur if not fixed.
 
      Updating the Common DataBase
 
      A BAM WasIs List: Integration\CDBBackAnno.bam has been created.
+     There have been 5 reference designator changes.
+     The BAM file will list all of the from-to changes.
 
 The Common DataBase has been successfully updated.
 
@@ -159,3 +175,5 @@ The Common DataBase has been successfully updated.
      An unused pin and gate report has been written to Integration\UnusedPins.txt
      An unused gate report for gates not in schematic has been written to Integration\UnusedGates.txt
      An augmented pin report has been written to Integration\AugmentedPins.txt.
+
+     There have been 6 warnings.
