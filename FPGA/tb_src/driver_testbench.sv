@@ -11,8 +11,6 @@ logic [4:0] sout_mux;
 logic [29:0] framebuffer_data;
 logic framebuffer_sync;
 
-// 33 MHz clock generator
-always #30ns clk_33 <= ~clk_33;
 // 66 MHz clock generator
 always #15ns clk_66 <= ~clk_66;
 
@@ -46,16 +44,22 @@ driver_controller #(.BLANKING_TIME(72)) dut (
     .serialized_conf(serialized_conf)
 );
 
+clock_lse_inverse #(.INVERSE_PHASE(0)) clk_lse_inverse_gen (
+    .clk_hse(clk_66),
+    .nrst(nrst),
+    .clk_lse(clk_33)
+);
+
 // Simulation process
 initial
 begin
-	clk_33 = 0;
 	clk_66 = 0;
     nrst = 0;
     sout = 0;
 
-	// Wait 1 clock cycle for reset
-	@(posedge clk_33);
+	// Wait 2 clock cycle for reset
+	@(posedge clk_66);
+	@(posedge clk_66);
 
 	// Start DUT
 	nrst = 1;

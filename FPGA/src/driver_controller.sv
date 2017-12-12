@@ -61,7 +61,7 @@ always_ff @(posedge clk_hse)
  * LOD for 1 clock cycle (TODO), then waits for framebuffer sync signal
  * STREAM until reset
  */
-enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD, PREPARE_DUMP_CONFIG, DUMP_CONFIG} driver_state;
+enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD, PREPARE_DUMP_CONFIG, DUMP_CONFIG, WAIT} driver_state;
 logic [7:0] driver_state_counter;
 always_ff @(posedge clk_lse)
     if(~nrst) begin
@@ -89,9 +89,18 @@ always_ff @(posedge clk_lse)
                  */
                 driver_state_counter <= driver_state_counter + 1'b1;
                 if(driver_state_counter == 48) begin
+                    driver_state <= WAIT;
+                    driver_state_counter <= '0;
+                end
+            end
+
+            WAIT: begin
+                driver_state_counter <= driver_state_counter + 1'b1;
+                if(driver_state_counter == 5) begin
                     driver_state <= PREPARE_DUMP_CONFIG;
                     driver_state_counter <= '0;
                 end
+
             end
 
             PREPARE_DUMP_CONFIG: begin

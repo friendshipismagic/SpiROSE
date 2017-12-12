@@ -195,13 +195,12 @@ clk_66 main_clk_66 (
 
 // 33 MHz clock generator
 logic clock_33;
-always_ff @(negedge clock_66)
-	if(~nrst) begin
-		clock_33 <= '1;
-	end else begin
-		clock_33 <= ~ clock_33;
-		end
-	
+clock_lse_inverse #(.INVERSE_PHASE(0)) clk_lse_inverse_gen (
+    .clk_hse(clock_66),
+    .nrst(nrst),
+    .clk_lse(clock_33)
+);
+
 // Project pins assignment
 wire nrst            = key[0] & lock;
 wire sout            = gpio_0[35];
@@ -231,7 +230,7 @@ assign gpio_0[24] = sw[2];
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
-always_ff @(posedge clock_66)
+always_ff @(posedge clock_66 or negedge nrst)
 	if(~nrst) begin
 		ledr[0] <= '0;
 		heartbeat_counter_66 <= '0;
@@ -245,7 +244,7 @@ always_ff @(posedge clock_66)
 
 // Heartbeat LED 33MHz
 logic[24:0] heartbeat_counter_33;
-always_ff @(posedge clock_33)
+always_ff @(posedge clock_33 or negedge nrst)
 	if(~nrst) begin
 		ledr[1] <= '0;
 		heartbeat_counter_33 <= '0;
@@ -256,7 +255,7 @@ always_ff @(posedge clock_33)
 			heartbeat_counter_33 <= '0;
 		end
 	end
-	
+
 wire framebuffer_data, framebuffer_sync;
 // Framebuffer emulator, to test driver controller
 framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(80)) main_fb_emulator (

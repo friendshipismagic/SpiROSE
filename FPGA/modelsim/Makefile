@@ -13,7 +13,8 @@ INCDIR = ${TOP_DIR}/src
 # Include all SystemVerilog and Verilog files
 SRCS = driver_controller.sv \
 	   framebuffer_emulator.sv \
-	   driver_testbench.sv
+	   driver_testbench.sv \
+	   clock_lse_inverse.sv
 #$(wildcard ${TOP_DIR}/src/*.sv ${TOP_DIR}/tb_src/*.sv ${TOP_DIR}/src/*.v ${TOP_DIR}/tb_src/*.v)
 
 vpath %.sv ${TOP_DIR}/src

@@ -14,7 +14,7 @@ logic [10:0] clk_counter;
 logic [2:0] mul_counter;
 assign sync = clk_counter >= 512 && mul_counter == 0;
 
-always_ff @(posedge clk_33)
+always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         clk_counter <= '0;
         mul_counter <= '0;
@@ -28,9 +28,9 @@ always_ff @(posedge clk_33)
 // Heartbeat LED 33MHz
 logic[24:0] heartbeat_counter_33;
 logic d;
-always_ff @(posedge clk_33)
+always_ff @(posedge clk_33 or negedge nrst)
 	if(~nrst) begin
-      d <= '0;
+        d <= '0;
 		heartbeat_counter_33 <= '0;
 	end else begin
 		heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
@@ -39,8 +39,8 @@ always_ff @(posedge clk_33)
 			heartbeat_counter_33 <= '0;
 		end
 	end
-	
-always_ff @(posedge clk_33)
+
+always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         data <= '0;
     end else begin
