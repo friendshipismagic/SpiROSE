@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/11/17 18:40:30
+! Created 12/12/17 23:23:28
 !
 
 .Global_Constants 863 2
@@ -15,7 +15,7 @@
 	0x00000003	! showCmd
 	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
-	(-1410, 119) (-228,719)	! ..rcNormalPosition
+	(569, 307) (1369,1027)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             True
     ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
@@ -515,18 +515,18 @@
     ..Netline_Trace_Ends_On              True
     ..Classline_Color 0x00ff00cc	! RGB(204,  0,255)
     ..Netline_Of_Classline_On            True
-    ..Show_Plane_Data                    True
-    ..Show_Plane_Shapes                  True
+    ..Show_Plane_Data                    False
+    ..Show_Plane_Shapes                  False
     ..Show_Fill_Plane_Shapes             False
-    ..Show_Plane_Data_Behind_Traces      False
-    ..Show_Dynamic_Area_Fills            True
-    ..Show_Plane_Aps_Outlines            True
+    ..Show_Plane_Data_Behind_Traces      True
+    ..Show_Dynamic_Area_Fills            False
+    ..Show_Plane_Aps_Outlines            False
     ..Show_Plane_Aps_Fills               False
-    ..All_Plane_Items_Enabled            True
-    ..Show_Plane_Plane_Sketches          True
-    ..Show_Cubal_Data                    True
-    ..Show_Cubal_Shapes                  True
-    ..All_Cubal_Items_Enabled            True
+    ..All_Plane_Items_Enabled            False
+    ..Show_Plane_Plane_Sketches          False
+    ..Show_Cubal_Data                    False
+    ..Show_Cubal_Shapes                  False
+    ..All_Cubal_Items_Enabled            False
     ..Hilite_Edit_Violations             False
     ..Edit_Violations_Color 0x00ff00ff	! RGB(255,  0,255)
     ..Pad_Items_Collapsed                True
@@ -622,8 +622,8 @@
     ..Shearingline_Color 0x000000ff	! RGB(255,  0,  0)
     ..Scoringline_Color 0x000000ff	! RGB(255,  0,  0)
     ..Soldermask_Color (
-	0x00ffcc99	! top     RGB(153,204,255)
-	0x006666ff	! bottom  RGB(255,102,102)
+	0x00cc3333	! top     RGB( 51, 51,204)
+	0x000000cc	! bottom  RGB(204,  0,  0)
     )
     ..Soldermask_Ptrnidx                 0	! top
                                          0	! bottom
@@ -634,8 +634,8 @@
     ..Soldermask_Outline                 True 	! top
                                          True 	! bottom
     ..Solderpaste_Color (
-	0x00cc3333	! top     RGB( 51, 51,204)
-	0x000000cc	! bottom  RGB(204,  0,  0)
+	0x00ff66cc	! top     RGB(204,102,255)
+	0x0066ccff	! bottom  RGB(255,204,102)
     )
     ..Solderpaste_Ptrnidx                0	! top
                                          0	! bottom
@@ -2159,436 +2159,436 @@
     ..Net_Color ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x0066ffff	! [3-4] RGB(255,255,255)  RGB(255,255,102)
-	0x00ffffff 0x00ffffff	! [5-6] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [7-8] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [9-10] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [11-12] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [13-14] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [15-16] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [17-18] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [19-20] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [21-22] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [23-24] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [25-26] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [27-28] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [29-30] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [31-32] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [33-34] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [35-36] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [37-38] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [39-40] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [41-42] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [43-44] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [45-46] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [47-48] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [49-50] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [51-52] RGB(255,255,255)  RGB(255,255,255)
+	        -1         -1	! [5-6] undefined  undefined
+	        -1         -1	! [7-8] undefined  undefined
+	        -1         -1	! [9-10] undefined  undefined
+	        -1         -1	! [11-12] undefined  undefined
+	        -1         -1	! [13-14] undefined  undefined
+	        -1         -1	! [15-16] undefined  undefined
+	        -1         -1	! [17-18] undefined  undefined
+	        -1         -1	! [19-20] undefined  undefined
+	        -1         -1	! [21-22] undefined  undefined
+	        -1         -1	! [23-24] undefined  undefined
+	        -1         -1	! [25-26] undefined  undefined
+	        -1         -1	! [27-28] undefined  undefined
+	        -1         -1	! [29-30] undefined  undefined
+	        -1         -1	! [31-32] undefined  undefined
+	        -1         -1	! [33-34] undefined  undefined
+	        -1         -1	! [35-36] undefined  undefined
+	        -1         -1	! [37-38] undefined  undefined
+	        -1         -1	! [39-40] undefined  undefined
+	        -1         -1	! [41-42] undefined  undefined
+	        -1         -1	! [43-44] undefined  undefined
+	        -1         -1	! [45-46] undefined  undefined
+	        -1         -1	! [47-48] undefined  undefined
+	        -1         -1	! [49-50] undefined  undefined
+	        -1         -1	! [51-52] undefined  undefined
 	0x00ffffff 0x00ffffff	! [53-54] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [55-56] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [57-58] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [59-60] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [61-62] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [63-64] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [65-66] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [67-68] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [69-70] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [71-72] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [73-74] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [75-76] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [77-78] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [79-80] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [81-82] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [83-84] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [85-86] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [87-88] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [89-90] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [91-92] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [93-94] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [95-96] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [97-98] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [99-100] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [101-102] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [103-104] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [105-106] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [107-108] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [109-110] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [111-112] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [113-114] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [115-116] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [117-118] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [119-120] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [121-122] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [123-124] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [125-126] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [127-128] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [129-130] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [131-132] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [133-134] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [135-136] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [137-138] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [139-140] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [141-142] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [143-144] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [145-146] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [147-148] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [149-150] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [151-152] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [153-154] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [155-156] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [157-158] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [159-160] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [161-162] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [163-164] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [165-166] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [167-168] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [169-170] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [171-172] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [173-174] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [175-176] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [177-178] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [179-180] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [181-182] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [183-184] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [185-186] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [187-188] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [189-190] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [191-192] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [193-194] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [195-196] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [197-198] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [199-200] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [201-202] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [203-204] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [205-206] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [207-208] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [209-210] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [211-212] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [213-214] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [215-216] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [217-218] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [219-220] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [221-222] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [223-224] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [225-226] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [227-228] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [229-230] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [231-232] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [233-234] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [235-236] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [237-238] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [239-240] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [241-242] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [243-244] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [245-246] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [247-248] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [249-250] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [251-252] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [253-254] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [255-256] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [257-258] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [259-260] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [261-262] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [263-264] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [265-266] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [267-268] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [269-270] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [271-272] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [273-274] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [275-276] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [277-278] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [279-280] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [281-282] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [283-284] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [285-286] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [287-288] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [289-290] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [291-292] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [293-294] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [295-296] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [297-298] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [299-300] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [301-302] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [303-304] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [305-306] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [307-308] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [309-310] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [311-312] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [313-314] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [315-316] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [317-318] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [319-320] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [321-322] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [323-324] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [325-326] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [327-328] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [329-330] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [331-332] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [333-334] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [335-336] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [337-338] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [339-340] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [341-342] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [343-344] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [345-346] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [347-348] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [349-350] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [351-352] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [353-354] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [355-356] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [357-358] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [359-360] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [361-362] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [363-364] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [365-366] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [367-368] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [369-370] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [371-372] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [373-374] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [375-376] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [377-378] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [379-380] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [381-382] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [383-384] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [385-386] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [387-388] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [389-390] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [391-392] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [393-394] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [395-396] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [397-398] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [399-400] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [401-402] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [403-404] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [405-406] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [407-408] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [409-410] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [411-412] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [413-414] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [415-416] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [417-418] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [419-420] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [421-422] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [423-424] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [425-426] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [427-428] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [429-430] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [431-432] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [433-434] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [435-436] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [437-438] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [439-440] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [441-442] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [443-444] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [445-446] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [447-448] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [449-450] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [451-452] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [453-454] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [455-456] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [457-458] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [459-460] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [461-462] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [463-464] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [465-466] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [467-468] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [469-470] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [471-472] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [473-474] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [475-476] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [477-478] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [479-480] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [481-482] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [483-484] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [485-486] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [487-488] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [489-490] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [491-492] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [493-494] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [495-496] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [497-498] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [499-500] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [501-502] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [503-504] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [505-506] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [507-508] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [509-510] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [511-512] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [513-514] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [515-516] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [517-518] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [519-520] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [521-522] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [523-524] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [525-526] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [527-528] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [529-530] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [531-532] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [533-534] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [535-536] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [537-538] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [539-540] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [541-542] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [543-544] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [545-546] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [547-548] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [549-550] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [551-552] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [553-554] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [555-556] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [557-558] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [559-560] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [561-562] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [563-564] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [565-566] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [567-568] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [569-570] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [571-572] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [573-574] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [575-576] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [577-578] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [579-580] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [581-582] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [583-584] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [585-586] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [587-588] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [589-590] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [591-592] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [593-594] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [595-596] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [597-598] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [599-600] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [601-602] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [603-604] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [605-606] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [607-608] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [609-610] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [611-612] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [613-614] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [615-616] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [617-618] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [619-620] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [621-622] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [623-624] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [625-626] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [627-628] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [629-630] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [631-632] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [633-634] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [635-636] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [637-638] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [639-640] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [641-642] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [643-644] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [645-646] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [647-648] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [649-650] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [651-652] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [653-654] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [655-656] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [657-658] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [659-660] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [661-662] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [663-664] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [665-666] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [667-668] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [669-670] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [671-672] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [673-674] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [675-676] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [677-678] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [679-680] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [681-682] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [683-684] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [685-686] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [687-688] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [689-690] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [691-692] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [693-694] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [695-696] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [697-698] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [699-700] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [701-702] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [703-704] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [705-706] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [707-708] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [709-710] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [711-712] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [713-714] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [715-716] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [717-718] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [719-720] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [721-722] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [723-724] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [725-726] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [727-728] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [729-730] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [731-732] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [733-734] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [735-736] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [737-738] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [739-740] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [741-742] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [743-744] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [745-746] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [747-748] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [749-750] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [751-752] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [753-754] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [755-756] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [757-758] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [759-760] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [761-762] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [763-764] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [765-766] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [767-768] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [769-770] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [771-772] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [773-774] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [775-776] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [777-778] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [779-780] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [781-782] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [783-784] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [785-786] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [787-788] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [789-790] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [791-792] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [793-794] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [795-796] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [797-798] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [799-800] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [801-802] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [803-804] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [805-806] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [807-808] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [809-810] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [811-812] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [813-814] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [815-816] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [817-818] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [819-820] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [821-822] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [823-824] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [825-826] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [827-828] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [829-830] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [831-832] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [833-834] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [835-836] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [837-838] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [839-840] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [841-842] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [843-844] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [845-846] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [847-848] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [849-850] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [851-852] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [853-854] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [855-856] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [857-858] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [859-860] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [861-862] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff		! [863] RGB(255,255,255)
+	        -1         -1	! [61-62] undefined  undefined
+	        -1         -1	! [63-64] undefined  undefined
+	        -1         -1	! [65-66] undefined  undefined
+	        -1         -1	! [67-68] undefined  undefined
+	        -1         -1	! [69-70] undefined  undefined
+	        -1         -1	! [71-72] undefined  undefined
+	        -1         -1	! [73-74] undefined  undefined
+	        -1         -1	! [75-76] undefined  undefined
+	        -1         -1	! [77-78] undefined  undefined
+	        -1         -1	! [79-80] undefined  undefined
+	        -1         -1	! [81-82] undefined  undefined
+	        -1         -1	! [83-84] undefined  undefined
+	        -1         -1	! [85-86] undefined  undefined
+	        -1         -1	! [87-88] undefined  undefined
+	        -1         -1	! [89-90] undefined  undefined
+	        -1         -1	! [91-92] undefined  undefined
+	        -1         -1	! [93-94] undefined  undefined
+	        -1         -1	! [95-96] undefined  undefined
+	        -1         -1	! [97-98] undefined  undefined
+	        -1         -1	! [99-100] undefined  undefined
+	        -1         -1	! [101-102] undefined  undefined
+	        -1         -1	! [103-104] undefined  undefined
+	        -1         -1	! [105-106] undefined  undefined
+	        -1         -1	! [107-108] undefined  undefined
+	        -1         -1	! [109-110] undefined  undefined
+	        -1         -1	! [111-112] undefined  undefined
+	        -1         -1	! [113-114] undefined  undefined
+	        -1         -1	! [115-116] undefined  undefined
+	        -1         -1	! [117-118] undefined  undefined
+	        -1         -1	! [119-120] undefined  undefined
+	        -1         -1	! [121-122] undefined  undefined
+	        -1         -1	! [123-124] undefined  undefined
+	        -1         -1	! [125-126] undefined  undefined
+	        -1         -1	! [127-128] undefined  undefined
+	        -1         -1	! [129-130] undefined  undefined
+	        -1         -1	! [131-132] undefined  undefined
+	        -1         -1	! [133-134] undefined  undefined
+	        -1         -1	! [135-136] undefined  undefined
+	        -1         -1	! [137-138] undefined  undefined
+	        -1         -1	! [139-140] undefined  undefined
+	        -1         -1	! [141-142] undefined  undefined
+	        -1         -1	! [143-144] undefined  undefined
+	        -1         -1	! [145-146] undefined  undefined
+	        -1         -1	! [147-148] undefined  undefined
+	        -1         -1	! [149-150] undefined  undefined
+	        -1         -1	! [151-152] undefined  undefined
+	        -1         -1	! [153-154] undefined  undefined
+	        -1         -1	! [155-156] undefined  undefined
+	        -1         -1	! [157-158] undefined  undefined
+	        -1         -1	! [159-160] undefined  undefined
+	        -1         -1	! [161-162] undefined  undefined
+	        -1         -1	! [163-164] undefined  undefined
+	        -1         -1	! [165-166] undefined  undefined
+	        -1         -1	! [167-168] undefined  undefined
+	        -1         -1	! [169-170] undefined  undefined
+	        -1         -1	! [171-172] undefined  undefined
+	        -1         -1	! [173-174] undefined  undefined
+	        -1         -1	! [175-176] undefined  undefined
+	        -1         -1	! [177-178] undefined  undefined
+	        -1         -1	! [179-180] undefined  undefined
+	        -1         -1	! [181-182] undefined  undefined
+	        -1         -1	! [183-184] undefined  undefined
+	        -1         -1	! [185-186] undefined  undefined
+	        -1         -1	! [187-188] undefined  undefined
+	        -1         -1	! [189-190] undefined  undefined
+	        -1         -1	! [191-192] undefined  undefined
+	        -1         -1	! [193-194] undefined  undefined
+	        -1         -1	! [195-196] undefined  undefined
+	        -1         -1	! [197-198] undefined  undefined
+	        -1         -1	! [199-200] undefined  undefined
+	        -1         -1	! [201-202] undefined  undefined
+	        -1         -1	! [203-204] undefined  undefined
+	        -1         -1	! [205-206] undefined  undefined
+	        -1         -1	! [207-208] undefined  undefined
+	        -1         -1	! [209-210] undefined  undefined
+	        -1         -1	! [211-212] undefined  undefined
+	        -1         -1	! [213-214] undefined  undefined
+	        -1         -1	! [215-216] undefined  undefined
+	        -1         -1	! [217-218] undefined  undefined
+	        -1         -1	! [219-220] undefined  undefined
+	        -1         -1	! [221-222] undefined  undefined
+	        -1         -1	! [223-224] undefined  undefined
+	        -1         -1	! [225-226] undefined  undefined
+	        -1         -1	! [227-228] undefined  undefined
+	        -1         -1	! [229-230] undefined  undefined
+	        -1         -1	! [231-232] undefined  undefined
+	        -1         -1	! [233-234] undefined  undefined
+	        -1         -1	! [235-236] undefined  undefined
+	        -1         -1	! [237-238] undefined  undefined
+	        -1         -1	! [239-240] undefined  undefined
+	        -1         -1	! [241-242] undefined  undefined
+	        -1         -1	! [243-244] undefined  undefined
+	        -1         -1	! [245-246] undefined  undefined
+	        -1         -1	! [247-248] undefined  undefined
+	        -1         -1	! [249-250] undefined  undefined
+	        -1         -1	! [251-252] undefined  undefined
+	        -1         -1	! [253-254] undefined  undefined
+	        -1         -1	! [255-256] undefined  undefined
+	        -1         -1	! [257-258] undefined  undefined
+	        -1         -1	! [259-260] undefined  undefined
+	        -1         -1	! [261-262] undefined  undefined
+	        -1         -1	! [263-264] undefined  undefined
+	        -1         -1	! [265-266] undefined  undefined
+	        -1         -1	! [267-268] undefined  undefined
+	        -1         -1	! [269-270] undefined  undefined
+	        -1         -1	! [271-272] undefined  undefined
+	        -1         -1	! [273-274] undefined  undefined
+	        -1         -1	! [275-276] undefined  undefined
+	        -1         -1	! [277-278] undefined  undefined
+	        -1         -1	! [279-280] undefined  undefined
+	        -1         -1	! [281-282] undefined  undefined
+	        -1         -1	! [283-284] undefined  undefined
+	        -1         -1	! [285-286] undefined  undefined
+	        -1         -1	! [287-288] undefined  undefined
+	        -1         -1	! [289-290] undefined  undefined
+	        -1         -1	! [291-292] undefined  undefined
+	        -1         -1	! [293-294] undefined  undefined
+	        -1         -1	! [295-296] undefined  undefined
+	        -1         -1	! [297-298] undefined  undefined
+	        -1         -1	! [299-300] undefined  undefined
+	        -1         -1	! [301-302] undefined  undefined
+	        -1         -1	! [303-304] undefined  undefined
+	        -1         -1	! [305-306] undefined  undefined
+	        -1         -1	! [307-308] undefined  undefined
+	        -1         -1	! [309-310] undefined  undefined
+	        -1         -1	! [311-312] undefined  undefined
+	        -1         -1	! [313-314] undefined  undefined
+	        -1         -1	! [315-316] undefined  undefined
+	        -1         -1	! [317-318] undefined  undefined
+	        -1         -1	! [319-320] undefined  undefined
+	        -1         -1	! [321-322] undefined  undefined
+	        -1         -1	! [323-324] undefined  undefined
+	        -1         -1	! [325-326] undefined  undefined
+	        -1         -1	! [327-328] undefined  undefined
+	        -1         -1	! [329-330] undefined  undefined
+	        -1         -1	! [331-332] undefined  undefined
+	        -1         -1	! [333-334] undefined  undefined
+	        -1         -1	! [335-336] undefined  undefined
+	        -1         -1	! [337-338] undefined  undefined
+	        -1         -1	! [339-340] undefined  undefined
+	        -1         -1	! [341-342] undefined  undefined
+	        -1         -1	! [343-344] undefined  undefined
+	        -1         -1	! [345-346] undefined  undefined
+	        -1         -1	! [347-348] undefined  undefined
+	        -1         -1	! [349-350] undefined  undefined
+	        -1         -1	! [351-352] undefined  undefined
+	        -1         -1	! [353-354] undefined  undefined
+	        -1         -1	! [355-356] undefined  undefined
+	        -1         -1	! [357-358] undefined  undefined
+	        -1         -1	! [359-360] undefined  undefined
+	        -1         -1	! [361-362] undefined  undefined
+	        -1         -1	! [363-364] undefined  undefined
+	        -1         -1	! [365-366] undefined  undefined
+	        -1         -1	! [367-368] undefined  undefined
+	        -1         -1	! [369-370] undefined  undefined
+	        -1         -1	! [371-372] undefined  undefined
+	        -1         -1	! [373-374] undefined  undefined
+	        -1         -1	! [375-376] undefined  undefined
+	        -1         -1	! [377-378] undefined  undefined
+	        -1         -1	! [379-380] undefined  undefined
+	        -1         -1	! [381-382] undefined  undefined
+	        -1         -1	! [383-384] undefined  undefined
+	        -1         -1	! [385-386] undefined  undefined
+	        -1         -1	! [387-388] undefined  undefined
+	        -1         -1	! [389-390] undefined  undefined
+	        -1         -1	! [391-392] undefined  undefined
+	        -1         -1	! [393-394] undefined  undefined
+	        -1         -1	! [395-396] undefined  undefined
+	        -1         -1	! [397-398] undefined  undefined
+	        -1         -1	! [399-400] undefined  undefined
+	        -1         -1	! [401-402] undefined  undefined
+	        -1         -1	! [403-404] undefined  undefined
+	        -1         -1	! [405-406] undefined  undefined
+	        -1         -1	! [407-408] undefined  undefined
+	        -1         -1	! [409-410] undefined  undefined
+	        -1         -1	! [411-412] undefined  undefined
+	        -1         -1	! [413-414] undefined  undefined
+	        -1         -1	! [415-416] undefined  undefined
+	        -1         -1	! [417-418] undefined  undefined
+	        -1         -1	! [419-420] undefined  undefined
+	        -1         -1	! [421-422] undefined  undefined
+	        -1         -1	! [423-424] undefined  undefined
+	        -1         -1	! [425-426] undefined  undefined
+	        -1         -1	! [427-428] undefined  undefined
+	        -1         -1	! [429-430] undefined  undefined
+	        -1         -1	! [431-432] undefined  undefined
+	        -1         -1	! [433-434] undefined  undefined
+	        -1         -1	! [435-436] undefined  undefined
+	        -1         -1	! [437-438] undefined  undefined
+	        -1         -1	! [439-440] undefined  undefined
+	        -1         -1	! [441-442] undefined  undefined
+	        -1         -1	! [443-444] undefined  undefined
+	        -1         -1	! [445-446] undefined  undefined
+	        -1         -1	! [447-448] undefined  undefined
+	        -1         -1	! [449-450] undefined  undefined
+	        -1         -1	! [451-452] undefined  undefined
+	        -1         -1	! [453-454] undefined  undefined
+	        -1         -1	! [455-456] undefined  undefined
+	        -1         -1	! [457-458] undefined  undefined
+	        -1         -1	! [459-460] undefined  undefined
+	        -1         -1	! [461-462] undefined  undefined
+	        -1         -1	! [463-464] undefined  undefined
+	        -1         -1	! [465-466] undefined  undefined
+	        -1         -1	! [467-468] undefined  undefined
+	        -1         -1	! [469-470] undefined  undefined
+	        -1         -1	! [471-472] undefined  undefined
+	        -1         -1	! [473-474] undefined  undefined
+	        -1         -1	! [475-476] undefined  undefined
+	        -1         -1	! [477-478] undefined  undefined
+	        -1         -1	! [479-480] undefined  undefined
+	        -1         -1	! [481-482] undefined  undefined
+	        -1         -1	! [483-484] undefined  undefined
+	        -1         -1	! [485-486] undefined  undefined
+	        -1         -1	! [487-488] undefined  undefined
+	        -1         -1	! [489-490] undefined  undefined
+	        -1         -1	! [491-492] undefined  undefined
+	        -1         -1	! [493-494] undefined  undefined
+	        -1         -1	! [495-496] undefined  undefined
+	        -1         -1	! [497-498] undefined  undefined
+	        -1         -1	! [499-500] undefined  undefined
+	        -1         -1	! [501-502] undefined  undefined
+	        -1         -1	! [503-504] undefined  undefined
+	        -1         -1	! [505-506] undefined  undefined
+	        -1         -1	! [507-508] undefined  undefined
+	        -1         -1	! [509-510] undefined  undefined
+	        -1         -1	! [511-512] undefined  undefined
+	        -1         -1	! [513-514] undefined  undefined
+	        -1         -1	! [515-516] undefined  undefined
+	        -1         -1	! [517-518] undefined  undefined
+	        -1         -1	! [519-520] undefined  undefined
+	        -1         -1	! [521-522] undefined  undefined
+	        -1         -1	! [523-524] undefined  undefined
+	        -1         -1	! [525-526] undefined  undefined
+	        -1         -1	! [527-528] undefined  undefined
+	        -1         -1	! [529-530] undefined  undefined
+	        -1         -1	! [531-532] undefined  undefined
+	        -1         -1	! [533-534] undefined  undefined
+	        -1         -1	! [535-536] undefined  undefined
+	        -1         -1	! [537-538] undefined  undefined
+	        -1         -1	! [539-540] undefined  undefined
+	        -1         -1	! [541-542] undefined  undefined
+	        -1         -1	! [543-544] undefined  undefined
+	        -1         -1	! [545-546] undefined  undefined
+	        -1         -1	! [547-548] undefined  undefined
+	        -1         -1	! [549-550] undefined  undefined
+	        -1         -1	! [551-552] undefined  undefined
+	        -1         -1	! [553-554] undefined  undefined
+	        -1         -1	! [555-556] undefined  undefined
+	        -1         -1	! [557-558] undefined  undefined
+	        -1         -1	! [559-560] undefined  undefined
+	        -1         -1	! [561-562] undefined  undefined
+	        -1         -1	! [563-564] undefined  undefined
+	        -1         -1	! [565-566] undefined  undefined
+	        -1         -1	! [567-568] undefined  undefined
+	        -1         -1	! [569-570] undefined  undefined
+	        -1         -1	! [571-572] undefined  undefined
+	        -1         -1	! [573-574] undefined  undefined
+	        -1         -1	! [575-576] undefined  undefined
+	        -1         -1	! [577-578] undefined  undefined
+	        -1         -1	! [579-580] undefined  undefined
+	        -1         -1	! [581-582] undefined  undefined
+	        -1         -1	! [583-584] undefined  undefined
+	        -1         -1	! [585-586] undefined  undefined
+	        -1         -1	! [587-588] undefined  undefined
+	        -1         -1	! [589-590] undefined  undefined
+	        -1         -1	! [591-592] undefined  undefined
+	        -1         -1	! [593-594] undefined  undefined
+	        -1         -1	! [595-596] undefined  undefined
+	        -1         -1	! [597-598] undefined  undefined
+	        -1         -1	! [599-600] undefined  undefined
+	        -1         -1	! [601-602] undefined  undefined
+	        -1         -1	! [603-604] undefined  undefined
+	        -1         -1	! [605-606] undefined  undefined
+	        -1         -1	! [607-608] undefined  undefined
+	        -1         -1	! [609-610] undefined  undefined
+	        -1         -1	! [611-612] undefined  undefined
+	        -1         -1	! [613-614] undefined  undefined
+	        -1         -1	! [615-616] undefined  undefined
+	        -1         -1	! [617-618] undefined  undefined
+	        -1         -1	! [619-620] undefined  undefined
+	        -1         -1	! [621-622] undefined  undefined
+	        -1         -1	! [623-624] undefined  undefined
+	        -1         -1	! [625-626] undefined  undefined
+	        -1         -1	! [627-628] undefined  undefined
+	        -1         -1	! [629-630] undefined  undefined
+	        -1         -1	! [631-632] undefined  undefined
+	        -1         -1	! [633-634] undefined  undefined
+	        -1         -1	! [635-636] undefined  undefined
+	        -1         -1	! [637-638] undefined  undefined
+	        -1         -1	! [639-640] undefined  undefined
+	        -1         -1	! [641-642] undefined  undefined
+	        -1         -1	! [643-644] undefined  undefined
+	        -1         -1	! [645-646] undefined  undefined
+	        -1         -1	! [647-648] undefined  undefined
+	        -1         -1	! [649-650] undefined  undefined
+	        -1         -1	! [651-652] undefined  undefined
+	        -1         -1	! [653-654] undefined  undefined
+	        -1         -1	! [655-656] undefined  undefined
+	        -1         -1	! [657-658] undefined  undefined
+	        -1         -1	! [659-660] undefined  undefined
+	        -1         -1	! [661-662] undefined  undefined
+	        -1         -1	! [663-664] undefined  undefined
+	        -1         -1	! [665-666] undefined  undefined
+	        -1         -1	! [667-668] undefined  undefined
+	        -1         -1	! [669-670] undefined  undefined
+	        -1         -1	! [671-672] undefined  undefined
+	        -1         -1	! [673-674] undefined  undefined
+	        -1         -1	! [675-676] undefined  undefined
+	        -1         -1	! [677-678] undefined  undefined
+	        -1         -1	! [679-680] undefined  undefined
+	        -1         -1	! [681-682] undefined  undefined
+	        -1         -1	! [683-684] undefined  undefined
+	        -1         -1	! [685-686] undefined  undefined
+	        -1         -1	! [687-688] undefined  undefined
+	        -1         -1	! [689-690] undefined  undefined
+	        -1         -1	! [691-692] undefined  undefined
+	        -1         -1	! [693-694] undefined  undefined
+	        -1         -1	! [695-696] undefined  undefined
+	        -1         -1	! [697-698] undefined  undefined
+	        -1         -1	! [699-700] undefined  undefined
+	        -1         -1	! [701-702] undefined  undefined
+	        -1         -1	! [703-704] undefined  undefined
+	        -1         -1	! [705-706] undefined  undefined
+	        -1         -1	! [707-708] undefined  undefined
+	        -1         -1	! [709-710] undefined  undefined
+	        -1         -1	! [711-712] undefined  undefined
+	        -1         -1	! [713-714] undefined  undefined
+	        -1         -1	! [715-716] undefined  undefined
+	        -1         -1	! [717-718] undefined  undefined
+	        -1         -1	! [719-720] undefined  undefined
+	        -1         -1	! [721-722] undefined  undefined
+	        -1         -1	! [723-724] undefined  undefined
+	        -1         -1	! [725-726] undefined  undefined
+	        -1         -1	! [727-728] undefined  undefined
+	        -1         -1	! [729-730] undefined  undefined
+	        -1         -1	! [731-732] undefined  undefined
+	        -1         -1	! [733-734] undefined  undefined
+	        -1         -1	! [735-736] undefined  undefined
+	        -1         -1	! [737-738] undefined  undefined
+	        -1         -1	! [739-740] undefined  undefined
+	        -1         -1	! [741-742] undefined  undefined
+	        -1         -1	! [743-744] undefined  undefined
+	        -1         -1	! [745-746] undefined  undefined
+	        -1         -1	! [747-748] undefined  undefined
+	        -1         -1	! [749-750] undefined  undefined
+	        -1         -1	! [751-752] undefined  undefined
+	        -1         -1	! [753-754] undefined  undefined
+	        -1         -1	! [755-756] undefined  undefined
+	        -1         -1	! [757-758] undefined  undefined
+	        -1         -1	! [759-760] undefined  undefined
+	        -1         -1	! [761-762] undefined  undefined
+	        -1         -1	! [763-764] undefined  undefined
+	        -1         -1	! [765-766] undefined  undefined
+	        -1         -1	! [767-768] undefined  undefined
+	        -1         -1	! [769-770] undefined  undefined
+	        -1         -1	! [771-772] undefined  undefined
+	        -1         -1	! [773-774] undefined  undefined
+	        -1         -1	! [775-776] undefined  undefined
+	        -1         -1	! [777-778] undefined  undefined
+	        -1         -1	! [779-780] undefined  undefined
+	        -1         -1	! [781-782] undefined  undefined
+	        -1         -1	! [783-784] undefined  undefined
+	        -1         -1	! [785-786] undefined  undefined
+	        -1         -1	! [787-788] undefined  undefined
+	        -1         -1	! [789-790] undefined  undefined
+	        -1         -1	! [791-792] undefined  undefined
+	        -1         -1	! [793-794] undefined  undefined
+	        -1         -1	! [795-796] undefined  undefined
+	        -1         -1	! [797-798] undefined  undefined
+	        -1         -1	! [799-800] undefined  undefined
+	        -1         -1	! [801-802] undefined  undefined
+	        -1         -1	! [803-804] undefined  undefined
+	        -1         -1	! [805-806] undefined  undefined
+	        -1         -1	! [807-808] undefined  undefined
+	        -1         -1	! [809-810] undefined  undefined
+	        -1         -1	! [811-812] undefined  undefined
+	        -1         -1	! [813-814] undefined  undefined
+	        -1         -1	! [815-816] undefined  undefined
+	        -1         -1	! [817-818] undefined  undefined
+	        -1         -1	! [819-820] undefined  undefined
+	        -1         -1	! [821-822] undefined  undefined
+	        -1         -1	! [823-824] undefined  undefined
+	        -1         -1	! [825-826] undefined  undefined
+	        -1         -1	! [827-828] undefined  undefined
+	        -1         -1	! [829-830] undefined  undefined
+	        -1         -1	! [831-832] undefined  undefined
+	        -1         -1	! [833-834] undefined  undefined
+	        -1         -1	! [835-836] undefined  undefined
+	        -1         -1	! [837-838] undefined  undefined
+	        -1         -1	! [839-840] undefined  undefined
+	        -1         -1	! [841-842] undefined  undefined
+	        -1         -1	! [843-844] undefined  undefined
+	        -1         -1	! [845-846] undefined  undefined
+	        -1         -1	! [847-848] undefined  undefined
+	        -1         -1	! [849-850] undefined  undefined
+	        -1         -1	! [851-852] undefined  undefined
+	        -1         -1	! [853-854] undefined  undefined
+	        -1         -1	! [855-856] undefined  undefined
+	        -1         -1	! [857-858] undefined  undefined
+	        -1         -1	! [859-860] undefined  undefined
+	        -1         -1	! [861-862] undefined  undefined
+	        -1		! [863] undefined
     )
     ..Net_Ptrnidx ( 
 	0 0 0 0 0 0 0 0 0 0 	! [1 - 10]
@@ -2858,93 +2858,93 @@
 	F F F ! [861 - 863]
 	)
     ..Net_Outline ( 
-	T T F T F F F F F F 	! [1 - 10]
-	F F F F F F F F F F 	! [11 - 20]
-	F F F F F F F F F F 	! [21 - 30]
-	F F F F F F F F F F 	! [31 - 40]
-	F F F F F F F F F F 	! [41 - 50]
-	F F F F F F F F F F 	! [51 - 60]
-	F F F F F F F F F F 	! [61 - 70]
-	F F F F F F F F F F 	! [71 - 80]
-	F F F F F F F F F F 	! [81 - 90]
-	F F F F F F F F F F 	! [91 - 100]
-	F F F F F F F F F F 	! [101 - 110]
-	F F F F F F F F F F 	! [111 - 120]
-	F F F F F F F F F F 	! [121 - 130]
-	F F F F F F F F F F 	! [131 - 140]
-	F F F F F F F F F F 	! [141 - 150]
-	F F F F F F F F F F 	! [151 - 160]
-	F F F F F F F F F F 	! [161 - 170]
-	F F F F F F F F F F 	! [171 - 180]
-	F F F F F F F F F F 	! [181 - 190]
-	F F F F F F F F F F 	! [191 - 200]
-	F F F F F F F F F F 	! [201 - 210]
-	F F F F F F F F F F 	! [211 - 220]
-	F F F F F F F F F F 	! [221 - 230]
-	F F F F F F F F F F 	! [231 - 240]
-	F F F F F F F F F F 	! [241 - 250]
-	F F F F F F F F F F 	! [251 - 260]
-	F F F F F F F F F F 	! [261 - 270]
-	F F F F F F F F F F 	! [271 - 280]
-	F F F F F F F F F F 	! [281 - 290]
-	F F F F F F F F F F 	! [291 - 300]
-	F F F F F F F F F F 	! [301 - 310]
-	F F F F F F F F F F 	! [311 - 320]
-	F F F F F F F F F F 	! [321 - 330]
-	F F F F F F F F F F 	! [331 - 340]
-	F F F F F F F F F F 	! [341 - 350]
-	F F F F F F F F F F 	! [351 - 360]
-	F F F F F F F F F F 	! [361 - 370]
-	F F F F F F F F F F 	! [371 - 380]
-	F F F F F F F F F F 	! [381 - 390]
-	F F F F F F F F F F 	! [391 - 400]
-	F F F F F F F F F F 	! [401 - 410]
-	F F F F F F F F F F 	! [411 - 420]
-	F F F F F F F F F F 	! [421 - 430]
-	F F F F F F F F F F 	! [431 - 440]
-	F F F F F F F F F F 	! [441 - 450]
-	F F F F F F F F F F 	! [451 - 460]
-	F F F F F F F F F F 	! [461 - 470]
-	F F F F F F F F F F 	! [471 - 480]
-	F F F F F F F F F F 	! [481 - 490]
-	F F F F F F F F F F 	! [491 - 500]
-	F F F F F F F F F F 	! [501 - 510]
-	F F F F F F F F F F 	! [511 - 520]
-	F F F F F F F F F F 	! [521 - 530]
-	F F F F F F F F F F 	! [531 - 540]
-	F F F F F F F F F F 	! [541 - 550]
-	F F F F F F F F F F 	! [551 - 560]
-	F F F F F F F F F F 	! [561 - 570]
-	F F F F F F F F F F 	! [571 - 580]
-	F F F F F F F F F F 	! [581 - 590]
-	F F F F F F F F F F 	! [591 - 600]
-	F F F F F F F F F F 	! [601 - 610]
-	F F F F F F F F F F 	! [611 - 620]
-	F F F F F F F F F F 	! [621 - 630]
-	F F F F F F F F F F 	! [631 - 640]
-	F F F F F F F F F F 	! [641 - 650]
-	F F F F F F F F F F 	! [651 - 660]
-	F F F F F F F F F F 	! [661 - 670]
-	F F F F F F F F F F 	! [671 - 680]
-	F F F F F F F F F F 	! [681 - 690]
-	F F F F F F F F F F 	! [691 - 700]
-	F F F F F F F F F F 	! [701 - 710]
-	F F F F F F F F F F 	! [711 - 720]
-	F F F F F F F F F F 	! [721 - 730]
-	F F F F F F F F F F 	! [731 - 740]
-	F F F F F F F F F F 	! [741 - 750]
-	F F F F F F F F F F 	! [751 - 760]
-	F F F F F F F F F F 	! [761 - 770]
-	F F F F F F F F F F 	! [771 - 780]
-	F F F F F F F F F F 	! [781 - 790]
-	F F F F F F F F F F 	! [791 - 800]
-	F F F F F F F F F F 	! [801 - 810]
-	F F F F F F F F F F 	! [811 - 820]
-	F F F F F F F F F F 	! [821 - 830]
-	F F F F F F F F F F 	! [831 - 840]
-	F F F F F F F F F F 	! [841 - 850]
-	F F F F F F F F F F 	! [851 - 860]
-	F F F ! [861 - 863]
+	T T F T T T T T T T 	! [1 - 10]
+	T T T T T T T T T T 	! [11 - 20]
+	T T T T T T T T T T 	! [21 - 30]
+	T T T T T T T T T T 	! [31 - 40]
+	T T T T T T T T T T 	! [41 - 50]
+	T T F F F F F F F F 	! [51 - 60]
+	T T T T T T T T T T 	! [61 - 70]
+	T T T T T T T T T T 	! [71 - 80]
+	T T T T T T T T T T 	! [81 - 90]
+	T T T T T T T T T T 	! [91 - 100]
+	T T T T T T T T T T 	! [101 - 110]
+	T T T T T T T T T T 	! [111 - 120]
+	T T T T T T T T T T 	! [121 - 130]
+	T T T T T T T T T T 	! [131 - 140]
+	T T T T T T T T T T 	! [141 - 150]
+	T T T T T T T T T T 	! [151 - 160]
+	T T T T T T T T T T 	! [161 - 170]
+	T T T T T T T T T T 	! [171 - 180]
+	T T T T T T T T T T 	! [181 - 190]
+	T T T T T T T T T T 	! [191 - 200]
+	T T T T T T T T T T 	! [201 - 210]
+	T T T T T T T T T T 	! [211 - 220]
+	T T T T T T T T T T 	! [221 - 230]
+	T T T T T T T T T T 	! [231 - 240]
+	T T T T T T T T T T 	! [241 - 250]
+	T T T T T T T T T T 	! [251 - 260]
+	T T T T T T T T T T 	! [261 - 270]
+	T T T T T T T T T T 	! [271 - 280]
+	T T T T T T T T T T 	! [281 - 290]
+	T T T T T T T T T T 	! [291 - 300]
+	T T T T T T T T T T 	! [301 - 310]
+	T T T T T T T T T T 	! [311 - 320]
+	T T T T T T T T T T 	! [321 - 330]
+	T T T T T T T T T T 	! [331 - 340]
+	T T T T T T T T T T 	! [341 - 350]
+	T T T T T T T T T T 	! [351 - 360]
+	T T T T T T T T T T 	! [361 - 370]
+	T T T T T T T T T T 	! [371 - 380]
+	T T T T T T T T T T 	! [381 - 390]
+	T T T T T T T T T T 	! [391 - 400]
+	T T T T T T T T T T 	! [401 - 410]
+	T T T T T T T T T T 	! [411 - 420]
+	T T T T T T T T T T 	! [421 - 430]
+	T T T T T T T T T T 	! [431 - 440]
+	T T T T T T T T T T 	! [441 - 450]
+	T T T T T T T T T T 	! [451 - 460]
+	T T T T T T T T T T 	! [461 - 470]
+	T T T T T T T T T T 	! [471 - 480]
+	T T T T T T T T T T 	! [481 - 490]
+	T T T T T T T T T T 	! [491 - 500]
+	T T T T T T T T T T 	! [501 - 510]
+	T T T T T T T T T T 	! [511 - 520]
+	T T T T T T T T T T 	! [521 - 530]
+	T T T T T T T T T T 	! [531 - 540]
+	T T T T T T T T T T 	! [541 - 550]
+	T T T T T T T T T T 	! [551 - 560]
+	T T T T T T T T T T 	! [561 - 570]
+	T T T T T T T T T T 	! [571 - 580]
+	T T T T T T T T T T 	! [581 - 590]
+	T T T T T T T T T T 	! [591 - 600]
+	T T T T T T T T T T 	! [601 - 610]
+	T T T T T T T T T T 	! [611 - 620]
+	T T T T T T T T T T 	! [621 - 630]
+	T T T T T T T T T T 	! [631 - 640]
+	T T T T T T T T T T 	! [641 - 650]
+	T T T T T T T T T T 	! [651 - 660]
+	T T T T T T T T T T 	! [661 - 670]
+	T T T T T T T T T T 	! [671 - 680]
+	T T T T T T T T T T 	! [681 - 690]
+	T T T T T T T T T T 	! [691 - 700]
+	T T T T T T T T T T 	! [701 - 710]
+	T T T T T T T T T T 	! [711 - 720]
+	T T T T T T T T T T 	! [721 - 730]
+	T T T T T T T T T T 	! [731 - 740]
+	T T T T T T T T T T 	! [741 - 750]
+	T T T T T T T T T T 	! [751 - 760]
+	T T T T T T T T T T 	! [761 - 770]
+	T T T T T T T T T T 	! [771 - 780]
+	T T T T T T T T T T 	! [781 - 790]
+	T T T T T T T T T T 	! [791 - 800]
+	T T T T T T T T T T 	! [801 - 810]
+	T T T T T T T T T T 	! [811 - 820]
+	T T T T T T T T T T 	! [821 - 830]
+	T T T T T T T T T T 	! [831 - 840]
+	T T T T T T T T T T 	! [841 - 850]
+	T T T T T T T T T T 	! [851 - 860]
+	T T T ! [861 - 863]
 	)
     ..Netclass_Color (
 	0x00ffffff	! top     RGB(255,255,255)
@@ -3828,12 +3828,12 @@
 	"Global.Option.FullScreenCursor" "1"
 	"Global.Option.FullScreenCursorDuringMoveOnly" "1"
 	"Global.Option.HalfScreenCursor" "0"
-	"Global.Option.IgnoreSelectionFilter" "1"
+	"Global.Option.IgnoreSelectionFilter" "0"
 	"Global.Option.LinkSketchNetlineDisplayToLayerVisibility" "1"
-	"Global.Option.NetNamesOnTraces" "1"
-	"Global.Option.PlaneDataBehindTraces" "0"
+	"Global.Option.NetNamesOnTraces" "0"
+	"Global.Option.PlaneDataBehindTraces" "1"
 	"Global.Option.Selection.DisplaySolid" "0"
-	"Global.Option.Selection.DynamicHighlight" "0"
+	"Global.Option.Selection.DynamicHighlight" "1"
 	"Global.Option.TuningMeter" "0"
 	"[VirtualGlobal].iDC.3D.Assemblies.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.3D.Components.CollapsedSectionState" "1"
@@ -3857,21 +3857,21 @@
 	"[VirtualGlobal].iDC.Detail Views.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Drill Drawing.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Fabrication Objects.CollapsedSectionState" "0"
-	"[VirtualGlobal].iDC.Favorites.CollapsedSectionState" "1"
+	"[VirtualGlobal].iDC.Favorites.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Global View & Interactive Selection.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Graphics Options.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Grids.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Hazards.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Layer Display.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Materials.CollapsedSectionState" "1"
-	"[VirtualGlobal].iDC.Netlines.CollapsedSectionState" "0"
+	"[VirtualGlobal].iDC.Netlines.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Object Appearance.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Obstructs.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Online.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Panel Objects.CollapsedSectionState" "1"
-	"[VirtualGlobal].iDC.Pins.CollapsedSectionState" "0"
+	"[VirtualGlobal].iDC.Pins.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Place Objects.CollapsedSectionState" "0"
-	"[VirtualGlobal].iDC.Planes.CollapsedSectionState" "0"
+	"[VirtualGlobal].iDC.Planes.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Planning.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.RF Objects.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Route Areas.CollapsedSectionState" "1"
@@ -3879,7 +3879,7 @@
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.User Draft Layers.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Valor-NPI.CollapsedSectionState" "1"
-	"[VirtualGlobal].iDC.Vias.CollapsedSectionState" "0"
+	"[VirtualGlobal].iDC.Vias.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Wirebond Objects.CollapsedSectionState" "1"
     )
     ..Global_String_Options ( 
@@ -3899,7 +3899,7 @@
 	"[VirtualGlobal].iDC.Batch.CollapsedSectionOrder" "4"
 	"[VirtualGlobal].iDC.Board Objects.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.BoardElements.Collapsed" "3"
-	"[VirtualGlobal].iDC.BoardObjects.Collapsed" "2"
+	"[VirtualGlobal].iDC.BoardObjects.Collapsed" "3"
 	"[VirtualGlobal].iDC.BondWires" "3"
 	"[VirtualGlobal].iDC.CapacitiveMaterials" "3"
 	"[VirtualGlobal].iDC.CellItems" "2"
@@ -3917,10 +3917,10 @@
 	"[VirtualGlobal].iDC.DFF Soldermask.CollapsedSectionOrder" "10"
 	"[VirtualGlobal].iDC.DFF Solderpaste.CollapsedSectionOrder" "12"
 	"[VirtualGlobal].iDC.DRC.ColorByHazard" "3"
-	"[VirtualGlobal].iDC.Data.Collapsed" "2"
+	"[VirtualGlobal].iDC.Data.Collapsed" "3"
 	"[VirtualGlobal].iDC.Detail Views.CollapsedSectionOrder" "11"
 	"[VirtualGlobal].iDC.DisplayPatterns" "3"
-	"[VirtualGlobal].iDC.DrawAndFabricationObjects.Collapsed" "2"
+	"[VirtualGlobal].iDC.DrawAndFabricationObjects.Collapsed" "3"
 	"[VirtualGlobal].iDC.Drill Drawing.CollapsedSectionOrder" "9"
 	"[VirtualGlobal].iDC.DynamicNetlineFiltering" "3"
 	"[VirtualGlobal].iDC.Fabrication Objects.CollapsedSectionOrder" "4"
@@ -3928,7 +3928,7 @@
 	"[VirtualGlobal].iDC.Fiducials.Collapsed" "3"
 	"[VirtualGlobal].iDC.FixedAndLockedPatterns" "3"
 	"[VirtualGlobal].iDC.FullScreenCursor.Collapse" "3"
-	"[VirtualGlobal].iDC.General" "2"
+	"[VirtualGlobal].iDC.General" "3"
 	"[VirtualGlobal].iDC.Global View & Interactive Selection.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.Graphics Options.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.Grids.CollapsedSectionOrder" "3"
@@ -3956,7 +3956,7 @@
 	"[VirtualGlobal].iDC.Pins.CollapsedSectionOrder" "5"
 	"[VirtualGlobal].iDC.Place Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.Place.ObstructsAndRooms" "2"
-	"[VirtualGlobal].iDC.PlaceObjects.Collapsed" "3"
+	"[VirtualGlobal].iDC.PlaceObjects.Collapsed" "2"
 	"[VirtualGlobal].iDC.Planes.CollapsedSectionOrder" "7"
 	"[VirtualGlobal].iDC.Planning.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.RF Objects.CollapsedSectionOrder" "10"
@@ -3965,14 +3965,14 @@
 	"[VirtualGlobal].iDC.Route Areas.CollapsedSectionOrder" "9"
 	"[VirtualGlobal].iDC.RouteObjects.Collapsed" "2"
 	"[VirtualGlobal].iDC.RoutePlanning.Collapsed" "3"
-	"[VirtualGlobal].iDC.SelectionAndHighlights" "2"
+	"[VirtualGlobal].iDC.SelectionAndHighlights" "3"
 	"[VirtualGlobal].iDC.Sheet Objects.CollapsedSectionOrder" "7"
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "150"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "121"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "575"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "113"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "271"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "684"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -3987,8 +3987,8 @@
 
 .view "PCB"
     ..extrema
-	(27371216,13095691)		! (xmin, ymin)
-	(190782892,93534016)		! (xmax, ymax)
+	(-55699518,45960797)		! (xmin, ymin)
+	(203477802,165404207)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -4063,7 +4063,7 @@
     ..Thru_Pads_On                       True
     ..Thru_Vias_On                       True
     ..Via_Span_Text_On                   True
-    ..Virtual_Pin_All_Enabled            True
+    ..Virtual_Pin_All_Enabled            False
     ..Virtual_Pin_Ref_On                 True
     ..Netline_From_Rt_Targets_On         False
     ..Materials_On ( 
@@ -4085,7 +4085,7 @@
                                          False	! bottom
     ..Drill_Drawing_Through_On           False
     ..Redline_Layer_On                   False
-    ..All_User_Draft_Enabled             True
+    ..All_User_Draft_Enabled             False
     ..User_Draft_On ( 
 	F F F F F F F F F F 	! [1 - 10]
 	F F F F F F F F F F 	! [11 - 20]
@@ -4128,7 +4128,7 @@
                                          True 	! bottom
     ..Origin_On                          False
     ..Nc_Drill_Origin_On                 False
-    ..Route_Obstruct_On                  True
+    ..Route_Obstruct_On                  False
     ..Pad_Obstruct_On                    False
     ..Rule_Area_On                       False
     ..Drc_Window_On                      True
@@ -4152,35 +4152,35 @@
     ..All_Text_Items_Enabled             True
     ..Pin_Property_Text_On               True
     ..Cell_Property_Text_On              True
-    ..All_Mult_Designers_Enabled         True
-    ..Reserved_Areas_On                  True
-    ..Protected_Areas_On                 True
-    ..Sandboxes_On                       True
+    ..All_Mult_Designers_Enabled         False
+    ..Reserved_Areas_On                  False
+    ..Protected_Areas_On                 False
+    ..Sandboxes_On                       False
     ..Fixture_Outline_On                 True
-    ..All_Xds_Force_Fields_Enabled       True
-    ..This_Xdc_Handle_On                 True
-    ..Other_Xdcs_On                      True
-    ..Force_Field_Conflicts_On           True
+    ..All_Xds_Force_Fields_Enabled       False
+    ..This_Xdc_Handle_On                 False
+    ..Other_Xdcs_On                      False
+    ..Force_Field_Conflicts_On           False
     ..All_Part_Enabled                   True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..Distributed_Part_On                False	! top
                                          False	! bottom
     ..Place_Outline_On                   True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..Insert_Outline_On                  True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..Jumper_Wire_On                     True 	! top
                                          True 	! bottom
     ..Place_Obstruct_On                  True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..Room_On                            True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..Pin_Text_On                        True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..Pin_Type_On                        False	! top
                                          False	! bottom
     ..Part_Hazard_On                     True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..Thermal_Data_On                    True 	! top
                                          True 	! bottom
     ..All_Assy_Enabled                   False	! top
@@ -4226,7 +4226,7 @@
     ..All_Diepin_Enabled                 True 	! top
                                          True 	! bottom
     ..Cluster_2on                        True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..V_Num_Unigroups 395
     ..V_Unigroup_Names ( 
 	"189296"	! [1]
@@ -4668,7 +4668,7 @@
 	F F F F F ! [391 - 395]
 	)
     ..V_Unigroup_Enabled ( 
-	F T F F F F F F F F 	! [1 - 10]
+	F F F F F F F F F F 	! [1 - 10]
 	F F F F F F F F F F 	! [11 - 20]
 	F F F F F F F F F F 	! [21 - 30]
 	F F F F F F F F F F 	! [31 - 40]
@@ -4978,17 +4978,17 @@
 	"Board.FixtureOutline" "d:1" "e:1" "s:1" "se:1" "c:8388608" "a:100" "p:0" "t:0" "o:1"
 	"Board.ManufacturingOutline" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
 	"Board.Obstruct.Part.Top" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Board.Obstruct.Part.Bottom" "d:1" "e:1" "s:1" "se:1" "c:13434624" "a:100" "p:0" "t:0" "o:1"
-	"Board.Obstruct.TestPoint.Top" "d:0" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Board.Obstruct.TestPoint.Bottom" "d:0" "e:1" "s:1" "se:1" "c:16711782" "a:100" "p:0" "t:0" "o:1"
+	"Board.Obstruct.Part.Bottom" "d:1" "e:0" "s:1" "se:0" "c:13434624" "a:100" "p:0" "t:0" "o:1"
+	"Board.Obstruct.TestPoint.Top" "d:0" "e:1" "s:1" "se:0" "c:255" "a:100" "p:0" "t:0" "o:1"
+	"Board.Obstruct.TestPoint.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16711782" "a:100" "p:0" "t:0" "o:1"
 	"Board.Origin.Board" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Board.Origin.NCDrill" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Board.Room.Top" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Board.Room.Bottom" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
+	"Board.Room.Bottom" "d:1" "e:0" "s:1" "se:0" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Board.RouteBorder" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Board.RouteFence.Hard" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Board.RouteFence.Soft" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Board.Sandbox" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
+	"Board.Sandbox" "d:1" "e:0" "s:1" "se:0" "c:32768" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.3" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
@@ -5761,12 +5761,12 @@
 	"Copper.Trace.254" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.255" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Assembly.Part.Outline.Top" "d:1" "e:0" "s:1" "se:0" "c:3394611" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Assembly.Part.Outline.Bottom" "d:1" "e:0" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Assembly.Part.Outline.Top" "d:0" "e:0" "s:1" "se:0" "c:3394611" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Assembly.Part.Outline.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Assembly.Part.Text.PartNumber.Top" "d:0" "e:0" "s:1" "se:0" "c:3394611" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Assembly.Part.Text.PartNumber.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Assembly.Part.Text.RefDes.Top" "d:1" "e:0" "s:1" "se:0" "c:3394611" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Assembly.Part.Text.RefDes.Bottom" "d:1" "e:0" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Assembly.Part.Text.RefDes.Top" "d:0" "e:0" "s:1" "se:0" "c:3394611" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Assembly.Part.Text.RefDes.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Assembly.TestPoint.Text.RefDes.Top" "d:0" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Assembly.TestPoint.Text.RefDes.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.BondWires.Level0.Top" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
@@ -5792,7 +5792,7 @@
 	"Fabrication.DiePins.Level3.Bottom" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.DiePins.Level4.Top" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.DiePins.Level4.Bottom" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.DrillDrawingThrough" "d:0" "e:1" "s:1" "se:1" "c:6724095" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.DrillDrawingThrough" "d:0" "e:0" "s:1" "se:1" "c:6724095" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Hole.Contour" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Hole.Contour.SpanNumbers" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Hole.Mounting" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
@@ -6323,16 +6323,16 @@
 	"Fabrication.Silkscreen.TestPoint.Probe.Bottom" "d:0" "e:0" "s:1" "se:0" "c:65280" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Silkscreen.TestPoint.Text.RefDes.Top" "d:0" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Silkscreen.TestPoint.Text.RefDes.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Soldermask.Top" "d:1" "e:0" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Soldermask.Bottom" "d:1" "e:0" "s:1" "se:1" "c:6711039" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Solderpaste.Top" "d:0" "e:0" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Solderpaste.Bottom" "d:0" "e:0" "s:1" "se:1" "c:204" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Soldermask.Top" "d:1" "e:0" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Soldermask.Bottom" "d:1" "e:0" "s:1" "se:1" "c:204" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Solderpaste.Top" "d:1" "e:0" "s:1" "se:1" "c:16737996" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Solderpaste.Bottom" "d:1" "e:0" "s:1" "se:1" "c:6737151" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Stiffener" "d:1" "e:0" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"General.ActiveClearance" "d:0" "e:1" "s:1" "se:1" "c:16750950" "a:50" "p:0" "t:0" "o:1"
 	"General.Color.Background" "d:1" "e:1" "s:1" "se:1" "c:0" "a:100" "p:0" "t:0" "o:1"
 	"General.Color.Highlight" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"General.Color.Selection" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"General.Color.SelectionShape" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"General.Color.SelectionShape" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"General.Milling.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:33" "t:0" "o:1"
@@ -6589,8 +6589,8 @@
 	"General.Milling.254" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.255" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:33" "t:0" "o:1"
-	"General.MultipleDesigners.TeamPCB.ReservedAreas" "d:1" "e:1" "s:1" "se:1" "c:39219" "a:100" "p:0" "t:0" "o:1"
-	"General.MultipleDesigners.Xtreme.ProtectedAreas" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
+	"General.MultipleDesigners.TeamPCB.ReservedAreas" "d:1" "e:0" "s:1" "se:0" "c:39219" "a:100" "p:0" "t:0" "o:1"
+	"General.MultipleDesigners.Xtreme.ProtectedAreas" "d:1" "e:0" "s:1" "se:0" "c:32768" "a:100" "p:0" "t:0" "o:1"
 	"General.Pattern.Fixed" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:34" "t:0" "o:1"
 	"General.Pattern.Locked" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:2" "t:0" "o:1"
 	"General.Pattern.SemiFixed" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:6" "t:0" "o:1"
@@ -6608,9 +6608,9 @@
 	"Grid.TestPoint" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Grid.Via" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Group.Outline.Top" "d:0" "e:1" "s:1" "se:0" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Group.Outline.Bottom" "d:0" "e:1" "s:1" "se:0" "c:255" "a:100" "p:0" "t:0" "o:1"
+	"Group.Outline.Bottom" "d:0" "e:0" "s:1" "se:0" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Group.Outline.Bubble.Top" "d:0" "e:1" "s:1" "se:0" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Group.Outline.Bubble.Bottom" "d:0" "e:1" "s:1" "se:0" "c:16711680" "a:100" "p:0" "t:0" "o:1"
+	"Group.Outline.Bubble.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16711680" "a:100" "p:0" "t:0" "o:1"
 	"Hazard.Batch.BendAreaProximity" "d:0" "e:1" "s:1" "se:1" "c:16764159" "a:100" "p:0" "t:0" "o:1"
 	"Hazard.Batch.Dangling" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Hazard.Batch.EPViolation" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
@@ -14937,9 +14937,9 @@
 	"Material.TICER_TCR_NiCr_50.254" "d:1" "e:0" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:0"
 	"Material.TICER_TCR_NiCr_50.255" "d:1" "e:0" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:0"
 	"Material.TICER_TCR_NiCr_50.256" "d:1" "e:0" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:0"
-	"MultipleDesigners.ForceFields.Conflicts" "d:1" "e:1" "s:1" "se:1" "c:3355596" "a:100" "p:0" "t:0" "o:1"
-	"MultipleDesigners.ForceFields.Other" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"MultipleDesigners.ForceFields.ThisHandle" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
+	"MultipleDesigners.ForceFields.Conflicts" "d:1" "e:0" "s:1" "se:0" "c:3355596" "a:100" "p:0" "t:0" "o:1"
+	"MultipleDesigners.ForceFields.Other" "d:1" "e:0" "s:1" "se:0" "c:39372" "a:100" "p:0" "t:0" "o:1"
+	"MultipleDesigners.ForceFields.ThisHandle" "d:1" "e:0" "s:1" "se:0" "c:6684774" "a:100" "p:0" "t:0" "o:1"
 	"Netline.Classline" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
 	"Netline.NonOrderedOpen" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Netline.OrderedAll" "d:0" "e:1" "s:1" "se:0" "c:10079487" "a:100" "p:0" "t:0" "o:1"
@@ -14963,24 +14963,24 @@
 	"Part.Cell.Origin.Top" "d:0" "e:0" "s:1" "se:0" "c:6684927" "a:100" "p:0" "t:0" "o:1"
 	"Part.Cell.Origin.Bottom" "d:0" "e:0" "s:1" "se:0" "c:10027263" "a:100" "p:0" "t:0" "o:1"
 	"Part.Hazard.Top" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Part.Hazard.Bottom" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
+	"Part.Hazard.Bottom" "d:1" "e:0" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
 	"Part.InsertionOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
-	"Part.InsertionOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:0" "t:0" "o:1"
+	"Part.InsertionOutline.Bottom" "d:1" "e:0" "s:1" "se:0" "c:10027212" "a:100" "p:0" "t:0" "o:1"
 	"Part.Pin.NumberType.Top" "d:1" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Part.Pin.NumberType.Bottom" "d:1" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Part.Pin.NumberType.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Part.PlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
-	"Part.PlaceOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:2" "t:0" "o:1"
+	"Part.PlaceOutline.Bottom" "d:1" "e:0" "s:1" "se:0" "c:10027212" "a:100" "p:2" "t:0" "o:1"
 	"Part.SpecialPlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Part.SpecialPlaceOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:2" "t:0" "o:1"
 	"Place.Part.Text.RefDes.Top" "d:0" "e:1" "s:1" "se:0" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Place.Part.Text.RefDes.Bottom" "d:0" "e:1" "s:1" "se:0" "c:16711680" "a:100" "p:0" "t:0" "o:1"
+	"Place.Part.Text.RefDes.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16711680" "a:100" "p:0" "t:0" "o:1"
 	"Planning.ReuseArea" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
 	"Sheet.SheetOrigin" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Sheet.SheetOutline" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
 	"Topology.TargetAreaWarnRed" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:34" "t:1" "o:1"
 	"Topology.TargetAreaWarnYellow" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:34" "t:1" "o:1"
-	"User.Dimensions" "d:0" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"User.Measure Drawing" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"User.Dimensions" "d:1" "e:0" "s:1" "se:0" "c:128" "a:100" "p:0" "t:0" "o:1"
+	"User.Measure Drawing" "d:0" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"WirebondObjects.WirebondGuides.Top" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
 	"WirebondObjects.WirebondGuides.Bottom" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
 	"Board.BundlePath.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
@@ -16890,36 +16890,36 @@
 	"Option.BondWiresBottom.Selectable" "1"
 	"Option.BondWiresTop.Enabled" "1"
 	"Option.BondWiresTop.Selectable" "1"
-	"Option.BusPaths.Enabled" "1"
+	"Option.BusPaths.Enabled" "3"
 	"Option.Classlines" "1"
 	"Option.Classlines.Netlines" "1"
-	"Option.ConductiveShapes.Enabled" "1"
-	"Option.ConductiveShapes.Selectable" "1"
-	"Option.CopperBalancing.Data" "1"
-	"Option.CopperBalancing.Enabled" "1"
-	"Option.CopperBalancing.Selectable" "1"
-	"Option.CopperBalancing.Shapes" "1"
+	"Option.ConductiveShapes.Enabled" "0"
+	"Option.ConductiveShapes.Selectable" "3"
+	"Option.CopperBalancing.Data" "3"
+	"Option.CopperBalancing.Enabled" "3"
+	"Option.CopperBalancing.Selectable" "3"
+	"Option.CopperBalancing.Shapes" "3"
 	"Option.DiePinsBottom.Enabled" "1"
 	"Option.DiePinsBottom.Selectable" "1"
 	"Option.DiePinsTop.Enabled" "1"
 	"Option.DiePinsTop.Selectable" "1"
-	"Option.DrawFabObjects.Enabled" "1"
-	"Option.DrawFabObjects.Selectable" "1"
-	"Option.Fabrication.AssemblyItems.Bottom" "3"
-	"Option.Fabrication.AssemblyItems.Top" "3"
+	"Option.DrawFabObjects.Enabled" "0"
+	"Option.DrawFabObjects.Selectable" "3"
+	"Option.Fabrication.AssemblyItems.Bottom" "2"
+	"Option.Fabrication.AssemblyItems.Top" "2"
 	"Option.Fabrication.CellItems.Bottom" "2"
 	"Option.Fabrication.CellItems.Top" "2"
-	"Option.Fabrication.DrillDrawing" "1"
-	"Option.Fabrication.DrillDrawing.Selectable" "1"
+	"Option.Fabrication.DrillDrawing" "3"
+	"Option.Fabrication.DrillDrawing.Selectable" "3"
 	"Option.Fabrication.SilkscreenItems.Bottom" "2"
 	"Option.Fabrication.SilkscreenItems.Top" "2"
-	"Option.Fabrication.TestPointItems.Bottom" "3"
-	"Option.Fabrication.TestPointItems.Top" "3"
-	"Option.FabricationObjects" "0"
+	"Option.Fabrication.TestPointItems.Bottom" "2"
+	"Option.Fabrication.TestPointItems.Top" "2"
+	"Option.FabricationObjects" "3"
 	"Option.FabricationObjects.Bottom" "3"
 	"Option.FabricationObjects.Selectable" "3"
 	"Option.FabricationObjects.Top" "3"
-	"Option.FacementPartsBottom.Selectable" "1"
+	"Option.FacementPartsBottom.Selectable" "3"
 	"Option.FacementPartsTop.Selectable" "1"
 	"Option.Fiducials.Enabled" "1"
 	"Option.Fiducials.Selectable" "1"
@@ -16966,13 +16966,13 @@
 	"Option.Material.TICER_TCR_NiCr_100" "2"
 	"Option.Material.TICER_TCR_NiCr_25" "2"
 	"Option.Material.TICER_TCR_NiCr_50" "2"
-	"Option.Materials.Enabled" "0"
+	"Option.Materials.Enabled" "2"
 	"Option.Materials.Selectable" "3"
 	"Option.MirrorView" "0"
 	"Option.MountingHolePads.Enabled" "1"
-	"Option.MultipleDesigners" "1"
-	"Option.MultipleDesigners.ForceFields.Enabled" "1"
-	"Option.MultipleDesigners.TeamPCB.ShadowMode" "0"
+	"Option.MultipleDesigners" "3"
+	"Option.MultipleDesigners.ForceFields.Enabled" "3"
+	"Option.MultipleDesigners.TeamPCB.ShadowMode" "2"
 	"Option.Netlines.DisplayBetweenMarkedComponents" "0"
 	"Option.Netlines.DisplayFromFilteredNets" "0"
 	"Option.Netlines.DisplayFromMarkedComponents" "0"
@@ -16989,32 +16989,32 @@
 	"Option.PanelObjects.BoardContents.Enabled" "1"
 	"Option.PanelObjects.Enabled" "1"
 	"Option.PanelObjects.Selectable" "1"
-	"Option.Pin.Number.Bottom" "1"
+	"Option.Pin.Number.Bottom" "3"
 	"Option.Pin.Number.Top" "1"
 	"Option.Pin.Through.Enabled" "1"
-	"Option.Pin.Type.Bottom" "0"
+	"Option.Pin.Type.Bottom" "2"
 	"Option.Pin.Type.Top" "0"
 	"Option.Pins.Enabled" "1"
 	"Option.Pins.Selectable" "1"
 	"Option.PlaceObjects" "1"
-	"Option.PlaceObjects.ObstructsAndRooms.Bottom" "1"
-	"Option.PlaceObjects.ObstructsAndRooms.Bottom.Selectable" "1"
+	"Option.PlaceObjects.ObstructsAndRooms.Bottom" "3"
+	"Option.PlaceObjects.ObstructsAndRooms.Bottom.Selectable" "3"
 	"Option.PlaceObjects.ObstructsAndRooms.Top" "1"
 	"Option.PlaceObjects.ObstructsAndRooms.Top.Selectable" "1"
-	"Option.PlaceObjects.PartItems.Bottom" "1"
+	"Option.PlaceObjects.PartItems.Bottom" "3"
 	"Option.PlaceObjects.PartItems.Top" "1"
-	"Option.PlaceObjects.Parts.Bottom" "1"
+	"Option.PlaceObjects.Parts.Bottom" "0"
 	"Option.PlaceObjects.Parts.Top" "1"
 	"Option.PlaceObjects.Selectable" "1"
 	"Option.PlaceObstructsHeight" "1"
-	"Option.Planes.Data.Enabled" "1"
-	"Option.Planes.Data.Fill" "0"
-	"Option.Planes.Enabled" "1"
-	"Option.Planes.Selectable" "1"
-	"Option.Planes.Shape.Enabled" "1"
-	"Option.Planes.Sketch.Enabled" "1"
-	"Option.Planning.Enabled" "1"
-	"Option.Planning.Selectable" "1"
+	"Option.Planes.Data.Enabled" "2"
+	"Option.Planes.Data.Fill" "2"
+	"Option.Planes.Enabled" "0"
+	"Option.Planes.Selectable" "3"
+	"Option.Planes.Shape.Enabled" "3"
+	"Option.Planes.Sketch.Enabled" "3"
+	"Option.Planning.Enabled" "0"
+	"Option.Planning.Selectable" "3"
 	"Option.RFNodes.Enabled" "1"
 	"Option.RFNodes.Selectable" "1"
 	"Option.RFObjects.Enabled" "1"
@@ -17022,21 +17022,21 @@
 	"Option.RFSegments.Selectable" "1"
 	"Option.RFShapes.Enabled" "1"
 	"Option.RFShapes.Selectable" "1"
-	"Option.ReuseArea.Enabled" "1"
+	"Option.ReuseArea.Enabled" "3"
 	"Option.RouteAreas.Enabled" "1"
 	"Option.RouteAreas.Selectable" "1"
 	"Option.RouteObjects.Enabled" "1"
 	"Option.RouteObjects.Selectable" "1"
-	"Option.RouteObstructs.Enabled" "1"
-	"Option.RouteObstructs.Pad.Enabled" "0"
-	"Option.RouteObstructs.Plane.Enabled" "1"
-	"Option.RouteObstructs.Selectable" "1"
-	"Option.RouteObstructs.Trace.Enabled" "1"
-	"Option.RouteObstructs.TraceVia.Enabled" "1"
-	"Option.RouteObstructs.TuningPattern.Enabled" "1"
-	"Option.RouteObstructs.Via.Enabled" "1"
-	"Option.RoutePlanning" "1"
-	"Option.RouteTargets.Enabled" "0"
+	"Option.RouteObstructs.Enabled" "0"
+	"Option.RouteObstructs.Pad.Enabled" "2"
+	"Option.RouteObstructs.Plane.Enabled" "3"
+	"Option.RouteObstructs.Selectable" "3"
+	"Option.RouteObstructs.Trace.Enabled" "3"
+	"Option.RouteObstructs.TraceVia.Enabled" "3"
+	"Option.RouteObstructs.TuningPattern.Enabled" "3"
+	"Option.RouteObstructs.Via.Enabled" "3"
+	"Option.RoutePlanning" "3"
+	"Option.RouteTargets.Enabled" "2"
 	"Option.RuleAreas.Enabled" "0"
 	"Option.SMDPinPads.Enabled" "1"
 	"Option.SelectableInsidePartOutline" "0"
@@ -17046,15 +17046,15 @@
 	"Option.SelectionAndHighlights.EntireNetOnSelect" "0"
 	"Option.SheetObjects.Enabled" "1"
 	"Option.SheetObjects.Selectable" "1"
-	"Option.SketchPlans.Enabled" "1"
-	"Option.SketchPlans.Selectable" "1"
-	"Option.SketchPlans.Visible" "1"
-	"Option.SketchPlans.Width" "1"
-	"Option.Spacers.Enabled" "1"
-	"Option.Spacers.ShadowModeEnabled" "0"
-	"Option.TargetAreas.Enabled" "0"
-	"Option.Teardrops.Enabled" "1"
-	"Option.Teardrops.Selectable" "1"
+	"Option.SketchPlans.Enabled" "3"
+	"Option.SketchPlans.Selectable" "3"
+	"Option.SketchPlans.Visible" "3"
+	"Option.SketchPlans.Width" "3"
+	"Option.Spacers.Enabled" "3"
+	"Option.Spacers.ShadowModeEnabled" "2"
+	"Option.TargetAreas.Enabled" "2"
+	"Option.Teardrops.Enabled" "0"
+	"Option.Teardrops.Selectable" "3"
 	"Option.TextItems.CellProperties.Enabled" "1"
 	"Option.TextItems.CellProperties.Selectable" "1"
 	"Option.TextItems.Enabled" "1"
@@ -17063,13 +17063,13 @@
 	"Option.TextItems.Selectable" "1"
 	"Option.Traces.Enabled" "1"
 	"Option.Traces.Selectable" "1"
-	"Option.UnpackedAreas.Enabled" "1"
-	"Option.UserDraftLayers.Enabled" "1"
-	"Option.UserDraftLayers.Selectable" "1"
+	"Option.UnpackedAreas.Enabled" "3"
+	"Option.UserDraftLayers.Enabled" "3"
+	"Option.UserDraftLayers.Selectable" "3"
 	"Option.ViaPads.Enabled" "1"
 	"Option.Vias.Enabled" "1"
 	"Option.Vias.Selectable" "1"
-	"Option.VirtualPins.Enabled" "1"
+	"Option.VirtualPins.Enabled" "3"
 	"Option.WirebondItems.Enabled" "1"
 	"Option.WirebondItems.Selectable" "1"
 	"Option.WirebondItemsBottom.Enabled" "1"
