@@ -2,31 +2,29 @@
                                     Packager
                                     --------
 
-                       09:38 AM Monday, December 11, 2017
-            Job Name: D:\SpiROSE\PCB\Rotative_base\Rotative_base.prj
+                       10:22 PM Tuesday, December 12, 2017
+Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: "D:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uD:\SpiROSE\PCB\Rotative_base\Default\default.icdb" -k -CleanBuild "-jD:\SpiROSE\PCB\Rotative_base\Rotative_base.prj" "
+        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uC:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb" -k -CleanBuild "-jC:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj" "
 
-     The Common Database is at "D:\SpiROSE\PCB\Rotative_base\Default\default.icdb".
+     The Common Database is at "C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb".
 
      The Root of this design is "Schematic1".
 
      The Front End Snapshot of this design is "DCDV".
 
-     The PCB Design Path of this design is at "D:\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb".
+     The PCB Design Path of this design is at "C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
-      However, "F:\Central_Libs\ENST.lmc" does not exist.
 
      The Disable Repackage status indicates that 
       Repackaging should be allowed.
 
-     A new Target PDB was to be created from the Central Library to satisfy the parts
-      requirements of the iCDB.  However, since there is no Central Library,
-      the Local PDB will be searched to satisfy the parts requirements of the iCDB.
+     A new Target PDB will be created from the Central Library to satisfy the parts
+      requirements of the iCDB.
 
      The AllowAlphaRefDes status indicates that reference
       designators containing all alpha characters should be deleted
@@ -36,10 +34,43 @@
       numbers will be checked for packaged symbols and mapped correctly
       for unpackaged symbols.
 
-     Since a Central Library does not exist, there are no properties that have
-      been checked off in a Property Definition Editor to be found at Library 
-      Manager/Common Properties to be checked for value differences between the
-      PartsDB and the non-null properties on symbols.
+     Properties that have been checked off in the Property Definition Editor
+      found at Library Manager/Common Properties will be checked for value
+      differences between the PartsDB and the non-null properties on symbols.
+     Those properties checked off will be transferred from the PartsDB to all
+      symbols, both packaged and unpackaged.  However, the property values
+      transferred will be limited to the precision specified in the Notation
+      Settings dialog.
+     The following properties were checked off in the Property Definition Editor:
+       "Parametric"
+       "Value2"
+       "Attachment"
+       "Verification Statut"
+       "Commentaire"
+       "Option"
+       "ESR"
+       "Imax"
+       "Cout HT"
+       "Vf"
+       "Code Fournisseur"
+       "Boitier"
+       "Iac max"
+       "Voltage"
+       "Dielectric"
+       "Techno"
+       "IBIS"
+       "Model Suffix"
+       "Part Label"
+       "VHDL Model"
+       "Verilog Model"
+       "Supply Rename"
+       "Description"
+       "Simulation Model"
+       "Ref Designator"
+       "Tolerance"
+       "Part Number"
+       "Value"
+       "Part Name"
 
 	Checking for errors in the ICDB...
 
@@ -47,7 +78,15 @@
 
 
 
-    WARNING: Block Schematic1, Page 1, Symbol XCMP948:
+    WARNING: Block Schematic1, Page 4, Symbol XCMP953:
+     Reference designator removal.
+     The Reference Designator "U" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP954:
      Reference designator removal.
      The Reference Designator "C" is being removed
      from Symbol.  Such 'all alpha' designators that are
@@ -55,7 +94,7 @@
      not intended as a request to be packaged in the same pack with 
      symbols of like designators.
 
-    WARNING: Block Schematic1, Page 1, Symbol XCMP949:
+    WARNING: Block Schematic1, Page 4, Symbol XCMP955:
      Reference designator removal.
      The Reference Designator "C" is being removed
      from Symbol.  Such 'all alpha' designators that are
@@ -63,7 +102,15 @@
      not intended as a request to be packaged in the same pack with 
      symbols of like designators.
 
-    WARNING: Block Schematic1, Page 1, Symbol XCMP950:
+    WARNING: Block Schematic1, Page 4, Symbol XCMP957:
+     Reference designator removal.
+     The Reference Designator "U" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP959:
      Reference designator removal.
      The Reference Designator "C" is being removed
      from Symbol.  Such 'all alpha' designators that are
@@ -71,7 +118,7 @@
      not intended as a request to be packaged in the same pack with 
      symbols of like designators.
 
-    WARNING: Block Schematic1, Page 1, Symbol XCMP951:
+    WARNING: Block Schematic1, Page 4, Symbol XCMP960:
      Reference designator removal.
      The Reference Designator "C" is being removed
      from Symbol.  Such 'all alpha' designators that are
@@ -79,9 +126,177 @@
      not intended as a request to be packaged in the same pack with 
      symbols of like designators.
 
-    WARNING: Block Schematic1, Page 1, Symbol XCMP952:
+    WARNING: Block Schematic1, Page 4, Symbol XCMP961:
      Reference designator removal.
      The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP963:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP964:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP965:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP966:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP967:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP968:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP969:
+     Reference designator removal.
+     The Reference Designator "R" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP970:
+     Reference designator removal.
+     The Reference Designator "U" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP971:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP972:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP973:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP974:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP975:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP976:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP977:
+     Reference designator removal.
+     The Reference Designator "C" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP978:
+     Reference designator removal.
+     The Reference Designator "R" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP979:
+     Reference designator removal.
+     The Reference Designator "R" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP980:
+     Reference designator removal.
+     The Reference Designator "R" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP981:
+     Reference designator removal.
+     The Reference Designator "R" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP983:
+     Reference designator removal.
+     The Reference Designator "L" is being removed
+     from Symbol.  Such 'all alpha' designators that are
+     not instance properties are usually built into symbols and are 
+     not intended as a request to be packaged in the same pack with 
+     symbols of like designators.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP984:
+     Reference designator removal.
+     The Reference Designator "L" is being removed
      from Symbol.  Such 'all alpha' designators that are
      not instance properties are usually built into symbols and are 
      not intended as a request to be packaged in the same pack with 
@@ -91,30 +306,31 @@
 
      Target PDB Name: Integration\LocalPartsDB.pdb
 
-     WARNING:  There are no PartsDB partitions from which to extract parts.
-      Proceeding using the data in the local PartsDB "Integration\LocalPartsDB.pdb".
-
-     Number of Part Numbers: 20
-          Part Numb: 00-0062 -> Vend Part: 00-0062 
-          Part Numb: 00-0084 -> Vend Part: 00-0084 
+     Number of Part Numbers: 24
           Part Numb: 00-0098 -> Vend Part: 00-0098 
+          Part Numb: 01-0160 -> Vend Part: 01-0160 
+          Part Numb: 01-0180 -> Vend Part: 01-0180 
+          Part Numb: 01-0280 -> Vend Part: 01-0280 
           Part Numb: 10-0027 -> Vend Part: 10-0027 
-          Part Numb: 10-0032 -> Vend Part: 10-0032 
+          Part Numb: 10-0036 -> Vend Part: 10-0036 
           Part Numb: 10-0045 -> Vend Part: 10-0045 
+          Part Numb: 10-0049 -> Vend Part: 10-0049 
           Part Numb: 10-0057 -> Vend Part: 10-0057 
-          Part Numb: 10-0068 -> Vend Part: 10-0068 
-          Part Numb: 10-0087 -> Vend Part: 10-0087 
-          Part Numb: 10-0101 -> Vend Part: 10-0101 
-          Part Numb: 10-0102 -> Vend Part: 10-0102 
+          Part Numb: 10-0078 -> Vend Part: 10-0078 
+          Part Numb: 10-0079 -> Vend Part: 10-0079 
           Part Numb: 10-0103 -> Vend Part: 10-0103 
+          Part Numb: 10-0112 -> Vend Part: 10-0112 
           Part Numb: 40-0226 -> Vend Part: 40-0226 
           Part Numb: 40-0227 -> Vend Part: 40-0227 
           Part Numb: 40-0310 -> Vend Part: 40-0310 
+          Part Numb: 40-0324 -> Vend Part: 40-0324 
+          Part Numb: 40-0325 -> Vend Part: 40-0325 
+          Part Numb: 50-0002 -> Vend Part: 50-0002 
           Part Numb: 50-0023 -> Vend Part: 50-0023 
           Part Numb: 70-0002 -> Vend Part: 70-0002 
           Part Numb: 70-0068 -> Vend Part: 70-0068 
           Part Numb: 70-0101 -> Vend Part: 70-0101 
-          Part Numb: 80-0043 -> Vend Part: 80-0043 
+          Part Numb: 80-0072 -> Vend Part: 80-0072 
 
      Number of Part Names: 0
 
@@ -123,7 +339,854 @@
 
      Checking for value differences between non-null symbol properties and PartsDB properties,
       but only for those properties checked off in the Property Definition Editor
-     Since no properties were checked off, no symbols will be checked.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP947:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83,4
+     PartsDB Property: Cout HT = 83.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP945:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83,4
+     PartsDB Property: Cout HT = 83.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP872:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83,4
+     PartsDB Property: Cout HT = 83.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP946:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83,4
+     PartsDB Property: Cout HT = 83.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP716:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83,4
+     PartsDB Property: Cout HT = 83.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP979:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 00-0098
+      Symbol Property: Cout HT = 45m
+     PartsDB Property: Cout HT = 0.045
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP978:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 00-0098
+      Symbol Property: Cout HT = 45m
+     PartsDB Property: Cout HT = 0.045
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP871:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 00-0098
+      Symbol Property: Cout HT = 45m
+     PartsDB Property: Cout HT = 0.045
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP724:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 00-0098
+      Symbol Property: Cout HT = 45m
+     PartsDB Property: Cout HT = 0.045
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP721:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 00-0098
+      Symbol Property: Cout HT = 45m
+     PartsDB Property: Cout HT = 0.045
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP889:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0226
+      Symbol Property: Cout HT = 1,09
+     PartsDB Property: Cout HT = 1.09
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP811:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0023
+      Symbol Property: Cout HT = 430m
+     PartsDB Property: Cout HT = 0.43
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP810:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0023
+      Symbol Property: Cout HT = 430m
+     PartsDB Property: Cout HT = 0.43
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP807:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0023
+      Symbol Property: Cout HT = 430m
+     PartsDB Property: Cout HT = 0.43
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP806:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0023
+      Symbol Property: Cout HT = 430m
+     PartsDB Property: Cout HT = 0.43
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP975:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP974:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP920:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP919:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP918:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP917:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP884:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP883:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP882:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP881:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP880:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP879:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP878:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP877:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP876:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP875:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP874:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP873:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP813:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP812:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP809:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP808:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0057
+      Symbol Property: Cout HT = 14m
+     PartsDB Property: Cout HT = 0.014
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP948:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0045
+      Symbol Property: Cout HT = 2,33
+     PartsDB Property: Cout HT = 2.33
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP856:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0045
+      Symbol Property: Cout HT = 2,33
+     PartsDB Property: Cout HT = 2.33
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP855:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0045
+      Symbol Property: Cout HT = 2,33
+     PartsDB Property: Cout HT = 2.33
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP854:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0045
+      Symbol Property: Cout HT = 2,33
+     PartsDB Property: Cout HT = 2.33
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP817:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0045
+      Symbol Property: Cout HT = 2,33
+     PartsDB Property: Cout HT = 2.33
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP816:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0045
+      Symbol Property: Cout HT = 2,33
+     PartsDB Property: Cout HT = 2.33
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP815:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0045
+      Symbol Property: Cout HT = 2,33
+     PartsDB Property: Cout HT = 2.33
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP814:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0045
+      Symbol Property: Cout HT = 2,33
+     PartsDB Property: Cout HT = 2.33
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP953:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0325
+      Symbol Property: Cout HT = 629m
+     PartsDB Property: Cout HT = 0.629
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP952:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP951:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP950:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP949:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP861:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP860:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP859:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP858:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP838:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP837:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP836:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP835:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP834:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP833:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP832:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP831:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP830:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP829:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP828:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP827:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP826:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP825:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP824:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP823:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP822:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP821:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP820:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP819:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0027
+      Symbol Property: Cout HT = 400m
+     PartsDB Property: Cout HT = 0.4
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP898:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0103
+      Symbol Property: Cout HT = 117m
+     PartsDB Property: Cout HT = 0.117
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP897:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0103
+      Symbol Property: Cout HT = 117m
+     PartsDB Property: Cout HT = 0.117
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP893:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0103
+      Symbol Property: Cout HT = 117m
+     PartsDB Property: Cout HT = 0.117
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP892:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0103
+      Symbol Property: Cout HT = 117m
+     PartsDB Property: Cout HT = 0.117
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP955:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0103
+      Symbol Property: Cout HT = 117m
+     PartsDB Property: Cout HT = 0.117
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP954:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0103
+      Symbol Property: Cout HT = 117m
+     PartsDB Property: Cout HT = 0.117
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP957:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 80-0072
+      Symbol Property: Cout HT = 54,43
+     PartsDB Property: Cout HT = 54.43
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP961:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0078
+      Symbol Property: Cout HT = 730m
+     PartsDB Property: Cout HT = 0.73
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP960:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0078
+      Symbol Property: Cout HT = 730m
+     PartsDB Property: Cout HT = 0.73
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP959:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0078
+      Symbol Property: Cout HT = 730m
+     PartsDB Property: Cout HT = 0.73
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP968:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0079
+      Symbol Property: Cout HT = 870m
+     PartsDB Property: Cout HT = 0.87
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP967:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0079
+      Symbol Property: Cout HT = 870m
+     PartsDB Property: Cout HT = 0.87
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP966:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0079
+      Symbol Property: Cout HT = 870m
+     PartsDB Property: Cout HT = 0.87
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP965:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0079
+      Symbol Property: Cout HT = 870m
+     PartsDB Property: Cout HT = 0.87
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP964:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0079
+      Symbol Property: Cout HT = 870m
+     PartsDB Property: Cout HT = 0.87
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP963:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0079
+      Symbol Property: Cout HT = 870m
+     PartsDB Property: Cout HT = 0.87
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 5, Symbol XCMP922:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 70-0002
+      Symbol Property: Cout HT = 200m
+     PartsDB Property: Cout HT = 0.2
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 5, Symbol XCMP921:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 70-0002
+      Symbol Property: Cout HT = 200m
+     PartsDB Property: Cout HT = 0.2
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 3, Symbol XCMP726:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 70-0101
+      Symbol Property: Cout HT = 5,5
+     PartsDB Property: Cout HT = 5.5
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 3, Symbol XCMP725:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 70-0101
+      Symbol Property: Cout HT = 5,5
+     PartsDB Property: Cout HT = 5.5
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP896:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0227
+      Symbol Property: Cout HT = 1,09
+     PartsDB Property: Cout HT = 1.09
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP969:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 01-0280
+      Symbol Property: Cout HT = 45m
+     PartsDB Property: Cout HT = 0.045
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP970:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0324
+      Symbol Property: Cout HT = 8,63
+     PartsDB Property: Cout HT = 8.63
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP972:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0049
+      Symbol Property: Cout HT = 5,1
+     PartsDB Property: Cout HT = 5.1
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP971:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0049
+      Symbol Property: Cout HT = 5,1
+     PartsDB Property: Cout HT = 5.1
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP973:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0112
+      Symbol Property: Cout HT = 117m
+     PartsDB Property: Cout HT = 0.117
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP977:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0036
+      Symbol Property: Cout HT = 50m
+     PartsDB Property: Cout HT = 0.05
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP976:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0036
+      Symbol Property: Cout HT = 50m
+     PartsDB Property: Cout HT = 0.05
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP980:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 01-0180
+      Symbol Property: Cout HT = 45m
+     PartsDB Property: Cout HT = 0.045
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP981:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 01-0160
+      Symbol Property: Cout HT = 45m
+     PartsDB Property: Cout HT = 0.045
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP984:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0002
+      Symbol Property: Cout HT = 1,9
+     PartsDB Property: Cout HT = 1.9
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP983:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0002
+      Symbol Property: Cout HT = 1,9
+     PartsDB Property: Cout HT = 1.9
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
 
      Checking the validity of the packaging of prepackaged schematic
       symbols.  Only the first error in symbols having the same
@@ -137,8 +1200,8 @@
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 110 Symbols:
-             110  *********
+     Clustering 123 Symbols:
+             123  **********************
              100  **************************************************
               50  **************************************************
      Clustering is Complete
@@ -147,8 +1210,8 @@
 
 
 
-     117 nets were found containing 517 pins
-     105 components were found
+     123 nets were found containing 576 pins
+     118 components were found
 
      Parsed netlist - Augmenting..
 
@@ -158,13 +1221,13 @@
 
      Checking Pins....
 
-     Testing of Packaging has been completed with 6 warnings.
+     Testing of Packaging has been completed with 134 warnings.
       Erroneous results may occur if not fixed.
 
      Updating the Common DataBase
 
      A BAM WasIs List: Integration\CDBBackAnno.bam has been created.
-     There have been 5 reference designator changes.
+     There have been 28 reference designator changes.
      The BAM file will list all of the from-to changes.
 
 The Common DataBase has been successfully updated.
@@ -176,4 +1239,4 @@ The Common DataBase has been successfully updated.
      An unused gate report for gates not in schematic has been written to Integration\UnusedGates.txt
      An augmented pin report has been written to Integration\AugmentedPins.txt.
 
-     There have been 6 warnings.
+     There have been 134 warnings.
