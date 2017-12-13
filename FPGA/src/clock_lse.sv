@@ -1,5 +1,5 @@
 module clock_lse #(
-    parameter INVERSE_PHASE=0
+    parameter INVERSE_PHASE=1
 )(
     input clk_hse,
     input nrst,
