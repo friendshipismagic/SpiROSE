@@ -591,6 +591,14 @@ GLuint loadShader(GLenum type, const std::string &filename) {
 #else
         "#version 330 core\n\n",
 #endif
+/* For some shaders (mainly voxel), some critical operations are done in the
+ * geometry shader (e.g. MVP matrix application). For such shaders, we need to
+ * apply those operations in the vertex shader rather than in the geometry
+ * shader.
+ */
+#ifdef GL_GEOMETRY_SHADER
+        "#define GL_GEOMETRY_SHADER\n\n",
+#endif
         source.c_str()};
     GLuint shader = glCreateShader(type);
     glShaderSource(shader, sizeof(csource) / sizeof(char *), csource, NULL);
