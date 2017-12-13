@@ -76,6 +76,11 @@ lint_renderer-poc:
 build_renderer-poc:
   stage: build
   image: tuetuopay/glfw
+  artifacts:
+    paths:
+      - $RENDERER_POC_DIR/rose-renderer-poc
+    expire_in: 1 hour
+    when: on_success
   script:
     - cd $RENDERER_POC_DIR
     - make build
