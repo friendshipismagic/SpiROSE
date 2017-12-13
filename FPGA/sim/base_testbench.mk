@@ -28,6 +28,7 @@ export VPATH
 CPPFLAGS = -I../src/systemc/ \
 		   -I./obj_dir/ \
 		   -I../lib/ \
+		   -I../tb_src/systemc/ \
 		   -I$(VERILATOR_ROOT) \
 		   -I$(SYSTEMC_INCLUDE)
 

@@ -1,7 +1,8 @@
 MODULE := driver_controller
 DEPS := clock_lse
 
-OBJS += tb_driver_controller.o driver.o driver_cmd.o
+ROOT = tb_$(MODULE)
+OBJS += $(ROOT)/main.o driver.o driver_cmd.o
 
 -include base_testbench.mk
 

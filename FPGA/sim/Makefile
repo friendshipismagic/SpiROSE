@@ -19,6 +19,7 @@ build: gen
 
 %.simu.gen:
 	@echo "== Generate simulation for $* =="
+	mkdir -p tb_$*
 	make -f $*.mk $*.simu
 
 clean:
