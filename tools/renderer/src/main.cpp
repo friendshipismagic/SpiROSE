@@ -66,9 +66,14 @@ GLuint loadShader(GLenum type, const std::string &filename);
 
 typedef struct RenderOptions {
     bool wireframe, pause, pizza, useXor;
+    int nDrawBuffer, nVoxelPass;
 } RenderOptions;
-RenderOptions renderOptions = {
-    .wireframe = false, .pause = false, .pizza = false, .useXor = false};
+RenderOptions renderOptions = {.wireframe = false,
+                               .pause = false,
+                               .pizza = false,
+                               .useXor = false,
+                               .nDrawBuffer = 0,
+                               .nVoxelPass = 0};
 
 bool clicking = false, doDump = false;
 float t = 0.f;
@@ -161,7 +166,16 @@ int main(int argc, char *argv[]) {
 #endif
 
     glViewport(0, 0, fbWidth, fbHeight);
-    // glEnable(GL_DEPTH_TEST);
+
+    // Determine how many draw buffer we can have
+    int maxDrawBufferCount;
+    glGetIntegerv(GL_MAX_COLOR_ATTACHMENTS, &maxDrawBufferCount);
+    renderOptions.nDrawBuffer = std::min(N_BUF_NO_XOR, maxDrawBufferCount);
+    renderOptions.nVoxelPass = N_BUF_NO_XOR / renderOptions.nDrawBuffer;
+    if (renderOptions.nDrawBuffer != N_BUF_NO_XOR)
+        std::cout << "[WARN] GPU only has " << maxDrawBufferCount
+                  << " draw buffers. Voxelization will be done in "
+                  << renderOptions.nVoxelPass << " passes." << std::endl;
 
     // Load suzanne
     tinyobj::attrib_t attrib;
@@ -265,6 +279,7 @@ int main(int argc, char *argv[]) {
     // Framebuffer to store our voxel thingy
     GLuint fbo, texVoxelBufs[N_BUF_NO_XOR];
     glGenFramebuffers(1, &fbo);
+    // We will still generate all textures as we'll swap them at each pass
     glBindFramebuffer(GL_FRAMEBUFFER, fbo);
     glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
     for (int i = 0; i < N_BUF_NO_XOR; i++) {
@@ -278,9 +293,9 @@ int main(int argc, char *argv[]) {
                                GL_TEXTURE_2D, texVoxelBufs[i], 0);
     }
     GLenum drawBuffers[N_BUF_NO_XOR];
-    for (int i = 0; i < N_BUF_NO_XOR; i++)
+    for (int i = 0; i < renderOptions.nDrawBuffer; i++)
         drawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
-    glDrawBuffers(N_BUF_NO_XOR, drawBuffers);
+    glDrawBuffers(renderOptions.nDrawBuffer, drawBuffers);
     // Test framebuffer status
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
         std::cerr << "[ERR] Incomplete framebuffer" << std::endl;
