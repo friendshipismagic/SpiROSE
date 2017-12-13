@@ -150,8 +150,6 @@ struct Monitor : public LatHandler {
             // waitLat(sclk, lat, LATCH_FCWRTEN);
             auto latCount = waitLat(sclk, lat);
             if (latCount != LATCH_FCWRTEN) {
-                std::cout << "Received " << latCount
-                          << " instead of config latch " << std::endl;
                 continue;
             }
 
@@ -336,7 +334,7 @@ int sc_main(int argc, char** argv) {
     sc_report_handler::set_handler(report_handler);
     Verilated::commandArgs(argc, argv);
 
-    const sc_time T(15, SC_NS);
+    const sc_time T(30, SC_NS);
 
     const unsigned int STEPS = 256;
     const unsigned int MAIN_DIV = 4;
