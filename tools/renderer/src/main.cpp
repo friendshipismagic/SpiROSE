@@ -277,28 +277,34 @@ int main(int argc, char *argv[]) {
                        &matProjection[0][0]);
 
     // Framebuffer to store our voxel thingy
-    GLuint fbo, texVoxelBufs[N_BUF_NO_XOR];
-    glGenFramebuffers(1, &fbo);
+    GLuint fbo[N_BUF_NO_XOR / 4], texVoxelBufs[N_BUF_NO_XOR];
+    GLenum drawBuffers[N_BUF_NO_XOR];
+    for (int i = 0; i < N_BUF_NO_XOR; i++)
+        drawBuffers[i] = GL_COLOR_ATTACHMENT0 + (i % renderOptions.nDrawBuffer);
+    glGenFramebuffers(renderOptions.nVoxelPass, fbo);
     // We will still generate all textures as we'll swap them at each pass
-    glBindFramebuffer(GL_FRAMEBUFFER, fbo);
     glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
     for (int i = 0; i < N_BUF_NO_XOR; i++) {
+        glBindFramebuffer(GL_FRAMEBUFFER, fbo[i / renderOptions.nDrawBuffer]);
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_2D, texVoxelBufs[i]);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGBA,
                      GL_UNSIGNED_BYTE, NULL);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0 + i,
-                               GL_TEXTURE_2D, texVoxelBufs[i], 0);
+        glFramebufferTexture2D(GL_FRAMEBUFFER, drawBuffers[i], GL_TEXTURE_2D,
+                               texVoxelBufs[i], 0);
+        // Test framebuffer status
+        if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
+            std::cerr << "[ERR] Incomplete framebuffer "
+                      << (i / renderOptions.nDrawBuffer) << std::endl;
     }
-    GLenum drawBuffers[N_BUF_NO_XOR];
-    for (int i = 0; i < renderOptions.nDrawBuffer; i++)
-        drawBuffers[i] = GL_COLOR_ATTACHMENT0 + i;
-    glDrawBuffers(renderOptions.nDrawBuffer, drawBuffers);
-    // Test framebuffer status
-    if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE)
-        std::cerr << "[ERR] Incomplete framebuffer" << std::endl;
+
+    for (int i = 0; i < renderOptions.nVoxelPass; i++) {
+        glBindFramebuffer(GL_FRAMEBUFFER, fbo[i]);
+        glDrawBuffers(renderOptions.nDrawBuffer,
+                      &drawBuffers[i * renderOptions.nDrawBuffer]);
+    }
 
     // Small square to texture with the final image
     GLuint vaoSquare, vboSquare;
@@ -401,10 +407,13 @@ int main(int argc, char *argv[]) {
         glDisable(GL_DEPTH_TEST);
 
         // Rendering
-        glBindFramebuffer(GL_FRAMEBUFFER, fbo);
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
         glBindVertexArray(vao);
-        glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT, 0);
+        for (int i = 0; i < renderOptions.nVoxelPass; i++) {
+            glBindFramebuffer(GL_FRAMEBUFFER, fbo[i]);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT,
+                           0);
+        }
 
         // Dump the FBO if required
         if (doDump) {
