@@ -2,7 +2,7 @@
                                Forward Annotation
                                ------------------
 
-                       05:26 PM Monday, December 11, 2017
+                      03:07 PM Wednesday, December 13, 2017
    Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -23,7 +23,7 @@ Version:  01.01.00
 
      Target PDB Name: Work\Layout_Temp\PartsDB.pdb
 
-     Number of Part Numbers: 11
+     Number of Part Numbers: 12
           Part Numb: 02-0098 -> Vend Part: 02-0098 
           Part Numb: 10-0058 -> Vend Part: 10-0058 
           Part Numb: 10-0060 -> Vend Part: 10-0060 
@@ -32,6 +32,7 @@ Version:  01.01.00
           Part Numb: 20-0073 -> Vend Part: 20-0073 
           Part Numb: 40-0307 -> Vend Part: 40-0307 
           Part Numb: 40-0320 -> Vend Part: 40-0320 
+          Part Numb: 40-0323 -> Vend Part: 40-0323 
           Part Numb: 50-0005 -> Vend Part: 50-0005 
           Part Numb: 70-0029 -> Vend Part: 70-0029 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
@@ -61,8 +62,9 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 2041 Symbols:
-            2041  ****************************************
+     Clustering 2051 Symbols:
+            2051  
+            2050  **************************************************
             2000  **************************************************
             1950  **************************************************
             1900  **************************************************
@@ -109,8 +111,8 @@ Version:  01.01.00
 
 
 
-     860 nets were found containing 8797 pins
-     2041 components were found
+     856 nets were found containing 8837 pins
+     2051 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -124,7 +126,7 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       05:26 PM Monday, December 11, 2017
+                      03:07 PM Wednesday, December 13, 2017
    Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -137,46 +139,7 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-	WARNING:  "C22" is being forward annotated to "C34".
-
-	WARNING:  "C23" is being forward annotated to "C35".
-
-	WARNING:  "C24" is being forward annotated to "C36".
-
-	WARNING:  "C25" is being forward annotated to "C37".
-
-	WARNING:  "C26" is being forward annotated to "C38".
-
-	WARNING:  "C27" is being forward annotated to "C39".
-
-	WARNING:  "C30" is being forward annotated to "C42".
-
-	WARNING:  "C28" is being forward annotated to "C40".
-
-	WARNING:  "C29" is being forward annotated to "C41".
-
-	WARNING:  "C31" is being forward annotated to "C43".
-
-	WARNING:  "C32" is being forward annotated to "C44".
-
-	WARNING:  "C33" is being forward annotated to "C45".
-
-     The following 12 components have not been placed:
-
-        C22
-        C23
-        C24
-        C25
-        C26
-        C27
-        C28
-        C29
-        C30
-        C31
-        C32
-        C33
-
-     Netload completed successfully with 12 warning(s).
+     Netload completed successfully with 0 warning(s).
      
      Back Annotating...
 

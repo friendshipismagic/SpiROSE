@@ -2,10 +2,10 @@
 ! change it at your own peril
 
 !
-! Created 12/11/17 18:40:30
+! Created 12/13/17 19:15:29
 !
 
-.Global_Constants 863 2
+.Global_Constants 859 2
     ..File_Type Graphics_Settings
     ..Version Version_7
     ..Num_Views 1
@@ -15,7 +15,7 @@
 	0x00000003	! showCmd
 	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
-	(-1410, 119) (-228,719)	! ..rcNormalPosition
+	(1600, 45) (2782,645)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             True
     ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
@@ -514,7 +514,7 @@
     ..Netline_All_Open_Color 0x00c0c0c0	! RGB(192,192,192)
     ..Netline_Trace_Ends_On              True
     ..Classline_Color 0x00ff00cc	! RGB(204,  0,255)
-    ..Netline_Of_Classline_On            True
+    ..Netline_Of_Classline_On            False
     ..Show_Plane_Data                    True
     ..Show_Plane_Shapes                  True
     ..Show_Fill_Plane_Shapes             False
@@ -1465,15 +1465,15 @@
 	"FPGA_GCLK"	! [180]
 	"FPGA_LAT"	! [181]
 	"FPGA_SCLK"	! [182]
-	"FPGA_SOUT"	! [183]
+	"FPGA_SOUT_1"	! [183]
 	"GCLK_DRV_TP"	! [184]
 	"LAT_DRV_TP"	! [185]
 	"SCLK_DRV_TP"	! [186]
 	"SOUT_MUX_0"	! [187]
 	"SOUT_MUX_1"	! [188]
 	"SOUT_MUX_2"	! [189]
-	"SOUT_MUX_3"	! [190]
-	"SOUT_MUX_4"	! [191]
+	"SOUT_MUX_EN"	! [190]
+	"FPGA_SOUT_0"	! [191]
 	"UB1D0_B0"	! [192]
 	"UB1D0_B1"	! [193]
 	"UB1D0_B2"	! [194]
@@ -2134,18 +2134,14 @@
 	"XSIG071069"	! [849]
 	"XSIG080506"	! [850]
 	"XSIG080507"	! [851]
-	"XSIG090168"	! [852]
-	"XSIG090169"	! [853]
-	"XSIG090185"	! [854]
-	"XSIG090186"	! [855]
-	"XSIG090280"	! [856]
-	"XSIG090281"	! [857]
-	"XSIG090299"	! [858]
-	"XSIG090300"	! [859]
-	"XSIG090318"	! [860]
-	"XSIG090319"	! [861]
-	"XSIG090337"	! [862]
-	"XSIG090338"	! [863]
+	"XSIG090169"	! [852]
+	"XSIG090186"	! [853]
+	"XSIG090281"	! [854]
+	"XSIG090300"	! [855]
+	"XSIG090319"	! [856]
+	"XSIG090338"	! [857]
+	"+3.3V"	! [858]
+	"MUX_TP_IN"	! [859]
     )
     ..Netclass_Names ( 
 	"(Default)"	! [1]
@@ -2586,9 +2582,7 @@
 	0x00ffffff 0x00ffffff	! [853-854] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [855-856] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [857-858] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [859-860] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [861-862] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff		! [863] RGB(255,255,255)
+	0x00ffffff		! [859] RGB(255,255,255)
     )
     ..Net_Ptrnidx ( 
 	0 0 0 0 0 0 0 0 0 0 	! [1 - 10]
@@ -2676,8 +2670,7 @@
 	0 0 0 0 0 0 0 0 0 0 	! [821 - 830]
 	0 0 0 0 0 0 0 0 0 0 	! [831 - 840]
 	0 0 0 0 0 0 0 0 0 0 	! [841 - 850]
-	0 0 0 0 0 0 0 0 0 0 	! [851 - 860]
-	0 0 0 ! [861 - 863]
+	0 0 0 0 0 0 0 0 0 ! [851 - 859]
 	)
     ..Net_Alpha ( 
 	100 100 100 100 100 100 100 100 100 100 	! [1 - 10]
@@ -2765,8 +2758,7 @@
 	100 100 100 100 100 100 100 100 100 100 	! [821 - 830]
 	100 100 100 100 100 100 100 100 100 100 	! [831 - 840]
 	100 100 100 100 100 100 100 100 100 100 	! [841 - 850]
-	100 100 100 100 100 100 100 100 100 100 	! [851 - 860]
-	100 100 100 ! [861 - 863]
+	100 100 100 100 100 100 100 100 100 ! [851 - 859]
 	)
     ..Net_Nopaque ( 
 	F F F F F F F F F F 	! [1 - 10]
@@ -2854,8 +2846,7 @@
 	F F F F F F F F F F 	! [821 - 830]
 	F F F F F F F F F F 	! [831 - 840]
 	F F F F F F F F F F 	! [841 - 850]
-	F F F F F F F F F F 	! [851 - 860]
-	F F F ! [861 - 863]
+	F F F F F F F F F ! [851 - 859]
 	)
     ..Net_Outline ( 
 	T T F T F F F F F F 	! [1 - 10]
@@ -2943,8 +2934,7 @@
 	F F F F F F F F F F 	! [821 - 830]
 	F F F F F F F F F F 	! [831 - 840]
 	F F F F F F F F F F 	! [841 - 850]
-	F F F F F F F F F F 	! [851 - 860]
-	F F F ! [861 - 863]
+	F F F F F F F F F ! [851 - 859]
 	)
     ..Netclass_Color (
 	0x00ffffff	! top     RGB(255,255,255)
@@ -3069,8 +3059,7 @@
 	F F F F F F F F F F 	! [821 - 830]
 	F F F F F F F F F F 	! [831 - 840]
 	F F F F F F F F F F 	! [841 - 850]
-	F F F F F F F F F F 	! [851 - 860]
-	F F F ! [861 - 863]
+	F F F F F F F F F ! [851 - 859]
 	)
     ..Netclass_On                        False	! top
                                          False	! bottom
@@ -3946,7 +3935,7 @@
 	"[VirtualGlobal].iDC.NetClasses.Collapsed" "3"
 	"[VirtualGlobal].iDC.Netlines.Collapsed" "3"
 	"[VirtualGlobal].iDC.Netlines.CollapsedSectionOrder" "6"
-	"[VirtualGlobal].iDC.NetlinesFrom" "3"
+	"[VirtualGlobal].iDC.NetlinesFrom" "2"
 	"[VirtualGlobal].iDC.Nets.Collapsed" "3"
 	"[VirtualGlobal].iDC.Object Appearance.CollapsedSectionOrder" "6"
 	"[VirtualGlobal].iDC.Obstructs.CollapsedSectionOrder" "8"
@@ -3970,9 +3959,9 @@
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "150"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "121"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "575"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "148"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "163"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "533"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -3987,8 +3976,8 @@
 
 .view "PCB"
     ..extrema
-	(27371216,13095691)		! (xmin, ymin)
-	(190782892,93534016)		! (xmax, ymax)
+	(37047048,38319343)		! (xmin, ymin)
+	(74648107,56828218)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -4055,11 +4044,11 @@
 	T T T T T T T T T T 	! [241 - 250]
 	T T T T T T ! [251 - 256]
 	)
-    ..Netline_All_Enabled                True
+    ..Netline_All_Enabled                False
     ..Netline_Ordered_Routed_On          False
-    ..Netline_Ordered_Open_On            True
-    ..Netline_All_Open_On                True
-    ..Classline_On                       True
+    ..Netline_Ordered_Open_On            False
+    ..Netline_All_Open_On                False
+    ..Classline_On                       False
     ..Thru_Pads_On                       True
     ..Thru_Vias_On                       True
     ..Via_Span_Text_On                   True
@@ -14940,10 +14929,10 @@
 	"MultipleDesigners.ForceFields.Conflicts" "d:1" "e:1" "s:1" "se:1" "c:3355596" "a:100" "p:0" "t:0" "o:1"
 	"MultipleDesigners.ForceFields.Other" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
 	"MultipleDesigners.ForceFields.ThisHandle" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Netline.Classline" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Netline.NonOrderedOpen" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Netline.OrderedAll" "d:0" "e:1" "s:1" "se:0" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Netline.OrderedOpen" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
+	"Netline.Classline" "d:1" "e:0" "s:1" "se:0" "c:16711884" "a:100" "p:0" "t:0" "o:1"
+	"Netline.NonOrderedOpen" "d:1" "e:0" "s:1" "se:0" "c:12632256" "a:100" "p:0" "t:0" "o:1"
+	"Netline.OrderedAll" "d:0" "e:0" "s:1" "se:0" "c:10079487" "a:100" "p:0" "t:0" "o:1"
+	"Netline.OrderedOpen" "d:1" "e:0" "s:1" "se:0" "c:13408767" "a:100" "p:0" "t:0" "o:1"
 	"Netline.SLI.1" "d:0" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Netline.SLI.2" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Netline.SLI.3" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
@@ -16190,15 +16179,15 @@
 	"[Net].FPGA_GCLK" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].FPGA_LAT" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].FPGA_SCLK" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].FPGA_SOUT" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_SOUT_1" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].GCLK_DRV_TP" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].LAT_DRV_TP" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].SCLK_DRV_TP" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].SOUT_MUX_0" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].SOUT_MUX_1" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].SOUT_MUX_2" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].SOUT_MUX_3" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].SOUT_MUX_4" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].SOUT_MUX_EN" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_SOUT_0" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB1D0_B0" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB1D0_B1" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB1D0_B2" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -16859,18 +16848,14 @@
 	"[Net].XSIG071069" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG080506" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG080507" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG090168" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG090169" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG090185" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG090186" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG090280" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG090281" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG090299" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG090300" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG090318" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG090319" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG090337" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG090338" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].+3.3V" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_TP_IN" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[NetClass].(Default)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[NetClass].(SpacerNetClass)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[ConstraintClass].(All)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
@@ -16891,8 +16876,8 @@
 	"Option.BondWiresTop.Enabled" "1"
 	"Option.BondWiresTop.Selectable" "1"
 	"Option.BusPaths.Enabled" "1"
-	"Option.Classlines" "1"
-	"Option.Classlines.Netlines" "1"
+	"Option.Classlines" "3"
+	"Option.Classlines.Netlines" "3"
 	"Option.ConductiveShapes.Enabled" "1"
 	"Option.ConductiveShapes.Selectable" "1"
 	"Option.CopperBalancing.Data" "1"
@@ -16973,16 +16958,16 @@
 	"Option.MultipleDesigners" "1"
 	"Option.MultipleDesigners.ForceFields.Enabled" "1"
 	"Option.MultipleDesigners.TeamPCB.ShadowMode" "0"
-	"Option.Netlines.DisplayBetweenMarkedComponents" "0"
-	"Option.Netlines.DisplayFromFilteredNets" "0"
-	"Option.Netlines.DisplayFromMarkedComponents" "0"
-	"Option.Netlines.DisplayFromMarkedNets" "0"
-	"Option.Netlines.DynamicFiltering" "0"
+	"Option.Netlines.DisplayBetweenMarkedComponents" "2"
+	"Option.Netlines.DisplayFromFilteredNets" "2"
+	"Option.Netlines.DisplayFromMarkedComponents" "2"
+	"Option.Netlines.DisplayFromMarkedNets" "3"
+	"Option.Netlines.DynamicFiltering" "2"
 	"Option.Netlines.DynamicFiltering.BothEnds" "3"
 	"Option.Netlines.DynamicFiltering.Freeze" "2"
 	"Option.Netlines.DynamicFiltering.OneEnd" "2"
-	"Option.Netlines.Enabled" "1"
-	"Option.Netlines.Selectable" "1"
+	"Option.Netlines.Enabled" "0"
+	"Option.Netlines.Selectable" "3"
 	"Option.NetlinesForSelectedItems.Enabled" "1"
 	"Option.Pad.Through.AllSameColor" "0"
 	"Option.Pad.Via.AllSameColor" "0"
@@ -17047,8 +17032,8 @@
 	"Option.SheetObjects.Enabled" "1"
 	"Option.SheetObjects.Selectable" "1"
 	"Option.SketchPlans.Enabled" "1"
-	"Option.SketchPlans.Selectable" "1"
-	"Option.SketchPlans.Visible" "1"
+	"Option.SketchPlans.Selectable" "3"
+	"Option.SketchPlans.Visible" "3"
 	"Option.SketchPlans.Width" "1"
 	"Option.Spacers.Enabled" "1"
 	"Option.Spacers.ShadowModeEnabled" "0"
