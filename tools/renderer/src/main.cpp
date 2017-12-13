@@ -218,7 +218,7 @@ int main(int argc, char *argv[]) {
     // Send vertex to shader
     struct Uniform {
         struct {
-            GLint position, time, matM, matV, matP, doPizza;
+            GLint position, time, matM, matV, matP, doPizza, nPass;
         } voxel;
         struct {
             GLint matM, matV, matP, doPizza;
@@ -246,6 +246,7 @@ int main(int argc, char *argv[]) {
         u->voxel.matV = glGetUniformLocation(s->voxel, "matView");
         u->voxel.matP = glGetUniformLocation(s->voxel, "matProjection");
         u->voxel.doPizza = glGetUniformLocation(s->voxel, "doPizza");
+        u->voxel.nPass = glGetUniformLocation(s->voxel, "nPass");
 
         u->generate.matM = glGetUniformLocation(s->generate, "matModel");
         u->generate.matV = glGetUniformLocation(s->generate, "matView");
@@ -411,6 +412,7 @@ int main(int argc, char *argv[]) {
         for (int i = 0; i < renderOptions.nVoxelPass; i++) {
             glBindFramebuffer(GL_FRAMEBUFFER, fbo[i]);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            glUniform1i(uniforms[renderOptions.useXor].voxel.nPass, i);
             glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT,
                            0);
         }

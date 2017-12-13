@@ -21,6 +21,8 @@ layout(location = 6) out vec4 fragColor6;
 layout(location = 7) out vec4 fragColor7;
 #endif
 
+uniform int nPass;
+
 // Used in non-xor mode
 void setOutput(in float z, in int layer, out vec4 frag) {
     frag.r = step(z, (float(layer) * 4.0 + 0.0) / 32.0) / 255.0;
@@ -35,10 +37,11 @@ void main() {
     // Camera's pointing down, so z is actually upside down
     float z = -fPosition.z / 2.0 + 0.5;
 
-    setOutput(z, 0, fragColor0);
-    setOutput(z, 1, fragColor1);
-    setOutput(z, 2, fragColor2);
-    setOutput(z, 3, fragColor3);
+    int offset = nPass * N_DRAW_BUFFER;
+    setOutput(z, 0 + offset, fragColor0);
+    setOutput(z, 1 + offset, fragColor1);
+    setOutput(z, 2 + offset, fragColor2);
+    setOutput(z, 3 + offset, fragColor3);
 #if N_DRAW_BUFFER > 4
     setOutput(z, 4, fragColor4);
 #endif
