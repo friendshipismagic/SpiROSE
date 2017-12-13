@@ -23,7 +23,7 @@ struct Monitor : public LatHandler {
         SC_METHOD(copySinToArray);
         sensitive << sin;
 
-        SC_THREAD(checkData);
+        SC_THREAD(checkThatLatIsntMovedOnSCLK);
 
         for (int i = 0; i < DRIVER_NB; ++i) {
             std::ostringstream stream;
@@ -184,6 +184,19 @@ struct Monitor : public LatHandler {
                 }
                 latCount += 1;
             }
+        }
+    }
+
+    void checkThatLatIsntMovedOnSCLK() {
+        sc_event_or_list evtList;
+        evtList |= lat.posedge_event();
+        evtList |= lat.negedge_event();
+        while (true) {
+            // Wait any event of lat (rise or fall)
+            wait(evtList);
+            if (sclk)
+                SC_REPORT_ERROR(
+                    "LAT", "SCLK shouldn't be on when LAT is changing state");
         }
     }
 

@@ -1,7 +1,7 @@
 export SYSTEMC_INCLUDE ?= /usr/include/
 export SYSTEMC_LIBDIR ?= /usr/lib/
 
-MODULES = driver_controller
+MODULES := driver_controller
 
 SIMULATIONS = $(addsuffix .simu,$(MODULES))
 TESTS = $(addsuffix .test,$(MODULES))
@@ -22,7 +22,11 @@ build: gen
 	mkdir -p tb_$*
 	make -f $*.mk $*.simu
 
-clean:
+clean: $(addsuffix .clean,$(MODULES))
 	rm -rf obj_dir/
 	rm -f $(SIMULATIONS)
 	rm -f *.o *.d
+
+%.clean:
+	make -f $*.mk clean
+

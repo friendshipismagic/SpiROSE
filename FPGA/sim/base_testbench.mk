@@ -16,14 +16,11 @@ DEPSFILES = $(subst .o,.d,$(OBJS))
 
 all: $(MODULE).simu
 
--include $(DEPSFILES)
-
 LDFLAGS = -L$(SYSTEMC_LIBDIR)
 LINK.o = g++ $(LDFLAGS) $(TARGET_ARCH)
 LIBS = -lsystemc
 
 VPATH = ../src/ ../src/systemc ../tb_src/ ../tb_src/systemc ./obj_dir/ $(VERILATOR_ROOT) ../lib
-export VPATH
 
 CPPFLAGS = -I../src/systemc/ \
 		   -I./obj_dir/ \
@@ -41,4 +38,6 @@ obj_dir/V%.cpp obj_dir/V%__Syms.cpp obj_dir/V%.h: %.sv
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(TARGET_ARCH) -MM -MP $^ -MF $@
 
 clean:
-	rm -rf $(DEPSFILES) $(OBJS)
+	rm -rf $(DEPSFILES) $(OBJS) $(MODULE).simu
+
+-include $(DEPSFILES)
