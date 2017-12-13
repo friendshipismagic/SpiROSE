@@ -195,7 +195,7 @@ clk_66 main_clk_66 (
 
 // 33 MHz clock generator
 logic clock_33;
-clock_lse_inverse #(.INVERSE_PHASE(0)) clk_lse_inverse_gen (
+clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_hse(clock_66),
     .nrst(nrst),
     .clk_lse(clock_33)
@@ -214,6 +214,8 @@ assign gpio_1[35]   = gclk;
 assign gpio_1[33]   = sclk;
 assign gpio_1[31]   = lat;
 assign gpio_1[29]   = sin[0];
+assign gpio_1[21] = clock_66;
+assign gpio_1[19] = clock_33;
 /*assign gpio_1[28]   = sin[0];
 assign gpio_1[27]   = sin[0];
 assign gpio_1[26]   = sin[0];

@@ -36,7 +36,7 @@ module driver_controller #(
  * timing requirement of the driver.
  */
 logic clk_lse_quad;
-always_ff @(posedge clk_hse)
+always_ff @(negedge clk_hse)
     if(~nrst) begin
         clk_lse_quad <= '0;
     end else begin
@@ -63,7 +63,7 @@ always_ff @(posedge clk_hse)
  */
 enum logic[2:0] {STALL, PREPARE_CONFIG, CONFIG, STREAM, LOD, PREPARE_DUMP_CONFIG, DUMP_CONFIG, WAIT} driver_state;
 logic [7:0] driver_state_counter;
-always_ff @(posedge clk_lse)
+always_ff @(posedge clk_lse or negedge nrst)
     if(~nrst) begin
         driver_state <= STALL;
         driver_state_counter <= '0;
@@ -150,7 +150,7 @@ always_ff @(posedge clk_lse)
  * count this extra one cycle.
  */
 logic [10:0] segment_counter;
-always_ff @(posedge clk_lse)
+always_ff @(posedge clk_lse or negedge nrst)
     if(~nrst) begin
         segment_counter <= '0;
     end else begin
@@ -186,7 +186,7 @@ assign blanking_period = nrst & (segment_counter < BLANKING_TIME);
  * count this extra one cycle.
  */
 logic [7:0] shift_register_counter;
-always_ff @(posedge clk_lse)
+always_ff @(posedge clk_lse or negedge nrst)
     if(~nrst) begin
         shift_register_counter <= '0;
     end else begin

@@ -44,7 +44,7 @@ driver_controller #(.BLANKING_TIME(72)) dut (
     .serialized_conf(serialized_conf)
 );
 
-clock_lse_inverse #(.INVERSE_PHASE(0)) clk_lse_inverse_gen (
+clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_hse(clk_66),
     .nrst(nrst),
     .clk_lse(clk_33)
