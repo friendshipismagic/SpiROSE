@@ -1,14 +1,24 @@
 #include <systemc.h>
 #include <verilated.h>
+#include <array>
 #include <cstdint>
 #include <memory>
 #include <sstream>
 
+#include "Vclock_lse.h"
 #include "Vdriver_controller.h"
+
 #include "driver.hpp"
 #include "driver_cmd.h"
 
 constexpr int DRIVER_NB = 30;
+
+static const std::array<std::string, 5> severity2str = {
+    "INFO", "WARNING", "ERROR", "FATAL", "UNKNOWN_SEVERITY"};
+
+static std::array<int, 5> reportsCount;
+
+static const char* TIMINGS = "timing";
 
 // TODO: pass event instead of clk
 struct LatHandler : public sc_module {
@@ -100,7 +110,7 @@ struct Monitor : public LatHandler {
 
     void runTests() {
         sc_spawn(sc_bind(&Monitor::checkTimingRequirementsLat, this,
-                         (int)LATCH_LATGS, sc_time(80, SC_NS)));
+                         LATCH_LATGS, sc_time(80, SC_NS)));
         sc_spawn(sc_bind(&Monitor::checkTimingRequirementsLat, this,
                          LATCH_READFC, sc_time(80, SC_NS)));
         sc_spawn(sc_bind(&Monitor::checkTimingRequirementsLat, this,
@@ -126,14 +136,14 @@ struct Monitor : public LatHandler {
     }
 
     void checkConfigProtocol() {
-        std::cout << "[TEST]: starting configuration protocol checker processus"
-                  << std::endl;
+        SC_REPORT_INFO("monitor",
+                       "starting configuration protocol checker processus");
 
         m_checkNoGCLKDuringConfig =
             sc_spawn(sc_bind(&Monitor::checkNoGCLKDuringConfig, this));
         m_checkNoGCLKDuringConfig.suspend();
 
-        std::cout << "Start waiting for config" << std::endl;
+        SC_REPORT_INFO("monitor", "start waiting for configuration");
 
         while (true) {
             // Wait until we get FCWRTEN
@@ -145,8 +155,8 @@ struct Monitor : public LatHandler {
                 continue;
             }
 
-            std::cout << "[FCWRTEN] Receiving configuration request from DUT"
-                      << std::endl;
+            SC_REPORT_INFO(
+                "LAT", "received FCWRTEN, new configuration request from DUT");
 
             // Start process checking that config is correctly sent
             auto p_checkConfig = sc_spawn(sc_bind(&Monitor::checkConfig, this));
@@ -159,7 +169,7 @@ struct Monitor : public LatHandler {
             join.add_process(p_checkConfig);
             join.wait_clocked();
 
-            std::cout << "Configuration done" << std::endl;
+            SC_REPORT_INFO("LAT", "Received WRTFG, configuration is done");
 
             // Now we can use gclk again
             m_checkNoGCLKDuringConfig.suspend();
@@ -173,7 +183,7 @@ struct Monitor : public LatHandler {
     void checkNoGCLKDuringConfig() {
         while (true) {
             wait(gclk.posedge_event());
-            std::cout << "[ERROR]: GCLK raised and shouldn't be" << std::endl;
+            SC_REPORT_ERROR("GCLK", "GCLK raised during configuration");
         }
     }
 
@@ -192,29 +202,32 @@ struct Monitor : public LatHandler {
                 for (int i = 0; i < 7; ++i) {
                     // Wait for the next WRTGS
                     auto latWRTGS = waitLat(sclk, lat);
-                    assert(latWRTGS == LATCH_WRTGS);
+                    sc_assert(latWRTGS == LATCH_WRTGS);
                 }
 
                 auto latLATGS = waitLat(sclk, lat);
-                assert(latLATGS == LATCH_LATGS);
+                sc_assert(latLATGS == LATCH_LATGS);
 
                 auto latWRTGS = waitLat(sclk, lat);
-                assert(latWRTGS == LATCH_WRTGS);
+                sc_assert(latWRTGS == LATCH_WRTGS);
             }
 
             for (int k = 0; k < 6; ++k) {
                 auto latWRTGS = waitLat(sclk, lat);
-                assert(latWRTGS == LATCH_WRTGS);
+                sc_assert(latWRTGS == LATCH_WRTGS);
             }
 
             auto latLINERESET = waitLat(sclk, lat);
-            assert(latLINERESET == LATCH_LINERESET);
+            sc_assert(latLINERESET == LATCH_LINERESET);
         }
     }
 
-    void checkTimingRequirementsLat(int nbLatch, sc_time time) {
+    void checkTimingRequirementsLat(int nbLatch, sc_time timeOff) {
         while (true) {
             wait(lat.posedge_event());
+            SC_REPORT_INFO(
+                "LAT",
+                ("LAT raised at " + sc_time_stamp().to_string()).c_str());
 
             sc_event_or_list evtList;
             evtList |= lat.negedge_event();
@@ -229,12 +242,15 @@ struct Monitor : public LatHandler {
                     auto t = sc_time_stamp();
                     wait(sclk.posedge_event());
                     auto delta = sc_time_stamp() - t;
-                    if (delta < sc_time(60, SC_NS)) {
-                        // Error
-                        std::cout << "[ERROR] LAT(" << nbLatch
-                                  << ") doest not meet timing "
-                                     "requirements in LAT down and SCLK up"
-                                  << std::endl;
+                    if (delta < timeOff) {
+                        SC_REPORT_ERROR(
+                            TIMINGS,
+                            ("LAT(" + std::to_string(nbLatch) +
+                             ") doest not meet timing " +
+                             "requirements in LAT down and SCLK up\n it took " +
+                             delta.to_string() + " instead of " +
+                             timeOff.to_string())
+                                .c_str());
                     }
                     // check for next time
                     break;
@@ -264,7 +280,60 @@ struct Monitor : public LatHandler {
     sc_process_handle m_checkNoGCLKDuringConfig;
 };
 
+void report_handler(const sc_report& report, const sc_actions& actions) {
+    // dump out report
+    reportsCount[report.get_severity()]++;
+    cout << "[" << severity2str[report.get_severity()]
+         << "]: " << report.get_msg_type();
+    cout << " -->";
+    for (int n = 0; n < 32; n++) {
+        sc_actions action = actions & 1 << n;
+        if (action) {
+            cout << " ";
+            switch (action) {
+                case SC_UNSPECIFIED:
+                    cout << "unspecified";
+                    break;
+                case SC_DO_NOTHING:
+                    cout << "do-nothing";
+                    break;
+                case SC_THROW:
+                    cout << "throw";
+                    break;
+                case SC_LOG:
+                    cout << "log";
+                    break;
+                case SC_DISPLAY:
+                    cout << "display";
+                    break;
+                case SC_CACHE_REPORT:
+                    cout << "cache-report";
+                    break;
+                case SC_INTERRUPT:
+                    cout << "interrupt";
+                    break;
+                case SC_STOP:
+                    cout << "stop";
+                    break;
+                case SC_ABORT:
+                    cout << "abort";
+                    break;
+                default:
+                    cout << "UNKNOWN";
+            }
+        }
+    }
+    cout << endl;
+    cout << " msg  = " << report.get_msg() << endl;
+    cout << " file = " << report.get_file_name() << endl;
+    cout << " line = " << report.get_line_number() << endl;
+    cout << " time = " << report.get_time() << endl;
+    const char* name = report.get_process_name();
+    cout << " process=" << (name ? name : "<none>") << endl;
+}
+
 int sc_main(int argc, char** argv) {
+    sc_report_handler::set_handler(report_handler);
     Verilated::commandArgs(argc, argv);
 
     const sc_time T(15, SC_NS);
@@ -276,7 +345,7 @@ int sc_main(int argc, char** argv) {
     sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 1024 * 2;
 
     sc_clock clk66("clk66", T);
-    sc_clock clk33("clk33", 2 * T);
+    sc_signal<bool> clk33("clk33");
     sc_signal<bool> nrst("nrst");
     sc_signal<unsigned int> framebufferData("framebuffer_data");
     sc_signal<bool> framebufferSync("framebuffer_sync");
@@ -296,6 +365,13 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, driverGclk, "GCLK");
     sc_trace(traceFile, driverSclk, "SCLK");
     sc_trace(traceFile, driverLat, "LAT");
+    sc_trace(traceFile, clk66, "clk_66");
+    sc_trace(traceFile, clk33, "clk_33");
+
+    Vclock_lse clock_lse("clock_lse");
+    clock_lse.nrst(nrst);
+    clock_lse.clk_lse(clk33);
+    clock_lse.clk_hse(clk66);
 
     Stimuler stimuler("stimuler");
     stimuler.clk(clk66);
@@ -336,5 +412,10 @@ int sc_main(int argc, char** argv) {
 
     sc_close_vcd_trace_file(traceFile);
 
-    return EXIT_SUCCESS;
+    cout << endl << "Report:" << endl;
+    for (int i = 0; i < reportsCount.size(); ++i) {
+        cout << "[" << severity2str[i] << "]: " << reportsCount[i] << endl;
+    }
+
+    return reportsCount[SC_ERROR] + reportsCount[SC_FATAL];
 }
