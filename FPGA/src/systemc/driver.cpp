@@ -1,6 +1,7 @@
 #include "driver.hpp"
 
 #include <iostream>
+#include <sstream>
 
 sc_bv<2> Driver::getLodth() const { return fcData.read()(1, 0); }
 
@@ -40,11 +41,12 @@ void Driver::checkAssert() {
     while (true) {
         // Can't use XREFRESH and ESPWM in poker mode, p17, 3.4.3
         if (getPokerMode() && (!getXrefreshDisabled() || !getEspwm())) {
-            std::cout << "FATAL: XREFRESH(" << getXrefreshDisabled() << ") "
-                      << "and ESPWM(" << getEspwm() << ") "
-                      << "have to be 1 (deactivated) in poker mode"
-                      << std::endl;
-            exit(-1);
+            std::ostringstream stream;
+            stream << "FATAL: XREFRESH(" << getXrefreshDisabled() << ") "
+                   << "and ESPWM(" << getEspwm() << ") "
+                   << "have to be 1 (deactivated) in poker mode";
+            SC_REPORT_ERROR("driver", stream.str().c_str());
+            return;
         }
         wait();
     }
@@ -134,7 +136,11 @@ void Driver::handleLat() {
             currentMode = MODE_FCWRT;
             latCounter = 0;
         } else {
-            assert(latCounter == 0 && "Invalid lat counter value");
+            if (latCounter != 0)
+                SC_REPORT_ERROR("LAT", (std::to_string(latCounter) +
+                                        " is an invalid lat value")
+                                           .c_str());
+            latCounter = 0;
         }
 
         wait();
