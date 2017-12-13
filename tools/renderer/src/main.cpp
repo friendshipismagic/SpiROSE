@@ -629,7 +629,7 @@ GLuint loadShader(GLenum type, const std::string &filename) {
  * shader.
  */
 #ifdef GL_GEOMETRY_SHADER
-        "#define GL_GEOMETRY_SHADER\n\n",
+        "#define HAS_GEOMETRY_SHADER\n\n",
 #endif
         defines.c_str(), source.c_str()};
     GLuint shader = glCreateShader(type);
