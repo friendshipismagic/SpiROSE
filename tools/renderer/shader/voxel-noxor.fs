@@ -1,13 +1,25 @@
 in vec4 fPosition;
 in vec3 fColor;
+
+/* We don't need to check the first 4 as this number will always be at least 4,
+ * as per the spec.
+ */
 layout(location = 0) out vec4 fragColor0;
 layout(location = 1) out vec4 fragColor1;
 layout(location = 2) out vec4 fragColor2;
 layout(location = 3) out vec4 fragColor3;
+#if N_DRAW_BUFFER > 4
 layout(location = 4) out vec4 fragColor4;
+#endif
+#if N_DRAW_BUFFER > 5
 layout(location = 5) out vec4 fragColor5;
+#endif
+#if N_DRAW_BUFFER > 6
 layout(location = 6) out vec4 fragColor6;
+#endif
+#if N_DRAW_BUFFER > 7
 layout(location = 7) out vec4 fragColor7;
+#endif
 
 // Used in non-xor mode
 void setOutput(in float z, in int layer, out vec4 frag) {
@@ -27,8 +39,16 @@ void main() {
     setOutput(z, 1, fragColor1);
     setOutput(z, 2, fragColor2);
     setOutput(z, 3, fragColor3);
+#if N_DRAW_BUFFER > 4
     setOutput(z, 4, fragColor4);
+#endif
+#if N_DRAW_BUFFER > 5
     setOutput(z, 5, fragColor5);
+#endif
+#if N_DRAW_BUFFER > 6
     setOutput(z, 6, fragColor6);
+#endif
+#if N_DRAW_BUFFER > 7
     setOutput(z, 7, fragColor7);
+#endif
 }

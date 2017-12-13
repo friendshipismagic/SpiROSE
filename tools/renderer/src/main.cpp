@@ -597,6 +597,12 @@ GLuint loadShader(GLenum type, const std::string &filename) {
                                                 {GL_FRAGMENT_SHADER, "fs"}};
     std::string path = "shader/" + filename + "." + exts.at(type), source;
     readFile(path, source);
+
+    // Craft defines containing useful constants
+    std::string defines = "#define N_VOXEL_PASS " +
+                          std::to_string(renderOptions.nVoxelPass) +
+                          "\n#define N_DRAW_BUFFER " +
+                          std::to_string(renderOptions.nDrawBuffer) + "\n";
     const char *csource[] = {
 // GL and GLES have different version syntaxes...
 #ifdef GLES
@@ -614,7 +620,7 @@ GLuint loadShader(GLenum type, const std::string &filename) {
 #ifdef GL_GEOMETRY_SHADER
         "#define GL_GEOMETRY_SHADER\n\n",
 #endif
-        source.c_str()};
+        defines.c_str(), source.c_str()};
     GLuint shader = glCreateShader(type);
     glShaderSource(shader, sizeof(csource) / sizeof(char *), csource, NULL);
     glCompileShader(shader);
