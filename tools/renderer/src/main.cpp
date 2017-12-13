@@ -474,6 +474,7 @@ int main(int argc, char *argv[]) {
             glUniform1i(uniforms[renderOptions.useXor].generate.tex[i], i);
 
         glBindVertexArray(vaoVox);
+        glPointSize(10.f);
         glDrawArrays(GL_POINTS, 0, sizeof(voxPoints) / sizeof(float) / 3);
 
 #ifndef GLES
