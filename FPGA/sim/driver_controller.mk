@@ -1,9 +1,10 @@
 MODULE := driver_controller
+DEPS := clock_lse
 
-OBJS += tb_$(MODULE).o driver.o driver_cmd.o
+OBJS += tb_driver_controller.o driver.o driver_cmd.o
 
 -include base_testbench.mk
 
 $(MODULE).simu: $(OBJS)
-	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) $(TARGET_ARCH) -o $@
+	$(LINK.o) $(filter %.o,$^) $(LOADLIBES) $(LIBS) $(TARGET_ARCH) -o $@
 
