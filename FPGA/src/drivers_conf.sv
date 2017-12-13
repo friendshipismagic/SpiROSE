@@ -42,10 +42,10 @@ drivers_conf_t drivers_conf = '{
    LGSE3: 1'b0,
    SEL_SCK_EDGE: 1'b0,
    LGSE1: 3'b000,
-   CCB: 9'b0_0000_0001,
-   CCG: 9'b0_0000_0001,
+   CCB: 9'b1_0000_0000,
+   CCG: 9'b1_0000_0000,
    CCR: 9'b1_0000_0000,
-   BC: 3'b010,
+   BC: 3'b000,
    POKER_TRANS_MODE: 1'b1,
    LGSE2: 3'b000
 };

@@ -209,13 +209,14 @@ wire sclk;
 wire lat;
 wire [29:0] sin;
 wire [4:0] sout_mux  = gpio_0[4:0];
+wire color_button;
 
 assign gpio_1[35]   = gclk;
 assign gpio_1[33]   = sclk;
 assign gpio_1[31]   = lat;
 assign gpio_1[29]   = sin[0];
-assign gpio_1[21] = clock_66;
-assign gpio_1[19] = clock_33;
+assign gpio_1[21]   = clock_66;
+assign gpio_1[19]   = clock_33;
 /*assign gpio_1[28]   = sin[0];
 assign gpio_1[27]   = sin[0];
 assign gpio_1[26]   = sin[0];
@@ -229,6 +230,7 @@ assign gpio_0[18] = sw[5];
 assign gpio_0[20] = sw[4];
 assign gpio_0[22] = sw[3];
 assign gpio_0[24] = sw[2];
+assign color_button = ~key[3];
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
@@ -238,7 +240,7 @@ always_ff @(posedge clock_66 or negedge nrst)
 		heartbeat_counter_66 <= '0;
 	end else begin
 		heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
-		if(heartbeat_counter_66 == 3_000_000) begin
+		if(heartbeat_counter_66 == 30_000_000) begin
 			ledr[0] <= ~ledr[0];
 			heartbeat_counter_66 <= '0;
 		end
@@ -252,7 +254,7 @@ always_ff @(posedge clock_33 or negedge nrst)
 		heartbeat_counter_33 <= '0;
 	end else begin
 		heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
-		if(heartbeat_counter_33 == 3_000_000) begin
+		if(heartbeat_counter_33 == 30_000_000) begin
 			ledr[1] <= ~ledr[1];
 			heartbeat_counter_33 <= '0;
 		end
@@ -260,15 +262,16 @@ always_ff @(posedge clock_33 or negedge nrst)
 
 wire framebuffer_data, framebuffer_sync;
 // Framebuffer emulator, to test driver controller
-framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(80)) main_fb_emulator (
+framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
 	.clk_33(clock_33),
 	.nrst(nrst),
 	.data(framebuffer_data),
-	.sync(framebuffer_sync)
+	.sync(framebuffer_sync),
+	.color_button(color_button)
 );
 
 // Driver output
-driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
+driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk_hse(clock_66),
 	 .clk_lse(clock_33),
     .nrst(nrst),

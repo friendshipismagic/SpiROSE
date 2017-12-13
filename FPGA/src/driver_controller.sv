@@ -36,7 +36,7 @@ module driver_controller #(
  * timing requirement of the driver.
  */
 logic clk_lse_quad;
-always_ff @(negedge clk_hse)
+always_ff @(negedge clk_hse or negedge nrst)
     if(~nrst) begin
         clk_lse_quad <= '0;
     end else begin
