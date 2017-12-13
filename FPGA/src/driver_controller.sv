@@ -252,6 +252,11 @@ always_comb begin
             driver_gclk = '0;
         end
 
+        WAIT:begin
+            driver_sclk = '0;
+            driver_gclk = '0;
+        end
+
         DUMP_CONFIG: begin
             driver_sclk = clk_lse_quad;
             /*
