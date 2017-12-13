@@ -17,8 +17,20 @@
 
 constexpr int DRIVER_NB = 30;
 
+void tb_report_handler(const sc_report& report, const sc_actions& actions) {
+    if (report.get_process_name()) {
+        auto name = std::string(report.get_process_name());
+        auto it = name.find("monitor.driver");
+        std::string allowedName = "monitor.driver_1.";
+        if (it != std::string::npos &&
+            name.substr(0, allowedName.size()) != allowedName)
+            return;
+    }
+    report_handler(report, actions);
+}
+
 int sc_main(int argc, char** argv) {
-    sc_report_handler::set_handler(report_handler);
+    sc_report_handler::set_handler(tb_report_handler);
     Verilated::commandArgs(argc, argv);
 
     const sc_time T(30, SC_NS);
