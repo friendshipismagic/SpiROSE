@@ -13,7 +13,6 @@
 
 #include "monitor.hpp"
 #include "report_handler.hpp"
-#include "stimuler.hpp"
 
 constexpr int DRIVER_NB = 30;
 
@@ -70,13 +69,6 @@ int sc_main(int argc, char** argv) {
     clock_lse.clk_lse(clk33);
     clock_lse.clk_hse(clk66);
 
-    Stimuler stimuler("stimuler");
-    stimuler.clk(clk66);
-    stimuler.nrst(nrst);
-    stimuler.framebufferData(framebufferData);
-    stimuler.framebufferSync(framebufferSync);
-    stimuler.config(serializedConf);
-
     Vdriver_controller dut("driver_controller");
     dut.clk_hse(clk66);
     dut.clk_lse(clk33);
@@ -98,6 +90,9 @@ int sc_main(int argc, char** argv) {
     monitor.lat(driverLat);
     monitor.gclk(driverGclk);
     monitor.sclk(driverSclk);
+    monitor.framebufferData(framebufferData);
+    monitor.framebufferSync(framebufferSync);
+    monitor.config(serializedConf);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
