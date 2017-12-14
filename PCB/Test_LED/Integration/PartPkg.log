@@ -2,29 +2,30 @@
                                     Packager
                                     --------
 
-                      03:07 PM Wednesday, December 13, 2017
-   Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj
+                      10:30 PM Wednesday, December 13, 2017
+                 Job Name: E:\SpiROSE\PCB\Test_LED\Test_LED.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj" -CleanBuild -NoFill"
+        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe -Replace "-jE:\SpiROSE\PCB\Test_LED\Test_LED.prj""
 
-     The Common Database is at "C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb".
+     The Common Database is at "E:\SpiROSE\PCB\Test_LED\Default\default.icdb".
 
      The Root of this design is "Schematic1".
 
      The Front End Snapshot of this design is "DCDV".
 
-     The PCB Design Path of this design is at "C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb".
+     The PCB Design Path of this design is at "E:\SpiROSE\PCB\Test_LED\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
 
      The Disable Repackage status indicates that 
       Repackaging should be allowed.
 
-     A new Target PDB will be created from the Central Library to satisfy the parts
-      requirements of the iCDB.
+     The PDBs listed in the project file will be searched to satisfy the parts
+      requirements of the iCDB and to replace any duplicates found in the
+      Target PDB.
 
      The AllowAlphaRefDes status indicates that reference
       designators containing all alpha characters should be deleted
