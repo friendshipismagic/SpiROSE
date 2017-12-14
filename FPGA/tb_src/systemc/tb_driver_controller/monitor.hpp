@@ -25,6 +25,8 @@ struct Monitor : public LatHandler {
 
         SC_THREAD(checkThatLatIsntMovedOnSCLK);
 
+        SC_THREAD(checkThatLatgsFallDuringTheEndOfASegment);
+
         for (int i = 0; i < DRIVER_NB; ++i) {
             std::ostringstream stream;
             stream << "driver_" << i;
@@ -68,10 +70,6 @@ struct Monitor : public LatHandler {
         SC_REPORT_INFO("monitor",
                        "starting configuration protocol checker processus");
 
-        m_checkNoGCLKDuringConfig =
-            sc_spawn(sc_bind(&Monitor::checkNoGCLKDuringConfig, this));
-        m_checkNoGCLKDuringConfig.suspend();
-
         SC_REPORT_INFO("monitor", "start waiting for configuration");
 
         while (true) {
@@ -83,34 +81,38 @@ struct Monitor : public LatHandler {
             }
 
             SC_REPORT_INFO(
-                "LAT", "received FCWRTEN, new configuration request from DUT");
+                "lat", "received FCWRTEN, new configuration request from DUT");
+            auto p_noGclk =
+                sc_spawn(sc_bind(&Monitor::checkNoGCLKDuringConfig, this));
 
             // Start process checking that config is correctly sent
             auto p_checkConfig = sc_spawn(sc_bind(&Monitor::checkConfig, this));
 
-            // Start process checking that gclk is not started
-            m_checkNoGCLKDuringConfig.resume();
-
             // Wait until the config is received
-            sc_join join;
-            join.add_process(p_checkConfig);
-            join.wait_clocked();
+            // sc_join join;
+            // join.add_process(p_checkConfig);
+            // join.wait_clocked();
 
-            SC_REPORT_INFO("LAT", "Received WRTFG, configuration is done");
+            wait(p_checkConfig.terminated_event());
+
+            SC_REPORT_INFO("lat", "Received WRTFG, configuration is done");
 
             // Now we can use gclk again
-            m_checkNoGCLKDuringConfig.suspend();
+            p_noGclk.kill();
+            p_noGclk.disable();
         }
     }
 
     void checkConfig() {
-        for (int i = 0; i < 48; ++i) wait(sclk.posedge_event());
+        for (int i = 0; i < 47; ++i) wait(sclk.posedge_event());
+        SC_REPORT_INFO("config", "Finish configuration process");
     }
 
     void checkNoGCLKDuringConfig() {
         while (true) {
             wait(gclk.posedge_event());
-            SC_REPORT_ERROR("GCLK", "GCLK raised during configuration");
+            SC_REPORT_ERROR("gclk", "GCLK raised during configuration");
+            return;
         }
     }
 
@@ -152,9 +154,6 @@ struct Monitor : public LatHandler {
     void checkTimingRequirementsLat(int nbLatch, sc_time timeOff) {
         while (true) {
             wait(lat.posedge_event());
-            SC_REPORT_INFO(
-                "LAT",
-                ("LAT raised at " + sc_time_stamp().to_string()).c_str());
 
             sc_event_or_list evtList;
             evtList |= lat.negedge_event();
@@ -171,7 +170,7 @@ struct Monitor : public LatHandler {
                     auto delta = sc_time_stamp() - t;
                     if (delta < timeOff) {
                         SC_REPORT_ERROR(
-                            "timings",
+                            "lat",
                             ("LAT(" + std::to_string(nbLatch) +
                              ") doest not meet timing " +
                              "requirements in LAT down and SCLK up\n it took " +
@@ -196,7 +195,41 @@ struct Monitor : public LatHandler {
             wait(evtList);
             if (sclk)
                 SC_REPORT_ERROR(
-                    "LAT", "SCLK shouldn't be on when LAT is changing state");
+                    "lat", "SCLK shouldn't be on when LAT is changing state");
+        }
+    }
+
+    void checkThatLatgsFallDuringTheEndOfASegment() {
+        sc_event_or_list evtList;
+        evtList |= lat.negedge_event();
+        evtList |= gclk.posedge_event();
+
+        SC_REPORT_INFO("gclk", "Starting the LATGS segment check");
+
+        int gclkCounter = 0;
+        while (true) {
+            int latCounter = 0;
+            while (!lat) {
+                wait(gclk.posedge_event());
+                gclkCounter += 1;
+                latCounter += lat;
+            }
+            while (lat) {
+                wait(evtList);
+                gclkCounter += gclk;
+                latCounter += lat;
+            }
+
+            if (latCounter == LATCH_LATGS && gclkCounter != 512) {
+                auto error =
+                    "LATGS should fall down afer 512 GCLK ticks, and it falls "
+                    "after " +
+                    std::to_string(gclkCounter);
+                SC_REPORT_ERROR("gclk", error.c_str());
+                gclkCounter = 0;
+            } else if (latCounter == LATCH_LATGS) {
+                gclkCounter = 0;
+            }
         }
     }
 
@@ -217,5 +250,4 @@ struct Monitor : public LatHandler {
     private:
     std::array<sc_signal<bool>, DRIVER_NB> m_sin;
     std::array<std::unique_ptr<Driver>, DRIVER_NB> m_drivers;
-    sc_process_handle m_checkNoGCLKDuringConfig;
 };

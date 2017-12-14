@@ -22,16 +22,18 @@ struct Stimuler : public sc_module {
         reset();
         sendConfig(conf);
 
-        wait();
-        wait();
-
-        // Send start of frame signal
-        framebufferSync = true;
-        wait();
-        framebufferSync = false;
+        wait(200);
 
         while (true) {
+            // Send start of frame signal
+            framebufferData = 0xFFFF;
+            framebufferSync = true;
             wait();
+            framebufferSync = false;
+
+            for (int i = 0; i < 800; ++i) {
+                wait();
+            }
         }
     }
 
