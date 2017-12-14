@@ -1,6 +1,30 @@
 
-/* Sym: 03EA49C0  Path 1: Schematic1  Page 1: Schematic1(1) */
+/* Sym: 03B27938  Path 1: Schematic1  Page 1: Schematic1(1) */
 CHANGE 'Schematic1(1)' 	INSTANCE
+  SELECT COMP XCMP949                 /* Reference Desig is C49 */
+    PARAM 'Part Name' = 'CAPCERAM1206' 
+    PARAM 'Value' = '470nF' 
+    PARAM 'Tolerance' = '20%' 
+    PARAM 'Description' = 'Capacitor Ceramic 470nF / Y5V / 50V / ±20% / case 1206' 
+    PARAM 'Part Label' = 'CAP C1206 470nF Y5V 50V' 
+    PARAM 'Dielectric' = 'Y5V' 
+    PARAM 'Code Fournisseur' = 'RS : 220-7578' 
+    PARAM 'Cout HT' = '0.4' 
+  SELECT COMP XCMP948                 /* Reference Desig is C25 */
+    PARAM 'Part Name' = 'CAPCERAM1812' 
+    PARAM 'Value' = '100uF' 
+    PARAM 'Tolerance' = '80%' 
+    PARAM 'Description' = 'Capacitor Ceramic X5R / 100uF / 6.3V / ±20% / case 1812 / 2.5A RMS / Murata GRM43SR60J107ME20L' 
+    PARAM 'Part Label' = 'CAP C1812 100uF X5R 6.3V' 
+    PARAM 'Dielectric' = 'X5R' 
+    PARAM 'Code Fournisseur' = 'Fa : 9527834' 
+    PARAM 'Cout HT' = '2.33' 
+  SELECT COMP XCMP716                 /* Reference Desig is U1 */
+    PARAM 'Part Name' = 'EP3C40' 
+    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
+    PARAM 'Part Label' = 'EP3C40Q240C8N' 
+    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
+    PARAM 'Cout HT' = '83.4' 
   SELECT COMP XCMP952                 /* Reference Desig is C56 */
     PARAM 'Part Name' = 'CAPCERAM1206' 
     PARAM 'Value' = '470nF' 
@@ -28,21 +52,6 @@ CHANGE 'Schematic1(1)' 	INSTANCE
     PARAM 'Dielectric' = 'Y5V' 
     PARAM 'Code Fournisseur' = 'RS : 220-7578' 
     PARAM 'Cout HT' = '0.4' 
-  SELECT COMP XCMP716                 /* Reference Desig is U1 */
-    PARAM 'Part Name' = 'EP3C40' 
-    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
-    PARAM 'Part Label' = 'EP3C40Q240C8N' 
-    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
-    PARAM 'Cout HT' = '83.4' 
-  SELECT COMP XCMP814                 /* Reference Desig is C21 */
-    PARAM 'Part Name' = 'CAPCERAM1812' 
-    PARAM 'Value' = '100uF' 
-    PARAM 'Tolerance' = '80%' 
-    PARAM 'Description' = 'Capacitor Ceramic X5R / 100uF / 6.3V / ±20% / case 1812 / 2.5A RMS / Murata GRM43SR60J107ME20L' 
-    PARAM 'Part Label' = 'CAP C1812 100uF X5R 6.3V' 
-    PARAM 'Dielectric' = 'X5R' 
-    PARAM 'Code Fournisseur' = 'Fa : 9527834' 
-    PARAM 'Cout HT' = '2.33' 
   SELECT COMP XCMP813                 /* Reference Desig is C4 */
     PARAM 'Part Name' = 'CAPCERAM0603' 
     PARAM 'Value' = '100nF' 
@@ -99,24 +108,6 @@ CHANGE 'Schematic1(1)' 	INSTANCE
     PARAM 'Part Label' = 'MLF2012DR56K' 
     PARAM 'Code Fournisseur' = 'Fa : 1669561 ' 
     PARAM 'Cout HT' = '0.43' 
-  SELECT COMP XCMP825                 /* Reference Desig is C35 */
-    PARAM 'Part Name' = 'CAPCERAM1206' 
-    PARAM 'Value' = '470nF' 
-    PARAM 'Tolerance' = '20%' 
-    PARAM 'Description' = 'Capacitor Ceramic 470nF / Y5V / 50V / ±20% / case 1206' 
-    PARAM 'Part Label' = 'CAP C1206 470nF Y5V 50V' 
-    PARAM 'Dielectric' = 'Y5V' 
-    PARAM 'Code Fournisseur' = 'RS : 220-7578' 
-    PARAM 'Cout HT' = '0.4' 
-  SELECT COMP XCMP824                 /* Reference Desig is C34 */
-    PARAM 'Part Name' = 'CAPCERAM1206' 
-    PARAM 'Value' = '470nF' 
-    PARAM 'Tolerance' = '20%' 
-    PARAM 'Description' = 'Capacitor Ceramic 470nF / Y5V / 50V / ±20% / case 1206' 
-    PARAM 'Part Label' = 'CAP C1206 470nF Y5V 50V' 
-    PARAM 'Dielectric' = 'Y5V' 
-    PARAM 'Code Fournisseur' = 'RS : 220-7578' 
-    PARAM 'Cout HT' = '0.4' 
   SELECT COMP XCMP823                 /* Reference Desig is C33 */
     PARAM 'Part Name' = 'CAPCERAM1206' 
     PARAM 'Value' = '470nF' 
@@ -189,24 +180,15 @@ CHANGE 'Schematic1(1)' 	INSTANCE
     PARAM 'Dielectric' = 'X5R' 
     PARAM 'Code Fournisseur' = 'Fa : 9527834' 
     PARAM 'Cout HT' = '2.33' 
-  SELECT COMP XCMP836                 /* Reference Desig is C46 */
-    PARAM 'Part Name' = 'CAPCERAM1206' 
-    PARAM 'Value' = '470nF' 
-    PARAM 'Tolerance' = '20%' 
-    PARAM 'Description' = 'Capacitor Ceramic 470nF / Y5V / 50V / ±20% / case 1206' 
-    PARAM 'Part Label' = 'CAP C1206 470nF Y5V 50V' 
-    PARAM 'Dielectric' = 'Y5V' 
-    PARAM 'Code Fournisseur' = 'RS : 220-7578' 
-    PARAM 'Cout HT' = '0.4' 
-  SELECT COMP XCMP835                 /* Reference Desig is C45 */
-    PARAM 'Part Name' = 'CAPCERAM1206' 
-    PARAM 'Value' = '470nF' 
-    PARAM 'Tolerance' = '20%' 
-    PARAM 'Description' = 'Capacitor Ceramic 470nF / Y5V / 50V / ±20% / case 1206' 
-    PARAM 'Part Label' = 'CAP C1206 470nF Y5V 50V' 
-    PARAM 'Dielectric' = 'Y5V' 
-    PARAM 'Code Fournisseur' = 'RS : 220-7578' 
-    PARAM 'Cout HT' = '0.4' 
+  SELECT COMP XCMP814                 /* Reference Desig is C21 */
+    PARAM 'Part Name' = 'CAPCERAM1812' 
+    PARAM 'Value' = '100uF' 
+    PARAM 'Tolerance' = '80%' 
+    PARAM 'Description' = 'Capacitor Ceramic X5R / 100uF / 6.3V / ±20% / case 1812 / 2.5A RMS / Murata GRM43SR60J107ME20L' 
+    PARAM 'Part Label' = 'CAP C1812 100uF X5R 6.3V' 
+    PARAM 'Dielectric' = 'X5R' 
+    PARAM 'Code Fournisseur' = 'Fa : 9527834' 
+    PARAM 'Cout HT' = '2.33' 
   SELECT COMP XCMP834                 /* Reference Desig is C44 */
     PARAM 'Part Name' = 'CAPCERAM1206' 
     PARAM 'Value' = '470nF' 
@@ -288,7 +270,16 @@ CHANGE 'Schematic1(1)' 	INSTANCE
     PARAM 'Dielectric' = 'Y5V' 
     PARAM 'Code Fournisseur' = 'RS : 220-7578' 
     PARAM 'Cout HT' = '0.4' 
-  SELECT COMP XCMP861                 /* Reference Desig is C53 */
+  SELECT COMP XCMP825                 /* Reference Desig is C35 */
+    PARAM 'Part Name' = 'CAPCERAM1206' 
+    PARAM 'Value' = '470nF' 
+    PARAM 'Tolerance' = '20%' 
+    PARAM 'Description' = 'Capacitor Ceramic 470nF / Y5V / 50V / ±20% / case 1206' 
+    PARAM 'Part Label' = 'CAP C1206 470nF Y5V 50V' 
+    PARAM 'Dielectric' = 'Y5V' 
+    PARAM 'Code Fournisseur' = 'RS : 220-7578' 
+    PARAM 'Cout HT' = '0.4' 
+  SELECT COMP XCMP824                 /* Reference Desig is C34 */
     PARAM 'Part Name' = 'CAPCERAM1206' 
     PARAM 'Value' = '470nF' 
     PARAM 'Tolerance' = '20%' 
@@ -369,7 +360,7 @@ CHANGE 'Schematic1(1)' 	INSTANCE
     PARAM 'Dielectric' = 'Y5V' 
     PARAM 'Code Fournisseur' = 'RS : 220-7578' 
     PARAM 'Cout HT' = '0.4' 
-  SELECT COMP XCMP949                 /* Reference Desig is C49 */
+  SELECT COMP XCMP836                 /* Reference Desig is C46 */
     PARAM 'Part Name' = 'CAPCERAM1206' 
     PARAM 'Value' = '470nF' 
     PARAM 'Tolerance' = '20%' 
@@ -378,162 +369,27 @@ CHANGE 'Schematic1(1)' 	INSTANCE
     PARAM 'Dielectric' = 'Y5V' 
     PARAM 'Code Fournisseur' = 'RS : 220-7578' 
     PARAM 'Cout HT' = '0.4' 
-  SELECT COMP XCMP948                 /* Reference Desig is C25 */
-    PARAM 'Part Name' = 'CAPCERAM1812' 
-    PARAM 'Value' = '100uF' 
-    PARAM 'Tolerance' = '80%' 
-    PARAM 'Description' = 'Capacitor Ceramic X5R / 100uF / 6.3V / ±20% / case 1812 / 2.5A RMS / Murata GRM43SR60J107ME20L' 
-    PARAM 'Part Label' = 'CAP C1812 100uF X5R 6.3V' 
-    PARAM 'Dielectric' = 'X5R' 
-    PARAM 'Code Fournisseur' = 'Fa : 9527834' 
-    PARAM 'Cout HT' = '2.33' 
+  SELECT COMP XCMP835                 /* Reference Desig is C45 */
+    PARAM 'Part Name' = 'CAPCERAM1206' 
+    PARAM 'Value' = '470nF' 
+    PARAM 'Tolerance' = '20%' 
+    PARAM 'Description' = 'Capacitor Ceramic 470nF / Y5V / 50V / ±20% / case 1206' 
+    PARAM 'Part Label' = 'CAP C1206 470nF Y5V 50V' 
+    PARAM 'Dielectric' = 'Y5V' 
+    PARAM 'Code Fournisseur' = 'RS : 220-7578' 
+    PARAM 'Cout HT' = '0.4' 
+  SELECT COMP XCMP861                 /* Reference Desig is C53 */
+    PARAM 'Part Name' = 'CAPCERAM1206' 
+    PARAM 'Value' = '470nF' 
+    PARAM 'Tolerance' = '20%' 
+    PARAM 'Description' = 'Capacitor Ceramic 470nF / Y5V / 50V / ±20% / case 1206' 
+    PARAM 'Part Label' = 'CAP C1206 470nF Y5V 50V' 
+    PARAM 'Dielectric' = 'Y5V' 
+    PARAM 'Code Fournisseur' = 'RS : 220-7578' 
+    PARAM 'Cout HT' = '0.4' 
 
-/* Sym: 03E98C10  Path 1: Schematic1  Page 2: Schematic1(2) */
+/* Sym: 03B25FE0  Path 1: Schematic1  Page 2: Schematic1(2) */
 CHANGE 'Schematic1(2)' 	INSTANCE
-  SELECT COMP XCMP947                 /* Reference Desig is U1 */
-    PARAM 'Part Name' = 'EP3C40' 
-    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
-    PARAM 'Part Label' = 'EP3C40Q240C8N' 
-    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
-    PARAM 'Cout HT' = '83.4' 
-  SELECT EXT XCMP940                  /* Reference Desig is J20 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP939                  /* Reference Desig is J19 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP938                  /* Reference Desig is J18 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP937                  /* Reference Desig is J17 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP936                  /* Reference Desig is J16 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP935                  /* Reference Desig is J15 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP934                  /* Reference Desig is J14 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP933                  /* Reference Desig is J13 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP932                  /* Reference Desig is J12 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP931                  /* Reference Desig is J11 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP930                  /* Reference Desig is J10 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP929                  /* Reference Desig is J9 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP928                  /* Reference Desig is J8 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP927                  /* Reference Desig is J7 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP926                  /* Reference Desig is J6 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP925                  /* Reference Desig is J5 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT EXT XCMP924                  /* Reference Desig is J4 */
-    PARAM 'Part Name' = 'PAD_TH' 
-    PARAM 'Description' = 'Pad trhough hole' 
-    PARAM 'Part Label' = 'PAD_TH' 
-  SELECT COMP XCMP920                 /* Reference Desig is C20 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-  SELECT COMP XCMP919                 /* Reference Desig is C19 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-  SELECT COMP XCMP918                 /* Reference Desig is C18 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-  SELECT COMP XCMP917                 /* Reference Desig is C17 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-  SELECT COMP XCMP721                 /* Reference Desig is R1 */
-    PARAM 'Part Name' = 'RES_0603_E24' 
-    PARAM 'Value' = '10K ' 
-    PARAM 'Tolerance' = '5%' 
-    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
-    PARAM 'Part Label' = 'RES_10k_0603' 
-    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
-    PARAM 'Cout HT' = '0.045' 
-  SELECT COMP XCMP946                 /* Reference Desig is U1 */
-    PARAM 'Part Name' = 'EP3C40' 
-    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
-    PARAM 'Part Label' = 'EP3C40Q240C8N' 
-    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
-    PARAM 'Cout HT' = '83.4' 
-  SELECT COMP XCMP724                 /* Reference Desig is R3 */
-    PARAM 'Part Name' = 'RES_0603_E24' 
-    PARAM 'Value' = '10K ' 
-    PARAM 'Tolerance' = '5%' 
-    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
-    PARAM 'Part Label' = 'RES_10k_0603' 
-    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
-    PARAM 'Cout HT' = '0.045' 
-  SELECT COMP XCMP876                 /* Reference Desig is C8 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-  SELECT COMP XCMP875                 /* Reference Desig is C7 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
   SELECT COMP XCMP874                 /* Reference Desig is C6 */
     PARAM 'Part Name' = 'CAPCERAM0603' 
     PARAM 'Value' = '100nF' 
@@ -564,12 +420,6 @@ CHANGE 'Schematic1(2)' 	INSTANCE
     PARAM 'Part Label' = 'RES_10k_0603' 
     PARAM 'Code Fournisseur' = 'Fa : 9331700' 
     PARAM 'Cout HT' = '0.045' 
-  SELECT COMP XCMP945                 /* Reference Desig is U1 */
-    PARAM 'Part Name' = 'EP3C40' 
-    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
-    PARAM 'Part Label' = 'EP3C40Q240C8N' 
-    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
-    PARAM 'Cout HT' = '83.4' 
   SELECT COMP XCMP884                 /* Reference Desig is C16 */
     PARAM 'Part Name' = 'CAPCERAM0603' 
     PARAM 'Value' = '100nF' 
@@ -634,30 +484,106 @@ CHANGE 'Schematic1(2)' 	INSTANCE
     PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
     PARAM 'Code Fournisseur' = 'Fa : 1414027' 
     PARAM 'Cout HT' = '0.014' 
+  SELECT COMP XCMP876                 /* Reference Desig is C8 */
+    PARAM 'Part Name' = 'CAPCERAM0603' 
+    PARAM 'Value' = '100nF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
+    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
+    PARAM 'Cout HT' = '0.014' 
+  SELECT COMP XCMP875                 /* Reference Desig is C7 */
+    PARAM 'Part Name' = 'CAPCERAM0603' 
+    PARAM 'Value' = '100nF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
+    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
+    PARAM 'Cout HT' = '0.014' 
+  SELECT COMP XCMP947                 /* Reference Desig is U1 */
+    PARAM 'Part Name' = 'EP3C40' 
+    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
+    PARAM 'Part Label' = 'EP3C40Q240C8N' 
+    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
+    PARAM 'Cout HT' = '83.4' 
+  SELECT COMP XCMP945                 /* Reference Desig is U1 */
+    PARAM 'Part Name' = 'EP3C40' 
+    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
+    PARAM 'Part Label' = 'EP3C40Q240C8N' 
+    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
+    PARAM 'Cout HT' = '83.4' 
+  SELECT COMP XCMP920                 /* Reference Desig is C20 */
+    PARAM 'Part Name' = 'CAPCERAM0603' 
+    PARAM 'Value' = '100nF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
+    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
+    PARAM 'Cout HT' = '0.014' 
+  SELECT COMP XCMP919                 /* Reference Desig is C19 */
+    PARAM 'Part Name' = 'CAPCERAM0603' 
+    PARAM 'Value' = '100nF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
+    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
+    PARAM 'Cout HT' = '0.014' 
+  SELECT COMP XCMP918                 /* Reference Desig is C18 */
+    PARAM 'Part Name' = 'CAPCERAM0603' 
+    PARAM 'Value' = '100nF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
+    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
+    PARAM 'Cout HT' = '0.014' 
+  SELECT COMP XCMP917                 /* Reference Desig is C17 */
+    PARAM 'Part Name' = 'CAPCERAM0603' 
+    PARAM 'Value' = '100nF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
+    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
+    PARAM 'Cout HT' = '0.014' 
+  SELECT COMP XCMP721                 /* Reference Desig is R1 */
+    PARAM 'Part Name' = 'RES_0603_E24' 
+    PARAM 'Value' = '10K ' 
+    PARAM 'Tolerance' = '5%' 
+    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
+    PARAM 'Part Label' = 'RES_10k_0603' 
+    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
+    PARAM 'Cout HT' = '0.045' 
+  SELECT COMP XCMP946                 /* Reference Desig is U1 */
+    PARAM 'Part Name' = 'EP3C40' 
+    PARAM 'Description' = 'Cyclone III FPGA, 24675 LE, Altera EP3C40Q240C8N, case PQFP240' 
+    PARAM 'Part Label' = 'EP3C40Q240C8N' 
+    PARAM 'Code Fournisseur' = 'Mouser : 989-EP3C40Q240C8N' 
+    PARAM 'Cout HT' = '83.4' 
+  SELECT COMP XCMP724                 /* Reference Desig is R3 */
+    PARAM 'Part Name' = 'RES_0603_E24' 
+    PARAM 'Value' = '10K ' 
+    PARAM 'Tolerance' = '5%' 
+    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
+    PARAM 'Part Label' = 'RES_10k_0603' 
+    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
+    PARAM 'Cout HT' = '0.045' 
 
-/* Sym: 03E95A48  Path 1: Schematic1  Page 3: Schematic1(3) */
+/* Sym: 03D1A960  Path 1: Schematic1  Page 3: Schematic1(3) */
 CHANGE 'Schematic1(3)' 	INSTANCE
-  SELECT EXT XCMP726                  /* Reference Desig is J1 */
-    PARAM 'Part Name' = 'MXM-314' 
-    PARAM 'Description' = 'MXM Connecteur, 314 pts, JAE Electronics MM70-314-310B1-1-R300' 
-    PARAM 'Part Label' = 'MM70-314-310B1-1-R300' 
-    PARAM 'Code Fournisseur' = 'Mouser : 656-MM70314310B11R' 
-    PARAM 'Cout HT' = '5.5' 
   SELECT EXT XCMP725                  /* Reference Desig is J1 */
     PARAM 'Part Name' = 'MXM-314' 
-    PARAM 'Description' = 'MXM Connecteur, 314 pts, JAE Electronics MM70-314-310B1-1-R300' 
-    PARAM 'Part Label' = 'MM70-314-310B1-1-R300' 
-    PARAM 'Code Fournisseur' = 'Mouser : 656-MM70314310B11R' 
-    PARAM 'Cout HT' = '5.5' 
+    PARAM 'Description' = 'MXM EDM Connector, 314 pts, 7mm, Foxconn AS0B826-S43B-7H' 
+    PARAM 'Part Label' = 'AS0B826-S43B-7H' 
+    PARAM 'Code Fournisseur' = 'Mouser : 570-EDMCONNECTORKIT' 
+    PARAM 'Cout HT' = '62.88' 
+  SELECT EXT XCMP726                  /* Reference Desig is J1 */
+    PARAM 'Part Name' = 'MXM-314' 
+    PARAM 'Description' = 'MXM EDM Connector, 314 pts, 7mm, Foxconn AS0B826-S43B-7H' 
+    PARAM 'Part Label' = 'AS0B826-S43B-7H' 
+    PARAM 'Code Fournisseur' = 'Mouser : 570-EDMCONNECTORKIT' 
+    PARAM 'Cout HT' = '62.88' 
 
-/* Sym: 03E99E10  Path 1: Schematic1  Page 4: Schematic1(4) */
+/* Sym: 03D1D080  Path 1: Schematic1  Page 4: Schematic1(4) */
 CHANGE 'Schematic1(4)' 	INSTANCE
-  SELECT COMP XCMP896                 /* Reference Desig is U3 */
-    PARAM 'Part Name' = 'MCP1826S-25' 
-    PARAM 'Description' = '1A low voltage LDO regulator, 2.5V, Microchip MCP1826S-2502E/DB, case SOT223-3' 
-    PARAM 'Part Label' = 'MCP1826S-2502E/DB' 
-    PARAM 'Code Fournisseur' = 'Fa : 1851997' 
-    PARAM 'Cout HT' = '1.09' 
   SELECT COMP XCMP893                 /* Reference Desig is C62 */
     PARAM 'Part Name' = 'CAPCERAM0603' 
     PARAM 'Value' = '10uF' 
@@ -674,199 +600,6 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Part Label' = 'CAP C0603 10uF X5R 6.3V' 
     PARAM 'Code Fournisseur' = 'Fa : 1759393 ' 
     PARAM 'Cout HT' = '0.117' 
-  SELECT COMP XCMP965                 /* Reference Desig is C70 */
-    PARAM 'Part Name' = 'CAPCHIMIQUEG' 
-    PARAM 'Value' = '220uF' 
-    PARAM 'Tolerance' = '80%' 
-    PARAM 'Description' = 'Capacitor chimical low ESR / 220uF / 50V / case G' 
-    PARAM 'Part Label' = 'CAP CHIM G 220uF 50V' 
-    PARAM 'Dielectric' = 'Al' 
-    PARAM 'Code Fournisseur' = 'Fa : 1714770' 
-    PARAM 'Cout HT' = '0.87' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C70'         /* Reference Desig was (null) */
-  SELECT COMP XCMP972                 /* Reference Desig is C75 */
-    PARAM 'Part Name' = 'CAPTANTALE' 
-    PARAM 'Value' = '68uF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Tantalum 68uF / 25V / ±10% / case E / TPME686K025R0055 / ESR=0.055 / 2.2A RMS' 
-    PARAM 'Part Label' = 'CAP TANTAL_E 68uF 25V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1135248' 
-    PARAM 'Cout HT' = '5.1' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C75'         /* Reference Desig was (null) */
-  SELECT COMP XCMP971                 /* Reference Desig is C74 */
-    PARAM 'Part Name' = 'CAPTANTALE' 
-    PARAM 'Value' = '68uF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Tantalum 68uF / 25V / ±10% / case E / TPME686K025R0055 / ESR=0.055 / 2.2A RMS' 
-    PARAM 'Part Label' = 'CAP TANTAL_E 68uF 25V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1135248' 
-    PARAM 'Cout HT' = '5.1' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C74'         /* Reference Desig was (null) */
-  SELECT COMP XCMP970                 /* Reference Desig is U6 */
-    PARAM 'Part Name' = 'LTC3633' 
-    PARAM 'Description' = 'Dual Channel 3A, 15V Monolithic Synchronous Step-Down Regulator, 4MHz,  Linear LTC3633EFE#PBF, case ETSSOP28' 
-    PARAM 'Part Label' = 'LTC3633EFE' 
-    PARAM 'Code Fournisseur' = 'Fa : 1839138' 
-    PARAM 'Cout HT' = '8.63' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'U6'         /* Reference Desig was (null) */
-  SELECT COMP XCMP969                 /* Reference Desig is R6 */
-    PARAM 'Part Name' = 'RES_0603_E96' 
-    PARAM 'Value' = '806 ' 
-    PARAM 'Tolerance' = '1%' 
-    PARAM 'Description' = 'Resistor 806 ohms / 1% / case 0603' 
-    PARAM 'Part Label' = 'RES_806_0603' 
-    PARAM 'Cout HT' = '0.045' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'R6'         /* Reference Desig was (null) */
-  SELECT COMP XCMP968                 /* Reference Desig is C73 */
-    PARAM 'Part Name' = 'CAPCHIMIQUEG' 
-    PARAM 'Value' = '220uF' 
-    PARAM 'Tolerance' = '80%' 
-    PARAM 'Description' = 'Capacitor chimical low ESR / 220uF / 50V / case G' 
-    PARAM 'Part Label' = 'CAP CHIM G 220uF 50V' 
-    PARAM 'Dielectric' = 'Al' 
-    PARAM 'Code Fournisseur' = 'Fa : 1714770' 
-    PARAM 'Cout HT' = '0.87' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C73'         /* Reference Desig was (null) */
-  SELECT COMP XCMP967                 /* Reference Desig is C72 */
-    PARAM 'Part Name' = 'CAPCHIMIQUEG' 
-    PARAM 'Value' = '220uF' 
-    PARAM 'Tolerance' = '80%' 
-    PARAM 'Description' = 'Capacitor chimical low ESR / 220uF / 50V / case G' 
-    PARAM 'Part Label' = 'CAP CHIM G 220uF 50V' 
-    PARAM 'Dielectric' = 'Al' 
-    PARAM 'Code Fournisseur' = 'Fa : 1714770' 
-    PARAM 'Cout HT' = '0.87' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C72'         /* Reference Desig was (null) */
-  SELECT COMP XCMP966                 /* Reference Desig is C71 */
-    PARAM 'Part Name' = 'CAPCHIMIQUEG' 
-    PARAM 'Value' = '220uF' 
-    PARAM 'Tolerance' = '80%' 
-    PARAM 'Description' = 'Capacitor chimical low ESR / 220uF / 50V / case G' 
-    PARAM 'Part Label' = 'CAP CHIM G 220uF 50V' 
-    PARAM 'Dielectric' = 'Al' 
-    PARAM 'Code Fournisseur' = 'Fa : 1714770' 
-    PARAM 'Cout HT' = '0.87' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C71'         /* Reference Desig was (null) */
-  SELECT COMP XCMP984                 /* Reference Desig is L6 */
-    PARAM 'Part Name' = 'SELF' 
-    PARAM 'Value' = '2,2uH' 
-    PARAM 'Tolerance' = '20' 
-    PARAM 'Description' = 'Inductor 2.2uH / 3.1A / 27mOhms / shielded /Würth 744 5402' 
-    PARAM 'Part Label' = 'SELF 2.2uH' 
-    PARAM 'Code Fournisseur' = 'RS : 367-5168' 
-    PARAM 'Cout HT' = '1.9' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'L6'         /* Reference Desig was (null) */
-  SELECT COMP XCMP983                 /* Reference Desig is L5 */
-    PARAM 'Part Name' = 'SELF' 
-    PARAM 'Value' = '2,2uH' 
-    PARAM 'Tolerance' = '20' 
-    PARAM 'Description' = 'Inductor 2.2uH / 3.1A / 27mOhms / shielded /Würth 744 5402' 
-    PARAM 'Part Label' = 'SELF 2.2uH' 
-    PARAM 'Code Fournisseur' = 'RS : 367-5168' 
-    PARAM 'Cout HT' = '1.9' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'L5'         /* Reference Desig was (null) */
-  SELECT COMP XCMP981                 /* Reference Desig is R8 */
-    PARAM 'Part Name' = 'RES_0603_E96' 
-    PARAM 'Value' = '45,4 ' 
-    PARAM 'Tolerance' = '1%' 
-    PARAM 'Description' = 'Resistor 45.4 ohms / 1% / case 0603' 
-    PARAM 'Part Label' = 'RES_45.4_0603' 
-    PARAM 'Cout HT' = '0.045' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'R8'         /* Reference Desig was (null) */
-  SELECT COMP XCMP980                 /* Reference Desig is R7 */
-    PARAM 'Part Name' = 'RES_0603_E96' 
-    PARAM 'Value' = '73,2 ' 
-    PARAM 'Tolerance' = '1%' 
-    PARAM 'Description' = 'Resistor 73.2 ohms / 1% / case 0603' 
-    PARAM 'Part Label' = 'RES_73.2_0603' 
-    PARAM 'Cout HT' = '0.045' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'R7'         /* Reference Desig was (null) */
-  SELECT COMP XCMP979                 /* Reference Desig is R5 */
-    PARAM 'Part Name' = 'RES_0603_E24' 
-    PARAM 'Value' = '10K ' 
-    PARAM 'Tolerance' = '5%' 
-    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
-    PARAM 'Part Label' = 'RES_10k_0603' 
-    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
-    PARAM 'Cout HT' = '0.045' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'R5'         /* Reference Desig was (null) */
-  SELECT COMP XCMP978                 /* Reference Desig is R4 */
-    PARAM 'Part Name' = 'RES_0603_E24' 
-    PARAM 'Value' = '10K ' 
-    PARAM 'Tolerance' = '5%' 
-    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
-    PARAM 'Part Label' = 'RES_10k_0603' 
-    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
-    PARAM 'Cout HT' = '0.045' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'R4'         /* Reference Desig was (null) */
-  SELECT COMP XCMP977                 /* Reference Desig is C78 */
-    PARAM 'Part Name' = 'CAPCERAM0805' 
-    PARAM 'Value' = '2,2uF' 
-    PARAM 'Tolerance' = '80%' 
-    PARAM 'Description' = 'Capacitor Ceramic Y5V / 2.2uF / 25V / +80% -20% / case 0805 / Murata GRM21BF51E225ZA01L' 
-    PARAM 'Part Label' = 'CAP C0805 2.2uF Y5V 25V' 
-    PARAM 'Dielectric' = 'Y5V' 
-    PARAM 'Voltage' = '25V' 
-    PARAM 'Code Fournisseur' = 'Fa : 4716656' 
-    PARAM 'Cout HT' = '0.05' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C78'         /* Reference Desig was (null) */
-  SELECT COMP XCMP976                 /* Reference Desig is C77 */
-    PARAM 'Part Name' = 'CAPCERAM0805' 
-    PARAM 'Value' = '2,2uF' 
-    PARAM 'Tolerance' = '80%' 
-    PARAM 'Description' = 'Capacitor Ceramic Y5V / 2.2uF / 25V / +80% -20% / case 0805 / Murata GRM21BF51E225ZA01L' 
-    PARAM 'Part Label' = 'CAP C0805 2.2uF Y5V 25V' 
-    PARAM 'Dielectric' = 'Y5V' 
-    PARAM 'Voltage' = '25V' 
-    PARAM 'Code Fournisseur' = 'Fa : 4716656' 
-    PARAM 'Cout HT' = '0.05' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C77'         /* Reference Desig was (null) */
-  SELECT COMP XCMP975                 /* Reference Desig is C58 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C58'         /* Reference Desig was (null) */
-  SELECT COMP XCMP974                 /* Reference Desig is C57 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '100nF' 
-    PARAM 'Tolerance' = '10%' 
-    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
-    PARAM 'Cout HT' = '0.014' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C57'         /* Reference Desig was (null) */
-  SELECT COMP XCMP973                 /* Reference Desig is C76 */
-    PARAM 'Part Name' = 'CAPCERAM0603' 
-    PARAM 'Value' = '2,2uF' 
-    PARAM 'Tolerance' = '20%' 
-    PARAM 'Description' = 'Capacitor Ceramic X5R / 2.2uF / 6.3V / ±20% / case 0603' 
-    PARAM 'Part Label' = 'CAP C0603 2.2uF X5R 6.3V' 
-    PARAM 'Code Fournisseur' = 'Fa : 1288257' 
-    PARAM 'Cout HT' = '0.117' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C76'         /* Reference Desig was (null) */
   SELECT COMP XCMP898                 /* Reference Desig is C64 */
     PARAM 'Part Name' = 'CAPCERAM0603' 
     PARAM 'Value' = '10uF' 
@@ -883,6 +616,167 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Part Label' = 'CAP C0603 10uF X5R 6.3V' 
     PARAM 'Code Fournisseur' = 'Fa : 1759393 ' 
     PARAM 'Cout HT' = '0.117' 
+  SELECT COMP XCMP896                 /* Reference Desig is U3 */
+    PARAM 'Part Name' = 'MCP1826S-25' 
+    PARAM 'Description' = '1A low voltage LDO regulator, 2.5V, Microchip MCP1826S-2502E/DB, case SOT223-3' 
+    PARAM 'Part Label' = 'MCP1826S-2502E/DB' 
+    PARAM 'Code Fournisseur' = 'Fa : 1851997' 
+    PARAM 'Cout HT' = '1.09' 
+  SELECT COMP XCMP978                 /* Reference Desig is R4 */
+    PARAM 'Part Name' = 'RES_0603_E24' 
+    PARAM 'Value' = '10K ' 
+    PARAM 'Tolerance' = '5%' 
+    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
+    PARAM 'Part Label' = 'RES_10k_0603' 
+    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
+    PARAM 'Cout HT' = '0.045' 
+  SELECT COMP XCMP977                 /* Reference Desig is C78 */
+    PARAM 'Part Name' = 'CAPCERAM0805' 
+    PARAM 'Value' = '2,2uF' 
+    PARAM 'Tolerance' = '80%' 
+    PARAM 'Description' = 'Capacitor Ceramic Y5V / 2.2uF / 25V / +80% -20% / case 0805 / Murata GRM21BF51E225ZA01L' 
+    PARAM 'Part Label' = 'CAP C0805 2.2uF Y5V 25V' 
+    PARAM 'Dielectric' = 'Y5V' 
+    PARAM 'Voltage' = '25V' 
+    PARAM 'Code Fournisseur' = 'Fa : 4716656' 
+    PARAM 'Cout HT' = '0.05' 
+  SELECT COMP XCMP976                 /* Reference Desig is C77 */
+    PARAM 'Part Name' = 'CAPCERAM0805' 
+    PARAM 'Value' = '2,2uF' 
+    PARAM 'Tolerance' = '80%' 
+    PARAM 'Description' = 'Capacitor Ceramic Y5V / 2.2uF / 25V / +80% -20% / case 0805 / Murata GRM21BF51E225ZA01L' 
+    PARAM 'Part Label' = 'CAP C0805 2.2uF Y5V 25V' 
+    PARAM 'Dielectric' = 'Y5V' 
+    PARAM 'Voltage' = '25V' 
+    PARAM 'Code Fournisseur' = 'Fa : 4716656' 
+    PARAM 'Cout HT' = '0.05' 
+  SELECT COMP XCMP975                 /* Reference Desig is C58 */
+    PARAM 'Part Name' = 'CAPCERAM0603' 
+    PARAM 'Value' = '100nF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
+    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
+    PARAM 'Cout HT' = '0.014' 
+  SELECT COMP XCMP974                 /* Reference Desig is C57 */
+    PARAM 'Part Name' = 'CAPCERAM0603' 
+    PARAM 'Value' = '100nF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Ceramic X7R / 100nF / 16V / ±10% / case 0603' 
+    PARAM 'Part Label' = 'CAP C0603 100nF X7R 16V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1414027' 
+    PARAM 'Cout HT' = '0.014' 
+  SELECT COMP XCMP973                 /* Reference Desig is C76 */
+    PARAM 'Part Name' = 'CAPCERAM0603' 
+    PARAM 'Value' = '2,2uF' 
+    PARAM 'Tolerance' = '20%' 
+    PARAM 'Description' = 'Capacitor Ceramic X5R / 2.2uF / 6.3V / ±20% / case 0603' 
+    PARAM 'Part Label' = 'CAP C0603 2.2uF X5R 6.3V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1288257' 
+    PARAM 'Cout HT' = '0.117' 
+  SELECT COMP XCMP972                 /* Reference Desig is C75 */
+    PARAM 'Part Name' = 'CAPTANTALE' 
+    PARAM 'Value' = '68uF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Tantalum 68uF / 25V / ±10% / case E / TPME686K025R0055 / ESR=0.055 / 2.2A RMS' 
+    PARAM 'Part Label' = 'CAP TANTAL_E 68uF 25V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1135248' 
+    PARAM 'Cout HT' = '5.1' 
+  SELECT COMP XCMP971                 /* Reference Desig is C74 */
+    PARAM 'Part Name' = 'CAPTANTALE' 
+    PARAM 'Value' = '68uF' 
+    PARAM 'Tolerance' = '10%' 
+    PARAM 'Description' = 'Capacitor Tantalum 68uF / 25V / ±10% / case E / TPME686K025R0055 / ESR=0.055 / 2.2A RMS' 
+    PARAM 'Part Label' = 'CAP TANTAL_E 68uF 25V' 
+    PARAM 'Code Fournisseur' = 'Fa : 1135248' 
+    PARAM 'Cout HT' = '5.1' 
+  SELECT COMP XCMP970                 /* Reference Desig is U6 */
+    PARAM 'Part Name' = 'LTC3633' 
+    PARAM 'Description' = 'Dual Channel 3A, 15V Monolithic Synchronous Step-Down Regulator, 4MHz,  Linear LTC3633EFE#PBF, case ETSSOP28' 
+    PARAM 'Part Label' = 'LTC3633EFE' 
+    PARAM 'Code Fournisseur' = 'Fa : 1839138' 
+    PARAM 'Cout HT' = '8.63' 
+  SELECT COMP XCMP969                 /* Reference Desig is R6 */
+    PARAM 'Part Name' = 'RES_0603_E96' 
+    PARAM 'Value' = '806 ' 
+    PARAM 'Tolerance' = '1%' 
+    PARAM 'Description' = 'Resistor 806 ohms / 1% / case 0603' 
+    PARAM 'Part Label' = 'RES_806_0603' 
+    PARAM 'Cout HT' = '0.045' 
+  SELECT COMP XCMP968                 /* Reference Desig is C73 */
+    PARAM 'Part Name' = 'CAPCHIMIQUEG' 
+    PARAM 'Value' = '220uF' 
+    PARAM 'Tolerance' = '80%' 
+    PARAM 'Description' = 'Capacitor chimical low ESR / 220uF / 50V / case G' 
+    PARAM 'Part Label' = 'CAP CHIM G 220uF 50V' 
+    PARAM 'Dielectric' = 'Al' 
+    PARAM 'Code Fournisseur' = 'Fa : 1714770' 
+    PARAM 'Cout HT' = '0.87' 
+  SELECT COMP XCMP967                 /* Reference Desig is C72 */
+    PARAM 'Part Name' = 'CAPCHIMIQUEG' 
+    PARAM 'Value' = '220uF' 
+    PARAM 'Tolerance' = '80%' 
+    PARAM 'Description' = 'Capacitor chimical low ESR / 220uF / 50V / case G' 
+    PARAM 'Part Label' = 'CAP CHIM G 220uF 50V' 
+    PARAM 'Dielectric' = 'Al' 
+    PARAM 'Code Fournisseur' = 'Fa : 1714770' 
+    PARAM 'Cout HT' = '0.87' 
+  SELECT COMP XCMP966                 /* Reference Desig is C71 */
+    PARAM 'Part Name' = 'CAPCHIMIQUEG' 
+    PARAM 'Value' = '220uF' 
+    PARAM 'Tolerance' = '80%' 
+    PARAM 'Description' = 'Capacitor chimical low ESR / 220uF / 50V / case G' 
+    PARAM 'Part Label' = 'CAP CHIM G 220uF 50V' 
+    PARAM 'Dielectric' = 'Al' 
+    PARAM 'Code Fournisseur' = 'Fa : 1714770' 
+    PARAM 'Cout HT' = '0.87' 
+  SELECT COMP XCMP965                 /* Reference Desig is C70 */
+    PARAM 'Part Name' = 'CAPCHIMIQUEG' 
+    PARAM 'Value' = '220uF' 
+    PARAM 'Tolerance' = '80%' 
+    PARAM 'Description' = 'Capacitor chimical low ESR / 220uF / 50V / case G' 
+    PARAM 'Part Label' = 'CAP CHIM G 220uF 50V' 
+    PARAM 'Dielectric' = 'Al' 
+    PARAM 'Code Fournisseur' = 'Fa : 1714770' 
+    PARAM 'Cout HT' = '0.87' 
+  SELECT COMP XCMP984                 /* Reference Desig is L6 */
+    PARAM 'Part Name' = 'SELF' 
+    PARAM 'Value' = '2,2uH' 
+    PARAM 'Tolerance' = '20' 
+    PARAM 'Description' = 'Inductor 2.2uH / 3.1A / 27mOhms / shielded /Würth 744 5402' 
+    PARAM 'Part Label' = 'SELF 2.2uH' 
+    PARAM 'Code Fournisseur' = 'RS : 367-5168' 
+    PARAM 'Cout HT' = '1.9' 
+  SELECT COMP XCMP983                 /* Reference Desig is L5 */
+    PARAM 'Part Name' = 'SELF' 
+    PARAM 'Value' = '2,2uH' 
+    PARAM 'Tolerance' = '20' 
+    PARAM 'Description' = 'Inductor 2.2uH / 3.1A / 27mOhms / shielded /Würth 744 5402' 
+    PARAM 'Part Label' = 'SELF 2.2uH' 
+    PARAM 'Code Fournisseur' = 'RS : 367-5168' 
+    PARAM 'Cout HT' = '1.9' 
+  SELECT COMP XCMP981                 /* Reference Desig is R8 */
+    PARAM 'Part Name' = 'RES_0603_E96' 
+    PARAM 'Value' = '45,4 ' 
+    PARAM 'Tolerance' = '1%' 
+    PARAM 'Description' = 'Resistor 45.4 ohms / 1% / case 0603' 
+    PARAM 'Part Label' = 'RES_45.4_0603' 
+    PARAM 'Cout HT' = '0.045' 
+  SELECT COMP XCMP980                 /* Reference Desig is R7 */
+    PARAM 'Part Name' = 'RES_0603_E96' 
+    PARAM 'Value' = '73,2 ' 
+    PARAM 'Tolerance' = '1%' 
+    PARAM 'Description' = 'Resistor 73.2 ohms / 1% / case 0603' 
+    PARAM 'Part Label' = 'RES_73.2_0603' 
+    PARAM 'Cout HT' = '0.045' 
+  SELECT COMP XCMP979                 /* Reference Desig is R5 */
+    PARAM 'Part Name' = 'RES_0603_E24' 
+    PARAM 'Value' = '10K ' 
+    PARAM 'Tolerance' = '5%' 
+    PARAM 'Description' = 'Resistor 10k ohms / 5% / case 0603' 
+    PARAM 'Part Label' = 'RES_10k_0603' 
+    PARAM 'Code Fournisseur' = 'Fa : 9331700' 
+    PARAM 'Cout HT' = '0.045' 
   SELECT COMP XCMP889                 /* Reference Desig is U2 */
     PARAM 'Part Name' = 'MCP1826S-12' 
     PARAM 'Description' = '1A low voltage LDO regulator, 1.2V, Microchip MCP1826S-1202E/DB, case SOT223-3' 
@@ -895,8 +789,6 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Part Label' = 'MCP1826S-3002E/DB' 
     PARAM 'Code Fournisseur' = 'Fa : 1578422' 
     PARAM 'Cout HT' = '0.629' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'U4'         /* Reference Desig was (null) */
   SELECT COMP XCMP954                 /* Reference Desig is C59 */
     PARAM 'Part Name' = 'CAPCERAM0603' 
     PARAM 'Value' = '10uF' 
@@ -905,8 +797,6 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Part Label' = 'CAP C0603 10uF X5R 6.3V' 
     PARAM 'Code Fournisseur' = 'Fa : 1759393 ' 
     PARAM 'Cout HT' = '0.117' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C59'         /* Reference Desig was (null) */
   SELECT COMP XCMP964                 /* Reference Desig is C69 */
     PARAM 'Part Name' = 'CAPCHIMIQUEG' 
     PARAM 'Value' = '220uF' 
@@ -916,8 +806,6 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Dielectric' = 'Al' 
     PARAM 'Code Fournisseur' = 'Fa : 1714770' 
     PARAM 'Cout HT' = '0.87' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C69'         /* Reference Desig was (null) */
   SELECT COMP XCMP963                 /* Reference Desig is C68 */
     PARAM 'Part Name' = 'CAPCHIMIQUEG' 
     PARAM 'Value' = '220uF' 
@@ -927,8 +815,6 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Dielectric' = 'Al' 
     PARAM 'Code Fournisseur' = 'Fa : 1714770' 
     PARAM 'Cout HT' = '0.87' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C68'         /* Reference Desig was (null) */
   SELECT COMP XCMP961                 /* Reference Desig is C67 */
     PARAM 'Part Name' = 'CAPCHIMIQUEF' 
     PARAM 'Value' = '100uF' 
@@ -938,8 +824,6 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Dielectric' = 'Al' 
     PARAM 'Code Fournisseur' = 'Fa : 1714769' 
     PARAM 'Cout HT' = '0.73' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C67'         /* Reference Desig was (null) */
   SELECT COMP XCMP960                 /* Reference Desig is C66 */
     PARAM 'Part Name' = 'CAPCHIMIQUEF' 
     PARAM 'Value' = '100uF' 
@@ -949,8 +833,6 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Dielectric' = 'Al' 
     PARAM 'Code Fournisseur' = 'Fa : 1714769' 
     PARAM 'Cout HT' = '0.73' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C66'         /* Reference Desig was (null) */
   SELECT COMP XCMP959                 /* Reference Desig is C65 */
     PARAM 'Part Name' = 'CAPCHIMIQUEF' 
     PARAM 'Value' = '100uF' 
@@ -960,16 +842,12 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Dielectric' = 'Al' 
     PARAM 'Code Fournisseur' = 'Fa : 1714769' 
     PARAM 'Cout HT' = '0.73' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C65'         /* Reference Desig was (null) */
   SELECT COMP XCMP957                 /* Reference Desig is U5 */
     PARAM 'Part Name' = 'PTH12040WAD' 
     PARAM 'Description' = '50A, 8V-14V input, non isolated wide output adjsut power supply module, Texas Instruments PTH12040WAD' 
     PARAM 'Part Label' = 'PTH12040WAD' 
     PARAM 'Code Fournisseur' = 'Mouser : 595-PTH12040WAD' 
     PARAM 'Cout HT' = '54.43' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'U5'         /* Reference Desig was (null) */
   SELECT COMP XCMP955                 /* Reference Desig is C60 */
     PARAM 'Part Name' = 'CAPCERAM0603' 
     PARAM 'Value' = '10uF' 
@@ -978,10 +856,8 @@ CHANGE 'Schematic1(4)' 	INSTANCE
     PARAM 'Part Label' = 'CAP C0603 10uF X5R 6.3V' 
     PARAM 'Code Fournisseur' = 'Fa : 1759393 ' 
     PARAM 'Cout HT' = '0.117' 
-    PARAM 23 = DELETE                    /* Component Fix flag */
-    PARAM 15 = 'C60'         /* Reference Desig was (null) */
 
-/* Sym: 0411B298  Path 1: Schematic1  Page 5: Schematic1(5) */
+/* Sym: 03B28E08  Path 1: Schematic1  Page 5: Schematic1(5) */
 CHANGE 'Schematic1(5)' 	INSTANCE
   SELECT EXT XCMP922                  /* Reference Desig is J3 */
     PARAM 'Part Name' = 'BARETTE' 
@@ -992,4 +868,114 @@ CHANGE 'Schematic1(5)' 	INSTANCE
     PARAM 'Part Name' = 'BARETTE' 
     PARAM 'Description' = 'Jumper 2 points 2.54mm avec cavalier associe' 
     PARAM 'Part Label' = 'JUMPER 2PTS' 
+    PARAM 'Cout HT' = '0.2' 
+  SELECT EXT XCMP1007                  /* Reference Desig is PT20 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP1006                  /* Reference Desig is PT19 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP1005                  /* Reference Desig is PT18 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP1004                  /* Reference Desig is PT17 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP1003                  /* Reference Desig is PT16 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP1002                  /* Reference Desig is PT15 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP1001                  /* Reference Desig is PT14 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP1000                  /* Reference Desig is PT13 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP999                  /* Reference Desig is PT12 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP998                  /* Reference Desig is PT11 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP997                  /* Reference Desig is PT10 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP996                  /* Reference Desig is PT9 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP995                  /* Reference Desig is PT8 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP994                  /* Reference Desig is PT7 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP993                  /* Reference Desig is PT6 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP992                  /* Reference Desig is PT5 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP991                  /* Reference Desig is PT4 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP990                  /* Reference Desig is PT3 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP989                  /* Reference Desig is PT2 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP1008                  /* Reference Desig is PT21 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP988                  /* Reference Desig is PT1 */
+    PARAM 'Part Name' = 'TEST_POINT' 
+    PARAM 'Description' = 'Test point 0.9mm, SMD' 
+    PARAM 'Part Label' = 'TEST_POINT_0.9mm' 
+    PARAM 'Place' = 'no' 
+  SELECT EXT XCMP987                  /* Reference Desig is J4 */
+    PARAM 'Part Name' = 'BARETTE' 
+    PARAM 'Description' = 'Jumper 3 points en ligne 2.54mm avec cavalier associe' 
+    PARAM 'Part Label' = 'JUMPER 3PTS' 
     PARAM 'Cout HT' = '0.2' 
