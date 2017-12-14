@@ -5,6 +5,7 @@ module framebuffer_emulator #(
     input clk_33,
     input nrst,
     input color_button,
+    input switch_demo_button,
 
     // Data and sync signal for the driver main controller
     output reg [29:0] data,
@@ -40,29 +41,41 @@ logic[1:0]  color_bit_counter;
  * sending data, which is done thanks to the following counter.
  */
 logic [5:0] counter_48;
+// Indicates to which led we are sending data, modulo 3
+logic [1:0] counter_3;
+logic switch_demo;
 always_ff @(posedge clk_33 or negedge nrst)
 	if(~nrst) begin
-        color_counter <= '0;
+        color_counter     <= '0;
         color_bit_counter <= '0;
-        blink_counter <= '0;
-        counter_48 <= 0;
+        blink_counter     <= '0;
+        counter_48        <= '0;
+        switch_demo       <= '0;
+        counter_3         <= '0;
 	end else begin
         if(~blanking) begin
             // When sending a bit group we send B,G,R,B,G,R...
             color_bit_counter <= color_bit_counter + 1'b1;
             if(color_bit_counter == 2) begin
                 color_bit_counter <= '0;
+                counter_3 <= counter_3 + 1'b1;
+                if(counter_3 == 2) begin
+                    counter_3 <= '0;
+                end
+            end
+            if(counter_48 == 0) begin
+                // We will send another bit group, we start from blue again
+                color_bit_counter <= '0;
+                counter_3 <= '0;
             end
             counter_48 <= counter_48 + 1'b1;
             if(counter_48 == 48) begin
                 counter_48 <= '0;
-                // We will send another bit group, we start from blue again
-                color_bit_counter <= '0;
             end
         end
         blink_counter <= blink_counter + 1'b1;
-        // 7325*4096 ~ 1s at 33 MHz
-        if(blink_counter == 7325*4096) begin
+        // 700*4096 ~ 0.1s at 33 MHz
+        if(blink_counter == 700*4096) begin
             blink_counter <= '0;
             // If the user is pressing the button we change color
             if(color_button) begin
@@ -71,33 +84,25 @@ always_ff @(posedge clk_33 or negedge nrst)
                     color_counter <= '0;
                 end
             end
+            if(switch_demo_button) begin
+                switch_demo <= ~switch_demo;
+            end
         end
     end
 
 always_comb begin
-    case(color_counter)
-        0:begin
-            data = '0;
-            if(color_bit_counter == 0) begin
-                data = '1;
-            end
+    // Demo 1 : all leds are red, blue or green at the same time
+    data = '0;
+    if(color_bit_counter == color_counter) begin
+        data = '1;
+    end
+    // Demo 2 : leds have the pattern RGBRGB...
+    if(switch_demo) begin
+        data = '0;
+        if(color_bit_counter == (counter_3 + color_counter) % 3) begin
+            data = '1;
         end
-        1:begin
-            data = '0;
-            if(color_bit_counter == 1) begin
-                data = '1;
-            end
-        end
-        2:begin
-            data = '0;
-            if(color_bit_counter == 2) begin
-                data = '1;
-            end
-        end
-        default:begin
-            data = '0;
-        end
-    endcase
+    end
 end
 
 endmodule
