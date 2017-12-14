@@ -70,3 +70,22 @@ else
     echo The sphere rendering has changed since the previous snapshot, see tests/sphere_difference.png
     exit 1
 fi
+
+echo
+
+echo Start the renderer in non-xor mode
+EXE -p -t 0
+screenshot -page "1280x460" -crop "1280x460" "+repage"  tests/monkey_noxor.png
+killApplication
+echo Start the renderer in xor-mode
+EXE -p -t 0 -x
+screenshot -page "1280x460" -crop "1280x460" "+repage" tests/monkey_xor.png
+killApplication
+
+compare_out=`compare -metric AE "tests/monkey_xor.png" "tests/monkey_noxor.png" tests/monkey_xornoxor_difference.png 2>&1`
+echo "AE: $compare_out"
+if [[ $compare_out == "0" ]]; then
+    echo The xor and no-xor methods are doing the same voxelization
+else 
+    echo The xor and no-xor methods are differents, see tests/monkey_xornoxor_difference.png
+fi
