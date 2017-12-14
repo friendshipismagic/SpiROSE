@@ -4,8 +4,10 @@ incremental_db/
 board/
 simulation/
 timing/
+modelsim/work
 db/
 
+*.qws
 *.ddb
 *.bak
 *.o
@@ -15,3 +17,6 @@ db/
 *.d
 obj_dir/
 *.simu
+
+# SystemC output
+lib/test_driver_cmd

@@ -20,6 +20,7 @@ enum latch_t {
     LATCH_LATGS = 3,
     LATCH_WRTFC = 5,
     LATCH_LINERESET = 7,
+    LATCH_READFC = 11,
     LATCH_TMGRST = 13,
     LATCH_FCWRTEN = 15
 };

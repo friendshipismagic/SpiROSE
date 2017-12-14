@@ -1,6 +1,7 @@
 #include "driver.hpp"
 
 #include <iostream>
+#include <sstream>
 
 sc_bv<2> Driver::getLodth() const { return fcData.read()(1, 0); }
 
@@ -40,11 +41,12 @@ void Driver::checkAssert() {
     while (true) {
         // Can't use XREFRESH and ESPWM in poker mode, p17, 3.4.3
         if (getPokerMode() && (!getXrefreshDisabled() || !getEspwm())) {
-            std::cout << "FATAL: XREFRESH(" << getXrefreshDisabled() << ") "
-                      << "and ESPWM(" << getEspwm() << ") "
-                      << "have to be 1 (deactivated) in poker mode"
-                      << std::endl;
-            exit(-1);
+            std::ostringstream stream;
+            stream << "FATAL: XREFRESH(" << getXrefreshDisabled() << ") "
+                   << "and ESPWM(" << getEspwm() << ") "
+                   << "have to be 1 (deactivated) in poker mode";
+            SC_REPORT_ERROR("driver", stream.str().c_str());
+            return;
         }
         wait();
     }
@@ -63,78 +65,9 @@ void Driver::handleLat() {
     while (true) {
         if (lat) {
             latCounter = latCounter.read() + 1;
-        } else if (latCounter == 1) {
-            // WRTGS, write to GS data at the GS counter position
-            auto bank = gs1Data.read();
-            updateBank(bank, gsAddrCounter.read(), shiftReg);
-            gs1Data.write(bank);
-            gsAddrCounter = gsAddrCounter.read() - 1;
-            latCounter = 0;
-        } else if (latCounter == 3) {
-            // LATGS, write to GS data
-            auto bank = gs1Data.read();
-            updateBank(bank, gsAddrCounter.read(), shiftReg);
-            gs1Data.write(bank);
-
-            // We will be using poker mode so no need to support Xrefresh
-            assert(getXrefreshDisabled());
-
-            if (getXrefreshDisabled() == 0) {
-                // TODO: we do not handle Xrefresh mode, not used
-            } else {
-                // latch GS1 to GS2
-                // reset gsAddrCounter (right after the else)
-                // TODO: put outx = 0 if we need to test it
-                gs2Data.write(bank);
-            }
-            gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
-            lineCounter = lineCounter.read() + 1;
-            latCounter = 0;
-        } else if (latCounter == 5) {
-            // WRTFC
-            fcData = shiftReg;
-            latCounter = 0;
-            gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
-        } else if (latCounter == 7) {
-            // LINERESET
-            auto bank = gs1Data.read();
-            updateBank(bank, gsAddrCounter.read(), shiftReg);
-            gs2Data.write(bank);
-            gs1Data.write(bank);
-            lineCounter = 0;
-            gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
-
-            // We will be using poker mode so no need to support Xrefresh
-            assert(getXrefreshDisabled());
-
-            if (getXrefreshDisabled() == 0) {
-                // TODO: we do not handle Xrefresh mode, not used
-                // TODO: copy everything when GS counter is 65536;
-            } else {
-                gs2Data.write(gs1Data);
-                gsDataCounter = 0;
-                // TODO: OUTx forced off
-            }
-            latCounter = 0;
-        } else if (latCounter == 11) {
-            // READFC
-            // It's the following line, but we can't do it because it is driven
-            // TODO: handle_sout using either fcData or shift_reg (later)
-            // by handle_sin shift_reg.write(fcData);
-            latCounter = 0;
-        } else if (latCounter == 13) {
-            // TMGRST
-            gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
-            gsDataCounter = 0;
-            lineCounter = 0;
-            // TODO: force output off if we need to test it
-            latCounter = 0;
-        } else if (latCounter == 15) {
-            // FCWRTEN, enable to write to FC data latch
-            currentMode = MODE_FCWRT;
-            latCounter = 0;
         } else {
-            assert(latCounter == 0 && "Invalid lat counter value");
+            executeLat(latCounter);
+            latCounter = 0;
         }
 
         wait();
@@ -204,4 +137,77 @@ void Driver::displayReg(const Driver::RegBuff& buffer) {
         std::cout << buffer(47 - i * 16, 48 - (i + 1) * 16) << " ";
     }
     std::cout << std::endl;
+}
+
+void Driver::executeLat(int latCount) {
+    if (latCount == 1) {
+        // WRTGS, write to GS data at the GS counter position
+        auto bank = gs1Data.read();
+        updateBank(bank, gsAddrCounter.read(), shiftReg);
+        gs1Data.write(bank);
+        gsAddrCounter = gsAddrCounter.read() - 1;
+    } else if (latCount == 3) {
+        // LATGS, write to GS data
+        auto bank = gs1Data.read();
+        updateBank(bank, gsAddrCounter.read(), shiftReg);
+        gs1Data.write(bank);
+
+        // We will be using poker mode so no need to support Xrefresh
+        assert(getXrefreshDisabled());
+
+        if (getXrefreshDisabled() == 0) {
+            // TODO: we do not handle Xrefresh mode, not used
+        } else {
+            // latch GS1 to GS2
+            // reset gsAddrCounter (right after the else)
+            // TODO: put outx = 0 if we need to test it
+            gs2Data.write(bank);
+        }
+        gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
+        lineCounter = lineCounter.read() + 1;
+    } else if (latCount == 5) {
+        // WRTFC
+        fcData = shiftReg;
+        gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
+    } else if (latCount == 7) {
+        // LINERESET
+        auto bank = gs1Data.read();
+        updateBank(bank, gsAddrCounter.read(), shiftReg);
+        gs2Data.write(bank);
+        gs1Data.write(bank);
+        lineCounter = 0;
+        gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
+
+        // We will be using poker mode so no need to support Xrefresh
+        assert(getXrefreshDisabled());
+
+        if (getXrefreshDisabled() == 0) {
+            // TODO: we do not handle Xrefresh mode, not used
+            // TODO: copy everything when GS counter is 65536;
+        } else {
+            gs2Data.write(gs1Data);
+            gsDataCounter = 0;
+            // TODO: OUTx forced off
+        }
+    } else if (latCount == 11) {
+        // READFC
+        // It's the following line, but we can't do it because it is
+        // driven
+        // TODO: handle_sout using either fcData or shift_reg (later)
+        // by handle_sin shift_reg.write(fcData);
+    } else if (latCount == 13) {
+        // TMGRST
+        gsAddrCounter = GS_ADDR_COUNTER_ORIGIN;
+        gsDataCounter = 0;
+        lineCounter = 0;
+        // TODO: force output off if we need to test it
+    } else if (latCount == 15) {
+        // FCWRTEN, enable to write to FC data latch
+        currentMode = MODE_FCWRT;
+    } else {
+        if (latCount != 0)
+            SC_REPORT_ERROR(
+                "LAT", (std::to_string(latCount) + " is an invalid lat value")
+                           .c_str());
+    }
 }

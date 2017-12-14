@@ -53,7 +53,9 @@ static const GWidgetStyle SpiROSEStyle = {
 
     // pressed widget color set, same structure as above
     {
-        HTML2COLOR(0xFF0000), HTML2COLOR(0x404040), HTML2COLOR(0x808080),
+        HTML2COLOR(0xFF0000),
+        HTML2COLOR(0x404040),
+        HTML2COLOR(0x808080),
         HTML2COLOR(0x00E000),
     }};
 

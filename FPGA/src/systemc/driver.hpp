@@ -28,7 +28,8 @@ class Driver : public sc_module {
     inline Driver(const sc_module_name& name)
         : sc_module(name), gclk("gclk"), sclk("sclk"), sin("sin"), lat("lat") {
         SC_CTHREAD(handleSin, sclk);
-        SC_CTHREAD(handleLat, sclk);
+        SC_THREAD(handleLat);
+        sensitive << sclk.pos() << lat.neg();
         SC_CTHREAD(checkAssert, sclk);
         SC_CTHREAD(handleGclk, gclk);
     }
@@ -97,6 +98,8 @@ class Driver : public sc_module {
 
     private:
     void updateBank(Driver::GSBuff& bank, int bufferId, const RegBuff& buffer);
+
+    void executeLat(int latCount);
 
     /* Driver internal state */
 
