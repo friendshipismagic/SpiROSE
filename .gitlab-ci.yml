@@ -1,4 +1,4 @@
-image: rfc1149/rose-dev
+image: tuetuopay/verilator
 
 stages:
   - lint
@@ -10,15 +10,14 @@ stages:
 variables:
   SBC_DIR: "SBC"
   RENDERER_POC_DIR: "tools/renderer"
+  FPGA_DIR: "FPGA"
 
 before_script:
-    - git submodule init
-    - git submodule update
+  - git submodule init
+  - git submodule update
 
 lint_lower_tower:
-  image: tuetuopay/arm-none-eabi
   stage: lint
-  image: rfc1149/rose-dev
   script:
     - cd LCD_Display
     - make lint
@@ -47,20 +46,20 @@ host_lower_tower:
 lint_sbc:
   stage: lint
   script:
-  - cd $SBC_DIR
-  - make lint
+    - cd $SBC_DIR
+    - make lint
 
 build_sbc:
   stage: build
   script:
-  - cd $SBC_DIR
-  - make build
+    - cd $SBC_DIR
+    - make build
 
 test_sbc:
   stage: test
   script:
-  - cd $SBC_DIR
-  - make test
+    - cd $SBC_DIR
+    - make test
 
 host_sbc:
    stage: host
@@ -74,18 +73,33 @@ lint_renderer-poc:
   script:
     - cd $RENDERER_POC_DIR
     - make lint
+
 build_renderer-poc:
   stage: build
   image: tuetuopay/glfw
   script:
     - cd $RENDERER_POC_DIR
     - make build
-test_renderer-poc:
-  stage: test
+    - make test
+  except:
+    - master
+
+build_renderer-poc:master:
+  stage: build
   image: tuetuopay/glfw
   script:
     - cd $RENDERER_POC_DIR
+    - make build
     - make test
+  artifacts:
+    paths:
+      - $RENDERER_POC_DIR/rose-renderer-poc
+      - $RENDERER_POC_DIR/shader
+      - $RENDERER_POC_DIR/mesh
+    expire_in: 1 week
+  only:
+    - master
+
 host_renderer-poc:
   stage: host
   image: tuetuopay/glfw
@@ -105,3 +119,30 @@ bundle_renderer-poc:
   only:
     - master
 
+lint_fpga:
+  stage: lint
+  image: tuetuopay/verilator
+  script:
+    - cd $FPGA_DIR
+    - make lint
+
+build_fpga:
+  stage: build
+  image: tuetuopay/verilator
+  script:
+    - cd $FPGA_DIR
+    - make build
+
+test_fpga:
+  stage: test
+  image: tuetuopay/verilator
+  script:
+    - cd $FPGA_DIR
+    - make test
+
+host_fpga:
+  stage: host
+  image: tuetuopay/verilator
+  script:
+    - cd $FPGA_DIR
+    - make host
