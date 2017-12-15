@@ -1,0 +1,178 @@
+[2017.12.12 23:14:29] [0000m.00s.033ms] [0] WELCOME
+[2017.12.12 23:14:29] [0000m.00s.033ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.12 23:14:29] [0000m.00s.033ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.12 23:14:29] [0000m.00s.033ms] [1] Base flow version [VX.2.2]
+[2017.12.12 23:14:29] [0000m.00s.033ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.12 23:14:29] [0000m.00s.034ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.12 23:14:29] [0000m.00s.034ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.12 23:14:29] [0000m.00s.041ms] [1] Machine [HYDRA]  IP [127.0.0.1,192.168.1.3,192.168.229.1,192.168.85.1]  User [DiDjCodt]  PID [11780]
+[2017.12.12 23:14:29] [0000m.00s.041ms] [1] Operating system [Microsoft Enterprise Edition, 64-bit (build 9200)]
+[2017.12.12 23:14:29] [0000m.00s.041ms] [1] Current working dir [E:\SpiROSE\PCB\Test_LED]
+[2017.12.12 23:14:29] [0000m.00s.041ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\Program Files\Oculus\Support\oculus-runtime;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\libnvvp;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files\PuTTY\;C:\Program Files (x86)\Common Files\Propellerhead Software\ReWire\;C:\Program Files\Common Files\Propellerhead Software\ReWire\;C:\Program Files\Git\cmd;C:\Program Files\OpenVPN\bin;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\110\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files\Microsoft SQL Server\120\DTS\Binn\;C:\Program Files (x86)\Windows Kits\8.1\Windows Performance Toolkit\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Users\DiDjCodt\AppData\Local\Microsoft\WindowsApps;]
+[2017.12.12 23:14:29] [0000m.00s.041ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.12 23:14:29] [0000m.00s.041ms] [1] SDD_PLATFORM [win32]
+[2017.12.12 23:14:29] [0000m.00s.041ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.12 23:14:29] [0000m.00s.041ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.12 23:14:29] [0000m.00s.042ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.12 23:14:29] [0000m.00s.042ms] [2] S: Loading config files
+[2017.12.12 23:14:29] [0000m.00s.045ms] [1] Config file [E:\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.12 23:14:29] [0000m.00s.045ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2017.12.12 23:14:29] [0000m.00s.047ms] [3] S: Config loaded
+[2017.12.12 23:14:29] [0000m.00s.051ms] [0] S: Project path [E:\SpiROSE\PCB\Test_LED\Default\default.icdb] on file system [NTFS]
+[2017.12.12 23:14:29] [0000m.00s.052ms] [0] S: Project global path [\\HYDRA\E\SpiROSE\PCB\Test_LED\Default\default.icdb] on file system [NTFS]
+[2017.12.12 23:14:29] [0000m.00s.052ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.12 23:14:29] [0000m.00s.053ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] S: Multi-user mode (config)
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] S: Event polling mode autodetection
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] S: Started up automatically by iCDB Client: HYDRA:DiDjCodt:18872
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] S: Auto close mode
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] S: Database ID [b66f-3e0b-a3f0-5d1f-4f34-03a9-f340-3a50-0010-dca8-651d-8d8b]
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] PathTranslator: BEGIN dumping
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] PathTranslator: [D:\] -> [\\HYDRA\D]
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] PathTranslator: [E:\] -> [\\HYDRA\E]
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] PathTranslator: [\\HYDRA\D] -> [D:\]
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] PathTranslator: [\\HYDRA\E] -> [E:\]
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] PathTranslator: END dumping
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] S: START
+[2017.12.12 23:14:29] [0000m.00s.053ms] [0] S: Server startup lock file created
+[2017.12.12 23:14:29] [0000m.00s.054ms] [0] S: Listening for client connections on port [10003]
+[2017.12.12 23:14:29] [0000m.00s.054ms] [0] S: Server network ID [Hydra:192.168.1.3,192.168.229.1,192.168.85.1,Hydra:10003]
+[2017.12.12 23:14:29] [0000m.00s.054ms] [0] S: Server GUID [dba3-6354-589f-cb0c-5c45-03aa-c450-3a50-8c83-dca8-651d-8d8b]
+[2017.12.12 23:14:29] [0000m.00s.054ms] [0] S: Project GUID [b66f-3e0b-a3f0-5d1f-4f34-03a9-f340-3a50-0010-dca8-651d-8d8b]
+[2017.12.12 23:14:29] [0000m.00s.056ms] [0] S: Wrote data to server address file
+[2017.12.12 23:14:29] [0000m.00s.056ms] [0] S: Server startup lock file removed
+[2017.12.12 23:14:29] [0000m.00s.056ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.12 23:14:29] [0000m.00s.082ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.12 23:14:29] [0000m.00s.082ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.12 23:14:29] [0000m.00s.082ms] [0] S: Local disc access time: 49 us
+[2017.12.12 23:14:29] [0000m.00s.082ms] [0] S: File server access time: 57 us
+[2017.12.12 23:14:29] [0000m.00s.084ms] [0] Single file [E:\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] size [1301832 (1.2 MB)]
+[2017.12.12 23:14:29] [0000m.00s.085ms] [1] Single file [E:\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.12 23:14:29] [0000m.00s.085ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.12 23:14:29] [0000m.00s.085ms] [0] Database GUARD OK: [1301832]
+[2017.12.12 23:14:29] [0000m.00s.086ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.12 23:14:29] [0000m.00s.086ms] [0] Database GUARD OK: [1301832]
+[2017.12.12 23:14:29] [0000m.00s.086ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.12 23:14:29] [0000m.00s.086ms] [0] Database GUARD OK: [1301832]
+[2017.12.12 23:14:29] [0000m.00s.086ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.12 23:14:29] [0000m.00s.086ms] [0] Database GUARD OK: [1301832]
+[2017.12.12 23:14:29] [0000m.00s.087ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.12 23:14:29] [0000m.00s.087ms] [0] Database GUARD OK: [1301832]
+[2017.12.12 23:14:29] [0000m.00s.087ms] [0] SingleFile: [f5b3-1e5d-0d4e-050b] SFI version check [1009] [1009]
+[2017.12.12 23:14:29] [0000m.00s.095ms] [0] SingleFile: [f5b3-1e5d-0d4e-050b] Database SFI header has been read in [8ms 391us]
+[2017.12.12 23:14:29] [0000m.00s.100ms] [0] iCDB Server PI: Server & plugin session [4429]
+[2017.12.12 23:14:29] [0000m.00s.100ms] [0] iCDB Server PI: Opening database [E:\SpiROSE\PCB\Test_LED\Default\default.icdb]
+[2017.12.12 23:14:29] [0000m.00s.100ms] [0] iCDB Server PI: Database [E:\SpiROSE\PCB\Test_LED\Default\default.icdb] opened
+[2017.12.12 23:14:29] [0000m.00s.122ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.12 23:14:29] [0000m.00s.122ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.12 23:14:29] [0000m.00s.171ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=35ac-6a5a-e16e-a5fa-48f6-00a9-8f60-0a50-8851-eca8-651d-8d8b] up to date
+[2017.12.12 23:14:29] [0000m.00s.334ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.12 23:14:29] [0000m.00s.334ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.12 23:14:29] [0000m.00s.334ms] [0] S: iCDB database loaded
+[2017.12.12 23:14:29] [0000m.00s.335ms] [0] S: Starting threads
+[2017.12.12 23:14:29] [0000m.00s.335ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.12 23:14:29] [0000m.00s.335ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.12 23:14:29] [0000m.00s.335ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.12 23:14:29] [0000m.00s.336ms] [0] IT: Session [4430] for host [Hydra] user [DiDjCodt] with process ID [18872] created
+[2017.12.12 23:14:29] [0000m.00s.337ms] [1] SC[4430]: Registered sub-client [DCDV] with ID [1] for session ID [4430] host [Hydra] user [DiDjCodt] process ID [18872]
+[2017.12.12 23:14:29] [0000m.00s.338ms] [0] MWT: WindowProc: WM_NCCREATE
+[2017.12.12 23:14:29] [0000m.00s.342ms] [0] IT: iCDB Server Monitor session [1] for host [Hydra] user [DiDjCodt] with process ID [4324] created
+[2017.12.12 23:14:29] [0000m.00s.342ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2017.12.12 23:14:29] [0000m.00s.436ms] [1] CMT: There are [1] clients now: 4430
+[2017.12.12 23:14:31] [0000m.02s.615ms] [0] IT: Session [4431] for host [Hydra] user [DiDjCodt] with process ID [14556] created
+[2017.12.12 23:14:31] [0000m.02s.615ms] [1] SC[4431]: Registered sub-client [ICDBC] with ID [1] for session ID [4431] host [Hydra] user [DiDjCodt] process ID [14556]
+[2017.12.12 23:14:31] [0000m.02s.641ms] [1] CMT: There are [2] clients now: 4430, 4431
+[2017.12.12 23:14:31] [0000m.02s.655ms] [1] SC[4431]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4431] host [Hydra] user [DiDjCodt] process ID [14556]
+[2017.12.12 23:14:35] [0000m.06s.870ms] [1] SC[4431]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4431] host [Hydra] user [DiDjCodt] process ID [14556]
+[2017.12.12 23:14:35] [0000m.06s.876ms] [1] SC[4431]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4431] host [Hydra] user [DiDjCodt] process ID [14556]
+[2017.12.12 23:14:35] [0000m.06s.952ms] [1] CMT: Removed client [4431]
+[2017.12.12 23:14:35] [0000m.06s.952ms] [1] CMT: There are [1] clients now: 4430
+[2017.12.12 23:14:36] [0000m.07s.556ms] [0] IT: Session [4432] for host [Hydra] user [DiDjCodt] with process ID [4824] created
+[2017.12.12 23:14:36] [0000m.07s.557ms] [1] SC[4432]: Registered sub-client [Packager_12596296] with ID [1] for session ID [4432] host [Hydra] user [DiDjCodt] process ID [4824]
+[2017.12.12 23:14:36] [0000m.07s.654ms] [1] CMT: There are [2] clients now: 4430, 4432
+[2017.12.12 23:14:43] [0000m.14s.693ms] [1] SC[4432]: UnRegistered sub-client [Packager_12596296] with ID [1] for session ID [4432] host [Hydra] user [DiDjCodt] process ID [4824]
+[2017.12.12 23:14:43] [0000m.14s.764ms] [1] CMT: Removed client [4432]
+[2017.12.12 23:14:43] [0000m.14s.764ms] [1] CMT: There are [1] clients now: 4430
+[2017.12.12 23:14:49] [0000m.20s.125ms] [0] DFAMT: File server access time: 66 us
+[2017.12.12 23:18:04] [0003m.35s.218ms] [0] IT: Session [4433] for host [Hydra] user [DiDjCodt] with process ID [19068] created
+[2017.12.12 23:18:04] [0003m.35s.219ms] [1] SC[4433]: Registered sub-client [ICDBC] with ID [1] for session ID [4433] host [Hydra] user [DiDjCodt] process ID [19068]
+[2017.12.12 23:18:04] [0003m.35s.259ms] [1] SC[4433]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4433] host [Hydra] user [DiDjCodt] process ID [19068]
+[2017.12.12 23:18:04] [0003m.35s.270ms] [1] CMT: There are [2] clients now: 4430, 4433
+[2017.12.12 23:18:09] [0003m.40s.913ms] [1] SC[4433]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4433] host [Hydra] user [DiDjCodt] process ID [19068]
+[2017.12.12 23:18:09] [0003m.40s.918ms] [1] SC[4433]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4433] host [Hydra] user [DiDjCodt] process ID [19068]
+[2017.12.12 23:18:09] [0003m.40s.990ms] [1] CMT: Removed client [4433]
+[2017.12.12 23:18:09] [0003m.40s.990ms] [1] CMT: There are [1] clients now: 4430
+[2017.12.12 23:18:10] [0003m.41s.766ms] [0] IT: Session [4434] for host [Hydra] user [DiDjCodt] with process ID [3756] created
+[2017.12.12 23:18:10] [0003m.41s.767ms] [1] SC[4434]: Registered sub-client [Packager_12810437] with ID [1] for session ID [4434] host [Hydra] user [DiDjCodt] process ID [3756]
+[2017.12.12 23:18:10] [0003m.41s.794ms] [1] CMT: There are [2] clients now: 4430, 4434
+[2017.12.12 23:18:17] [0003m.48s.895ms] [1] SC[4434]: UnRegistered sub-client [Packager_12810437] with ID [1] for session ID [4434] host [Hydra] user [DiDjCodt] process ID [3756]
+[2017.12.12 23:18:17] [0003m.48s.906ms] [1] CMT: Removed client [4434]
+[2017.12.12 23:18:17] [0003m.48s.906ms] [1] CMT: There are [1] clients now: 4430
+[2017.12.12 23:21:24] [0006m.55s.877ms] [0] IT: Session [4435] for host [Hydra] user [DiDjCodt] with process ID [18536] created
+[2017.12.12 23:21:24] [0006m.55s.878ms] [1] ProjectBackupManager: Client [ClientData[ClientNetAddress[Hydra] # ClientUserName[DiDjCodt] # ClientProcessID[18536] # SessionID[4435] # Type[0]] # SubClientData[SubClientName[] # SubClientID[0]]] set project file (.prj): local path [E:\SpiROSE\PCB\Test_LED\Test_LED.prj], global path [\\HYDRA\E\SpiROSE\PCB\Test_LED\Test_LED.prj]
+[2017.12.12 23:21:24] [0006m.55s.916ms] [0] PrjBackupMgr: Migrating iCDB upgrade backups from directory [Test_LED\Default\default.icdb\cdbback] to Project Backup format.
+[2017.12.12 23:21:24] [0006m.55s.917ms] [0] PrjBackupMgr: Migrating iCDB upgrade backup file [2017-12-12 22.02.44-14140].
+[2017.12.12 23:21:24] [0006m.55s.976ms] [1] CMT: There are [2] clients now: 4430, 4435
+[2017.12.12 23:21:25] [0006m.56s.039ms] [1] PrjBackupMgr: Successfully created Project Backup [E:\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-12 22.02.44 - consDefUpgr.zip] with GUID [b9ec-fc57-0bfe-1e42-4665-03a9-6650-3a50-8ae0-dca8-651d-8d8b]
+[2017.12.12 23:21:25] [0006m.56s.040ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[3b31-dc06-3b12-fe2b-5383-80aa-3838-0a50-91d9-8878-47c5-528b] CreationTime[Sunday, November 12, 2017 12:00:44] Type[ConsDefUpgrade] Creator[iCDB Server (2017-11-12 13.01.12-17416)] ApplicationName[iCDB Server (2017-11-12 13.00.44-15676)] UserName[DiDjCodt] MachineName[HYDRA] Description[Before constraint definitions upgrade using flow install:\n    Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3\n    Flow Id: EEVX.2.2\n    Install Id: 1589114; 1589126; 1632660\n    iCDB Build Id: 7609807\n    iCDB Version: 3300] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[E:\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-11-12 13.00.44 - consDefUpgr.zip] BackupFileSize[434770] Persistent[FALSE]
+[2017.12.12 23:21:25] [0006m.56s.041ms] [0] PrjBackupMgr: Project Backup file [E:\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-11-12 13.00.44 - consDefUpgr.zip] with GUID [3b31-dc06-3b12-fe2b-5383-80aa-3838-0a50-91d9-8878-47c5-528b] removed
+[2017.12.12 23:21:25] [0006m.56s.042ms] [1] PrjBackupMgr: Migrated iCDB content backup file [E:\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-12 22.02.44-14140.zip] removed
+[2017.12.12 23:21:25] [0006m.56s.043ms] [0] PrjBackupMgr: Successfully migrated iCDB upgrade backup file [2017-12-12 22.02.44-14140] to Project Backup format [2017-12-12 22.02.44 - consDefUpgr.zip]
+[2017.12.12 23:21:25] [0006m.56s.044ms] [1] SC[4435]: Registered sub-client [Expedition PCB_13004609] with ID [1] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:21:25] [0006m.56s.184ms] [1] SC[4435]: Registered sub-client [EEVM] with ID [2] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:21:25] [0006m.56s.262ms] [1] PrjBackupMgr: Successfully created Project Backup [E:\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-12 23.21.25 - auto.zip] with GUID [e2a8-f309-bb3d-5f37-5665-03aa-6650-3a50-c27f-cca8-651d-8d8b]
+[2017.12.12 23:21:25] [0006m.56s.263ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[e6e5-8659-34cd-5372-45c3-e2a9-5c3e-2a50-44d4-2252-c3f1-de98] CreationTime[Monday, December 11, 2017 08:05:40] Type[Autosave] Creator[iCDB Server (2017-12-11 08.58.51-2492)] ApplicationName[iCDB Server (2017-12-11 08.58.51-2492)] UserName[mentor] MachineName[DESKTOP-KA2KT78] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[E:\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-11 09.05.40 - auto.zip] BackupFileSize[762042] Persistent[FALSE]
+[2017.12.12 23:21:25] [0006m.56s.264ms] [0] PrjBackupMgr: Project Backup file [E:\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-11 09.05.40 - auto.zip] with GUID [e6e5-8659-34cd-5372-45c3-e2a9-5c3e-2a50-44d4-2252-c3f1-de98] removed
+[2017.12.12 23:21:25] [0006m.56s.264ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[e2a8-f309-bb3d-5f37-5665-03aa-6650-3a50-c27f-cca8-651d-8d8b] CreationTime[Tuesday, December 12, 2017 22:21:25] Type[Autosave] Creator[iCDB Server (2017-12-12 23.14.29-11780)] ApplicationName[iCDB Server (2017-12-12 23.14.29-11780)] UserName[DiDjCodt] MachineName[HYDRA] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[E:\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-12 23.21.25 - auto.zip] BackupFileSize[1383222] Persistent[FALSE]
+[2017.12.12 23:21:25] [0006m.56s.973ms] [1] SC[4435]: UnRegistered sub-client [EEVM] with ID [2] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:21:26] [0006m.57s.414ms] [1] SC[4435]: Registered sub-client [JobPrefsDBPI_13006171] with ID [3] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:21:26] [0006m.57s.432ms] [1] SC[4435]: UnRegistered sub-client [JobPrefsDBPI_13006171] with ID [3] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:21:30] [0007m.01s.239ms] [1] SC[4435]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:21:30] [0007m.01s.242ms] [1] SC[4435]: Registered sub-client [StartServerClient206c] with ID [5] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:21:30] [0007m.01s.243ms] [1] SC[4435]: UnRegistered sub-client [StartServerClient206c] with ID [5] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:22:42] [0008m.13s.164ms] [0] IT: Session [4436] for host [Hydra] user [DiDjCodt] with process ID [15008] created
+[2017.12.12 23:22:42] [0008m.13s.165ms] [1] SC[4436]: Registered sub-client [DiDjCodt (BE CES)] with ID [1] for session ID [4436] host [Hydra] user [DiDjCodt] process ID [15008]
+[2017.12.12 23:22:42] [0008m.13s.247ms] [1] CMT: There are [3] clients now: 4430, 4435, 4436
+[2017.12.12 23:23:27] [0008m.58s.535ms] [1] SC[4436]: UnRegistered sub-client [DiDjCodt (BE CES)] with ID [1] for session ID [4436] host [Hydra] user [DiDjCodt] process ID [15008]
+[2017.12.12 23:23:27] [0008m.58s.625ms] [1] CMT: Removed client [4436]
+[2017.12.12 23:23:27] [0008m.58s.625ms] [1] CMT: There are [2] clients now: 4430, 4435
+[2017.12.12 23:23:28] [0008m.59s.439ms] [1] SC[4435]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:23:29] [0009m.00s.478ms] [1] SC[4435]: UnRegistered sub-client [Expedition PCB_13004609] with ID [1] for session ID [4435] host [Hydra] user [DiDjCodt] process ID [18536]
+[2017.12.12 23:23:29] [0009m.00s.531ms] [1] CMT: Removed client [4435]
+[2017.12.12 23:23:29] [0009m.00s.531ms] [1] CMT: There are [1] clients now: 4430
+[2017.12.12 23:23:32] [0009m.03s.507ms] [1] SC[4430]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4430] host [Hydra] user [DiDjCodt] process ID [18872]
+[2017.12.12 23:23:32] [0009m.03s.550ms] [1] CMT: Removed client [4430]
+[2017.12.12 23:23:32] [0009m.03s.550ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.12 23:23:32] [0009m.03s.795ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2017.12.12 23:23:34] [0009m.05s.056ms] [0] CMT: Starting server auto-close
+[2017.12.12 23:23:34] [0009m.05s.130ms] [0] S: Closing server
+[2017.12.12 23:23:34] [0009m.05s.164ms] [0] iCDB Server PI: Closing plugins
+[2017.12.12 23:23:34] [0009m.05s.164ms] [0] iCDB Server PI: Plugins closed
+[2017.12.12 23:23:34] [0009m.05s.164ms] [0] iCDB Server PI: Unloading database
+[2017.12.12 23:23:34] [0009m.05s.164ms] [0] iCDB Server PI: Saving storage
+[2017.12.12 23:23:34] [0009m.05s.164ms] [0] iCDB Server PI: Closing database
+[2017.12.12 23:23:34] [0009m.05s.189ms] [1] iCDB Server PI: Stats: Database defragmentation: max[2] avg[1] holes[17%] data[99%]
+[2017.12.12 23:23:34] [0009m.05s.189ms] [1] iCDB Server PI: Stats: Database file size [1483136 (1.4 MB)]
+[2017.12.12 23:23:34] [0009m.05s.222ms] [1] iCDB Server PI: WARNING: Database needs defragmentation!
+[2017.12.12 23:23:34] [0009m.05s.224ms] [0] iCDB Server PI: Database closed
+[2017.12.12 23:23:34] [0009m.05s.224ms] [0] iCDB Server PI: Defragmenting database
+[2017.12.12 23:23:34] [0009m.05s.224ms] [0] iCDB Server PI: Creating database [E:\SpiROSE\PCB\Test_LED\Default\default.icdb] backup to file [E:\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-12 23.23.34-11780-d.zip]
+[2017.12.12 23:23:34] [0009m.05s.325ms] [0] iCDB Server PI: Database backup: DONE
+[2017.12.12 23:23:34] [0009m.05s.374ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.12 23:23:34] [0009m.05s.374ms] [0] Database GUARD OK: [1483136]
+[2017.12.12 23:23:34] [0009m.05s.374ms] [0] SingleFile: [f5b3-1e5d-0d4e-050b] SFI version check [1009] [1009]
+[2017.12.12 23:23:34] [0009m.05s.381ms] [0] SingleFile: [f5b3-1e5d-0d4e-050b] Database SFI header has been read in [7ms 390us]
+[2017.12.12 23:23:34] [0009m.05s.523ms] [1] iCDB Server PI: Stats: Database file sizes: before[1483136 (1.4 MB)], after[1200640 (1.1 MB)], gain[282496 (275.9 kB)]
+[2017.12.12 23:23:34] [0009m.05s.550ms] [0] Single file [E:\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] closed with size [1200640 (1.1 MB)]
+[2017.12.12 23:23:34] [0009m.05s.550ms] [0] iCDB Server PI: Database defragmentation completed successfully
+[2017.12.12 23:23:34] [0009m.05s.550ms] [1] BackupTransaction: Removing database backup [E:\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-12 23.23.34-11780-d.zip]
+[2017.12.12 23:23:34] [0009m.05s.551ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [3745229] ticks
+[2017.12.12 23:23:34] [0009m.05s.551ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [1127976] microseconds
+[2017.12.12 23:23:34] [0009m.05s.551ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [6290]
+[2017.12.12 23:23:34] [0009m.05s.551ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [5576] commands per second
+[2017.12.12 23:23:34] [0009m.05s.638ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2017.12.12 23:23:34] [0009m.05s.771ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.12 23:23:34] [0009m.05s.772ms] [0] MWT: STOP
+[2017.12.12 23:23:34] [0009m.05s.772ms] [0] S: STOP
