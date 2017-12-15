@@ -42,6 +42,7 @@ int sc_main(int argc, char** argv) {
     Monitor monitor("monitor");
     monitor.clk(clk66);
     monitor.nrst(nrst);
+    monitor.muxOut(muxOut);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
