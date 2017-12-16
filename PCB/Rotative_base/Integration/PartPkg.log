@@ -2,7 +2,7 @@
                                     Packager
                                     --------
 
-                      01:33 PM Saturday, December 16, 2017
+                      02:58 PM Saturday, December 16, 2017
 Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj
 
 
@@ -83,7 +83,7 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
 
      Target PDB Name: Integration\LocalPartsDB.pdb
 
-     Number of Part Numbers: 31
+     Number of Part Numbers: 33
           Part Numb: 02-0098 -> Vend Part: 02-0098 
           Part Numb: 02-0445 -> Vend Part: 02-0445 
           Part Numb: 02-0451 -> Vend Part: 02-0451 
@@ -103,6 +103,7 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
           Part Numb: 30-0004 -> Vend Part: 30-0004 
           Part Numb: 40-0003 -> Vend Part: 40-0003 
           Part Numb: 40-0219 -> Vend Part: 40-0219 
+          Part Numb: 40-0221 -> Vend Part: 40-0221 
           Part Numb: 40-0227 -> Vend Part: 40-0227 
           Part Numb: 40-0310 -> Vend Part: 40-0310 
           Part Numb: 40-0324 -> Vend Part: 40-0324 
@@ -111,6 +112,7 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
           Part Numb: 50-0025 -> Vend Part: 50-0025 
           Part Numb: 50-0046 -> Vend Part: 50-0046 
           Part Numb: 70-0014 -> Vend Part: 70-0014 
+          Part Numb: 70-0015 -> Vend Part: 70-0015 
           Part Numb: 70-0085 -> Vend Part: 70-0085 
           Part Numb: 70-0103 -> Vend Part: 70-0103 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
@@ -217,6 +219,14 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
       Resolved PartNumber = 40-0003
       Symbol Property: Cout HT = 10,08
      PartsDB Property: Cout HT = 10.08
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
+    WARNING: Block Schematic1, Page 5, Symbol XCMP1154:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 70-0015
+      Symbol Property: Cout HT = 4,63
+     PartsDB Property: Cout HT = 4.63
      The symbol property value matches the PartsDB value with the Notation
       Setting being ignored as requested for this property.
 
@@ -892,6 +902,14 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
      The symbol property value matches the PartsDB value with the Notation
       Setting being ignored as requested for this property.
 
+    WARNING: Block Schematic1, Page 5, Symbol XCMP1155:
+      Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0221
+      Symbol Property: Cout HT = 1,49
+     PartsDB Property: Cout HT = 1.49
+     The symbol property value matches the PartsDB value with the Notation
+      Setting being ignored as requested for this property.
+
     WARNING: Block Schematic1, Page 4, Symbol XCMP898:
       Symbol / PartsDB property mismatch:
       Resolved PartNumber = 10-0106
@@ -1016,8 +1034,8 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 189 Symbols:
-             189  **************************************
+     Clustering 185 Symbols:
+             185  **********************************
              150  **************************************************
              100  **************************************************
               50  **************************************************
@@ -1027,8 +1045,8 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
 
 
 
-     127 nets were found containing 666 pins
-     184 components were found
+     132 nets were found containing 684 pins
+     180 components were found
 
      Parsed netlist - Augmenting..
 
@@ -1038,7 +1056,7 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
 
      Checking Pins....
 
-     Testing of Packaging has been completed with 110 warnings.
+     Testing of Packaging has been completed with 112 warnings.
       Erroneous results may occur if not fixed.
 
      Updating the Common DataBase
@@ -1054,4 +1072,4 @@ The Common DataBase has been successfully updated.
      An unused gate report for gates not in schematic has been written to Integration\UnusedGates.txt
      An augmented pin report has been written to Integration\AugmentedPins.txt.
 
-     There have been 110 warnings.
+     There have been 112 warnings.
