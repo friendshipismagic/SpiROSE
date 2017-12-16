@@ -2,7 +2,7 @@
                                Forward Annotation
                                ------------------
 
-                       02:03 PM Friday, December 15, 2017
+                      04:47 PM Saturday, December 16, 2017
 Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
@@ -23,30 +23,36 @@ Version:  01.01.00
 
      Target PDB Name: Work\Layout_Temp\PartsDB.pdb
 
-     Number of Part Numbers: 27
-          Part Numb: 00-0098 -> Vend Part: 00-0098 
-          Part Numb: 01-0280 -> Vend Part: 01-0280 
-          Part Numb: 01-0448 -> Vend Part: 01-0448 
-          Part Numb: 01-0468 -> Vend Part: 01-0468 
-          Part Numb: 10-0045 -> Vend Part: 10-0045 
-          Part Numb: 10-0049 -> Vend Part: 10-0049 
-          Part Numb: 10-0057 -> Vend Part: 10-0057 
-          Part Numb: 10-0078 -> Vend Part: 10-0078 
-          Part Numb: 10-0079 -> Vend Part: 10-0079 
-          Part Numb: 10-0085 -> Vend Part: 10-0085 
-          Part Numb: 10-0103 -> Vend Part: 10-0103 
-          Part Numb: 10-0111 -> Vend Part: 10-0111 
-          Part Numb: 10-0112 -> Vend Part: 10-0112 
+     Number of Part Numbers: 33
+          Part Numb: 02-0098 -> Vend Part: 02-0098 
+          Part Numb: 02-0445 -> Vend Part: 02-0445 
+          Part Numb: 02-0451 -> Vend Part: 02-0451 
+          Part Numb: 02-0452 -> Vend Part: 02-0452 
+          Part Numb: 02-0453 -> Vend Part: 02-0453 
+          Part Numb: 10-0058 -> Vend Part: 10-0058 
+          Part Numb: 10-0070 -> Vend Part: 10-0070 
+          Part Numb: 10-0087 -> Vend Part: 10-0087 
+          Part Numb: 10-0105 -> Vend Part: 10-0105 
+          Part Numb: 10-0106 -> Vend Part: 10-0106 
+          Part Numb: 10-0113 -> Vend Part: 10-0113 
+          Part Numb: 10-0114 -> Vend Part: 10-0114 
+          Part Numb: 10-0115 -> Vend Part: 10-0115 
+          Part Numb: 10-0117 -> Vend Part: 10-0117 
+          Part Numb: 20-0002 -> Vend Part: 20-0002 
+          Part Numb: 20-0019 -> Vend Part: 20-0019 
           Part Numb: 30-0004 -> Vend Part: 30-0004 
+          Part Numb: 40-0003 -> Vend Part: 40-0003 
           Part Numb: 40-0219 -> Vend Part: 40-0219 
-          Part Numb: 40-0226 -> Vend Part: 40-0226 
+          Part Numb: 40-0221 -> Vend Part: 40-0221 
           Part Numb: 40-0227 -> Vend Part: 40-0227 
           Part Numb: 40-0310 -> Vend Part: 40-0310 
           Part Numb: 40-0324 -> Vend Part: 40-0324 
           Part Numb: 40-0325 -> Vend Part: 40-0325 
-          Part Numb: 50-0002 -> Vend Part: 50-0002 
           Part Numb: 50-0023 -> Vend Part: 50-0023 
-          Part Numb: 70-0003 -> Vend Part: 70-0003 
+          Part Numb: 50-0025 -> Vend Part: 50-0025 
+          Part Numb: 50-0046 -> Vend Part: 50-0046 
+          Part Numb: 70-0014 -> Vend Part: 70-0014 
+          Part Numb: 70-0015 -> Vend Part: 70-0015 
           Part Numb: 70-0085 -> Vend Part: 70-0085 
           Part Numb: 70-0103 -> Vend Part: 70-0103 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
@@ -58,6 +64,678 @@ Version:  01.01.00
 
 
      Checking for value differences between symbol properties and PartsDB properties
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP947:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83.4
+     PartsDB Property: Cout HT = 83,4
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP945:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83.4
+     PartsDB Property: Cout HT = 83,4
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP872:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83.4
+     PartsDB Property: Cout HT = 83,4
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP946:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83.4
+     PartsDB Property: Cout HT = 83,4
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP716:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0310
+      Symbol Property: Cout HT = 83.4
+     PartsDB Property: Cout HT = 83,4
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP979:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 02-0098
+      Symbol Property: Cout HT = 0.0004346
+     PartsDB Property: Cout HT = 434,6u
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP978:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 02-0098
+      Symbol Property: Cout HT = 0.0004346
+     PartsDB Property: Cout HT = 434,6u
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP871:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 02-0098
+      Symbol Property: Cout HT = 0.0004346
+     PartsDB Property: Cout HT = 434,6u
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1139:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 02-0098
+      Symbol Property: Cout HT = 0.0004346
+     PartsDB Property: Cout HT = 434,6u
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP724:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 02-0098
+      Symbol Property: Cout HT = 0.0004346
+     PartsDB Property: Cout HT = 434,6u
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP721:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 02-0098
+      Symbol Property: Cout HT = 0.0004346
+     PartsDB Property: Cout HT = 434,6u
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1144:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0003
+      Symbol Property: Cout HT = 10.08
+     PartsDB Property: Cout HT = 10,08
+
+    WARNING: Block Schematic1, Page 5, Symbol XCMP1154:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 70-0015
+      Symbol Property: Cout HT = 4.63
+     PartsDB Property: Cout HT = 4,63
+
+    WARNING: Block Schematic1, Page 5, Symbol XCMP1101:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0219
+      Symbol Property: Cout HT = 0.36
+     PartsDB Property: Cout HT = 360m
+
+    WARNING: Block Schematic1, Page 5, Symbol XCMP1100:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0219
+      Symbol Property: Cout HT = 0.36
+     PartsDB Property: Cout HT = 360m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP811:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0023
+      Symbol Property: Cout HT = 0.43
+     PartsDB Property: Cout HT = 430m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP810:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0023
+      Symbol Property: Cout HT = 0.43
+     PartsDB Property: Cout HT = 430m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP807:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0023
+      Symbol Property: Cout HT = 0.43
+     PartsDB Property: Cout HT = 430m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP806:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0023
+      Symbol Property: Cout HT = 0.43
+     PartsDB Property: Cout HT = 430m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP975:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP974:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP920:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP919:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP918:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP917:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP884:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP883:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP882:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP881:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP880:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP879:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP878:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP877:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP876:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP875:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP874:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 2, Symbol XCMP873:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP813:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP812:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP809:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP808:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0058
+      Symbol Property: Cout HT = 0.01
+     PartsDB Property: Cout HT = 10m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1152:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0113
+      Symbol Property: Cout HT = 0.838
+     PartsDB Property: Cout HT = 838m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1138:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0113
+      Symbol Property: Cout HT = 0.838
+     PartsDB Property: Cout HT = 838m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1136:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0113
+      Symbol Property: Cout HT = 0.838
+     PartsDB Property: Cout HT = 838m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1135:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0113
+      Symbol Property: Cout HT = 0.838
+     PartsDB Property: Cout HT = 838m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP817:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0113
+      Symbol Property: Cout HT = 0.838
+     PartsDB Property: Cout HT = 838m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP816:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0113
+      Symbol Property: Cout HT = 0.838
+     PartsDB Property: Cout HT = 838m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP815:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0113
+      Symbol Property: Cout HT = 0.838
+     PartsDB Property: Cout HT = 838m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP814:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0113
+      Symbol Property: Cout HT = 0.838
+     PartsDB Property: Cout HT = 838m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP953:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0325
+      Symbol Property: Cout HT = 0.629
+     PartsDB Property: Cout HT = 629m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1130:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1129:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1128:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1127:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1126:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1125:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1124:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1123:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1122:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1121:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1120:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1119:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1118:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1117:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1116:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1115:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1114:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1113:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1112:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1111:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1110:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1109:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1108:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1107:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1106:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1105:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1104:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1103:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1134:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1133:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1132:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 1, Symbol XCMP1131:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0114
+      Symbol Property: Cout HT = 0.02
+     PartsDB Property: Cout HT = 20m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP968:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0115
+      Symbol Property: Cout HT = 2.27
+     PartsDB Property: Cout HT = 2,27
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP967:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0115
+      Symbol Property: Cout HT = 2.27
+     PartsDB Property: Cout HT = 2,27
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP966:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0115
+      Symbol Property: Cout HT = 2.27
+     PartsDB Property: Cout HT = 2,27
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP965:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0115
+      Symbol Property: Cout HT = 2.27
+     PartsDB Property: Cout HT = 2,27
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP964:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0115
+      Symbol Property: Cout HT = 2.27
+     PartsDB Property: Cout HT = 2,27
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP963:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0115
+      Symbol Property: Cout HT = 2.27
+     PartsDB Property: Cout HT = 2,27
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1140:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0115
+      Symbol Property: Cout HT = 2.27
+     PartsDB Property: Cout HT = 2,27
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP973:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0117
+      Symbol Property: Cout HT = 0.07
+     PartsDB Property: Cout HT = 70m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1145:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0117
+      Symbol Property: Cout HT = 0.07
+     PartsDB Property: Cout HT = 70m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1146:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0105
+      Symbol Property: Cout HT = 0.0119
+     PartsDB Property: Cout HT = 11,9m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1149:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0025
+      Symbol Property: Cout HT = 2.31
+     PartsDB Property: Cout HT = 2,31
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1150:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 20-0019
+      Symbol Property: Cout HT = 0.75
+     PartsDB Property: Cout HT = 750m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1151:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 20-0002
+      Symbol Property: Cout HT = 0.3
+     PartsDB Property: Cout HT = 300m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1153:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0070
+      Symbol Property: Cout HT = 0.014
+     PartsDB Property: Cout HT = 14m
+
+    WARNING: Block Schematic1, Page 5, Symbol XCMP1142:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 70-0014
+      Symbol Property: Cout HT = 0.895
+     PartsDB Property: Cout HT = 895m
+
+    WARNING: Block Schematic1, Page 5, Symbol XCMP1155:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0221
+      Symbol Property: Cout HT = 1.49
+     PartsDB Property: Cout HT = 1,49
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP898:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0106
+      Symbol Property: Cout HT = 0.0819
+     PartsDB Property: Cout HT = 81,9m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP897:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0106
+      Symbol Property: Cout HT = 0.0819
+     PartsDB Property: Cout HT = 81,9m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP955:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0106
+      Symbol Property: Cout HT = 0.0819
+     PartsDB Property: Cout HT = 81,9m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP954:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0106
+      Symbol Property: Cout HT = 0.0819
+     PartsDB Property: Cout HT = 81,9m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP957:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 80-0072
+      Symbol Property: Cout HT = 54.43
+     PartsDB Property: Cout HT = 54,43
+
+    WARNING: Block Schematic1, Page 3, Symbol XCMP726:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 70-0103
+      Symbol Property: Cout HT = 62.88
+     PartsDB Property: Cout HT = 62,88
+
+    WARNING: Block Schematic1, Page 3, Symbol XCMP725:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 70-0103
+      Symbol Property: Cout HT = 62.88
+     PartsDB Property: Cout HT = 62,88
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP896:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0227
+      Symbol Property: Cout HT = 1.09
+     PartsDB Property: Cout HT = 1,09
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP1099:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 30-0004
+      Symbol Property: Cout HT = 0.12
+     PartsDB Property: Cout HT = 120m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP970:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 40-0324
+      Symbol Property: Cout HT = 8.63
+     PartsDB Property: Cout HT = 8,63
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP977:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0087
+      Symbol Property: Cout HT = 0.9
+     PartsDB Property: Cout HT = 900m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP976:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 10-0087
+      Symbol Property: Cout HT = 0.9
+     PartsDB Property: Cout HT = 900m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP984:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0046
+      Symbol Property: Cout HT = 0.443
+     PartsDB Property: Cout HT = 443m
+
+    WARNING: Block Schematic1, Page 4, Symbol XCMP983:
+	Symbol / PartsDB property mismatch:
+      Resolved PartNumber = 50-0046
+      Symbol Property: Cout HT = 0.443
+     PartsDB Property: Cout HT = 443m
 
      Checking the validity of the packaging of prepackaged schematic
       symbols.  Only the first error in symbols having the same
@@ -78,8 +756,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 195 Symbols:
-             195  ********************************************
+     Clustering 185 Symbols:
+             185  **********************************
              150  **************************************************
              100  **************************************************
               50  **************************************************
@@ -89,8 +767,8 @@ Version:  01.01.00
 
 
 
-     122 nets were found containing 666 pins
-     190 components were found
+     132 nets were found containing 684 pins
+     180 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -98,13 +776,13 @@ Version:  01.01.00
      The Logic DataBase has been compiled from the Schematic Design.
       Use Netload to bring the Component Design into sync.
 
-     This Logic Data was Compiled with 1 warnings.
+     This Logic Data was Compiled with 113 warnings.
       Erroneous results may occur if not fixed.
 
                                      NetLoad
                                      -------
 
-                       02:03 PM Friday, December 15, 2017
+                      04:47 PM Saturday, December 16, 2017
 Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
@@ -117,284 +795,434 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     WARNING:  The "C1206" cell used by "C80" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  Physical Net "DRV_SOUT_DATA_0" is being renamed to "DRV_SOUT_DATA" to match the change
+	in the schematic.
 
-     WARNING:  The "C1206" cell used by "C79" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "PT20" is being forward annotated to "PT12".
 
-     WARNING:  The "C1206" cell used by "C81" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "PT18" is being forward annotated to "PT10".
 
-     WARNING:  The "C1206" cell used by "C82" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "PT21" is being forward annotated to "PT13".
 
-     WARNING:  The "C1206" cell used by "C30" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "PT19" is being forward annotated to "PT11".
 
-     WARNING:  The "C1206" cell used by "C29" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "PT15" is being forward annotated to "PT7".
 
-     WARNING:  The "C1206" cell used by "C31" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "PT16" is being forward annotated to "PT8".
 
-     WARNING:  The "C1206" cell used by "C32" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "PT17" is being forward annotated to "PT9".
 
-     WARNING:  The "C1206" cell used by "C33" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  The old version of "PT9" is being removed from the Layout.
 
-     WARNING:  The "C1206" cell used by "C34" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0603" cell used by "C62" in the Layout is not
+      valid for a "10-0117" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
 
-     WARNING:  The "C1206" cell used by "C35" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0603" cell used by "C63" in the Layout is not
+      valid for a "10-0106" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
 
-     WARNING:  The "C1206" cell used by "C36" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0603" cell used by "C64" in the Layout is not
+      valid for a "10-0106" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
 
-     WARNING:  The "C1206" cell used by "C37" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "CHIMIQUE_F12" cell used by "C65" in the Layout is not
+      valid for a "10-0105" Part Number.
+     INFO: Cell "CHIMIQUE_F12" is being replaced by cell "C0402".
 
-     WARNING:  The "C1206" cell used by "C38" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "CHIMIQUE_F12" cell used by "C66" in the Layout is not
+      valid for a "10-0070" Part Number.
+     INFO: Cell "CHIMIQUE_F12" is being replaced by cell "C0603".
 
-     WARNING:  The "C1206" cell used by "C40" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "C67" is being removed from the Layout since it is no longer in the schematic.
 
-     WARNING:  The "C1206" cell used by "C39" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "CHIMIQUE_G" cell used by "C70" in the Layout is not
+      valid for a "10-0115" Part Number.
+     INFO: Cell "CHIMIQUE_G" is being replaced by cell "CHIMIQUE_E12".
 
-     WARNING:  The "C1206" cell used by "C41" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "CHIMIQUE_G" cell used by "C68" in the Layout is not
+      valid for a "10-0115" Part Number.
+     INFO: Cell "CHIMIQUE_G" is being replaced by cell "CHIMIQUE_E12".
 
-     WARNING:  The "C1206" cell used by "C42" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "CHIMIQUE_G" cell used by "C69" in the Layout is not
+      valid for a "10-0115" Part Number.
+     INFO: Cell "CHIMIQUE_G" is being replaced by cell "CHIMIQUE_E12".
 
-     WARNING:  The "C1206" cell used by "C43" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "CHIMIQUE_G" cell used by "C71" in the Layout is not
+      valid for a "10-0115" Part Number.
+     INFO: Cell "CHIMIQUE_G" is being replaced by cell "CHIMIQUE_E12".
 
-     WARNING:  The "C1206" cell used by "C44" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "CHIMIQUE_G" cell used by "C72" in the Layout is not
+      valid for a "10-0115" Part Number.
+     INFO: Cell "CHIMIQUE_G" is being replaced by cell "CHIMIQUE_E12".
 
-     WARNING:  The "C1206" cell used by "C45" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  The old version of "PT10" is being removed from the Layout.
 
-     WARNING:  The "C1206" cell used by "C46" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "CHIMIQUE_G" cell used by "C73" in the Layout is not
+      valid for a "10-0115" Part Number.
+     INFO: Cell "CHIMIQUE_G" is being replaced by cell "CHIMIQUE_E12".
 
-     WARNING:  The "C1206" cell used by "C47" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "C74" is being removed from the Layout since it is no longer in the schematic.
 
-     WARNING:  The "C1206" cell used by "C48" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  "C75" is being removed from the Layout since it is no longer in the schematic.
 
-     WARNING:  The "C1206" cell used by "C50" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0603" cell used by "C76" in the Layout is not
+      valid for a "10-0117" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
 
-     WARNING:  The "C1206" cell used by "C49" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0805" cell used by "C77" in the Layout is not
+      valid for a "10-0087" Part Number.
+     INFO: Cell "C0805" is being replaced by cell "C1206".
 
-     WARNING:  The "C1206" cell used by "C51" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0805" cell used by "C78" in the Layout is not
+      valid for a "10-0087" Part Number.
+     INFO: Cell "C0805" is being replaced by cell "C1206".
 
-     WARNING:  The "C1206" cell used by "C52" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0603" cell used by "C80" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
 
-     WARNING:  The "C1206" cell used by "C53" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0603" cell used by "C81" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
 
-     WARNING:  The "C1206" cell used by "C54" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0603" cell used by "C79" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
 
-     WARNING:  The "C1206" cell used by "C55" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+     WARNING:  The "C0603" cell used by "C82" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
 
-     WARNING:  The "C1206" cell used by "C56" in the Layout is not
-      valid for a "10-0085" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "C1206" is being replaced by cell "C0603".
+	WARNING:  The old version of "PT11" is being removed from the Layout.
 
-     The following 189 components have not been placed:
+	WARNING:  The old version of "PT12" is being removed from the Layout.
 
-        C1
-        C2
-        C3
-        C4
-        C5
-        C6
-        C7
-        C8
-        C9
-        C10
-        C11
-        C12
-        C13
-        C14
-        C15
-        C16
-        C17
-        C18
-        C19
-        C20
-        C21
-        C22
-        C23
-        C24
-        C25
-        C26
-        C27
-        C28
-        C29
-        C30
-        C31
-        C32
-        C33
-        C34
-        C35
-        C36
-        C37
-        C38
-        C39
-        C40
-        C41
-        C42
-        C43
-        C44
-        C45
-        C46
-        C47
-        C48
-        C49
-        C50
-        C51
-        C52
-        C53
-        C54
-        C55
-        C56
-        C57
-        C58
-        C59
-        C60
-        C61
-        C62
-        C63
-        C64
-        C65
-        C66
-        C67
-        C68
-        C69
-        C70
-        C71
-        C72
-        C73
-        C74
-        C75
-        C76
-        C77
-        C78
-        C79
-        C80
-        C81
-        C82
-        J1
-        J4
+	WARNING:  The old version of "PT13" is being removed from the Layout.
+
+     WARNING:  The "C0603" cell used by "C1" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "R0603" cell used by "R1" in the Layout is not
+      valid for a "02-0098" Part Number.
+     INFO: Cell "R0603" is being replaced by cell "R0402".
+
+     WARNING:  The "C0603" cell used by "C2" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "R0603" cell used by "R2" in the Layout is not
+      valid for a "02-0098" Part Number.
+     INFO: Cell "R0603" is being replaced by cell "R0402".
+
+     WARNING:  The "SOT223" cell used by "U2" in Layout does not
+      not match the "SOP008_127_0500_0620_175" cell specified in the schematic.
+
+     WARNING:  The "SOT223" cell used by "U2" in the Layout is not
+      valid for a "40-0003" Part Number.
+     INFO: Cell "SOT223" is being replaced by cell "SOP008_127_0500_0620_175".
+
+     WARNING:  The "C0603" cell used by "C3" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "R0603" cell used by "R3" in the Layout is not
+      valid for a "02-0098" Part Number.
+     INFO: Cell "R0603" is being replaced by cell "R0402".
+
+     WARNING:  The "C0603" cell used by "C4" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J4" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "R0603" cell used by "R4" in the Layout is not
+      valid for a "02-0098" Part Number.
+     INFO: Cell "R0603" is being replaced by cell "R0402".
+
+     WARNING:  The "C0603" cell used by "C5" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "WEPD_L" cell used by "L5" in the Layout is not
+      valid for a "50-0046" Part Number.
+     INFO: Cell "WEPD_L" is being replaced by cell "SRN5040".
+
+     WARNING:  The "R0603" cell used by "R5" in the Layout is not
+      valid for a "02-0098" Part Number.
+     INFO: Cell "R0603" is being replaced by cell "R0402".
+
+     WARNING:  The "C0603" cell used by "C6" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "WEPD_L" cell used by "L6" in the Layout is not
+      valid for a "50-0046" Part Number.
+     INFO: Cell "WEPD_L" is being replaced by cell "SRN5040".
+
+     WARNING:  The "R0603" cell used by "R6" in the Layout is not
+      valid for a "02-0451" Part Number.
+     INFO: Cell "R0603" is being replaced by cell "R0402".
+
+     WARNING:  The "C0603" cell used by "C10" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C7" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C11" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C12" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C13" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "R0603" cell used by "R7" in the Layout is not
+      valid for a "02-0452" Part Number.
+     INFO: Cell "R0603" is being replaced by cell "R0402".
+
+     WARNING:  The "C0603" cell used by "C14" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C15" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C16" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C17" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C8" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C20" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C18" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C1812" cell used by "C21" in the Layout is not
+      valid for a "10-0113" Part Number.
+     INFO: Cell "C1812" is being replaced by cell "C1210".
+
+     WARNING:  The "C0603" cell used by "C19" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C1812" cell used by "C22" in the Layout is not
+      valid for a "10-0113" Part Number.
+     INFO: Cell "C1812" is being replaced by cell "C1210".
+
+     WARNING:  The "C1812" cell used by "C23" in the Layout is not
+      valid for a "10-0113" Part Number.
+     INFO: Cell "C1812" is being replaced by cell "C1210".
+
+     WARNING:  The "R0603" cell used by "R8" in the Layout is not
+      valid for a "02-0453" Part Number.
+     INFO: Cell "R0603" is being replaced by cell "R0402".
+
+     WARNING:  The "C1812" cell used by "C24" in the Layout is not
+      valid for a "10-0113" Part Number.
+     INFO: Cell "C1812" is being replaced by cell "C1210".
+
+     WARNING:  The "C1812" cell used by "C25" in the Layout is not
+      valid for a "10-0113" Part Number.
+     INFO: Cell "C1812" is being replaced by cell "C1210".
+
+     WARNING:  The "C1812" cell used by "C26" in the Layout is not
+      valid for a "10-0113" Part Number.
+     INFO: Cell "C1812" is being replaced by cell "C1210".
+
+     WARNING:  The "C1812" cell used by "C27" in the Layout is not
+      valid for a "10-0113" Part Number.
+     INFO: Cell "C1812" is being replaced by cell "C1210".
+
+     WARNING:  The "C1812" cell used by "C28" in the Layout is not
+      valid for a "10-0115" Part Number.
+     INFO: Cell "C1812" is being replaced by cell "CHIMIQUE_E12".
+
+     WARNING:  The "C0603" cell used by "C9" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C30" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C29" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C31" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C32" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C33" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C34" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C35" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C36" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C37" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C38" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C40" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C39" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C41" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C42" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C43" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C44" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J43" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C45" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J44" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C46" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J45" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C47" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J46" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C48" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C50" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J47" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C49" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C51" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J48" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C52" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J49" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C53" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C54" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J53" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C55" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J54" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C56" in the Layout is not
+      valid for a "10-0114" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  "J55" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C57" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  The old version of "PT7" is being removed from the Layout.
+
+     WARNING:  The "C0603" cell used by "C58" in the Layout is not
+      valid for a "10-0058" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     WARNING:  The "C0603" cell used by "C60" in the Layout is not
+      valid for a "10-0106" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+	WARNING:  The old version of "PT8" is being removed from the Layout.
+
+     WARNING:  The "C0603" cell used by "C61" in the Layout is not
+      valid for a "10-0113" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C1210".
+
+     WARNING:  The "C0603" cell used by "C59" in the Layout is not
+      valid for a "10-0106" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0402".
+
+     The following 79 components have not been placed:
+
+        D1
+        D2
+        J2
+        J3
         J5
         J6
         J7
@@ -433,19 +1261,9 @@ Version:  02.11.12
         J40
         J41
         J42
-        J43
-        J44
-        J45
-        J46
-        J47
-        J48
-        J49
         J50
         J51
         J52
-        J53
-        J54
-        J55
         J56
         J57
         J58
@@ -457,12 +1275,7 @@ Version:  02.11.12
         J64
         J65
         J66
-        L1
-        L2
-        L3
-        L4
-        L5
-        L6
+        L7
         PT1
         PT2
         PT3
@@ -480,28 +1293,13 @@ Version:  02.11.12
         PT15
         PT16
         PT17
-        PT18
-        PT19
-        PT20
-        PT21
-        Q1
-        R1
-        R2
-        R3
-        R4
-        R5
-        R6
-        R7
-        R8
-        U2
-        U3
-        U4
-        U5
-        U6
+        R9
+        R10
         U7
         U8
+        U9
 
-     Netload completed successfully with 32 warning(s).
+     Netload completed successfully with 120 warning(s).
      
      Back Annotating...
 
@@ -532,9 +1330,21 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
+	Assigned net XSIG040185 to a trace which was originally on net INTVCC.
+	Assigned net XSIG040185 to a trace which was originally on net INTVCC.
+	Broke back a trace from the point (362536879, 48076860).
+	Broke back a trace from the point (362536879, 48076860).
+
+Some nets were completely deleted from the Layout Design....
+	Deleted net DRV_SOUT_ADDR_0, which has no pins, from the Layout Design.
+	Deleted net DRV_SOUT_ADDR_1, which has no pins, from the Layout Design.
+	Deleted net DRV_SOUT_ADDR_2, which has no pins, from the Layout Design.
+	Deleted net DRV_SOUT_DATA_1, which has no pins, from the Layout Design.
+	Deleted net DRV_SOUT_DATA_2, which has no pins, from the Layout Design.
+	Deleted net DRV_SOUT_DATA_3, which has no pins, from the Layout Design.
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
-There were 0 reassignments of nets.
-There were 0 traces broken back.
-There were 0 nets removed from the Layout Design.
+There were 2 reassignments of nets.
+There were 2 traces broken back.
+There were 6 nets removed from the Layout Design.
