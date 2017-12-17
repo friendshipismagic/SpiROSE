@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/17/17 02:03:49
+! Created 12/17/17 14:40:26
 !
 
 .Global_Constants 907 2
@@ -16,8 +16,8 @@
 	(-32000, -32000)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
 	(191, 65) (1373,665)	! ..rcNormalPosition
-    ..Active_Place_Layer_Top             False
-    ..Active_Place_Layer_Bottom          True
+    ..Active_Place_Layer_Top             True
+    ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
     ..Active_Route_Layer 3
     ..Trace_Layer_Color ( 
@@ -4080,9 +4080,9 @@
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "136"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "151"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "264"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "63"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "195"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "265"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -4097,8 +4097,8 @@
 
 .view "PCB"
     ..extrema
-	(162013085,26424624)		! (xmin, ymin)
-	(191047517,38704224)		! (xmax, ymax)
+	(34148284,15911807)		! (xmin, ymin)
+	(137548335,57828996)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -5362,7 +5362,7 @@
 	"Copper.Pad.TestPoint.Top" "d:1" "e:1" "s:1" "se:1" "c:16750950" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.TestPoint.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Plane.Data.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:1" "t:0" "o:1"
-	"Copper.Plane.Data.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.2" "d:0" "e:1" "s:1" "se:0" "c:10040319" "a:100" "p:1" "t:0" "o:1"
 	"Copper.Plane.Data.3" "d:0" "e:1" "s:1" "se:0" "c:6750105" "a:100" "p:1" "t:0" "o:1"
 	"Copper.Plane.Data.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
 	"Copper.Plane.Data.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:1" "t:0" "o:1"
