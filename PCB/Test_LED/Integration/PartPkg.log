@@ -2,30 +2,29 @@
                                     Packager
                                     --------
 
-                       08:00 PM Friday, December 15, 2017
-       Job Name: C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Test_LED.prj
+                       11:08 AM Monday, December 18, 2017
+            Job Name: D:\Documents\SpiROSE\PCB\Test_LED\Test_LED.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe -Replace "-jC:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Test_LED.prj""
+        Commandline is: ""D:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  -jD:\Documents\SpiROSE\PCB\Test_LED\Test_LED.prj -CleanBuild -NoFill"
 
-     The Common Database is at "C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb".
+     The Common Database is at "D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb".
 
      The Root of this design is "Schematic1".
 
      The Front End Snapshot of this design is "DCDV".
 
-     The PCB Design Path of this design is at "C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\PCB\PCB.pcb".
+     The PCB Design Path of this design is at "D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
 
      The Disable Repackage status indicates that 
       Repackaging should be allowed.
 
-     The PDBs listed in the project file will be searched to satisfy the parts
-      requirements of the iCDB and to replace any duplicates found in the
-      Target PDB.
+     A new Target PDB will be created from the Central Library to satisfy the parts
+      requirements of the iCDB.
 
      The AllowAlphaRefDes status indicates that reference
       designators containing all alpha characters should be deleted
@@ -168,7 +167,7 @@
 
 
 
-     904 nets were found containing 8961 pins
+     889 nets were found containing 8961 pins
      2110 components were found
 
      Parsed netlist - Augmenting..
