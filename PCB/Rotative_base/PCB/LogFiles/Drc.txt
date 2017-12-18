@@ -1,0 +1,631 @@
+
+                                DRC - (Final DRC)
+                                -----------------
+
+                       04:56 PM Monday, December 18, 2017
+Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+
+
+    ---------
+    PROXIMITY
+    ---------
+    
+    Use DRC Window                   : NO
+
+
+    Disable Same Cell Pad-Pad Checks : NO
+
+
+    Enable Same Net Pad-Pad Checks   : NO
+
+    
+    Layers Specifed To Check         : Layer 1
+                                       Layer 2
+
+
+
+
+    Net Class Clearances And Rules
+    ------------------------------
+
+        Components Layer 1 TO Components Layer 1
+            No Hazards.
+
+        Traces Layer 1 TO Traces Layer 1
+            No Hazards.
+
+    >>  Traces Layer 1 TO Conductive Shapes Layer 1
+            Hazards Found : 1
+
+        Traces Layer 1 TO Differential Pair Traces Layer 1
+            No Hazards.
+
+        Traces Layer 1 TO Part Pads SMD Layer 1
+            No Hazards.
+
+        Traces Layer 1 TO Part Pads Thru Layer 1
+            No Hazards.
+
+        Traces Layer 1 TO Part Holes Layer 1
+            No Hazards.
+
+        Traces Layer 1 TO Via Pads Layer 1
+            No Hazards.
+
+        Traces Layer 1 TO Via Holes Layer 1
+            No Hazards.
+
+    >>  Conductive Shapes Layer 1 TO Conductive Shapes Layer 1
+            Hazards Found : 3
+
+        Conductive Shapes Layer 1 TO Differential Pair Traces Layer 1
+            No Hazards.
+
+        Conductive Shapes Layer 1 TO Part Pads SMD Layer 1
+            No Hazards.
+
+        Conductive Shapes Layer 1 TO Part Pads Thru Layer 1
+            No Hazards.
+
+        Conductive Shapes Layer 1 TO Part Holes Layer 1
+            No Hazards.
+
+        Conductive Shapes Layer 1 TO Via Pads Layer 1
+            No Hazards.
+
+        Conductive Shapes Layer 1 TO Via Holes Layer 1
+            No Hazards.
+
+        Differential Pair Traces Layer 1 TO Differential Pair Traces Layer 1
+            No Hazards.
+
+        Differential Pair Traces Layer 1 TO Part Pads SMD Layer 1
+            No Hazards.
+
+        Differential Pair Traces Layer 1 TO Part Pads Thru Layer 1
+            No Hazards.
+
+        Differential Pair Traces Layer 1 TO Part Holes Layer 1
+            No Hazards.
+
+        Differential Pair Traces Layer 1 TO Via Pads Layer 1
+            No Hazards.
+
+        Differential Pair Traces Layer 1 TO Via Holes Layer 1
+            No Hazards.
+
+        Part Pads SMD Layer 1 TO Part Pads SMD Layer 1
+            No Hazards.
+
+        Part Pads SMD Layer 1 TO Part Pads Thru Layer 1
+            No Hazards.
+
+        Part Pads SMD Layer 1 TO Part Holes Layer 1
+            No Hazards.
+
+        Part Pads SMD Layer 1 TO Via Pads Layer 1
+            No Hazards.
+
+        Part Pads SMD Layer 1 TO Via Holes Layer 1
+            No Hazards.
+
+        Part Pads Thru Layer 1 TO Part Pads Thru Layer 1
+            No Hazards.
+
+        Part Pads Thru Layer 1 TO Part Holes Layer 1
+            No Hazards.
+
+        Part Pads Thru Layer 1 TO Via Pads Layer 1
+            No Hazards.
+
+        Part Pads Thru Layer 1 TO Via Holes Layer 1
+            No Hazards.
+
+        Part Holes Layer 1 TO Via Pads Layer 1
+            No Hazards.
+
+        Part Holes Layer 1 TO Via Holes Layer 1
+            No Hazards.
+
+        Via Pads Layer 1 TO Via Pads Layer 1
+            No Hazards.
+
+        Via Pads Layer 1 TO Via Holes Layer 1
+            No Hazards.
+
+        Via Holes Layer 1 TO Via Holes Layer 1
+            No Hazards.
+
+        Components Layer 2 TO Components Layer 2
+            No Hazards.
+
+        Traces Layer 2 TO Traces Layer 2
+            No Hazards.
+
+        Traces Layer 2 TO Conductive Shapes Layer 2
+            No Hazards.
+
+        Traces Layer 2 TO Differential Pair Traces Layer 2
+            No Hazards.
+
+        Traces Layer 2 TO Part Pads SMD Layer 2
+            No Hazards.
+
+        Traces Layer 2 TO Part Pads Thru Layer 2
+            No Hazards.
+
+        Traces Layer 2 TO Part Holes Layer 2
+            No Hazards.
+
+        Traces Layer 2 TO Via Pads Layer 2
+            No Hazards.
+
+        Traces Layer 2 TO Via Holes Layer 2
+            No Hazards.
+
+        Conductive Shapes Layer 2 TO Conductive Shapes Layer 2
+            No Hazards.
+
+        Conductive Shapes Layer 2 TO Differential Pair Traces Layer 2
+            No Hazards.
+
+        Conductive Shapes Layer 2 TO Part Pads SMD Layer 2
+            No Hazards.
+
+        Conductive Shapes Layer 2 TO Part Pads Thru Layer 2
+            No Hazards.
+
+        Conductive Shapes Layer 2 TO Part Holes Layer 2
+            No Hazards.
+
+        Conductive Shapes Layer 2 TO Via Pads Layer 2
+            No Hazards.
+
+        Conductive Shapes Layer 2 TO Via Holes Layer 2
+            No Hazards.
+
+        Differential Pair Traces Layer 2 TO Differential Pair Traces Layer 2
+            No Hazards.
+
+        Differential Pair Traces Layer 2 TO Part Pads SMD Layer 2
+            No Hazards.
+
+        Differential Pair Traces Layer 2 TO Part Pads Thru Layer 2
+            No Hazards.
+
+        Differential Pair Traces Layer 2 TO Part Holes Layer 2
+            No Hazards.
+
+        Differential Pair Traces Layer 2 TO Via Pads Layer 2
+            No Hazards.
+
+        Differential Pair Traces Layer 2 TO Via Holes Layer 2
+            No Hazards.
+
+        Part Pads SMD Layer 2 TO Part Pads SMD Layer 2
+            No Hazards.
+
+        Part Pads SMD Layer 2 TO Part Pads Thru Layer 2
+            No Hazards.
+
+        Part Pads SMD Layer 2 TO Part Holes Layer 2
+            No Hazards.
+
+        Part Pads SMD Layer 2 TO Via Pads Layer 2
+            No Hazards.
+
+        Part Pads SMD Layer 2 TO Via Holes Layer 2
+            No Hazards.
+
+        Part Pads Thru Layer 2 TO Part Pads Thru Layer 2
+            No Hazards.
+
+        Part Pads Thru Layer 2 TO Part Holes Layer 2
+            No Hazards.
+
+        Part Pads Thru Layer 2 TO Via Pads Layer 2
+            No Hazards.
+
+        Part Pads Thru Layer 2 TO Via Holes Layer 2
+            No Hazards.
+
+        Part Holes Layer 2 TO Via Pads Layer 2
+            No Hazards.
+
+        Part Holes Layer 2 TO Via Holes Layer 2
+            No Hazards.
+
+        Via Pads Layer 2 TO Via Pads Layer 2
+            No Hazards.
+
+        Via Pads Layer 2 TO Via Holes Layer 2
+            No Hazards.
+
+        Via Holes Layer 2 TO Via Holes Layer 2
+            No Hazards.
+
+
+        Total Hazards Found : 4
+
+
+
+
+    Planes Clearances And Rules
+    ---------------------------
+
+        Positive Planes Layer 1 TO Conductive Shapes Layer 1
+            No Hazards.
+
+        Positive Planes Layer 1 TO Differential Pair Traces Layer 1
+            No Hazards.
+
+        Positive Planes Layer 1 TO Mounting Holes Layer 1
+            No Hazards.
+
+        Positive Planes Layer 1 TO Part Pads SMD Layer 1
+            No Hazards.
+
+        Positive Planes Layer 1 TO Part Pads Thru Layer 1
+            No Hazards.
+
+        Positive Planes Layer 1 TO Part Holes Layer 1
+            No Hazards.
+
+        Positive Planes Layer 1 TO Route Border
+            No Hazards.
+
+        Positive Planes Layer 1 TO Traces Layer 1
+            No Hazards.
+
+        Positive Planes Layer 1 TO Trace Obstructs Layer 1
+            No Hazards.
+
+        Positive Planes Layer 1 TO Via Pads Layer 1
+            No Hazards.
+
+        Positive Planes Layer 1 TO Via Holes Layer 1
+            No Hazards.
+
+        Positive Planes Layer 2 TO Conductive Shapes Layer 2
+            No Hazards.
+
+        Positive Planes Layer 2 TO Differential Pair Traces Layer 2
+            No Hazards.
+
+        Positive Planes Layer 2 TO Mounting Holes Layer 2
+            No Hazards.
+
+        Positive Planes Layer 2 TO Part Pads SMD Layer 2
+            No Hazards.
+
+        Positive Planes Layer 2 TO Part Pads Thru Layer 2
+            No Hazards.
+
+        Positive Planes Layer 2 TO Part Holes Layer 2
+            No Hazards.
+
+        Positive Planes Layer 2 TO Route Border
+            No Hazards.
+
+        Positive Planes Layer 2 TO Traces Layer 2
+            No Hazards.
+
+        Positive Planes Layer 2 TO Trace Obstructs Layer 2
+            No Hazards.
+
+        Positive Planes Layer 2 TO Via Pads Layer 2
+            No Hazards.
+
+        Positive Planes Layer 2 TO Via Holes Layer 2
+            No Hazards.
+
+
+        Total Hazards Found : 0
+
+
+
+
+    Non-Net Class Element To Element Clearances And Rules
+    -----------------------------------------------------
+
+        Via Obstructs Layer 1 TO Via Pads Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Via Holes Layer 1 TO Via Obstructs Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Traces Layer 1 TO Trace Obstructs Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Differential Pair Traces Layer 1 TO Trace Obstructs Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Conductive Shapes Layer 1 TO Trace Obstructs Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Route Border TO Via Pads Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Route Border TO Traces Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Route Border TO Differential Pair Traces Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Route Border TO Conductive Shapes Layer 1    Clearance: 0mm
+            No Hazards.
+
+    >>  Placement Obstructs Layer 1 TO Placement Outlines Layer 1    Clearance: 0mm
+            Hazards Found : 4
+
+        Part Pads SMD Layer 1 TO Route Border    Clearance: 0mm
+            No Hazards.
+
+        Part Pads Thru Layer 1 TO Route Border    Clearance: 0mm
+            No Hazards.
+
+        Mounting Holes Layer 1 TO Mounting Holes Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 1 TO Via Pads Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 1 TO Part Holes Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 1 TO Part Pads SMD Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 1 TO Part Pads Thru Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 1 TO Via Holes Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 1 TO Traces Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 1 TO Differential Pair Traces Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 1 TO Conductive Shapes Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Board Outline TO Mounting Holes Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Placement Outlines Layer 1    Clearance: 0.25mm
+            No Hazards.
+
+        Board Outline TO Via Pads Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Holes Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Pads SMD Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Pads Thru Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Via Holes Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Traces Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Differential Pair Traces Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Conductive Shapes Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Via Obstructs Layer 2 TO Via Pads Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Via Holes Layer 2 TO Via Obstructs Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Traces Layer 2 TO Trace Obstructs Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Differential Pair Traces Layer 2 TO Trace Obstructs Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Conductive Shapes Layer 2 TO Trace Obstructs Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Route Border TO Via Pads Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Route Border TO Traces Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Route Border TO Differential Pair Traces Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Route Border TO Conductive Shapes Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Part Pads SMD Layer 2 TO Route Border    Clearance: 0mm
+            No Hazards.
+
+        Part Pads Thru Layer 2 TO Route Border    Clearance: 0mm
+            No Hazards.
+
+        Mounting Holes Layer 2 TO Mounting Holes Layer 2    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 2 TO Via Pads Layer 2    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 2 TO Part Holes Layer 2    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 2 TO Part Pads SMD Layer 2    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 2 TO Part Pads Thru Layer 2    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 2 TO Via Holes Layer 2    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 2 TO Traces Layer 2    Clearance: 0.25mm
+            No Hazards.
+
+        Mounting Holes Layer 2 TO Differential Pair Traces Layer 2    Clearance: 0.25mm
+            No Hazards.
+
+    >>  Mounting Holes Layer 2 TO Conductive Shapes Layer 2    Clearance: 0.25mm
+            Hazards Found : 5
+
+        Board Outline TO Mounting Holes Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Placement Outlines Layer 2    Clearance: 0.25mm
+            No Hazards.
+
+        Board Outline TO Via Pads Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Holes Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Pads SMD Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Pads Thru Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Via Holes Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Traces Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Differential Pair Traces Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Conductive Shapes Layer 2    Clearance: 0mm
+            No Hazards.
+
+
+        Total Hazards Found : 9
+
+
+
+    Total Proximity Hazards Found : 13
+
+
+
+
+    ----------------------------
+    CONNECTIVITY & SPECIAL RULES
+    ----------------------------
+
+
+    Check For Unplaced Parts                      : YES
+        Hazards Found : 18
+
+
+    Check For Missing Parts                       : YES
+        No Hazards.
+
+
+    Check EP Component Hazards                    : YES
+        No Hazards.
+
+
+    Check Trace Hangers                           : YES
+        Hazards Found : 45
+
+
+    Check Trace Loops                             : YES
+        No Hazards.
+
+
+    Check Trace Widths                            : YES
+        Hazards Found : 8
+
+
+    Check Single Point Nets                       : YES
+        Hazards Found : 1
+
+
+    Check NonPlane Unrouted/Partially Routed Nets : YES
+        Hazards Found : 99
+
+
+    Check Plane Unrouted/Partial Routed Nets      : YES
+        Hazards Found : 4
+
+
+    Check Routed Plane Pins                       : YES
+        No Hazards.
+
+
+    Check Plane Islands                           : YES
+        No Hazards.
+
+
+    Check Dangling Vias/Jumpers                   : YES
+        Hazards Found : 294
+
+
+    Check Unrouted Pins                           : YES
+        Hazards Found : 79
+
+
+    Check Routed Non-Plated Pins                  : YES
+        No Hazards.
+
+
+    Check Minimum Annular Ring                    : NO
+
+
+    Check For Vias Under SMD Pads                 : NO
+
+
+    Check For Vias Under Top Place Outlines       : NO
+
+
+    Check For Vias Under Bottom Place Outlines    : NO
+
+
+    Check For Missing Conductive Pads             : All Pads / All Layers
+        No Hazards.
+
+
+    Check For Missing Part Soldermask Pads        : YES
+        No Hazards.
+
+
+    Check For Missing Via Soldermask Pads         : NO
+
+
+    Check For Missing Part Cover Layer Pads       : NO
+
+
+    Check For Missing Via Cover Layer Pads        : NO
+
+
+    Check For Missing Solderpaste Pads            : YES
+        No Hazards.
+
+
+
+    Total Connectivity/SpecialRules Hazards Found : 548
+
+
+
+    ====================================================================
+
+
+
+    Total DRC Hazards Found : 561
+
+
+
+                         04:56 PM Monday, December 18, 2017
