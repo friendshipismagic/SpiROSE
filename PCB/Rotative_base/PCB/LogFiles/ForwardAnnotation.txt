@@ -2,7 +2,7 @@
                                Forward Annotation
                                ------------------
 
-                       05:21 PM Sunday, December 17, 2017
+                       01:12 AM Monday, December 18, 2017
 Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
@@ -756,8 +756,9 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 185 Symbols:
-             185  **********************************
+     Clustering 235 Symbols:
+             235  **********************************
+             200  **************************************************
              150  **************************************************
              100  **************************************************
               50  **************************************************
@@ -767,8 +768,8 @@ Version:  01.01.00
 
 
 
-     132 nets were found containing 684 pins
-     180 components were found
+     132 nets were found containing 734 pins
+     230 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -782,7 +783,7 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       05:21 PM Sunday, December 17, 2017
+                       01:13 AM Monday, December 18, 2017
 Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
@@ -795,8 +796,40 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     The following 17 components have not been placed:
+     WARNING:  The "TMR16" cell used by "J98" in the Layout is not
+      valid for a "70-0085" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "TMR16" is being replaced by cell "PAD_1x1".
 
+     "J98" is being converted from a spare to a "70-0085" part.
+
+     WARNING:  The "PAD_RND_1000_90" cell used by "J99" in the Layout is not
+      valid for a "70-0085" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "PAD_RND_1000_90" is being replaced by cell "PAD_1x1".
+
+     "J99" is being converted from a spare to a "70-0085" part.
+
+     WARNING:  The "PAD_RND_500_90" cell used by "J100" in the Layout is not
+      valid for a "70-0085" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "PAD_RND_500_90" is being replaced by cell "PAD_1x1".
+
+     "J100" is being converted from a spare to a "70-0085" part.
+
+     The following 25 components have not been placed:
+
+        J98
+        J99
+        J100
+        J101
+        J102
+        J103
+        J104
+        J105
         PT1
         PT2
         PT3
@@ -815,7 +848,7 @@ Version:  02.11.12
         PT16
         PT17
 
-     Netload completed successfully with 0 warning(s).
+     Netload completed successfully with 3 warning(s).
      
      Back Annotating...
 
