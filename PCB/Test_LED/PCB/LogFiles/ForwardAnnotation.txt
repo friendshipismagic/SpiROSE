@@ -2,7 +2,7 @@
                                Forward Annotation
                                ------------------
 
-                       03:33 AM Tuesday, December 19, 2017
+                       02:52 PM Tuesday, December 19, 2017
              Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -23,17 +23,15 @@ Version:  01.01.00
 
      Target PDB Name: Work\Layout_Temp\PartsDB.pdb
 
-     Number of Part Numbers: 19
-          Part Numb: 01-0222 -> Vend Part: 01-0222 
+     Number of Part Numbers: 17
           Part Numb: 02-0098 -> Vend Part: 02-0098 
           Part Numb: 02-0118 -> Vend Part: 02-0118 
           Part Numb: 10-0057 -> Vend Part: 10-0057 
           Part Numb: 10-0058 -> Vend Part: 10-0058 
           Part Numb: 10-0060 -> Vend Part: 10-0060 
+          Part Numb: 10-0061 -> Vend Part: 10-0061 
           Part Numb: 10-0068 -> Vend Part: 10-0068 
           Part Numb: 10-0103 -> Vend Part: 10-0103 
-          Part Numb: 10-0112 -> Vend Part: 10-0112 
-          Part Numb: 20-0022 -> Vend Part: 20-0022 
           Part Numb: 20-0073 -> Vend Part: 20-0073 
           Part Numb: 30-0014 -> Vend Part: 30-0014 
           Part Numb: 40-0307 -> Vend Part: 40-0307 
@@ -69,8 +67,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 2148 Symbols:
-            2148  ***********************************************
+     Clustering 2132 Symbols:
+            2132  *******************************
             2100  **************************************************
             2050  **************************************************
             2000  **************************************************
@@ -119,8 +117,8 @@ Version:  01.01.00
 
 
 
-     906 nets were found containing 9061 pins
-     2148 components were found
+     898 nets were found containing 9029 pins
+     2132 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -134,7 +132,7 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       03:33 AM Tuesday, December 19, 2017
+                       02:52 PM Tuesday, December 19, 2017
              Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -147,7 +145,77 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     The following 28 components have not been placed:
+	WARNING:  "D1924" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "D1925" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "D1926" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "D1927" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "D1928" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "R31" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "R32" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "R33" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "R34" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "R35" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "R36" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "R37" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "R38" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "D1921" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C53" in the Layout is not
+      valid for a "10-0061" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "C0603" is being replaced by cell "C0805".
+
+     WARNING:  The "C0603" cell used by "C54" in the Layout is not
+      valid for a "10-0061" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "C0603" is being replaced by cell "C0805".
+
+	WARNING:  "D1922" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C55" in the Layout is not
+      valid for a "10-0061" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "C0603" is being replaced by cell "C0805".
+
+     WARNING:  The "C0603" cell used by "C56" in the Layout is not
+      valid for a "10-0061" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "C0603" is being replaced by cell "C0805".
+
+     WARNING:  The "C0603" cell used by "C57" in the Layout is not
+      valid for a "10-0061" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "C0603" is being replaced by cell "C0805".
+
+     WARNING:  The "C0603" cell used by "C58" in the Layout is not
+      valid for a "10-0061" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0805".
+
+	WARNING:  "D1923" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "C0603" cell used by "C59" in the Layout is not
+      valid for a "10-0061" Part Number.
+     INFO: Cell "C0603" is being replaced by cell "C0805".
+
+     The following 16 components have not been placed:
 
         C46
         C47
@@ -159,18 +227,6 @@ Version:  02.11.12
         C55
         C56
         C57
-        D1923
-        D1924
-        D1925
-        D1926
-        D1927
-        D1928
-        R33
-        R34
-        R35
-        R36
-        R37
-        R38
         U24
         U25
         U26
@@ -178,7 +234,7 @@ Version:  02.11.12
         U28
         U29
 
-     Netload completed successfully with 0 warning(s).
+     Netload completed successfully with 23 warning(s).
      
      Back Annotating...
 
@@ -209,9 +265,23 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
+	Assigned net FPGA_MUL0 to a trace which was originally on net XSIG090878.
+	Assigned net FPGA_MUL0 to a trace which was originally on net XSIG090878.
+	Assigned net FPGA_MUL1 to a trace which was originally on net XSIG090886.
+	Assigned net FPGA_MUL1 to a trace which was originally on net XSIG090886.
+
+Some nets were completely deleted from the Layout Design....
+	Deleted net XSIG090878, which has no pins, from the Layout Design.
+	Deleted net XSIG090886, which has no pins, from the Layout Design.
+	Deleted net XSIG090892, which has no pins, from the Layout Design.
+	Deleted net XSIG090898, which has no pins, from the Layout Design.
+	Deleted net XSIG090904, which has no pins, from the Layout Design.
+	Deleted net XSIG090916, which has no pins, from the Layout Design.
+	Deleted net XSIG090930, which has no pins, from the Layout Design.
+	Deleted net XSIG090936, which has no pins, from the Layout Design.
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
-There were 0 reassignments of nets.
+There were 4 reassignments of nets.
 There were 0 traces broken back.
-There were 0 nets removed from the Layout Design.
+There were 8 nets removed from the Layout Design.
