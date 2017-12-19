@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/18/17 23:47:48
+! Created 12/19/17 01:59:50
 !
 
 .Global_Constants 138 3
@@ -16,8 +16,8 @@
 	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
 	(498, 360) (1920,1080)	! ..rcNormalPosition
-    ..Active_Place_Layer_Top             True
-    ..Active_Place_Layer_Bottom          False
+    ..Active_Place_Layer_Top             False
+    ..Active_Place_Layer_Bottom          True
     ..Active_Place_Layer_Internal        False
     ..Active_Route_Layer 1
     ..Trace_Layer_Color ( 
@@ -1576,7 +1576,7 @@
 	)
     ..Netclass_Color ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
-	        -1		! [3] undefined
+	0x00ffffff		! [3] RGB(255,255,255)
     )
     ..Netclass_Ptrnidx ( 
 	0 ![1]
@@ -2025,8 +2025,8 @@
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "74"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "269"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "72"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "271"
 	"[VirtualGlobal].iDC.SplitViewHeight.2" "414"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
@@ -2042,8 +2042,8 @@
 
 .view "PCB"
     ..extrema
-	(4568973,28426834)		! (xmin, ymin)
-	(221532981,129548368)		! (xmax, ymax)
+	(-42929878,-4188660)		! (xmin, ymin)
+	(287233327,149692208)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -13760,7 +13760,7 @@
 	"[Net].DRV_SCLK_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[NetClass].(Default)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[NetClass].LVDS" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[NetClass].(SpacerNetClass)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[NetClass].(SpacerNetClass)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[ConstraintClass].(All)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[ConstraintClass].(All)/RGB" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[ConstraintClass].(All)/DRV" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
