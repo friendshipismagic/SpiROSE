@@ -88,4 +88,23 @@ if [[ $compare_out == "0" ]]; then
     echo The xor and no-xor methods are doing the same voxelization
 else 
     echo The xor and no-xor methods are differents, see tests/monkey_xornoxor_difference.png
+    exit 1
 fi
+
+echo
+
+echo Recompile in GLES mode
+make clean
+make UNAME_P=armv7l || exit 1
+EXE -p -t 0
+screenshot -page "1280x460" -crop "1280x460" "+repage" tests/monkey_gles.png
+compare_out=`compare -metric AE "tests/monkey_xor.png" "tests/monkey_gles.png" tests/monkey_gles_difference.png 2>&1`
+echo "AE: $compare_out"
+# TODO: return error if the test fail (this test is not ready yet)
+if [[ $compare_out == "0" ]]; then
+    echo The GLES and GL methods are doing the same voxelization
+else
+    echo The GLES and GL methods are differents, see tests/monkey_gles_difference.png
+fi
+
+killApplication
