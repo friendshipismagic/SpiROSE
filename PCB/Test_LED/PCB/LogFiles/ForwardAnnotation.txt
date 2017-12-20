@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                       07:26 PM Tuesday, December 19, 2017
-   Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+                       11:56 PM Tuesday, December 19, 2017
+             Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -67,8 +67,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 2140 Symbols:
-            2140  ***************************************
+     Clustering 2142 Symbols:
+            2142  *****************************************
             2100  **************************************************
             2050  **************************************************
             2000  **************************************************
@@ -117,8 +117,8 @@ Version:  01.01.00
 
 
 
-     898 nets were found containing 9045 pins
-     2140 components were found
+     898 nets were found containing 9049 pins
+     2142 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -132,8 +132,8 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       07:26 PM Tuesday, December 19, 2017
-   Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+                       11:56 PM Tuesday, December 19, 2017
+             Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -145,73 +145,12 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-	WARNING:  "J4" is being removed from the Layout since it is no longer in the schematic.
+     The following 2 components have not been placed:
 
-	WARNING:  "J5" is being removed from the Layout since it is no longer in the schematic.
+        C60
+        C61
 
-	WARNING:  "J6" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J7" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J8" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J31" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J37" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J40" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J38" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J41" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J39" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J42" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J43" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J44" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J45" is being removed from the Layout since it is no longer in the schematic.
-
-     The following 33 components have not been placed:
-
-        C46
-        C47
-        C48
-        C49
-        C50
-        C53
-        C54
-        C55
-        C56
-        C57
-        PT4
-        PT5
-        PT6
-        PT7
-        PT8
-        PT9
-        PT10
-        PT11
-        PT12
-        PT13
-        PT14
-        PT15
-        PT16
-        PT17
-        PT18
-        R31
-        R32
-        R33
-        R34
-        R35
-        R36
-        R37
-        R38
-
-     Netload completed successfully with 15 warning(s).
+     Netload completed successfully with 0 warning(s).
      
      Back Annotating...
 
