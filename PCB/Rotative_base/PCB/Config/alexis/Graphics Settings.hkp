@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/19/17 16:52:54
+! Created 12/20/17 03:03:44
 !
 
 .Global_Constants 138 4
@@ -15,11 +15,11 @@
 	0x00000003	! showCmd
 	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
-	(438, 298) (1680,998)	! ..rcNormalPosition
+	(216, -14) (1638,706)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             True
     ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
-    ..Active_Route_Layer 3
+    ..Active_Route_Layer 0
     ..Trace_Layer_Color ( 
 	0x00ff6633 0x009933ff	! [1-2] RGB( 51,102,255)  RGB(255, 51,153)
 	0x0066ff99 0x000000ff	! [3-4] RGB(153,255,102)  RGB(255,  0,  0)
@@ -1819,7 +1819,7 @@
     ..Valorseverity3_Hzd_Clr 0x00ffffff	! RGB(255,255,255)
     ..Valorseverity4_Hzd_Clr 0x00ffffff	! RGB(255,255,255)
     ..Valorseverity5_Hzd_Clr 0x00ffffff	! RGB(255,255,255)
-    ..Num_Unigroups 11
+    ..Num_Unigroups 21
     ..Unigroup_Names ( 
 	"189296"	! [1]
 	"741177"	! [2]
@@ -1832,6 +1832,16 @@
 	"1666868"	! [9]
 	"2135617"	! [10]
 	"2135826"	! [11]
+	"2607330"	! [12]
+	"2607339"	! [13]
+	"2607348"	! [14]
+	"2607357"	! [15]
+	"2607366"	! [16]
+	"2607392"	! [17]
+	"2607401"	! [18]
+	"2608987"	! [19]
+	"2609038"	! [20]
+	"2609050"	! [21]
     )
     ..Unigroup_Colors ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
@@ -1839,7 +1849,12 @@
 	0x00ffffff 0x00ffffff	! [5-6] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [7-8] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [9-10] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff		! [11] RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [11-12] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [13-14] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [15-16] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [17-18] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [19-20] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff		! [21] RGB(255,255,255)
     )
     ..Global_Options ( 
 	"Global.Option.AutoPan" "1"
@@ -1923,6 +1938,7 @@
     ..Global_String_Options ( 
 	"Global.Option.ActiveClearanceRadius" "100"
 	"Global.Option.DimMode" "100"
+	"Global.Option.FullScreenCursorStyle" "All"
 	"Global.Option.Transparency" "100"
 	"[VirtualGlobal].iDC.3D.Assemblies.CollapsedSectionOrder" "5"
 	"[VirtualGlobal].iDC.3D.Components.CollapsedSectionOrder" "6"
@@ -1931,7 +1947,7 @@
 	"[VirtualGlobal].iDC.3D.Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.3D.Options.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.3D.PCBs.CollapsedSectionOrder" "8"
-	"[VirtualGlobal].iDC.ActiveTabId" "2"
+	"[VirtualGlobal].iDC.ActiveTabId" "3"
 	"[VirtualGlobal].iDC.AplyTo" "2"
 	"[VirtualGlobal].iDC.AssemblyItems" "2"
 	"[VirtualGlobal].iDC.Batch.CollapsedSectionOrder" "4"
@@ -1965,7 +1981,7 @@
 	"[VirtualGlobal].iDC.Favorites.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.Fiducials.Collapsed" "3"
 	"[VirtualGlobal].iDC.FixedAndLockedPatterns" "3"
-	"[VirtualGlobal].iDC.FullScreenCursor.Collapse" "3"
+	"[VirtualGlobal].iDC.FullScreenCursor.Collapse" "2"
 	"[VirtualGlobal].iDC.General" "2"
 	"[VirtualGlobal].iDC.Global View & Interactive Selection.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.Graphics Options.CollapsedSectionOrder" "2"
@@ -1992,7 +2008,7 @@
 	"[VirtualGlobal].iDC.Layers.1.Collapse" "3"
 	"[VirtualGlobal].iDC.Layers.2.Collapse" "3"
 	"[VirtualGlobal].iDC.Layers.3.Collapse" "3"
-	"[VirtualGlobal].iDC.Layers.4.Collapse" "3"
+	"[VirtualGlobal].iDC.Layers.4.Collapse" "2"
 	"[VirtualGlobal].iDC.Materials.CollapsedSectionOrder" "8"
 	"[VirtualGlobal].iDC.MountingHoles.Collapsed" "3"
 	"[VirtualGlobal].iDC.MultipleDesigners.Collapsed" "2"
@@ -2033,9 +2049,9 @@
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "62"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "253"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "424"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "56"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "271"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "430"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -2050,13 +2066,13 @@
 
 .view "PCB"
     ..extrema
-	(42323890,12243591)		! (xmin, ymin)
-	(254463590,121477816)		! (xmax, ymax)
+	(-126767750,-26429884)		! (xmin, ymin)
+	(394798106,216659004)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
 	(-1, -1)	! ptMinPosition
-	(-6, -29)	! ptMaxPosition
+	(-8, -31)	! ptMaxPosition
 	(20, 20) (796,351)	! ..rcNormalPosition
     ..Is_Float_View                      False
     ..Is_Detail_View                     False
@@ -2290,7 +2306,7 @@
                                          True 	! bottom
     ..Cluster_2on                        True 	! top
                                          True 	! bottom
-    ..V_Num_Unigroups 11
+    ..V_Num_Unigroups 21
     ..V_Unigroup_Names ( 
 	"189296"	! [1]
 	"741177"	! [2]
@@ -2303,6 +2319,16 @@
 	"1666868"	! [9]
 	"2135617"	! [10]
 	"2135826"	! [11]
+	"2607330"	! [12]
+	"2607339"	! [13]
+	"2607348"	! [14]
+	"2607357"	! [15]
+	"2607366"	! [16]
+	"2607392"	! [17]
+	"2607401"	! [18]
+	"2608987"	! [19]
+	"2609038"	! [20]
+	"2609050"	! [21]
     )
     ..V_Unigroup_On ( 
 	False ![1]
@@ -2316,6 +2342,16 @@
 	False ![9]
 	False ![10]
 	False ![11]
+	False ![12]
+	False ![13]
+	False ![14]
+	False ![15]
+	False ![16]
+	False ![17]
+	False ![18]
+	False ![19]
+	False ![20]
+	False ![21]
     )
     ..V_Unigroup_Enabled ( 
 	False ![1]
@@ -2329,8 +2365,19 @@
 	True  ![9]
 	True  ![10]
 	True  ![11]
+	True  ![12]
+	True  ![13]
+	True  ![14]
+	True  ![15]
+	True  ![16]
+	True  ![17]
+	True  ![18]
+	True  ![19]
+	True  ![20]
+	True  ![21]
     )
     ..Virtual_Options ( 
+	"[Virtual].iDC.Global.Option.FullScreenCursorStyle.Enabled" "1"
 	"[Virtual].iDC.Global.Option.PanSensitivity.Enabled" "1"
 	"[Virtual].iDC.ListSelectableLayersOnly" "1"
     )
@@ -12586,8 +12633,8 @@
 	"Part.Hazard.Bottom" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
 	"Part.InsertionOutline.Top" "d:0" "e:1" "s:1" "se:0" "c:16776960" "a:100" "p:0" "t:0" "o:1"
 	"Part.InsertionOutline.Bottom" "d:0" "e:1" "s:1" "se:0" "c:10027212" "a:100" "p:0" "t:0" "o:1"
-	"Part.Pin.NumberType.Top" "d:1" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Part.Pin.NumberType.Bottom" "d:1" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Part.Pin.NumberType.Top" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Part.Pin.NumberType.Bottom" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Part.PlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Part.PlaceOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:2" "t:0" "o:1"
 	"Part.SpecialPlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
