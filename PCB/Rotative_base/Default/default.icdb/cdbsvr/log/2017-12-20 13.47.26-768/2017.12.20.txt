@@ -1,0 +1,428 @@
+[2017.12.20 13:47:26] [0000m.00s.156ms] [0] WELCOME
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Base flow version [VX.2.2]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Machine [GRIMA]  IP [127.0.0.1,172.16.23.138]  User [Alexis]  PID [768]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Operating system [Microsoft Business Edition, 64-bit (build 9200)]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Current working dir [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Users\Alexis\.babun]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] SDD_PLATFORM [win32]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.20 13:47:26] [0000m.00s.156ms] [2] S: Loading config files
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Config file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.20 13:47:26] [0000m.00s.156ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2017.12.20 13:47:26] [0000m.00s.172ms] [3] S: Config loaded
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Project path [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb] on file system [NTFS]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.20 13:47:26] [0000m.00s.188ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Multi-user mode (config)
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Event polling mode autodetection
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Started up automatically by iCDB Client: GRIMA:Alexis:2204
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Auto close mode
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Database ID [c593-7a26-1abb-48c9-4db5-a3a9-db5a-3a50-9131-40df-af46-e506]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] PathTranslator: BEGIN dumping
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] PathTranslator: [F:\] -> [\\vmware-host\Shared Folders\mentor\]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] PathTranslator: [Z:\] -> [\\vmware-host\Shared Folders\]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] PathTranslator: [\\vmware-host\Shared Folders\mentor\] -> [F:\]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] PathTranslator: [\\vmware-host\Shared Folders\] -> [Z:\]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] PathTranslator: END dumping
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: START
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Server startup lock file created
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Listening for client connections on port [10001]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Server network ID [grima:172.16.23.138,grima:10001]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Server GUID [cfd7-2c44-1cdf-5d6c-edb5-a3a3-eb5a-3a50-1d41-40df-af46-e506]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Project GUID [c593-7a26-1abb-48c9-4db5-a3a9-db5a-3a50-9131-40df-af46-e506]
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Wrote data to server address file
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] S: Server startup lock file removed
+[2017.12.20 13:47:26] [0000m.00s.188ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.20 13:47:26] [0000m.00s.218ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.20 13:47:26] [0000m.00s.218ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.20 13:47:26] [0000m.00s.218ms] [0] S: Local disc access time: 38 us
+[2017.12.20 13:47:26] [0000m.00s.218ms] [0] S: File server access time: 37 us
+[2017.12.20 13:47:26] [0000m.00s.218ms] [0] Single file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] size [438728 (428.4 kB)]
+[2017.12.20 13:47:26] [0000m.00s.218ms] [1] Single file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.20 13:47:26] [0000m.00s.218ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.20 13:47:26] [0000m.00s.218ms] [0] Database GUARD OK: [438728]
+[2017.12.20 13:47:26] [0000m.00s.218ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.20 13:47:26] [0000m.00s.218ms] [0] Database GUARD OK: [438728]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] Database GUARD OK: [438728]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] Database GUARD OK: [438728]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] Database GUARD OK: [438728]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] SingleFile: [948a-5e9f-956c-6820] SFI version check [1009] [1009]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] SingleFile: [948a-5e9f-956c-6820] Database SFI header has been read in [8ms 477us]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] iCDB Server PI: Server & plugin session [4771]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] iCDB Server PI: Opening database [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb]
+[2017.12.20 13:47:26] [0000m.00s.234ms] [0] iCDB Server PI: Database [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb] opened
+[2017.12.20 13:47:26] [0000m.00s.250ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.20 13:47:26] [0000m.00s.250ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.20 13:47:26] [0000m.00s.313ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=6cfa-4eda-0a69-a076-411e-2f99-11e2-f950-1721-50df-bf46-e506] up to date
+[2017.12.20 13:47:26] [0000m.00s.328ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.20 13:47:26] [0000m.00s.328ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.20 13:47:26] [0000m.00s.328ms] [0] S: iCDB database loaded
+[2017.12.20 13:47:26] [0000m.00s.328ms] [0] S: Starting threads
+[2017.12.20 13:47:26] [0000m.00s.328ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.20 13:47:26] [0000m.00s.328ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.20 13:47:26] [0000m.00s.328ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.20 13:47:26] [0000m.00s.328ms] [0] IT: Session [4772] for host [grima] user [Alexis] with process ID [2204] created
+[2017.12.20 13:47:26] [0000m.00s.328ms] [1] SC[4772]: Registered sub-client [DCDV] with ID [1] for session ID [4772] host [grima] user [Alexis] process ID [2204]
+[2017.12.20 13:47:26] [0000m.00s.328ms] [0] MWT: WindowProc: WM_NCCREATE
+[2017.12.20 13:47:26] [0000m.00s.344ms] [0] IT: iCDB Server Monitor session [1] for host [grima] user [Alexis] with process ID [3944] created
+[2017.12.20 13:47:26] [0000m.00s.344ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2017.12.20 13:47:26] [0000m.00s.439ms] [1] CMT: There are [1] clients now: 4772
+[2017.12.20 13:47:52] [0000m.26s.944ms] [0] IT: Session [4773] for host [grima] user [Alexis] with process ID [2116] created
+[2017.12.20 13:47:52] [0000m.26s.944ms] [1] ProjectBackupManager: Client [ClientData[ClientNetAddress[grima] # ClientUserName[Alexis] # ClientProcessID[2116] # SessionID[4773] # Type[0]] # SubClientData[SubClientName[] # SubClientID[0]]] set project file (.prj): local path [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj], global path [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj]
+[2017.12.20 13:47:53] [0000m.27s.037ms] [0] PrjBackupMgr: Migrating iCDB upgrade backups from directory [Rotative_base\Default\default.icdb\cdbback] to Project Backup format.
+[2017.12.20 13:47:53] [0000m.27s.037ms] [0] PrjBackupMgr: Migrating iCDB upgrade backup file [2017-12-20 13.47.16-1936].
+[2017.12.20 13:47:53] [0000m.27s.053ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 13:47:53] [0000m.27s.069ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-20 13.47.16 - consDefUpgr.zip] with GUID [41ba-32f7-3319-0435-9fb5-a3ae-fb5a-3a50-9801-40df-af46-e506]
+[2017.12.20 13:47:53] [0000m.27s.069ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[6460-36de-d0f2-ba16-00d4-93a5-0d49-3a50-7476-f060-1af8-3773] CreationTime[Tuesday, December 19, 2017 17:28:33] Type[ConsDefUpgrade] Creator[iCDB Server (2017-12-19 18.28.36-18740)] ApplicationName[iCDB Server (2017-12-19 18.28.33-17876)] UserName[Alexis] MachineName[GRIMA] Description[Before constraint definitions upgrade using flow install:\n    Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3\n    Flow Id: EEVX.2.2\n    Install Id: 1589114; 1589126; 1632660\n    iCDB Build Id: 7609807\n    iCDB Version: 3300] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-19 18.28.33 - consDefUpgr.zip] BackupFileSize[517141] Persistent[FALSE]
+[2017.12.20 13:47:53] [0000m.27s.069ms] [0] PrjBackupMgr: Project Backup file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-19 18.28.33 - consDefUpgr.zip] with GUID [6460-36de-d0f2-ba16-00d4-93a5-0d49-3a50-7476-f060-1af8-3773] removed
+[2017.12.20 13:47:53] [0000m.27s.069ms] [1] PrjBackupMgr: Migrated iCDB content backup file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbback\2017-12-20 13.47.16-1936.zip] removed
+[2017.12.20 13:47:53] [0000m.27s.069ms] [0] PrjBackupMgr: Successfully migrated iCDB upgrade backup file [2017-12-20 13.47.16-1936] to Project Backup format [2017-12-20 13.47.16 - consDefUpgr.zip]
+[2017.12.20 13:47:53] [0000m.27s.069ms] [1] SC[4773]: Registered sub-client [Expedition PCB_198906] with ID [1] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:53] [0000m.27s.178ms] [1] SC[4773]: Registered sub-client [EEVM] with ID [2] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:53] [0000m.27s.287ms] [1] SC[4773]: UnRegistered sub-client [EEVM] with ID [2] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:53] [0000m.27s.709ms] [1] SC[4773]: Registered sub-client [JobPrefsDBPI_199703] with ID [3] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:53] [0000m.27s.741ms] [1] SC[4773]: UnRegistered sub-client [JobPrefsDBPI_199703] with ID [3] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:54] [0000m.28s.884ms] [1] SC[4773]: Registered sub-client [JobPrefsDBPI_200875] with ID [4] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:54] [0000m.28s.898ms] [1] SC[4773]: UnRegistered sub-client [JobPrefsDBPI_200875] with ID [4] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:56] [0000m.30s.258ms] [1] SC[4773]: Registered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:56] [0000m.30s.258ms] [1] SC[4773]: Registered sub-client [StartServerClientffc] with ID [6] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:56] [0000m.30s.273ms] [1] SC[4773]: UnRegistered sub-client [StartServerClientffc] with ID [6] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 13:47:57] [0000m.31s.634ms] [0] DFAMT: File server access time: 45 us
+[2017.12.20 13:47:58] [0000m.32s.371ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-20 13.47.58 - auto.zip] with GUID [82f0-67f9-27e3-69aa-efb5-a3a3-0c5a-3a50-9961-40df-af46-e506]
+[2017.12.20 13:47:58] [0000m.32s.371ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[f289-f5e2-2be5-f007-0f30-93a5-f309-3a50-5e41-40ff-af46-e506] CreationTime[Tuesday, December 19, 2017 12:20:00] Type[Autosave] Creator[iCDB Server (2017-12-19 12.26.56-264)] ApplicationName[iCDB Server (2017-12-19 12.26.56-264)] UserName[Alexis] MachineName[GRIMA] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-19 13.20.00 - auto.zip] BackupFileSize[991392] Persistent[FALSE]
+[2017.12.20 13:47:58] [0000m.32s.371ms] [0] PrjBackupMgr: Project Backup file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-19 13.20.00 - auto.zip] with GUID [f289-f5e2-2be5-f007-0f30-93a5-f309-3a50-5e41-40ff-af46-e506] removed
+[2017.12.20 13:47:58] [0000m.32s.371ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[82f0-67f9-27e3-69aa-efb5-a3a3-0c5a-3a50-9961-40df-af46-e506] CreationTime[Wednesday, December 20, 2017 12:47:58] Type[Autosave] Creator[iCDB Server (2017-12-20 13.47.26-768)] ApplicationName[iCDB Server (2017-12-20 13.47.26-768)] UserName[Alexis] MachineName[GRIMA] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-20 13.47.58 - auto.zip] BackupFileSize[1073478] Persistent[FALSE]
+[2017.12.20 14:10:24] [0022m.58s.245ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_1632056] with ID [7] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:10:24] [0022m.58s.245ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_1632056] with ID [7] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:10:24] [0022m.58s.933ms] [0] IT: Session [4774] for host [grima] user [Alexis] with process ID [832] created
+[2017.12.20 14:10:24] [0022m.58s.933ms] [1] SC[4774]: Registered sub-client [Expedition_1550750] with ID [1] for session ID [4774] host [grima] user [Alexis] process ID [832]
+[2017.12.20 14:10:25] [0022m.58s.995ms] [1] CMT: There are [3] clients now: 4772, 4773, 4774
+[2017.12.20 14:10:25] [0022m.59s.073ms] [1] SC[4774]: UnRegistered sub-client [Expedition_1550750] with ID [1] for session ID [4774] host [grima] user [Alexis] process ID [832]
+[2017.12.20 14:10:25] [0022m.59s.105ms] [1] CMT: Removed client [4774]
+[2017.12.20 14:10:25] [0022m.59s.105ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 14:12:34] [0025m.08s.392ms] [1] SC[4773]: Registered sub-client [JobPrefsDBPI_1680375] with ID [8] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:12:34] [0025m.08s.392ms] [1] SC[4773]: UnRegistered sub-client [JobPrefsDBPI_1680375] with ID [8] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:13:11] [0025m.45s.793ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_1632056] with ID [9] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:13:11] [0025m.45s.793ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_1632056] with ID [9] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:13:12] [0025m.46s.074ms] [0] IT: Session [4775] for host [grima] user [Alexis] with process ID [3724] created
+[2017.12.20 14:13:12] [0025m.46s.074ms] [1] SC[4775]: Registered sub-client [Expedition_1717968] with ID [1] for session ID [4775] host [grima] user [Alexis] process ID [3724]
+[2017.12.20 14:13:12] [0025m.46s.090ms] [1] CMT: There are [3] clients now: 4772, 4773, 4775
+[2017.12.20 14:13:12] [0025m.46s.137ms] [1] SC[4775]: UnRegistered sub-client [Expedition_1717968] with ID [1] for session ID [4775] host [grima] user [Alexis] process ID [3724]
+[2017.12.20 14:13:12] [0025m.46s.199ms] [1] CMT: Removed client [4775]
+[2017.12.20 14:13:12] [0025m.46s.199ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 14:13:57] [0026m.31s.362ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_1632056] with ID [10] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:13:57] [0026m.31s.362ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_1632056] with ID [10] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:13:57] [0026m.31s.612ms] [0] IT: Session [4776] for host [grima] user [Alexis] with process ID [1576] created
+[2017.12.20 14:13:57] [0026m.31s.612ms] [1] SC[4776]: Registered sub-client [Expedition_1763500] with ID [1] for session ID [4776] host [grima] user [Alexis] process ID [1576]
+[2017.12.20 14:13:57] [0026m.31s.706ms] [1] CMT: There are [3] clients now: 4772, 4773, 4776
+[2017.12.20 14:13:57] [0026m.31s.706ms] [1] SC[4776]: UnRegistered sub-client [Expedition_1763500] with ID [1] for session ID [4776] host [grima] user [Alexis] process ID [1576]
+[2017.12.20 14:13:57] [0026m.31s.817ms] [1] CMT: Removed client [4776]
+[2017.12.20 14:13:57] [0026m.31s.817ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 14:16:35] [0029m.09s.838ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_1632056] with ID [11] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:16:35] [0029m.09s.838ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_1632056] with ID [11] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 14:16:36] [0029m.10s.104ms] [0] IT: Session [4777] for host [grima] user [Alexis] with process ID [3124] created
+[2017.12.20 14:16:36] [0029m.10s.104ms] [1] SC[4777]: Registered sub-client [Expedition_1922000] with ID [1] for session ID [4777] host [grima] user [Alexis] process ID [3124]
+[2017.12.20 14:16:36] [0029m.10s.149ms] [1] CMT: There are [3] clients now: 4772, 4773, 4777
+[2017.12.20 14:16:36] [0029m.10s.196ms] [1] SC[4777]: UnRegistered sub-client [Expedition_1922000] with ID [1] for session ID [4777] host [grima] user [Alexis] process ID [3124]
+[2017.12.20 14:16:36] [0029m.10s.260ms] [1] CMT: Removed client [4777]
+[2017.12.20 14:16:36] [0029m.10s.260ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 16:48:17] [0180m.51s.455ms] [0] IT: Session [4778] for host [grima] user [Alexis] with process ID [3304] created
+[2017.12.20 16:48:17] [0180m.51s.455ms] [1] SC[4778]: Registered sub-client [Alexis (BE CES)] with ID [1] for session ID [4778] host [grima] user [Alexis] process ID [3304]
+[2017.12.20 16:48:17] [0180m.51s.549ms] [1] CMT: There are [3] clients now: 4772, 4773, 4778
+[2017.12.20 16:48:56] [0181m.30s.116ms] [1] SC[4778]: UnRegistered sub-client [Alexis (BE CES)] with ID [1] for session ID [4778] host [grima] user [Alexis] process ID [3304]
+[2017.12.20 16:48:56] [0181m.30s.178ms] [1] CMT: Removed client [4778]
+[2017.12.20 16:48:56] [0181m.30s.178ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:04:45] [0197m.19s.033ms] [0] IT: Session [4779] for host [grima] user [Alexis] with process ID [3132] created
+[2017.12.20 17:04:45] [0197m.19s.033ms] [1] SC[4779]: Registered sub-client [ICDBC] with ID [1] for session ID [4779] host [grima] user [Alexis] process ID [3132]
+[2017.12.20 17:04:45] [0197m.19s.049ms] [1] CMT: There are [3] clients now: 4772, 4773, 4779
+[2017.12.20 17:04:45] [0197m.19s.065ms] [1] SC[4779]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4779] host [grima] user [Alexis] process ID [3132]
+[2017.12.20 17:04:58] [0197m.32s.605ms] [1] SC[4779]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4779] host [grima] user [Alexis] process ID [3132]
+[2017.12.20 17:04:58] [0197m.32s.605ms] [1] SC[4779]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4779] host [grima] user [Alexis] process ID [3132]
+[2017.12.20 17:04:58] [0197m.32s.622ms] [1] CMT: Removed client [4779]
+[2017.12.20 17:04:58] [0197m.32s.622ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:04:59] [0197m.33s.370ms] [0] IT: Session [4780] for host [grima] user [Alexis] with process ID [2428] created
+[2017.12.20 17:04:59] [0197m.33s.370ms] [1] SC[4780]: Registered sub-client [Packager_12025656] with ID [1] for session ID [4780] host [grima] user [Alexis] process ID [2428]
+[2017.12.20 17:04:59] [0197m.33s.386ms] [1] CMT: There are [3] clients now: 4772, 4773, 4780
+[2017.12.20 17:05:00] [0197m.34s.152ms] [1] SC[4780]: UnRegistered sub-client [Packager_12025656] with ID [1] for session ID [4780] host [grima] user [Alexis] process ID [2428]
+[2017.12.20 17:05:00] [0197m.34s.262ms] [1] CMT: Removed client [4780]
+[2017.12.20 17:05:00] [0197m.34s.262ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:05:29] [0198m.03s.603ms] [0] IT: Session [4781] for host [grima] user [Alexis] with process ID [1728] created
+[2017.12.20 17:05:29] [0198m.03s.603ms] [1] SC[4781]: Registered sub-client [ICDBC] with ID [1] for session ID [4781] host [grima] user [Alexis] process ID [1728]
+[2017.12.20 17:05:29] [0198m.03s.635ms] [1] SC[4781]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4781] host [grima] user [Alexis] process ID [1728]
+[2017.12.20 17:05:29] [0198m.03s.697ms] [1] CMT: There are [3] clients now: 4772, 4773, 4781
+[2017.12.20 17:05:31] [0198m.05s.745ms] [1] SC[4781]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4781] host [grima] user [Alexis] process ID [1728]
+[2017.12.20 17:05:31] [0198m.05s.745ms] [1] SC[4781]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4781] host [grima] user [Alexis] process ID [1728]
+[2017.12.20 17:05:31] [0198m.05s.778ms] [1] CMT: Removed client [4781]
+[2017.12.20 17:05:31] [0198m.05s.778ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:05:32] [0198m.06s.777ms] [0] IT: Session [4782] for host [grima] user [Alexis] with process ID [3636] created
+[2017.12.20 17:05:32] [0198m.06s.777ms] [1] SC[4782]: Registered sub-client [DCDV_TagNets_2995] with ID [1] for session ID [4782] host [grima] user [Alexis] process ID [3636]
+[2017.12.20 17:05:32] [0198m.06s.808ms] [1] SC[4782]: UnRegistered sub-client [DCDV_TagNets_2995] with ID [1] for session ID [4782] host [grima] user [Alexis] process ID [3636]
+[2017.12.20 17:05:32] [0198m.06s.872ms] [1] CMT: There are [3] clients now: 4772, 4773, 4782
+[2017.12.20 17:05:32] [0198m.06s.872ms] [1] CMT: Removed client [4782]
+[2017.12.20 17:05:32] [0198m.06s.872ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:08:21] [0200m.55s.000ms] [0] IT: Session [4783] for host [grima] user [Alexis] with process ID [3140] created
+[2017.12.20 17:08:21] [0200m.55s.000ms] [1] SC[4783]: Registered sub-client [ICDBC] with ID [1] for session ID [4783] host [grima] user [Alexis] process ID [3140]
+[2017.12.20 17:08:21] [0200m.55s.032ms] [1] SC[4783]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4783] host [grima] user [Alexis] process ID [3140]
+[2017.12.20 17:08:21] [0200m.55s.047ms] [1] CMT: There are [3] clients now: 4772, 4773, 4783
+[2017.12.20 17:08:35] [0201m.09s.315ms] [1] SC[4783]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4783] host [grima] user [Alexis] process ID [3140]
+[2017.12.20 17:08:35] [0201m.09s.331ms] [1] SC[4783]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4783] host [grima] user [Alexis] process ID [3140]
+[2017.12.20 17:08:35] [0201m.09s.380ms] [1] CMT: Removed client [4783]
+[2017.12.20 17:08:35] [0201m.09s.380ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:08:36] [0201m.10s.331ms] [0] IT: Session [4784] for host [grima] user [Alexis] with process ID [1256] created
+[2017.12.20 17:08:36] [0201m.10s.331ms] [1] SC[4784]: Registered sub-client [Packager_12242593] with ID [1] for session ID [4784] host [grima] user [Alexis] process ID [1256]
+[2017.12.20 17:08:36] [0201m.10s.362ms] [1] CMT: There are [3] clients now: 4772, 4773, 4784
+[2017.12.20 17:08:37] [0201m.11s.004ms] [1] SC[4784]: UnRegistered sub-client [Packager_12242593] with ID [1] for session ID [4784] host [grima] user [Alexis] process ID [1256]
+[2017.12.20 17:08:37] [0201m.11s.020ms] [1] CMT: Removed client [4784]
+[2017.12.20 17:08:37] [0201m.11s.020ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:08:44] [0201m.18s.178ms] [0] IT: Session [4785] for host [grima] user [Alexis] with process ID [3836] created
+[2017.12.20 17:08:44] [0201m.18s.178ms] [1] SC[4785]: Registered sub-client [ICDBC] with ID [1] for session ID [4785] host [grima] user [Alexis] process ID [3836]
+[2017.12.20 17:08:44] [0201m.18s.226ms] [1] SC[4785]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4785] host [grima] user [Alexis] process ID [3836]
+[2017.12.20 17:08:44] [0201m.18s.240ms] [1] CMT: There are [3] clients now: 4772, 4773, 4785
+[2017.12.20 17:08:46] [0201m.20s.273ms] [1] SC[4785]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4785] host [grima] user [Alexis] process ID [3836]
+[2017.12.20 17:08:46] [0201m.20s.289ms] [1] SC[4785]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4785] host [grima] user [Alexis] process ID [3836]
+[2017.12.20 17:08:46] [0201m.20s.322ms] [1] CMT: Removed client [4785]
+[2017.12.20 17:08:46] [0201m.20s.322ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:08:47] [0201m.21s.289ms] [0] IT: Session [4786] for host [grima] user [Alexis] with process ID [1976] created
+[2017.12.20 17:08:47] [0201m.21s.289ms] [1] SC[4786]: Registered sub-client [DCDV_TagNets_2995] with ID [1] for session ID [4786] host [grima] user [Alexis] process ID [1976]
+[2017.12.20 17:08:47] [0201m.21s.305ms] [1] CMT: There are [3] clients now: 4772, 4773, 4786
+[2017.12.20 17:08:47] [0201m.21s.320ms] [1] SC[4786]: UnRegistered sub-client [DCDV_TagNets_2995] with ID [1] for session ID [4786] host [grima] user [Alexis] process ID [1976]
+[2017.12.20 17:08:47] [0201m.21s.415ms] [1] CMT: Removed client [4786]
+[2017.12.20 17:08:47] [0201m.21s.415ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:09:46] [0202m.20s.532ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_1634084] with ID [12] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:46] [0202m.20s.532ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_1634084] with ID [12] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:46] [0202m.20s.830ms] [0] IT: Session [4787] for host [grima] user [Alexis] with process ID [3568] created
+[2017.12.20 17:09:46] [0202m.20s.830ms] [1] SC[4787]: Registered sub-client [Expedition_12313031] with ID [1] for session ID [4787] host [grima] user [Alexis] process ID [3568]
+[2017.12.20 17:09:46] [0202m.20s.923ms] [1] SC[4787]: UnRegistered sub-client [Expedition_12313031] with ID [1] for session ID [4787] host [grima] user [Alexis] process ID [3568]
+[2017.12.20 17:09:46] [0202m.20s.939ms] [1] CMT: There are [3] clients now: 4772, 4773, 4787
+[2017.12.20 17:09:46] [0202m.20s.939ms] [1] CMT: Removed client [4787]
+[2017.12.20 17:09:46] [0202m.20s.939ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:09:50] [0202m.24s.740ms] [1] SC[4773]: UnRegistered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:50] [0202m.24s.755ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_1634984] with ID [13] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:50] [0202m.24s.755ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_1634984] with ID [13] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:50] [0202m.24s.928ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_1634656] with ID [14] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:50] [0202m.24s.928ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_1634656] with ID [14] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:51] [0202m.25s.179ms] [0] IT: Session [4788] for host [grima] user [Alexis] with process ID [3880] created
+[2017.12.20 17:09:51] [0202m.25s.179ms] [1] SC[4788]: Registered sub-client [Expedition_12317421] with ID [1] for session ID [4788] host [grima] user [Alexis] process ID [3880]
+[2017.12.20 17:09:51] [0202m.25s.210ms] [1] CMT: There are [3] clients now: 4772, 4773, 4788
+[2017.12.20 17:09:51] [0202m.25s.257ms] [1] SC[4788]: UnRegistered sub-client [Expedition_12317421] with ID [1] for session ID [4788] host [grima] user [Alexis] process ID [3880]
+[2017.12.20 17:09:51] [0202m.25s.320ms] [1] CMT: Removed client [4788]
+[2017.12.20 17:09:51] [0202m.25s.320ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:09:52] [0202m.26s.085ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_542185948] with ID [15] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:52] [0202m.26s.101ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_542185948] with ID [15] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:52] [0202m.26s.101ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_542185948] with ID [16] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:52] [0202m.26s.101ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_542185948] with ID [16] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:52] [0202m.26s.101ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_542185948] with ID [17] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:52] [0202m.26s.101ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_542185948] with ID [17] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:52] [0202m.26s.226ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcnfgs\2000000010000050.blk\cnfg_obj_state] - auto-saving it
+[2017.12.20 17:09:52] [0202m.26s.289ms] [1] SC[4773]: Registered sub-client [JobPrefsDBPI_12318609] with ID [18] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:52] [0202m.26s.304ms] [1] SC[4773]: UnRegistered sub-client [JobPrefsDBPI_12318609] with ID [18] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:54] [0202m.28s.172ms] [1] SC[4773]: Registered sub-client [JobPrefsDBPI_12320500] with ID [19] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:54] [0202m.28s.188ms] [1] SC[4773]: UnRegistered sub-client [JobPrefsDBPI_12320500] with ID [19] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:09:54] [0202m.28s.703ms] [0] IT: Session [4789] for host [grima] user [Alexis] with process ID [2488] created
+[2017.12.20 17:09:54] [0202m.28s.703ms] [1] SC[4789]: Registered sub-client [Packager_12321000] with ID [1] for session ID [4789] host [grima] user [Alexis] process ID [2488]
+[2017.12.20 17:09:54] [0202m.28s.813ms] [1] CMT: There are [3] clients now: 4772, 4773, 4789
+[2017.12.20 17:09:55] [0202m.29s.360ms] [1] SC[4789]: UnRegistered sub-client [Packager_12321000] with ID [1] for session ID [4789] host [grima] user [Alexis] process ID [2488]
+[2017.12.20 17:09:55] [0202m.29s.470ms] [1] CMT: Removed client [4789]
+[2017.12.20 17:09:55] [0202m.29s.470ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:09:56] [0202m.30s.329ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.20 17:09:56] [0202m.30s.720ms] [0] IT: Session [4790] for host [grima] user [Alexis] with process ID [2864] created
+[2017.12.20 17:09:56] [0202m.30s.720ms] [1] SC[4790]: Registered sub-client [Expedition_12323015] with ID [1] for session ID [4790] host [grima] user [Alexis] process ID [2864]
+[2017.12.20 17:09:56] [0202m.30s.783ms] [1] CMT: There are [3] clients now: 4772, 4773, 4790
+[2017.12.20 17:09:56] [0202m.30s.829ms] [1] SC[4790]: UnRegistered sub-client [Expedition_12323015] with ID [1] for session ID [4790] host [grima] user [Alexis] process ID [2864]
+[2017.12.20 17:09:56] [0202m.30s.892ms] [1] CMT: Removed client [4790]
+[2017.12.20 17:09:56] [0202m.30s.892ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:09:57] [0202m.31s.737ms] [0] IT: Session [4791] for host [grima] user [Alexis] with process ID [2864] created
+[2017.12.20 17:09:57] [0202m.31s.737ms] [1] SC[4791]: Registered sub-client [JobPrefsDBPI_12324031] with ID [1] for session ID [4791] host [grima] user [Alexis] process ID [2864]
+[2017.12.20 17:09:57] [0202m.31s.767ms] [1] CMT: There are [3] clients now: 4772, 4773, 4791
+[2017.12.20 17:09:57] [0202m.31s.767ms] [1] SC[4791]: UnRegistered sub-client [JobPrefsDBPI_12324031] with ID [1] for session ID [4791] host [grima] user [Alexis] process ID [2864]
+[2017.12.20 17:09:57] [0202m.31s.877ms] [1] CMT: Removed client [4791]
+[2017.12.20 17:09:57] [0202m.31s.877ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:09:58] [0202m.32s.345ms] [0] IT: Session [4792] for host [grima] user [Alexis] with process ID [2864] created
+[2017.12.20 17:09:58] [0202m.32s.345ms] [1] SC[4792]: Registered sub-client [JobPrefsDBPI_12324640] with ID [1] for session ID [4792] host [grima] user [Alexis] process ID [2864]
+[2017.12.20 17:09:58] [0202m.32s.377ms] [1] SC[4792]: UnRegistered sub-client [JobPrefsDBPI_12324640] with ID [1] for session ID [4792] host [grima] user [Alexis] process ID [2864]
+[2017.12.20 17:09:58] [0202m.32s.423ms] [1] CMT: There are [3] clients now: 4772, 4773, 4792
+[2017.12.20 17:09:58] [0202m.32s.423ms] [1] CMT: Removed client [4792]
+[2017.12.20 17:09:58] [0202m.32s.423ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:09:59] [0202m.33s.659ms] [0] IT: Session [4793] for host [grima] user [Alexis] with process ID [2688] created
+[2017.12.20 17:09:59] [0202m.33s.659ms] [1] SC[4793]: Registered sub-client [JobPrefsDBPI_12325921] with ID [1] for session ID [4793] host [grima] user [Alexis] process ID [2688]
+[2017.12.20 17:09:59] [0202m.33s.690ms] [1] SC[4793]: Registered sub-client [Expedition_12326000] with ID [2] for session ID [4793] host [grima] user [Alexis] process ID [2688]
+[2017.12.20 17:09:59] [0202m.33s.737ms] [1] CMT: There are [3] clients now: 4772, 4773, 4793
+[2017.12.20 17:09:59] [0202m.33s.753ms] [1] SC[4793]: UnRegistered sub-client [JobPrefsDBPI_12325921] with ID [1] for session ID [4793] host [grima] user [Alexis] process ID [2688]
+[2017.12.20 17:09:59] [0202m.33s.815ms] [1] SC[4793]: Registered sub-client [JobPrefsDBPI_12326140] with ID [3] for session ID [4793] host [grima] user [Alexis] process ID [2688]
+[2017.12.20 17:09:59] [0202m.33s.815ms] [1] SC[4793]: UnRegistered sub-client [JobPrefsDBPI_12326140] with ID [3] for session ID [4793] host [grima] user [Alexis] process ID [2688]
+[2017.12.20 17:09:59] [0202m.33s.815ms] [1] SC[4793]: UnRegistered sub-client [Expedition_12326000] with ID [2] for session ID [4793] host [grima] user [Alexis] process ID [2688]
+[2017.12.20 17:09:59] [0202m.33s.847ms] [1] CMT: Removed client [4793]
+[2017.12.20 17:09:59] [0202m.33s.847ms] [1] CMT: There are [2] clients now: 4772, 4773
+[2017.12.20 17:10:00] [0202m.34s.487ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_542191404] with ID [20] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:00] [0202m.34s.503ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_542191404] with ID [20] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:00] [0202m.34s.518ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_542191404] with ID [21] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:00] [0202m.34s.518ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_542191404] with ID [21] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:00] [0202m.34s.518ms] [1] SC[4773]: Registered sub-client [EEVM_EEVM_542192396] with ID [22] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:00] [0202m.34s.534ms] [1] SC[4773]: UnRegistered sub-client [EEVM_EEVM_542192396] with ID [22] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:01] [0202m.35s.174ms] [1] SC[4773]: UnRegistered sub-client [Expedition PCB_198906] with ID [1] for session ID [4773] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:01] [0202m.35s.270ms] [1] CMT: Removed client [4773]
+[2017.12.20 17:10:01] [0202m.35s.270ms] [1] CMT: There are [1] clients now: 4772
+[2017.12.20 17:10:01] [0202m.35s.878ms] [0] IT: Session [4794] for host [grima] user [Alexis] with process ID [2116] created
+[2017.12.20 17:10:01] [0202m.35s.878ms] [1] SC[4794]: Registered sub-client [Expedition PCB_12328171] with ID [1] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:01] [0202m.35s.942ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 17:10:02] [0202m.36s.003ms] [1] SC[4794]: Registered sub-client [JobPrefsDBPI_12328328] with ID [2] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:02] [0202m.36s.018ms] [1] SC[4794]: UnRegistered sub-client [JobPrefsDBPI_12328328] with ID [2] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:02] [0202m.36s.612ms] [1] SC[4794]: Registered sub-client [JobPrefsDBPI_12328937] with ID [3] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:02] [0202m.36s.612ms] [1] SC[4794]: UnRegistered sub-client [JobPrefsDBPI_12328937] with ID [3] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:08] [0202m.42s.082ms] [1] SC[4794]: Registered sub-client [JobPrefsDBPI_12334406] with ID [4] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:08] [0202m.42s.097ms] [1] SC[4794]: UnRegistered sub-client [JobPrefsDBPI_12334406] with ID [4] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:10:08] [0202m.42s.113ms] [1] SC[4794]: Registered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 17:47:58] [0240m.32s.177ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-20 17.47.58 - auto.zip] with GUID [d5e5-8a46-3d4f-4c28-e349-a3a3-449a-3a50-9961-40df-af46-e506]
+[2017.12.20 17:47:58] [0240m.32s.177ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[4e7b-3e1b-982e-924f-00d4-93a5-0d49-3a50-3685-f060-1af8-3773] CreationTime[Tuesday, December 19, 2017 17:31:44] Type[Autosave] Creator[iCDB Server (2017-12-19 18.28.36-18740)] ApplicationName[iCDB Server (2017-12-19 18.28.36-18740)] UserName[Alexis] MachineName[ALEXIS-PC] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-19 18.31.44 - auto.zip] BackupFileSize[1037600] Persistent[FALSE]
+[2017.12.20 17:47:58] [0240m.32s.177ms] [0] PrjBackupMgr: Project Backup file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-19 18.31.44 - auto.zip] with GUID [4e7b-3e1b-982e-924f-00d4-93a5-0d49-3a50-3685-f060-1af8-3773] removed
+[2017.12.20 17:47:58] [0240m.32s.177ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[d5e5-8a46-3d4f-4c28-e349-a3a3-449a-3a50-9961-40df-af46-e506] CreationTime[Wednesday, December 20, 2017 16:47:58] Type[Autosave] Creator[iCDB Server (2017-12-20 13.47.26-768)] ApplicationName[iCDB Server (2017-12-20 13.47.26-768)] UserName[Alexis] MachineName[GRIMA] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-20 17.47.58 - auto.zip] BackupFileSize[1080789] Persistent[FALSE]
+[2017.12.20 18:26:36] [0279m.09s.981ms] [0] IT: Session [4795] for host [grima] user [Alexis] with process ID [3412] created
+[2017.12.20 18:26:36] [0279m.09s.981ms] [1] SC[4795]: Registered sub-client [ICDBC] with ID [1] for session ID [4795] host [grima] user [Alexis] process ID [3412]
+[2017.12.20 18:26:36] [0279m.09s.996ms] [1] CMT: There are [3] clients now: 4772, 4794, 4795
+[2017.12.20 18:26:36] [0279m.10s.012ms] [1] SC[4795]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4795] host [grima] user [Alexis] process ID [3412]
+[2017.12.20 18:26:52] [0279m.26s.739ms] [1] SC[4795]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4795] host [grima] user [Alexis] process ID [3412]
+[2017.12.20 18:26:52] [0279m.26s.739ms] [1] SC[4795]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4795] host [grima] user [Alexis] process ID [3412]
+[2017.12.20 18:26:52] [0279m.26s.850ms] [1] CMT: Removed client [4795]
+[2017.12.20 18:26:52] [0279m.26s.850ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:26:53] [0279m.27s.397ms] [0] IT: Session [4796] for host [grima] user [Alexis] with process ID [1316] created
+[2017.12.20 18:26:53] [0279m.27s.397ms] [1] SC[4796]: Registered sub-client [Packager_16939828] with ID [1] for session ID [4796] host [grima] user [Alexis] process ID [1316]
+[2017.12.20 18:26:53] [0279m.27s.505ms] [1] CMT: There are [3] clients now: 4772, 4794, 4796
+[2017.12.20 18:26:54] [0279m.28s.130ms] [1] SC[4796]: UnRegistered sub-client [Packager_16939828] with ID [1] for session ID [4796] host [grima] user [Alexis] process ID [1316]
+[2017.12.20 18:26:54] [0279m.28s.163ms] [1] CMT: Removed client [4796]
+[2017.12.20 18:26:54] [0279m.28s.163ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:27:04] [0279m.38s.918ms] [0] IT: Session [4797] for host [grima] user [Alexis] with process ID [248] created
+[2017.12.20 18:27:04] [0279m.38s.918ms] [1] SC[4797]: Registered sub-client [ICDBC] with ID [1] for session ID [4797] host [grima] user [Alexis] process ID [248]
+[2017.12.20 18:27:04] [0279m.38s.949ms] [1] SC[4797]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4797] host [grima] user [Alexis] process ID [248]
+[2017.12.20 18:27:05] [0279m.38s.996ms] [1] CMT: There are [3] clients now: 4772, 4794, 4797
+[2017.12.20 18:27:06] [0279m.40s.965ms] [1] SC[4797]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4797] host [grima] user [Alexis] process ID [248]
+[2017.12.20 18:27:06] [0279m.40s.965ms] [1] SC[4797]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4797] host [grima] user [Alexis] process ID [248]
+[2017.12.20 18:27:07] [0279m.41s.075ms] [1] CMT: Removed client [4797]
+[2017.12.20 18:27:07] [0279m.41s.075ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:27:08] [0279m.42s.090ms] [0] IT: Session [4798] for host [grima] user [Alexis] with process ID [936] created
+[2017.12.20 18:27:08] [0279m.42s.090ms] [1] SC[4798]: Registered sub-client [DCDV_TagNets_2995] with ID [1] for session ID [4798] host [grima] user [Alexis] process ID [936]
+[2017.12.20 18:27:08] [0279m.42s.106ms] [1] SC[4798]: UnRegistered sub-client [DCDV_TagNets_2995] with ID [1] for session ID [4798] host [grima] user [Alexis] process ID [936]
+[2017.12.20 18:27:08] [0279m.42s.169ms] [1] CMT: There are [3] clients now: 4772, 4794, 4798
+[2017.12.20 18:27:08] [0279m.42s.169ms] [1] CMT: Removed client [4798]
+[2017.12.20 18:27:08] [0279m.42s.169ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:54:47] [0307m.21s.425ms] [0] IT: Session [4799] for host [grima] user [Alexis] with process ID [3540] created
+[2017.12.20 18:54:47] [0307m.21s.425ms] [1] SC[4799]: Registered sub-client [ICDBC] with ID [1] for session ID [4799] host [grima] user [Alexis] process ID [3540]
+[2017.12.20 18:54:47] [0307m.21s.457ms] [1] SC[4799]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4799] host [grima] user [Alexis] process ID [3540]
+[2017.12.20 18:54:47] [0307m.21s.536ms] [1] CMT: There are [3] clients now: 4772, 4794, 4799
+[2017.12.20 18:54:57] [0307m.31s.712ms] [1] SC[4799]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4799] host [grima] user [Alexis] process ID [3540]
+[2017.12.20 18:54:57] [0307m.31s.712ms] [1] SC[4799]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4799] host [grima] user [Alexis] process ID [3540]
+[2017.12.20 18:54:57] [0307m.31s.821ms] [1] CMT: Removed client [4799]
+[2017.12.20 18:54:57] [0307m.31s.821ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:54:58] [0307m.32s.868ms] [0] IT: Session [4800] for host [grima] user [Alexis] with process ID [3192] created
+[2017.12.20 18:54:58] [0307m.32s.868ms] [1] SC[4800]: Registered sub-client [Packager_18625296] with ID [1] for session ID [4800] host [grima] user [Alexis] process ID [3192]
+[2017.12.20 18:54:58] [0307m.32s.915ms] [1] CMT: There are [3] clients now: 4772, 4794, 4800
+[2017.12.20 18:54:59] [0307m.33s.791ms] [1] SC[4800]: UnRegistered sub-client [Packager_18625296] with ID [1] for session ID [4800] host [grima] user [Alexis] process ID [3192]
+[2017.12.20 18:54:59] [0307m.33s.901ms] [1] CMT: Removed client [4800]
+[2017.12.20 18:54:59] [0307m.33s.901ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:57:36] [0310m.10s.147ms] [1] SC[4794]: UnRegistered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:36] [0310m.10s.162ms] [1] SC[4794]: Registered sub-client [EEVM_EEVM_1634984] with ID [6] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:36] [0310m.10s.162ms] [1] SC[4794]: UnRegistered sub-client [EEVM_EEVM_1634984] with ID [6] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:36] [0310m.10s.381ms] [1] SC[4794]: Registered sub-client [JobPrefsDBPI_18782890] with ID [7] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:36] [0310m.10s.396ms] [1] SC[4794]: UnRegistered sub-client [JobPrefsDBPI_18782890] with ID [7] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:41] [0310m.15s.690ms] [1] SC[4794]: Registered sub-client [JobPrefsDBPI_18788203] with ID [8] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:41] [0310m.15s.706ms] [1] SC[4794]: UnRegistered sub-client [JobPrefsDBPI_18788203] with ID [8] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:42] [0310m.16s.128ms] [0] IT: Session [4801] for host [grima] user [Alexis] with process ID [392] created
+[2017.12.20 18:57:42] [0310m.16s.128ms] [1] SC[4801]: Registered sub-client [Packager_18788609] with ID [1] for session ID [4801] host [grima] user [Alexis] process ID [392]
+[2017.12.20 18:57:42] [0310m.16s.206ms] [1] CMT: There are [3] clients now: 4772, 4794, 4801
+[2017.12.20 18:57:42] [0310m.16s.864ms] [1] SC[4801]: UnRegistered sub-client [Packager_18788609] with ID [1] for session ID [4801] host [grima] user [Alexis] process ID [392]
+[2017.12.20 18:57:43] [0310m.16s.973ms] [1] CMT: Removed client [4801]
+[2017.12.20 18:57:43] [0310m.16s.973ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:57:43] [0310m.17s.332ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.20 18:57:43] [0310m.17s.722ms] [0] IT: Session [4802] for host [grima] user [Alexis] with process ID [3136] created
+[2017.12.20 18:57:43] [0310m.17s.722ms] [1] SC[4802]: Registered sub-client [Expedition_18790203] with ID [1] for session ID [4802] host [grima] user [Alexis] process ID [3136]
+[2017.12.20 18:57:43] [0310m.17s.737ms] [1] CMT: There are [3] clients now: 4772, 4794, 4802
+[2017.12.20 18:57:43] [0310m.17s.831ms] [1] SC[4802]: UnRegistered sub-client [Expedition_18790203] with ID [1] for session ID [4802] host [grima] user [Alexis] process ID [3136]
+[2017.12.20 18:57:43] [0310m.17s.847ms] [1] CMT: Removed client [4802]
+[2017.12.20 18:57:43] [0310m.17s.847ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:57:44] [0310m.18s.737ms] [0] IT: Session [4803] for host [grima] user [Alexis] with process ID [3136] created
+[2017.12.20 18:57:44] [0310m.18s.737ms] [1] SC[4803]: Registered sub-client [JobPrefsDBPI_18791218] with ID [1] for session ID [4803] host [grima] user [Alexis] process ID [3136]
+[2017.12.20 18:57:44] [0310m.18s.768ms] [1] SC[4803]: UnRegistered sub-client [JobPrefsDBPI_18791218] with ID [1] for session ID [4803] host [grima] user [Alexis] process ID [3136]
+[2017.12.20 18:57:44] [0310m.18s.834ms] [1] CMT: There are [3] clients now: 4772, 4794, 4803
+[2017.12.20 18:57:44] [0310m.18s.834ms] [1] CMT: Removed client [4803]
+[2017.12.20 18:57:44] [0310m.18s.834ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:57:45] [0310m.19s.334ms] [0] IT: Session [4804] for host [grima] user [Alexis] with process ID [3136] created
+[2017.12.20 18:57:45] [0310m.19s.334ms] [1] SC[4804]: Registered sub-client [JobPrefsDBPI_18791828] with ID [1] for session ID [4804] host [grima] user [Alexis] process ID [3136]
+[2017.12.20 18:57:45] [0310m.19s.364ms] [1] SC[4804]: UnRegistered sub-client [JobPrefsDBPI_18791828] with ID [1] for session ID [4804] host [grima] user [Alexis] process ID [3136]
+[2017.12.20 18:57:45] [0310m.19s.381ms] [1] CMT: There are [3] clients now: 4772, 4794, 4804
+[2017.12.20 18:57:45] [0310m.19s.381ms] [1] CMT: Removed client [4804]
+[2017.12.20 18:57:45] [0310m.19s.381ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:57:46] [0310m.20s.630ms] [0] IT: Session [4805] for host [grima] user [Alexis] with process ID [1880] created
+[2017.12.20 18:57:46] [0310m.20s.630ms] [1] SC[4805]: Registered sub-client [JobPrefsDBPI_18793093] with ID [1] for session ID [4805] host [grima] user [Alexis] process ID [1880]
+[2017.12.20 18:57:46] [0310m.20s.661ms] [1] SC[4805]: Registered sub-client [Expedition_18793171] with ID [2] for session ID [4805] host [grima] user [Alexis] process ID [1880]
+[2017.12.20 18:57:46] [0310m.20s.694ms] [1] CMT: There are [3] clients now: 4772, 4794, 4805
+[2017.12.20 18:57:46] [0310m.20s.770ms] [1] SC[4805]: UnRegistered sub-client [JobPrefsDBPI_18793093] with ID [1] for session ID [4805] host [grima] user [Alexis] process ID [1880]
+[2017.12.20 18:57:46] [0310m.20s.820ms] [1] SC[4805]: UnRegistered sub-client [Expedition_18793171] with ID [2] for session ID [4805] host [grima] user [Alexis] process ID [1880]
+[2017.12.20 18:57:46] [0310m.20s.914ms] [1] CMT: Removed client [4805]
+[2017.12.20 18:57:46] [0310m.20s.914ms] [1] CMT: There are [2] clients now: 4772, 4794
+[2017.12.20 18:57:47] [0310m.21s.460ms] [1] SC[4794]: Registered sub-client [EEVM_EEVM_542188924] with ID [9] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:47] [0310m.21s.476ms] [1] SC[4794]: UnRegistered sub-client [EEVM_EEVM_542188924] with ID [9] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:47] [0310m.21s.476ms] [1] SC[4794]: Registered sub-client [EEVM_EEVM_542188924] with ID [10] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:47] [0310m.21s.476ms] [1] SC[4794]: UnRegistered sub-client [EEVM_EEVM_542188924] with ID [10] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:47] [0310m.21s.491ms] [1] SC[4794]: Registered sub-client [EEVM_EEVM_542188924] with ID [11] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:47] [0310m.21s.491ms] [1] SC[4794]: UnRegistered sub-client [EEVM_EEVM_542188924] with ID [11] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:48] [0310m.22s.149ms] [1] SC[4794]: UnRegistered sub-client [Expedition PCB_12328171] with ID [1] for session ID [4794] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:48] [0310m.22s.229ms] [1] CMT: Removed client [4794]
+[2017.12.20 18:57:48] [0310m.22s.229ms] [1] CMT: There are [1] clients now: 4772
+[2017.12.20 18:57:48] [0310m.22s.696ms] [0] IT: Session [4806] for host [grima] user [Alexis] with process ID [2116] created
+[2017.12.20 18:57:48] [0310m.22s.696ms] [1] SC[4806]: Registered sub-client [Expedition PCB_18795187] with ID [1] for session ID [4806] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:48] [0310m.22s.775ms] [1] CMT: There are [2] clients now: 4772, 4806
+[2017.12.20 18:57:48] [0310m.22s.821ms] [1] SC[4806]: Registered sub-client [JobPrefsDBPI_18795328] with ID [2] for session ID [4806] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:48] [0310m.22s.821ms] [1] SC[4806]: UnRegistered sub-client [JobPrefsDBPI_18795328] with ID [2] for session ID [4806] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:54] [0310m.28s.947ms] [1] SC[4806]: Registered sub-client [JobPrefsDBPI_18801468] with ID [3] for session ID [4806] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:55] [0310m.28s.979ms] [1] SC[4806]: UnRegistered sub-client [JobPrefsDBPI_18801468] with ID [3] for session ID [4806] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 18:57:55] [0310m.29s.010ms] [1] SC[4806]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4806] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 19:31:19] [0343m.53s.571ms] [1] SC[4806]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4806] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 19:31:21] [0343m.55s.291ms] [1] SC[4772]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4772] host [grima] user [Alexis] process ID [2204]
+[2017.12.20 19:31:21] [0343m.55s.385ms] [1] CMT: Removed client [4772]
+[2017.12.20 19:31:21] [0343m.55s.385ms] [1] CMT: There are [1] clients now: 4806
+[2017.12.20 19:31:21] [0343m.55s.541ms] [1] SC[4806]: UnRegistered sub-client [Expedition PCB_18795187] with ID [1] for session ID [4806] host [grima] user [Alexis] process ID [2116]
+[2017.12.20 19:31:21] [0343m.55s.619ms] [1] CMT: Removed client [4806]
+[2017.12.20 19:31:21] [0343m.55s.619ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.20 19:31:21] [0343m.55s.885ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2017.12.20 19:31:23] [0343m.57s.042ms] [0] CMT: Starting server auto-close
+[2017.12.20 19:31:23] [0343m.57s.089ms] [0] S: Closing server
+[2017.12.20 19:31:23] [0343m.57s.198ms] [0] iCDB Server PI: Closing plugins
+[2017.12.20 19:31:23] [0343m.57s.198ms] [0] iCDB Server PI: Plugins closed
+[2017.12.20 19:31:23] [0343m.57s.198ms] [0] iCDB Server PI: Unloading database
+[2017.12.20 19:31:23] [0343m.57s.198ms] [0] iCDB Server PI: Saving storage
+[2017.12.20 19:31:23] [0343m.57s.198ms] [0] iCDB Server PI: Closing database
+[2017.12.20 19:31:23] [0343m.57s.198ms] [1] iCDB Server PI: Stats: Database defragmentation: max[3] avg[1] holes[57%] data[84%]
+[2017.12.20 19:31:23] [0343m.57s.198ms] [1] iCDB Server PI: Stats: Database file size [661336 (645.8 kB)]
+[2017.12.20 19:31:23] [0343m.57s.198ms] [1] iCDB Server PI: WARNING: Database needs defragmentation!
+[2017.12.20 19:31:23] [0343m.57s.214ms] [0] iCDB Server PI: Database closed
+[2017.12.20 19:31:23] [0343m.57s.214ms] [0] iCDB Server PI: Defragmenting database
+[2017.12.20 19:31:23] [0343m.57s.214ms] [0] iCDB Server PI: Creating database [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb] backup to file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbback\2017-12-20 19.31.23-768-d.zip]
+[2017.12.20 19:31:23] [0343m.57s.417ms] [0] iCDB Server PI: Database backup: DONE
+[2017.12.20 19:31:23] [0343m.57s.432ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.20 19:31:23] [0343m.57s.432ms] [0] Database GUARD OK: [661336]
+[2017.12.20 19:31:23] [0343m.57s.432ms] [0] SingleFile: [948a-5e9f-956c-6820] SFI version check [1009] [1009]
+[2017.12.20 19:31:23] [0343m.57s.432ms] [0] SingleFile: [948a-5e9f-956c-6820] Database SFI header has been read in [9ms 392us]
+[2017.12.20 19:31:23] [0343m.57s.479ms] [1] iCDB Server PI: Stats: Database file sizes: before[661336 (645.8 kB)], after[314368 (307.0 kB)], gain[346968 (338.8 kB)]
+[2017.12.20 19:31:23] [0343m.57s.479ms] [0] Single file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] closed with size [314368 (307.0 kB)]
+[2017.12.20 19:31:23] [0343m.57s.479ms] [0] iCDB Server PI: Database defragmentation completed successfully
+[2017.12.20 19:31:23] [0343m.57s.479ms] [1] BackupTransaction: Removing database backup [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbback\2017-12-20 19.31.23-768-d.zip]
+[2017.12.20 19:31:23] [0343m.57s.479ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [2139209] ticks
+[2017.12.20 19:31:23] [0343m.57s.479ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [998039] microseconds
+[2017.12.20 19:31:23] [0343m.57s.479ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [7539]
+[2017.12.20 19:31:23] [0343m.57s.479ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [7553] commands per second
+[2017.12.20 19:31:23] [0343m.57s.542ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2017.12.20 19:31:23] [0343m.57s.636ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.20 19:31:23] [0343m.57s.636ms] [0] MWT: STOP
+[2017.12.20 19:31:23] [0343m.57s.636ms] [0] S: STOP
