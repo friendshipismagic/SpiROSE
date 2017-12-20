@@ -2,7 +2,7 @@
                                Forward Annotation
                                ------------------
 
-                       11:56 PM Tuesday, December 19, 2017
+                      03:06 PM Wednesday, December 20, 2017
              Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -25,7 +25,7 @@ Version:  01.01.00
 
      Number of Part Numbers: 17
           Part Numb: 02-0098 -> Vend Part: 02-0098 
-          Part Numb: 02-0118 -> Vend Part: 02-0118 
+          Part Numb: 02-0116 -> Vend Part: 02-0116 
           Part Numb: 10-0057 -> Vend Part: 10-0057 
           Part Numb: 10-0058 -> Vend Part: 10-0058 
           Part Numb: 10-0060 -> Vend Part: 10-0060 
@@ -67,8 +67,9 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 2142 Symbols:
-            2142  *****************************************
+     Clustering 2187 Symbols:
+            2187  ************************************
+            2150  **************************************************
             2100  **************************************************
             2050  **************************************************
             2000  **************************************************
@@ -117,8 +118,8 @@ Version:  01.01.00
 
 
 
-     898 nets were found containing 9049 pins
-     2142 components were found
+     943 nets were found containing 9139 pins
+     2187 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -132,7 +133,7 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       11:56 PM Tuesday, December 19, 2017
+                      03:06 PM Wednesday, December 20, 2017
              Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -144,11 +145,6 @@ Version:  02.11.12
 
 	Schematic reference designator changes will be forward annotated.
 
-
-     The following 2 components have not been placed:
-
-        C60
-        C61
 
      Netload completed successfully with 0 warning(s).
      
@@ -181,9 +177,290 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
+	Assigned net XSIG090090 to a trace which was originally on net UB0D0_GCLK.
+	Assigned net XSIG090090 to a via which was originally on net UB0D0_GCLK.
+	Broke back a trace from the point (87432727, 21677916).
+	Assigned net XSIG090310 to a trace which was originally on net UB0D0_LAT.
+	Assigned net XSIG090310 to a via which was originally on net UB0D0_LAT.
+	Unresolvable short found at point (39845254, 22648147).
+	Unresolvable short found at point (39845254, 22648147).
+	Assigned net XSIG091063 to a trace which was originally on net UB0D0_SCLK.
+	Assigned net XSIG091063 to a via which was originally on net UB0D0_SCLK.
+	Unresolvable short found at point (68166087, 21438503).
+	Unresolvable short found at point (68166087, 21438503).
+	Assigned net XSIG090091 to a trace which was originally on net UB0D1_GCLK.
+	Assigned net XSIG090091 to a via which was originally on net UB0D1_GCLK.
+	Broke back a trace from the point (84008935, 23508453).
+	Assigned net XSIG090311 to a trace which was originally on net UB0D1_LAT.
+	Assigned net XSIG090311 to a via which was originally on net UB0D1_LAT.
+	Unresolvable short found at point (39524960, 27229324).
+	Unresolvable short found at point (39524960, 27229324).
+	Assigned net XSIG091064 to a trace which was originally on net UB0D1_SCLK.
+	Assigned net XSIG091064 to a via which was originally on net UB0D1_SCLK.
+	Unresolvable short found at point (70454435, 23093642).
+	Unresolvable short found at point (70454435, 23093642).
+	Assigned net XSIG090092 to a trace which was originally on net UB0D2_GCLK.
+	Assigned net XSIG090092 to a trace which was originally on net UB0D2_GCLK.
+	Assigned net XSIG090092 to a via which was originally on net UB0D2_GCLK.
+	Broke back a trace from the point (85090000, 20320000).
+	Assigned net XSIG090312 to a trace which was originally on net UB0D2_LAT.
+	Assigned net XSIG090312 to a via which was originally on net UB0D2_LAT.
+	Broke back a trace from the point (40045502, 21510358).
+	Assigned net XSIG091065 to a trace which was originally on net UB0D2_SCLK.
+	Assigned net XSIG091065 to a via which was originally on net UB0D2_SCLK.
+	Broke back a trace from the point (72072874, 19597576).
+	Assigned net XSIG090093 to a trace which was originally on net UB1D0_GCLK.
+	Assigned net XSIG090093 to a via which was originally on net UB1D0_GCLK.
+	Broke back a trace from the point (80454079, 27789078).
+	Assigned net XSIG090313 to a trace which was originally on net UB1D0_LAT.
+	Assigned net XSIG090313 to a via which was originally on net UB1D0_LAT.
+	Unresolvable short found at point (48007268, 27838017).
+	Unresolvable short found at point (48007268, 27838017).
+	Assigned net XSIG091066 to a trace which was originally on net UB1D0_SCLK.
+	Assigned net XSIG091066 to a via which was originally on net UB1D0_SCLK.
+	Unresolvable short found at point (72102299, 27142534).
+	Unresolvable short found at point (72102299, 27142534).
+	Assigned net XSIG090094 to a trace which was originally on net UB1D1_GCLK.
+	Assigned net XSIG090094 to a via which was originally on net UB1D1_GCLK.
+	Broke back a trace from the point (87728239, 28819456).
+	Assigned net XSIG090314 to a trace which was originally on net UB1D1_LAT.
+	Assigned net XSIG090314 to a via which was originally on net UB1D1_LAT.
+	Broke back a trace from the point (51332316, 25384936).
+	Assigned net XSIG091067 to a trace which was originally on net UB1D1_SCLK.
+	Assigned net XSIG091067 to a via which was originally on net UB1D1_SCLK.
+	Unresolvable short found at point (82817288, 28574360).
+	Unresolvable short found at point (82817288, 28574360).
+	Assigned net XSIG090095 to a trace which was originally on net UB1D2_GCLK.
+	Assigned net XSIG090095 to a via which was originally on net UB1D2_GCLK.
+	Broke back a trace from the point (79440778, 26400453).
+	Assigned net XSIG090315 to a trace which was originally on net UB1D2_LAT.
+	Assigned net XSIG090315 to a via which was originally on net UB1D2_LAT.
+	Broke back a trace from the point (50336676, 26154956).
+	Assigned net XSIG091068 to a trace which was originally on net UB1D2_SCLK.
+	Assigned net XSIG091068 to a via which was originally on net UB1D2_SCLK.
+	Broke back a trace from the point (68406102, 26527133).
+	Assigned net XSIG090096 to a trace which was originally on net UB2D0_GCLK.
+	Assigned net XSIG090096 to a via which was originally on net UB2D0_GCLK.
+	Broke back a trace from the point (92814493, 24954829).
+	Assigned net XSIG090316 to a trace which was originally on net UB2D0_LAT.
+	Assigned net XSIG090316 to a via which was originally on net UB2D0_LAT.
+	Broke back a trace from the point (52443256, 24770632).
+	Assigned net XSIG091069 to a trace which was originally on net UB2D0_SCLK.
+	Assigned net XSIG091069 to a via which was originally on net UB2D0_SCLK.
+	Broke back a trace from the point (80751748, 24697542).
+	Assigned net XSIG090177 to a trace which was originally on net UB2D1_GCLK.
+	Assigned net XSIG090177 to a via which was originally on net UB2D1_GCLK.
+	Broke back a trace from the point (153191626, 17979743).
+	Assigned net XSIG090329 to a trace which was originally on net UB2D1_LAT.
+	Assigned net XSIG090329 to a via which was originally on net UB2D1_LAT.
+	Broke back a trace from the point (111440000, 24980000).
+	Assigned net XSIG090291 to a trace which was originally on net UB2D1_SCLK.
+	Assigned net XSIG090291 to a via which was originally on net UB2D1_SCLK.
+	Broke back a trace from the point (123351824, 28180655).
+	Assigned net XSIG090097 to a trace which was originally on net UB2D2_GCLK.
+	Assigned net XSIG090097 to a via which was originally on net UB2D2_GCLK.
+	Broke back a trace from the point (95429925, 24951225).
+	Assigned net XSIG090317 to a trace which was originally on net UB2D2_LAT.
+	Assigned net XSIG090317 to a via which was originally on net UB2D2_LAT.
+	Broke back a trace from the point (46712886, 18780530).
+	Assigned net XSIG091070 to a trace which was originally on net UB2D2_SCLK.
+	Assigned net XSIG091070 to a via which was originally on net UB2D2_SCLK.
+	Broke back a trace from the point (82450092, 22733565).
+	Assigned net XSIG090178 to a trace which was originally on net UB3D0_GCLK.
+	Assigned net XSIG090178 to a via which was originally on net UB3D0_GCLK.
+	Broke back a trace from the point (148464221, 26952374).
+	Assigned net XSIG090330 to a trace which was originally on net UB3D0_LAT.
+	Assigned net XSIG090330 to a via which was originally on net UB3D0_LAT.
+	Broke back a trace from the point (118531134, 26957315).
+	Assigned net XSIG090292 to a trace which was originally on net UB3D0_SCLK.
+	Assigned net XSIG090292 to a via which was originally on net UB3D0_SCLK.
+	Broke back a trace from the point (130571263, 26968936).
+	Assigned net XSIG090179 to a trace which was originally on net UB3D1_GCLK.
+	Assigned net XSIG090179 to a via which was originally on net UB3D1_GCLK.
+	Broke back a trace from the point (153266668, 25301582).
+	Assigned net XSIG090331 to a trace which was originally on net UB3D1_LAT.
+	Assigned net XSIG090331 to a via which was originally on net UB3D1_LAT.
+	Broke back a trace from the point (120175714, 24368525).
+	Assigned net XSIG090293 to a trace which was originally on net UB3D1_SCLK.
+	Assigned net XSIG090293 to a via which was originally on net UB3D1_SCLK.
+	Broke back a trace from the point (132491072, 23806059).
+	Assigned net XSIG090180 to a trace which was originally on net UB3D2_GCLK.
+	Assigned net XSIG090180 to a via which was originally on net UB3D2_GCLK.
+	Broke back a trace from the point (147732763, 25901870).
+	Assigned net XSIG090332 to a trace which was originally on net UB3D2_LAT.
+	Assigned net XSIG090332 to a via which was originally on net UB3D2_LAT.
+	Broke back a trace from the point (116861583, 25625426).
+	Assigned net XSIG090294 to a trace which was originally on net UB3D2_SCLK.
+	Assigned net XSIG090294 to a trace which was originally on net UB3D2_SCLK.
+	Assigned net XSIG090294 to a via which was originally on net UB3D2_SCLK.
+	Broke back a trace from the point (128964380, 25606709).
+	Assigned net XSIG090181 to a trace which was originally on net UB4D0_GCLK.
+	Assigned net XSIG090181 to a via which was originally on net UB4D0_GCLK.
+	Broke back a trace from the point (159718575, 24617430).
+	Assigned net XSIG090333 to a via which was originally on net UB4D0_LAT.
+	Assigned net XSIG090333 to a trace which was originally on net UB4D0_LAT.
+	Assigned net XSIG090333 to a trace which was originally on net UB4D0_LAT.
+	Assigned net XSIG090333 to a via which was originally on net UB4D0_LAT.
+	Broke back a trace from the point (120066655, 23018786).
+	Assigned net XSIG090295 to a trace which was originally on net UB4D0_SCLK.
+	Assigned net XSIG090295 to a via which was originally on net UB4D0_SCLK.
+	Broke back a trace from the point (133879238, 22105000).
+	Assigned net XSIG090182 to a trace which was originally on net UB4D1_GCLK.
+	Assigned net XSIG090182 to a via which was originally on net UB4D1_GCLK.
+	Broke back a trace from the point (160420041, 17979743).
+	Assigned net XSIG090334 to a trace which was originally on net UB4D1_LAT.
+	Assigned net XSIG090334 to a via which was originally on net UB4D1_LAT.
+	Broke back a trace from the point (113526311, 20911453).
+	Assigned net XSIG090296 to a trace which was originally on net UB4D1_SCLK.
+	Assigned net XSIG090296 to a via which was originally on net UB4D1_SCLK.
+	Broke back a trace from the point (125302034, 18497433).
+	Assigned net XSIG090183 to a trace which was originally on net UB4D2_GCLK.
+	Assigned net XSIG090183 to a via which was originally on net UB4D2_GCLK.
+	Broke back a trace from the point (161119273, 23470000).
+	Assigned net XSIG090335 to a via which was originally on net UB4D2_LAT.
+	Assigned net XSIG090335 to a trace which was originally on net UB4D2_LAT.
+	Assigned net XSIG090335 to a trace which was originally on net UB4D2_LAT.
+	Assigned net XSIG090335 to a via which was originally on net UB4D2_LAT.
+	Broke back a trace from the point (115096820, 22339196).
+	Assigned net XSIG090297 to a via which was originally on net UB4D2_SCLK.
+	Assigned net XSIG090297 to a trace which was originally on net UB4D2_SCLK.
+	Assigned net XSIG090297 to a trace which was originally on net UB4D2_SCLK.
+	Assigned net XSIG090297 to a via which was originally on net UB4D2_SCLK.
+	Broke back a trace from the point (130656788, 20713001).
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a trace which was originally on net +7V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+	Assigned net +5V to a via which was originally on net +4V.
+	Assigned net +5V to a trace which was originally on net +4V.
+
+Some nets were completely deleted from the Layout Design....
+	Deleted net +7V, which has no pins, from the Layout Design.
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
-There were 0 reassignments of nets.
-There were 0 traces broken back.
-There were 0 nets removed from the Layout Design.
+There were 226 reassignments of nets.
+There were 38 traces broken back.
+There were 1 nets removed from the Layout Design.
