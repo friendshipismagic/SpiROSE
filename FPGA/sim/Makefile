@@ -1,7 +1,7 @@
 export SYSTEMC_INCLUDE ?= /usr/include/
 export SYSTEMC_LIBDIR ?= /usr/lib/
 
-MODULES =
+MODULES = framebuffer
 
 SIMULATIONS = $(addsuffix .simu,$(MODULES))
 TESTS = $(addsuffix .test,$(MODULES))
@@ -19,9 +19,13 @@ build: gen
 
 %.simu.gen:
 	@echo "== Generate simulation for $* =="
+	mkdir -p tb_$*
 	make -f $*.mk $*.simu
 
-clean:
+clean: $(addsuffix .clean,$(MODULES))
 	rm -rf obj_dir/
 	rm -f $(SIMULATIONS)
 	rm -f *.o *.d
+
+%.clean:
+	make -f $*.mk clean
