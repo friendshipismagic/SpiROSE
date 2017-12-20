@@ -2,8 +2,8 @@
                                 DRC - (Final DRC)
                                 -----------------
 
-                      01:43 AM Thursday, December 14, 2017
-                  Job Name: E:\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+                      06:14 PM Wednesday, December 20, 2017
+             Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
     ---------
@@ -23,113 +23,67 @@
                                        Layer 2
                                        Layer 3
                                        Layer 4
+                                       Layer 5
+                                       Layer 6
 
 
 
 
-    Net Class Clearances And Rules
-    ------------------------------
+    Planes Clearances And Rules
+    ---------------------------
 
-        Components Layer 1 TO Components Layer 1
+        Positive Planes Layer 2 TO Part Pads Thru Layer 2
             No Hazards.
 
-        Traces Layer 1 TO Traces Layer 1
+        Positive Planes Layer 2 TO Part Holes Layer 2
             No Hazards.
 
-        Traces Layer 1 TO Part Pads SMD Layer 1
+        Positive Planes Layer 2 TO Positive Planes Layer 2
             No Hazards.
 
-        Traces Layer 1 TO Via Pads Layer 1
+        Positive Planes Layer 2 TO Route Border
             No Hazards.
 
-        Traces Layer 1 TO Via Holes Layer 1
+        Positive Planes Layer 2 TO Traces Layer 2
             No Hazards.
 
-        Part Pads SMD Layer 1 TO Part Pads SMD Layer 1
+        Positive Planes Layer 2 TO Via Pads Layer 2
             No Hazards.
 
-        Part Pads SMD Layer 1 TO Via Pads Layer 1
+        Positive Planes Layer 2 TO Via Holes Layer 2
             No Hazards.
 
-        Part Pads SMD Layer 1 TO Via Holes Layer 1
+        Positive Planes Layer 3 TO Part Pads Thru Layer 3
             No Hazards.
 
-        Via Pads Layer 1 TO Via Pads Layer 1
+        Positive Planes Layer 3 TO Part Holes Layer 3
             No Hazards.
 
-        Via Pads Layer 1 TO Via Holes Layer 1
+        Positive Planes Layer 3 TO Route Border
             No Hazards.
 
-        Via Holes Layer 1 TO Via Holes Layer 1
+        Positive Planes Layer 3 TO Traces Layer 3
             No Hazards.
 
-        Traces Layer 1 TO Test Pads Top
+        Positive Planes Layer 3 TO Via Pads Layer 3
             No Hazards.
 
-        Test Pads Top TO Part Pads SMD Layer 1
+        Positive Planes Layer 3 TO Via Holes Layer 3
             No Hazards.
 
-        Test Pads Top TO Test Pads Top
+        Positive Planes Layer 5 TO Part Pads Thru Layer 5
             No Hazards.
 
-        Test Pads Top TO Via Pads Layer 1
+        Positive Planes Layer 5 TO Part Holes Layer 5
             No Hazards.
 
-        Test Pads Top TO Via Holes Layer 1
+        Positive Planes Layer 5 TO Route Border
             No Hazards.
 
-        Traces Layer 2 TO Traces Layer 2
+        Positive Planes Layer 5 TO Via Pads Layer 5
             No Hazards.
 
-        Traces Layer 2 TO Via Pads Layer 2
-            No Hazards.
-
-        Traces Layer 2 TO Via Holes Layer 2
-            No Hazards.
-
-        Via Pads Layer 2 TO Via Pads Layer 2
-            No Hazards.
-
-        Via Pads Layer 2 TO Via Holes Layer 2
-            No Hazards.
-
-        Via Holes Layer 2 TO Via Holes Layer 2
-            No Hazards.
-
-        Traces Layer 3 TO Traces Layer 3
-            No Hazards.
-
-        Traces Layer 3 TO Via Pads Layer 3
-            No Hazards.
-
-        Traces Layer 3 TO Via Holes Layer 3
-            No Hazards.
-
-        Via Pads Layer 3 TO Via Pads Layer 3
-            No Hazards.
-
-        Via Pads Layer 3 TO Via Holes Layer 3
-            No Hazards.
-
-        Via Holes Layer 3 TO Via Holes Layer 3
-            No Hazards.
-
-        Traces Layer 4 TO Traces Layer 4
-            No Hazards.
-
-        Traces Layer 4 TO Via Pads Layer 4
-            No Hazards.
-
-        Traces Layer 4 TO Via Holes Layer 4
-            No Hazards.
-
-        Via Pads Layer 4 TO Via Pads Layer 4
-            No Hazards.
-
-        Via Pads Layer 4 TO Via Holes Layer 4
-            No Hazards.
-
-        Via Holes Layer 4 TO Via Holes Layer 4
+        Positive Planes Layer 5 TO Via Holes Layer 5
             No Hazards.
 
 
@@ -138,18 +92,19 @@
 
 
 
-    Planes Clearances And Rules
-    ---------------------------
-
-        No Proximity Checks Performed.
-
-
-
-
     Non-Net Class Element To Element Clearances And Rules
     -----------------------------------------------------
 
-        Test Points Top TO Test Points Top    Clearance: 0,25mm
+        Via Obstructs Layer 1 TO Via Pads Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Via Holes Layer 1 TO Via Obstructs Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Test Points Top TO Test Points Top    Clearance: 0.25mm
+            No Hazards.
+
+        Traces Layer 1 TO Trace Obstructs Layer 1    Clearance: 0mm
             No Hazards.
 
         Test Pads Top TO Test Point Obstructs Layer 1    Clearance: 0mm
@@ -167,10 +122,13 @@
         Part Pads SMD Layer 1 TO Route Border    Clearance: 0mm
             No Hazards.
 
-        Board Outline TO Placement Outlines Layer 1    Clearance: 0,25mm
+        Board Outline TO Placement Outlines Layer 1    Clearance: 0.25mm
             No Hazards.
 
         Board Outline TO Via Pads Layer 1    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Holes Layer 1    Clearance: 0mm
             No Hazards.
 
         Board Outline TO Test Pads Top    Clearance: 0mm
@@ -191,7 +149,16 @@
         Route Border TO Traces Layer 2    Clearance: 0mm
             No Hazards.
 
+        Part Pads Thru Layer 2 TO Route Border    Clearance: 0mm
+            No Hazards.
+
         Board Outline TO Via Pads Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Holes Layer 2    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Pads Thru Layer 2    Clearance: 0mm
             No Hazards.
 
         Board Outline TO Via Holes Layer 2    Clearance: 0mm
@@ -206,7 +173,16 @@
         Route Border TO Traces Layer 3    Clearance: 0mm
             No Hazards.
 
+        Part Pads Thru Layer 3 TO Route Border    Clearance: 0mm
+            No Hazards.
+
         Board Outline TO Via Pads Layer 3    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Holes Layer 3    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Pads Thru Layer 3    Clearance: 0mm
             No Hazards.
 
         Board Outline TO Via Holes Layer 3    Clearance: 0mm
@@ -221,7 +197,16 @@
         Route Border TO Traces Layer 4    Clearance: 0mm
             No Hazards.
 
+        Part Pads Thru Layer 4 TO Route Border    Clearance: 0mm
+            No Hazards.
+
         Board Outline TO Via Pads Layer 4    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Holes Layer 4    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Pads Thru Layer 4    Clearance: 0mm
             No Hazards.
 
         Board Outline TO Via Holes Layer 4    Clearance: 0mm
@@ -230,12 +215,60 @@
         Board Outline TO Traces Layer 4    Clearance: 0mm
             No Hazards.
 
+        Route Border TO Via Pads Layer 5    Clearance: 0mm
+            No Hazards.
+
+        Part Pads Thru Layer 5 TO Route Border    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Via Pads Layer 5    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Holes Layer 5    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Pads Thru Layer 5    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Via Holes Layer 5    Clearance: 0mm
+            No Hazards.
+
+        Test Points Bottom TO Test Points Bottom    Clearance: 0.25mm
+            No Hazards.
+
+        Route Border TO Via Pads Layer 6    Clearance: 0mm
+            No Hazards.
+
+        Route Border TO Traces Layer 6    Clearance: 0mm
+            No Hazards.
+
+        Part Pads Thru Layer 6 TO Route Border    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Via Pads Layer 6    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Holes Layer 6    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Part Pads Thru Layer 6    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Via Holes Layer 6    Clearance: 0mm
+            No Hazards.
+
+        Board Outline TO Traces Layer 6    Clearance: 0mm
+            No Hazards.
+
 
         Total Hazards Found : 0
 
 
 
     Total Proximity Hazards Found : 0
+
+
+    !!! Warning - Not all Proximity checks were performed - Batch DRC Cancelled by the User!!!
 
 
 
@@ -258,7 +291,7 @@
 
 
     Check Trace Hangers                           : YES
-        Hazards Found : 1734
+        Hazards Found : 1334
 
 
     Check Trace Loops                             : YES
@@ -270,15 +303,15 @@
 
 
     Check Single Point Nets                       : YES
-        No Hazards.
+        Hazards Found : 1
 
 
     Check NonPlane Unrouted/Partially Routed Nets : YES
-        Hazards Found : 199
+        Hazards Found : 25
 
 
     Check Plane Unrouted/Partial Routed Nets      : YES
-        Hazards Found : 1991
+        Hazards Found : 32
 
 
     Check Routed Plane Pins                       : YES
@@ -290,11 +323,11 @@
 
 
     Check Dangling Vias/Jumpers                   : YES
-        Hazards Found : 1719
+        Hazards Found : 15
 
 
     Check Unrouted Pins                           : YES
-        Hazards Found : 74
+        Hazards Found : 38
 
 
     Check Routed Non-Plated Pins                  : YES
@@ -335,7 +368,7 @@
 
 
 
-    Total Connectivity/SpecialRules Hazards Found : 5717
+    Total Connectivity/SpecialRules Hazards Found : 1445
 
 
 
@@ -343,8 +376,12 @@
 
 
 
-    Total DRC Hazards Found : 5717
+    Total DRC Hazards Found : 0
 
 
 
-                         01:43 AM Thursday, December 14, 2017
+    !!! Warning - Not all verification checks were performed - Batch DRC Cancelled by the User !!!
+
+
+
+                         06:16 PM Wednesday, December 20, 2017

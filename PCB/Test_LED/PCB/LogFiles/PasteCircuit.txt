@@ -2,15 +2,11 @@
                                 Circuit Paste log
                                 -----------------
 
-                      04:33 PM Wednesday, December 20, 2017
+                      08:04 PM Wednesday, December 20, 2017
              Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
          Clipboard: C:\Users\Adrien\AppData\Local\Temp\mgc_icc_clipboard_tmp\Layout\
     
-
-    UNMAPPED NETS:
-           UB3D1_LAT, UB4D0_LAT, XSIG090331, XSIG090333
-    4 unmapped net(s) found
 
 
 Checking Ref Des Map
@@ -29,11 +25,8 @@ Checking Netlist Map completed
 Updating Local Libraries
 ------------------------
 
-    WARNING: 1 cells exist in Local Library. Clipboard data is ignored:
-       R0402
-
-    WARNING: 1 Part Numbers exist in the Local Library. Clipboard data is ignored:
-       02-0116
+    WARNING: 1 padstacks exist in the Local Library. Clipboard data is ignored:
+       OBL_NM_130_060
 
 Library update is not required
 
@@ -55,15 +48,15 @@ Placing Components
 ------------------
 
 Component placement complete
-    2 Components were placed:
-       R39, R40
+    0 Components were placed
 
 
 Loading net items
 -----------------
 
 Loading of Net items complete
-    0 objects were created
+    1 objects were created
+        1 mounting holes
 
 
 Loading Fiducials

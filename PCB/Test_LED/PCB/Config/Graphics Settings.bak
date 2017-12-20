@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/20/17 17:32:33
+! Created 12/20/17 18:11:55
 !
 
 .Global_Constants 946 2
@@ -19,7 +19,7 @@
     ..Active_Place_Layer_Top             True
     ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
-    ..Active_Route_Layer 5
+    ..Active_Route_Layer 1
     ..Trace_Layer_Color ( 
 	0x00ff6633 0x00cc0099	! [1-2] RGB( 51,102,255)  RGB(153,  0,204)
 	0x00003366 0x000000ff	! [3-4] RGB(102, 51,  0)  RGB(255,  0,  0)
@@ -2690,29 +2690,29 @@
 	0x00ffffff 0x00ffffff	! [895-896] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [897-898] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [899-900] RGB(255,255,255)  RGB(255,255,255)
-	        -1         -1	! [901-902] undefined  undefined
-	        -1         -1	! [903-904] undefined  undefined
-	        -1         -1	! [905-906] undefined  undefined
-	        -1         -1	! [907-908] undefined  undefined
-	        -1         -1	! [909-910] undefined  undefined
-	        -1         -1	! [911-912] undefined  undefined
-	        -1         -1	! [913-914] undefined  undefined
-	        -1         -1	! [915-916] undefined  undefined
-	        -1         -1	! [917-918] undefined  undefined
-	        -1         -1	! [919-920] undefined  undefined
-	        -1         -1	! [921-922] undefined  undefined
-	        -1         -1	! [923-924] undefined  undefined
-	        -1         -1	! [925-926] undefined  undefined
-	        -1         -1	! [927-928] undefined  undefined
-	        -1         -1	! [929-930] undefined  undefined
-	        -1         -1	! [931-932] undefined  undefined
-	        -1         -1	! [933-934] undefined  undefined
-	        -1         -1	! [935-936] undefined  undefined
-	        -1         -1	! [937-938] undefined  undefined
-	        -1         -1	! [939-940] undefined  undefined
-	        -1         -1	! [941-942] undefined  undefined
-	        -1         -1	! [943-944] undefined  undefined
-	        -1         -1	! [945-946] undefined  undefined
+	0x00ffffff 0x00ffffff	! [901-902] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [903-904] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [905-906] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [907-908] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [909-910] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [911-912] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [913-914] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [915-916] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [917-918] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [919-920] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [921-922] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [923-924] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [925-926] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [927-928] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [929-930] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [931-932] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [933-934] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [935-936] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [937-938] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [939-940] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [941-942] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [943-944] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [945-946] RGB(255,255,255)  RGB(255,255,255)
     )
     ..Net_Ptrnidx ( 
 	0 0 0 0 0 0 0 0 0 0 	! [1 - 10]
@@ -3096,11 +3096,11 @@
 	F F F F F F F F F F 	! [871 - 880]
 	F F F F F F F F F F 	! [881 - 890]
 	F F F F F F F F F F 	! [891 - 900]
-	T T T T T T T T T T 	! [901 - 910]
-	T T T T T T T T T T 	! [911 - 920]
-	T T T T T T T T T T 	! [921 - 930]
-	T T T T T T T T T T 	! [931 - 940]
-	T T T T T T ! [941 - 946]
+	F F F F F F F F F F 	! [901 - 910]
+	F F F F F F F F F F 	! [911 - 920]
+	F F F F F F F F F F 	! [921 - 930]
+	F F F F F F F F F F 	! [931 - 940]
+	F F F F F F ! [941 - 946]
 	)
     ..Netclass_Color (
 	0x00ffffff	! top     RGB(255,255,255)
@@ -3369,7 +3369,7 @@
     ..Valorseverity3_Hzd_Clr 0x00ffffff	! RGB(255,255,255)
     ..Valorseverity4_Hzd_Clr 0x00ffffff	! RGB(255,255,255)
     ..Valorseverity5_Hzd_Clr 0x00ffffff	! RGB(255,255,255)
-    ..Num_Unigroups 397
+    ..Num_Unigroups 412
     ..Unigroup_Names ( 
 	"189296"	! [1]
 	"3064945"	! [2]
@@ -3768,6 +3768,21 @@
 	"3121938"	! [395]
 	"4249487"	! [396]
 	"4249492"	! [397]
+	"6158972"	! [398]
+	"6159010"	! [399]
+	"6159048"	! [400]
+	"6159086"	! [401]
+	"6159124"	! [402]
+	"6159162"	! [403]
+	"6159200"	! [404]
+	"6159238"	! [405]
+	"6159276"	! [406]
+	"6159314"	! [407]
+	"6159352"	! [408]
+	"6159390"	! [409]
+	"6159428"	! [410]
+	"6159466"	! [411]
+	"6159504"	! [412]
     )
     ..Unigroup_Colors ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
@@ -3968,7 +3983,14 @@
 	0x00ffffff 0x00ffffff	! [391-392] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [393-394] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [395-396] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff		! [397] RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [397-398] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [399-400] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [401-402] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [403-404] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [405-406] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [407-408] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [409-410] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [411-412] RGB(255,255,255)  RGB(255,255,255)
     )
     ..Global_Options ( 
 	"Global.Option.AutoPan" "1"
@@ -4161,8 +4183,8 @@
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
 	"[VirtualGlobal].iDC.SplitViewHeight.0" "452"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "255"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "422"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "253"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "424"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -4177,8 +4199,8 @@
 
 .view "PCB"
     ..extrema
-	(420292,1556910)		! (xmin, ymin)
-	(124764484,63429742)		! (xmax, ymax)
+	(-8135227,4497597)		! (xmin, ymin)
+	(138667571,77545679)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -4187,7 +4209,7 @@
 	(0, 0) (776,331)	! ..rcNormalPosition
     ..Is_Float_View                      False
     ..Is_Detail_View                     False
-    ..Trace_All_Enabled                  True
+    ..Trace_All_Enabled                  False
     ..Pad_All_Enabled                    True
     ..Pad_Layer_On ( 
 	T T T T T T T T T T 	! [1 - 10]
@@ -4218,32 +4240,32 @@
 	T T T T T T ! [251 - 256]
 	)
     ..Trace_Layer_On ( 
-	T T T T T T T T T T 	! [1 - 10]
-	T T T T T T T T T T 	! [11 - 20]
-	T T T T T T T T T T 	! [21 - 30]
-	T T T T T T T T T T 	! [31 - 40]
-	T T T T T T T T T T 	! [41 - 50]
-	T T T T T T T T T T 	! [51 - 60]
-	T T T T T T T T T T 	! [61 - 70]
-	T T T T T T T T T T 	! [71 - 80]
-	T T T T T T T T T T 	! [81 - 90]
-	T T T T T T T T T T 	! [91 - 100]
-	T T T T T T T T T T 	! [101 - 110]
-	T T T T T T T T T T 	! [111 - 120]
-	T T T T T T T T T T 	! [121 - 130]
-	T T T T T T T T T T 	! [131 - 140]
-	T T T T T T T T T T 	! [141 - 150]
-	T T T T T T T T T T 	! [151 - 160]
-	T T T T T T T T T T 	! [161 - 170]
-	T T T T T T T T T T 	! [171 - 180]
-	T T T T T T T T T T 	! [181 - 190]
-	T T T T T T T T T T 	! [191 - 200]
-	T T T T T T T T T T 	! [201 - 210]
-	T T T T T T T T T T 	! [211 - 220]
-	T T T T T T T T T T 	! [221 - 230]
-	T T T T T T T T T T 	! [231 - 240]
-	T T T T T T T T T T 	! [241 - 250]
-	T T T T T T ! [251 - 256]
+	F F F F F F F F F F 	! [1 - 10]
+	F F F F F F F F F F 	! [11 - 20]
+	F F F F F F F F F F 	! [21 - 30]
+	F F F F F F F F F F 	! [31 - 40]
+	F F F F F F F F F F 	! [41 - 50]
+	F F F F F F F F F F 	! [51 - 60]
+	F F F F F F F F F F 	! [61 - 70]
+	F F F F F F F F F F 	! [71 - 80]
+	F F F F F F F F F F 	! [81 - 90]
+	F F F F F F F F F F 	! [91 - 100]
+	F F F F F F F F F F 	! [101 - 110]
+	F F F F F F F F F F 	! [111 - 120]
+	F F F F F F F F F F 	! [121 - 130]
+	F F F F F F F F F F 	! [131 - 140]
+	F F F F F F F F F F 	! [141 - 150]
+	F F F F F F F F F F 	! [151 - 160]
+	F F F F F F F F F F 	! [161 - 170]
+	F F F F F F F F F F 	! [171 - 180]
+	F F F F F F F F F F 	! [181 - 190]
+	F F F F F F F F F F 	! [191 - 200]
+	F F F F F F F F F F 	! [201 - 210]
+	F F F F F F F F F F 	! [211 - 220]
+	F F F F F F F F F F 	! [221 - 230]
+	F F F F F F F F F F 	! [231 - 240]
+	F F F F F F F F F F 	! [241 - 250]
+	F F F F F F ! [251 - 256]
 	)
     ..Netline_All_Enabled                True
     ..Netline_Ordered_Routed_On          True
@@ -4417,7 +4439,7 @@
                                          True 	! bottom
     ..Cluster_2on                        True 	! top
                                          True 	! bottom
-    ..V_Num_Unigroups 397
+    ..V_Num_Unigroups 412
     ..V_Unigroup_Names ( 
 	"189296"	! [1]
 	"3064945"	! [2]
@@ -4816,6 +4838,21 @@
 	"3121938"	! [395]
 	"4249487"	! [396]
 	"4249492"	! [397]
+	"6158972"	! [398]
+	"6159010"	! [399]
+	"6159048"	! [400]
+	"6159086"	! [401]
+	"6159124"	! [402]
+	"6159162"	! [403]
+	"6159200"	! [404]
+	"6159238"	! [405]
+	"6159276"	! [406]
+	"6159314"	! [407]
+	"6159352"	! [408]
+	"6159390"	! [409]
+	"6159428"	! [410]
+	"6159466"	! [411]
+	"6159504"	! [412]
     )
     ..V_Unigroup_On ( 
 	F F F F F F F F F F 	! [1 - 10]
@@ -4857,7 +4894,9 @@
 	F F F F F F F F F F 	! [361 - 370]
 	F F F F F F F F F F 	! [371 - 380]
 	F F F F F F F F F F 	! [381 - 390]
-	F F F F F F F ! [391 - 397]
+	F F F F F F F F F F 	! [391 - 400]
+	F F F F F F F F F F 	! [401 - 410]
+	F F ! [411 - 412]
 	)
     ..V_Unigroup_Enabled ( 
 	F F F F F F F F F F 	! [1 - 10]
@@ -4899,7 +4938,9 @@
 	F F F F F F F F F F 	! [361 - 370]
 	F F F F F F F F F F 	! [371 - 380]
 	F F F F F F F F F F 	! [381 - 390]
-	F F F F F F F ! [391 - 397]
+	F F F F F F F T T T 	! [391 - 400]
+	T T T T T T T T T T 	! [401 - 410]
+	T T ! [411 - 412]
 	)
     ..Virtual_Options ( 
 	"[Virtual].iDC.LayersSelection" "65537"
@@ -15158,8 +15199,8 @@
 	"Part.Hazard.Bottom" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
 	"Part.InsertionOutline.Top" "d:0" "e:1" "s:1" "se:0" "c:16776960" "a:100" "p:0" "t:0" "o:1"
 	"Part.InsertionOutline.Bottom" "d:0" "e:1" "s:1" "se:0" "c:10027212" "a:100" "p:0" "t:0" "o:1"
-	"Part.Pin.NumberType.Top" "d:1" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Part.Pin.NumberType.Bottom" "d:1" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Part.Pin.NumberType.Top" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Part.Pin.NumberType.Bottom" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Part.PlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Part.PlaceOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:2" "t:0" "o:1"
 	"Part.SpecialPlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
@@ -17336,8 +17377,8 @@
 	"Option.TextItems.PinProperties.Enabled" "0"
 	"Option.TextItems.PinProperties.Selectable" "3"
 	"Option.TextItems.Selectable" "1"
-	"Option.Traces.Enabled" "1"
-	"Option.Traces.Selectable" "1"
+	"Option.Traces.Enabled" "0"
+	"Option.Traces.Selectable" "3"
 	"Option.UnpackedAreas.Enabled" "3"
 	"Option.UserDraftLayers.Enabled" "1"
 	"Option.UserDraftLayers.Selectable" "1"
