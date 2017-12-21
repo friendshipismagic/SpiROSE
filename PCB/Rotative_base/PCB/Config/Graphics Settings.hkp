@@ -2,22 +2,22 @@
 ! change it at your own peril
 
 !
-! Created 12/20/17 19:31:20
+! Created 12/21/17 16:25:24
 !
 
-.Global_Constants 146 4
+.Global_Constants 146 3
     ..File_Type Graphics_Settings
     ..Version Version_7
     ..Num_Views 1
     ..Active_View 1
     ..WindowPlacement
-	0x00000000	! flags
-	0x00000001	! showCmd
+	0x00000002	! flags
+	0x00000003	! showCmd
 	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
 	(438, 298) (1680,998)	! ..rcNormalPosition
-    ..Active_Place_Layer_Top             True
-    ..Active_Place_Layer_Bottom          False
+    ..Active_Place_Layer_Top             False
+    ..Active_Place_Layer_Bottom          True
     ..Active_Place_Layer_Internal        False
     ..Active_Route_Layer 0
     ..Trace_Layer_Color ( 
@@ -1434,7 +1434,6 @@
 	"(Default)"	! [1]
 	"LVDS"	! [2]
 	"DRV"	! [3]
-	"(SpacerNetClass)"	! [4]
     )
     ..Bus_Names ( 
     )
@@ -1593,31 +1592,27 @@
 	)
     ..Netclass_Color ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [3-4] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff		! [3] RGB(255,255,255)
     )
     ..Netclass_Ptrnidx ( 
 	0 ![1]
 	0 ![2]
 	0 ![3]
-	0 ![4]
     )
     ..Netclass_Alpha ( 
 	100 ![1]
 	100 ![2]
 	100 ![3]
-	100 ![4]
     )
     ..Netclass_Nopaque ( 
 	False ![1]
 	False ![2]
 	False ![3]
-	False ![4]
     )
     ..Netclass_Outline ( 
 	True  ![1]
 	False ![2]
 	False ![3]
-	True  ![4]
     )
     ..Bus_Color ( 
     )
@@ -1696,7 +1691,6 @@
 	False ![1]
 	False ![2]
 	False ![3]
-	False ![4]
     )
     ..Bus_On ( 
     )
@@ -2066,9 +2060,9 @@
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "50"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "251"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "438"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "48"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "255"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "436"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -2083,8 +2077,8 @@
 
 .view "PCB"
     ..extrema
-	(-36205655,72089792)		! (xmin, ymin)
-	(104448216,161951988)		! (xmax, ymax)
+	(16871802,16386132)		! (xmin, ymin)
+	(224699154,123399858)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -2096,7 +2090,7 @@
     ..Trace_All_Enabled                  True
     ..Pad_All_Enabled                    True
     ..Pad_Layer_On ( 
-	T T T T T T T T T T 	! [1 - 10]
+	T F T T T T T T T T 	! [1 - 10]
 	T T T T T T T T T T 	! [11 - 20]
 	T T T T T T T T T T 	! [21 - 30]
 	T T T T T T T T T T 	! [31 - 40]
@@ -2124,7 +2118,7 @@
 	T T T T T T ! [251 - 256]
 	)
     ..Trace_Layer_On ( 
-	T T T T T T T T T T 	! [1 - 10]
+	T F T T T T T T T T 	! [1 - 10]
 	T T T T T T T T T T 	! [11 - 20]
 	T T T T T T T T T T 	! [21 - 30]
 	T T T T T T T T T T 	! [31 - 40]
@@ -2400,7 +2394,7 @@
     )
     ..Segments ( 
 	"LayerControl.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"LayerControl.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"LayerControl.2" "d:0" "e:1" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"LayerControl.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:0" "t:0" "o:1"
 	"LayerControl.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"LayerControl.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
@@ -2674,7 +2668,7 @@
 	"Board.RouteFence.Soft" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Board.Sandbox" "d:1" "e:0" "s:1" "se:0" "c:32768" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Pad.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Pad.2" "d:1" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.3" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
@@ -2934,7 +2928,7 @@
 	"Copper.Pad.TestPoint.Top" "d:1" "e:1" "s:1" "se:1" "c:16750950" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.TestPoint.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Plane.Data.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Plane.Data.2" "d:1" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Plane.Data.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Plane.Data.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Plane.Data.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
@@ -3190,7 +3184,7 @@
 	"Copper.Plane.Data.255" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Plane.Data.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Trace.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Trace.2" "d:1" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
@@ -3483,7 +3477,7 @@
 	"Fabrication.Hole.Pin" "d:1" "e:1" "s:1" "se:1" "c:39423" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Hole.Via" "d:1" "e:1" "s:1" "se:1" "c:39423" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Material.Mask.1" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:0"
-	"Fabrication.Material.Mask.2" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:0"
+	"Fabrication.Material.Mask.2" "d:0" "e:0" "s:1" "se:0" "c:13408767" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Mask.3" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Mask.4" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Mask.5" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:0"
@@ -3739,7 +3733,7 @@
 	"Fabrication.Material.Mask.255" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Mask.256" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Overglaze.1" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"Fabrication.Material.Overglaze.2" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"Fabrication.Material.Overglaze.2" "d:0" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Overglaze.3" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Overglaze.4" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Overglaze.5" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -4018,7 +4012,7 @@
 	"General.Color.Selection" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
 	"General.Color.SelectionShape" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"General.Milling.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:33" "t:0" "o:1"
-	"General.Milling.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:33" "t:0" "o:1"
+	"General.Milling.2" "d:0" "e:1" "s:1" "se:0" "c:10040319" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:33" "t:0" "o:1"
@@ -12654,6 +12648,7 @@
 	"Part.Pin.NumberType.Bottom" "d:1" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Part.PlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Part.PlaceOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:2" "t:0" "o:1"
+	"Part.RFNode.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Part.SpecialPlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Part.SpecialPlaceOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:2" "t:0" "o:1"
 	"Place.Part.Text.RefDes.Top" "d:1" "e:1" "s:1" "se:1" "c:16764006" "a:100" "p:0" "t:0" "o:1"
@@ -12661,8 +12656,11 @@
 	"Planning.ReuseArea" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
 	"Sheet.SheetOrigin" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Sheet.SheetOutline" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
+	"Topology.TargetArea.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Topology.TargetAreaWarnRed" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:34" "t:1" "o:1"
 	"Topology.TargetAreaWarnYellow" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:34" "t:1" "o:1"
+	"Topology.UnpackedArea.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Topology.VirtualPins.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"User.Dimensions" "d:0" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
 	"User.Measure Drawing" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"WirebondObjects.WirebondGuides.Top" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
@@ -12923,6 +12921,16 @@
 	"Board.BundlePath.254" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
 	"Board.BundlePath.255" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Board.BundlePath.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
+	"Board.BusPath.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Board.BusPath.Via.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Board.CopperBalancing.Data.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Board.CopperBalancing.Shape.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Board.Obstruct.Pad.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Board.Obstruct.Plane.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Board.Obstruct.Trace.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Board.RuleArea.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Board.SketchPlan.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
+	"Copper.RFSegment.2" "d:0" "e:0" "s:1" "se:0" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Hazard.Internal.DpPhaseMatching" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Internal.Board.SketchPlanIndependentFromLayers.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
 	"Internal.Board.SketchPlanIndependentFromLayers.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
@@ -13841,7 +13849,6 @@
 	"[NetClass].(Default)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[NetClass].LVDS" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[NetClass].DRV" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[NetClass].(SpacerNetClass)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[ConstraintClass].(All)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[ConstraintClass].(All)/RGB" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[ConstraintClass].(All)/DRV" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
