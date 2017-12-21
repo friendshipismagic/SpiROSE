@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/21/17 19:50:51
+! Created 12/22/17 00:42:49
 !
 
 .Global_Constants 945 2
@@ -13,7 +13,7 @@
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
-	(-32000, -32000)	! ptMinPosition
+	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
 	(225, 217) (1359,793)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             True
@@ -4016,7 +4016,7 @@
 	"Global.Option.FullScreenCursor" "1"
 	"Global.Option.FullScreenCursorDuringMoveOnly" "1"
 	"Global.Option.HalfScreenCursor" "0"
-	"Global.Option.IgnoreSelectionFilter" "0"
+	"Global.Option.IgnoreSelectionFilter" "1"
 	"Global.Option.LinkSketchNetlineDisplayToLayerVisibility" "1"
 	"Global.Option.NetNamesOnTraces" "1"
 	"Global.Option.PlaneDataBehindTraces" "1"
@@ -4182,8 +4182,8 @@
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
 	"[VirtualGlobal].iDC.SplitViewHeight.0" "452"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "245"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "432"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "310"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "367"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -4198,8 +4198,8 @@
 
 .view "PCB"
     ..extrema
-	(-297600710,-65281767)		! (xmin, ymin)
-	(428678250,248200853)		! (xmax, ymax)
+	(-144953168,-68927498)		! (xmin, ymin)
+	(336868657,214074384)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
