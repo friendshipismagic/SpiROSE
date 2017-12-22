@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/22/17 16:09:27
+! Created 12/22/17 19:19:32
 !
 
 .Global_Constants 944 2
@@ -13,13 +13,13 @@
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
-	(-1, -1)	! ptMinPosition
+	(-32000, -32000)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
 	(1143, 250) (2277,826)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             True
     ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
-    ..Active_Route_Layer 0
+    ..Active_Route_Layer 5
     ..Trace_Layer_Color ( 
 	0x00ff6633 0x00cc0099	! [1-2] RGB( 51,102,255)  RGB(153,  0,204)
 	0x00003366 0x000000ff	! [3-4] RGB(102, 51,  0)  RGB(255,  0,  0)
@@ -4203,8 +4203,8 @@
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
 	"[VirtualGlobal].iDC.SplitViewHeight.0" "452"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "233"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "444"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "225"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "452"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -4219,8 +4219,8 @@
 
 .view "PCB"
     ..extrema
-	(-171185126,-49134945)		! (xmin, ymin)
-	(306076186,231188283)		! (xmax, ymax)
+	(7637608,-12031447)		! (xmin, ymin)
+	(112046196,33034263)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd

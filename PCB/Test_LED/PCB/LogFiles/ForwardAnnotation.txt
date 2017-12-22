@@ -2,7 +2,7 @@
                                Forward Annotation
                                ------------------
 
-                       02:01 PM Friday, December 22, 2017
+                       04:43 PM Friday, December 22, 2017
              Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -23,7 +23,7 @@ Version:  01.01.00
 
      Target PDB Name: Work\Layout_Temp\PartsDB.pdb
 
-     Number of Part Numbers: 18
+     Number of Part Numbers: 17
           Part Numb: 02-0098 -> Vend Part: 02-0098 
           Part Numb: 02-0116 -> Vend Part: 02-0116 
           Part Numb: 10-0057 -> Vend Part: 10-0057 
@@ -38,8 +38,7 @@ Version:  01.01.00
           Part Numb: 40-0320 -> Vend Part: 40-0320 
           Part Numb: 40-0336 -> Vend Part: 40-0336 
           Part Numb: 50-0005 -> Vend Part: 50-0005 
-          Part Numb: 70-0029 -> Vend Part: 70-0029 
-          Part Numb: 70-0104 -> Vend Part: 70-0104 
+          Part Numb: 70-0106 -> Vend Part: 70-0106 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
           Part Numb: 80-0064 -> Vend Part: 80-0064 
 
@@ -68,9 +67,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 2205 Symbols:
-            2205  ****
-            2200  **************************************************
+     Clustering 2176 Symbols:
+            2176  *************************
             2150  **************************************************
             2100  **************************************************
             2050  **************************************************
@@ -120,8 +118,8 @@ Version:  01.01.00
 
 
 
-     941 nets were found containing 9182 pins
-     2205 components were found
+     941 nets were found containing 9180 pins
+     2176 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -135,7 +133,7 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       02:01 PM Friday, December 22, 2017
+                       04:43 PM Friday, December 22, 2017
              Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -148,61 +146,7 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     WARNING:  The "PAD_3x2" cell used by "J3" in the Layout is not
-      valid for a "70-0104" Part Number.
-     INFO: Cell "PAD_3x2" is being replaced by cell "TMS-129-01-G-S-SMD".
-
-	WARNING:  "J10" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J11" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J12" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J13" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J14" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J15" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J16" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J17" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J18" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J20" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J19" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J21" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J22" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J23" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J24" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J25" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J26" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J27" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J30" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J9" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J28" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J29" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J34" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J35" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J36" is being removed from the Layout since it is no longer in the schematic.
-
-     Netload completed successfully with 26 warning(s).
+     Netload completed successfully with 0 warning(s).
      
      Back Annotating...
 
