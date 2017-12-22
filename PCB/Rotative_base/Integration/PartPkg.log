@@ -2,13 +2,13 @@
                                     Packager
                                     --------
 
-                       11:27 AM Friday, December 22, 2017
+                       01:59 PM Friday, December 22, 2017
 Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uC:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb" -k -Refresh "-jC:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj" "
+        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  -jC:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Rotative_base.prj -CleanBuild -NoFill"
 
      The Common Database is at "C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Default\default.icdb".
 
@@ -23,9 +23,8 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
      The Disable Repackage status indicates that 
       Repackaging should be allowed.
 
-     The PDBs listed in the project file will be searched to satisfy the parts
-      requirements of the iCDB and to refresh with newer data any duplicates found in the
-      Target PDB.
+     A new Target PDB will be created from the Central Library to satisfy the parts
+      requirements of the iCDB.
 
      The AllowAlphaRefDes status indicates that reference
       designators containing all alpha characters should be deleted
@@ -38,10 +37,8 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
      Properties that have been checked off in the Property Definition Editor
       found at Library Manager/Common Properties will be checked for value
       differences between the PartsDB and the non-null properties on symbols.
-     Those properties checked off will be transferred from the PartsDB to all
-      symbols, both packaged and unpackaged.  However, the property values
-      transferred will be limited to the precision specified in the Notation
-      Settings dialog.
+     Those properties checked off (other than Part Number)
+      will not be transferred from the PartsDB to symbols.
      The following properties were checked off in the Property Definition Editor:
        "Parametric"
        "Value2"
@@ -114,8 +111,8 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
           Part Numb: 50-0046 -> Vend Part: 50-0046 
           Part Numb: 70-0014 -> Vend Part: 70-0014 
           Part Numb: 70-0015 -> Vend Part: 70-0015 
-          Part Numb: 70-0085 -> Vend Part: 70-0085 
           Part Numb: 70-0103 -> Vend Part: 70-0103 
+          Part Numb: 70-0105 -> Vend Part: 70-0105 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
           Part Numb: 80-0072 -> Vend Part: 80-0072 
 
@@ -139,11 +136,8 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 254 Symbols:
-             254  ***
-             250  **************************************************
-             200  **************************************************
-             150  **************************************************
+     Clustering 142 Symbols:
+             142  *****************************************
              100  **************************************************
               50  **************************************************
      Clustering is Complete
@@ -153,7 +147,7 @@ Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\Ro
 
 
      143 nets were found containing 764 pins
-     249 components were found
+     137 components were found
 
      Parsed netlist - Augmenting..
 

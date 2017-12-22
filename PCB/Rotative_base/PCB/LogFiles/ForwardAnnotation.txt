@@ -2,7 +2,7 @@
                                Forward Annotation
                                ------------------
 
-                       08:57 AM Friday, December 22, 2017
+                       01:59 PM Friday, December 22, 2017
 Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
@@ -24,9 +24,9 @@ Version:  01.01.00
      Target PDB Name: Work\Layout_Temp\PartsDB.pdb
 
      Number of Part Numbers: 33
+          Part Numb: 01-0224 -> Vend Part: 01-0224 
           Part Numb: 02-0098 -> Vend Part: 02-0098 
           Part Numb: 02-0445 -> Vend Part: 02-0445 
-          Part Numb: 02-0451 -> Vend Part: 02-0451 
           Part Numb: 02-0452 -> Vend Part: 02-0452 
           Part Numb: 02-0453 -> Vend Part: 02-0453 
           Part Numb: 10-0058 -> Vend Part: 10-0058 
@@ -53,8 +53,8 @@ Version:  01.01.00
           Part Numb: 50-0046 -> Vend Part: 50-0046 
           Part Numb: 70-0014 -> Vend Part: 70-0014 
           Part Numb: 70-0015 -> Vend Part: 70-0015 
-          Part Numb: 70-0085 -> Vend Part: 70-0085 
           Part Numb: 70-0103 -> Vend Part: 70-0103 
+          Part Numb: 70-0105 -> Vend Part: 70-0105 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
           Part Numb: 80-0072 -> Vend Part: 80-0072 
 
@@ -84,11 +84,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 254 Symbols:
-             254  ***
-             250  **************************************************
-             200  **************************************************
-             150  **************************************************
+     Clustering 142 Symbols:
+             142  *****************************************
              100  **************************************************
               50  **************************************************
      Clustering is Complete
@@ -98,7 +95,7 @@ Version:  01.01.00
 
 
      143 nets were found containing 764 pins
-     249 components were found
+     137 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -112,7 +109,7 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       08:57 AM Friday, December 22, 2017
+                       01:59 PM Friday, December 22, 2017
 Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
@@ -124,6 +121,265 @@ Version:  02.11.12
 
 	Schematic reference designator changes will be forward annotated.
 
+
+	WARNING:  Physical Net "VCC4V" is being renamed to "VCC5VLED" to match the change
+	in the schematic.
+
+	WARNING:  "J60" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J58" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J61" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J59" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J62" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J63" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J64" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J65" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J66" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J67" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J70" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J68" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J101" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J71" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J69" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J111" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J72" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J73" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J109" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J74" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J119" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J75" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J76" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J77" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J80" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J78" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J81" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J79" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J82" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J83" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J84" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J85" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J86" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J87" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J90" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J88" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J91" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J89" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J92" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J93" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J94" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J95" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J96" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J97" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J98" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J99" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J102" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J112" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J103" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J113" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J104" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J114" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J105" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J115" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J106" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J116" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "PAD_1x1" cell used by "J4" in Layout does not
+      not match the "SLM-129-01-G-S" cell specified in the schematic.
+
+     WARNING:  The "PAD_1x1" cell used by "J4" in the Layout is not
+      valid for a "70-0105" Part Number.
+     INFO: Cell "PAD_1x1" is being replaced by cell "SLM-129-01-G-S".
+
+     WARNING:  The "PAD_1x1" cell used by "J5" in Layout does not
+      not match the "SLM-129-01-G-S" cell specified in the schematic.
+
+     WARNING:  The "PAD_1x1" cell used by "J5" in the Layout is not
+      valid for a "70-0105" Part Number.
+     INFO: Cell "PAD_1x1" is being replaced by cell "SLM-129-01-G-S".
+
+	WARNING:  "J107" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J117" is being removed from the Layout since it is no longer in the schematic.
+
+     WARNING:  The "PAD_1x1" cell used by "J6" in Layout does not
+      not match the "SLM-129-01-G-S" cell specified in the schematic.
+
+     WARNING:  The "PAD_1x1" cell used by "J6" in the Layout is not
+      valid for a "70-0105" Part Number.
+     INFO: Cell "PAD_1x1" is being replaced by cell "SLM-129-01-G-S".
+
+     WARNING:  The "R0402" cell used by "R6" in the Layout is not
+      valid for a "01-0224" Part Number.
+     INFO: Cell "R0402" is being replaced by cell "R0603".
+
+     WARNING:  The "PAD_1x1" cell used by "J7" in Layout does not
+      not match the "SLM-129-01-G-S" cell specified in the schematic.
+
+     WARNING:  The "PAD_1x1" cell used by "J7" in the Layout is not
+      valid for a "70-0105" Part Number.
+     INFO: Cell "PAD_1x1" is being replaced by cell "SLM-129-01-G-S".
+
+	WARNING:  "J10" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J11" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J12" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J13" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J14" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J15" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J16" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J17" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J20" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J8" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J18" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J21" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J19" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J22" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J23" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J24" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J25" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J26" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J27" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J30" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J28" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J9" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J100" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J31" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J29" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J110" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J32" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J33" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J108" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J34" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J118" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J35" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J36" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J37" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J38" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J40" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J39" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J41" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J42" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J43" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J44" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J45" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J46" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J47" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J48" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J50" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J51" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J49" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J52" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J53" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J54" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J55" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J56" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J57" is being removed from the Layout since it is no longer in the schematic.
 
      The following 22 components have not been placed:
 
@@ -150,7 +406,7 @@ Version:  02.11.12
         PT21
         PT22
 
-     Netload completed successfully with 0 warning(s).
+     Netload completed successfully with 122 warning(s).
      
      Back Annotating...
 
@@ -181,18 +437,80 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
-	Assigned net FPGA_JTAG_TCK to a trace which was originally on net FPGA_JTAG_TDI.
-	Assigned net FPGA_JTAG_TCK to a via which was originally on net FPGA_JTAG_TDI.
-	Assigned net FPGA_JTAG_TCK to a trace which was originally on net FPGA_JTAG_TDI.
-	Assigned net FPGA_JTAG_TDI to a trace which was originally on net FPGA_JTAG_TMS.
-	Assigned net FPGA_JTAG_TDI to a via which was originally on net FPGA_JTAG_TMS.
-	Assigned net FPGA_JTAG_TDI to a trace which was originally on net FPGA_JTAG_TMS.
-	Assigned net FPGA_JTAG_TDO to a trace which was originally on net FPGA_JTAG_TCK.
-	Assigned net FPGA_JTAG_TDO to a via which was originally on net FPGA_JTAG_TCK.
-	Assigned net FPGA_JTAG_TDO to a trace which was originally on net FPGA_JTAG_TCK.
-	Assigned net FPGA_JTAG_TMS to a trace which was originally on net FPGA_JTAG_TDO.
-	Assigned net FPGA_JTAG_TMS to a via which was originally on net FPGA_JTAG_TDO.
-	Assigned net FPGA_JTAG_TMS to a trace which was originally on net FPGA_JTAG_TDO.
+	Assigned net GND to a via which was originally on net MUX_2_B.
+	Assigned net GND to a via which was originally on net MUX_2_B.
+	Assigned net GND to a trace which was originally on net MUX_2_B.
+	Unresolvable short found at point (88553238, 100118889).
+	Unresolvable short found at point (88553238, 100118889).
+	Assigned net GND to a via which was originally on net DRV_SIN_28.
+	Assigned net GND to a via which was originally on net DRV_SIN_28.
+	Assigned net GND to a trace which was originally on net DRV_SIN_28.
+	Unresolvable short found at point (87668236, 99233887).
+	Unresolvable short found at point (87668236, 99233887).
+	Assigned net GND to a via which was originally on net DRV_SIN_27.
+	Assigned net GND to a via which was originally on net DRV_SIN_27.
+	Assigned net GND to a trace which was originally on net DRV_SIN_27.
+	Unresolvable short found at point (86783234, 100118889).
+	Unresolvable short found at point (86783234, 100118889).
+	Assigned net GND to a via which was originally on net DRV_SIN_29.
+	Assigned net GND to a via which was originally on net DRV_SIN_29.
+	Assigned net GND to a trace which was originally on net DRV_SIN_29.
+	Unresolvable short found at point (85898232, 99233887).
+	Unresolvable short found at point (85898232, 99233887).
+	Unresolvable short found at point (-5410000, 102540000).
+	Unresolvable short found at point (-5410000, 102540000).
+	Unresolvable short found at point (-5410000, 102540000).
+	Unresolvable short found at point (-5410000, 102540000).
+	Unresolvable short found at point (2210000, 102540000).
+	Unresolvable short found at point (2210000, 102540000).
+	Unresolvable short found at point (2210000, 102540000).
+	Unresolvable short found at point (2210000, 102540000).
+	Unresolvable short found at point (-330000, 102540000).
+	Unresolvable short found at point (-330000, 102540000).
+	Unresolvable short found at point (-330000, 102540000).
+	Unresolvable short found at point (-330000, 102540000).
+	Unresolvable short found at point (9830000, 102540000).
+	Unresolvable short found at point (9830000, 102540000).
+	Unresolvable short found at point (9830000, 102540000).
+	Unresolvable short found at point (9830000, 102540000).
+	Unresolvable short found at point (19990000, 102540000).
+	Unresolvable short found at point (19990000, 102540000).
+	Unresolvable short found at point (19990000, 102540000).
+	Unresolvable short found at point (19990000, 102540000).
+	Unresolvable short found at point (12370000, 102540000).
+	Unresolvable short found at point (12370000, 102540000).
+	Unresolvable short found at point (12370000, 102540000).
+	Unresolvable short found at point (12370000, 102540000).
+	Unresolvable short found at point (-2870000, 102540000).
+	Unresolvable short found at point (-2870000, 102540000).
+	Unresolvable short found at point (-2870000, 102540000).
+	Unresolvable short found at point (-2870000, 102540000).
+	Unresolvable short found at point (-7950000, 102540000).
+	Unresolvable short found at point (-7950000, 102540000).
+	Unresolvable short found at point (-7950000, 102540000).
+	Unresolvable short found at point (7290000, 102540000).
+	Unresolvable short found at point (7290000, 102540000).
+	Unresolvable short found at point (7290000, 102540000).
+	Unresolvable short found at point (7290000, 102540000).
+	Unresolvable short found at point (14910000, 102540000).
+	Unresolvable short found at point (14910000, 102540000).
+	Unresolvable short found at point (14910000, 102540000).
+	Unresolvable short found at point (14910000, 102540000).
+	Unresolvable short found at point (4750000, 102540000).
+	Unresolvable short found at point (4750000, 102540000).
+	Unresolvable short found at point (4750000, 102540000).
+	Unresolvable short found at point (4750000, 102540000).
+	Unresolvable short found at point (22530000, 102540000).
+	Unresolvable short found at point (22530000, 102540000).
+	Unresolvable short found at point (22530000, 102540000).
+	Unresolvable short found at point (17450000, 102540000).
+	Unresolvable short found at point (17450000, 102540000).
+	Unresolvable short found at point (17450000, 102540000).
+	Unresolvable short found at point (17450000, 102540000).
+	Unresolvable short found at point (25070000, 102540000).
+	Unresolvable short found at point (25070000, 102540000).
+	Unresolvable short found at point (-10490000, 102540000).
+	Unresolvable short found at point (-10490000, 102540000).
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
