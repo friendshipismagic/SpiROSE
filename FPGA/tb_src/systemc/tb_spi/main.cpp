@@ -33,7 +33,7 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> spiConfigAvailable;
 
     sc_trace_file* traceFile;
-    traceFile = sc_create_vcd_trace_file("driver_controller");
+    traceFile = sc_create_vcd_trace_file("spi");
     sc_trace(traceFile, clk, "clk");
 
     Vspi dut("spi");
@@ -49,6 +49,12 @@ int sc_main(int argc, char** argv) {
     Monitor monitor("monitor");
     monitor.clk(clk);
     monitor.nrst(nrst);
+    monitor.ss(spiSs);
+    monitor.mosi(spiMosi);
+    monitor.miso(spiMiso);
+    monitor.newRotationDataAvailable(spiRotationDataAvailable);
+    monitor.configOut(spiDriverConfig);
+    monitor.newConfigAvailable(spiConfigAvailable);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
