@@ -7,8 +7,6 @@
 #include "monitor.hpp"
 #include "report_handler.hpp"
 
-constexpr int DRIVER_NB = 30;
-
 int sc_main(int argc, char** argv) {
     sc_report_handler::set_handler(report_handler);
     Verilated::commandArgs(argc, argv);
@@ -25,6 +23,7 @@ int sc_main(int argc, char** argv) {
     sc_clock clk("clk", T);
     sc_signal<bool> nrst("nrst");
 
+    sc_signal<bool> spiSck;
     sc_signal<bool> spiSs;
     sc_signal<bool> spiMosi;
     sc_signal<bool> spiMiso;
@@ -35,9 +34,18 @@ int sc_main(int argc, char** argv) {
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("spi");
     sc_trace(traceFile, clk, "clk");
+    sc_trace(traceFile, spiSck, "sck");
+    sc_trace(traceFile, nrst, "nrst");
+    sc_trace(traceFile, spiSs, "ss");
+    sc_trace(traceFile, spiMosi, "mosi");
+    sc_trace(traceFile, spiMiso, "miso");
+    sc_trace(traceFile, spiRotationDataAvailable,
+             "new_rotation_data_available");
+    sc_trace(traceFile, spiDriverConfig, "config_out");
+    sc_trace(traceFile, spiConfigAvailable, "new_config_available");
 
     Vspi dut("spi");
-    dut.sck(clk);
+    dut.sck(spiSck);
     dut.nrst(nrst);
     dut.ss(spiSs);
     dut.mosi(spiMosi);
@@ -48,6 +56,7 @@ int sc_main(int argc, char** argv) {
 
     Monitor monitor("monitor");
     monitor.clk(clk);
+    monitor.sck(spiSck);
     monitor.nrst(nrst);
     monitor.ss(spiSs);
     monitor.mosi(spiMosi);
