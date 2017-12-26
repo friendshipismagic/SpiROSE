@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                       06:07 PM Friday, December 22, 2017
- Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+                       10:49 PM Tuesday, December 26, 2017
+   Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -54,7 +54,7 @@ Version:  01.01.00
           Part Numb: 70-0014 -> Vend Part: 70-0014 
           Part Numb: 70-0015 -> Vend Part: 70-0015 
           Part Numb: 70-0103 -> Vend Part: 70-0103 
-          Part Numb: 70-0107 -> Vend Part: 70-0107 
+          Part Numb: 70-0109 -> Vend Part: 70-0109 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
           Part Numb: 80-0072 -> Vend Part: 80-0072 
 
@@ -84,8 +84,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 146 Symbols:
-             146  *********************************************
+     Clustering 142 Symbols:
+             142  *****************************************
              100  **************************************************
               50  **************************************************
      Clustering is Complete
@@ -95,7 +95,7 @@ Version:  01.01.00
 
 
      143 nets were found containing 760 pins
-     141 components were found
+     137 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -109,8 +109,8 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       06:07 PM Friday, December 22, 2017
- Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+                       10:49 PM Tuesday, December 26, 2017
+   Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -122,40 +122,8 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     WARNING:  The "SLM-129-01-G-S" cell used by "J4" in the Layout is not
-      valid for a "70-0107" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "SLM-129-01-G-S" is being replaced by cell "TMS-114-01-G-S".
+     The following 22 components have not been placed:
 
-     WARNING:  The "SLM-129-01-G-S" cell used by "J5" in the Layout is not
-      valid for a "70-0107" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "SLM-129-01-G-S" is being replaced by cell "TMS-114-01-G-S".
-
-     WARNING:  The "SLM-129-01-G-S" cell used by "J6" in the Layout is not
-      valid for a "70-0107" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "SLM-129-01-G-S" is being replaced by cell "TMS-114-01-G-S".
-
-     WARNING:  The "SLM-129-01-G-S" cell used by "J7" in the Layout is not
-      valid for a "70-0107" Part Number.
-      Since this cell is unplaced, it will be removed and reinserted as a
-      valid unplaced cell.
-     INFO: Cell "SLM-129-01-G-S" is being replaced by cell "TMS-114-01-G-S".
-
-     The following 30 components have not been placed:
-
-        J4
-        J5
-        J6
-        J7
-        J8
-        J9
-        J10
-        J11
         PT1
         PT2
         PT3
@@ -179,7 +147,7 @@ Version:  02.11.12
         PT21
         PT22
 
-     Netload completed successfully with 4 warning(s).
+     Netload completed successfully with 0 warning(s).
      
      Back Annotating...
 

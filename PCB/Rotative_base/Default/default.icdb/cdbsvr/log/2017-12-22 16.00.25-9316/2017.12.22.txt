@@ -1,0 +1,348 @@
+[2017.12.22 16:00:25] [0000m.00s.061ms] [0] WELCOME
+[2017.12.22 16:00:25] [0000m.00s.061ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.22 16:00:25] [0000m.00s.061ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.22 16:00:25] [0000m.00s.061ms] [1] Base flow version [VX.2.2]
+[2017.12.22 16:00:25] [0000m.00s.061ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.22 16:00:25] [0000m.00s.061ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.22 16:00:25] [0000m.00s.062ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [1] Machine [DESKTOP-Q0OU6Q6]  IP [10.0.75.1,127.0.0.1,172.24.149.193,192.168.0.103]  User [janni]  PID [9316]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [1] Operating system [Microsoft Business Edition, 64-bit (build 9200)]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [1] Current working dir [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Calibre2\;C:\Program Files\nodejs\;C:\Users\janni\.cargo\bin;C:\Users\janni\AppData\Local\Microsoft\WindowsApps;C:\Users\janni\AppData\Local\atom\bin;C:\Users\janni\AppData\Roaming\npm;C:\Users\janni\AppData\Local\GitHubDesktop\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [1] SDD_PLATFORM [win32]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.22 16:00:25] [0000m.00s.069ms] [2] S: Loading config files
+[2017.12.22 16:00:25] [0000m.00s.075ms] [1] Config file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.22 16:00:25] [0000m.00s.075ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2017.12.22 16:00:25] [0000m.00s.077ms] [3] S: Config loaded
+[2017.12.22 16:00:25] [0000m.00s.104ms] [0] S: Project path [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb] on file system [NTFS]
+[2017.12.22 16:00:25] [0000m.00s.104ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.22 16:00:25] [0000m.00s.104ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.22 16:00:25] [0000m.00s.104ms] [0] S: Multi-user mode (config)
+[2017.12.22 16:00:25] [0000m.00s.104ms] [0] S: Event polling mode autodetection
+[2017.12.22 16:00:25] [0000m.00s.105ms] [0] S: Started up automatically by iCDB Client: DESKTOP-Q0OU6Q6:janni:2608
+[2017.12.22 16:00:25] [0000m.00s.105ms] [0] S: Auto close mode
+[2017.12.22 16:00:25] [0000m.00s.105ms] [0] S: Database ID [09d2-b93f-0aa9-e950-21c2-d3a7-1c2d-3a50-f9dc-bccb-8b3a-259e]
+[2017.12.22 16:00:25] [0000m.00s.105ms] [0] PathTranslator: BEGIN dumping
+[2017.12.22 16:00:25] [0000m.00s.105ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.22 16:00:25] [0000m.00s.105ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.22 16:00:25] [0000m.00s.105ms] [0] PathTranslator: END dumping
+[2017.12.22 16:00:25] [0000m.00s.105ms] [0] S: START
+[2017.12.22 16:00:25] [0000m.00s.105ms] [0] S: Server startup lock file created
+[2017.12.22 16:00:25] [0000m.00s.106ms] [0] S: Listening for client connections on port [10001]
+[2017.12.22 16:00:25] [0000m.00s.107ms] [0] S: Server network ID [DESKTOP-Q0OU6Q6:10.0.75.1,172.24.149.193,192.168.0.103,DESKTOP-Q0OU6Q6:10001]
+[2017.12.22 16:00:25] [0000m.00s.107ms] [0] S: Server GUID [459c-277d-f842-21a1-91c2-d3ae-1c2d-3a50-b83c-bccb-8b3a-259e]
+[2017.12.22 16:00:25] [0000m.00s.107ms] [0] S: Project GUID [09d2-b93f-0aa9-e950-21c2-d3a7-1c2d-3a50-f9dc-bccb-8b3a-259e]
+[2017.12.22 16:00:25] [0000m.00s.113ms] [0] S: Wrote data to server address file
+[2017.12.22 16:00:25] [0000m.00s.114ms] [0] S: Server startup lock file removed
+[2017.12.22 16:00:25] [0000m.00s.114ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.22 16:00:25] [0000m.00s.154ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.22 16:00:25] [0000m.00s.154ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.22 16:00:25] [0000m.00s.154ms] [0] S: Local disc access time: 51 us
+[2017.12.22 16:00:25] [0000m.00s.154ms] [0] S: File server access time: 57 us
+[2017.12.22 16:00:25] [0000m.00s.156ms] [0] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] size [323080 (315.5 kB)]
+[2017.12.22 16:00:25] [0000m.00s.156ms] [1] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.22 16:00:25] [0000m.00s.156ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:25] [0000m.00s.156ms] [0] Database GUARD OK: [323080]
+[2017.12.22 16:00:25] [0000m.00s.157ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:25] [0000m.00s.157ms] [0] Database GUARD OK: [323080]
+[2017.12.22 16:00:25] [0000m.00s.157ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:25] [0000m.00s.158ms] [0] Database GUARD OK: [323080]
+[2017.12.22 16:00:25] [0000m.00s.158ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:25] [0000m.00s.158ms] [0] Database GUARD OK: [323080]
+[2017.12.22 16:00:25] [0000m.00s.158ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:25] [0000m.00s.158ms] [0] Database GUARD OK: [323080]
+[2017.12.22 16:00:25] [0000m.00s.158ms] [0] SingleFile: [1472-4aa2-b111-594f] SFI version check [1009] [1009]
+[2017.12.22 16:00:25] [0000m.00s.170ms] [0] SingleFile: [1472-4aa2-b111-594f] Database SFI header has been read in [12ms 27us]
+[2017.12.22 16:00:25] [0000m.00s.177ms] [0] iCDB Server PI: Server & plugin session [4896]
+[2017.12.22 16:00:25] [0000m.00s.177ms] [0] iCDB Server PI: Opening database [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb]
+[2017.12.22 16:00:25] [0000m.00s.177ms] [0] iCDB Server PI: Database [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb] opened
+[2017.12.22 16:00:25] [0000m.00s.200ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.22 16:00:25] [0000m.00s.200ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.22 16:00:25] [0000m.00s.282ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=d825-d31d-cb4f-e66d-fd66-50a4-e665-0a50-e1d6-b6d5-d4c3-428b] up to date
+[2017.12.22 16:00:25] [0000m.00s.293ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.22 16:00:25] [0000m.00s.294ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.22 16:00:25] [0000m.00s.294ms] [0] S: iCDB database loaded
+[2017.12.22 16:00:25] [0000m.00s.295ms] [0] S: Starting threads
+[2017.12.22 16:00:25] [0000m.00s.295ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.22 16:00:25] [0000m.00s.295ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.22 16:00:25] [0000m.00s.295ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.22 16:00:25] [0000m.00s.297ms] [0] IT: Session [4897] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2608] created
+[2017.12.22 16:00:25] [0000m.00s.297ms] [1] SC[4897]: Registered sub-client [DCDV] with ID [1] for session ID [4897] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2608]
+[2017.12.22 16:00:25] [0000m.00s.304ms] [0] MWT: WindowProc: WM_NCCREATE
+[2017.12.22 16:00:25] [0000m.00s.311ms] [0] IT: iCDB Server Monitor session [1] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12036] created
+[2017.12.22 16:00:25] [0000m.00s.312ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2017.12.22 16:00:25] [0000m.00s.397ms] [1] CMT: There are [1] clients now: 4897
+[2017.12.22 16:00:26] [0000m.00s.817ms] [0] IT: Session [4898] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [3360] created
+[2017.12.22 16:00:26] [0000m.00s.818ms] [1] SC[4898]: Registered sub-client [ICDBC] with ID [1] for session ID [4898] host [DESKTOP-Q0OU6Q6] user [janni] process ID [3360]
+[2017.12.22 16:00:26] [0000m.00s.845ms] [1] SC[4898]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4898] host [DESKTOP-Q0OU6Q6] user [janni] process ID [3360]
+[2017.12.22 16:00:26] [0000m.00s.900ms] [1] CMT: There are [2] clients now: 4897, 4898
+[2017.12.22 16:00:26] [0000m.01s.099ms] [1] SC[4898]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4898] host [DESKTOP-Q0OU6Q6] user [janni] process ID [3360]
+[2017.12.22 16:00:26] [0000m.01s.102ms] [1] SC[4898]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4898] host [DESKTOP-Q0OU6Q6] user [janni] process ID [3360]
+[2017.12.22 16:00:26] [0000m.01s.203ms] [1] CMT: Removed client [4898]
+[2017.12.22 16:00:26] [0000m.01s.203ms] [1] CMT: There are [1] clients now: 4897
+[2017.12.22 16:00:27] [0000m.01s.868ms] [0] IT: Session [4899] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [10796] created
+[2017.12.22 16:00:27] [0000m.01s.871ms] [1] SC[4899]: Registered sub-client [Packager_31867734] with ID [1] for session ID [4899] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10796]
+[2017.12.22 16:00:27] [0000m.01s.911ms] [1] CMT: There are [2] clients now: 4897, 4899
+[2017.12.22 16:00:27] [0000m.02s.475ms] [1] SC[4899]: UnRegistered sub-client [Packager_31867734] with ID [1] for session ID [4899] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10796]
+[2017.12.22 16:00:27] [0000m.02s.531ms] [1] CMT: Removed client [4899]
+[2017.12.22 16:00:27] [0000m.02s.531ms] [1] CMT: There are [1] clients now: 4897
+[2017.12.22 16:00:46] [0000m.21s.333ms] [0] DFAMT: File server access time: 123 us
+[2017.12.22 16:03:21] [0002m.56s.561ms] [0] IT: Session [4900] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2392] created
+[2017.12.22 16:03:21] [0002m.56s.561ms] [1] ProjectBackupManager: Client [ClientData[ClientNetAddress[DESKTOP-Q0OU6Q6] # ClientUserName[janni] # ClientProcessID[2392] # SessionID[4900] # Type[0]] # SubClientData[SubClientName[] # SubClientID[0]]] set project file (.prj): local path [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Rotative_base.prj], global path [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Rotative_base.prj]
+[2017.12.22 16:03:21] [0002m.56s.596ms] [1] CMT: There are [2] clients now: 4897, 4900
+[2017.12.22 16:03:21] [0002m.56s.645ms] [0] PrjBackupMgr: Migrating iCDB upgrade backups from directory [Rotative_base\Default\default.icdb\cdbback] to Project Backup format.
+[2017.12.22 16:03:21] [0002m.56s.650ms] [0] PrjBackupMgr: Migrating iCDB upgrade backup file [2017-12-22 16.00.19-11328].
+[2017.12.22 16:03:21] [0002m.56s.712ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-22 16.00.19 - consDefUpgr.zip] with GUID [dcc7-e98a-e455-6a62-9cc2-d3ae-cc2d-3a50-7e5b-bccb-8b3a-259e]
+[2017.12.22 16:03:21] [0002m.56s.717ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[4b22-aceb-0f64-312b-3c9b-c3a8-c9bc-3a50-d621-40df-7f46-e506] CreationTime[Friday, December 22, 2017 08:51:53] Type[ConsDefUpgrade] Creator[iCDB Server (2017-12-22 08.51.59-3940)] ApplicationName[iCDB Server (2017-12-22 08.51.53-3132)] UserName[Alexis] MachineName[ALEXIS-PC] Description[Before constraint definitions upgrade using flow install:\n    Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3\n    Flow Id: EEVX.2.2\n    Install Id: 1589114; 1589126; 1632660\n    iCDB Build Id: 7609807\n    iCDB Version: 3300] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-22 08.51.53 - consDefUpgr.zip] BackupFileSize[538806] Persistent[FALSE]
+[2017.12.22 16:03:21] [0002m.56s.723ms] [0] PrjBackupMgr: Project Backup file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-22 08.51.53 - consDefUpgr.zip] with GUID [4b22-aceb-0f64-312b-3c9b-c3a8-c9bc-3a50-d621-40df-7f46-e506] removed
+[2017.12.22 16:03:21] [0002m.56s.730ms] [1] PrjBackupMgr: Migrated iCDB content backup file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbback\2017-12-22 16.00.19-11328.zip] removed
+[2017.12.22 16:03:21] [0002m.56s.736ms] [0] PrjBackupMgr: Successfully migrated iCDB upgrade backup file [2017-12-22 16.00.19-11328] to Project Backup format [2017-12-22 16.00.19 - consDefUpgr.zip]
+[2017.12.22 16:03:21] [0002m.56s.737ms] [1] SC[4900]: Registered sub-client [Expedition PCB_32042421] with ID [1] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:03:21] [0002m.56s.804ms] [1] SC[4900]: Registered sub-client [EEVM] with ID [2] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:03:22] [0002m.56s.919ms] [1] SC[4900]: UnRegistered sub-client [EEVM] with ID [2] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:03:23] [0002m.57s.986ms] [1] SC[4900]: Registered sub-client [JobPrefsDBPI_32043890] with ID [3] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:03:23] [0002m.58s.001ms] [1] SC[4900]: UnRegistered sub-client [JobPrefsDBPI_32043890] with ID [3] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:03:25] [0003m.00s.705ms] [1] SC[4900]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:03:25] [0003m.00s.708ms] [1] SC[4900]: Registered sub-client [StartServerClient7a0] with ID [5] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:03:25] [0003m.00s.709ms] [1] SC[4900]: UnRegistered sub-client [StartServerClient7a0] with ID [5] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:08:09] [0007m.44s.433ms] [1] SC[4900]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:08:11] [0007m.45s.811ms] [1] SC[4900]: UnRegistered sub-client [Expedition PCB_32042421] with ID [1] for session ID [4900] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:08:11] [0007m.45s.877ms] [1] CMT: Removed client [4900]
+[2017.12.22 16:08:11] [0007m.45s.877ms] [1] CMT: There are [1] clients now: 4897
+[2017.12.22 16:08:11] [0007m.46s.492ms] [0] IT: Session [4901] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2392] created
+[2017.12.22 16:08:11] [0007m.46s.493ms] [1] SC[4901]: Registered sub-client [Expedition PCB_32332359] with ID [1] for session ID [4901] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:08:11] [0007m.46s.581ms] [1] CMT: There are [2] clients now: 4897, 4901
+[2017.12.22 16:08:11] [0007m.46s.606ms] [1] SC[4901]: Registered sub-client [JobPrefsDBPI_32332515] with ID [2] for session ID [4901] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:08:11] [0007m.46s.621ms] [1] SC[4901]: UnRegistered sub-client [JobPrefsDBPI_32332515] with ID [2] for session ID [4901] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:08:13] [0007m.47s.907ms] [1] SC[4901]: Registered sub-client [ExpeditionCrossProber] with ID [3] for session ID [4901] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:08:13] [0007m.47s.910ms] [1] SC[4901]: Registered sub-client [StartServerClient7a0] with ID [4] for session ID [4901] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 16:08:13] [0007m.47s.910ms] [1] SC[4901]: UnRegistered sub-client [StartServerClient7a0] with ID [4] for session ID [4901] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2392]
+[2017.12.22 17:58:02] [0117m.37s.236ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-22 17.58.01 - auto.zip] with GUID [27d6-9760-173e-760b-9a74-d3ae-a74d-3a50-3e2d-bccb-8b3a-259e]
+[2017.12.22 17:58:02] [0117m.37s.241ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[796d-dc51-7c0f-51f7-33b5-c3a8-3b5c-3a50-3066-f060-1af8-3773] CreationTime[Friday, December 22, 2017 02:09:07] Type[Autosave] Creator[iCDB Server (2017-12-22 01.53.05-18936)] ApplicationName[iCDB Server (2017-12-22 01.53.05-18936)] UserName[Alexis] MachineName[ALEXIS-PC] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-22 02.09.07 - auto.zip] BackupFileSize[1136036] Persistent[FALSE]
+[2017.12.22 17:58:02] [0117m.37s.247ms] [0] PrjBackupMgr: Project Backup file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-22 02.09.07 - auto.zip] with GUID [796d-dc51-7c0f-51f7-33b5-c3a8-3b5c-3a50-3066-f060-1af8-3773] removed
+[2017.12.22 17:58:02] [0117m.37s.249ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[27d6-9760-173e-760b-9a74-d3ae-a74d-3a50-3e2d-bccb-8b3a-259e] CreationTime[Friday, December 22, 2017 17:58:01] Type[Autosave] Creator[iCDB Server (2017-12-22 16.00.25-9316)] ApplicationName[iCDB Server (2017-12-22 16.00.25-9316)] UserName[janni] MachineName[DESKTOP-Q0OU6Q6] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-22 17.58.01 - auto.zip] BackupFileSize[1108370] Persistent[FALSE]
+[2017.12.22 23:48:30] [0468m.05s.359ms] [0] MWT: PBT_APMSTANDBY || PBT_APMSUSPEND
+[2017.12.22 23:48:30] [0468m.05s.359ms] [0] MWT: Requesting emergency server stop: System goes to SLEEP
+[2017.12.22 23:48:30] [0468m.05s.360ms] [0] Removing server address file.
+[2017.12.22 23:48:30] [0468m.05s.361ms] [7] CST[4897]: Sent command [02E28ED0]
+[2017.12.22 23:48:30] [0468m.05s.361ms] [7] CST[4897]: Trying to send command [02E28EB8] of size [47]
+[2017.12.22 23:48:30] [0468m.05s.361ms] [7] CST[4897]: Sent command [02E28EB8]
+[2017.12.22 23:48:30] [0468m.05s.455ms] [0] S: Closing server
+[2017.12.22 23:48:30] [0468m.05s.456ms] [4] SMCL: Distributing notify to registered [General] iCDB Server Manager clients [NotifyServerStatus @ Version[1] # Id[Sender GUID[459c-277d-f842-21a1-91c2-d3ae-1c2d-3a50-b83c-bccb-8b3a-259e] Command number[1318]] # Proxy[EMPTY] # RequestId[Sender GUID[0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000] Command number[0]] # ReplyPort[10001] # Status [Closing]]
+[2017.12.22 23:48:30] [0468m.05s.456ms] [3] IT: FREE
+[2017.12.22 23:48:30] [0468m.05s.456ms] [4] IT: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.456ms] [4] IT: Empty client connection popped from the waiting queue
+[2017.12.22 23:48:30] [0468m.05s.456ms] [2] IT: STOP
+[2017.12.22 23:48:30] [0468m.05s.457ms] [3] ET: Suspend request
+[2017.12.22 23:48:30] [0468m.05s.457ms] [2] ET: SUSPENDED
+[2017.12.22 23:48:30] [0468m.05s.457ms] [3] ET: Suspend request finished
+[2017.12.22 23:48:30] [0468m.05s.457ms] [2] SCL: Removing all clients
+[2017.12.22 23:48:30] [0468m.05s.457ms] [3] SC[4897]: FREE
+[2017.12.22 23:48:30] [0468m.05s.458ms] [4] SMCL: Distributing notify to registered [ClientList] iCDB Server Manager clients [NotifyServerClientRemove @ Version[1] # Id[Sender GUID[459c-277d-f842-21a1-91c2-d3ae-1c2d-3a50-b83c-bccb-8b3a-259e] Command number[1319]] # Proxy[EMPTY] # RequestId[Sender GUID[0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000] Command number[0]] # ReplyPort[10001] # Client [Address[DESKTOP-Q0OU6Q6] User[janni] PID[2608] Session[4897] Status[Active] Dead elapsed time sec[0] Version[2.202] Sub-clients[ ( Sub-client[Name[DCDV] Id[1]])]]]
+[2017.12.22 23:48:30] [0468m.05s.458ms] [3] CRT[4897]: FREE
+[2017.12.22 23:48:30] [0468m.05s.458ms] [4] CRT[4897]: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.555ms] [2] CRT[4897]: STOP
+[2017.12.22 23:48:30] [0468m.05s.555ms] [3] CST[4897]: FREE
+[2017.12.22 23:48:30] [0468m.05s.556ms] [4] CST[4897]: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.556ms] [2] CST[4897]: STOP
+[2017.12.22 23:48:30] [0468m.05s.556ms] [1] SC[4897]: WARNING: Session is still active while destroying
+[2017.12.22 23:48:30] [0468m.05s.556ms] [2] SC[4897]: Disconnecting from peer
+[2017.12.22 23:48:30] [0468m.05s.557ms] [6] iCDB Server PI: ReleaseOpenSnapshotRefCount [1]: 0
+[2017.12.22 23:48:30] [0468m.05s.557ms] [3] iCDB Server PI: No one is using snapshot [1] - removing from cache
+[2017.12.22 23:48:30] [0468m.05s.557ms] [6] iCDB Storage Server: Checking existence of file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbblks\2000000010000050.blk\rbcatl.v]
+[2017.12.22 23:48:30] [0468m.05s.557ms] [6] iCDB Storage Server: File [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbblks\2000000010000050.blk\rbcatl.v] doesn't exist
+[2017.12.22 23:48:30] [0468m.05s.567ms] [6] iCDB Storage Server: Checking existence of file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\uids]
+[2017.12.22 23:48:30] [0468m.05s.567ms] [6] iCDB Storage Server: File [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\uids] exists
+[2017.12.22 23:48:30] [0468m.05s.569ms] [6] ServerObserverSnapshot: OnDestruct SnapshotID[1]
+[2017.12.22 23:48:30] [0468m.05s.569ms] [6] iCDB Storage Server: Saving all modified files
+[2017.12.22 23:48:30] [0468m.05s.569ms] [6] ServerObserverSnapshot: OnDestruct Finish
+[2017.12.22 23:48:30] [0468m.05s.569ms] [6] iCDB Storage Server: Unloading directory [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbblks\2000000010000050.blk\blk_obj_state]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbblks\2000000010000050.blk\blkatl.v]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcatlg\catlgatl.v]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcatlg\grpatl.v]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcatlg\grpobj]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcmpcache\cmpatl.v]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcmps\cmp_obj_state]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcmps\cmpatl.v]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcnfgs\2000000010000050.blk\ces_obj_state]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcnfgs\2000000010000050.blk\cesatl.v]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcnfgs\2000000010000050.blk\cnfgatl.v]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\dsgn_obj_state]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\oryg]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\params]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\uids]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [5] iCDB Server PI: Snapshot [1] removed from cache
+[2017.12.22 23:48:30] [0468m.05s.570ms] [3] SC[4901]: FREE
+[2017.12.22 23:48:30] [0468m.05s.570ms] [4] SMCL: Distributing notify to registered [ClientList] iCDB Server Manager clients [NotifyServerClientRemove @ Version[1] # Id[Sender GUID[459c-277d-f842-21a1-91c2-d3ae-1c2d-3a50-b83c-bccb-8b3a-259e] Command number[1320]] # Proxy[EMPTY] # RequestId[Sender GUID[0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000] Command number[0]] # ReplyPort[10001] # Client [Address[DESKTOP-Q0OU6Q6] User[janni] PID[2392] Session[4901] Status[Active] Dead elapsed time sec[0] Version[2.202] Sub-clients[ ( Sub-client[Name[Expedition PCB_32332359] Id[1]], Sub-client[Name[ExpeditionCrossProber] Id[3]])]]]
+[2017.12.22 23:48:30] [0468m.05s.570ms] [3] CRT[4901]: FREE
+[2017.12.22 23:48:30] [0468m.05s.570ms] [4] CRT[4901]: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.595ms] [0] SD[1]: ERROR: Receiving command: Socket Exception: Category[Socket] Error[ConnectionClosed] Description[Connection closed] Message[]
+[2017.12.22 23:48:30] [0468m.05s.595ms] [2] SD[1]: Setting status to FINISHED
+[2017.12.22 23:48:30] [0468m.05s.596ms] [7] SD[1]: Sending logout notify: SvrNotifyLogout @ Version[VX.2.2.0] # Id[31467]
+[2017.12.22 23:48:30] [0468m.05s.596ms] [2] SD[1]: Disconnecting from peer
+[2017.12.22 23:48:30] [0468m.05s.596ms] [2] DRT[1]: STOP
+[2017.12.22 23:48:30] [0468m.05s.596ms] [4] DMT: Dispatching command [DiagFinished # Diag Id [1]]
+[2017.12.22 23:48:30] [0468m.05s.596ms] [5] DMT: Trying to remove iCDB Server Monitor [1]
+[2017.12.22 23:48:30] [0468m.05s.596ms] [4] SDL: Removing iCDB Server Monitor [1]
+[2017.12.22 23:48:30] [0468m.05s.596ms] [3] SD[1]: FREE
+[2017.12.22 23:48:30] [0468m.05s.596ms] [3] DRT[1]: FREE
+[2017.12.22 23:48:30] [0468m.05s.596ms] [4] DRT[1]: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.596ms] [3] DST[1]: FREE
+[2017.12.22 23:48:30] [0468m.05s.597ms] [4] DST[1]: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.597ms] [2] DST[1]: EXIT graceful
+[2017.12.22 23:48:30] [0468m.05s.597ms] [2] DST[1]: STOP
+[2017.12.22 23:48:30] [0468m.05s.597ms] [4] SDL: iCDB Server Monitor [1] removed
+[2017.12.22 23:48:30] [0468m.05s.597ms] [1] DMT: Removed iCDB Server Monitor [1]
+[2017.12.22 23:48:30] [0468m.05s.655ms] [2] CRT[4901]: STOP
+[2017.12.22 23:48:30] [0468m.05s.663ms] [3] CST[4901]: FREE
+[2017.12.22 23:48:30] [0468m.05s.664ms] [4] CST[4901]: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.664ms] [2] CST[4901]: STOP
+[2017.12.22 23:48:30] [0468m.05s.674ms] [1] SC[4901]: WARNING: Session is still active while destroying
+[2017.12.22 23:48:30] [0468m.05s.674ms] [2] SC[4901]: Disconnecting from peer
+[2017.12.22 23:48:30] [0468m.05s.674ms] [6] iCDB Server PI: ReleaseOpenSnapshotRefCount [2]: 0
+[2017.12.22 23:48:30] [0468m.05s.674ms] [3] iCDB Server PI: No one is using snapshot [2] - removing from cache
+[2017.12.22 23:48:30] [0468m.05s.674ms] [6] iCDB Storage Server: Checking existence of file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbblks\2000000010000050.blk\rbcatl.v]
+[2017.12.22 23:48:30] [0468m.05s.676ms] [6] iCDB Storage Server: File [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbblks\2000000010000050.blk\rbcatl.v] doesn't exist
+[2017.12.22 23:48:30] [0468m.05s.681ms] [6] iCDB Storage Server: Checking existence of file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\uids]
+[2017.12.22 23:48:30] [0468m.05s.681ms] [6] iCDB Storage Server: File [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\uids] exists
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] ServerObserverSnapshot: OnDestruct SnapshotID[2]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Saving all modified files
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] ServerObserverSnapshot: OnDestruct Finish
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading directory [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbblks\2000000010000050.blk\blk_obj_state]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbblks\2000000010000050.blk\blkatl.v]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcatlg\catlgatl.v]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcatlg\grpatl.v]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcatlg\grpobj]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcmpcache\cmpatl.v]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcmps\cmpatl.v]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcnfgs\2000000010000050.blk\ces_obj_state]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcnfgs\2000000010000050.blk\cesatl.v]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcnfgs\2000000010000050.blk\cnfgatl.v]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\oryg]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [6] iCDB Storage Server: Unloading file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\uids]
+[2017.12.22 23:48:30] [0468m.05s.683ms] [5] iCDB Server PI: Snapshot [2] removed from cache
+[2017.12.22 23:48:30] [0468m.05s.683ms] [3] ET: Discarding pending commands
+[2017.12.22 23:48:30] [0468m.05s.683ms] [3] ET: Resume request
+[2017.12.22 23:48:30] [0468m.05s.683ms] [3] ET: Resume request finished
+[2017.12.22 23:48:30] [0468m.05s.683ms] [2] ET: RESUMED
+[2017.12.22 23:48:30] [0468m.05s.686ms] [2] PrjBackupEngine: STOP
+[2017.12.22 23:48:30] [0468m.05s.686ms] [3] PrjBackupEngine: FREE
+[2017.12.22 23:48:30] [0468m.05s.686ms] [4] PrjBackupEngine: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.686ms] [3] ET: FREE
+[2017.12.22 23:48:30] [0468m.05s.686ms] [4] ET: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.686ms] [2] ET: STOP
+[2017.12.22 23:48:30] [0468m.05s.686ms] [2] SCL: Stopping all send threads
+[2017.12.22 23:48:30] [0468m.05s.686ms] [3] CMT: FREE
+[2017.12.22 23:48:30] [0468m.05s.686ms] [4] CMT: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.697ms] [2] CMT: STOP
+[2017.12.22 23:48:30] [0468m.05s.698ms] [3] DMT: FREE
+[2017.12.22 23:48:30] [0468m.05s.698ms] [4] DMT: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.698ms] [2] DMT: STOP
+[2017.12.22 23:48:30] [0468m.05s.698ms] [3] DFAMT: FREE
+[2017.12.22 23:48:30] [0468m.05s.698ms] [4] DFAMT: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.699ms] [2] DFAMT: Filer project path [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb] access monitoring ended
+[2017.12.22 23:48:30] [0468m.05s.699ms] [2] DFAMT: STOP
+[2017.12.22 23:48:30] [0468m.05s.700ms] [4] DFAMT: FINISHED
+[2017.12.22 23:48:30] [0468m.05s.700ms] [3] DiagSystemMemoryMonitorThread: FREE
+[2017.12.22 23:48:30] [0468m.05s.700ms] [4] DiagSystemMemoryMonitorThread: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.712ms] [2] DiagSystemMemoryMonitorThread: System memory usage monitoring ended
+[2017.12.22 23:48:30] [0468m.05s.712ms] [2] DiagSystemMemoryMonitorThread: STOP
+[2017.12.22 23:48:30] [0468m.05s.712ms] [4] DiagSystemMemoryMonitorThread: FINISHED
+[2017.12.22 23:48:30] [0468m.05s.712ms] [4] DMT: FINISHED
+[2017.12.22 23:48:30] [0468m.05s.712ms] [2] SCL: Removing all clients
+[2017.12.22 23:48:30] [0468m.05s.713ms] [2] iCDB Server PI: Unloading observers
+[2017.12.22 23:48:30] [0468m.05s.713ms] [2] iCDB Server PI: Observers unloaded
+[2017.12.22 23:48:30] [0468m.05s.713ms] [0] iCDB Server PI: Closing plugins
+[2017.12.22 23:48:30] [0468m.05s.713ms] [2] iCDB Server PI: Closing PIM plugin
+[2017.12.22 23:48:30] [0468m.05s.713ms] [5] iCDB PIM Wrapper: FREE
+[2017.12.22 23:48:30] [0468m.05s.715ms] [2] iCDB Server PI: Closing ENetGen plugin
+[2017.12.22 23:48:30] [0468m.05s.715ms] [5] iCDB ENetGen Wrapper: FREE
+[2017.12.22 23:48:30] [0468m.05s.715ms] [0] iCDB Server PI: Plugins closed
+[2017.12.22 23:48:30] [0468m.05s.716ms] [0] iCDB Server PI: Unloading database
+[2017.12.22 23:48:30] [0468m.05s.716ms] [7] DCM: CDBCesDefConstraintManager::LoadVersionInfo(force[0] cumulativesaveVersion[00000000] transporter[00000000]) -- isModified[0] upgradeFlag[0]
+[2017.12.22 23:48:30] [0468m.05s.716ms] [6] iCDB Storage Server: Saving all modified files
+[2017.12.22 23:48:30] [0468m.05s.716ms] [0] iCDB Server PI: Saving storage
+[2017.12.22 23:48:30] [0468m.05s.716ms] [6] iCDB Storage Server: Saving all modified files
+[2017.12.22 23:48:30] [0468m.05s.716ms] [0] iCDB Server PI: Closing database
+[2017.12.22 23:48:30] [0468m.05s.716ms] [7] Holes::writing holes [4] prev [0] from [448700] 
+[2017.12.22 23:48:30] [0468m.05s.716ms] [7] Holes::write <310716,313403>
+[2017.12.22 23:48:30] [0468m.05s.716ms] [7] Holes::write <322556,322939>
+[2017.12.22 23:48:30] [0468m.05s.716ms] [7] Holes::write <343356,385723>
+[2017.12.22 23:48:30] [0468m.05s.717ms] [7] Holes::write <430524,438331>
+[2017.12.22 23:48:30] [0468m.05s.718ms] [7] Holes have been successfully saved 4 CRC [1731634010]
+[2017.12.22 23:48:30] [0468m.05s.718ms] [1] iCDB Server PI: Stats: Database defragmentation: max[3] avg[1] holes[10%] data[97%]
+[2017.12.22 23:48:30] [0468m.05s.718ms] [1] iCDB Server PI: Stats: Database file size [448736 (438.2 kB)]
+[2017.12.22 23:48:30] [0468m.05s.718ms] [7] Holes::writing holes [4] prev [4] from [448732] 
+[2017.12.22 23:48:30] [0468m.05s.718ms] [7] Holes::write <310716,313403>
+[2017.12.22 23:48:30] [0468m.05s.718ms] [7] Holes::write <322556,322939>
+[2017.12.22 23:48:30] [0468m.05s.718ms] [7] Holes::write <343356,385723>
+[2017.12.22 23:48:30] [0468m.05s.718ms] [7] Holes::write <430524,438331>
+[2017.12.22 23:48:30] [0468m.05s.719ms] [7] Holes have been successfully saved 4 CRC [1731634010]
+[2017.12.22 23:48:30] [0468m.05s.719ms] [7] DCM: CDBCesDefConstraintManager::UnLoad()
+[2017.12.22 23:48:30] [0468m.05s.720ms] [3] iCDB Storage Server: FREE
+[2017.12.22 23:48:30] [0468m.05s.720ms] [3] iCDB Storage Server Save Thread: FREE
+[2017.12.22 23:48:30] [0468m.05s.720ms] [4] iCDB Storage Server Save Thread: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.720ms] [2] iCDB Storage Server Save Thread: STOP
+[2017.12.22 23:48:30] [0468m.05s.721ms] [3] iCDB Storage Server Backup Thread: FREE
+[2017.12.22 23:48:30] [0468m.05s.721ms] [4] iCDB Storage Server Backup Thread: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.722ms] [2] iCDB Storage Server Backup Thread: STOP
+[2017.12.22 23:48:30] [0468m.05s.728ms] [3] SingleFile: [0000-0000-0000-0000] Modification time updated for file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat]
+[2017.12.22 23:48:30] [0468m.05s.728ms] [3] SingleFile: [0000-0000-0000-0000] Closing file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] restrained
+[2017.12.22 23:48:30] [0468m.05s.729ms] [0] iCDB Server PI: Database closed
+[2017.12.22 23:48:30] [0468m.05s.729ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [202763] ticks
+[2017.12.22 23:48:30] [0468m.05s.729ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [70469] microseconds
+[2017.12.22 23:48:30] [0468m.05s.729ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [1015]
+[2017.12.22 23:48:30] [0468m.05s.729ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [14403] commands per second
+[2017.12.22 23:48:30] [0468m.05s.754ms] [0] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] closed with size [448736 (438.2 kB)]
+[2017.12.22 23:48:30] [0468m.05s.754ms] [2] SDL: Removing all connected iCDB Server Monitor
+[2017.12.22 23:48:30] [0468m.05s.755ms] [2] S: Unloading ENetGen plugin from file [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin\..\lib\ENetGen70.dll]
+[2017.12.22 23:48:30] [0468m.05s.771ms] [2] S: Unloading PIM plugin from file [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin\..\lib\PIM.dll]
+[2017.12.22 23:48:30] [0468m.05s.796ms] [3] ST: FREE
+[2017.12.22 23:48:30] [0468m.05s.796ms] [4] ST: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.796ms] [2] ST: STOP
+[2017.12.22 23:48:30] [0468m.05s.796ms] [3] MET: FREE
+[2017.12.22 23:48:30] [0468m.05s.796ms] [4] MET: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.796ms] [2] MET: STOP
+[2017.12.22 23:48:30] [0468m.05s.796ms] [3] MCE: FREE
+[2017.12.22 23:48:30] [0468m.05s.796ms] [3] ELMT: FREE
+[2017.12.22 23:48:30] [0468m.05s.796ms] [4] ELMT: Waiting for finish
+[2017.12.22 23:48:30] [0468m.05s.797ms] [2] ELMT: STOP
+[2017.12.22 23:48:30] [0468m.05s.803ms] [3] EventLogDataFile: EventLog data file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbsvr\events\events.dat] closed
+[2017.12.22 23:48:30] [0468m.05s.804ms] [3] EventLogIndexFile: EventLog index file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbsvr\events\events.idx] closed
+[2017.12.22 23:48:30] [0468m.05s.804ms] [4] ELMT: FINISHED
+[2017.12.22 23:48:30] [0468m.05s.804ms] [3] AT: FREE
+[2017.12.22 23:48:30] [0468m.05s.804ms] [4] AT: Waiting for finish
+[2017.12.22 23:48:31] [0468m.05s.817ms] [2] AT: Removing server address file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbsvr\sAddress.adr]
+[2017.12.22 23:48:31] [0468m.05s.818ms] [0] AT: ERROR: Could not remove server address file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbsvr\sAddress.adr]
+[2017.12.22 23:48:31] [0468m.05s.818ms] [2] AT: STOP
+[2017.12.22 23:48:31] [0468m.05s.818ms] [3] BT: FREE
+[2017.12.22 23:48:31] [0468m.05s.818ms] [4] BT: Waiting for finish
+[2017.12.22 23:48:31] [0468m.05s.856ms] [4] BT: Sending broadcast on port [10000]: NotifyProjectGlobalStatus @ Version[1] # Id[Sender GUID[459c-277d-f842-21a1-91c2-d3ae-1c2d-3a50-b83c-bccb-8b3a-259e] Command number[1323]] # Proxy[EMPTY] # RequestId[Sender GUID[0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000] Command number[0]] # ReplyPort[0] # ProjectId [GUID[09d2-b93f-0aa9-e950-21c2-d3a7-1c2d-3a50-f9dc-bccb-8b3a-259e] Address[Host[DESKTOP-Q0OU6Q6] Port[10001]] IsLauncher[FALSE] Launcher[GUID[0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000] Address[Host[] Port[0]]] Path[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb] ReadOnly[FALSE] Server GUID[459c-277d-f842-21a1-91c2-d3ae-1c2d-3a50-b83c-bccb-8b3a-259e]] # Status [Shutdown]
+[2017.12.22 23:48:31] [0468m.05s.856ms] [2] BT: STOP
+[2017.12.22 23:48:31] [0468m.05s.858ms] [3] MWT: FREE
+[2017.12.22 23:48:31] [0468m.05s.858ms] [4] MWT: Waiting for finish
+[2017.12.22 23:48:31] [0468m.05s.858ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.22 23:48:31] [0468m.05s.859ms] [0] MWT: STOP
+[2017.12.22 23:48:31] [0468m.05s.860ms] [0] S: STOP
+[2017.12.22 23:48:31] [0468m.05s.860ms] [3] S: FREE
+[2017.12.22 23:48:31] [0468m.05s.860ms] [3] S: FREE: Server implementation
+[2017.12.22 23:48:31] [0468m.05s.860ms] [3] CLSVRM: FREE
+[2017.12.22 23:48:31] [0468m.05s.860ms] [3] SDSM: FREE
+[2017.12.22 23:48:31] [0468m.05s.860ms] [3] SDL: FREE
+[2017.12.22 23:48:31] [0468m.05s.860ms] [3] SCL: FREE
+[2017.12.22 23:48:31] [0468m.05s.861ms] [6] SSM: FREE
+[2017.12.22 23:48:31] [0468m.05s.861ms] [3] SMCL: FREE
+[2017.12.22 23:48:31] [0468m.05s.861ms] [3] SS: FREE
+[2017.12.22 23:48:31] [0468m.05s.861ms] [3] SM: FREE
+[2017.12.22 23:48:31] [0468m.05s.861ms] [3] SingleMessageSender: Send thread: FREE
+[2017.12.22 23:48:31] [0468m.05s.861ms] [4] SingleMessageSender: Send thread: Waiting for finish
+[2017.12.22 23:48:31] [0468m.05s.861ms] [2] SingleMessageSender: Send thread: STOP
+[2017.12.22 23:48:31] [0468m.05s.861ms] [4] SingleMessageSender: Send thread: FINISHED
+[2017.12.22 23:48:31] [0468m.05s.861ms] [3] SCQ: FREE
+[2017.12.22 23:48:31] [0468m.05s.861ms] [3] MCQ: FREE
