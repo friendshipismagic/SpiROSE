@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                       04:43 PM Friday, December 22, 2017
-             Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+                      04:15 PM Wednesday, December 27, 2017
+   Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -38,7 +38,7 @@ Version:  01.01.00
           Part Numb: 40-0320 -> Vend Part: 40-0320 
           Part Numb: 40-0336 -> Vend Part: 40-0336 
           Part Numb: 50-0005 -> Vend Part: 50-0005 
-          Part Numb: 70-0106 -> Vend Part: 70-0106 
+          Part Numb: 70-0108 -> Vend Part: 70-0108 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
           Part Numb: 80-0064 -> Vend Part: 80-0064 
 
@@ -67,8 +67,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 2176 Symbols:
-            2176  *************************
+     Clustering 2174 Symbols:
+            2174  ***********************
             2150  **************************************************
             2100  **************************************************
             2050  **************************************************
@@ -118,8 +118,8 @@ Version:  01.01.00
 
 
 
-     941 nets were found containing 9180 pins
-     2176 components were found
+     941 nets were found containing 9165 pins
+     2174 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -133,8 +133,8 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       04:43 PM Friday, December 22, 2017
-             Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+                      04:15 PM Wednesday, December 27, 2017
+   Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -146,7 +146,25 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     Netload completed successfully with 0 warning(s).
+     WARNING:  The "851-87-014-40-252101" cell used by "J1" in Layout does not
+      not match the "CLP-114-02-F-DH" cell specified in the schematic.
+
+     WARNING:  The "851-87-014-40-252101" cell used by "J1" in the Layout is not
+      valid for a "70-0108" Part Number.
+     INFO: Cell "851-87-014-40-252101" is being replaced by cell "CLP-114-02-F-DH".
+
+     WARNING:  The "851-87-014-40-252101" cell used by "J2" in Layout does not
+      not match the "CLP-114-02-F-DH" cell specified in the schematic.
+
+     WARNING:  The "851-87-014-40-252101" cell used by "J2" in the Layout is not
+      valid for a "70-0108" Part Number.
+     INFO: Cell "851-87-014-40-252101" is being replaced by cell "CLP-114-02-F-DH".
+
+	WARNING:  "J3" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "J4" is being removed from the Layout since it is no longer in the schematic.
+
+     Netload completed successfully with 6 warning(s).
      
      Back Annotating...
 
