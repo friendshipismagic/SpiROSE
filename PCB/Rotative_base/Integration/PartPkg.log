@@ -2,13 +2,13 @@
                                     Packager
                                     --------
 
-                      03:26 PM Wednesday, December 27, 2017
+                      07:58 PM Thursday, December 28, 2017
 Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_base.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_base.prj" -CleanBuild -NoFill"
+        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe -Replace "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_base.prj""
 
      The Common Database is at "C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Default\default.icdb".
 
@@ -23,8 +23,9 @@ Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_bas
      The Disable Repackage status indicates that 
       Repackaging should be allowed.
 
-     A new Target PDB will be created from the Central Library to satisfy the parts
-      requirements of the iCDB.
+     The PDBs listed in the project file will be searched to satisfy the parts
+      requirements of the iCDB and to replace any duplicates found in the
+      Target PDB.
 
      The AllowAlphaRefDes status indicates that reference
       designators containing all alpha characters should be deleted
