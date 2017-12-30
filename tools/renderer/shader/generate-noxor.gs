@@ -57,9 +57,9 @@ void main() {
     vec3 vert = gl_in[0].gl_Position.xyz;
 
     // Map back to [0, 1]
-    float z = mod((vert.z * float(RES_W) / float(RES_H) / 2.0 + 0.5) *
-                      float(N_DRAW_BUFFER),
-                  1.0);
+    float z = mod(
+        (vert.z * float(RES_W) / float(RES_H) / 2.0 + 0.5) * float(RES_H / 4),
+        1.0);
 
     // To help visualisation
     color.rgb = vert.xyz / 2.0 + vec3(0.5);

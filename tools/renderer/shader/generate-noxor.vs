@@ -19,6 +19,14 @@ uniform sampler2D voxels4;
 uniform sampler2D voxels5;
 uniform sampler2D voxels6;
 uniform sampler2D voxels7;
+uniform sampler2D voxels8;
+uniform sampler2D voxels9;
+uniform sampler2D voxels10;
+uniform sampler2D voxels11;
+uniform sampler2D voxels12;
+uniform sampler2D voxels13;
+uniform sampler2D voxels14;
+uniform sampler2D voxels15;
 
 void main() {
     gl_Position = matModel * vec4(in_Pos, 1.0);
@@ -30,28 +38,44 @@ void main() {
 
     vec4 c;
     // Fetch the texel that concerns us.
-    if (p.z < 1.0 / float(N_DRAW_BUFFER))
+    if (p.z < 1.0 / float(RES_H / 4))
         c = texture(voxels0, p.xy);
-    else if (p.z < 2.0 / float(N_DRAW_BUFFER))
+    else if (p.z < 2.0 / float(RES_H / 4))
         c = texture(voxels1, p.xy);
-    else if (p.z < 3.0 / float(N_DRAW_BUFFER))
+    else if (p.z < 3.0 / float(RES_H / 4))
         c = texture(voxels2, p.xy);
-    else if (p.z < 4.0 / float(N_DRAW_BUFFER))
+    else if (p.z < 4.0 / float(RES_H / 4))
         c = texture(voxels3, p.xy);
-    else if (p.z < 5.0 / float(N_DRAW_BUFFER))
+    else if (p.z < 5.0 / float(RES_H / 4))
         c = texture(voxels4, p.xy);
-    else if (p.z < 6.0 / float(N_DRAW_BUFFER))
+    else if (p.z < 6.0 / float(RES_H / 4))
         c = texture(voxels5, p.xy);
-    else if (p.z < 7.0 / float(N_DRAW_BUFFER))
+    else if (p.z < 7.0 / float(RES_H / 4))
         c = texture(voxels6, p.xy);
-    else if (p.z < 8.0 / float(N_DRAW_BUFFER))
+    else if (p.z < 8.0 / float(RES_H / 4))
         c = texture(voxels7, p.xy);
+    else if (p.z < 9.0 / float(RES_H / 4))
+        c = texture(voxels8, p.xy);
+    else if (p.z < 10.0 / float(RES_H / 4))
+        c = texture(voxels9, p.xy);
+    else if (p.z < 11.0 / float(RES_H / 4))
+        c = texture(voxels10, p.xy);
+    else if (p.z < 12.0 / float(RES_H / 4))
+        c = texture(voxels11, p.xy);
+    else if (p.z < 13.0 / float(RES_H / 4))
+        c = texture(voxels12, p.xy);
+    else if (p.z < 14.0 / float(RES_H / 4))
+        c = texture(voxels13, p.xy);
+    else if (p.z < 15.0 / float(RES_H / 4))
+        c = texture(voxels14, p.xy);
+    else if (p.z < 16.0 / float(RES_H / 4))
+        c = texture(voxels15, p.xy);
 
 #ifndef HAS_GEOMETRY_SHADER
     color = vec4(p, 1.0);
 
     // Map back to [0, 1]
-    float z = mod((p)*N_DRAW_BUFFER, 1.0);
+    float z = mod(p.z * float(RES_H / 4), 1.0);
 
     // Fetch the correct channel
     // Note, this can be done without a single if by using the step function and

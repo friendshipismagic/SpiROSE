@@ -10,6 +10,14 @@ uniform sampler2D tex4;
 uniform sampler2D tex5;
 uniform sampler2D tex6;
 uniform sampler2D tex7;
+uniform sampler2D tex8;
+uniform sampler2D tex9;
+uniform sampler2D tex10;
+uniform sampler2D tex11;
+uniform sampler2D tex12;
+uniform sampler2D tex13;
+uniform sampler2D tex14;
+uniform sampler2D tex15;
 uniform bool doPizza;
 
 const float M_PI = 3.14159265359;
@@ -44,25 +52,41 @@ void main() {
 
     // As usual, decode our voxel thingy
     vec4 color;
-    if (fragPos.z < 1.0 / float(N_DRAW_BUFFER))
+    if (fragPos.z < 1.0 / float(RES_H / 4))
         color = texture(tex0, fragPos.xy);
-    else if (fragPos.z < 2.0 / float(N_DRAW_BUFFER))
+    else if (fragPos.z < 2.0 / float(RES_H / 4))
         color = texture(tex1, fragPos.xy);
-    else if (fragPos.z < 3.0 / float(N_DRAW_BUFFER))
+    else if (fragPos.z < 3.0 / float(RES_H / 4))
         color = texture(tex2, fragPos.xy);
-    else if (fragPos.z < 4.0 / float(N_DRAW_BUFFER))
+    else if (fragPos.z < 4.0 / float(RES_H / 4))
         color = texture(tex3, fragPos.xy);
-    else if (fragPos.z < 5.0 / float(N_DRAW_BUFFER))
+    else if (fragPos.z < 5.0 / float(RES_H / 4))
         color = texture(tex4, fragPos.xy);
-    else if (fragPos.z < 6.0 / float(N_DRAW_BUFFER))
+    else if (fragPos.z < 6.0 / float(RES_H / 4))
         color = texture(tex5, fragPos.xy);
-    else if (fragPos.z < 7.0 / float(N_DRAW_BUFFER))
+    else if (fragPos.z < 7.0 / float(RES_H / 4))
         color = texture(tex6, fragPos.xy);
-    else if (fragPos.z < 8.0 / float(N_DRAW_BUFFER))
+    else if (fragPos.z < 8.0 / float(RES_H / 4))
         color = texture(tex7, fragPos.xy);
+    else if (fragPos.z < 9.0 / float(RES_H / 4))
+        color = texture(tex8, fragPos.xy);
+    else if (fragPos.z < 10.0 / float(RES_H / 4))
+        color = texture(tex9, fragPos.xy);
+    else if (fragPos.z < 11.0 / float(RES_H / 4))
+        color = texture(tex10, fragPos.xy);
+    else if (fragPos.z < 12.0 / float(RES_H / 4))
+        color = texture(tex11, fragPos.xy);
+    else if (fragPos.z < 13.0 / float(RES_H / 4))
+        color = texture(tex12, fragPos.xy);
+    else if (fragPos.z < 14.0 / float(RES_H / 4))
+        color = texture(tex13, fragPos.xy);
+    else if (fragPos.z < 15.0 / float(RES_H / 4))
+        color = texture(tex14, fragPos.xy);
+    else if (fragPos.z < 16.0 / float(RES_H / 4))
+        color = texture(tex15, fragPos.xy);
 
     // Get our height in the texture
-    float z = mod(fragPos.z * float(N_DRAW_BUFFER), 1.0);
+    float z = mod(fragPos.z * float(RES_H / 4), 1.0);
     float v;
     if (z < 0.25)
         v = color.r;
