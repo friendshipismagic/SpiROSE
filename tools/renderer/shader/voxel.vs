@@ -1,4 +1,4 @@
-in vec3 position;
+layout(location = 0) in vec3 position;
 
 #ifndef HAS_GEOMETRY_SHADER
 out vec4 fPosition;

@@ -201,6 +201,8 @@ int main(int argc, char *argv[]) {
     glBindBuffer(GL_ARRAY_BUFFER, buf);
     glBufferData(GL_ARRAY_BUFFER, attrib.vertices.size() * sizeof(float),
                  &attrib.vertices[0], GL_DYNAMIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(0);
 
     // Index buffer
     unsigned int *indexes = new unsigned int[mesh.indices.size()];
@@ -218,7 +220,7 @@ int main(int argc, char *argv[]) {
     // Send vertex to shader
     struct Uniform {
         struct {
-            GLint position, time, matM, matV, matP, doPizza, nPass;
+            GLint time, matM, matV, matP, doPizza, nPass;
         } voxel;
         struct {
             GLint matM, matV, matP, doPizza;
@@ -236,10 +238,6 @@ int main(int argc, char *argv[]) {
     for (int i = 0; i < 2; i++) {
         struct Uniform *u = &uniforms[i];
         struct Program *s = &program[i];
-
-        u->voxel.position = glGetAttribLocation(s->voxel, "position");
-        glVertexAttribPointer(u->voxel.position, 3, GL_FLOAT, GL_FALSE, 0, 0);
-        glEnableVertexAttribArray(u->voxel.position);
 
         u->voxel.time = glGetUniformLocation(s->voxel, "time");
         u->voxel.matM = glGetUniformLocation(s->voxel, "matModel");
@@ -317,14 +315,11 @@ int main(int argc, char *argv[]) {
     glGenBuffers(1, &vboSquare);
     glBindBuffer(GL_ARRAY_BUFFER, vboSquare);
     glBufferData(GL_ARRAY_BUFFER, sizeof(vert), vert, GL_STATIC_DRAW);
-    GLint inSquarePosLoc = glGetAttribLocation(program[1].offscreen, "in_Pos"),
-          inSquareUVLoc = glGetAttribLocation(program[1].offscreen, "in_UV");
-    glVertexAttribPointer(inSquarePosLoc, 2, GL_FLOAT, GL_FALSE,
-                          4 * sizeof(float), 0);
-    glVertexAttribPointer(inSquareUVLoc, 2, GL_FLOAT, GL_FALSE,
-                          4 * sizeof(float), (void *)(2 * sizeof(float)));
-    glEnableVertexAttribArray(inSquarePosLoc);
-    glEnableVertexAttribArray(inSquareUVLoc);
+    glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), 0);
+    glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float),
+                          (void *)(2 * sizeof(float)));
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
 
     // Set of points to render the voxels
     float voxPoints[32 * 32 * 32 * 3] = {0.f};
@@ -344,9 +339,8 @@ int main(int argc, char *argv[]) {
     glGenBuffers(1, &vboVox);
     glBindBuffer(GL_ARRAY_BUFFER, vboVox);
     glBufferData(GL_ARRAY_BUFFER, sizeof(voxPoints), voxPoints, GL_STATIC_DRAW);
-    GLint inVoxPosLoc = glGetAttribLocation(program[1].generate, "in_Pos");
-    glVertexAttribPointer(inVoxPosLoc, 3, GL_FLOAT, GL_FALSE, 0, 0);
-    glEnableVertexAttribArray(inVoxPosLoc);
+    glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
+    glEnableVertexAttribArray(0);
 
     // Simulate mouse move
     clicking = true;

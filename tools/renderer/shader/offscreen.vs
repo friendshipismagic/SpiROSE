@@ -1,5 +1,5 @@
-in vec2 in_Pos;
-in vec2 in_UV;
+layout(location = 0) in vec2 in_Pos;
+layout(location = 1) in vec2 in_UV;
 
 out vec2 ex_UV;
 

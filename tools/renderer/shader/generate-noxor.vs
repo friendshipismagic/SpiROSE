@@ -1,4 +1,4 @@
-in vec3 in_Pos;
+layout(location = 0) in vec3 in_Pos;
 
 #ifndef HAS_GEOMETRY_SHADER
 out vec4 color;
