@@ -30,21 +30,21 @@ void main() {
 
     vec4 c;
     // Fetch the texel that concerns us.
-    if (p.z < 1.0 / 8.0)
+    if (p.z < 1.0 / float(N_DRAW_BUFFER))
         c = texture(voxels0, p.xy);
-    else if (p.z < 2.0 / 8.0)
+    else if (p.z < 2.0 / float(N_DRAW_BUFFER))
         c = texture(voxels1, p.xy);
-    else if (p.z < 3.0 / 8.0)
+    else if (p.z < 3.0 / float(N_DRAW_BUFFER))
         c = texture(voxels2, p.xy);
-    else if (p.z < 4.0 / 8.0)
+    else if (p.z < 4.0 / float(N_DRAW_BUFFER))
         c = texture(voxels3, p.xy);
-    else if (p.z < 5.0 / 8.0)
+    else if (p.z < 5.0 / float(N_DRAW_BUFFER))
         c = texture(voxels4, p.xy);
-    else if (p.z < 6.0 / 8.0)
+    else if (p.z < 6.0 / float(N_DRAW_BUFFER))
         c = texture(voxels5, p.xy);
-    else if (p.z < 7.0 / 8.0)
+    else if (p.z < 7.0 / float(N_DRAW_BUFFER))
         c = texture(voxels6, p.xy);
-    else if (p.z < 8.0 / 8.0)
+    else if (p.z < 8.0 / float(N_DRAW_BUFFER))
         c = texture(voxels7, p.xy);
 
 #ifndef HAS_GEOMETRY_SHADER

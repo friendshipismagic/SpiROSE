@@ -44,25 +44,25 @@ void main() {
 
     // As usual, decode our voxel thingy
     vec4 color;
-    if (fragPos.z < 1.0 / 8.0)
+    if (fragPos.z < 1.0 / float(N_DRAW_BUFFER))
         color = texture(tex0, fragPos.xy);
-    else if (fragPos.z < 2.0 / 8.0)
+    else if (fragPos.z < 2.0 / float(N_DRAW_BUFFER))
         color = texture(tex1, fragPos.xy);
-    else if (fragPos.z < 3.0 / 8.0)
+    else if (fragPos.z < 3.0 / float(N_DRAW_BUFFER))
         color = texture(tex2, fragPos.xy);
-    else if (fragPos.z < 4.0 / 8.0)
+    else if (fragPos.z < 4.0 / float(N_DRAW_BUFFER))
         color = texture(tex3, fragPos.xy);
-    else if (fragPos.z < 5.0 / 8.0)
+    else if (fragPos.z < 5.0 / float(N_DRAW_BUFFER))
         color = texture(tex4, fragPos.xy);
-    else if (fragPos.z < 6.0 / 8.0)
+    else if (fragPos.z < 6.0 / float(N_DRAW_BUFFER))
         color = texture(tex5, fragPos.xy);
-    else if (fragPos.z < 7.0 / 8.0)
+    else if (fragPos.z < 7.0 / float(N_DRAW_BUFFER))
         color = texture(tex6, fragPos.xy);
-    else if (fragPos.z < 8.0 / 8.0)
+    else if (fragPos.z < 8.0 / float(N_DRAW_BUFFER))
         color = texture(tex7, fragPos.xy);
 
     // Get our height in the texture
-    float z = mod(fragPos.z * 8.0, 1.0);
+    float z = mod(fragPos.z * float(N_DRAW_BUFFER), 1.0);
     float v;
     if (z < 0.25)
         v = color.r;
