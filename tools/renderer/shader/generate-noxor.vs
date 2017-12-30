@@ -24,7 +24,9 @@ void main() {
     gl_Position = matModel * vec4(in_Pos, 1.0);
 
     // Map back to [0, 1]
-    vec3 p = gl_Position.xyz / 2.0 + 0.5;
+    vec3 p =
+        (gl_Position.xyz * vec3(1.0, 1.0, float(RES_W) / float(RES_H))) / 2.0 +
+        0.5;
 
     vec4 c;
     // Fetch the texel that concerns us.
@@ -46,10 +48,10 @@ void main() {
         c = texture(voxels7, p.xy);
 
 #ifndef HAS_GEOMETRY_SHADER
-    color = vec4(gl_Position.xyz / 2.0 + vec3(0.5), 1.0);
+    color = vec4(p, 1.0);
 
     // Map back to [0, 1]
-    float z = mod((gl_Position.z / 2.0 + 0.5) * 8.0, 1.0);
+    float z = mod((p)*N_DRAW_BUFFER, 1.0);
 
     // Fetch the correct channel
     // Note, this can be done without a single if by using the step function and

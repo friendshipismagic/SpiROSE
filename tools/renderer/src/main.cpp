@@ -277,7 +277,9 @@ int main(int argc, char *argv[]) {
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
               matProjection =
                   glm::perspective(glm::radians(90.f), 16.f / 9.f, .1f, 100.f),
-              matOrtho = glm::ortho(-1.f, 1.f, -1.f, 1.f, -1.f, 1.f);
+              matOrtho =
+                  glm::ortho(-1.f, 1.f, -1.f, 1.f, -float(RES_H) / float(RES_W),
+                             float(RES_H) / float(RES_W));
 
     glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matV, 1, GL_FALSE,
                        &matView[0][0]);
@@ -340,7 +342,7 @@ int main(int argc, char *argv[]) {
                 voxPoints[3 * (RES_H * (i * RES_W + j) + k) + 1] =
                     (float(j) - float(RES_W / 2)) / float(RES_W / 2);
                 voxPoints[3 * (RES_H * (i * RES_W + j) + k) + 2] =
-                    (float(k) - float(RES_H / 2)) / float(RES_H / 2);
+                    (float(k) - float(RES_H / 2)) / float(RES_W / 2);
             }
     GLuint vaoVox, vboVox;
     glGenVertexArrays(1, &vaoVox);
@@ -488,7 +490,7 @@ int main(int argc, char *argv[]) {
 #endif
         //// Interlace voxels
         glViewport(RES_W * (renderOptions.useXor ? 1 : dispVoxelW), 0,
-                   RES_W * dispInterlaceW, RES_W * dispInterlaceH);
+                   RES_W * dispInterlaceW, RES_H * dispInterlaceH);
         glBindVertexArray(vaoSquare);
         glUseProgram(program[renderOptions.useXor].interlace);
         glUniform1ui(uniforms[renderOptions.useXor].interlace.doPizza,
@@ -618,10 +620,12 @@ GLuint loadShader(GLenum type, const std::string &filename) {
     readFile(path, source);
 
     // Craft defines containing useful constants
-    std::string defines = "#define N_VOXEL_PASS " +
-                          std::to_string(renderOptions.nVoxelPass) +
-                          "\n#define N_DRAW_BUFFER " +
-                          std::to_string(renderOptions.nDrawBuffer) + "\n";
+    std::string defines =
+        "#define N_VOXEL_PASS " + std::to_string(renderOptions.nVoxelPass) +
+        "\n#define N_DRAW_BUFFER " + std::to_string(renderOptions.nDrawBuffer) +
+        "\n#define RES_W " + std::to_string(RES_W) + "\n#define RES_H " +
+        std::to_string(RES_H) + "\n#define RES_C " + std::to_string(RES_C) +
+        "\n";
     const char *csource[] = {
 // GL and GLES have different version syntaxes...
 #ifdef GLES
