@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                      04:15 PM Wednesday, December 27, 2017
-   Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+                      02:24 PM Saturday, December 30, 2017
+   Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -118,7 +118,7 @@ Version:  01.01.00
 
 
 
-     941 nets were found containing 9165 pins
+     941 nets were found containing 9179 pins
      2174 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
@@ -133,8 +133,8 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                      04:15 PM Wednesday, December 27, 2017
-   Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
+                      02:25 PM Saturday, December 30, 2017
+   Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -146,25 +146,7 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     WARNING:  The "851-87-014-40-252101" cell used by "J1" in Layout does not
-      not match the "CLP-114-02-F-DH" cell specified in the schematic.
-
-     WARNING:  The "851-87-014-40-252101" cell used by "J1" in the Layout is not
-      valid for a "70-0108" Part Number.
-     INFO: Cell "851-87-014-40-252101" is being replaced by cell "CLP-114-02-F-DH".
-
-     WARNING:  The "851-87-014-40-252101" cell used by "J2" in Layout does not
-      not match the "CLP-114-02-F-DH" cell specified in the schematic.
-
-     WARNING:  The "851-87-014-40-252101" cell used by "J2" in the Layout is not
-      valid for a "70-0108" Part Number.
-     INFO: Cell "851-87-014-40-252101" is being replaced by cell "CLP-114-02-F-DH".
-
-	WARNING:  "J3" is being removed from the Layout since it is no longer in the schematic.
-
-	WARNING:  "J4" is being removed from the Layout since it is no longer in the schematic.
-
-     Netload completed successfully with 6 warning(s).
+     Netload completed successfully with 0 warning(s).
      
      Back Annotating...
 
@@ -195,9 +177,13 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
+	Assigned net UB2D0_SIN to a via which was originally on net UB0D2_SIN.
+	Assigned net UB2D0_SIN to a trace which was originally on net UB0D2_SIN.
+	Assigned net UB2D2_SIN to a via which was originally on net UB2D0_SIN.
+	Assigned net UB2D2_SIN to a trace which was originally on net UB2D0_SIN.
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
-There were 0 reassignments of nets.
+There were 4 reassignments of nets.
 There were 0 traces broken back.
 There were 0 nets removed from the Layout Design.

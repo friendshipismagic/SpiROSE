@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/29/17 10:37:12
+! Created 12/29/17 13:19:20
 !
 
 .Global_Constants 944 2
@@ -13,13 +13,13 @@
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
-	(-32000, -32000)	! ptMinPosition
+	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
 	(507, 0) (1929,706)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             True
     ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
-    ..Active_Route_Layer 5
+    ..Active_Route_Layer 0
     ..Trace_Layer_Color ( 
 	0x00ff6633 0x009933ff	! [1-2] RGB( 51,102,255)  RGB(255, 51,153)
 	0x0066ff99 0x000000ff	! [3-4] RGB(153,255,102)  RGB(255,  0,  0)
@@ -4181,9 +4181,9 @@
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "146"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "144"
 	"[VirtualGlobal].iDC.SplitViewHeight.1" "229"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "356"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "358"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -4198,8 +4198,8 @@
 
 .view "PCB"
     ..extrema
-	(-36664635,-26392316)		! (xmin, ymin)
-	(202827701,80479264)		! (xmax, ymax)
+	(-244935561,-99588704)		! (xmin, ymin)
+	(584483595,270533102)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -4298,7 +4298,7 @@
     ..Redline_Layer_On                   False
     ..All_User_Draft_Enabled             True
     ..User_Draft_On ( 
-	F F F F F F F F F F 	! [1 - 10]
+	F F F T F F F F F F 	! [1 - 10]
 	F F F F F F F F F F 	! [11 - 20]
 	F F F F F F F F F F 	! [21 - 30]
 	F F F F F F F F F F 	! [31 - 40]
@@ -15226,7 +15226,7 @@
 	"Sheet.SheetOutline" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
 	"Topology.TargetAreaWarnRed" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:34" "t:1" "o:1"
 	"Topology.TargetAreaWarnYellow" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:34" "t:1" "o:1"
-	"User.Dimensions" "d:0" "e:1" "s:1" "se:0" "c:128" "a:100" "p:0" "t:0" "o:1"
+	"User.Dimensions" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
 	"User.Measure Drawing" "d:0" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"WirebondObjects.WirebondGuides.Top" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
 	"WirebondObjects.WirebondGuides.Bottom" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
