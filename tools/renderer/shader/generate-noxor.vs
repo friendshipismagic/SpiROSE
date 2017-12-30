@@ -68,6 +68,7 @@ void main() {
         gl_Position = vec4(1000.0);
     else
         gl_Position = matProjection * matView * gl_Position;
+    gl_PointSize = 10.0;
 #else
     vColor = c;
 #endif
