@@ -2,7 +2,7 @@
                                Forward Annotation
                                ------------------
 
-                      02:24 PM Saturday, December 30, 2017
+                      03:48 PM Saturday, December 30, 2017
    Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -133,7 +133,7 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                      02:25 PM Saturday, December 30, 2017
+                      03:48 PM Saturday, December 30, 2017
    Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\PCB\PCB.pcb
 
 
@@ -177,13 +177,17 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
-	Assigned net UB2D0_SIN to a via which was originally on net UB0D2_SIN.
-	Assigned net UB2D0_SIN to a trace which was originally on net UB0D2_SIN.
-	Assigned net UB2D2_SIN to a via which was originally on net UB2D0_SIN.
-	Assigned net UB2D2_SIN to a trace which was originally on net UB2D0_SIN.
+	Assigned net UB0D2_SIN to a via which was originally on net UB1D0_SIN.
+	Assigned net UB0D2_SIN to a trace which was originally on net UB1D0_SIN.
+	Assigned net UB0D2_SIN to a via which was originally on net UB1D0_SIN.
+	Assigned net UB0D2_SIN to a trace which was originally on net UB1D0_SIN.
+	Broke back a trace from the point (45528768, 8809406).
+	Assigned net UB1D0_SIN to a trace which was originally on net UB0D2_SIN.
+	Assigned net UB1D0_SIN to a via which was originally on net UB0D2_SIN.
+	Broke back a trace from the point (44610120, 2361589).
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
-There were 4 reassignments of nets.
-There were 0 traces broken back.
+There were 6 reassignments of nets.
+There were 2 traces broken back.
 There were 0 nets removed from the Layout Design.

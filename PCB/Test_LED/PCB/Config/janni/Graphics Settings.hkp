@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/30/17 14:32:08
+! Created 12/30/17 21:31:34
 !
 
 .Global_Constants 944 2
@@ -13,13 +13,13 @@
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
-	(-32000, -32000)	! ptMinPosition
+	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
 	(507, 0) (1929,706)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             True
     ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
-    ..Active_Route_Layer 5
+    ..Active_Route_Layer 3
     ..Trace_Layer_Color ( 
 	0x00ff6633 0x009933ff	! [1-2] RGB( 51,102,255)  RGB(255, 51,153)
 	0x0066ff99 0x000000ff	! [3-4] RGB(153,255,102)  RGB(255,  0,  0)
@@ -4037,7 +4037,7 @@
 	"Global.Option.FullScreenCursor" "1"
 	"Global.Option.FullScreenCursorDuringMoveOnly" "1"
 	"Global.Option.HalfScreenCursor" "0"
-	"Global.Option.IgnoreSelectionFilter" "0"
+	"Global.Option.IgnoreSelectionFilter" "1"
 	"Global.Option.LinkSketchNetlineDisplayToLayerVisibility" "1"
 	"Global.Option.NetNamesOnTraces" "0"
 	"Global.Option.PlaneDataBehindTraces" "1"
@@ -4181,9 +4181,9 @@
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "128"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "215"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "388"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "124"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "227"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "380"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -4198,8 +4198,8 @@
 
 .view "PCB"
     ..extrema
-	(26358801,336603)		! (xmin, ymin)
-	(70639478,20096509)		! (xmax, ymax)
+	(-81917097,-56703820)		! (xmin, ymin)
+	(327022446,125782250)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -4959,7 +4959,7 @@
 	F F F F F F F ! [421 - 427]
 	)
     ..Virtual_Options ( 
-	"[Virtual].iDC.ListSelectableLayersOnly" "0"
+	"[Virtual].iDC.ListSelectableLayersOnly" "1"
     )
     ..Segments ( 
 	"LayerControl.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
