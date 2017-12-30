@@ -91,6 +91,9 @@ glm::vec3 camForward, camRight, camLook;
 // Real framebuffer width and height taking high-DPI scaling into account
 int fbWidth, fbHeight;
 
+// Grids sizes for the voxel and interlace viewers
+int dispVoxelW, dispVoxelH, dispInterlaceW, dispInterlaceH;
+
 #define RES_W 32
 #define RES_H 32
 #define RES_C 32
@@ -182,7 +185,6 @@ int main(int argc, char *argv[]) {
                   << renderOptions.nVoxelPass << " passes." << std::endl;
 
     // Compute size of display textures
-    int dispVoxelW, dispVoxelH, dispInterlaceW, dispInterlaceH;
     englobingRectangle(N_BUF_NO_XOR, dispVoxelW, dispVoxelH);
     englobingRectangle(RES_C, dispInterlaceW, dispInterlaceH);
 
@@ -625,7 +627,8 @@ GLuint loadShader(GLenum type, const std::string &filename) {
         "\n#define N_DRAW_BUFFER " + std::to_string(renderOptions.nDrawBuffer) +
         "\n#define RES_W " + std::to_string(RES_W) + "\n#define RES_H " +
         std::to_string(RES_H) + "\n#define RES_C " + std::to_string(RES_C) +
-        "\n";
+        "\n#define DISP_INTERLACE_W " + std::to_string(dispInterlaceW) +
+        "\n#define DISP_INTERLACE_H " + std::to_string(dispInterlaceH) + "\n";
     const char *csource[] = {
 // GL and GLES have different version syntaxes...
 #ifdef GLES
