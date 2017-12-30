@@ -63,6 +63,7 @@ void onMove(GLFWwindow *window, double x, double y);
 void onGLFWError(int code, const char *desc);
 
 GLuint loadShader(GLenum type, const std::string &filename);
+void englobingRectangle(const int n, int &w, int &h);
 
 typedef struct RenderOptions {
     bool wireframe, pause, pizza, useXor;
@@ -90,7 +91,10 @@ glm::vec3 camForward, camRight, camLook;
 // Real framebuffer width and height taking high-DPI scaling into account
 int fbWidth, fbHeight;
 
-#define N_BUF_NO_XOR (32 / 4)
+#define RES_W 32
+#define RES_H 32
+#define RES_C 32
+#define N_BUF_NO_XOR (RES_H / 4)
 
 void loadShaders();
 
@@ -176,6 +180,11 @@ int main(int argc, char *argv[]) {
         std::cout << "[WARN] GPU only has " << maxDrawBufferCount
                   << " draw buffers. Voxelization will be done in "
                   << renderOptions.nVoxelPass << " passes." << std::endl;
+
+    // Compute size of display textures
+    int dispVoxelW, dispVoxelH, dispInterlaceW, dispInterlaceH;
+    englobingRectangle(N_BUF_NO_XOR, dispVoxelW, dispVoxelH);
+    englobingRectangle(RES_C, dispInterlaceW, dispInterlaceH);
 
     // Load suzanne
     tinyobj::attrib_t attrib;
@@ -287,7 +296,7 @@ int main(int argc, char *argv[]) {
         glBindFramebuffer(GL_FRAMEBUFFER, fbo[i / renderOptions.nDrawBuffer]);
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_2D, texVoxelBufs[i]);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 32, 32, 0, GL_RGBA,
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, RES_W, RES_W, 0, GL_RGBA,
                      GL_UNSIGNED_BYTE, NULL);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -322,16 +331,16 @@ int main(int argc, char *argv[]) {
     glEnableVertexAttribArray(1);
 
     // Set of points to render the voxels
-    float voxPoints[32 * 32 * 32 * 3] = {0.f};
-    for (int i = 0; i < 32; i++)
-        for (int j = 0; j < 32; j++)
-            for (int k = 0; k < 32; k++) {
-                voxPoints[3 * (32 * (i * 32 + j) + k) + 0] =
-                    (float(i) - 16.f) / 16.f;
-                voxPoints[3 * (32 * (i * 32 + j) + k) + 1] =
-                    (float(j) - 16.f) / 16.f;
-                voxPoints[3 * (32 * (i * 32 + j) + k) + 2] =
-                    (float(k) - 16.f) / 16.f;
+    float voxPoints[RES_W * RES_W * RES_H * 3] = {0.f};
+    for (int i = 0; i < RES_W; i++)
+        for (int j = 0; j < RES_W; j++)
+            for (int k = 0; k < RES_H; k++) {
+                voxPoints[3 * (RES_H * (i * RES_W + j) + k) + 0] =
+                    (float(i) - float(RES_W / 2)) / float(RES_W / 2);
+                voxPoints[3 * (RES_H * (i * RES_W + j) + k) + 1] =
+                    (float(j) - float(RES_W / 2)) / float(RES_W / 2);
+                voxPoints[3 * (RES_H * (i * RES_W + j) + k) + 2] =
+                    (float(k) - float(RES_H / 2)) / float(RES_H / 2);
             }
     GLuint vaoVox, vboVox;
     glGenVertexArrays(1, &vaoVox);
@@ -366,7 +375,7 @@ int main(int argc, char *argv[]) {
         glfwSetWindowTitle(window, title.c_str());
 
         //// Voxelization
-        glViewport(0, 0, 32, 32);
+        glViewport(0, 0, RES_W, RES_W);
         glBindVertexArray(vao);
         glUseProgram(program[renderOptions.useXor].voxel);
         glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matP, 1,
@@ -413,21 +422,22 @@ int main(int argc, char *argv[]) {
 
         // Dump the FBO if required
         if (doDump) {
-            GLuint pixels[32 * 32 * 4] = {0};
+            GLuint pixels[RES_W * RES_W * 4] = {0};
             glPixelStorei(GL_PACK_ALIGNMENT, 1);
             if (renderOptions.useXor) {
                 glReadBuffer(GL_COLOR_ATTACHMENT0);
                 // Use BGRA as TGA swaps red and blue
-                glReadPixels(0, 0, 32, 32, GL_BGRA, GL_UNSIGNED_BYTE, pixels);
-                saveTGA("output.tga", pixels, 32, 32, 32);
+                glReadPixels(0, 0, RES_W, RES_W, GL_BGRA, GL_UNSIGNED_BYTE,
+                             pixels);
+                saveTGA("output.tga", pixels, RES_W, RES_W, 32);
                 std::cout << "[INFO] Dumped FBO to output.tga" << std::endl;
             } else
                 for (int i = 0; i < N_BUF_NO_XOR; i++) {
                     glReadBuffer(GL_COLOR_ATTACHMENT0 + i);
-                    glReadPixels(0, 0, 32, 32, GL_BGRA, GL_UNSIGNED_BYTE,
+                    glReadPixels(0, 0, RES_W, RES_W, GL_BGRA, GL_UNSIGNED_BYTE,
                                  pixels);
-                    saveTGA("output" + std::to_string(i) + ".tga", pixels, 32,
-                            32, 32);
+                    saveTGA("output" + std::to_string(i) + ".tga", pixels,
+                            RES_W, RES_W, 32);
                     std::cout << "[INFO] Dumped FBO layer " << i << " to output"
                               << i << ".tga" << std::endl;
                 }
@@ -477,7 +487,8 @@ int main(int argc, char *argv[]) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 #endif
         //// Interlace voxels
-        glViewport(renderOptions.useXor ? 32 : (32 * 4), 0, 32 * 8, 32 * 4);
+        glViewport(RES_W * (renderOptions.useXor ? 1 : dispVoxelW), 0,
+                   RES_W * dispInterlaceW, RES_W * dispInterlaceH);
         glBindVertexArray(vaoSquare);
         glUseProgram(program[renderOptions.useXor].interlace);
         glUniform1ui(uniforms[renderOptions.useXor].interlace.doPizza,
@@ -488,9 +499,9 @@ int main(int argc, char *argv[]) {
 
         //// Displaying the voxel texture
         if (renderOptions.useXor)
-            glViewport(0, 0, 32, 32);
+            glViewport(0, 0, RES_W, RES_W);
         else
-            glViewport(0, 0, 32 * 4, 32 * 2);
+            glViewport(0, 0, RES_W * dispVoxelW, RES_W * dispVoxelH);
         glBindVertexArray(vaoSquare);
         glUseProgram(program[renderOptions.useXor].offscreen);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
@@ -728,4 +739,9 @@ void loadShaders() {
 }
 void onGLFWError(int code, const char *desc) {
     std::cerr << "[ERR] GLFW error " << code << ": " << desc << std::endl;
+}
+
+void englobingRectangle(const int n, int &w, int &h) {
+    h = int(sqrt(n)) & ~1;
+    w = n / h;
 }
