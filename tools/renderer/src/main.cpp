@@ -489,8 +489,8 @@ int main(int argc, char *argv[]) {
         glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 #endif
         //// Interlace voxels
-        glViewport(RES_W * (renderOptions.useXor ? 1 : dispVoxelW), 0,
-                   RES_W * dispInterlaceW, RES_H * dispInterlaceH);
+        glViewport(fbWidth - RES_W * dispInterlaceH, 0, RES_W * dispInterlaceH,
+                   RES_H * dispInterlaceW);
         glBindVertexArray(vaoSquare);
         glUseProgram(program[renderOptions.useXor].interlace);
         glUniform1ui(uniforms[renderOptions.useXor].interlace.doPizza,

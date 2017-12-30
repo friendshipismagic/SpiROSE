@@ -11,17 +11,17 @@ void main() {
     // Get our coordinates in the texture
     // For now, we'll do a 2D array of images, each image representing a panel
     // refresh
-    vec2 refreshMod = mod(ex_UV, 1.0 / vec2(8.0, 4.0));
-    vec2 refreshPos = (ex_UV - refreshMod) * vec2(8.0, 4.0);
+    vec2 refreshMod = mod(ex_UV, 1.0 / vec2(4.0, 8.0));
+    vec2 refreshPos = (ex_UV - refreshMod) * vec2(4.0, 8.0);
     // Angle would be more correct, since this value is in [0, 1]
-    float refreshNo = (refreshPos.y * 8.0 + refreshPos.x) / 32.0;
+    float refreshNo = (refreshPos.y * 4.0 + refreshPos.x) / 32.0;
 
     /* Pack coordinates in a vector
      * As our current y value represents how deep we are in the voxels, it is
      * our 3D z position.
      * And xy will be xy in 3D :)
      */
-    vec3 fragPos = vec3(refreshNo, refreshMod.x * 8.0, refreshMod.y * 4.0);
+    vec3 fragPos = vec3(refreshNo, refreshMod.x * 4.0, refreshMod.y * 8.0);
 
     if (doPizza) {
         /* In pizza mode, the voxel texture only represents half of a slice.
