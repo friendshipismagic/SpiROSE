@@ -91,8 +91,8 @@ glm::vec3 camForward, camRight, camLook;
 // Real framebuffer width and height taking high-DPI scaling into account
 int fbWidth, fbHeight;
 
-// Grids sizes for the voxel and interlace viewers
-int dispVoxelW, dispVoxelH, dispInterlaceW, dispInterlaceH;
+// Grids sizes for the interlace viewer
+int dispInterlaceW, dispInterlaceH;
 
 #define RES_W 32
 #define RES_H 32
@@ -185,7 +185,6 @@ int main(int argc, char *argv[]) {
                   << renderOptions.nVoxelPass << " passes." << std::endl;
 
     // Compute size of display textures
-    englobingRectangle(N_BUF_NO_XOR, dispVoxelW, dispVoxelH);
     englobingRectangle(RES_C, dispInterlaceW, dispInterlaceH);
 
     // Load suzanne
@@ -505,7 +504,7 @@ int main(int argc, char *argv[]) {
         if (renderOptions.useXor)
             glViewport(0, 0, RES_W, RES_W);
         else
-            glViewport(0, 0, RES_W * dispVoxelW, RES_W * dispVoxelH);
+            glViewport(0, 0, RES_W * 4, RES_W * 4);
         glBindVertexArray(vaoSquare);
         glUseProgram(program[renderOptions.useXor].offscreen);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
