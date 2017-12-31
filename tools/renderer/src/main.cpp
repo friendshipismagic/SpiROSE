@@ -64,6 +64,7 @@ void onGLFWError(int code, const char *desc);
 
 GLuint loadShader(GLenum type, const std::string &filename);
 void englobingRectangle(const int n, int &w, int &h);
+int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
 
 typedef struct RenderOptions {
     bool wireframe, pause, pizza, useXor;
@@ -94,9 +95,9 @@ int fbWidth, fbHeight;
 // Grids sizes for the interlace viewer
 int dispInterlaceW, dispInterlaceH;
 
-#define RES_W 32
-#define RES_H 32
-#define RES_C 32
+#define RES_W 80
+#define RES_H 48
+#define RES_C 64
 #define N_BUF_NO_XOR (RES_H / 4)
 
 void loadShaders();
@@ -177,7 +178,7 @@ int main(int argc, char *argv[]) {
     // Determine how many draw buffer we can have
     int maxDrawBufferCount;
     glGetIntegerv(GL_MAX_COLOR_ATTACHMENTS, &maxDrawBufferCount);
-    renderOptions.nDrawBuffer = std::min(N_BUF_NO_XOR, maxDrawBufferCount);
+    renderOptions.nDrawBuffer = gcd(N_BUF_NO_XOR, maxDrawBufferCount);
     renderOptions.nVoxelPass = N_BUF_NO_XOR / renderOptions.nDrawBuffer;
     if (renderOptions.nDrawBuffer != N_BUF_NO_XOR)
         std::cout << "[WARN] GPU only has " << maxDrawBufferCount
