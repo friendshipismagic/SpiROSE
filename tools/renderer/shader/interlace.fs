@@ -17,15 +17,15 @@ void main() {
         (ex_UV - refreshMod) * vec2(DISP_INTERLACE_H, DISP_INTERLACE_W);
     // Angle would be more correct, since this value is in [0, 1]
     float refreshNo =
-        (refreshPos.y * DISP_INTERLACE_H + refreshPos.x) / float(RES_C);
+        (refreshPos.y * float(DISP_INTERLACE_H) + refreshPos.x) / float(RES_C);
 
     /* Pack coordinates in a vector
      * As our current y value represents how deep we are in the voxels, it is
      * our 3D z position.
      * And xy will be xy in 3D :)
      */
-    vec3 fragPos = vec3(refreshNo, refreshMod.x * DISP_INTERLACE_H,
-                        refreshMod.y * DISP_INTERLACE_W);
+    vec3 fragPos = vec3(refreshNo, refreshMod.x * float(DISP_INTERLACE_H),
+                        refreshMod.y* float(DISP_INTERLACE_W));
 
     if (doPizza) {
         /* In pizza mode, the voxel texture only represents half of a slice.
