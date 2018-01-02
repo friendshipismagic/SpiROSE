@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                      03:48 PM Saturday, December 30, 2017
-   Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\PCB\PCB.pcb
+                       08:14 PM Tuesday, January 02, 2018
+             Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -118,7 +118,7 @@ Version:  01.01.00
 
 
 
-     941 nets were found containing 9179 pins
+     941 nets were found containing 9180 pins
      2174 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
@@ -133,8 +133,8 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                      03:48 PM Saturday, December 30, 2017
-   Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\PCB\PCB.pcb
+                       08:14 PM Tuesday, January 02, 2018
+             Job Name: D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -177,17 +177,20 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
-	Assigned net UB0D2_SIN to a via which was originally on net UB1D0_SIN.
-	Assigned net UB0D2_SIN to a trace which was originally on net UB1D0_SIN.
-	Assigned net UB0D2_SIN to a via which was originally on net UB1D0_SIN.
-	Assigned net UB0D2_SIN to a trace which was originally on net UB1D0_SIN.
-	Broke back a trace from the point (45528768, 8809406).
-	Assigned net UB1D0_SIN to a trace which was originally on net UB0D2_SIN.
-	Assigned net UB1D0_SIN to a via which was originally on net UB0D2_SIN.
-	Broke back a trace from the point (44610120, 2361589).
+	Broke back a trace from the point (43110000, 4940000).
+	Assigned net FPGA_GCLK to a trace which was originally on net UB0D1_SIN.
+	Assigned net FPGA_GCLK to a via which was originally on net UB0D1_SIN.
+	Broke back a trace from the point (46093902, 18129150).
+	Assigned net FPGA_MUL0 to a trace which was originally on net FPGA_GCLK.
+	Assigned net FPGA_MUL0 to a via which was originally on net FPGA_GCLK.
+	Broke back a trace from the point (41786505, 3710134).
+	Broke back a trace from the point (48190000, 4940000).
+	Assigned net FPGA_MUL4 to a trace which was originally on net UB1D2_SIN.
+	Assigned net FPGA_MUL4 to a via which was originally on net UB1D2_SIN.
+	Broke back a trace from the point (55899040, 24231655).
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
 There were 6 reassignments of nets.
-There were 2 traces broken back.
+There were 5 traces broken back.
 There were 0 nets removed from the Layout Design.

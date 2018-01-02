@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 12/30/17 14:32:08
+! Created 12/22/17 19:19:32
 !
 
 .Global_Constants 944 2
@@ -15,15 +15,15 @@
 	0x00000003	! showCmd
 	(-32000, -32000)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
-	(507, 0) (1929,706)	! ..rcNormalPosition
+	(1143, 250) (2277,826)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             True
     ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
     ..Active_Route_Layer 5
     ..Trace_Layer_Color ( 
-	0x00ff6633 0x009933ff	! [1-2] RGB( 51,102,255)  RGB(255, 51,153)
-	0x0066ff99 0x000000ff	! [3-4] RGB(153,255,102)  RGB(255,  0,  0)
-	0x00ffff00 0x00ff6699	! [5-6] RGB(  0,255,255)  RGB(153,102,255)
+	0x00ff6633 0x00cc0099	! [1-2] RGB( 51,102,255)  RGB(153,  0,204)
+	0x00003366 0x000000ff	! [3-4] RGB(102, 51,  0)  RGB(255,  0,  0)
+	0x00ffff00 0x0000ffff	! [5-6] RGB(  0,255,255)  RGB(255,255,  0)
 	0x00ff6699 0x00cc3333	! [7-8] RGB(153,102,255)  RGB( 51, 51,204)
 	0x000066ff 0x0099ffff	! [9-10] RGB(255,102,  0)  RGB(255,255,153)
 	0x0000ffff 0x000099cc	! [11-12] RGB(255,255,  0)  RGB(204,153,  0)
@@ -263,9 +263,9 @@
 	T T T T T T ! [251 - 256]
 	)
     ..Pad_Layer_Color ( 
-	0x00ff6633 0x009933ff	! [1-2] RGB( 51,102,255)  RGB(255, 51,153)
-	0x0099ff99 0x000000ff	! [3-4] RGB(153,255,153)  RGB(255,  0,  0)
-	0x00ffff00 0x00ff6699	! [5-6] RGB(  0,255,255)  RGB(153,102,255)
+	0x00ff6633 0x00cc0099	! [1-2] RGB( 51,102,255)  RGB(153,  0,204)
+	0x00003366 0x000000ff	! [3-4] RGB(102, 51,  0)  RGB(255,  0,  0)
+	0x00ffff00 0x0000ffff	! [5-6] RGB(  0,255,255)  RGB(255,255,  0)
 	0x00ff6699 0x00cc3333	! [7-8] RGB(153,102,255)  RGB( 51, 51,204)
 	0x000066ff 0x0099ffff	! [9-10] RGB(255,102,  0)  RGB(255,255,153)
 	0x0000ffff 0x000099cc	! [11-12] RGB(255,255,  0)  RGB(204,153,  0)
@@ -512,29 +512,29 @@
     ..Netline_Ordered_Routed_Color 0x0099ccff	! RGB(255,204,153)
     ..Netline_Ordered_Open_Color 0x00cc99ff	! RGB(255,153,204)
     ..Netline_All_Open_Color 0x00c0c0c0	! RGB(192,192,192)
-    ..Netline_Trace_Ends_On              True
+    ..Netline_Trace_Ends_On              False
     ..Classline_Color 0x00ff00cc	! RGB(204,  0,255)
     ..Netline_Of_Classline_On            True
     ..Show_Plane_Data                    False
-    ..Show_Plane_Shapes                  True
+    ..Show_Plane_Shapes                  False
     ..Show_Fill_Plane_Shapes             False
-    ..Show_Plane_Data_Behind_Traces      True
+    ..Show_Plane_Data_Behind_Traces      False
     ..Show_Dynamic_Area_Fills            False
-    ..Show_Plane_Aps_Outlines            True
+    ..Show_Plane_Aps_Outlines            False
     ..Show_Plane_Aps_Fills               False
-    ..All_Plane_Items_Enabled            True
-    ..Show_Plane_Plane_Sketches          True
+    ..All_Plane_Items_Enabled            False
+    ..Show_Plane_Plane_Sketches          False
     ..Show_Cubal_Data                    True
     ..Show_Cubal_Shapes                  True
     ..All_Cubal_Items_Enabled            True
     ..Hilite_Edit_Violations             False
     ..Edit_Violations_Color 0x00ff00ff	! RGB(255,  0,255)
-    ..Pad_Items_Collapsed                True
+    ..Pad_Items_Collapsed                False
     ..Grid_Items_Collapsed               False
     ..Bus_Items_Collapsed                False
     ..Netline_Items_Collapsed            False
-    ..Selhil_Items_Collapsed             True
-    ..Plane_Items_Collapsed              True
+    ..Selhil_Items_Collapsed             False
+    ..Plane_Items_Collapsed              False
     ..Cubal_Items_Collapsed              False
     ..Spacers_Items_Collapsed            False
     ..Virtual_Pin_Items_Collapsed        False
@@ -634,8 +634,8 @@
     ..Soldermask_Outline                 True 	! top
                                          True 	! bottom
     ..Solderpaste_Color (
-	0x00ff66cc	! top     RGB(204,102,255)
-	0x0066ccff	! bottom  RGB(255,204,102)
+	0x00cc3333	! top     RGB( 51, 51,204)
+	0x000000cc	! bottom  RGB(204,  0,  0)
     )
     ..Solderpaste_Ptrnidx                0	! top
                                          0	! bottom
@@ -1035,7 +1035,7 @@
     ..Pattern_Timing_Net_Ptrnidx 0
     ..Selectionshape_Color 0x00ffffff	! RGB(255,255,255)
     ..Fab_Items_Collapsed                False
-    ..Draft_Items_Collapsed              True
+    ..Draft_Items_Collapsed              False
     ..Detail_View_Items_Collapsed        False
     ..Board_Items_Collapsed              False
     ..Panel_Items_Collapsed              False
@@ -1136,8 +1136,8 @@
 	0x00ff66cc	! bottom  RGB(204,102,255)
     )
     ..Part_Ref_Des_Color (
-	0x000066ff	! top     RGB(255,102,  0)
-	0x00ff0000	! bottom  RGB(  0,  0,255)
+	0x00ffcc99	! top     RGB(153,204,255)
+	0x009966ff	! bottom  RGB(255,102,153)
     )
     ..Silk_Outline_Color (
 	0x00ff9933	! top     RGB( 51,153,255)
@@ -1277,9 +1277,9 @@
     )
     ..Part_Items_Collapsed               False
     ..Assm_Items_Collapsed               False
-    ..Silk_Items_Collapsed               True
+    ..Silk_Items_Collapsed               False
     ..Cell_Items_Collapsed               False
-    ..Tstpt_Items_Collapsed              True
+    ..Tstpt_Items_Collapsed              False
     ..Num_Buses 0
     ..Num_Constraints 1
     ..Net_Names ( 
@@ -2662,7 +2662,7 @@
 	0x00ffffff 0x00ffffff	! [843-844] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [845-846] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [847-848] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [849-850] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00008000	! [849-850] RGB(255,255,255)  RGB(  0,128,  0)
 	0x00ffffff 0x00ffffff	! [851-852] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [853-854] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [855-856] RGB(255,255,255)  RGB(255,255,255)
@@ -4024,7 +4024,7 @@
 	"Global.Option.ColorByNetClass.Pads" "1"
 	"Global.Option.ColorByNetClass.PatternConstrainedNets" "0"
 	"Global.Option.ColorByNetClass.Planes" "1"
-	"Global.Option.ColorByNetClass.Traces" "0"
+	"Global.Option.ColorByNetClass.Traces" "1"
 	"Global.Option.ColorByNetClass.Vias" "1"
 	"Global.Option.DRC.ColorByHazard.Enabled" "0"
 	"Global.Option.DRC.ColorByHazard.ShadowMode" "2"
@@ -4037,12 +4037,12 @@
 	"Global.Option.FullScreenCursor" "1"
 	"Global.Option.FullScreenCursorDuringMoveOnly" "1"
 	"Global.Option.HalfScreenCursor" "0"
-	"Global.Option.IgnoreSelectionFilter" "0"
+	"Global.Option.IgnoreSelectionFilter" "1"
 	"Global.Option.LinkSketchNetlineDisplayToLayerVisibility" "1"
-	"Global.Option.NetNamesOnTraces" "0"
-	"Global.Option.PlaneDataBehindTraces" "1"
+	"Global.Option.NetNamesOnTraces" "1"
+	"Global.Option.PlaneDataBehindTraces" "0"
 	"Global.Option.Selection.DisplaySolid" "0"
-	"Global.Option.Selection.DynamicHighlight" "1"
+	"Global.Option.Selection.DynamicHighlight" "0"
 	"Global.Option.TuningMeter" "0"
 	"[VirtualGlobal].iDC.3D.Assemblies.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.3D.Components.CollapsedSectionState" "1"
@@ -4066,16 +4066,16 @@
 	"[VirtualGlobal].iDC.Detail Views.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Drill Drawing.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Fabrication Objects.CollapsedSectionState" "0"
-	"[VirtualGlobal].iDC.Favorites.CollapsedSectionState" "0"
+	"[VirtualGlobal].iDC.Favorites.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Global View & Interactive Selection.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Graphics Options.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Grids.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Hazards.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Layer Display.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Materials.CollapsedSectionState" "1"
-	"[VirtualGlobal].iDC.Netlines.CollapsedSectionState" "1"
+	"[VirtualGlobal].iDC.Netlines.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Object Appearance.CollapsedSectionState" "0"
-	"[VirtualGlobal].iDC.Obstructs.CollapsedSectionState" "1"
+	"[VirtualGlobal].iDC.Obstructs.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Online.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Panel Objects.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Pins.CollapsedSectionState" "1"
@@ -4083,8 +4083,9 @@
 	"[VirtualGlobal].iDC.Planes.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Planning.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.RF Objects.CollapsedSectionState" "1"
-	"[VirtualGlobal].iDC.Route Areas.CollapsedSectionState" "1"
+	"[VirtualGlobal].iDC.Route Areas.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Sheet Objects.CollapsedSectionState" "1"
+	"[VirtualGlobal].iDC.ShowHidden" "1"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.User Draft Layers.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Valor-NPI.CollapsedSectionState" "1"
@@ -4137,28 +4138,48 @@
 	"[VirtualGlobal].iDC.Fiducials.Collapsed" "3"
 	"[VirtualGlobal].iDC.FixedAndLockedPatterns" "3"
 	"[VirtualGlobal].iDC.FullScreenCursor.Collapse" "3"
-	"[VirtualGlobal].iDC.General" "3"
+	"[VirtualGlobal].iDC.General" "2"
 	"[VirtualGlobal].iDC.Global View & Interactive Selection.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.Graphics Options.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.Grids.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.Groups.Collapsed" "3"
 	"[VirtualGlobal].iDC.Hazards.CollapsedSectionOrder" "2"
+	"[VirtualGlobal].iDC.Hidden.3D.Assemblies.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.3D.Components.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.3D.Mechanicals.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.3D.PCBs.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.CapacitiveMaterials.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.ConductiveMaterials.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.ConstraintClasses.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.Groups.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.Layers.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.NCDrillLayers.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.NetClasses.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.Nets.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.None.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.ResistiveMaterials.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.UserLayers.Count" "0"
+	"[VirtualGlobal].iDC.Hidden.Views.Count" "0"
 	"[VirtualGlobal].iDC.Layer Display.CollapsedSectionOrder" "2"
-	"[VirtualGlobal].iDC.Layers.1.Collapse" "2"
-	"[VirtualGlobal].iDC.Layers.2.Collapse" "2"
-	"[VirtualGlobal].iDC.Layers.3.Collapse" "2"
-	"[VirtualGlobal].iDC.Layers.4.Collapse" "2"
-	"[VirtualGlobal].iDC.Layers.5.Collapse" "2"
-	"[VirtualGlobal].iDC.Layers.6.Collapse" "2"
+	"[VirtualGlobal].iDC.Layers.1.Collapse" "3"
+	"[VirtualGlobal].iDC.Layers.2.Collapse" "3"
+	"[VirtualGlobal].iDC.Layers.3.Collapse" "3"
+	"[VirtualGlobal].iDC.Layers.4.Collapse" "3"
+	"[VirtualGlobal].iDC.Layers.5.Collapse" "3"
+	"[VirtualGlobal].iDC.Layers.6.Collapse" "3"
 	"[VirtualGlobal].iDC.Materials.CollapsedSectionOrder" "8"
 	"[VirtualGlobal].iDC.MountingHoles.Collapsed" "3"
 	"[VirtualGlobal].iDC.MultipleDesigners.Collapsed" "3"
 	"[VirtualGlobal].iDC.MultipleDesigners.ForceFields.Collapsed" "3"
 	"[VirtualGlobal].iDC.NetClasses.Collapsed" "3"
-	"[VirtualGlobal].iDC.Netlines.Collapsed" "3"
+	"[VirtualGlobal].iDC.Netlines.Collapsed" "2"
 	"[VirtualGlobal].iDC.Netlines.CollapsedSectionOrder" "6"
 	"[VirtualGlobal].iDC.NetlinesFrom" "3"
+	"[VirtualGlobal].iDC.Nets.0" "+3.3V"
+	"[VirtualGlobal].iDC.Nets.1" "+4V"
+	"[VirtualGlobal].iDC.Nets.2" "GND"
 	"[VirtualGlobal].iDC.Nets.Collapsed" "2"
+	"[VirtualGlobal].iDC.Nets.Count" "3"
 	"[VirtualGlobal].iDC.Object Appearance.CollapsedSectionOrder" "6"
 	"[VirtualGlobal].iDC.Obstructs.CollapsedSectionOrder" "8"
 	"[VirtualGlobal].iDC.Online.CollapsedSectionOrder" "3"
@@ -4176,14 +4197,14 @@
 	"[VirtualGlobal].iDC.Route Areas.CollapsedSectionOrder" "9"
 	"[VirtualGlobal].iDC.RouteObjects.Collapsed" "2"
 	"[VirtualGlobal].iDC.RoutePlanning.Collapsed" "3"
-	"[VirtualGlobal].iDC.SelectionAndHighlights" "3"
+	"[VirtualGlobal].iDC.SelectionAndHighlights" "2"
 	"[VirtualGlobal].iDC.Sheet Objects.CollapsedSectionOrder" "7"
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "128"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "215"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "388"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "452"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "225"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "452"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -4198,8 +4219,8 @@
 
 .view "PCB"
     ..extrema
-	(26358801,336603)		! (xmin, ymin)
-	(70639478,20096509)		! (xmax, ymax)
+	(7637608,-12031447)		! (xmin, ymin)
+	(112046196,33034263)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -4267,7 +4288,7 @@
 	T T T T T T ! [251 - 256]
 	)
     ..Netline_All_Enabled                True
-    ..Netline_Ordered_Routed_On          False
+    ..Netline_Ordered_Routed_On          True
     ..Netline_Ordered_Open_On            True
     ..Netline_All_Open_On                True
     ..Classline_On                       True
@@ -4290,15 +4311,15 @@
     ..Shearingline_On                    True
     ..Soldermask_On                      True 	! top
                                          True 	! bottom
-    ..Solderpaste_On                     True 	! top
-                                         True 	! bottom
-    ..Group_Outline_On                   True 	! top
-                                         True 	! bottom
-    ..Drill_Drawing_Through_On           False
-    ..Redline_Layer_On                   False
+    ..Solderpaste_On                     False	! top
+                                         False	! bottom
+    ..Group_Outline_On                   False	! top
+                                         False	! bottom
+    ..Drill_Drawing_Through_On           True
+    ..Redline_Layer_On                   True
     ..All_User_Draft_Enabled             True
     ..User_Draft_On ( 
-	F F F T F F F F F F 	! [1 - 10]
+	F F F F F F F F F F 	! [1 - 10]
 	F F F F F F F F F F 	! [11 - 20]
 	F F F F F F F F F F 	! [21 - 30]
 	F F F F F F F F F F 	! [31 - 40]
@@ -4330,18 +4351,18 @@
     ..Hard_Route_Fence_On                True
     ..Soft_Route_Fence_On                True
     ..Contour_On                         True
-    ..Contour_Span_On                    True
-    ..Cavity_On                          False
-    ..Milling_On                         False
+    ..Contour_Span_On                    False
+    ..Cavity_On                          True
+    ..Milling_On                         True
     ..Mounting_Hole_On                   True
     ..Other_Hole_On                      True
     ..Fiducial_On                        True 	! top
                                          True 	! bottom
-    ..Origin_On                          False
-    ..Nc_Drill_Origin_On                 False
+    ..Origin_On                          True
+    ..Nc_Drill_Origin_On                 True
     ..Route_Obstruct_On                  True
-    ..Pad_Obstruct_On                    False
-    ..Rule_Area_On                       False
+    ..Pad_Obstruct_On                    True
+    ..Rule_Area_On                       True
     ..Drc_Window_On                      True
     ..Manufacturing_Outline_On           True
     ..All_Panel_Items_Enabled            True
@@ -4361,8 +4382,8 @@
     ..Display_Legible_Text_Only          False
     ..Mirror_View_On                     False
     ..All_Text_Items_Enabled             True
-    ..Pin_Property_Text_On               True
-    ..Cell_Property_Text_On              True
+    ..Pin_Property_Text_On               False
+    ..Cell_Property_Text_On              False
     ..All_Mult_Designers_Enabled         True
     ..Reserved_Areas_On                  True
     ..Protected_Areas_On                 True
@@ -4378,8 +4399,8 @@
                                          False	! bottom
     ..Place_Outline_On                   True 	! top
                                          True 	! bottom
-    ..Insert_Outline_On                  True 	! top
-                                         True 	! bottom
+    ..Insert_Outline_On                  False	! top
+                                         False	! bottom
     ..Jumper_Wire_On                     True 	! top
                                          True 	! bottom
     ..Place_Obstruct_On                  True 	! top
@@ -4395,9 +4416,9 @@
     ..Thermal_Data_On                    True 	! top
                                          True 	! bottom
     ..All_Assy_Enabled                   True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..Assy_Outline_On                    True 	! top
-                                         True 	! bottom
+                                         False	! bottom
     ..Assy_Part_Number_On                False	! top
                                          False	! bottom
     ..Assy_Ref_Des_On                    False	! top
@@ -4420,12 +4441,12 @@
                                          False	! bottom
     ..Cell_Origin_On                     False	! top
                                          False	! bottom
-    ..All_Tpoint_Enabled                 True 	! top
-                                         True 	! bottom
+    ..All_Tpoint_Enabled                 False	! top
+                                         False	! bottom
     ..Tpoint_Pad_On                      True 	! top
                                          True 	! bottom
-    ..Tpoint_Obstruct_On                 False	! top
-                                         False	! bottom
+    ..Tpoint_Obstruct_On                 True 	! top
+                                         True 	! bottom
     ..Tpoint_Assy_Ref_Des_On             False	! top
                                          False	! bottom
     ..Tpoint_Silk_Ref_Des_On             False	! top
@@ -4953,21 +4974,23 @@
 	F F F F F F F F F F 	! [361 - 370]
 	F F F F F F F F F F 	! [371 - 380]
 	F F F F F F F F F F 	! [381 - 390]
-	F F F F F F F F F F 	! [391 - 400]
-	F F F F F F F F F F 	! [401 - 410]
-	F F F F F F F F F F 	! [411 - 420]
-	F F F F F F F ! [421 - 427]
+	F F F F F F F T T T 	! [391 - 400]
+	T T T T T T T T T T 	! [401 - 410]
+	T T T T T T T T T T 	! [411 - 420]
+	T T T T T T T ! [421 - 427]
 	)
     ..Virtual_Options ( 
-	"[Virtual].iDC.ListSelectableLayersOnly" "0"
+	"[Virtual].iDC.LayersSelection" "65537"
+	"[Virtual].iDC.LayersVisibility" "65537"
+	"[Virtual].iDC.ListSelectableLayersOnly" "1"
     )
     ..Segments ( 
 	"LayerControl.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"LayerControl.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
-	"LayerControl.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:0" "t:0" "o:1"
+	"LayerControl.2" "d:1" "e:1" "s:1" "se:1" "c:13369497" "a:100" "p:0" "t:0" "o:1"
+	"LayerControl.3" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
 	"LayerControl.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"LayerControl.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
-	"LayerControl.6" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
+	"LayerControl.6" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
 	"LayerControl.7" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
 	"LayerControl.8" "d:1" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
 	"LayerControl.9" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
@@ -5220,16 +5243,16 @@
 	"LayerControl.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
 	"Board.BendArea" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:80" "t:1" "o:1"
 	"Board.BoardOutline" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Board.Cavity" "d:0" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
+	"Board.Cavity" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
 	"Board.DRCWindow" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
 	"Board.FixtureOutline" "d:1" "e:1" "s:1" "se:1" "c:8388608" "a:100" "p:0" "t:0" "o:1"
 	"Board.ManufacturingOutline" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
 	"Board.Obstruct.Part.Top" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
 	"Board.Obstruct.Part.Bottom" "d:1" "e:1" "s:1" "se:1" "c:13434624" "a:100" "p:0" "t:0" "o:1"
-	"Board.Obstruct.TestPoint.Top" "d:0" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Board.Obstruct.TestPoint.Bottom" "d:0" "e:1" "s:1" "se:1" "c:16711782" "a:100" "p:0" "t:0" "o:1"
-	"Board.Origin.Board" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Board.Origin.NCDrill" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Board.Obstruct.TestPoint.Top" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
+	"Board.Obstruct.TestPoint.Bottom" "d:1" "e:1" "s:1" "se:1" "c:16711782" "a:100" "p:0" "t:0" "o:1"
+	"Board.Origin.Board" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Board.Origin.NCDrill" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Board.Room.Top" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
 	"Board.Room.Bottom" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Board.RouteBorder" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
@@ -5237,11 +5260,11 @@
 	"Board.RouteFence.Soft" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Board.Sandbox" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Pad.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Pad.3" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Pad.2" "d:1" "e:1" "s:1" "se:1" "c:13369497" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Pad.3" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Pad.6" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Pad.6" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.7" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.8" "d:1" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.9" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
@@ -5496,268 +5519,268 @@
 	"Copper.Pad.Fiducial.Bottom" "d:1" "e:1" "s:1" "se:1" "c:16764159" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.TestPoint.Top" "d:1" "e:1" "s:1" "se:1" "c:16750950" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.TestPoint.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.6" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.7" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.8" "d:1" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.9" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.10" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.11" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.12" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.13" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.14" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.15" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.16" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.17" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.18" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.19" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.20" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.21" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.22" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.23" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.24" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.25" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.26" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.27" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.28" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.29" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.30" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.31" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.32" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.33" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.34" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.35" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.36" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.37" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.38" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.39" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.40" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.41" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.42" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.43" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.44" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.45" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.46" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.47" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.48" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.49" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.50" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.51" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.52" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.53" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.54" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.55" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.56" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.57" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.58" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.59" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.60" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.61" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.62" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.63" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.64" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.65" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.66" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.67" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.68" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.69" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.70" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.71" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.72" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.73" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.74" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.75" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.76" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.77" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.78" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.79" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.80" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.81" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.82" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.83" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.84" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.85" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.86" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.87" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.88" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.89" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.90" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.91" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.92" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.93" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.94" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.95" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.96" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.97" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.98" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.99" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.100" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.101" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.102" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.103" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.104" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.105" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.106" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.107" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.108" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.109" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.110" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.111" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.112" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.113" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.114" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.115" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.116" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.117" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.118" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.119" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.120" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.121" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.122" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.123" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.124" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.125" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.126" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.127" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.128" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.129" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.130" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.131" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.132" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.133" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.134" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.135" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.136" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.137" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.138" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.139" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.140" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.141" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.142" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.143" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.144" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.145" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.146" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.147" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.148" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.149" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.150" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.151" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.152" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.153" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.154" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.155" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.156" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.157" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.158" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.159" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.160" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.161" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.162" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.163" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.164" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.165" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.166" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.167" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.168" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.169" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.170" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.171" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.172" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.173" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.174" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.175" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.176" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.177" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.178" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.179" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.180" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.181" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.182" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.183" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.184" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.185" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.186" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.187" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.188" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.189" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.190" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.191" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.192" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.193" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.194" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.195" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.196" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.197" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.198" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.199" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.200" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.201" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.202" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.203" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.204" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.205" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.206" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.207" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.208" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.209" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.210" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.211" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.212" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.213" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.214" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.215" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.216" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.217" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.218" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.219" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.220" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.221" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.222" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.223" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.224" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.225" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.226" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.227" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.228" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.229" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.230" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.231" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.232" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.233" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.234" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.235" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.236" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.237" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.238" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.239" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.240" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.241" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.242" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.243" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.244" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.245" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.246" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.247" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.248" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.249" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.250" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.251" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.252" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.253" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.254" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.255" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Plane.Data.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Plane.Data.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.2" "d:1" "e:1" "s:1" "se:1" "c:16711935" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.3" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.5" "d:1" "e:1" "s:1" "se:1" "c:26265" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.6" "d:1" "e:1" "s:1" "se:1" "c:26316" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.7" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.8" "d:1" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.9" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.10" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.11" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.12" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.13" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.14" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.15" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.16" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.17" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.18" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.19" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.20" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.21" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.22" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.23" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.24" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.25" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.26" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.27" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.28" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.29" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.30" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.31" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.32" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.33" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.34" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.35" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.36" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.37" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.38" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.39" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.40" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.41" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.42" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.43" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.44" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.45" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.46" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.47" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.48" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.49" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.50" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.51" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.52" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.53" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.54" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.55" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.56" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.57" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.58" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.59" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.60" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.61" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.62" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.63" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.64" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.65" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.66" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.67" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.68" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.69" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.70" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.71" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.72" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.73" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.74" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.75" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.76" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.77" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.78" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.79" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.80" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.81" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.82" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.83" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.84" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.85" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.86" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.87" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.88" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.89" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.90" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.91" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.92" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.93" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.94" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.95" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.96" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.97" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.98" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.99" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.100" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.101" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.102" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.103" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.104" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.105" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.106" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.107" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.108" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.109" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.110" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.111" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.112" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.113" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.114" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.115" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.116" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.117" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.118" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.119" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.120" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.121" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.122" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.123" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.124" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.125" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.126" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.127" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.128" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.129" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.130" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.131" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.132" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.133" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.134" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.135" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.136" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.137" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.138" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.139" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.140" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.141" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.142" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.143" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.144" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.145" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.146" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.147" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.148" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.149" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.150" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.151" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.152" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.153" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.154" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.155" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.156" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.157" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.158" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.159" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.160" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.161" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.162" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.163" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.164" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.165" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.166" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.167" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.168" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.169" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.170" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.171" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.172" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.173" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.174" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.175" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.176" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.177" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.178" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.179" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.180" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.181" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.182" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.183" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.184" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.185" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.186" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.187" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.188" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.189" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.190" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.191" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.192" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.193" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.194" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.195" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.196" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.197" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.198" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.199" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.200" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.201" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.202" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.203" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.204" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.205" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.206" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.207" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.208" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.209" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.210" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.211" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.212" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.213" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.214" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.215" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.216" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.217" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.218" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.219" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.220" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.221" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.222" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.223" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.224" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.225" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.226" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.227" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.228" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.229" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.230" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.231" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.232" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.233" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.234" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.235" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.236" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.237" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.238" "d:1" "e:1" "s:1" "se:1" "c:10027008" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.239" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.240" "d:1" "e:1" "s:1" "se:1" "c:16751052" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.241" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.242" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.243" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.244" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.245" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.246" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.247" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.248" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.249" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.250" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.251" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.252" "d:1" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.253" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.254" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.255" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:1" "t:0" "o:1"
+	"Copper.Plane.Data.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:1" "t:0" "o:1"
 	"Copper.Trace.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Trace.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Trace.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Trace.2" "d:1" "e:1" "s:1" "se:1" "c:13369497" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Trace.3" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
-	"Copper.Trace.6" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
+	"Copper.Trace.6" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.7" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.8" "d:1" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.9" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
@@ -6009,13 +6032,13 @@
 	"Copper.Trace.255" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Trace.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Assembly.Part.Outline.Top" "d:1" "e:1" "s:1" "se:1" "c:3394611" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Assembly.Part.Outline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:16737996" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Assembly.Part.Outline.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Assembly.Part.Text.PartNumber.Top" "d:0" "e:1" "s:1" "se:0" "c:3394611" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Assembly.Part.Text.PartNumber.Bottom" "d:0" "e:1" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Assembly.Part.Text.PartNumber.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Assembly.Part.Text.RefDes.Top" "d:0" "e:1" "s:1" "se:0" "c:3394611" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Assembly.Part.Text.RefDes.Bottom" "d:0" "e:1" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Assembly.TestPoint.Text.RefDes.Top" "d:0" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Assembly.TestPoint.Text.RefDes.Bottom" "d:0" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Assembly.Part.Text.RefDes.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16737996" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Assembly.TestPoint.Text.RefDes.Top" "d:1" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Assembly.TestPoint.Text.RefDes.Bottom" "d:1" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.BondWires.Level0.Top" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.BondWires.Level0.Bottom" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.BondWires.Level1.Top" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
@@ -6039,9 +6062,9 @@
 	"Fabrication.DiePins.Level3.Bottom" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.DiePins.Level4.Top" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.DiePins.Level4.Bottom" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.DrillDrawingThrough" "d:0" "e:1" "s:1" "se:1" "c:6724095" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.DrillDrawingThrough" "d:1" "e:1" "s:1" "se:1" "c:6724095" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Hole.Contour" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Hole.Contour.SpanNumbers" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Hole.Contour.SpanNumbers" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Hole.Mounting" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Hole.Pin" "d:1" "e:1" "s:1" "se:1" "c:39423" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Hole.Via" "d:1" "e:1" "s:1" "se:1" "c:39423" "a:100" "p:0" "t:0" "o:1"
@@ -6557,35 +6580,35 @@
 	"Fabrication.Material.Overglaze.254" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Overglaze.255" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"Fabrication.Material.Overglaze.256" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"Fabrication.RedlineLayer" "d:0" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.Generated.Top" "d:0" "e:0" "s:1" "se:0" "c:16763955" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.Generated.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16764159" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.Part.Outline.Top" "d:0" "e:0" "s:1" "se:0" "c:16750899" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.Part.Outline.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16751103" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.Part.Text.PartNumber.Top" "d:0" "e:0" "s:1" "se:0" "c:16750899" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.Part.Text.PartNumber.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16751103" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.Part.Text.RefDes.Top" "d:0" "e:0" "s:1" "se:0" "c:16750899" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.Part.Text.RefDes.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16751103" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.TestPoint.Probe.Top" "d:0" "e:1" "s:1" "se:0" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.TestPoint.Probe.Bottom" "d:0" "e:1" "s:1" "se:0" "c:65280" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.TestPoint.Text.RefDes.Top" "d:0" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Silkscreen.TestPoint.Text.RefDes.Bottom" "d:0" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.RedlineLayer" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.Generated.Top" "d:1" "e:0" "s:1" "se:0" "c:16763955" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.Generated.Bottom" "d:1" "e:0" "s:1" "se:0" "c:16764159" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.Part.Outline.Top" "d:1" "e:0" "s:1" "se:0" "c:16750899" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.Part.Outline.Bottom" "d:1" "e:0" "s:1" "se:0" "c:16751103" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.Part.Text.PartNumber.Top" "d:1" "e:0" "s:1" "se:0" "c:16750899" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.Part.Text.PartNumber.Bottom" "d:1" "e:0" "s:1" "se:0" "c:16751103" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.Part.Text.RefDes.Top" "d:1" "e:0" "s:1" "se:0" "c:16750899" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.Part.Text.RefDes.Bottom" "d:1" "e:0" "s:1" "se:0" "c:16751103" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.TestPoint.Probe.Top" "d:1" "e:0" "s:1" "se:0" "c:65535" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.TestPoint.Probe.Bottom" "d:1" "e:0" "s:1" "se:0" "c:65280" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.TestPoint.Text.RefDes.Top" "d:1" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Silkscreen.TestPoint.Text.RefDes.Bottom" "d:1" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Soldermask.Top" "d:1" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Soldermask.Bottom" "d:1" "e:1" "s:1" "se:1" "c:204" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Solderpaste.Top" "d:1" "e:1" "s:1" "se:1" "c:16737996" "a:100" "p:0" "t:0" "o:1"
-	"Fabrication.Solderpaste.Bottom" "d:1" "e:1" "s:1" "se:1" "c:6737151" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Solderpaste.Top" "d:0" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
+	"Fabrication.Solderpaste.Bottom" "d:0" "e:1" "s:1" "se:1" "c:204" "a:100" "p:0" "t:0" "o:1"
 	"Fabrication.Stiffener" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"General.ActiveClearance" "d:0" "e:1" "s:1" "se:1" "c:16750950" "a:50" "p:0" "t:0" "o:1"
 	"General.Color.Background" "d:1" "e:1" "s:1" "se:1" "c:0" "a:100" "p:0" "t:0" "o:1"
 	"General.Color.Highlight" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"General.Color.Selection" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"General.Color.SelectionShape" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"General.Color.SelectionShape" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"General.Milling.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:33" "t:0" "o:1"
-	"General.Milling.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:33" "t:0" "o:1"
-	"General.Milling.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:33" "t:0" "o:1"
+	"General.Milling.2" "d:1" "e:1" "s:1" "se:1" "c:13369497" "a:100" "p:33" "t:0" "o:1"
+	"General.Milling.3" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:33" "t:0" "o:1"
-	"General.Milling.6" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:33" "t:0" "o:1"
+	"General.Milling.6" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.7" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.8" "d:1" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.9" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:33" "t:0" "o:1"
@@ -6844,18 +6867,18 @@
 	"General.Pattern.StiffenerHole" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:3" "t:0" "o:1"
 	"General.Pin.AllSameColor" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
 	"General.Via.AllSameColor" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
-	"General.Via.InactiveBlindBuriedPad" "d:0" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
+	"General.Via.InactiveBlindBuriedPad" "d:1" "e:1" "s:1" "se:1" "c:2434341" "a:100" "p:0" "t:0" "o:1"
 	"General.Via.InternalSkipViaPad" "d:1" "e:1" "s:1" "se:1" "c:14408667" "a:100" "p:0" "t:0" "o:1"
 	"General.Via.SpanNumbers" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Grid.Draw" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Grid.Jumper" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Grid.Part.Primary" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Grid.Part.Secondary" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Grid.Route" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Grid.TestPoint" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Grid.Via" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Group.Outline.Top" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
-	"Group.Outline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
+	"Grid.Route" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Grid.TestPoint" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Grid.Via" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Group.Outline.Top" "d:0" "e:1" "s:1" "se:0" "c:16711884" "a:100" "p:0" "t:0" "o:1"
+	"Group.Outline.Bottom" "d:0" "e:1" "s:1" "se:0" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Group.Outline.Bubble.Top" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Group.Outline.Bubble.Bottom" "d:1" "e:1" "s:1" "se:1" "c:16711680" "a:100" "p:0" "t:0" "o:1"
 	"Hazard.Batch.BendAreaProximity" "d:0" "e:1" "s:1" "se:1" "c:16764159" "a:100" "p:0" "t:0" "o:1"
@@ -15189,7 +15212,7 @@
 	"MultipleDesigners.ForceFields.ThisHandle" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
 	"Netline.Classline" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
 	"Netline.NonOrderedOpen" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
-	"Netline.OrderedAll" "d:0" "e:1" "s:1" "se:0" "c:10079487" "a:100" "p:0" "t:0" "o:1"
+	"Netline.OrderedAll" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
 	"Netline.OrderedOpen" "d:1" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
 	"Netline.SLI.1" "d:0" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Netline.SLI.2" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
@@ -15203,39 +15226,39 @@
 	"Panel.Outline" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Panel.ScoringLine" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Panel.ShearingLine" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
-	"Part.Cell.GlueSpot.Top" "d:0" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"Part.Cell.GlueSpot.Bottom" "d:0" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Part.Cell.GlueSpot.Top" "d:1" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"Part.Cell.GlueSpot.Bottom" "d:1" "e:0" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Part.Cell.Name.Top" "d:0" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
 	"Part.Cell.Name.Bottom" "d:0" "e:1" "s:1" "se:1" "c:10092543" "a:100" "p:0" "t:0" "o:1"
 	"Part.Cell.Origin.Top" "d:0" "e:0" "s:1" "se:0" "c:6684927" "a:100" "p:0" "t:0" "o:1"
-	"Part.Cell.Origin.Bottom" "d:0" "e:0" "s:1" "se:0" "c:10027263" "a:100" "p:0" "t:0" "o:1"
+	"Part.Cell.Origin.Bottom" "d:1" "e:0" "s:1" "se:0" "c:10027263" "a:100" "p:0" "t:0" "o:1"
 	"Part.Hazard.Top" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
 	"Part.Hazard.Bottom" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Part.InsertionOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
-	"Part.InsertionOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:0" "t:0" "o:1"
+	"Part.InsertionOutline.Top" "d:0" "e:1" "s:1" "se:0" "c:16776960" "a:100" "p:0" "t:0" "o:1"
+	"Part.InsertionOutline.Bottom" "d:0" "e:1" "s:1" "se:0" "c:10027212" "a:100" "p:0" "t:0" "o:1"
 	"Part.Pin.NumberType.Top" "d:1" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Part.Pin.NumberType.Bottom" "d:1" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Part.PlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Part.PlaceOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:2" "t:0" "o:1"
 	"Part.SpecialPlaceOutline.Top" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Part.SpecialPlaceOutline.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10027212" "a:100" "p:2" "t:0" "o:1"
-	"Place.Part.Text.RefDes.Top" "d:0" "e:1" "s:1" "se:0" "c:26367" "a:100" "p:0" "t:0" "o:1"
-	"Place.Part.Text.RefDes.Bottom" "d:0" "e:1" "s:1" "se:0" "c:16711680" "a:100" "p:0" "t:0" "o:1"
+	"Place.Part.Text.RefDes.Top" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
+	"Place.Part.Text.RefDes.Bottom" "d:1" "e:1" "s:1" "se:1" "c:10053375" "a:100" "p:0" "t:0" "o:1"
 	"Planning.ReuseArea" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:1"
 	"Sheet.SheetOrigin" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Sheet.SheetOutline" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
 	"Topology.TargetAreaWarnRed" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:34" "t:1" "o:1"
 	"Topology.TargetAreaWarnYellow" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:34" "t:1" "o:1"
-	"User.Dimensions" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
+	"User.Dimensions" "d:0" "e:1" "s:1" "se:0" "c:128" "a:100" "p:0" "t:0" "o:1"
 	"User.Measure Drawing" "d:0" "e:1" "s:1" "se:0" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"WirebondObjects.WirebondGuides.Top" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
 	"WirebondObjects.WirebondGuides.Bottom" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
 	"Board.BundlePath.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"Board.BundlePath.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
-	"Board.BundlePath.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:0" "t:0" "o:1"
+	"Board.BundlePath.2" "d:1" "e:1" "s:1" "se:1" "c:13369497" "a:100" "p:0" "t:0" "o:1"
+	"Board.BundlePath.3" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
 	"Board.BundlePath.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Board.BundlePath.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
-	"Board.BundlePath.6" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
+	"Board.BundlePath.6" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
 	"Board.BundlePath.7" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
 	"Board.BundlePath.8" "d:1" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
 	"Board.BundlePath.9" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
@@ -15488,11 +15511,11 @@
 	"Board.BundlePath.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:0" "t:0" "o:1"
 	"Hazard.Internal.DpPhaseMatching" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"Internal.Board.SketchPlanIndependentFromLayers.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
-	"Internal.Board.SketchPlanIndependentFromLayers.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
-	"Internal.Board.SketchPlanIndependentFromLayers.3" "d:1" "e:1" "s:1" "se:1" "c:6750105" "a:100" "p:0" "t:0" "o:1"
+	"Internal.Board.SketchPlanIndependentFromLayers.2" "d:1" "e:1" "s:1" "se:1" "c:13369497" "a:100" "p:0" "t:0" "o:1"
+	"Internal.Board.SketchPlanIndependentFromLayers.3" "d:1" "e:1" "s:1" "se:1" "c:13158" "a:100" "p:0" "t:0" "o:1"
 	"Internal.Board.SketchPlanIndependentFromLayers.4" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:1"
 	"Internal.Board.SketchPlanIndependentFromLayers.5" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:0" "t:0" "o:1"
-	"Internal.Board.SketchPlanIndependentFromLayers.6" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
+	"Internal.Board.SketchPlanIndependentFromLayers.6" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:1"
 	"Internal.Board.SketchPlanIndependentFromLayers.7" "d:1" "e:1" "s:1" "se:1" "c:16737945" "a:100" "p:0" "t:0" "o:1"
 	"Internal.Board.SketchPlanIndependentFromLayers.8" "d:1" "e:1" "s:1" "se:1" "c:13382451" "a:100" "p:0" "t:0" "o:1"
 	"Internal.Board.SketchPlanIndependentFromLayers.9" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
@@ -17104,7 +17127,7 @@
 	"[Net].XSIG090300" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG090319" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG090338" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].+3.3V" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].+3.3V" "d:1" "e:0" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:0"
 	"[Net].FPGA_MUL0" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].FPGA_MUL1" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].FPGA_MUL2" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -17233,7 +17256,7 @@
 	"Option.DiePinsTop.Selectable" "1"
 	"Option.DrawFabObjects.Enabled" "1"
 	"Option.DrawFabObjects.Selectable" "1"
-	"Option.Fabrication.AssemblyItems.Bottom" "1"
+	"Option.Fabrication.AssemblyItems.Bottom" "0"
 	"Option.Fabrication.AssemblyItems.Top" "1"
 	"Option.Fabrication.CellItems.Bottom" "0"
 	"Option.Fabrication.CellItems.Top" "0"
@@ -17241,8 +17264,8 @@
 	"Option.Fabrication.DrillDrawing.Selectable" "1"
 	"Option.Fabrication.SilkscreenItems.Bottom" "0"
 	"Option.Fabrication.SilkscreenItems.Top" "0"
-	"Option.Fabrication.TestPointItems.Bottom" "1"
-	"Option.Fabrication.TestPointItems.Top" "1"
+	"Option.Fabrication.TestPointItems.Bottom" "0"
+	"Option.Fabrication.TestPointItems.Top" "0"
 	"Option.FabricationObjects" "1"
 	"Option.FabricationObjects.Bottom" "1"
 	"Option.FabricationObjects.Selectable" "1"
@@ -17335,12 +17358,12 @@
 	"Option.PlaceObjects.Parts.Top" "1"
 	"Option.PlaceObjects.Selectable" "1"
 	"Option.PlaceObstructsHeight" "1"
-	"Option.Planes.Data.Enabled" "0"
-	"Option.Planes.Data.Fill" "2"
-	"Option.Planes.Enabled" "1"
-	"Option.Planes.Selectable" "1"
-	"Option.Planes.Shape.Enabled" "1"
-	"Option.Planes.Sketch.Enabled" "1"
+	"Option.Planes.Data.Enabled" "3"
+	"Option.Planes.Data.Fill" "3"
+	"Option.Planes.Enabled" "0"
+	"Option.Planes.Selectable" "3"
+	"Option.Planes.Shape.Enabled" "3"
+	"Option.Planes.Sketch.Enabled" "3"
 	"Option.Planning.Enabled" "1"
 	"Option.Planning.Selectable" "1"
 	"Option.RFNodes.Enabled" "1"
@@ -17356,7 +17379,7 @@
 	"Option.RouteObjects.Enabled" "1"
 	"Option.RouteObjects.Selectable" "1"
 	"Option.RouteObstructs.Enabled" "1"
-	"Option.RouteObstructs.Pad.Enabled" "0"
+	"Option.RouteObstructs.Pad.Enabled" "1"
 	"Option.RouteObstructs.Plane.Enabled" "1"
 	"Option.RouteObstructs.Selectable" "1"
 	"Option.RouteObstructs.Trace.Enabled" "1"
@@ -17365,7 +17388,7 @@
 	"Option.RouteObstructs.Via.Enabled" "1"
 	"Option.RoutePlanning" "1"
 	"Option.RouteTargets.Enabled" "0"
-	"Option.RuleAreas.Enabled" "0"
+	"Option.RuleAreas.Enabled" "1"
 	"Option.SMDPinPads.Enabled" "1"
 	"Option.SelectableInsidePartOutline" "0"
 	"Option.SelectedOnly" "1"
@@ -17381,13 +17404,13 @@
 	"Option.Spacers.Enabled" "1"
 	"Option.Spacers.ShadowModeEnabled" "0"
 	"Option.TargetAreas.Enabled" "0"
-	"Option.Teardrops.Enabled" "1"
-	"Option.Teardrops.Selectable" "1"
-	"Option.TextItems.CellProperties.Enabled" "1"
-	"Option.TextItems.CellProperties.Selectable" "1"
+	"Option.Teardrops.Enabled" "0"
+	"Option.Teardrops.Selectable" "3"
+	"Option.TextItems.CellProperties.Enabled" "0"
+	"Option.TextItems.CellProperties.Selectable" "3"
 	"Option.TextItems.Enabled" "1"
-	"Option.TextItems.PinProperties.Enabled" "1"
-	"Option.TextItems.PinProperties.Selectable" "1"
+	"Option.TextItems.PinProperties.Enabled" "0"
+	"Option.TextItems.PinProperties.Selectable" "3"
 	"Option.TextItems.Selectable" "1"
 	"Option.Traces.Enabled" "1"
 	"Option.Traces.Selectable" "1"
