@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 01/02/18 20:26:22
+! Created 01/03/18 17:34:27
 !
 
 .Global_Constants 146 5
@@ -19,7 +19,7 @@
     ..Active_Place_Layer_Top             True
     ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
-    ..Active_Route_Layer 2
+    ..Active_Route_Layer 3
     ..Trace_Layer_Color ( 
 	0x00ff6633 0x009933ff	! [1-2] RGB( 51,102,255)  RGB(255, 51,153)
 	0x0066ff99 0x000000ff	! [3-4] RGB(153,255,102)  RGB(255,  0,  0)
@@ -1912,7 +1912,7 @@
 	"Global.Option.FullScreenCursor" "1"
 	"Global.Option.FullScreenCursorDuringMoveOnly" "1"
 	"Global.Option.HalfScreenCursor" "0"
-	"Global.Option.IgnoreSelectionFilter" "1"
+	"Global.Option.IgnoreSelectionFilter" "0"
 	"Global.Option.LinkSketchNetlineDisplayToLayerVisibility" "1"
 	"Global.Option.NetNamesOnTraces" "1"
 	"Global.Option.PlaneDataBehindTraces" "1"
@@ -2038,7 +2038,7 @@
 	"[VirtualGlobal].iDC.Layer Display.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.Layers.1.Collapse" "3"
 	"[VirtualGlobal].iDC.Layers.2.Collapse" "2"
-	"[VirtualGlobal].iDC.Layers.3.Collapse" "3"
+	"[VirtualGlobal].iDC.Layers.3.Collapse" "2"
 	"[VirtualGlobal].iDC.Layers.4.Collapse" "3"
 	"[VirtualGlobal].iDC.Materials.CollapsedSectionOrder" "8"
 	"[VirtualGlobal].iDC.MountingHoles.Collapsed" "3"
@@ -2081,8 +2081,8 @@
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
 	"[VirtualGlobal].iDC.SplitViewHeight.0" "228"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "231"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "446"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "310"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "367"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -2097,8 +2097,8 @@
 
 .view "PCB"
     ..extrema
-	(-63646374,41382273)		! (xmin, ymin)
-	(211418418,160108047)		! (xmax, ymax)
+	(-149785424,2089926)		! (xmin, ymin)
+	(344554072,215460888)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -2379,6 +2379,7 @@
     ..Virtual_Options ( 
 	"[Virtual].iDC.Global.Option.FullScreenCursorStyle.Enabled" "1"
 	"[Virtual].iDC.Global.Option.PanSensitivity.Enabled" "1"
+	"[Virtual].iDC.LayersVisibility" "65537"
 	"[Virtual].iDC.ListSelectableLayersOnly" "1"
     )
     ..Segments ( 

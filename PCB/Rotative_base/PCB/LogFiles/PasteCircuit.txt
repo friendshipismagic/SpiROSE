@@ -2,10 +2,10 @@
                                 Circuit Paste log
                                 -----------------
 
-                       03:06 AM Friday, December 29, 2017
-Job Name: C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+                      11:20 PM Wednesday, January 03, 2018
+               Job Name: D:\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
-         Clipboard: C:\Users\Alexis\AppData\Local\Temp\mgc_icc_clipboard_tmp\Layout\
+         Clipboard: C:\Users\Adrien\AppData\Local\Temp\mgc_icc_clipboard_tmp\Layout\
     
 
 
@@ -24,6 +24,9 @@ Checking Netlist Map completed
 
 Updating Local Libraries
 ------------------------
+
+    WARNING: 1 padstacks exist in the Local Library. Clipboard data is ignored:
+       VIA0.6
 
 Library update is not required
 
@@ -52,7 +55,8 @@ Loading net items
 -----------------
 
 Loading of Net items complete
-    0 objects were created
+    6 objects were created
+        6 vias
 
 
 Loading Fiducials
@@ -61,13 +65,6 @@ Loading Fiducials
 Fiducial loading completed
     0 fiducials are created
 
-
-Loading Board Outlines
-----------------------
-
-    Manufacturing outline loaded from the clipboard.
-
-Board Outlines loading completed
 
 Loading spacers
 ---------------
@@ -95,3 +92,9 @@ Loading Dimension Data
 
 Dimension Data loading completed
     0 dimensions were created
+
+
+Creating groups for non-schematic objects
+-----------------------------------------
+
+    Group PCB/arrayVias21_hst_hst_hst was created for objects from clipboard group PCB/arrayVias21_hst.
