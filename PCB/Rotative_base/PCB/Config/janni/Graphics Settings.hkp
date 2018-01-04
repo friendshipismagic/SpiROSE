@@ -2,10 +2,10 @@
 ! change it at your own peril
 
 !
-! Created 12/29/17 11:46:07
+! Created 01/04/18 10:57:55
 !
 
-.Global_Constants 146 5
+.Global_Constants 159 5
     ..File_Type Graphics_Settings
     ..Version Version_7
     ..Num_Views 1
@@ -13,11 +13,11 @@
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
-	(-32000, -32000)	! ptMinPosition
+	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
 	(507, 0) (1929,706)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             True
-    ..Active_Place_Layer_Bottom          False
+    ..Active_Place_Layer_Bottom          True
     ..Active_Place_Layer_Internal        False
     ..Active_Route_Layer 0
     ..Trace_Layer_Color ( 
@@ -1429,6 +1429,19 @@
 	"MUX_6_B"	! [144]
 	"MUX_7_A"	! [145]
 	"MUX_7_B"	! [146]
+	"XSIG020407"	! [147]
+	"XSIG020408"	! [148]
+	"XSIG020409"	! [149]
+	"XSIG020410"	! [150]
+	"XSIG020411"	! [151]
+	"XSIG020412"	! [152]
+	"XSIG020413"	! [153]
+	"XSIG020414"	! [154]
+	"XSIG020415"	! [155]
+	"XSIG020416"	! [156]
+	"XSIG020417"	! [157]
+	"XSIG020418"	! [158]
+	"VCC5ENC"	! [159]
     )
     ..Netclass_Names ( 
 	"(Default)"	! [1]
@@ -1523,6 +1536,13 @@
 	0x00ffffff 0x00ffffff	! [141-142] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [143-144] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [145-146] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [147-148] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [149-150] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [151-152] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [153-154] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [155-156] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [157-158] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff		! [159] RGB(255,255,255)
     )
     ..Net_Ptrnidx ( 
 	0 0 0 0 0 0 0 0 0 0 	! [1 - 10]
@@ -1539,7 +1559,8 @@
 	0 0 0 0 0 0 0 0 0 0 	! [111 - 120]
 	0 0 0 0 0 0 0 0 0 0 	! [121 - 130]
 	0 0 0 0 0 0 0 0 0 0 	! [131 - 140]
-	0 0 0 0 0 0 ! [141 - 146]
+	0 0 0 0 0 0 0 0 0 0 	! [141 - 150]
+	0 0 0 0 0 0 0 0 0 ! [151 - 159]
 	)
     ..Net_Alpha ( 
 	100 100 100 100 100 100 100 100 100 100 	! [1 - 10]
@@ -1556,7 +1577,8 @@
 	100 100 100 100 100 100 100 100 100 100 	! [111 - 120]
 	100 100 100 100 100 100 100 100 100 100 	! [121 - 130]
 	100 100 100 100 100 100 100 100 100 100 	! [131 - 140]
-	100 100 100 100 100 100 ! [141 - 146]
+	100 100 100 100 100 100 100 100 100 100 	! [141 - 150]
+	100 100 100 100 100 100 100 100 100 ! [151 - 159]
 	)
     ..Net_Nopaque ( 
 	F F F F F F F F F F 	! [1 - 10]
@@ -1573,7 +1595,8 @@
 	F F F F F F F F F F 	! [111 - 120]
 	F F F F F F F F F F 	! [121 - 130]
 	F F F F F F F F F F 	! [131 - 140]
-	F F F F F F ! [141 - 146]
+	F F F F F F F F F F 	! [141 - 150]
+	F F F F F F F F F ! [151 - 159]
 	)
     ..Net_Outline ( 
 	T T F T F F F F F F 	! [1 - 10]
@@ -1590,7 +1613,8 @@
 	F F F F F F F F F F 	! [111 - 120]
 	F F F F F F F F F F 	! [121 - 130]
 	F F F F F F F F F F 	! [131 - 140]
-	F F F F F F ! [141 - 146]
+	F F F F F F F F F F 	! [141 - 150]
+	F F F F F F F F F ! [151 - 159]
 	)
     ..Netclass_Color ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
@@ -1682,7 +1706,7 @@
 	False ![8]
     )
     ..Net_On ( 
-	F F F T F F F F F F 	! [1 - 10]
+	F F F F F F F F F F 	! [1 - 10]
 	F F F F F F F F F F 	! [11 - 20]
 	F F F F F F F F F F 	! [21 - 30]
 	F F F F F F F F F F 	! [31 - 40]
@@ -1690,13 +1714,14 @@
 	F F F F F F F F F F 	! [51 - 60]
 	F F F F F F F F F F 	! [61 - 70]
 	F F F F F F F F F F 	! [71 - 80]
-	F F F F F F F F F T 	! [81 - 90]
-	T T T T T T F F F F 	! [91 - 100]
+	F F F F F F F F F F 	! [81 - 90]
+	F F F F F F F F F F 	! [91 - 100]
 	F F F F F F F F F F 	! [101 - 110]
 	F F F F F F F F F F 	! [111 - 120]
 	F F F F F F F F F F 	! [121 - 130]
 	F F F F F F F F F F 	! [131 - 140]
-	F F F F F F ! [141 - 146]
+	F F F F F F F F F F 	! [141 - 150]
+	F F F F F F F F F ! [151 - 159]
 	)
     ..Netclass_On ( 
 	False ![1]
@@ -1843,7 +1868,7 @@
     ..Valorseverity3_Hzd_Clr 0x00ffffff	! RGB(255,255,255)
     ..Valorseverity4_Hzd_Clr 0x00ffffff	! RGB(255,255,255)
     ..Valorseverity5_Hzd_Clr 0x00ffffff	! RGB(255,255,255)
-    ..Num_Unigroups 26
+    ..Num_Unigroups 39
     ..Unigroup_Names ( 
 	"189296"	! [1]
 	"741177"	! [2]
@@ -1871,6 +1896,19 @@
 	"3124912"	! [24]
 	"3124921"	! [25]
 	"3124930"	! [26]
+	"3264174"	! [27]
+	"3264260"	! [28]
+	"3264278"	! [29]
+	"3264299"	! [30]
+	"3264348"	! [31]
+	"3264401"	! [32]
+	"3264510"	! [33]
+	"3264711"	! [34]
+	"3264751"	! [35]
+	"3264851"	! [36]
+	"3264931"	! [37]
+	"3265010"	! [38]
+	"3266093"	! [39]
     )
     ..Unigroup_Colors ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
@@ -1886,6 +1924,13 @@
 	0x00ffffff 0x00ffffff	! [21-22] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [23-24] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [25-26] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [27-28] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [29-30] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [31-32] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [33-34] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [35-36] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [37-38] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff		! [39] RGB(255,255,255)
     )
     ..Global_Options ( 
 	"Global.Option.AutoPan" "1"
@@ -1895,7 +1940,7 @@
 	"Global.Option.ColorByNetClass.Enabled" "1"
 	"Global.Option.ColorByNetClass.NetClasses.Enabled" "0"
 	"Global.Option.ColorByNetClass.Netlines" "1"
-	"Global.Option.ColorByNetClass.Nets.Enabled" "1"
+	"Global.Option.ColorByNetClass.Nets.Enabled" "0"
 	"Global.Option.ColorByNetClass.Pads" "1"
 	"Global.Option.ColorByNetClass.PatternConstrainedNets" "0"
 	"Global.Option.ColorByNetClass.Planes" "1"
@@ -1912,7 +1957,7 @@
 	"Global.Option.FullScreenCursor" "1"
 	"Global.Option.FullScreenCursorDuringMoveOnly" "1"
 	"Global.Option.HalfScreenCursor" "0"
-	"Global.Option.IgnoreSelectionFilter" "1"
+	"Global.Option.IgnoreSelectionFilter" "0"
 	"Global.Option.LinkSketchNetlineDisplayToLayerVisibility" "1"
 	"Global.Option.NetNamesOnTraces" "1"
 	"Global.Option.PlaneDataBehindTraces" "1"
@@ -1941,7 +1986,7 @@
 	"[VirtualGlobal].iDC.Detail Views.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Drill Drawing.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Fabrication Objects.CollapsedSectionState" "0"
-	"[VirtualGlobal].iDC.Favorites.CollapsedSectionState" "0"
+	"[VirtualGlobal].iDC.Favorites.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Global View & Interactive Selection.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Graphics Options.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Grids.CollapsedSectionState" "1"
@@ -2080,9 +2125,9 @@
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "374"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "359"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "136"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "370"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "349"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "356"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -2097,8 +2142,8 @@
 
 .view "PCB"
     ..extrema
-	(-70168078,8849919)		! (xmin, ymin)
-	(288905650,169083760)		! (xmax, ymax)
+	(53146602,25110989)		! (xmin, ymin)
+	(154627542,70396063)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -2173,7 +2218,7 @@
     ..Thru_Pads_On                       True
     ..Thru_Vias_On                       True
     ..Via_Span_Text_On                   True
-    ..Virtual_Pin_All_Enabled            False
+    ..Virtual_Pin_All_Enabled            True
     ..Virtual_Pin_Ref_On                 True
     ..Netline_From_Rt_Targets_On         False
     ..Materials_On ( 
@@ -2262,15 +2307,15 @@
     ..All_Text_Items_Enabled             True
     ..Pin_Property_Text_On               False
     ..Cell_Property_Text_On              False
-    ..All_Mult_Designers_Enabled         False
-    ..Reserved_Areas_On                  False
-    ..Protected_Areas_On                 False
-    ..Sandboxes_On                       False
+    ..All_Mult_Designers_Enabled         True
+    ..Reserved_Areas_On                  True
+    ..Protected_Areas_On                 True
+    ..Sandboxes_On                       True
     ..Fixture_Outline_On                 True
-    ..All_Xds_Force_Fields_Enabled       False
-    ..This_Xdc_Handle_On                 False
-    ..Other_Xdcs_On                      False
-    ..Force_Field_Conflicts_On           False
+    ..All_Xds_Force_Fields_Enabled       True
+    ..This_Xdc_Handle_On                 True
+    ..Other_Xdcs_On                      True
+    ..Force_Field_Conflicts_On           True
     ..All_Part_Enabled                   True 	! top
                                          True 	! bottom
     ..Distributed_Part_On                False	! top
@@ -2337,7 +2382,7 @@
                                          True 	! bottom
     ..Cluster_2on                        True 	! top
                                          True 	! bottom
-    ..V_Num_Unigroups 26
+    ..V_Num_Unigroups 39
     ..V_Unigroup_Names ( 
 	"189296"	! [1]
 	"741177"	! [2]
@@ -2365,16 +2410,31 @@
 	"3124912"	! [24]
 	"3124921"	! [25]
 	"3124930"	! [26]
+	"3264174"	! [27]
+	"3264260"	! [28]
+	"3264278"	! [29]
+	"3264299"	! [30]
+	"3264348"	! [31]
+	"3264401"	! [32]
+	"3264510"	! [33]
+	"3264711"	! [34]
+	"3264751"	! [35]
+	"3264851"	! [36]
+	"3264931"	! [37]
+	"3265010"	! [38]
+	"3266093"	! [39]
     )
     ..V_Unigroup_On ( 
 	F F F F F F F F F F 	! [1 - 10]
 	F F F F F F F F F F 	! [11 - 20]
-	F F F F F F ! [21 - 26]
+	F F F F F F F F F F 	! [21 - 30]
+	F F F F F F F F F ! [31 - 39]
 	)
     ..V_Unigroup_Enabled ( 
 	F F F T T T T T T T 	! [1 - 10]
 	T T T T T T T T T T 	! [11 - 20]
-	T F F F F F ! [21 - 26]
+	T F F F F F F F F F 	! [21 - 30]
+	F F F F F F F F F ! [31 - 39]
 	)
     ..Virtual_Options ( 
 	"[Virtual].iDC.Global.Option.FullScreenCursorStyle.Enabled" "1"
@@ -2655,7 +2715,7 @@
 	"Board.RouteBorder" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Board.RouteFence.Hard" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
 	"Board.RouteFence.Soft" "d:1" "e:1" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:1"
-	"Board.Sandbox" "d:1" "e:0" "s:1" "se:0" "c:32768" "a:100" "p:0" "t:0" "o:1"
+	"Board.Sandbox" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.1" "d:1" "e:1" "s:1" "se:1" "c:16737843" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.2" "d:1" "e:1" "s:1" "se:1" "c:10040319" "a:100" "p:0" "t:0" "o:1"
 	"Copper.Pad.3" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
@@ -4256,8 +4316,8 @@
 	"General.Milling.254" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.255" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:33" "t:0" "o:1"
 	"General.Milling.256" "d:1" "e:1" "s:1" "se:1" "c:7237230" "a:100" "p:33" "t:0" "o:1"
-	"General.MultipleDesigners.TeamPCB.ReservedAreas" "d:1" "e:0" "s:1" "se:0" "c:39219" "a:100" "p:0" "t:0" "o:1"
-	"General.MultipleDesigners.Xtreme.ProtectedAreas" "d:1" "e:0" "s:1" "se:0" "c:32768" "a:100" "p:0" "t:0" "o:1"
+	"General.MultipleDesigners.TeamPCB.ReservedAreas" "d:1" "e:1" "s:1" "se:1" "c:39219" "a:100" "p:0" "t:0" "o:1"
+	"General.MultipleDesigners.Xtreme.ProtectedAreas" "d:1" "e:1" "s:1" "se:1" "c:32768" "a:100" "p:0" "t:0" "o:1"
 	"General.Pattern.Fixed" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:34" "t:0" "o:1"
 	"General.Pattern.Locked" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:2" "t:0" "o:1"
 	"General.Pattern.SemiFixed" "d:1" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:6" "t:0" "o:1"
@@ -12604,9 +12664,9 @@
 	"Material.TICER_TCR_NiCr_50.254" "d:1" "e:0" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:0"
 	"Material.TICER_TCR_NiCr_50.255" "d:1" "e:0" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:0"
 	"Material.TICER_TCR_NiCr_50.256" "d:1" "e:0" "s:1" "se:1" "c:16764057" "a:100" "p:0" "t:0" "o:0"
-	"MultipleDesigners.ForceFields.Conflicts" "d:1" "e:0" "s:1" "se:0" "c:3355596" "a:100" "p:0" "t:0" "o:1"
-	"MultipleDesigners.ForceFields.Other" "d:1" "e:0" "s:1" "se:0" "c:39372" "a:100" "p:0" "t:0" "o:1"
-	"MultipleDesigners.ForceFields.ThisHandle" "d:1" "e:0" "s:1" "se:0" "c:6684774" "a:100" "p:0" "t:0" "o:1"
+	"MultipleDesigners.ForceFields.Conflicts" "d:1" "e:1" "s:1" "se:1" "c:3355596" "a:100" "p:0" "t:0" "o:1"
+	"MultipleDesigners.ForceFields.Other" "d:1" "e:1" "s:1" "se:1" "c:39372" "a:100" "p:0" "t:0" "o:1"
+	"MultipleDesigners.ForceFields.ThisHandle" "d:1" "e:1" "s:1" "se:1" "c:6684774" "a:100" "p:0" "t:0" "o:1"
 	"Netline.Classline" "d:1" "e:1" "s:1" "se:1" "c:16711884" "a:100" "p:0" "t:0" "o:1"
 	"Netline.NonOrderedOpen" "d:1" "e:1" "s:1" "se:1" "c:12632256" "a:100" "p:0" "t:0" "o:1"
 	"Netline.OrderedAll" "d:1" "e:1" "s:1" "se:1" "c:10079487" "a:100" "p:0" "t:0" "o:1"
@@ -13675,152 +13735,165 @@
 	"Internal.Part.SpecialPlaceOutlineTop.254" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Internal.Part.SpecialPlaceOutlineTop.255" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Internal.Part.SpecialPlaceOutlineTop.256" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
-	"[Net].UnConnected_Net" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"[Net].(Net0)" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"[Net].(Spacer_Net)" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].GND" "d:1" "e:1" "s:1" "se:1" "c:26265" "a:100" "p:0" "t:0" "o:1"
-	"[Net].DRV_SIN_0" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_1" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_2" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_3" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_4" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_5" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_6" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_7" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_8" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_9" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_10" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_11" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_12" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_13" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_14" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_15" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_16" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_17" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_18" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_19" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_20" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_21" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_22" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_23" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_24" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_25" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_26" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_27" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_28" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SIN_29" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SOUT_DATA" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].FPGA_JTAG_TCK" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].FPGA_JTAG_TDI" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].FPGA_JTAG_TDO" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].FPGA_JTAG_TMS" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].HALL0" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].HALL1" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].INHIBITn4V" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].INTVCC" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_CLK_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_CLK_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_TX0_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_TX0_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_TX1_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_TX1_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_TX2_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_TX2_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_TX3_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].LVDS_TX3_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_0_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_4_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_1_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_CLK" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D0" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D1" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D2" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D3" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D4" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D5" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D6" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D7" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D8" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D9" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D10" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D11" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D12" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D13" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D14" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D15" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D16" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D17" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D18" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D19" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D20" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D21" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D22" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_D23" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_HSYNC" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].RGB_VSYNC" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].SOM_CS" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].SOM_MISO" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].SOM_MOSI" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].SOM_SCLK" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].UART_SOM_RXD" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].UART_SOM_TXD" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].VCC1V2" "d:1" "e:1" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:0"
-	"[Net].VCC2V5" "d:1" "e:1" "s:1" "se:1" "c:52224" "a:100" "p:0" "t:0" "o:0"
-	"[Net].VCC3V" "d:1" "e:1" "s:1" "se:1" "c:3381759" "a:100" "p:0" "t:0" "o:0"
-	"[Net].VCC3V3" "d:1" "e:1" "s:1" "se:1" "c:3381759" "a:100" "p:0" "t:0" "o:0"
-	"[Net].VCC5VLED" "d:1" "e:1" "s:1" "se:1" "c:16711935" "a:100" "p:0" "t:0" "o:0"
-	"[Net].VCC5V" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:0"
-	"[Net].VCC12V" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG011275" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG011276" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG011281" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG011282" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG020011" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG020030" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG020076" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040091" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040124" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040125" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040132" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040134" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040136" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040138" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040145" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].CWA_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].CWA_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].CWB_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].CWB_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].CWC_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].CWC_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].CWD_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].CWD_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].ENCODER_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].ENCODER_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].ENCODER_C" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].ENCODER_D" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040185" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040192" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040194" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG040195" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_GCLK_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_GCLK_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_LAT_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_LAT_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SCLK_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SCLK_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_0_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_1_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_2_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_2_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_3_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_3_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_4_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_5_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_5_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_6_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_6_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_7_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_7_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].UnConnected_Net" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"[Net].(Net0)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"[Net].(Spacer_Net)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].GND" "d:1" "e:0" "s:1" "se:1" "c:26265" "a:100" "p:0" "t:0" "o:1"
+	"[Net].DRV_SIN_0" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_1" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_2" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_3" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_4" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_5" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_6" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_7" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_8" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_9" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_10" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_11" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_12" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_13" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_14" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_15" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_16" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_17" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_18" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_19" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_20" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_21" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_22" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_23" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_24" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_25" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_26" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_27" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_28" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SIN_29" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SOUT_DATA" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_JTAG_TCK" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_JTAG_TDI" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_JTAG_TDO" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_JTAG_TMS" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].HALL0" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].HALL1" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].INHIBITn4V" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].INTVCC" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_CLK_N" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_CLK_P" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_TX0_N" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_TX0_P" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_TX1_N" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_TX1_P" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_TX2_N" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_TX2_P" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_TX3_N" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].LVDS_TX3_P" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_0_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_4_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_1_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_CLK" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D0" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D1" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D2" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D3" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D4" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D5" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D6" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D7" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D8" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D9" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D10" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D11" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D12" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D13" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D14" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D15" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D16" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D17" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D18" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D19" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D20" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D21" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D22" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_D23" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_HSYNC" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].RGB_VSYNC" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].SOM_CS" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].SOM_MISO" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].SOM_MOSI" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].SOM_SCLK" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].UART_SOM_RXD" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].UART_SOM_TXD" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].VCC1V2" "d:1" "e:0" "s:1" "se:1" "c:65280" "a:100" "p:0" "t:0" "o:0"
+	"[Net].VCC2V5" "d:1" "e:0" "s:1" "se:1" "c:52224" "a:100" "p:0" "t:0" "o:0"
+	"[Net].VCC3V" "d:1" "e:0" "s:1" "se:1" "c:3381759" "a:100" "p:0" "t:0" "o:0"
+	"[Net].VCC3V3" "d:1" "e:0" "s:1" "se:1" "c:3381759" "a:100" "p:0" "t:0" "o:0"
+	"[Net].VCC5VLED" "d:1" "e:0" "s:1" "se:1" "c:16711935" "a:100" "p:0" "t:0" "o:0"
+	"[Net].VCC5V" "d:1" "e:0" "s:1" "se:1" "c:255" "a:100" "p:0" "t:0" "o:0"
+	"[Net].VCC12V" "d:1" "e:0" "s:1" "se:1" "c:65535" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG011275" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG011276" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG011281" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG011282" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020011" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020030" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020076" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040091" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040124" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040125" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040132" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040134" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040136" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040138" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040145" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].CWA_N" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].CWA_P" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].CWB_N" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].CWB_P" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].CWC_N" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].CWC_P" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].CWD_N" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].CWD_P" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].ENCODER_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].ENCODER_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].ENCODER_C" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].ENCODER_D" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040185" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040192" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040194" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG040195" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_GCLK_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_GCLK_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_LAT_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_LAT_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SCLK_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].DRV_SCLK_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_0_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_1_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_2_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_2_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_3_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_3_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_4_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_5_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_5_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_6_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_6_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_7_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].MUX_7_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020407" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020408" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020409" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020410" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020411" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020412" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020413" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020414" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020415" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020416" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020417" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG020418" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].VCC5ENC" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[NetClass].(Default)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[NetClass].MUX" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[NetClass].LVDS" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -13850,7 +13923,7 @@
 	"Option.BondWiresBottom.Selectable" "1"
 	"Option.BondWiresTop.Enabled" "1"
 	"Option.BondWiresTop.Selectable" "1"
-	"Option.BusPaths.Enabled" "3"
+	"Option.BusPaths.Enabled" "1"
 	"Option.Classlines" "1"
 	"Option.Classlines.Netlines" "1"
 	"Option.ConductiveShapes.Enabled" "1"
@@ -13930,9 +14003,9 @@
 	"Option.Materials.Selectable" "1"
 	"Option.MirrorView" "0"
 	"Option.MountingHolePads.Enabled" "1"
-	"Option.MultipleDesigners" "3"
-	"Option.MultipleDesigners.ForceFields.Enabled" "3"
-	"Option.MultipleDesigners.TeamPCB.ShadowMode" "2"
+	"Option.MultipleDesigners" "1"
+	"Option.MultipleDesigners.ForceFields.Enabled" "1"
+	"Option.MultipleDesigners.TeamPCB.ShadowMode" "0"
 	"Option.Netlines.DisplayBetweenMarkedComponents" "0"
 	"Option.Netlines.DisplayFromFilteredNets" "0"
 	"Option.Netlines.DisplayFromMarkedComponents" "0"
@@ -13973,8 +14046,8 @@
 	"Option.Planes.Selectable" "1"
 	"Option.Planes.Shape.Enabled" "1"
 	"Option.Planes.Sketch.Enabled" "1"
-	"Option.Planning.Enabled" "0"
-	"Option.Planning.Selectable" "3"
+	"Option.Planning.Enabled" "1"
+	"Option.Planning.Selectable" "1"
 	"Option.RFNodes.Enabled" "1"
 	"Option.RFNodes.Selectable" "1"
 	"Option.RFObjects.Enabled" "1"
@@ -13982,7 +14055,7 @@
 	"Option.RFSegments.Selectable" "1"
 	"Option.RFShapes.Enabled" "1"
 	"Option.RFShapes.Selectable" "1"
-	"Option.ReuseArea.Enabled" "3"
+	"Option.ReuseArea.Enabled" "1"
 	"Option.RouteAreas.Enabled" "1"
 	"Option.RouteAreas.Selectable" "1"
 	"Option.RouteObjects.Enabled" "1"
@@ -13995,8 +14068,8 @@
 	"Option.RouteObstructs.TraceVia.Enabled" "1"
 	"Option.RouteObstructs.TuningPattern.Enabled" "1"
 	"Option.RouteObstructs.Via.Enabled" "1"
-	"Option.RoutePlanning" "3"
-	"Option.RouteTargets.Enabled" "2"
+	"Option.RoutePlanning" "1"
+	"Option.RouteTargets.Enabled" "0"
 	"Option.RuleAreas.Enabled" "1"
 	"Option.SMDPinPads.Enabled" "1"
 	"Option.SelectableInsidePartOutline" "0"
@@ -14006,13 +14079,13 @@
 	"Option.SelectionAndHighlights.EntireNetOnSelect" "0"
 	"Option.SheetObjects.Enabled" "1"
 	"Option.SheetObjects.Selectable" "1"
-	"Option.SketchPlans.Enabled" "3"
-	"Option.SketchPlans.Selectable" "3"
-	"Option.SketchPlans.Visible" "3"
-	"Option.SketchPlans.Width" "3"
+	"Option.SketchPlans.Enabled" "1"
+	"Option.SketchPlans.Selectable" "1"
+	"Option.SketchPlans.Visible" "1"
+	"Option.SketchPlans.Width" "1"
 	"Option.Spacers.Enabled" "1"
 	"Option.Spacers.ShadowModeEnabled" "0"
-	"Option.TargetAreas.Enabled" "2"
+	"Option.TargetAreas.Enabled" "0"
 	"Option.Teardrops.Enabled" "1"
 	"Option.Teardrops.Selectable" "1"
 	"Option.TextItems.CellProperties.Enabled" "0"
@@ -14023,13 +14096,13 @@
 	"Option.TextItems.Selectable" "1"
 	"Option.Traces.Enabled" "1"
 	"Option.Traces.Selectable" "1"
-	"Option.UnpackedAreas.Enabled" "3"
+	"Option.UnpackedAreas.Enabled" "1"
 	"Option.UserDraftLayers.Enabled" "1"
 	"Option.UserDraftLayers.Selectable" "1"
 	"Option.ViaPads.Enabled" "1"
 	"Option.Vias.Enabled" "1"
 	"Option.Vias.Selectable" "1"
-	"Option.VirtualPins.Enabled" "3"
+	"Option.VirtualPins.Enabled" "1"
 	"Option.WirebondItems.Enabled" "1"
 	"Option.WirebondItems.Selectable" "1"
 	"Option.WirebondItemsBottom.Enabled" "1"

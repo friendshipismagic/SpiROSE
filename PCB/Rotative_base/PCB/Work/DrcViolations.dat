@@ -1,453 +1,2413 @@
 .FILETYPE DRCFILE
 .VERSION "2002"
-.DATE "December 18, 2017"
-.TIME "22:54:56"
+.DATE "January 04, 2018"
+.TIME "9:27:17"
 .PROXIMITY
-..VIO_XY (165534290, 127053857)  ! (165,53mm, 127,05mm)
-..CLEARANCE 150000  ! 0,15mm
-!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=1, NetName1=VCC5V, NetClass1Override=(null), NetName2=XSIG040132, NetClass2Override=(null), Clearance=0,15mm  "
+..VIO_XY (33984885, 77296782)  ! (33.98mm, 77.3mm)
+..CLEARANCE 0  ! 0mm
+!..CLEARANCE_STRING "TypeToType not found Not Defined - NetClass PlacementOutline-To-PlacementOutline : Clearance=0mm     "
+..OBJECT_1
+...OBJECT
+....OUTLINE_OBJ PLACE
+.....SIDE TOP
+.....XY (33984885, 77296782)  ! (33.98mm, 77.3mm)
+.....HGT 870000
+.....UNDER_HGT 0
+.....REF_DES "R6"
+..OBJECT_2
+...OBJECT
+....OUTLINE_OBJ PLACE
+.....SIDE TOP
+.....XY (31792166, 49740651)  ! (31.79mm, 49.74mm)
+.....HGT 9070000
+.....UNDER_HGT 0
+.....REF_DES "U5"
+.PROXIMITY
+..VIO_XY (121453790, 48420127)  ! (121.45mm, 48.42mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=1, NetName1=DRV_SIN_11, NetClass1Override=(null), NetName2=DRV_SIN_9, NetClass2Override=(null), Clearance=0.46mm  "
 ..OBJECT_1
 ...OBJECT
 ....TRACE REGULAR
 .....LYR 1
 .....WDT 150000
-.....NET "VCC5V"
-.....NETCLASS "(Default)"
-.....XY (165756842, 133839510)  ! (165,76mm, 133,84mm)
+.....NET "DRV_SIN_11"
+.....NETCLASS "DRV"
+.....XY (120918790, 48634670)  ! (120.92mm, 48.63mm)
 ..OBJECT_2
 ...OBJECT
-....COND_AREA
+....TRACE REGULAR
 .....LYR 1
-.....NET "XSIG040132"
-.....XY (165534290, 122632518)  ! (165,53mm, 122,63mm)
+.....WDT 150000
+.....NET "DRV_SIN_9"
+.....NETCLASS "DRV"
+.....XY (121528790, 47694689)  ! (121.53mm, 47.69mm)
 .PROXIMITY
-..VIO_XY (172655240, 127271450)  ! (172,66mm, 127,27mm)
-..CLEARANCE 150000  ! 0,15mm
-!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=1, NetName1=XSIG040124, NetClass1Override=(null), NetName2=VCC12V, NetClass2Override=(null), Clearance=0,15mm  "
+..VIO_XY (125132582, 48841950)  ! (125.13mm, 48.84mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_SIN_8, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_SIN_8"
+.....NETCLASS "DRV"
+.....XY (124903790, 48628279)  ! (124.9mm, 48.63mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (125432582, 48841950)  ! (125.43mm, 48.84mm)
+.PROXIMITY
+..VIO_XY (125505496, 48976754)  ! (125.51mm, 48.98mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_GCLK_B, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_GCLK_B"
+.....NETCLASS "DRV"
+.....XY (126281745, 48735251)  ! (126.28mm, 48.74mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (125432582, 48841950)  ! (125.43mm, 48.84mm)
+.PROXIMITY
+..VIO_XY (124078790, 48811562)  ! (124.08mm, 48.81mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_SIN_6, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_SIN_6"
+.....NETCLASS "DRV"
+.....XY (123853790, 48594099)  ! (123.85mm, 48.59mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (124378790, 48811562)  ! (124.38mm, 48.81mm)
+.PROXIMITY
+..VIO_XY (124369044, 48628279)  ! (124.37mm, 48.63mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_SIN_8, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_SIN_8"
+.....NETCLASS "DRV"
+.....XY (124903790, 48628279)  ! (124.9mm, 48.63mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (124378790, 48811562)  ! (124.38mm, 48.81mm)
+.PROXIMITY
+..VIO_XY (118995374, 48607279)  ! (119mm, 48.61mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_SIN_14, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_SIN_14"
+.....NETCLASS "DRV"
+.....XY (118528790, 48631400)  ! (118.53mm, 48.63mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (119295374, 48607279)  ! (119.3mm, 48.61mm)
+.PROXIMITY
+..VIO_XY (119494044, 48382490)  ! (119.49mm, 48.38mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_SIN_10, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_SIN_10"
+.....NETCLASS "DRV"
+.....XY (120028790, 47259844)  ! (120.03mm, 47.26mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (119295374, 48607279)  ! (119.3mm, 48.61mm)
+.PROXIMITY
+..VIO_XY (125282582, 48841950)  ! (125.28mm, 48.84mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_SIN_8, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_SIN_8"
+.....NETCLASS "DRV"
+.....XY (124903790, 48628279)  ! (124.9mm, 48.63mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....XY (125432582, 48841950)  ! (125.43mm, 48.84mm)
+.PROXIMITY
+..VIO_XY (125505509, 48973029)  ! (125.51mm, 48.97mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_GCLK_B, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_GCLK_B"
+.....NETCLASS "DRV"
+.....XY (126281745, 48735251)  ! (126.28mm, 48.74mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....XY (125432582, 48841950)  ! (125.43mm, 48.84mm)
+.PROXIMITY
+..VIO_XY (124228790, 48811562)  ! (124.23mm, 48.81mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_SIN_6, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_SIN_6"
+.....NETCLASS "DRV"
+.....XY (123853790, 48594099)  ! (123.85mm, 48.59mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....XY (124378790, 48811562)  ! (124.38mm, 48.81mm)
+.PROXIMITY
+..VIO_XY (124370097, 48661814)  ! (124.37mm, 48.66mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_SIN_8, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_SIN_8"
+.....NETCLASS "DRV"
+.....XY (124903790, 48628279)  ! (124.9mm, 48.63mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....XY (124378790, 48811562)  ! (124.38mm, 48.81mm)
+.PROXIMITY
+..VIO_XY (119145374, 48607279)  ! (119.15mm, 48.61mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=DRV_SIN_14, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 1
+.....WDT 150000
+.....NET "DRV_SIN_14"
+.....NETCLASS "DRV"
+.....XY (119418790, 47741400)  ! (119.42mm, 47.74mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....XY (119295374, 48607279)  ! (119.3mm, 48.61mm)
+.PROXIMITY
+..VIO_XY (165155240, 131471450)  ! (165.16mm, 131.47mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=1, NetName1=XSIG040124, NetClass1Override=(null), NetName2=VCC12V, NetClass2Override=(null), Clearance=0.15mm  "
 ..OBJECT_1
 ...OBJECT
 ....COND_AREA
 .....LYR 1
 .....NET "XSIG040124"
-.....XY (172655240, 119217823)  ! (172,66mm, 119,22mm)
+.....XY (165155240, 123417823)  ! (165.16mm, 123.42mm)
 ..OBJECT_2
 ...OBJECT
 ....COND_AREA
 .....LYR 1
 .....NET "VCC12V"
-.....XY (171357431, 127298416)  ! (171,36mm, 127,3mm)
+.....XY (163857431, 131498416)  ! (163.86mm, 131.5mm)
 .PROXIMITY
-..VIO_XY (167307917, 127298416)  ! (167,31mm, 127,3mm)
-..CLEARANCE 150000  ! 0,15mm
-!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=1, NetName1=XSIG040132, NetClass1Override=(null), NetName2=VCC12V, NetClass2Override=(null), Clearance=0,15mm  "
+..VIO_XY (159807917, 131498416)  ! (159.81mm, 131.5mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=1, NetName1=XSIG040132, NetClass1Override=(null), NetName2=VCC12V, NetClass2Override=(null), Clearance=0.15mm  "
 ..OBJECT_1
 ...OBJECT
 ....COND_AREA
 .....LYR 1
 .....NET "XSIG040132"
-.....XY (166151185, 122632518)  ! (166,15mm, 122,63mm)
+.....XY (158651185, 126832518)  ! (158.65mm, 126.83mm)
 ..OBJECT_2
 ...OBJECT
 ....COND_AREA
 .....LYR 1
 .....NET "VCC12V"
-.....XY (167457663, 127298416)  ! (167,46mm, 127,3mm)
+.....XY (159957663, 131498416)  ! (159.96mm, 131.5mm)
 .PROXIMITY
-..VIO_XY (128840521, 29882687)  ! (128,84mm, 29,88mm)
-..CLEARANCE 150000  ! 0,15mm
-!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=1, NetName1=XSIG040195, NetClass1Override=(null), NetName2=XSIG040194, NetClass2Override=(null), Clearance=0,15mm  "
+..VIO_XY (128840521, 29882687)  ! (128.84mm, 29.88mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=1, NetName1=XSIG040195, NetClass1Override=(null), NetName2=XSIG040194, NetClass2Override=(null), Clearance=0.15mm  "
 ..OBJECT_1
 ...OBJECT
 ....COND_AREA
 .....LYR 1
 .....NET "XSIG040195"
-.....XY (128856133, 38145442)  ! (128,86mm, 38,15mm)
+.....XY (128856133, 38145442)  ! (128.86mm, 38.15mm)
 ..OBJECT_2
 ...OBJECT
 ....COND_AREA
 .....LYR 1
 .....NET "XSIG040194"
-.....XY (130062139, 31611512)  ! (130,06mm, 31,61mm)
+.....XY (130062139, 31611512)  ! (130.06mm, 31.61mm)
 .PROXIMITY
-..VIO_XY (62894606, 171041988)  ! (62,89mm, 171,04mm)
+..VIO_XY (25479234, 108525000)  ! (25.48mm, 108.53mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....NAME "Round 8"
+.....XY (29628980, 108525000)  ! (29.63mm, 108.53mm)
+.PROXIMITY
+..VIO_XY (25480254, 90950000)  ! (25.48mm, 90.95mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....NAME "Round 8"
+.....XY (29630000, 90950000)  ! (29.63mm, 90.95mm)
+.PROXIMITY
+..VIO_XY (36606882, 81096782)  ! (36.61mm, 81.1mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Smd : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....PAD SMD
+.....LYR 1
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Rectangle 3.65x1.5"
+.....REF_DES "C73"
+.....XY (38581628, 81846782)  ! (38.58mm, 81.85mm)
+.PROXIMITY
+..VIO_XY (30400254, 118120000)  ! (30.4mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (30850000, 118120000)  ! (30.85mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (35400254, 118120000)  ! (35.4mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (35850000, 118120000)  ! (35.85mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (32900254, 118120000)  ! (32.9mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (33350000, 118120000)  ! (33.35mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (27900254, 118120000)  ! (27.9mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (28350000, 118120000)  ! (28.35mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (22900254, 118120000)  ! (22.9mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (23350000, 118120000)  ! (23.35mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (25400254, 118120000)  ! (25.4mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (25850000, 118120000)  ! (25.85mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (62745917, 87281477)  ! (62.75mm, 87.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (63195663, 87281477)  ! (63.2mm, 87.28mm)
+.PROXIMITY
+..VIO_XY (46905521, 86848811)  ! (46.91mm, 86.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (47355267, 86848811)  ! (47.36mm, 86.85mm)
+.PROXIMITY
+..VIO_XY (46905521, 88848811)  ! (46.91mm, 88.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (47355267, 88848811)  ! (47.36mm, 88.85mm)
+.PROXIMITY
+..VIO_XY (46905521, 84848811)  ! (46.91mm, 84.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (47355267, 84848811)  ! (47.36mm, 84.85mm)
+.PROXIMITY
+..VIO_XY (46905521, 82848811)  ! (46.91mm, 82.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (47355267, 82848811)  ! (47.36mm, 82.85mm)
+.PROXIMITY
+..VIO_XY (46905521, 78848811)  ! (46.91mm, 78.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (47355267, 78848811)  ! (47.36mm, 78.85mm)
+.PROXIMITY
+..VIO_XY (46905521, 80848811)  ! (46.91mm, 80.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (47355267, 80848811)  ! (47.36mm, 80.85mm)
+.PROXIMITY
+..VIO_XY (46905521, 76848811)  ! (46.91mm, 76.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (47355267, 76848811)  ! (47.36mm, 76.85mm)
+.PROXIMITY
+..VIO_XY (48760046, 72699171)  ! (48.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (49209792, 72699171)  ! (49.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (54760046, 72699171)  ! (54.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (55209792, 72699171)  ! (55.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (52760046, 72699171)  ! (52.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (53209792, 72699171)  ! (53.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (50760046, 72699171)  ! (50.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (51209792, 72699171)  ! (51.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (56760046, 72699171)  ! (56.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (57209792, 72699171)  ! (57.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (60760046, 72699171)  ! (60.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (61209792, 72699171)  ! (61.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (58760046, 72699171)  ! (58.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (59209792, 72699171)  ! (59.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (62745917, 89281477)  ! (62.75mm, 89.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (63195663, 89281477)  ! (63.2mm, 89.28mm)
+.PROXIMITY
+..VIO_XY (62745917, 83281477)  ! (62.75mm, 83.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (63195663, 83281477)  ! (63.2mm, 83.28mm)
+.PROXIMITY
+..VIO_XY (62745917, 85281477)  ! (62.75mm, 85.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (63195663, 85281477)  ! (63.2mm, 85.28mm)
+.PROXIMITY
+..VIO_XY (62745917, 81281477)  ! (62.75mm, 81.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (63195663, 81281477)  ! (63.2mm, 81.28mm)
+.PROXIMITY
+..VIO_XY (62745917, 79281477)  ! (62.75mm, 79.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (63195663, 79281477)  ! (63.2mm, 79.28mm)
+.PROXIMITY
+..VIO_XY (62745917, 77281477)  ! (62.75mm, 77.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (63195663, 77281477)  ! (63.2mm, 77.28mm)
+.PROXIMITY
+..VIO_XY (62760046, 72699171)  ! (62.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (63209792, 72699171)  ! (63.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (70760046, 72699171)  ! (70.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (71209792, 72699171)  ! (71.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (68760046, 72699171)  ! (68.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (69209792, 72699171)  ! (69.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (66760046, 72699171)  ! (66.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (67209792, 72699171)  ! (67.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (64760046, 72699171)  ! (64.76mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (65209792, 72699171)  ! (65.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (30550254, 118120000)  ! (30.55mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....XY (30850000, 118120000)  ! (30.85mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (35550254, 118120000)  ! (35.55mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....XY (35850000, 118120000)  ! (35.85mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (33050254, 118120000)  ! (33.05mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....XY (33350000, 118120000)  ! (33.35mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (28050254, 118120000)  ! (28.05mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....XY (28350000, 118120000)  ! (28.35mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (23050254, 118120000)  ! (23.05mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....XY (23350000, 118120000)  ! (23.35mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (25550254, 118120000)  ! (25.55mm, 118.12mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC12V"
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....XY (25850000, 118120000)  ! (25.85mm, 118.12mm)
+.PROXIMITY
+..VIO_XY (62895917, 87281477)  ! (62.9mm, 87.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (63195663, 87281477)  ! (63.2mm, 87.28mm)
+.PROXIMITY
+..VIO_XY (47055521, 86848811)  ! (47.06mm, 86.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (47355267, 86848811)  ! (47.36mm, 86.85mm)
+.PROXIMITY
+..VIO_XY (47055521, 88848811)  ! (47.06mm, 88.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (47355267, 88848811)  ! (47.36mm, 88.85mm)
+.PROXIMITY
+..VIO_XY (47055521, 84848811)  ! (47.06mm, 84.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (47355267, 84848811)  ! (47.36mm, 84.85mm)
+.PROXIMITY
+..VIO_XY (47055521, 82848811)  ! (47.06mm, 82.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (47355267, 82848811)  ! (47.36mm, 82.85mm)
+.PROXIMITY
+..VIO_XY (47055521, 78848811)  ! (47.06mm, 78.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (47355267, 78848811)  ! (47.36mm, 78.85mm)
+.PROXIMITY
+..VIO_XY (47055521, 80848811)  ! (47.06mm, 80.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (47355267, 80848811)  ! (47.36mm, 80.85mm)
+.PROXIMITY
+..VIO_XY (47055521, 76848811)  ! (47.06mm, 76.85mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (47355267, 76848811)  ! (47.36mm, 76.85mm)
+.PROXIMITY
+..VIO_XY (48910046, 72699171)  ! (48.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (49209792, 72699171)  ! (49.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (54910046, 72699171)  ! (54.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (55209792, 72699171)  ! (55.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (52910046, 72699171)  ! (52.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (53209792, 72699171)  ! (53.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (50910046, 72699171)  ! (50.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (51209792, 72699171)  ! (51.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (56910046, 72699171)  ! (56.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (57209792, 72699171)  ! (57.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (60910046, 72699171)  ! (60.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (61209792, 72699171)  ! (61.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (58910046, 72699171)  ! (58.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (59209792, 72699171)  ! (59.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (62895917, 89281477)  ! (62.9mm, 89.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (63195663, 89281477)  ! (63.2mm, 89.28mm)
+.PROXIMITY
+..VIO_XY (62895917, 83281477)  ! (62.9mm, 83.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (63195663, 83281477)  ! (63.2mm, 83.28mm)
+.PROXIMITY
+..VIO_XY (62895917, 85281477)  ! (62.9mm, 85.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (63195663, 85281477)  ! (63.2mm, 85.28mm)
+.PROXIMITY
+..VIO_XY (62895917, 81281477)  ! (62.9mm, 81.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (63195663, 81281477)  ! (63.2mm, 81.28mm)
+.PROXIMITY
+..VIO_XY (62895917, 79281477)  ! (62.9mm, 79.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (63195663, 79281477)  ! (63.2mm, 79.28mm)
+.PROXIMITY
+..VIO_XY (62895917, 77281477)  ! (62.9mm, 77.28mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (63195663, 77281477)  ! (63.2mm, 77.28mm)
+.PROXIMITY
+..VIO_XY (62910046, 72699171)  ! (62.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (63209792, 72699171)  ! (63.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (70910046, 72699171)  ! (70.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (71209792, 72699171)  ! (71.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (68910046, 72699171)  ! (68.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (69209792, 72699171)  ! (69.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (66910046, 72699171)  ! (66.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (67209792, 72699171)  ! (67.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (64910046, 72699171)  ! (64.91mm, 72.7mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=1, NetName1=VCC5VLED, NetClass1Override=(null), NetName2=VCC12V, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 1
+.....NET "VCC5VLED"
+.....XY (79728789, 71610372)  ! (79.73mm, 71.61mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 1
+.....NET "VCC12V"
+.....NETCLASS "(Default)"
+.....XY (65209792, 72699171)  ! (65.21mm, 72.7mm)
+.PROXIMITY
+..VIO_XY (133824688, 68388291)  ! (133.82mm, 68.39mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Via-To-Via : Scheme=Reduced clearance, Layer=2, NetName1=LVDS_CLK_P, NetName2=LVDS_CLK_N, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....PAD VIA
+.....LYR 2
+.....NET "LVDS_CLK_P"
+.....NETCLASS "LVDS"
+.....NAME "Round 0.7"
+.....XY (134022047, 68099242)  ! (134.02mm, 68.1mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 2
+.....NET "LVDS_CLK_N"
+.....NETCLASS "LVDS"
+.....NAME "Round 0.7"
+.....XY (134017770, 68849231)  ! (134.02mm, 68.85mm)
+.PROXIMITY
+..VIO_XY (92574778, 142548355)  ! (92.57mm, 142.55mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=3, NetName1=VCC3V, NetClass1Override=(null), NetName2=VCC3V3, NetClass2Override=(null), Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 3
+.....WDT 150000
+.....NET "VCC3V"
+.....NETCLASS "(Default)"
+.....XY (92799524, 115909683)  ! (92.8mm, 115.91mm)
+..OBJECT_2
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+.PROXIMITY
+..VIO_XY (92124778, 142548355)  ! (92.12mm, 142.55mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=3, NetName1=HALL0, NetClass1Override=(null), NetName2=VCC3V3, NetClass2Override=(null), Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 3
+.....WDT 150000
+.....NET "HALL0"
+.....NETCLASS "(Default)"
+.....XY (92349524, 176306258)  ! (92.35mm, 176.31mm)
+..OBJECT_2
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+.PROXIMITY
+..VIO_XY (118945374, 48607279)  ! (118.95mm, 48.61mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=MUX_2_A, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 3
+.....WDT 150000
+.....NET "MUX_2_A"
+.....NETCLASS "MUX"
+.....XY (116748550, 47030260)  ! (116.75mm, 47.03mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.7"
+.....XY (119295374, 48607279)  ! (119.3mm, 48.61mm)
+.PROXIMITY
+..VIO_XY (22056922, 89341875)  ! (22.06mm, 89.34mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Trace : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, NetClass2Override=(null), Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+.PROXIMITY
+..VIO_XY (25804516, 89341875)  ! (25.8mm, 89.34mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC3V3, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "VCC3V3"
+.....NETCLASS "(Default)"
+.....NAME "Round 8"
+.....XY (29630000, 90950000)  ! (29.63mm, 90.95mm)
+.PROXIMITY
+..VIO_XY (33357364, 69428747)  ! (33.36mm, 69.43mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=(Net0), Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "(Net0)"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (33822166, 68268651)  ! (33.82mm, 68.27mm)
+.PROXIMITY
+..VIO_XY (32572420, 75270651)  ! (32.57mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=XSIG040091, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "XSIG040091"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (33822166, 75270651)  ! (33.82mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (45262420, 75270651)  ! (45.26mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC5VLED, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "VCC5VLED"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (46512166, 75270651)  ! (46.51mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (61132420, 75270651)  ! (61.13mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC5VLED, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "VCC5VLED"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (62382166, 75270651)  ! (62.38mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (64302420, 75270651)  ! (64.3mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC5VLED, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "VCC5VLED"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (65552166, 75270651)  ! (65.55mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (77002420, 75270651)  ! (77mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC5VLED, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "VCC5VLED"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (78252166, 75270651)  ! (78.25mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (80172420, 75270651)  ! (80.17mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=(Net0), Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "(Net0)"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (81422166, 75270651)  ! (81.42mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (35742420, 75270651)  ! (35.74mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (36992166, 75270651)  ! (36.99mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (48432420, 75270651)  ! (48.43mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (49682166, 75270651)  ! (49.68mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (51602420, 75270651)  ! (51.6mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (52852166, 75270651)  ! (52.85mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (67482420, 75270651)  ! (67.48mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....PAD PART
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 2.2"
+.....REF_DES "U5"
+.....XY (68732166, 75270651)  ! (68.73mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (33629056, 69147429)  ! (33.63mm, 69.15mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=(Net0), Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "(Net0)"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (33822166, 68268651)  ! (33.82mm, 68.27mm)
+.PROXIMITY
+..VIO_XY (32922420, 75270651)  ! (32.92mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=XSIG040091, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "XSIG040091"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (33822166, 75270651)  ! (33.82mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (45612420, 75270651)  ! (45.61mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC5VLED, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "VCC5VLED"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (46512166, 75270651)  ! (46.51mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (61482420, 75270651)  ! (61.48mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC5VLED, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "VCC5VLED"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (62382166, 75270651)  ! (62.38mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (64652420, 75270651)  ! (64.65mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC5VLED, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "VCC5VLED"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (65552166, 75270651)  ! (65.55mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (77352420, 75270651)  ! (77.35mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=VCC5VLED, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "VCC5VLED"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (78252166, 75270651)  ! (78.25mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (80522420, 75270651)  ! (80.52mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=(Net0), Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "(Net0)"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (81422166, 75270651)  ! (81.42mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (36092420, 75270651)  ! (36.09mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (36992166, 75270651)  ! (36.99mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (48782420, 75270651)  ! (48.78mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (49682166, 75270651)  ! (49.68mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (51952420, 75270651)  ! (51.95mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (52852166, 75270651)  ! (52.85mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (67832420, 75270651)  ! (67.83mm, 75.27mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Pad : Scheme=(Master), Layer=3, NetName1=VCC12V, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC12V"
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
+..OBJECT_2
+...OBJECT
+....HOLE PART
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....REF_DES "U5"
+.....XY (68732166, 75270651)  ! (68.73mm, 75.27mm)
+.PROXIMITY
+..VIO_XY (160146941, 140101147)  ! (160.15mm, 140.1mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=VCC3V3, NetClass1Override=(null), NetName2=GND, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 3
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.7"
+.....XY (160622459, 140254865)  ! (160.62mm, 140.25mm)
+.PROXIMITY
+..VIO_XY (161047805, 136438361)  ! (161.05mm, 136.44mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=VCC3V3, NetClass1Override=(null), NetName2=XSIG040134, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 3
+.....NET "XSIG040134"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.7"
+.....XY (161547551, 136438361)  ! (161.55mm, 136.44mm)
+.PROXIMITY
+..VIO_XY (160252624, 126157685)  ! (160.25mm, 126.16mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=VCC3V3, NetClass1Override=(null), NetName2=XSIG040134, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 3
+.....NET "XSIG040134"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.7"
+.....XY (160752370, 126157685)  ! (160.75mm, 126.16mm)
+.PROXIMITY
+..VIO_XY (162907685, 136444174)  ! (162.91mm, 136.44mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=VCC3V3, NetClass1Override=(null), NetName2=XSIG040136, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 3
+.....NET "XSIG040136"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.7"
+.....XY (163407431, 136444174)  ! (163.41mm, 136.44mm)
+.PROXIMITY
+..VIO_XY (163770327, 122786304)  ! (163.77mm, 122.79mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=VCC3V3, NetClass1Override=(null), NetName2=XSIG040136, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 3
+.....NET "XSIG040136"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.7"
+.....XY (164270073, 122786304)  ! (164.27mm, 122.79mm)
+.PROXIMITY
+..VIO_XY (161247805, 136438361)  ! (161.25mm, 136.44mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=VCC3V3, NetClass1Override=(null), NetName2=XSIG040134, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 3
+.....NET "XSIG040134"
+.....NETCLASS "(Default)"
+.....XY (161547551, 136438361)  ! (161.55mm, 136.44mm)
+.PROXIMITY
+..VIO_XY (160452624, 126157685)  ! (160.45mm, 126.16mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=VCC3V3, NetClass1Override=(null), NetName2=XSIG040134, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 3
+.....NET "XSIG040134"
+.....NETCLASS "(Default)"
+.....XY (160752370, 126157685)  ! (160.75mm, 126.16mm)
+.PROXIMITY
+..VIO_XY (163107685, 136444174)  ! (163.11mm, 136.44mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=VCC3V3, NetClass1Override=(null), NetName2=XSIG040136, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 3
+.....NET "XSIG040136"
+.....NETCLASS "(Default)"
+.....XY (163407431, 136444174)  ! (163.41mm, 136.44mm)
+.PROXIMITY
+..VIO_XY (163970327, 122786304)  ! (163.97mm, 122.79mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=3, NetName1=VCC3V3, NetClass1Override=(null), NetName2=XSIG040136, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....COND_AREA
+.....LYR 3
+.....NET "VCC3V3"
+.....XY (21870595, 88145922)  ! (21.87mm, 88.15mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 3
+.....NET "XSIG040136"
+.....NETCLASS "(Default)"
+.....XY (164270073, 122786304)  ! (164.27mm, 122.79mm)
+.PROXIMITY
+..VIO_XY (133824688, 68388291)  ! (133.82mm, 68.39mm)
+..CLEARANCE 150000  ! 0.15mm
+!..CLEARANCE_STRING "NetClass Via-To-Via : Scheme=Reduced clearance, Layer=3, NetName1=LVDS_CLK_P, NetName2=LVDS_CLK_N, Clearance=0.15mm  "
+..OBJECT_1
+...OBJECT
+....PAD VIA
+.....LYR 3
+.....NET "LVDS_CLK_P"
+.....NETCLASS "LVDS"
+.....NAME "Round 0.7"
+.....XY (134022047, 68099242)  ! (134.02mm, 68.1mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 3
+.....NET "LVDS_CLK_N"
+.....NETCLASS "LVDS"
+.....NAME "Round 0.7"
+.....XY (134017770, 68849231)  ! (134.02mm, 68.85mm)
+.PROXIMITY
+..VIO_XY (126020457, 49693373)  ! (126.02mm, 49.69mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=4, NetName1=MUX_7_A, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 4
+.....WDT 150000
+.....NET "MUX_7_A"
+.....NETCLASS "MUX"
+.....XY (126553812, 48463183)  ! (126.55mm, 48.46mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 4
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (126320457, 49693373)  ! (126.32mm, 49.69mm)
+.PROXIMITY
+..VIO_XY (125213671, 49047079)  ! (125.21mm, 49.05mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=4, NetName1=MUX_7_A, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 4
+.....WDT 150000
+.....NET "MUX_7_A"
+.....NETCLASS "MUX"
+.....XY (126553812, 48463183)  ! (126.55mm, 48.46mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 4
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....NAME "Round 0.6"
+.....XY (125432582, 48841950)  ! (125.43mm, 48.84mm)
+.PROXIMITY
+..VIO_XY (118973464, 49555174)  ! (118.97mm, 49.56mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=4, NetName1=VCC1V2, NetClass1Override=(null), NetName2=MUX_2_A, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 4
+.....WDT 1000000
+.....NET "VCC1V2"
+.....NETCLASS "(Default)"
+.....XY (118299249, 53333440)  ! (118.3mm, 53.33mm)
+..OBJECT_2
+...OBJECT
+....PAD VIA
+.....LYR 4
+.....NET "MUX_2_A"
+.....NETCLASS "MUX"
+.....NAME "Round 0.6"
+.....XY (119273464, 49555174)  ! (119.27mm, 49.56mm)
+.PROXIMITY
+..VIO_XY (125319849, 48940901)  ! (125.32mm, 48.94mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=4, NetName1=MUX_7_A, NetClass1Override=(null), NetName2=GND, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 4
+.....WDT 150000
+.....NET "MUX_7_A"
+.....NETCLASS "MUX"
+.....XY (126553812, 48463183)  ! (126.55mm, 48.46mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 4
+.....NET "GND"
+.....NETCLASS "(Default)"
+.....XY (125432582, 48841950)  ! (125.43mm, 48.84mm)
+.PROXIMITY
+..VIO_XY (119123464, 49555174)  ! (119.12mm, 49.56mm)
+..CLEARANCE 460000  ! 0.46mm
+!..CLEARANCE_STRING "NetClass Trace-To-Via : Scheme=(Master), Layer=4, NetName1=VCC1V2, NetClass1Override=(null), NetName2=MUX_2_A, Clearance=0.46mm  "
+..OBJECT_1
+...OBJECT
+....TRACE REGULAR
+.....LYR 4
+.....WDT 1000000
+.....NET "VCC1V2"
+.....NETCLASS "(Default)"
+.....XY (118299249, 53333440)  ! (118.3mm, 53.33mm)
+..OBJECT_2
+...OBJECT
+....HOLE VIA
+.....LYR 4
+.....NET "MUX_2_A"
+.....NETCLASS "MUX"
+.....XY (119273464, 49555174)  ! (119.27mm, 49.56mm)
+.PROXIMITY
+..VIO_XY (62894606, 171041988)  ! (62.89mm, 171.04mm)
 ..CLEARANCE 0  ! 0mm
 !..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0mm     "
 ..OBJECT_1
 ...OBJECT
 ....OBSTRUCT PLACE
 .....LYR 1
-.....XY (66394606, 171041988)  ! (66,39mm, 171,04mm)
+.....XY (66394606, 171041988)  ! (66.39mm, 171.04mm)
 .....HGT 0
 ..OBJECT_2
 ...OBJECT
 ....OUTLINE_OBJ PLACE
 .....SIDE TOP
-.....XY (62894268, 114542391)  ! (62,89mm, 114,54mm)
+.....XY (62894268, 114542391)  ! (62.89mm, 114.54mm)
 .....HGT 7800000
 .....UNDER_HGT 2000000
 .....REF_DES "J1"
 .PROXIMITY
-..VIO_XY (137894520, 171042885)  ! (137,89mm, 171,04mm)
+..VIO_XY (137894520, 171042885)  ! (137.89mm, 171.04mm)
 ..CLEARANCE 0  ! 0mm
 !..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0mm     "
 ..OBJECT_1
 ...OBJECT
 ....OBSTRUCT PLACE
 .....LYR 1
-.....XY (141394520, 171042885)  ! (141,39mm, 171,04mm)
+.....XY (141394520, 171042885)  ! (141.39mm, 171.04mm)
 .....HGT 0
 ..OBJECT_2
 ...OBJECT
 ....OUTLINE_OBJ PLACE
 .....SIDE TOP
-.....XY (62894268, 114542391)  ! (62,89mm, 114,54mm)
+.....XY (62894268, 114542391)  ! (62.89mm, 114.54mm)
 .....HGT 7800000
 .....UNDER_HGT 2000000
 .....REF_DES "J1"
 .PROXIMITY
-..VIO_XY (62894742, 126042153)  ! (62,89mm, 126,04mm)
+..VIO_XY (62894742, 126042153)  ! (62.89mm, 126.04mm)
 ..CLEARANCE 0  ! 0mm
 !..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0mm     "
 ..OBJECT_1
 ...OBJECT
 ....OBSTRUCT PLACE
 .....LYR 1
-.....XY (66394742, 126042153)  ! (66,39mm, 126,04mm)
+.....XY (66394742, 126042153)  ! (66.39mm, 126.04mm)
 .....HGT 0
 ..OBJECT_2
 ...OBJECT
 ....OUTLINE_OBJ PLACE
 .....SIDE TOP
-.....XY (62894268, 114542391)  ! (62,89mm, 114,54mm)
+.....XY (62894268, 114542391)  ! (62.89mm, 114.54mm)
 .....HGT 7800000
 .....UNDER_HGT 2000000
 .....REF_DES "J1"
 .PROXIMITY
-..VIO_XY (137894626, 126042539)  ! (137,89mm, 126,04mm)
+..VIO_XY (137894626, 126042539)  ! (137.89mm, 126.04mm)
 ..CLEARANCE 0  ! 0mm
 !..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0mm     "
 ..OBJECT_1
 ...OBJECT
 ....OBSTRUCT PLACE
 .....LYR 1
-.....XY (141394626, 126042539)  ! (141,39mm, 126,04mm)
+.....XY (141394626, 126042539)  ! (141.39mm, 126.04mm)
 .....HGT 0
 ..OBJECT_2
 ...OBJECT
 ....OUTLINE_OBJ PLACE
 .....SIDE TOP
-.....XY (62894268, 114542391)  ! (62,89mm, 114,54mm)
+.....XY (62894268, 114542391)  ! (62.89mm, 114.54mm)
 .....HGT 7800000
 .....UNDER_HGT 2000000
 .....REF_DES "J1"
 .PROXIMITY
-..VIO_XY (96000000, 100000000)  ! (96mm, 100mm)
-..CLEARANCE 254000  ! 0,25mm
-!..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0,25mm  "
+..VIO_XY (27942500, 90950000)  ! (27.94mm, 90.95mm)
+..CLEARANCE 254000  ! 0.25mm
+!..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0.25mm  "
 ..OBJECT_1
 ...OBJECT
 ....HOLE MOUNTING
-.....LYR 2
-.....NET "(Net0)"
+.....LYR 1
+.....NET "VCC3V3"
 .....NETCLASS "(Default)"
-.....XY (100000000, 100000000)  ! (100mm, 100mm)
+.....XY (29630000, 90950000)  ! (29.63mm, 90.95mm)
 ..OBJECT_2
 ...OBJECT
 ....COND_AREA
-.....LYR 2
+.....LYR 1
 .....NET "VCC12V"
-.....XY (100000000, 100000000)  ! (100mm, 100mm)
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
 .PROXIMITY
-..VIO_XY (99750000, 93650000)  ! (99,75mm, 93,65mm)
-..CLEARANCE 254000  ! 0,25mm
-!..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0,25mm  "
+..VIO_XY (27941480, 108525000)  ! (27.94mm, 108.53mm)
+..CLEARANCE 254000  ! 0.25mm
+!..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0.25mm  "
 ..OBJECT_1
 ...OBJECT
 ....HOLE MOUNTING
-.....LYR 2
-.....NET "(Net0)"
+.....LYR 1
+.....NET "VCC3V3"
 .....NETCLASS "(Default)"
-.....XY (100000000, 93650000)  ! (100mm, 93,65mm)
+.....XY (29628980, 108525000)  ! (29.63mm, 108.53mm)
 ..OBJECT_2
 ...OBJECT
 ....COND_AREA
-.....LYR 2
+.....LYR 1
 .....NET "VCC12V"
-.....XY (100000000, 100000000)  ! (100mm, 100mm)
+.....XY (21990580, 80638654)  ! (21.99mm, 80.64mm)
 .PROXIMITY
-..VIO_XY (106100000, 100000000)  ! (106,1mm, 100mm)
-..CLEARANCE 254000  ! 0,25mm
-!..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0,25mm  "
+..VIO_XY (28623365, 89595621)  ! (28.62mm, 89.6mm)
+..CLEARANCE 254000  ! 0.25mm
+!..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0.25mm  "
 ..OBJECT_1
 ...OBJECT
 ....HOLE MOUNTING
-.....LYR 2
-.....NET "(Net0)"
+.....LYR 3
+.....NET "VCC3V3"
 .....NETCLASS "(Default)"
-.....XY (106350000, 100000000)  ! (106,35mm, 100mm)
+.....XY (29630000, 90950000)  ! (29.63mm, 90.95mm)
 ..OBJECT_2
 ...OBJECT
 ....COND_AREA
-.....LYR 2
+.....LYR 3
 .....NET "VCC12V"
-.....XY (100000000, 100000000)  ! (100mm, 100mm)
-.PROXIMITY
-..VIO_XY (93400000, 100000000)  ! (93,4mm, 100mm)
-..CLEARANCE 254000  ! 0,25mm
-!..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0,25mm  "
-..OBJECT_1
-...OBJECT
-....HOLE MOUNTING
-.....LYR 2
-.....NET "(Net0)"
-.....NETCLASS "(Default)"
-.....XY (93650000, 100000000)  ! (93,65mm, 100mm)
-..OBJECT_2
-...OBJECT
-....COND_AREA
-.....LYR 2
-.....NET "VCC12V"
-.....XY (100000000, 100000000)  ! (100mm, 100mm)
-.PROXIMITY
-..VIO_XY (99750000, 106350000)  ! (99,75mm, 106,35mm)
-..CLEARANCE 254000  ! 0,25mm
-!..CLEARANCE_STRING "Element-To-Element Matrix : Clearance=0,25mm  "
-..OBJECT_1
-...OBJECT
-....HOLE MOUNTING
-.....LYR 2
-.....NET "(Net0)"
-.....NETCLASS "(Default)"
-.....XY (100000000, 106350000)  ! (100mm, 106,35mm)
-..OBJECT_2
-...OBJECT
-....COND_AREA
-.....LYR 2
-.....NET "VCC12V"
-.....XY (100000000, 100000000)  ! (100mm, 100mm)
-.UNROUTED_NET
-..XY (-7620000, 99300000)
-..OBJECT
-...PAD PART
-....NAME "REC025X070"
-....LYR 1
-....NET "GND"
-....NETCLASS "(Default)"
-....REF_DES "U7"
-....XY (-7620000, 99300000)
-.PARTIAL_NET
-..XY (23800000, 100000000)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "SQR100"
-....NET "GND"
-....NETCLASS "(Default)"
-....REF_DES "J104"
-....XY (23800000, 100000000)
-.PARTIAL_NET
-..XY (161500001, 153500001)
-..OBJECT
-...PAD VIA
-....LYR 1
-....NAME "VIA0.6"
-....NET "GND"
-....NETCLASS "(Default)"
-....XY (161500001, 153500001)
-.UNROUTED_NET
-..XY (25070000, 102540000)
-..OBJECT
-...PAD PART
-....NAME "SQR100"
-....LYR 1
-....NET "GND"
-....NETCLASS "(Default)"
-....REF_DES "J96"
-....XY (25070000, 102540000)
-.UNROUTED_NET
-..XY (27610000, 102540000)
-..OBJECT
-...PAD PART
-....NAME "SQR100"
-....LYR 1
-....NET "GND"
-....NETCLASS "(Default)"
-....REF_DES "J95"
-....XY (27610000, 102540000)
-.UNROUTED_NET
-..XY (30150000, 102540000)
-..OBJECT
-...PAD PART
-....NAME "SQR100"
-....LYR 1
-....NET "GND"
-....NETCLASS "(Default)"
-....REF_DES "J94"
-....XY (30150000, 102540000)
-.UNROUTED_NET
-..XY (146990000, 101270000)
-..OBJECT
-...PAD PART
-....NAME "SQR100"
-....LYR 1
-....NET "GND"
-....NETCLASS "(Default)"
-....REF_DES "J101"
-....XY (146990000, 101270000)
-.UNROUTED_NET
-..XY (169981842, 136989510)
-..OBJECT
-...PAD PART
-....NAME "REC475X274"
-....LYR 1
-....NET "GND"
-....NETCLASS "(Default)"
-....REF_DES "U6"
-....XY (169981842, 136989510)
+.....XY (22215380, 80965458)  ! (22.22mm, 80.97mm)
 .SINGLE_POINT
 ..XY (97478790, 66228484)
 ..LYR 1
 ..NET "DRV_SOUT_DATA"
-.UNROUTED_NET
-..XY (-7620000, 100700000)
-..OBJECT
-...PAD PART
-....NAME "REC025X070"
-....LYR 1
-....NET "HALL0"
-....NETCLASS "(Default)"
-....REF_DES "U7"
-....XY (-7620000, 100700000)
-.UNROUTED_NET
-..XY (108528790, 51678484)
-..OBJECT
-...PAD PART
-....NAME "REC030X190"
-....LYR 1
-....NET "HALL0"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (108528790, 51678484)
-.UNROUTED_NET
-..XY (110528790, 51678484)
-..OBJECT
-...PAD PART
-....NAME "REC030X190"
-....LYR 1
-....NET "HALL1"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (110528790, 51678484)
-.UNROUTED_NET
-..XY (181610000, 100700000)
-..OBJECT
-...PAD PART
-....NAME "REC025X070"
-....LYR 1
-....NET "HALL1"
-....NETCLASS "(Default)"
-....REF_DES "U8"
-....XY (181610000, 100700000)
-.UNROUTED_NET
-..XY (69394268, 118292391)
-..OBJECT
-...PAD PART
-....NAME "REC020X200"
-....LYR 1
-....NET "INHIBITn4V"
-....NETCLASS "(Default)"
-....REF_DES "J1"
-....XY (69394268, 118292391)
-.PARTIAL_NET
-..XY (75022129, 50644235)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC070X040"
-....NET "INHIBITn4V"
-....NETCLASS "(Default)"
-....REF_DES "R9"
-....XY (75022129, 50644235)
 .HANGER
-..XY (132005130, 115038794)
-..OBJECT
-...TRACE REGULAR
-....LYR 1
-....NET "LVDS_CLK_N"
-....NETCLASS "(Default)"
-....XY (128894268, 118292391) (132005130, 115038794)
-.HANGER
-..XY (132005130, 114688794)
-..OBJECT
-...TRACE REGULAR
-....LYR 1
-....NET "LVDS_CLK_P"
-....NETCLASS "(Default)"
-....XY (128394268, 118292391) (132005130, 114688794)
-.HANGER
-..XY (169258472, 106111395)
-..OBJECT
-...TRACE REGULAR
-....LYR 1
-....NET "MUX_6"
-....NETCLASS "(Default)"
-....XY (169258472, 106111395) (169258472, 106338569)
-.HANGER
-..XY (77699286, 96102524)
-..OBJECT
-...TRACE REGULAR
-....LYR 2
-....NET "SOM_MISO"
-....NETCLASS "(Default)"
-....XY (77699286, 96102524) (77559563, 95962801)
-.HANGER
-..XY (97101631, 64228484)
+..XY (132371281, 74228484)
 ..OBJECT
 ...TRACE REGULAR
 ....LYR 1
 ....NET "VCC1V2"
 ....NETCLASS "(Default)"
-....XY (97101631, 64228484) (97478790, 64228484)
-.HANGER
-..XY (97360969, 75228484)
-..OBJECT
-...TRACE REGULAR
-....LYR 1
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....XY (97360969, 75228484) (97478790, 75228484)
-.HANGER
-..XY (97335397, 79228484)
-..OBJECT
-...TRACE REGULAR
-....LYR 1
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....XY (97335397, 79228484) (97478790, 79228484)
-.HANGER
-..XY (106528790, 86591861)
-..OBJECT
-...TRACE REGULAR
-....LYR 1
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....XY (106528790, 86591861) (106528790, 86278484)
-.HANGER
-..XY (119528790, 51425130)
-..OBJECT
-...TRACE REGULAR
-....LYR 1
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....XY (119528790, 51425130) (119528790, 51678484)
-.HANGER
-..XY (120028790, 86809508)
-..OBJECT
-...TRACE REGULAR
-....LYR 1
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....XY (120028790, 86809508) (120028790, 86278484)
+....XY (132371281, 74228484) (132078790, 74228484)
 .HANGER
 ..XY (125528790, 86398397)
 ..OBJECT
@@ -457,135 +2417,55 @@
 ....NETCLASS "(Default)"
 ....XY (125528790, 86398397) (125528790, 86278484)
 .HANGER
-..XY (132371281, 74228484)
+..XY (120028790, 86809508)
 ..OBJECT
 ...TRACE REGULAR
 ....LYR 1
 ....NET "VCC1V2"
 ....NETCLASS "(Default)"
-....XY (132371281, 74228484) (132078790, 74228484)
-.PARTIAL_NET
-..XY (97509156, 85130372)
+....XY (120028790, 86809508) (120028790, 86278484)
+.HANGER
+..XY (106528790, 86591861)
 ..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC060X100"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "L4"
-....XY (97509156, 85130372)
-.PARTIAL_NET
-..XY (97512082, 53077844)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC060X100"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "L1"
-....XY (97512082, 53077844)
-.PARTIAL_NET
-..XY (99211345, 55725905)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C40"
-....XY (99211345, 55725905)
-.PARTIAL_NET
-..XY (99211345, 57723644)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C41"
-....XY (99211345, 57723644)
-.PARTIAL_NET
-..XY (99211345, 60225249)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C42"
-....XY (99211345, 60225249)
-.PARTIAL_NET
-..XY (99211345, 64228535)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C43"
-....XY (99211345, 64228535)
-.PARTIAL_NET
-..XY (99211345, 72316930)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C44"
-....XY (99211345, 72316930)
-.PARTIAL_NET
-..XY (99211345, 75227995)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C45"
-....XY (99211345, 75227995)
-.PARTIAL_NET
-..XY (99211345, 79305691)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C46"
-....XY (99211345, 79305691)
-.UNROUTED_NET
-..XY (97478790, 83728484)
-..OBJECT
-...PAD PART
-....NAME "REC030X190"
+...TRACE REGULAR
 ....LYR 1
 ....NET "VCC1V2"
 ....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (97478790, 83728484)
-.UNROUTED_NET
-..XY (99211344, 83728172)
+....XY (106528790, 86591861) (106528790, 86278484)
+.HANGER
+..XY (97335397, 79228484)
 ..OBJECT
-...PAD PART
-....NAME "REC070X040"
-....LYR 2
+...TRACE REGULAR
+....LYR 1
 ....NET "VCC1V2"
 ....NETCLASS "(Default)"
-....REF_DES "C47"
-....XY (99211344, 83728172)
-.PARTIAL_NET
-..XY (101832143, 53439508)
+....XY (97335397, 79228484) (97478790, 79228484)
+.HANGER
+..XY (97360969, 75228484)
 ..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
+...TRACE REGULAR
+....LYR 1
 ....NET "VCC1V2"
 ....NETCLASS "(Default)"
-....REF_DES "C39"
-....XY (101832143, 53439508)
+....XY (97360969, 75228484) (97478790, 75228484)
+.HANGER
+..XY (97101631, 64228484)
+..OBJECT
+...TRACE REGULAR
+....LYR 1
+....NET "VCC1V2"
+....NETCLASS "(Default)"
+....XY (97101631, 64228484) (97478790, 64228484)
+.HANGER
+..XY (119528790, 51425130)
+..OBJECT
+...TRACE REGULAR
+....LYR 1
+....NET "VCC1V2"
+....NETCLASS "(Default)"
+....XY (119528790, 51425130) (119528790, 51678484)
 .PARTIAL_NET
-..XY (103028790, 86278484)
+..XY (97478790, 55728484)
 ..OBJECT
 ...PAD PART
 ....LYR 1
@@ -593,9 +2473,9 @@
 ....NET "VCC1V2"
 ....NETCLASS "(Default)"
 ....REF_DES "U1"
-....XY (103028790, 86278484)
+....XY (97478790, 55728484)
 .PARTIAL_NET
-..XY (104528790, 51678484)
+..XY (119528790, 51678484)
 ..OBJECT
 ...PAD PART
 ....LYR 1
@@ -603,207 +2483,7 @@
 ....NET "VCC1V2"
 ....NETCLASS "(Default)"
 ....REF_DES "U1"
-....XY (104528790, 51678484)
-.PARTIAL_NET
-..XY (106531855, 84551062)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C49"
-....XY (106531855, 84551062)
-.PARTIAL_NET
-..XY (108530040, 84551062)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C50"
-....XY (108530040, 84551062)
-.PARTIAL_NET
-..XY (109030939, 53439506)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C37"
-....XY (109030939, 53439506)
-.PARTIAL_NET
-..XY (116528790, 86278484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (116528790, 86278484)
-.PARTIAL_NET
-..XY (130246597, 33643271)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC130X180"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "D1"
-....XY (130246597, 33643271)
-.PARTIAL_NET
-..XY (119528790, 53439506)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C36"
-....XY (119528790, 53439506)
-.PARTIAL_NET
-..XY (120034899, 84551062)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C52"
-....XY (120034899, 84551062)
-.PARTIAL_NET
-..XY (125529687, 84551062)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C53"
-....XY (125529687, 84551062)
-.PARTIAL_NET
-..XY (126028835, 53439506)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C35"
-....XY (126028835, 53439506)
-.PARTIAL_NET
-..XY (132078790, 55728484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 55728484)
-.PARTIAL_NET
-..XY (132078790, 59228484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 59228484)
-.PARTIAL_NET
-..XY (132078790, 60728484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 60728484)
-.PARTIAL_NET
-..XY (132078790, 66228484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 66228484)
-.PARTIAL_NET
-..XY (132078790, 74228484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 74228484)
-.PARTIAL_NET
-..XY (132078790, 77728484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 77728484)
-.PARTIAL_NET
-..XY (132078790, 81228484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 81228484)
-.PARTIAL_NET
-..XY (132078790, 83228484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 83228484)
-.PARTIAL_NET
-..XY (132078790, 54228484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 54228484)
-.PARTIAL_NET
-..XY (135042715, 85129634)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC115X320"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C23"
-....XY (135042715, 85129634)
-.PARTIAL_NET
-..XY (135042422, 52828744)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC115X320"
-....NET "VCC1V2"
-....NETCLASS "(Default)"
-....REF_DES "C24"
-....XY (135042422, 52828744)
+....XY (119528790, 51678484)
 .HANGER
 ..XY (101028790, 51589838)
 ..OBJECT
@@ -812,56 +2492,6 @@
 ....NET "VCC2V5"
 ....NETCLASS "(Default)"
 ....XY (101028790, 51589838) (101028790, 51678484)
-.PARTIAL_NET
-..XY (101028790, 51678484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC2V5"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (101028790, 51678484)
-.PARTIAL_NET
-..XY (101029561, 84551062)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC2V5"
-....NETCLASS "(Default)"
-....REF_DES "C81"
-....XY (101029561, 84551062)
-.PARTIAL_NET
-..XY (128533236, 53439507)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC2V5"
-....NETCLASS "(Default)"
-....REF_DES "C79"
-....XY (128533236, 53439507)
-.PARTIAL_NET
-..XY (128881306, 84551062)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC2V5"
-....NETCLASS "(Default)"
-....REF_DES "C80"
-....XY (128881306, 84551062)
-.PARTIAL_NET
-..XY (165639377, 67434825)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC120X160"
-....NET "VCC2V5"
-....NETCLASS "(Default)"
-....REF_DES "U3"
-....XY (165639377, 67434825)
 .HANGER
 ..XY (132140525, 56666749)
 ..OBJECT
@@ -870,374 +2500,222 @@
 ....NET "VCC3V"
 ....NETCLASS "(Default)"
 ....XY (132140525, 56666749) (132078790, 56728484)
-.UNROUTED_NET
-..XY (-7120000, 100700000)
-..OBJECT
-...PAD PART
-....NAME "REC025X070"
-....LYR 1
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U7"
-....XY (-7120000, 100700000)
-.PARTIAL_NET
-..XY (99211345, 61724780)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "C12"
-....XY (99211345, 61724780)
-.PARTIAL_NET
-..XY (99211345, 67728132)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "C11"
-....XY (99211345, 67728132)
-.PARTIAL_NET
-..XY (99211345, 71116928)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "C10"
-....XY (99211345, 71116928)
-.PARTIAL_NET
-..XY (99211345, 78105689)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "C9"
-....XY (99211345, 78105689)
-.PARTIAL_NET
-..XY (103032145, 53439507)
-..OBJECT
-...PAD PART
-....LYR 2
-....NAME "REC070X040"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "C13"
-....XY (103032145, 53439507)
-.PARTIAL_NET
-..XY (105028790, 86278484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (105028790, 86278484)
-.PARTIAL_NET
-..XY (107753227, 48164672)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC070X040"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "R1"
-....XY (107753227, 48164672)
-.PARTIAL_NET
-..XY (113534365, 89733038)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC070X040"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "R2"
-....XY (113534365, 89733038)
-.UNROUTED_NET
-..XY (113029759, 53392592)
-..OBJECT
-...PAD PART
-....NAME "REC070X040"
-....LYR 2
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "R3"
-....XY (113029759, 53392592)
-.PARTIAL_NET
-..XY (117028790, 51678484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (117028790, 51678484)
-.PARTIAL_NET
-..XY (122028790, 86278484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (122028790, 86278484)
-.PARTIAL_NET
-..XY (123028790, 51678484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (123028790, 51678484)
-.PARTIAL_NET
-..XY (128028790, 86278484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (128028790, 86278484)
-.PARTIAL_NET
-..XY (132078790, 56728484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 56728484)
-.PARTIAL_NET
-..XY (132078790, 62228484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 62228484)
-.PARTIAL_NET
-..XY (132078790, 75728484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 75728484)
-.PARTIAL_NET
-..XY (132078790, 71728484)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC030X190"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (132078790, 71728484)
-.PARTIAL_NET
-..XY (165639377, 57586160)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC120X160"
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U4"
-....XY (165639377, 57586160)
-.UNROUTED_NET
-..XY (182110000, 100700000)
-..OBJECT
-...PAD PART
-....NAME "REC025X070"
-....LYR 1
-....NET "VCC3V"
-....NETCLASS "(Default)"
-....REF_DES "U8"
-....XY (182110000, 100700000)
 .HANGER
-..XY (165639377, 71902483)
+..XY (130430508, 58125045)
+..OBJECT
+...TRACE REGULAR
+....LYR 4
+....NET "VCC3V"
+....NETCLASS "(Default)"
+....XY (130430508, 58125045) (130363991, 58058528)
+.TRACE_LOOP
+..SINGLE NO
+..XY (165116448, 121955008)
 ..OBJECT
 ...TRACE REGULAR
 ....LYR 1
 ....NET "VCC3V3"
 ....NETCLASS "(Default)"
-....XY (165639377, 71902483) (165639377, 72034825)
+....XY (165116448, 121955008) (170964126, 121955008)
 .HANGER
-..XY (173583221, 143549843)
+..XY (172310716, 71667229)
 ..OBJECT
 ...TRACE REGULAR
 ....LYR 1
 ....NET "VCC3V3"
 ....NETCLASS "(Default)"
-....XY (173508338, 143474960) (173583221, 143549843)
-.UNROUTED_NET
-..XY (44120000, 100000000)
+....XY (172310716, 71667229) (172310716, 71799571)
+.HANGER
+..XY (169958015, 70996676)
 ..OBJECT
-...PAD PART
-....NAME "SQR100"
+...TRACE REGULAR
 ....LYR 1
 ....NET "VCC3V3"
 ....NETCLASS "(Default)"
-....REF_DES "J78"
-....XY (44120000, 100000000)
+....XY (170108015, 70996676) (169958015, 70996676)
+.HANGER
+..XY (166083221, 147749843)
+..OBJECT
+...TRACE REGULAR
+....LYR 1
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+....XY (166008338, 147674960) (166083221, 147749843)
+.DANGLING VIA
+..XY (169958121, 128832683)
+..OBJECT
+...VIA
+....XY (169958121, 128832683)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (167424387, 130662602)
+..OBJECT
+...VIA
+....XY (167424387, 130662602)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (167424387, 128973446)
+..OBJECT
+...VIA
+....XY (167424387, 128973446)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (158772431, 139383475)
+..OBJECT
+...VIA
+....XY (158772431, 139383475)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (158665183, 141407781)
+..OBJECT
+...VIA
+....XY (158665183, 141407781)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (158665183, 140496173)
+..OBJECT
+...VIA
+....XY (158665183, 140496173)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (157559763, 132313886)
+..OBJECT
+...VIA
+....XY (157559763, 132313886)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (35850000, 118120000)
+..OBJECT
+...VIA
+....XY (35850000, 118120000)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (33350000, 118120000)
+..OBJECT
+...VIA
+....XY (33350000, 118120000)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (30850000, 118120000)
+..OBJECT
+...VIA
+....XY (30850000, 118120000)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (28350000, 118120000)
+..OBJECT
+...VIA
+....XY (28350000, 118120000)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (25850000, 118120000)
+..OBJECT
+...VIA
+....XY (25850000, 118120000)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (23350000, 118120000)
+..OBJECT
+...VIA
+....XY (23350000, 118120000)
+....LYR 1
+....NET "VCC3V3"
+....PADSTACK "VIA0.6"
 .PARTIAL_NET
-..XY (89839748, 28768397)
+..XY (78252166, 75270651)
 ..OBJECT
 ...PAD PART
 ....LYR 1
-....NAME "REC067X250"
-....NET "VCC3V3"
+....NAME "TMR150"
+....NET "VCC5VLED"
 ....NETCLASS "(Default)"
-....REF_DES "U9"
-....XY (89839748, 28768397)
-.PARTIAL_NET
-..XY (173508338, 143474960)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "REC070X040"
-....NET "VCC3V3"
-....NETCLASS "(Default)"
-....REF_DES "R8"
-....XY (173508338, 143474960)
+....REF_DES "U5"
+....XY (78252166, 75270651)
 .UNROUTED_NET
-..XY (155880000, 101270000)
-..OBJECT
-...PAD PART
-....NAME "SQR100"
-....LYR 1
-....NET "VCC3V3"
-....NETCLASS "(Default)"
-....REF_DES "J79"
-....XY (155880000, 101270000)
-.UNROUTED_NET
-..XY (37206627, 93478565)
-..OBJECT
-...PAD PART
-....NAME "REC115X320"
-....LYR 1
-....NET "VCC4V"
-....NETCLASS "(Default)"
-....REF_DES "C27"
-....XY (37206627, 93478565)
-.UNROUTED_NET
-..XY (39031628, 87046782)
-..OBJECT
-...PAD PART
-....NAME "REC365X150"
-....LYR 1
-....NET "VCC4V"
-....NETCLASS "(Default)"
-....REF_DES "C73"
-....XY (39031628, 87046782)
-.UNROUTED_NET
-..XY (40612166, 80470651)
+..XY (65552166, 75270651)
 ..OBJECT
 ...PAD PART
 ....NAME "TMR150"
 ....LYR 1
-....NET "VCC4V"
+....NET "VCC5VLED"
 ....NETCLASS "(Default)"
 ....REF_DES "U5"
-....XY (40612166, 80470651)
-.UNROUTED_NET
-..XY (52962291, 93478564)
+....XY (65552166, 75270651)
+.HANGER
+..XY (111552869, 20630177)
 ..OBJECT
-...PAD PART
-....NAME "REC115X320"
-....LYR 1
-....NET "VCC4V"
-....NETCLASS "(Default)"
-....REF_DES "C26"
-....XY (52962291, 93478564)
-.UNROUTED_NET
-..XY (54787292, 87046782)
-..OBJECT
-...PAD PART
-....NAME "REC365X150"
-....LYR 1
-....NET "VCC4V"
-....NETCLASS "(Default)"
-....REF_DES "C72"
-....XY (54787292, 87046782)
-.UNROUTED_NET
-..XY (56482166, 80470651)
-..OBJECT
-...PAD PART
-....NAME "TMR150"
-....LYR 1
-....NET "VCC4V"
-....NETCLASS "(Default)"
-....REF_DES "U5"
-....XY (56482166, 80470651)
-.UNROUTED_NET
-..XY (59652166, 80470651)
-..OBJECT
-...PAD PART
-....NAME "TMR150"
-....LYR 1
-....NET "VCC4V"
-....NETCLASS "(Default)"
-....REF_DES "U5"
-....XY (59652166, 80470651)
-.UNROUTED_NET
-..XY (69128700, 93478564)
-..OBJECT
-...PAD PART
-....NAME "REC115X320"
-....LYR 1
-....NET "VCC4V"
-....NETCLASS "(Default)"
-....REF_DES "C25"
-....XY (69128700, 93478564)
-.UNROUTED_NET
-..XY (70953700, 87046782)
-..OBJECT
-...PAD PART
-....NAME "REC365X150"
-....LYR 1
-....NET "VCC4V"
-....NETCLASS "(Default)"
-....REF_DES "C71"
-....XY (70953700, 87046782)
-.UNROUTED_NET
-..XY (72352166, 80470651)
-..OBJECT
-...PAD PART
-....NAME "TMR150"
-....LYR 1
-....NET "VCC4V"
-....NETCLASS "(Default)"
-....REF_DES "U5"
-....XY (72352166, 80470651)
-.UNROUTED_NET
-..XY (109569750, 23368397)
-..OBJECT
-...PAD PART
-....NAME "PAD1_MICROMATCH"
-....LYR 1
+...TRACE REGULAR
+....LYR 4
 ....NET "VCC5V"
 ....NETCLASS "(Default)"
-....REF_DES "J3"
+....XY (109569750, 23368397) (111552869, 20630177)
+.DANGLING VIA
+..XY (156179655, 119832735)
+..OBJECT
+...VIA
+....XY (156179655, 119832735)
+....LYR 1
+....NET "VCC5V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (156179655, 118832735)
+..OBJECT
+...VIA
+....XY (156179655, 118832735)
+....LYR 1
+....NET "VCC5V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (155179655, 119832735)
+..OBJECT
+...VIA
+....XY (155179655, 119832735)
+....LYR 1
+....NET "VCC5V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (155179655, 118832735)
+..OBJECT
+...VIA
+....XY (155179655, 118832735)
+....LYR 1
+....NET "VCC5V"
+....PADSTACK "VIA0.6"
+.PARTIAL_NET
+..XY (109569750, 23368397)
+..OBJECT
+...PAD VIA
+....LYR 1
+....NAME "VIA0.6"
+....NET "VCC5V"
+....NETCLASS "(Default)"
 ....XY (109569750, 23368397)
 .PARTIAL_NET
-..XY (166447985, 143474959)
+..XY (158947985, 147674959)
 ..OBJECT
 ...PAD PART
 ....LYR 1
@@ -1245,2387 +2723,235 @@
 ....NET "VCC5V"
 ....NETCLASS "(Default)"
 ....REF_DES "R7"
-....XY (166447985, 143474959)
+....XY (158947985, 147674959)
+.PARTIAL_NET
+..XY (155707410, 132767412)
+..OBJECT
+...PAD PART
+....LYR 1
+....NAME "REC115X180"
+....NET "VCC5V"
+....NETCLASS "(Default)"
+....REF_DES "C77"
+....XY (155707410, 132767412)
+.DANGLING VIA
+..XY (71209792, 72699171)
+..OBJECT
+...VIA
+....XY (71209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (69209792, 72699171)
+..OBJECT
+...VIA
+....XY (69209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (67209792, 72699171)
+..OBJECT
+...VIA
+....XY (67209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (65209792, 72699171)
+..OBJECT
+...VIA
+....XY (65209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (63209792, 72699171)
+..OBJECT
+...VIA
+....XY (63209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (63195663, 89281477)
+..OBJECT
+...VIA
+....XY (63195663, 89281477)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (63195663, 87281477)
+..OBJECT
+...VIA
+....XY (63195663, 87281477)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (63195663, 85281477)
+..OBJECT
+...VIA
+....XY (63195663, 85281477)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (63195663, 83281477)
+..OBJECT
+...VIA
+....XY (63195663, 83281477)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (63195663, 81281477)
+..OBJECT
+...VIA
+....XY (63195663, 81281477)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (63195663, 79281477)
+..OBJECT
+...VIA
+....XY (63195663, 79281477)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (63195663, 77281477)
+..OBJECT
+...VIA
+....XY (63195663, 77281477)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (61209792, 72699171)
+..OBJECT
+...VIA
+....XY (61209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (59209792, 72699171)
+..OBJECT
+...VIA
+....XY (59209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (57209792, 72699171)
+..OBJECT
+...VIA
+....XY (57209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (55209792, 72699171)
+..OBJECT
+...VIA
+....XY (55209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (53209792, 72699171)
+..OBJECT
+...VIA
+....XY (53209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (51209792, 72699171)
+..OBJECT
+...VIA
+....XY (51209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (49209792, 72699171)
+..OBJECT
+...VIA
+....XY (49209792, 72699171)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (47355267, 88848811)
+..OBJECT
+...VIA
+....XY (47355267, 88848811)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (47355267, 86848811)
+..OBJECT
+...VIA
+....XY (47355267, 86848811)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (47355267, 84848811)
+..OBJECT
+...VIA
+....XY (47355267, 84848811)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (47355267, 82848811)
+..OBJECT
+...VIA
+....XY (47355267, 82848811)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (47355267, 80848811)
+..OBJECT
+...VIA
+....XY (47355267, 80848811)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (47355267, 78848811)
+..OBJECT
+...VIA
+....XY (47355267, 78848811)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
+.DANGLING VIA
+..XY (47355267, 76848811)
+..OBJECT
+...VIA
+....XY (47355267, 76848811)
+....LYR 1
+....NET "VCC12V"
+....PADSTACK "VIA0.6"
 .HANGER
-..XY (169960617, 120088066)
+..XY (159564294, 110987318)
 ..OBJECT
 ...TRACE REGULAR
-....LYR 1
+....LYR 4
 ....NET "VCC12V"
 ....NETCLASS "(Default)"
-....XY (169960617, 120088066) (169960617, 128416000)
-.DANGLING VIA
-..XY (109125001, 101125001)
-..OBJECT
-...VIA
-....XY (109125001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (109125001, 100325001)
-..OBJECT
-...VIA
-....XY (109125001, 100325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (109125001, 99525001)
-..OBJECT
-...VIA
-....XY (109125001, 99525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (109125001, 98725001)
-..OBJECT
-...VIA
-....XY (109125001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 103525001)
-..OBJECT
-...VIA
-....XY (108325001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 102725001)
-..OBJECT
-...VIA
-....XY (108325001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 101925001)
-..OBJECT
-...VIA
-....XY (108325001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 101125001)
-..OBJECT
-...VIA
-....XY (108325001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 100325001)
-..OBJECT
-...VIA
-....XY (108325001, 100325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 99525001)
-..OBJECT
-...VIA
-....XY (108325001, 99525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 98725001)
-..OBJECT
-...VIA
-....XY (108325001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 97925001)
-..OBJECT
-...VIA
-....XY (108325001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 97125001)
-..OBJECT
-...VIA
-....XY (108325001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (108325001, 96325001)
-..OBJECT
-...VIA
-....XY (108325001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 105125001)
-..OBJECT
-...VIA
-....XY (107525001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 104325001)
-..OBJECT
-...VIA
-....XY (107525001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 103525001)
-..OBJECT
-...VIA
-....XY (107525001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 102725001)
-..OBJECT
-...VIA
-....XY (107525001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 101925001)
-..OBJECT
-...VIA
-....XY (107525001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 101125001)
-..OBJECT
-...VIA
-....XY (107525001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 100325001)
-..OBJECT
-...VIA
-....XY (107525001, 100325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 99525001)
-..OBJECT
-...VIA
-....XY (107525001, 99525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 98725001)
-..OBJECT
-...VIA
-....XY (107525001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 97925001)
-..OBJECT
-...VIA
-....XY (107525001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 97125001)
-..OBJECT
-...VIA
-....XY (107525001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 96325001)
-..OBJECT
-...VIA
-....XY (107525001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 95525001)
-..OBJECT
-...VIA
-....XY (107525001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (107525001, 94725001)
-..OBJECT
-...VIA
-....XY (107525001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 105925001)
-..OBJECT
-...VIA
-....XY (106725001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 105125001)
-..OBJECT
-...VIA
-....XY (106725001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 104325001)
-..OBJECT
-...VIA
-....XY (106725001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 103525001)
-..OBJECT
-...VIA
-....XY (106725001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 102725001)
-..OBJECT
-...VIA
-....XY (106725001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 101925001)
-..OBJECT
-...VIA
-....XY (106725001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 101125001)
-..OBJECT
-...VIA
-....XY (106725001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 98725001)
-..OBJECT
-...VIA
-....XY (106725001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 97925001)
-..OBJECT
-...VIA
-....XY (106725001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 97125001)
-..OBJECT
-...VIA
-....XY (106725001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 96325001)
-..OBJECT
-...VIA
-....XY (106725001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 95525001)
-..OBJECT
-...VIA
-....XY (106725001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 94725001)
-..OBJECT
-...VIA
-....XY (106725001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (106725001, 93925001)
-..OBJECT
-...VIA
-....XY (106725001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 106725001)
-..OBJECT
-...VIA
-....XY (105925001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 105925001)
-..OBJECT
-...VIA
-....XY (105925001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 105125001)
-..OBJECT
-...VIA
-....XY (105925001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 104325001)
-..OBJECT
-...VIA
-....XY (105925001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 103525001)
-..OBJECT
-...VIA
-....XY (105925001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 102725001)
-..OBJECT
-...VIA
-....XY (105925001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 101925001)
-..OBJECT
-...VIA
-....XY (105925001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 101125001)
-..OBJECT
-...VIA
-....XY (105925001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 98725001)
-..OBJECT
-...VIA
-....XY (105925001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 97925001)
-..OBJECT
-...VIA
-....XY (105925001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 97125001)
-..OBJECT
-...VIA
-....XY (105925001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 96325001)
-..OBJECT
-...VIA
-....XY (105925001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 95525001)
-..OBJECT
-...VIA
-....XY (105925001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 94725001)
-..OBJECT
-...VIA
-....XY (105925001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 93925001)
-..OBJECT
-...VIA
-....XY (105925001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105925001, 93125001)
-..OBJECT
-...VIA
-....XY (105925001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 107525001)
-..OBJECT
-...VIA
-....XY (105125001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 106725001)
-..OBJECT
-...VIA
-....XY (105125001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 105925001)
-..OBJECT
-...VIA
-....XY (105125001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 105125001)
-..OBJECT
-...VIA
-....XY (105125001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 104325001)
-..OBJECT
-...VIA
-....XY (105125001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 103525001)
-..OBJECT
-...VIA
-....XY (105125001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 102725001)
-..OBJECT
-...VIA
-....XY (105125001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 101925001)
-..OBJECT
-...VIA
-....XY (105125001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 101125001)
-..OBJECT
-...VIA
-....XY (105125001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 100325001)
-..OBJECT
-...VIA
-....XY (105125001, 100325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 99525001)
-..OBJECT
-...VIA
-....XY (105125001, 99525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 98725001)
-..OBJECT
-...VIA
-....XY (105125001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 97925001)
-..OBJECT
-...VIA
-....XY (105125001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 97125001)
-..OBJECT
-...VIA
-....XY (105125001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 96325001)
-..OBJECT
-...VIA
-....XY (105125001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 95525001)
-..OBJECT
-...VIA
-....XY (105125001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 94725001)
-..OBJECT
-...VIA
-....XY (105125001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 93925001)
-..OBJECT
-...VIA
-....XY (105125001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 93125001)
-..OBJECT
-...VIA
-....XY (105125001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (105125001, 92325001)
-..OBJECT
-...VIA
-....XY (105125001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 107525001)
-..OBJECT
-...VIA
-....XY (104325001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 106725001)
-..OBJECT
-...VIA
-....XY (104325001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 105925001)
-..OBJECT
-...VIA
-....XY (104325001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 105125001)
-..OBJECT
-...VIA
-....XY (104325001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 104325001)
-..OBJECT
-...VIA
-....XY (104325001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 103525001)
-..OBJECT
-...VIA
-....XY (104325001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 102725001)
-..OBJECT
-...VIA
-....XY (104325001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 97125001)
-..OBJECT
-...VIA
-....XY (104325001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 96325001)
-..OBJECT
-...VIA
-....XY (104325001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 95525001)
-..OBJECT
-...VIA
-....XY (104325001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 94725001)
-..OBJECT
-...VIA
-....XY (104325001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 93925001)
-..OBJECT
-...VIA
-....XY (104325001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 93125001)
-..OBJECT
-...VIA
-....XY (104325001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (104325001, 92325001)
-..OBJECT
-...VIA
-....XY (104325001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 108325001)
-..OBJECT
-...VIA
-....XY (103525001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 107525001)
-..OBJECT
-...VIA
-....XY (103525001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 106725001)
-..OBJECT
-...VIA
-....XY (103525001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 105925001)
-..OBJECT
-...VIA
-....XY (103525001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 105125001)
-..OBJECT
-...VIA
-....XY (103525001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 104325001)
-..OBJECT
-...VIA
-....XY (103525001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 103525001)
-..OBJECT
-...VIA
-....XY (103525001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 96325001)
-..OBJECT
-...VIA
-....XY (103525001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 95525001)
-..OBJECT
-...VIA
-....XY (103525001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 94725001)
-..OBJECT
-...VIA
-....XY (103525001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 93925001)
-..OBJECT
-...VIA
-....XY (103525001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 93125001)
-..OBJECT
-...VIA
-....XY (103525001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 92325001)
-..OBJECT
-...VIA
-....XY (103525001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (103525001, 91525001)
-..OBJECT
-...VIA
-....XY (103525001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 108325001)
-..OBJECT
-...VIA
-....XY (102725001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 107525001)
-..OBJECT
-...VIA
-....XY (102725001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 106725001)
-..OBJECT
-...VIA
-....XY (102725001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 105925001)
-..OBJECT
-...VIA
-....XY (102725001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 105125001)
-..OBJECT
-...VIA
-....XY (102725001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 104325001)
-..OBJECT
-...VIA
-....XY (102725001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 95525001)
-..OBJECT
-...VIA
-....XY (102725001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 94725001)
-..OBJECT
-...VIA
-....XY (102725001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 93925001)
-..OBJECT
-...VIA
-....XY (102725001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 93125001)
-..OBJECT
-...VIA
-....XY (102725001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 92325001)
-..OBJECT
-...VIA
-....XY (102725001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (102725001, 91525001)
-..OBJECT
-...VIA
-....XY (102725001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 108325001)
-..OBJECT
-...VIA
-....XY (101925001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 107525001)
-..OBJECT
-...VIA
-....XY (101925001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 106725001)
-..OBJECT
-...VIA
-....XY (101925001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 105925001)
-..OBJECT
-...VIA
-....XY (101925001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 105125001)
-..OBJECT
-...VIA
-....XY (101925001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 94725001)
-..OBJECT
-...VIA
-....XY (101925001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 93925001)
-..OBJECT
-...VIA
-....XY (101925001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 93125001)
-..OBJECT
-...VIA
-....XY (101925001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 92325001)
-..OBJECT
-...VIA
-....XY (101925001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101925001, 91525001)
-..OBJECT
-...VIA
-....XY (101925001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 109125001)
-..OBJECT
-...VIA
-....XY (101125001, 109125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 108325001)
-..OBJECT
-...VIA
-....XY (101125001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 107525001)
-..OBJECT
-...VIA
-....XY (101125001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 106725001)
-..OBJECT
-...VIA
-....XY (101125001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 105925001)
-..OBJECT
-...VIA
-....XY (101125001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 105125001)
-..OBJECT
-...VIA
-....XY (101125001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 94725001)
-..OBJECT
-...VIA
-....XY (101125001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 93925001)
-..OBJECT
-...VIA
-....XY (101125001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 93125001)
-..OBJECT
-...VIA
-....XY (101125001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 92325001)
-..OBJECT
-...VIA
-....XY (101125001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (101125001, 91525001)
-..OBJECT
-...VIA
-....XY (101125001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (100325001, 109125001)
-..OBJECT
-...VIA
-....XY (100325001, 109125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (100325001, 108325001)
-..OBJECT
-...VIA
-....XY (100325001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (100325001, 107525001)
-..OBJECT
-...VIA
-....XY (100325001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (100325001, 105125001)
-..OBJECT
-...VIA
-....XY (100325001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (100325001, 94725001)
-..OBJECT
-...VIA
-....XY (100325001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (100325001, 92325001)
-..OBJECT
-...VIA
-....XY (100325001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (100325001, 91525001)
-..OBJECT
-...VIA
-....XY (100325001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (99525001, 109125001)
-..OBJECT
-...VIA
-....XY (99525001, 109125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (99525001, 108325001)
-..OBJECT
-...VIA
-....XY (99525001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (99525001, 107525001)
-..OBJECT
-...VIA
-....XY (99525001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (99525001, 105125001)
-..OBJECT
-...VIA
-....XY (99525001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (99525001, 94725001)
-..OBJECT
-...VIA
-....XY (99525001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (99525001, 92325001)
-..OBJECT
-...VIA
-....XY (99525001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (99525001, 91525001)
-..OBJECT
-...VIA
-....XY (99525001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 109125001)
-..OBJECT
-...VIA
-....XY (98725001, 109125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 108325001)
-..OBJECT
-...VIA
-....XY (98725001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 107525001)
-..OBJECT
-...VIA
-....XY (98725001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 106725001)
-..OBJECT
-...VIA
-....XY (98725001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 105925001)
-..OBJECT
-...VIA
-....XY (98725001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 105125001)
-..OBJECT
-...VIA
-....XY (98725001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 94725001)
-..OBJECT
-...VIA
-....XY (98725001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 93925001)
-..OBJECT
-...VIA
-....XY (98725001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 93125001)
-..OBJECT
-...VIA
-....XY (98725001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 92325001)
-..OBJECT
-...VIA
-....XY (98725001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (98725001, 91525001)
-..OBJECT
-...VIA
-....XY (98725001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 108325001)
-..OBJECT
-...VIA
-....XY (97925001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 107525001)
-..OBJECT
-...VIA
-....XY (97925001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 106725001)
-..OBJECT
-...VIA
-....XY (97925001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 105925001)
-..OBJECT
-...VIA
-....XY (97925001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 105125001)
-..OBJECT
-...VIA
-....XY (97925001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 95525001)
-..OBJECT
-...VIA
-....XY (97925001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 94725001)
-..OBJECT
-...VIA
-....XY (97925001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 93925001)
-..OBJECT
-...VIA
-....XY (97925001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 93125001)
-..OBJECT
-...VIA
-....XY (97925001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 92325001)
-..OBJECT
-...VIA
-....XY (97925001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97925001, 91525001)
-..OBJECT
-...VIA
-....XY (97925001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 108325001)
-..OBJECT
-...VIA
-....XY (97125001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 107525001)
-..OBJECT
-...VIA
-....XY (97125001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 106725001)
-..OBJECT
-...VIA
-....XY (97125001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 105925001)
-..OBJECT
-...VIA
-....XY (97125001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 105125001)
-..OBJECT
-...VIA
-....XY (97125001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 104325001)
-..OBJECT
-...VIA
-....XY (97125001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 96325001)
-..OBJECT
-...VIA
-....XY (97125001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 95525001)
-..OBJECT
-...VIA
-....XY (97125001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 94725001)
-..OBJECT
-...VIA
-....XY (97125001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 93925001)
-..OBJECT
-...VIA
-....XY (97125001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 93125001)
-..OBJECT
-...VIA
-....XY (97125001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 92325001)
-..OBJECT
-...VIA
-....XY (97125001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (97125001, 91525001)
-..OBJECT
-...VIA
-....XY (97125001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 108325001)
-..OBJECT
-...VIA
-....XY (96325001, 108325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 107525001)
-..OBJECT
-...VIA
-....XY (96325001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 106725001)
-..OBJECT
-...VIA
-....XY (96325001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 105925001)
-..OBJECT
-...VIA
-....XY (96325001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 105125001)
-..OBJECT
-...VIA
-....XY (96325001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 104325001)
-..OBJECT
-...VIA
-....XY (96325001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 103525001)
-..OBJECT
-...VIA
-....XY (96325001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 97125001)
-..OBJECT
-...VIA
-....XY (96325001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 96325001)
-..OBJECT
-...VIA
-....XY (96325001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 95525001)
-..OBJECT
-...VIA
-....XY (96325001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 94725001)
-..OBJECT
-...VIA
-....XY (96325001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 93925001)
-..OBJECT
-...VIA
-....XY (96325001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 93125001)
-..OBJECT
-...VIA
-....XY (96325001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 92325001)
-..OBJECT
-...VIA
-....XY (96325001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (96325001, 91525001)
-..OBJECT
-...VIA
-....XY (96325001, 91525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 107525001)
-..OBJECT
-...VIA
-....XY (95525001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 106725001)
-..OBJECT
-...VIA
-....XY (95525001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 105925001)
-..OBJECT
-...VIA
-....XY (95525001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 105125001)
-..OBJECT
-...VIA
-....XY (95525001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 104325001)
-..OBJECT
-...VIA
-....XY (95525001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 103525001)
-..OBJECT
-...VIA
-....XY (95525001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 102725001)
-..OBJECT
-...VIA
-....XY (95525001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 97925001)
-..OBJECT
-...VIA
-....XY (95525001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 97125001)
-..OBJECT
-...VIA
-....XY (95525001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 96325001)
-..OBJECT
-...VIA
-....XY (95525001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 95525001)
-..OBJECT
-...VIA
-....XY (95525001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 94725001)
-..OBJECT
-...VIA
-....XY (95525001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 93925001)
-..OBJECT
-...VIA
-....XY (95525001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 93125001)
-..OBJECT
-...VIA
-....XY (95525001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (95525001, 92325001)
-..OBJECT
-...VIA
-....XY (95525001, 92325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 107525001)
-..OBJECT
-...VIA
-....XY (94725001, 107525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 106725001)
-..OBJECT
-...VIA
-....XY (94725001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 105925001)
-..OBJECT
-...VIA
-....XY (94725001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 105125001)
-..OBJECT
-...VIA
-....XY (94725001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 104325001)
-..OBJECT
-...VIA
-....XY (94725001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 103525001)
-..OBJECT
-...VIA
-....XY (94725001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 102725001)
-..OBJECT
-...VIA
-....XY (94725001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 101925001)
-..OBJECT
-...VIA
-....XY (94725001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 101125001)
-..OBJECT
-...VIA
-....XY (94725001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 100325001)
-..OBJECT
-...VIA
-....XY (94725001, 100325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 99525001)
-..OBJECT
-...VIA
-....XY (94725001, 99525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 98725001)
-..OBJECT
-...VIA
-....XY (94725001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 97925001)
-..OBJECT
-...VIA
-....XY (94725001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 97125001)
-..OBJECT
-...VIA
-....XY (94725001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 96325001)
-..OBJECT
-...VIA
-....XY (94725001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 95525001)
-..OBJECT
-...VIA
-....XY (94725001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 94725001)
-..OBJECT
-...VIA
-....XY (94725001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 93925001)
-..OBJECT
-...VIA
-....XY (94725001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (94725001, 93125001)
-..OBJECT
-...VIA
-....XY (94725001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 106725001)
-..OBJECT
-...VIA
-....XY (93925001, 106725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 105925001)
-..OBJECT
-...VIA
-....XY (93925001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 105125001)
-..OBJECT
-...VIA
-....XY (93925001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 104325001)
-..OBJECT
-...VIA
-....XY (93925001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 103525001)
-..OBJECT
-...VIA
-....XY (93925001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 102725001)
-..OBJECT
-...VIA
-....XY (93925001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 101925001)
-..OBJECT
-...VIA
-....XY (93925001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 101125001)
-..OBJECT
-...VIA
-....XY (93925001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 98725001)
-..OBJECT
-...VIA
-....XY (93925001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 97925001)
-..OBJECT
-...VIA
-....XY (93925001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 97125001)
-..OBJECT
-...VIA
-....XY (93925001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 96325001)
-..OBJECT
-...VIA
-....XY (93925001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 95525001)
-..OBJECT
-...VIA
-....XY (93925001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 94725001)
-..OBJECT
-...VIA
-....XY (93925001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 93925001)
-..OBJECT
-...VIA
-....XY (93925001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93925001, 93125001)
-..OBJECT
-...VIA
-....XY (93925001, 93125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 105925001)
-..OBJECT
-...VIA
-....XY (93125001, 105925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 105125001)
-..OBJECT
-...VIA
-....XY (93125001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 104325001)
-..OBJECT
-...VIA
-....XY (93125001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 103525001)
-..OBJECT
-...VIA
-....XY (93125001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 102725001)
-..OBJECT
-...VIA
-....XY (93125001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 101925001)
-..OBJECT
-...VIA
-....XY (93125001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 101125001)
-..OBJECT
-...VIA
-....XY (93125001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 98725001)
-..OBJECT
-...VIA
-....XY (93125001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 97925001)
-..OBJECT
-...VIA
-....XY (93125001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 97125001)
-..OBJECT
-...VIA
-....XY (93125001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 96325001)
-..OBJECT
-...VIA
-....XY (93125001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 95525001)
-..OBJECT
-...VIA
-....XY (93125001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 94725001)
-..OBJECT
-...VIA
-....XY (93125001, 94725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (93125001, 93925001)
-..OBJECT
-...VIA
-....XY (93125001, 93925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 105125001)
-..OBJECT
-...VIA
-....XY (92325001, 105125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 104325001)
-..OBJECT
-...VIA
-....XY (92325001, 104325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 103525001)
-..OBJECT
-...VIA
-....XY (92325001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 102725001)
-..OBJECT
-...VIA
-....XY (92325001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 101925001)
-..OBJECT
-...VIA
-....XY (92325001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 101125001)
-..OBJECT
-...VIA
-....XY (92325001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 100325001)
-..OBJECT
-...VIA
-....XY (92325001, 100325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 99525001)
-..OBJECT
-...VIA
-....XY (92325001, 99525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 98725001)
-..OBJECT
-...VIA
-....XY (92325001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 97925001)
-..OBJECT
-...VIA
-....XY (92325001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 97125001)
-..OBJECT
-...VIA
-....XY (92325001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 96325001)
-..OBJECT
-...VIA
-....XY (92325001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (92325001, 95525001)
-..OBJECT
-...VIA
-....XY (92325001, 95525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 103525001)
-..OBJECT
-...VIA
-....XY (91525001, 103525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 102725001)
-..OBJECT
-...VIA
-....XY (91525001, 102725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 101925001)
-..OBJECT
-...VIA
-....XY (91525001, 101925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 101125001)
-..OBJECT
-...VIA
-....XY (91525001, 101125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 100325001)
-..OBJECT
-...VIA
-....XY (91525001, 100325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 99525001)
-..OBJECT
-...VIA
-....XY (91525001, 99525001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 98725001)
-..OBJECT
-...VIA
-....XY (91525001, 98725001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 97925001)
-..OBJECT
-...VIA
-....XY (91525001, 97925001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 97125001)
-..OBJECT
-...VIA
-....XY (91525001, 97125001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.DANGLING VIA
-..XY (91525001, 96325001)
-..OBJECT
-...VIA
-....XY (91525001, 96325001)
-....LYR 1
-....NET "VCC12V"
-....PADSTACK "VIA0.6"
-.UNROUTED_NET
-..XY (27922166, 77300651)
-..OBJECT
-...PAD PART
-....NAME "TMR150"
-....LYR 1
-....NET "VCC12V"
-....NETCLASS "(Default)"
-....REF_DES "U5"
-....XY (27922166, 77300651)
-.UNROUTED_NET
-..XY (39100340, 50208690)
-..OBJECT
-...PAD PART
-....NAME "REC365X150"
-....LYR 1
-....NET "VCC12V"
-....NETCLASS "(Default)"
-....REF_DES "C68"
-....XY (39100340, 50208690)
+....XY (159173985, 111074171) (159564294, 110987318)
 .PARTIAL_NET
-..XY (72352166, 56980651)
-..OBJECT
-...PAD PART
-....LYR 1
-....NAME "TMR150"
-....NET "VCC12V"
-....NETCLASS "(Default)"
-....REF_DES "U5"
-....XY (72352166, 56980651)
-.UNROUTED_NET
-..XY (54856004, 50208690)
-..OBJECT
-...PAD PART
-....NAME "REC365X150"
-....LYR 1
-....NET "VCC12V"
-....NETCLASS "(Default)"
-....REF_DES "C69"
-....XY (54856004, 50208690)
-.UNROUTED_NET
-..XY (70803610, 50208690)
-..OBJECT
-...PAD PART
-....NAME "REC365X150"
-....LYR 1
-....NET "VCC12V"
-....NETCLASS "(Default)"
-....REF_DES "C70"
-....XY (70803610, 50208690)
-.PARTIAL_NET
-..XY (170956842, 140139510)
+..XY (163456842, 144339510)
 ..OBJECT
 ...PAD PART
 ....LYR 1
@@ -3633,132 +2959,136 @@
 ....NET "VCC12V"
 ....NETCLASS "(Default)"
 ....REF_DES "U6"
-....XY (170956842, 140139510)
-.PARTIAL_NET
-..XY (109125001, 101125001)
+....XY (163456842, 144339510)
+.UNROUTED_NET
+..XY (93650000, 100000000)
 ..OBJECT
-...PAD VIA
+...PAD PART
+....NAME "TNM050"
 ....LYR 1
-....NAME "VIA0.6"
 ....NET "VCC12V"
 ....NETCLASS "(Default)"
-....XY (109125001, 101125001)
+....XY (93650000, 100000000)
+.UNROUTED_NET
+..XY (100000000, 93650000)
+..OBJECT
+...PAD PART
+....NAME "TNM050"
+....LYR 1
+....NET "VCC12V"
+....NETCLASS "(Default)"
+....XY (100000000, 93650000)
+.UNROUTED_NET
+..XY (100000000, 100000000)
+..OBJECT
+...PAD PART
+....NAME "TNM800"
+....LYR 1
+....NET "VCC12V"
+....NETCLASS "(Default)"
+....XY (100000000, 100000000)
+.UNROUTED_NET
+..XY (100000000, 106350000)
+..OBJECT
+...PAD PART
+....NAME "TNM050"
+....LYR 1
+....NET "VCC12V"
+....NETCLASS "(Default)"
+....XY (100000000, 106350000)
+.UNROUTED_NET
+..XY (106350000, 100000000)
+..OBJECT
+...PAD PART
+....NAME "TNM050"
+....LYR 1
+....NET "VCC12V"
+....NETCLASS "(Default)"
+....XY (106350000, 100000000)
 .HANGER
 ..XY (132090122, 51727524)
 ..OBJECT
 ...TRACE REGULAR
-....LYR 2
+....LYR 4
 ....NET "XSIG011281"
 ....NETCLASS "(Default)"
 ....XY (132090122, 51727524) (132041342, 51678744)
-.DANGLING VIA
-..XY (87299748, 22568397)
+.HANGER
+..XY (34884885, 78196782)
 ..OBJECT
-...VIA
-....XY (87299748, 22568397)
+...TRACE REGULAR
 ....LYR 1
-....NET "ENCODER_A"
-....PADSTACK "VIA0.6"
-.PARTIAL_NET
-..XY (87299748, 22568397)
-..OBJECT
-...PAD VIA
-....LYR 1
-....NAME "VIA0.6"
-....NET "ENCODER_A"
+....NET "XSIG040091"
 ....NETCLASS "(Default)"
-....XY (87299748, 22568397)
+....XY (34884885, 78196782) (33822166, 75270651)
+.PARTIAL_NET
+..XY (33822166, 75270651)
+..OBJECT
+...PAD PART
+....LYR 1
+....NAME "TMR150"
+....NET "XSIG040091"
+....NETCLASS "(Default)"
+....REF_DES "U5"
+....XY (33822166, 75270651)
 .UNROUTED_NET
+..XY (34684885, 78196782)
+..OBJECT
+...PAD PART
+....NAME "REC100X060"
+....LYR 1
+....NET "XSIG040091"
+....NETCLASS "(Default)"
+....REF_DES "R6"
+....XY (34684885, 78196782)
+.SINGLE_POINT
+..XY (120528790, 86278484)
+..LYR 1
+..NET "XSIG020407"
+.SINGLE_POINT
+..XY (119028790, 86278484)
+..LYR 1
+..NET "XSIG020408"
+.SINGLE_POINT
+..XY (123528790, 86278484)
+..LYR 1
+..NET "XSIG020409"
+.SINGLE_POINT
+..XY (117028790, 86278484)
+..LYR 1
+..NET "XSIG020410"
+.SINGLE_POINT
+..XY (101528790, 86278484)
+..LYR 1
+..NET "XSIG020411"
+.SINGLE_POINT
+..XY (105528790, 86278484)
+..LYR 1
+..NET "XSIG020412"
+.SINGLE_POINT
+..XY (103528790, 86278484)
+..LYR 1
+..NET "XSIG020413"
+.SINGLE_POINT
+..XY (109528790, 86278484)
+..LYR 1
+..NET "XSIG020414"
+.SINGLE_POINT
 ..XY (97478790, 62728484)
-..OBJECT
-...PAD PART
-....NAME "REC030X190"
-....LYR 1
-....NET "ENCODER_A"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (97478790, 62728484)
-.DANGLING VIA
-..XY (89839748, 22568397)
-..OBJECT
-...VIA
-....XY (89839748, 22568397)
-....LYR 1
-....NET "ENCODER_B"
-....PADSTACK "VIA0.6"
-.PARTIAL_NET
-..XY (89839748, 22568397)
-..OBJECT
-...PAD VIA
-....LYR 1
-....NAME "VIA0.6"
-....NET "ENCODER_B"
-....NETCLASS "(Default)"
-....XY (89839748, 22568397)
-.UNROUTED_NET
-..XY (97478790, 59228484)
-..OBJECT
-...PAD PART
-....NAME "REC030X190"
-....LYR 1
-....NET "ENCODER_B"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (97478790, 59228484)
-.DANGLING VIA
-..XY (91109748, 28768397)
-..OBJECT
-...VIA
-....XY (91109748, 28768397)
-....LYR 1
-....NET "ENCODER_C"
-....PADSTACK "VIA0.6"
-.PARTIAL_NET
-..XY (91109748, 28768397)
-..OBJECT
-...PAD VIA
-....LYR 1
-....NAME "VIA0.6"
-....NET "ENCODER_C"
-....NETCLASS "(Default)"
-....XY (91109748, 28768397)
-.UNROUTED_NET
-..XY (97478790, 56728484)
-..OBJECT
-...PAD PART
-....NAME "REC030X190"
-....LYR 1
-....NET "ENCODER_C"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (97478790, 56728484)
-.DANGLING VIA
-..XY (88569748, 28768397)
-..OBJECT
-...VIA
-....XY (88569748, 28768397)
-....LYR 1
-....NET "ENCODER_D"
-....PADSTACK "VIA0.6"
-.PARTIAL_NET
-..XY (88569748, 28768397)
-..OBJECT
-...PAD VIA
-....LYR 1
-....NAME "VIA0.6"
-....NET "ENCODER_D"
-....NETCLASS "(Default)"
-....XY (88569748, 28768397)
-.UNROUTED_NET
-..XY (97478790, 72728484)
-..OBJECT
-...PAD PART
-....NAME "REC030X190"
-....LYR 1
-....NET "ENCODER_D"
-....NETCLASS "(Default)"
-....REF_DES "U1"
-....XY (97478790, 72728484)
+..LYR 1
+..NET "XSIG020415"
+.SINGLE_POINT
+..XY (132078790, 77228484)
+..LYR 1
+..NET "XSIG020416"
+.SINGLE_POINT
+..XY (132078790, 78728484)
+..LYR 1
+..NET "XSIG020417"
+.SINGLE_POINT
+..XY (97478790, 76728484)
+..LYR 1
+..NET "XSIG020418"
 .UNPLACED_MISSING_PART
 ..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
 ..REF_DES "PT9"
@@ -3776,7 +3106,17 @@
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
 ..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT30"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
 ..REF_DES "PT18"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT28"
 ..CELL_NAME "PTEST_0.90MM"
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
@@ -3786,7 +3126,22 @@
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
 ..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT21"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT31"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
 ..REF_DES "PT19"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT29"
 ..CELL_NAME "PTEST_0.90MM"
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
@@ -3796,7 +3151,27 @@
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
 ..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT22"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT32"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
 ..REF_DES "PT13"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT23"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT33"
 ..CELL_NAME "PTEST_0.90MM"
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
@@ -3806,7 +3181,22 @@
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
 ..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT24"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT34"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
 ..REF_DES "PT15"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT25"
 ..CELL_NAME "PTEST_0.90MM"
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
@@ -3815,14 +3205,18 @@
 ..CELL_NAME "PTEST_0.90MM"
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
-..UNPLACED_MISSING_PART_TYPE ERROR_DISTRIBUTED
-..REF_DES "U7"
-..CELL_NAME "SOT553"
-..PART_NUMBER "40-0219"
-..XY (-8870000, 101250000)
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT26"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
 ..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
 ..REF_DES "PT17"
+..CELL_NAME "PTEST_0.90MM"
+..PART_NUMBER "80-0063"
+.UNPLACED_MISSING_PART
+..UNPLACED_MISSING_PART_TYPE ERROR_UNPLACED
+..REF_DES "PT27"
 ..CELL_NAME "PTEST_0.90MM"
 ..PART_NUMBER "80-0063"
 .UNPLACED_MISSING_PART
@@ -3870,6 +3264,16 @@
 ..WDT_MAX 400000
 ..OBJECT
 ...TRACE REGULAR
+....XY (118799249, 49795351) (118799249, 49795351)
+....LYR 4
+....WDT 1000000
+....NET "VCC1V2"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
 ....XY (130646597, 33643271) (130646597, 33643271)
 ....LYR 1
 ....WDT 800000
@@ -3880,7 +3284,317 @@
 ..WDT_MAX 400000
 ..OBJECT
 ...TRACE REGULAR
-....XY (169427197, 62186160) (169427197, 62186160)
+....XY (128263803, 54934732) (128263803, 54934732)
+....LYR 1
+....WDT 1000000
+....NET "VCC2V5"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (129494895, 56172890) (129494895, 56172890)
+....LYR 1
+....WDT 1000000
+....NET "VCC2V5"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (129494895, 63411089) (129494895, 63411089)
+....LYR 1
+....WDT 1000000
+....NET "VCC2V5"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (128438735, 82845393) (128438735, 82845393)
+....LYR 1
+....WDT 1000000
+....NET "VCC2V5"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (129494895, 63411089) (129494895, 63411089)
+....LYR 1
+....WDT 1000000
+....NET "VCC2V5"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (160987692, 63412630) (160987692, 63412630)
+....LYR 4
+....WDT 1000000
+....NET "VCC2V5"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (169623014, 67996674) (169623014, 67996674)
+....LYR 1
+....WDT 1000000
+....NET "VCC2V5"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (103575316, 56221908) (103575316, 56221908)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (101510606, 66778132) (101510606, 66778132)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (101510606, 67728132) (101510606, 67728132)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (101521688, 72078021) (101521688, 72078021)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (117528787, 56216897) (117528787, 56216897)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (107538205, 56222038) (107538205, 56222038)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (113530352, 81735496) (113530352, 81735496)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (122528588, 81743046) (122528588, 81743046)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (123528459, 56214425) (123528459, 56214425)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (128041243, 58761477) (128041243, 58761477)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (126072838, 81743140) (126072838, 81743140)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (128044119, 75723152) (128044119, 75723152)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (128043445, 61274519) (128043445, 61274519)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (128044111, 70781770) (128044111, 70781770)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (128044119, 74773152) (128044119, 74773152)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (165574474, 58094437) (165574474, 58094437)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (156751490, 58089949) (156751490, 58089949)
+....LYR 4
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (130863991, 58058528) (130863991, 58058528)
+....LYR 4
+....WDT 1000000
+....NET "VCC3V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (164275481, 102845000) (164275481, 102845000)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (165616448, 121955008) (165616448, 121955008)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (158979901, 85026538) (158979901, 85026538)
+....LYR 4
+....WDT 1000000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (125225697, 23481490) (125225697, 23481490)
+....LYR 1
+....WDT 700000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (85887070, 25637826) (85887070, 25637826)
+....LYR 1
+....WDT 700000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (88876212, 25637826) (88876212, 25637826)
+....LYR 1
+....WDT 700000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (126164570, 23481490) (126164570, 23481490)
 ....LYR 1
 ....WDT 800000
 ....NET "VCC3V3"
@@ -3890,7 +3604,47 @@
 ..WDT_MAX 400000
 ..OBJECT
 ...TRACE REGULAR
-....XY (169427197, 72034825) (169427197, 72034825)
+....XY (90189748, 26951362) (90189748, 26951362)
+....LYR 1
+....WDT 700000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (88919748, 22568397) (88919748, 22568397)
+....LYR 1
+....WDT 700000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (132958313, 23605062) (132958313, 23605062)
+....LYR 1
+....WDT 700000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (171015046, 57200112) (171015046, 57200112)
+....LYR 1
+....WDT 700000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (171065046, 61890887) (171065046, 61890887)
 ....LYR 1
 ....WDT 800000
 ....NET "VCC3V3"
@@ -3900,9 +3654,9 @@
 ..WDT_MAX 400000
 ..OBJECT
 ...TRACE REGULAR
-....XY (184761262, 91428654) (184761262, 91428654)
-....LYR 1
-....WDT 800000
+....XY (57085036, 105135000) (57085036, 105135000)
+....LYR 4
+....WDT 1000000
 ....NET "VCC3V3"
 ....NETCLASS "(Default)"
 .TRACE_WIDTH
@@ -3910,9 +3664,9 @@
 ..WDT_MAX 400000
 ..OBJECT
 ...TRACE REGULAR
-....XY (169427197, 62186160) (169427197, 62186160)
-....LYR 1
-....WDT 800000
+....XY (58371254, 102487347) (58371254, 102487347)
+....LYR 4
+....WDT 1000000
 ....NET "VCC3V3"
 ....NETCLASS "(Default)"
 .TRACE_WIDTH
@@ -3920,9 +3674,9 @@
 ..WDT_MAX 400000
 ..OBJECT
 ...TRACE REGULAR
-....XY (169427197, 55825115) (169427197, 55825115)
-....LYR 1
-....WDT 800000
+....XY (165616448, 121955008) (165616448, 121955008)
+....LYR 4
+....WDT 1000000
 ....NET "VCC3V3"
 ....NETCLASS "(Default)"
 .TRACE_WIDTH
@@ -3930,9 +3684,99 @@
 ..WDT_MAX 400000
 ..OBJECT
 ...TRACE REGULAR
-....XY (170960617, 120088066) (170960617, 120088066)
+....XY (171464126, 121955008) (171464126, 121955008)
 ....LYR 1
+....WDT 1000000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (175681216, 66407057) (175681216, 66407057)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (164275481, 87016942) (164275481, 87016942)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (162285077, 85026538) (162285077, 85026538)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (172810716, 71799571) (172810716, 71799571)
+....LYR 1
+....WDT 1000000
+....NET "VCC3V3"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (156207410, 128995340) (156207410, 128995340)
+....LYR 1
+....WDT 1000000
+....NET "VCC5V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (80272166, 52260651) (80272166, 52260651)
+....LYR 4
+....WDT 5000000
+....NET "VCC12V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (64882166, 51780651) (64882166, 51780651)
+....LYR 4
+....WDT 5000000
+....NET "VCC12V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (160173985, 111094013) (160173985, 111094013)
+....LYR 4
 ....WDT 2000000
+....NET "VCC12V"
+....NETCLASS "(Default)"
+.TRACE_WIDTH
+..WDT_MIN 150000
+..WDT_MAX 400000
+..OBJECT
+...TRACE REGULAR
+....XY (91170673, 93285905) (91170673, 93285905)
+....LYR 4
+....WDT 6000000
 ....NET "VCC12V"
 ....NETCLASS "(Default)"
 .TRACE_WIDTH
