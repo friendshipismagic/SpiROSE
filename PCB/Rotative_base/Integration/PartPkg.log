@@ -2,13 +2,13 @@
                                     Packager
                                     --------
 
-                       02:06 PM Thursday, January 04, 2018
+                       04:34 PM Thursday, January 04, 2018
 Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_base.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: "C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe -Replace "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_base.prj""
+        Commandline is: ""C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  "-jC:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_base.prj" -CleanBuild -NoFill"
 
      The Common Database is at "C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Default\default.icdb".
 
@@ -23,9 +23,8 @@ Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_bas
      The Disable Repackage status indicates that 
       Repackaging should be allowed.
 
-     The PDBs listed in the project file will be searched to satisfy the parts
-      requirements of the iCDB and to replace any duplicates found in the
-      Target PDB.
+     A new Target PDB will be created from the Central Library to satisfy the parts
+      requirements of the iCDB.
 
      The AllowAlphaRefDes status indicates that reference
       designators containing all alpha characters should be deleted
@@ -82,7 +81,7 @@ Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_bas
 
      Target PDB Name: Integration\LocalPartsDB.pdb
 
-     Number of Part Numbers: 33
+     Number of Part Numbers: 34
           Part Numb: 01-0224 -> Vend Part: 01-0224 
           Part Numb: 02-0098 -> Vend Part: 02-0098 
           Part Numb: 02-0445 -> Vend Part: 02-0445 
@@ -115,6 +114,7 @@ Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_bas
           Part Numb: 70-0103 -> Vend Part: 70-0103 
           Part Numb: 70-0109 -> Vend Part: 70-0109 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
+          Part Numb: 80-0064 -> Vend Part: 80-0064 
           Part Numb: 80-0072 -> Vend Part: 80-0072 
 
      Number of Part Names: 0
@@ -137,8 +137,9 @@ Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_bas
      No errors in Existing Schematic Packaging.
 
      The Common DataBase has been read and will be packaged.
-     Clustering 155 Symbols:
-             155  ****
+     Clustering 222 Symbols:
+             222  *********************
+             200  **************************************************
              150  **************************************************
              100  **************************************************
               50  **************************************************
@@ -148,8 +149,8 @@ Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Rotative_bas
 
 
 
-     156 nets were found containing 785 pins
-     150 components were found
+     210 nets were found containing 904 pins
+     217 components were found
 
      Parsed netlist - Augmenting..
 

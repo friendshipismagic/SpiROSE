@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                       10:57 AM Thursday, January 04, 2018
-   Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+                       04:34 PM Thursday, January 04, 2018
+ Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -23,7 +23,7 @@ Version:  01.01.00
 
      Target PDB Name: Work\Layout_Temp\PartsDB.pdb
 
-     Number of Part Numbers: 33
+     Number of Part Numbers: 34
           Part Numb: 01-0224 -> Vend Part: 01-0224 
           Part Numb: 02-0098 -> Vend Part: 02-0098 
           Part Numb: 02-0445 -> Vend Part: 02-0445 
@@ -56,6 +56,7 @@ Version:  01.01.00
           Part Numb: 70-0103 -> Vend Part: 70-0103 
           Part Numb: 70-0109 -> Vend Part: 70-0109 
           Part Numb: 80-0063 -> Vend Part: 80-0063 
+          Part Numb: 80-0064 -> Vend Part: 80-0064 
           Part Numb: 80-0072 -> Vend Part: 80-0072 
 
      Number of Part Names: 0
@@ -84,8 +85,9 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 155 Symbols:
-             155  ****
+     Clustering 222 Symbols:
+             222  *********************
+             200  **************************************************
              150  **************************************************
              100  **************************************************
               50  **************************************************
@@ -95,8 +97,8 @@ Version:  01.01.00
 
 
 
-     156 nets were found containing 785 pins
-     150 components were found
+     210 nets were found containing 904 pins
+     217 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -110,8 +112,8 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       10:57 AM Thursday, January 04, 2018
-   Job Name: C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+                       04:34 PM Thursday, January 04, 2018
+ Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -123,7 +125,35 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     The following 28 components have not been placed:
+     WARNING:  The "PTEST_0.90MM" cell used by "PT10" in the Layout is not
+      valid for a "80-0064" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "PTEST_0.90MM" is being replaced by cell "PTEST_0.90MM_TH".
+
+     WARNING:  The "PTEST_0.90MM" cell used by "PT11" in the Layout is not
+      valid for a "80-0064" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "PTEST_0.90MM" is being replaced by cell "PTEST_0.90MM_TH".
+
+     WARNING:  The "PTEST_0.90MM" cell used by "PT12" in the Layout is not
+      valid for a "80-0064" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "PTEST_0.90MM" is being replaced by cell "PTEST_0.90MM_TH".
+
+     WARNING:  The "PTEST_0.90MM" cell used by "PT13" in the Layout is not
+      valid for a "80-0064" Part Number.
+      Since this cell is unplaced, it will be removed and reinserted as a
+      valid unplaced cell.
+     INFO: Cell "PTEST_0.90MM" is being replaced by cell "PTEST_0.90MM_TH".
+
+     WARNING:  The "PTEST_0.90MM" cell used by "PT35" in the Layout is not
+      valid for a "80-0064" Part Number.
+     INFO: Cell "PTEST_0.90MM" is being replaced by cell "PTEST_0.90MM_TH".
+
+     The following 95 components have not been placed:
 
         PT2
         PT3
@@ -153,8 +183,75 @@ Version:  02.11.12
         PT29
         PT30
         PT31
+        PT36
+        PT37
+        PT38
+        PT39
+        PT40
+        PT41
+        PT42
+        PT43
+        PT44
+        PT45
+        PT46
+        PT47
+        PT48
+        PT49
+        PT50
+        PT51
+        PT52
+        PT53
+        PT54
+        PT55
+        PT56
+        PT57
+        PT58
+        PT59
+        PT60
+        PT61
+        PT62
+        PT63
+        PT64
+        PT65
+        PT66
+        PT67
+        PT68
+        PT69
+        PT70
+        PT71
+        PT72
+        PT73
+        PT74
+        PT75
+        PT76
+        PT77
+        PT78
+        PT79
+        PT80
+        PT81
+        PT82
+        PT83
+        PT84
+        PT85
+        PT86
+        PT87
+        PT88
+        PT89
+        PT90
+        PT91
+        PT92
+        PT93
+        PT94
+        PT95
+        PT96
+        PT97
+        PT98
+        PT99
+        PT100
+        PT101
+        PT102
 
-     Netload completed successfully with 0 warning(s).
+     Netload completed successfully with 5 warning(s).
      
      Back Annotating...
 
@@ -185,57 +282,6 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
-	Unresolvable short found at point (36992166, 75270651).
-	Unresolvable short found at point (33822166, 75270651).
-	Unresolvable short found at point (29628980, 108525000).
-	Unresolvable short found at point (29628980, 108525000).
-	Unresolvable short found at point (161547551, 136438361).
-	Unresolvable short found at point (35850000, 118120000).
-	Unresolvable short found at point (30850000, 118120000).
-	Unresolvable short found at point (33350000, 118120000).
-	Unresolvable short found at point (28350000, 118120000).
-	Unresolvable short found at point (25850000, 118120000).
-	Unresolvable short found at point (23350000, 118120000).
-	Unresolvable short found at point (161547551, 136438361).
-	Unresolvable short found at point (160752370, 126157685).
-	Unresolvable short found at point (164270073, 122786304).
-	Unresolvable short found at point (163407431, 136444174).
-	Unresolvable short found at point (29630000, 90950000).
-	Unresolvable short found at point (33822166, 75270651).
-	Unresolvable short found at point (63195663, 87281477).
-	Unresolvable short found at point (47355267, 86848811).
-	Unresolvable short found at point (47355267, 86848811).
-	Unresolvable short found at point (47355267, 88848811).
-	Unresolvable short found at point (47355267, 82848811).
-	Unresolvable short found at point (47355267, 84848811).
-	Unresolvable short found at point (47355267, 80848811).
-	Unresolvable short found at point (47355267, 78848811).
-	Unresolvable short found at point (46512166, 75270651).
-	Unresolvable short found at point (47355267, 76848811).
-	Unresolvable short found at point (49209792, 72699171).
-	Unresolvable short found at point (55209792, 72699171).
-	Unresolvable short found at point (51209792, 72699171).
-	Unresolvable short found at point (53209792, 72699171).
-	Unresolvable short found at point (57209792, 72699171).
-	Unresolvable short found at point (59209792, 72699171).
-	Unresolvable short found at point (61209792, 72699171).
-	Unresolvable short found at point (63195663, 89281477).
-	Unresolvable short found at point (63195663, 85281477).
-	Unresolvable short found at point (63195663, 83281477).
-	Unresolvable short found at point (63195663, 79281477).
-	Unresolvable short found at point (63195663, 81281477).
-	Unresolvable short found at point (62382166, 75270651).
-	Unresolvable short found at point (63195663, 77281477).
-	Unresolvable short found at point (63209792, 72699171).
-	Unresolvable short found at point (69209792, 72699171).
-	Unresolvable short found at point (71209792, 72699171).
-	Unresolvable short found at point (65209792, 72699171).
-	Unresolvable short found at point (67209792, 72699171).
-	Unresolvable short found at point (78252166, 75270651).
-	Unresolvable short found at point (49682166, 75270651).
-	Unresolvable short found at point (65552166, 75270651).
-	Unresolvable short found at point (52852166, 75270651).
-	Unresolvable short found at point (68732166, 75270651).
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
