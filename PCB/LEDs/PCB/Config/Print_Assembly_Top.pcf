@@ -1,7 +1,7 @@
 .FILETYPE ExtendedPrint SetupFile
 .VERSION "VB99.0"
-.CREATOR "Expedition PCB PDF Output"
-.DATE "Friday, September 23, 2016 10:40 AM"
+.CREATOR "Xpedition Layout PDF Output"
+.DATE "Friday, January 05, 2018 01:22 AM"
 
 .BaseUnits "1NM"
 
@@ -31,7 +31,7 @@
    ...LayerName "Die Pins - Bottom"
    ...LayerName "Bond Wires - Top"
    ...LayerName "Bond Wires - Bottom"
-   ...LayerName "Board Origin"
+   ...LayerName "Design Origin"
    ...LayerName "NCDrill Origin"
    ...LayerName "Drill Drawing - Through"
    ...LayerName "Holes"
@@ -44,33 +44,32 @@
    ...LayerName "Cavity"
    ...LayerName "Contour"
    ...LayerName "DRC Window"
-   ...LayerName "Board Outline"
+   ...LayerName "Design Outline"
    ...LayerName "Route Border"
    ...LayerName "Manufacturing Outline"
    ...LayerName "Test Fixture Outline"
    ...LayerName "Redline Layer"
    ...LayerName "Lyr 1"
    ...LayerName "Lyr 2"
-   ...LayerName "Default User Layer"
-   ...LayerName "DRAWTRACE_CLEARANCEGEOM"
-   ...LayerName "SVG Import"
-   ...LayerName "Dimensions"
-   ...LayerName "SVG Import battery"
-   ...LayerName "DRC Assertion Assistant Layer"
-   ...LayerName "DRC Assertion Assistant Layer:1"
-   ...LayerName "DRC Assertion Assistant Layer:2"
-   ...LayerName "QEDraw"
-   ...LayerName "QEDraw2"
-   ...LayerName "QEDraw3"
-   ...LayerName "QEDrawText"
+   ...LayerName "Lyr 3"
+   ...LayerName "Lyr 4"
 
  ..ConductiveLayer 1
    ...ProcessLayer Yes
    ...ConductiveItem Fiducials
+   ...ConductiveItem MountingHolesByLayer
+   ...ConductiveItem PartHolesByLayer
 
  ..ConductiveLayer 2
    ...ProcessLayer No
+
+ ..ConductiveLayer 3
+   ...ProcessLayer No
+
+ ..ConductiveLayer 4
+   ...ProcessLayer No
  ..BoardItem BoardOutline
+ ..BoardItem SolderpasteTop
  ..BoardCellType Buried
  ..BoardCellType Connector
  ..BoardCellType DiscreteAxial
@@ -98,6 +97,7 @@
    ...CellItemsLayer 1
    ...CellItem AssemblyOutline
    ...CellItem AssemblyReferenceDesignator
+   ...CellItem TPAssemblyReferenceDesignator
 
 .OutputVariants NO
 .VariantList "Master"

@@ -59,19 +59,19 @@
                 <Name>EzPrint.Output.OutputPaper.Autofit</Name>
                 <ScreenName>Autofit</ScreenName>
                 <ShortDescription>This is for Automatic fitting the contents in the output file</ShortDescription>
-                <Value DataType="Boolean">true</Value>
+                <Value DataType="Boolean">yes</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.Output.OutputPaper.UseSourcePageSize</Name>
                 <ScreenName>UseSourcePageSize</ScreenName>
                 <ShortDescription>This is for using the source document page sizes for printing</ShortDescription>
-                <Value DataType="Boolean">no</Value>
+                <Value DataType="Boolean">false</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.Output.OutputPaper.GenerateMultipleFiles</Name>
                 <ScreenName>GenerateMultipleFiles</ScreenName>
                 <ShortDescription>If multiple input documents are given, this can be used to generate multiple output files for each input document</ShortDescription>
-                <Value DataType="Boolean">false</Value>
+                <Value DataType="Boolean">no</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.Output.OutputPaper.Scaling</Name>
@@ -158,7 +158,7 @@
                 <Name>EzPrint.DocumentManager.Footer.Enable</Name>
                 <ScreenName>Enable footer</ScreenName>
                 <ShortDescription>Enable footer generation in output</ShortDescription>
-                <Value DataType="Boolean">yes</Value>
+                <Value DataType="Boolean">true</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.DocumentManager.Footer.Left</Name>
@@ -219,7 +219,7 @@
                 <Name>EzPrint.DocumentManager.Document.CompanyName</Name>
                 <ScreenName>Company name</ScreenName>
                 <ShortDescription>Company name</ShortDescription>
-                <Value DataType="String">footbar</Value>
+                <Value DataType="String"></Value>
               </Parameter>
             </Parameters>
           </ParameterGroup>
@@ -296,7 +296,7 @@
                 <Name>EzPrint.Graphics.Transformations.MaintainAspectRatio</Name>
                 <ScreenName>MaintainAspectRatio</ScreenName>
                 <ShortDescription>This is for maintaining AspectRatio of the contents in the output file</ShortDescription>
-                <Value DataType="Boolean">true</Value>
+                <Value DataType="Boolean">yes</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.Graphics.Transformations.OpacityMode</Name>
@@ -442,7 +442,7 @@
                 <Name>EzPrint.ExportToPDF.PDFOutput.PDFA1b</Name>
                 <ScreenName>PDF/A-1b standard compliance</ScreenName>
                 <ShortDescription>Allows generated PDF to be of PDF/A-1b standard compliant.</ShortDescription>
-                <Value DataType="Boolean">no</Value>
+                <Value DataType="Boolean">false</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.ExportToPDF.PDFOutput.EmbedFonts</Name>
@@ -454,7 +454,7 @@
                 <Name>EzPrint.ExportToPDF.PDFOutput.EnableLayers</Name>
                 <ScreenName>Generate PDF with layers</ScreenName>
                 <ShortDescription>Extended Print can generate PDF output with or without layers. When layers are enabled, each page in generated PDF will have layer wise graphical data which can be selected to view in a PDF viewer. When layers are disabled, generated PDF will not have any layer and every graphical entity will be rendered on a page.</ShortDescription>
-                <Value DataType="Boolean">yes</Value>
+                <Value DataType="Boolean">true</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.ExportToPDF.PDFOutput.Mirror</Name>
@@ -472,7 +472,7 @@
                 <Name>EzPrint.ExportToPDF.PDFOutput.DocumentEditing</Name>
                 <ScreenName>DocumentEditing</ScreenName>
                 <ShortDescription>DocumentEditing</ShortDescription>
-                <Value DataType="Boolean">true</Value>
+                <Value DataType="Boolean">yes</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.ExportToPDF.PDFOutput.EnablePrinting</Name>
@@ -510,13 +510,13 @@
                 <Name>EzPrint.Print.Options.ManualFeed</Name>
                 <ScreenName>Manual Feed</ScreenName>
                 <ShortDescription>Selecting this option will prompt user to manually feed the paper into printer</ShortDescription>
-                <Value DataType="Boolean">false</Value>
+                <Value DataType="Boolean">no</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.Print.Options.UseForms</Name>
                 <ScreenName>Generate Postscript with forms</ScreenName>
                 <ShortDescription>Extended Print can generate postscript output with or without forms. When forms are enabled, file size on disk and spooling time will be less but it requires good amount of memory on printer or plotter. When forms are disabled, file size on disk and spooling time will be more but it requires small memory on printer or plotter.</ShortDescription>
-                <Value DataType="Boolean">false</Value>
+                <Value DataType="Boolean">no</Value>
               </Parameter>
               <Parameter>
                 <Name>EzPrint.Print.Options.DuplexPrinting</Name>

@@ -3,8 +3,8 @@
 
 """
 Generates BOM and Pick'nPlace files for PCBPool :
-  - BOM condensed with order codes (and link to distributor) to verify thta the component is in stock
-  - Pick'n'Place file
+  - BOM condensed with order codes (and link to distributor) to verify that the component is in stock
+  - Pick'n'Place files
 
 This program needs:
   - two files generated from schematics by iCDB-to-BOM utility:
@@ -15,7 +15,6 @@ This program needs:
     - ../PCB/vbreport/work/VBPCBP.TCM (components)
     - ../PCB/vbreport/work/VBPCBP.TCV (Part Number)
     - ../PCB/vbreport/work/VBPCBP.TCP (Part Number Property)
-  - three templates of each output file : Template_Pick_Place.csv, Template_Fiducials.csv, Template_BOM.xslx
 """
 
 import os, sys
@@ -40,6 +39,11 @@ PNP_OUTPUT_FILENAME = "PicknPlace.txt"
 BOM_OUTPUT_FILENAME = "BOM.xlsx"
 
 parts = {}
+
+# Get a copy of the default headers that requests would use
+headers = requests.utils.default_headers()
+headers.update({'User-Agent': 'Myagent',})
+timeout = 2
 
 def build_fiducials():
     """
@@ -86,7 +90,7 @@ def build_fiducials():
 
 def read_components():
     """
-    Read VBPCBP.TCM and VBPCBP.TCV and build a database of every component with
+    Read VBPCBP.TCM and co and build a database of every component with
     all necessary fields. Return the components list.
     """
     comps = []
@@ -111,7 +115,9 @@ def read_components():
             comp["Layer"] = fields[6]
             comp["PNID"] = fields[9]
             comp["CellID"] = fields[10]
-            comps.append(comp)
+            # Strip out test points
+            if not comp["RefDes"].startswith("PT"):
+                comps.append(comp)
 
         """
         Then read and parse VPBCPB.TCV which has the following format:
@@ -185,6 +191,9 @@ def read_components():
                 fields = [v.strip(" \t\r\n") for v in line.split("\t")]
                 if len(fields) != 9:
                     print("Continue pour ligne", line, " fields = ", fields)
+                    continue
+                # Strip test points
+                if fields[0].startswith("PT"):
                     continue
                 cl = [c for c in comps if c["RefDes"] == fields[0]]
                 if cl is None or len(cl) == 0:
@@ -267,27 +276,34 @@ def get_Farnell_infos(code):
     """
     url = "http://fr.farnell.com/webapp/wcs/stores/servlet/Search?exaMfpn=true&mfpn=%s"%(code, )
     #url = "http://fr.farnell.com/webapp/wcs/stores/servlet/Search?catalogId=15001&exaMfpn=true&mfpn=%s&categoryId=&langId=-2&searchRef=SearchLookAhead0&storeId=10160"%(code, )
-    resp = requests.get(url)
+
+    resp = None
+    while(resp == None):
+        try:
+            resp = requests.get(url, headers=headers, timeout=timeout)
+        except requests.Timeout:
+            pass
     if resp.reason != "OK":
         print("Farnell site returned an error : status code = %d, reason = %s." % (
             resp.status_code, resp.reason))
         return "Error", "Error", "Error"
     # Find usefull part in HTML page
     root = BeautifulSoup(resp.content, 'html.parser')
-    product = root.find("div", id="product")
-    # Description
-    description = product.h1.text + product.h2.find("span", itemprop="name").text
-    print("Description=", description)
-    # Disponibility
-    availability = root.find("div", class_="avalabilityContainer")
-    dispo = availability.find("p", class_="available")
-    if dispo != None:
-        dispo = "".join(dispo.text.strip().strip("En stock").split())
-    else:
+    try:
+        product = root.find("div", id="product")
+        # Description
+        description = product.h1.text + product.h2.find("span", itemprop="name").text
+        print("Description=", description)
+        # Disponibility
+        availability = root.find("div", class_="avalabilityContainer")
+        dispo = availability.find("p", class_="available")
+        if dispo != None:
+            dispo = "".join(dispo.text.strip().strip("En stock").split())
+        else:
+            dispo = "Plus stocké"
+    except Exception:
         dispo = "Plus stocké"
-    #else:
-    #    dispo = availability.dd
-    #    dispo = dispo.text.strip()
+        description = ""
     print("Dispo=", dispo)
     return description, dispo, url
 
@@ -454,14 +470,13 @@ def fill_BOM_line(ws, line, comp_list, placed):
 
     # Remarks_customer (available or not at distributor)
     cell = ws.cell(row=line, column=13)
-    cell.value = c["Stock"]
+    cell.value = "Stock: %s"%c["Stock"]
 
     # PN to ease library update
-    cell = ws.cell(row=line, column=14)
+    cell = ws.cell(row=line, column=17)
     cell.value = c["PartNumber"]
 
 comps = read_components()
-#pprint(comps)
 build_fiducials()
 build_PNP(comps)
 generate_BOM(comps)
