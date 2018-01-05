@@ -1,0 +1,193 @@
+[2017.12.06 14:42:42] [0000m.00s.040ms] [0] WELCOME
+[2017.12.06 14:42:42] [0000m.00s.041ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.06 14:42:42] [0000m.00s.041ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.06 14:42:42] [0000m.00s.041ms] [1] Base flow version [VX.2.2]
+[2017.12.06 14:42:42] [0000m.00s.041ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.06 14:42:42] [0000m.00s.041ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.06 14:42:42] [0000m.00s.041ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.06 14:42:42] [0000m.00s.054ms] [1] Machine [DESKTOP-KA2KT78]  IP [127.0.0.1,137.194.22.48]  User [mentor]  PID [4524]
+[2017.12.06 14:42:42] [0000m.00s.054ms] [1] Operating system [Microsoft Business Edition, 64-bit (build 9200)]
+[2017.12.06 14:42:42] [0000m.00s.054ms] [1] Current working dir [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED]
+[2017.12.06 14:42:42] [0000m.00s.054ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files (x86)\GNU\GnuPG\pub;C:\Program Files\OpenVPN\bin;C:\Users\mentor\AppData\Local\Microsoft\WindowsApps;]
+[2017.12.06 14:42:42] [0000m.00s.054ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.06 14:42:42] [0000m.00s.054ms] [1] SDD_PLATFORM [win32]
+[2017.12.06 14:42:42] [0000m.00s.054ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.06 14:42:42] [0000m.00s.054ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.06 14:42:42] [0000m.00s.055ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.06 14:42:42] [0000m.00s.055ms] [2] S: Loading config files
+[2017.12.06 14:42:42] [0000m.00s.057ms] [0] Config: ERROR: Line [110]: Syntax error
+[2017.12.06 14:42:42] [0000m.00s.059ms] [0] Config: ERROR: Line [110]: Syntax error
+[2017.12.06 14:42:42] [0000m.00s.059ms] [1] Config file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.06 14:42:42] [0000m.00s.061ms] [3] S: Config loaded
+[2017.12.06 14:42:42] [0000m.00s.069ms] [0] S: Project path [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb] on file system [NTFS]
+[2017.12.06 14:42:42] [0000m.00s.069ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.06 14:42:42] [0000m.00s.070ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] S: Single-user mode (auto)
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] S: Event polling mode autodetection
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] S: Started up automatically by iCDB Client: DESKTOP-KA2KT78:mentor:12160
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] S: Auto close mode
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] S: Database ID [4a6a-0c7c-3724-7936-0edf-42a5-edf4-2a50-00e4-2242-2452-de98]
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] PathTranslator: BEGIN dumping
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] PathTranslator: END dumping
+[2017.12.06 14:42:42] [0000m.00s.070ms] [0] S: START
+[2017.12.06 14:42:42] [0000m.00s.071ms] [0] S: Server startup lock file created
+[2017.12.06 14:42:42] [0000m.00s.071ms] [0] S: Listening for client connections on port [10001]
+[2017.12.06 14:42:42] [0000m.00s.072ms] [0] S: Server network ID [DESKTOP-KA2KT78:137.194.22.48,DESKTOP-KA2KT78:10001]
+[2017.12.06 14:42:42] [0000m.00s.072ms] [0] S: Server GUID [45cb-7ae9-4d9a-c306-2d3f-72a7-d3f7-2a50-0e52-2272-24ee-ce98]
+[2017.12.06 14:42:42] [0000m.00s.072ms] [0] S: Project GUID [4a6a-0c7c-3724-7936-0edf-42a5-edf4-2a50-00e4-2242-2452-de98]
+[2017.12.06 14:42:42] [0000m.00s.074ms] [0] S: Wrote data to server address file
+[2017.12.06 14:42:42] [0000m.00s.075ms] [0] S: Server startup lock file removed
+[2017.12.06 14:42:42] [0000m.00s.075ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.06 14:42:42] [0000m.00s.110ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.06 14:42:42] [0000m.00s.111ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.06 14:42:42] [0000m.00s.111ms] [0] S: Local disc access time: 54 us
+[2017.12.06 14:42:42] [0000m.00s.111ms] [0] S: File server access time: 61 us
+[2017.12.06 14:42:42] [0000m.00s.113ms] [0] Single file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] size [300296 (293.3 kB)]
+[2017.12.06 14:42:42] [0000m.00s.113ms] [1] Single file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.06 14:42:42] [0000m.00s.113ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.06 14:42:42] [0000m.00s.114ms] [0] Database GUARD OK: [300296]
+[2017.12.06 14:42:42] [0000m.00s.116ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.06 14:42:42] [0000m.00s.116ms] [0] Database GUARD OK: [300296]
+[2017.12.06 14:42:42] [0000m.00s.116ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.06 14:42:42] [0000m.00s.116ms] [0] Database GUARD OK: [300296]
+[2017.12.06 14:42:42] [0000m.00s.116ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.06 14:42:42] [0000m.00s.116ms] [0] Database GUARD OK: [300296]
+[2017.12.06 14:42:42] [0000m.00s.117ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.06 14:42:42] [0000m.00s.117ms] [0] Database GUARD OK: [300296]
+[2017.12.06 14:42:42] [0000m.00s.117ms] [0] SingleFile: [482f-7064-497b-623f] SFI version check [1009] [1009]
+[2017.12.06 14:42:42] [0000m.00s.126ms] [0] SingleFile: [482f-7064-497b-623f] Database SFI header has been read in [8ms 916us]
+[2017.12.06 14:42:42] [0000m.00s.131ms] [0] iCDB Server PI: Server & plugin session [4291]
+[2017.12.06 14:42:42] [0000m.00s.131ms] [0] iCDB Server PI: Opening database [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb]
+[2017.12.06 14:42:42] [0000m.00s.131ms] [0] iCDB Server PI: Database [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb] opened
+[2017.12.06 14:42:42] [0000m.00s.156ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.06 14:42:42] [0000m.00s.156ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.06 14:42:42] [0000m.00s.217ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=9e51-de11-1538-30ec-14b3-3f96-4b33-f950-3272-523f-90be-0f98] up to date
+[2017.12.06 14:42:42] [0000m.00s.226ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.06 14:42:42] [0000m.00s.226ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.06 14:42:42] [0000m.00s.226ms] [0] S: iCDB database loaded
+[2017.12.06 14:42:42] [0000m.00s.227ms] [0] S: Starting threads
+[2017.12.06 14:42:42] [0000m.00s.228ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.06 14:42:42] [0000m.00s.228ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.06 14:42:42] [0000m.00s.228ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.06 14:42:42] [0000m.00s.230ms] [0] IT: Session [4292] for host [DESKTOP-KA2KT78] user [mentor] with process ID [12160] created
+[2017.12.06 14:42:42] [0000m.00s.232ms] [1] SC[4292]: Registered sub-client [DCDV] with ID [1] for session ID [4292] host [DESKTOP-KA2KT78] user [mentor] process ID [12160]
+[2017.12.06 14:42:42] [0000m.00s.234ms] [0] MWT: WindowProc: WM_NCCREATE
+[2017.12.06 14:42:42] [0000m.00s.241ms] [0] IT: iCDB Server Monitor session [1] for host [DESKTOP-KA2KT78] user [mentor] with process ID [12676] created
+[2017.12.06 14:42:42] [0000m.00s.242ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2017.12.06 14:42:43] [0000m.00s.329ms] [1] CMT: There are [1] clients now: 4292
+[2017.12.06 14:43:03] [0000m.20s.419ms] [0] IT: Session [4293] for host [DESKTOP-KA2KT78] user [mentor] with process ID [7704] created
+[2017.12.06 14:43:03] [0000m.20s.420ms] [1] ProjectBackupManager: Client [ClientData[ClientNetAddress[DESKTOP-KA2KT78] # ClientUserName[mentor] # ClientProcessID[7704] # SessionID[4293] # Type[0]] # SubClientData[SubClientName[] # SubClientID[0]]] set project file (.prj): local path [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj], global path [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Test_LED.prj]
+[2017.12.06 14:43:03] [0000m.20s.472ms] [1] SC[4293]: Registered sub-client [Expedition PCB_194822796] with ID [1] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 14:43:03] [0000m.20s.498ms] [1] CMT: There are [2] clients now: 4292, 4293
+[2017.12.06 14:43:03] [0000m.20s.543ms] [1] SC[4293]: Registered sub-client [EEVM] with ID [2] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 14:43:03] [0000m.20s.670ms] [1] SC[4293]: UnRegistered sub-client [EEVM] with ID [2] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 14:43:03] [0000m.20s.869ms] [1] SC[4293]: Registered sub-client [JobPrefsDBPI_194823281] with ID [3] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 14:43:03] [0000m.20s.882ms] [0] DFAMT: File server access time: 83 us
+[2017.12.06 14:43:03] [0000m.20s.887ms] [1] SC[4293]: UnRegistered sub-client [JobPrefsDBPI_194823281] with ID [3] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 14:43:05] [0000m.22s.512ms] [1] SC[4293]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 14:43:05] [0000m.22s.517ms] [1] SC[4293]: Registered sub-client [StartServerClient3548] with ID [5] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 14:43:05] [0000m.22s.517ms] [1] SC[4293]: UnRegistered sub-client [StartServerClient3548] with ID [5] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:10:56] [0148m.13s.922ms] [0] IT: Session [4294] for host [DESKTOP-KA2KT78] user [mentor] with process ID [9720] created
+[2017.12.06 17:10:56] [0148m.13s.923ms] [1] SC[4294]: Registered sub-client [ICDBC] with ID [1] for session ID [4294] host [DESKTOP-KA2KT78] user [mentor] process ID [9720]
+[2017.12.06 17:10:56] [0148m.13s.947ms] [1] SC[4294]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4294] host [DESKTOP-KA2KT78] user [mentor] process ID [9720]
+[2017.12.06 17:10:56] [0148m.14s.005ms] [1] CMT: There are [3] clients now: 4292, 4293, 4294
+[2017.12.06 17:10:58] [0148m.16s.125ms] [1] SC[4294]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4294] host [DESKTOP-KA2KT78] user [mentor] process ID [9720]
+[2017.12.06 17:10:58] [0148m.16s.128ms] [1] SC[4294]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4294] host [DESKTOP-KA2KT78] user [mentor] process ID [9720]
+[2017.12.06 17:10:58] [0148m.16s.219ms] [1] CMT: Removed client [4294]
+[2017.12.06 17:10:58] [0148m.16s.219ms] [1] CMT: There are [2] clients now: 4292, 4293
+[2017.12.06 17:10:59] [0148m.16s.987ms] [0] IT: Session [4295] for host [DESKTOP-KA2KT78] user [mentor] with process ID [9836] created
+[2017.12.06 17:10:59] [0148m.16s.987ms] [1] SC[4295]: Registered sub-client [Packager_203699343] with ID [1] for session ID [4295] host [DESKTOP-KA2KT78] user [mentor] process ID [9836]
+[2017.12.06 17:10:59] [0148m.17s.024ms] [1] CMT: There are [3] clients now: 4292, 4293, 4295
+[2017.12.06 17:11:00] [0148m.17s.817ms] [1] SC[4295]: UnRegistered sub-client [Packager_203699343] with ID [1] for session ID [4295] host [DESKTOP-KA2KT78] user [mentor] process ID [9836]
+[2017.12.06 17:11:00] [0148m.17s.826ms] [1] CMT: Removed client [4295]
+[2017.12.06 17:11:00] [0148m.17s.826ms] [1] CMT: There are [2] clients now: 4292, 4293
+[2017.12.06 17:11:07] [0148m.24s.922ms] [1] SC[4293]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:07] [0148m.24s.934ms] [1] SC[4293]: Registered sub-client [EEVM_EEVM_1700408] with ID [6] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:07] [0148m.24s.936ms] [1] SC[4293]: UnRegistered sub-client [EEVM_EEVM_1700408] with ID [6] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:08] [0148m.25s.515ms] [1] SC[4293]: Registered sub-client [JobPrefsDBPI_203707937] with ID [7] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:08] [0148m.25s.532ms] [1] SC[4293]: UnRegistered sub-client [JobPrefsDBPI_203707937] with ID [7] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:09] [0148m.27s.098ms] [1] SC[4293]: Registered sub-client [JobPrefsDBPI_203709515] with ID [8] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:09] [0148m.27s.114ms] [1] SC[4293]: UnRegistered sub-client [JobPrefsDBPI_203709515] with ID [8] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:10] [0148m.27s.452ms] [0] IT: Session [4296] for host [DESKTOP-KA2KT78] user [mentor] with process ID [10832] created
+[2017.12.06 17:11:10] [0148m.27s.454ms] [1] SC[4296]: Registered sub-client [Packager_203709828] with ID [1] for session ID [4296] host [DESKTOP-KA2KT78] user [mentor] process ID [10832]
+[2017.12.06 17:11:10] [0148m.27s.474ms] [1] CMT: There are [3] clients now: 4292, 4293, 4296
+[2017.12.06 17:11:10] [0148m.28s.233ms] [1] SC[4296]: UnRegistered sub-client [Packager_203709828] with ID [1] for session ID [4296] host [DESKTOP-KA2KT78] user [mentor] process ID [10832]
+[2017.12.06 17:11:10] [0148m.28s.275ms] [1] CMT: Removed client [4296]
+[2017.12.06 17:11:10] [0148m.28s.275ms] [1] CMT: There are [2] clients now: 4292, 4293
+[2017.12.06 17:11:11] [0148m.28s.715ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.06 17:11:11] [0148m.29s.039ms] [0] IT: Session [4297] for host [DESKTOP-KA2KT78] user [mentor] with process ID [10720] created
+[2017.12.06 17:11:11] [0148m.29s.040ms] [1] SC[4297]: Registered sub-client [Expedition_203711421] with ID [1] for session ID [4297] host [DESKTOP-KA2KT78] user [mentor] process ID [10720]
+[2017.12.06 17:11:11] [0148m.29s.079ms] [1] CMT: There are [3] clients now: 4292, 4293, 4297
+[2017.12.06 17:11:11] [0148m.29s.188ms] [1] SC[4297]: UnRegistered sub-client [Expedition_203711421] with ID [1] for session ID [4297] host [DESKTOP-KA2KT78] user [mentor] process ID [10720]
+[2017.12.06 17:11:12] [0148m.29s.280ms] [1] CMT: Removed client [4297]
+[2017.12.06 17:11:12] [0148m.29s.280ms] [1] CMT: There are [2] clients now: 4292, 4293
+[2017.12.06 17:11:12] [0148m.29s.780ms] [0] IT: Session [4298] for host [DESKTOP-KA2KT78] user [mentor] with process ID [10720] created
+[2017.12.06 17:11:12] [0148m.29s.781ms] [1] SC[4298]: Registered sub-client [JobPrefsDBPI_203712156] with ID [1] for session ID [4298] host [DESKTOP-KA2KT78] user [mentor] process ID [10720]
+[2017.12.06 17:11:12] [0148m.29s.783ms] [1] CMT: There are [3] clients now: 4292, 4293, 4298
+[2017.12.06 17:11:12] [0148m.29s.815ms] [1] SC[4298]: UnRegistered sub-client [JobPrefsDBPI_203712156] with ID [1] for session ID [4298] host [DESKTOP-KA2KT78] user [mentor] process ID [10720]
+[2017.12.06 17:11:12] [0148m.29s.884ms] [1] CMT: Removed client [4298]
+[2017.12.06 17:11:12] [0148m.29s.884ms] [1] CMT: There are [2] clients now: 4292, 4293
+[2017.12.06 17:11:13] [0148m.30s.367ms] [0] IT: Session [4299] for host [DESKTOP-KA2KT78] user [mentor] with process ID [10720] created
+[2017.12.06 17:11:13] [0148m.30s.368ms] [1] SC[4299]: Registered sub-client [JobPrefsDBPI_203712750] with ID [1] for session ID [4299] host [DESKTOP-KA2KT78] user [mentor] process ID [10720]
+[2017.12.06 17:11:13] [0148m.30s.388ms] [1] CMT: There are [3] clients now: 4292, 4293, 4299
+[2017.12.06 17:11:13] [0148m.30s.389ms] [1] SC[4299]: UnRegistered sub-client [JobPrefsDBPI_203712750] with ID [1] for session ID [4299] host [DESKTOP-KA2KT78] user [mentor] process ID [10720]
+[2017.12.06 17:11:13] [0148m.30s.489ms] [1] CMT: Removed client [4299]
+[2017.12.06 17:11:13] [0148m.30s.489ms] [1] CMT: There are [2] clients now: 4292, 4293
+[2017.12.06 17:11:14] [0148m.31s.556ms] [0] IT: Session [4300] for host [DESKTOP-KA2KT78] user [mentor] with process ID [8020] created
+[2017.12.06 17:11:14] [0148m.31s.557ms] [1] SC[4300]: Registered sub-client [JobPrefsDBPI_203713890] with ID [1] for session ID [4300] host [DESKTOP-KA2KT78] user [mentor] process ID [8020]
+[2017.12.06 17:11:14] [0148m.31s.594ms] [1] SC[4300]: Registered sub-client [Expedition_203714015] with ID [2] for session ID [4300] host [DESKTOP-KA2KT78] user [mentor] process ID [8020]
+[2017.12.06 17:11:14] [0148m.31s.595ms] [1] CMT: There are [3] clients now: 4292, 4293, 4300
+[2017.12.06 17:11:14] [0148m.31s.682ms] [1] SC[4300]: UnRegistered sub-client [JobPrefsDBPI_203713890] with ID [1] for session ID [4300] host [DESKTOP-KA2KT78] user [mentor] process ID [8020]
+[2017.12.06 17:11:14] [0148m.31s.816ms] [1] SC[4300]: UnRegistered sub-client [Expedition_203714015] with ID [2] for session ID [4300] host [DESKTOP-KA2KT78] user [mentor] process ID [8020]
+[2017.12.06 17:11:14] [0148m.31s.896ms] [1] CMT: Removed client [4300]
+[2017.12.06 17:11:14] [0148m.31s.896ms] [1] CMT: There are [2] clients now: 4292, 4293
+[2017.12.06 17:11:15] [0148m.32s.318ms] [1] SC[4293]: Registered sub-client [EEVM_EEVM_727125372] with ID [9] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:15] [0148m.32s.331ms] [1] SC[4293]: UnRegistered sub-client [EEVM_EEVM_727125372] with ID [9] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:15] [0148m.32s.335ms] [1] SC[4293]: Registered sub-client [EEVM_EEVM_727125372] with ID [10] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:15] [0148m.32s.336ms] [1] SC[4293]: UnRegistered sub-client [EEVM_EEVM_727125372] with ID [10] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:15] [0148m.32s.341ms] [1] SC[4293]: Registered sub-client [EEVM_EEVM_727122396] with ID [11] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:15] [0148m.32s.354ms] [1] SC[4293]: UnRegistered sub-client [EEVM_EEVM_727122396] with ID [11] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:15] [0148m.32s.987ms] [1] SC[4293]: UnRegistered sub-client [Expedition PCB_194822796] with ID [1] for session ID [4293] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:15] [0148m.33s.001ms] [1] CMT: Removed client [4293]
+[2017.12.06 17:11:15] [0148m.33s.001ms] [1] CMT: There are [1] clients now: 4292
+[2017.12.06 17:11:16] [0148m.33s.534ms] [0] IT: Session [4301] for host [DESKTOP-KA2KT78] user [mentor] with process ID [7704] created
+[2017.12.06 17:11:16] [0148m.33s.536ms] [1] SC[4301]: Registered sub-client [Expedition PCB_203715906] with ID [1] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:16] [0148m.33s.605ms] [1] CMT: There are [2] clients now: 4292, 4301
+[2017.12.06 17:11:16] [0148m.33s.649ms] [1] SC[4301]: Registered sub-client [JobPrefsDBPI_203716062] with ID [2] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:16] [0148m.33s.664ms] [1] SC[4301]: UnRegistered sub-client [JobPrefsDBPI_203716062] with ID [2] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:23] [0148m.40s.816ms] [1] SC[4301]: Registered sub-client [JobPrefsDBPI_203723234] with ID [3] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:23] [0148m.40s.821ms] [1] SC[4301]: UnRegistered sub-client [JobPrefsDBPI_203723234] with ID [3] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:11:23] [0148m.40s.842ms] [1] SC[4301]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:48:13] [0185m.31s.053ms] [1] SC[4301]: Registered sub-client [JobPrefsDBPI_205933468] with ID [5] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:48:13] [0185m.31s.059ms] [1] SC[4301]: UnRegistered sub-client [JobPrefsDBPI_205933468] with ID [5] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:48:13] [0185m.31s.094ms] [1] SC[4301]: Registered sub-client [JobPrefsDBPI_205933515] with ID [6] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:48:13] [0185m.31s.097ms] [1] SC[4301]: UnRegistered sub-client [JobPrefsDBPI_205933515] with ID [6] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:50:59] [0188m.16s.547ms] [1] SC[4301]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:51:00] [0188m.17s.746ms] [1] SC[4301]: UnRegistered sub-client [Expedition PCB_203715906] with ID [1] for session ID [4301] host [DESKTOP-KA2KT78] user [mentor] process ID [7704]
+[2017.12.06 17:51:00] [0188m.17s.755ms] [1] CMT: Removed client [4301]
+[2017.12.06 17:51:00] [0188m.17s.755ms] [1] CMT: There are [1] clients now: 4292
+[2017.12.06 17:51:01] [0188m.19s.092ms] [1] SC[4292]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4292] host [DESKTOP-KA2KT78] user [mentor] process ID [12160]
+[2017.12.06 17:51:01] [0188m.19s.163ms] [1] CMT: Removed client [4292]
+[2017.12.06 17:51:01] [0188m.19s.164ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.06 17:51:02] [0188m.19s.507ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2017.12.06 17:51:03] [0188m.20s.368ms] [0] CMT: Starting server auto-close
+[2017.12.06 17:51:03] [0188m.20s.422ms] [0] S: Closing server
+[2017.12.06 17:51:03] [0188m.20s.483ms] [0] iCDB Server PI: Closing plugins
+[2017.12.06 17:51:03] [0188m.20s.483ms] [0] iCDB Server PI: Plugins closed
+[2017.12.06 17:51:03] [0188m.20s.483ms] [0] iCDB Server PI: Unloading database
+[2017.12.06 17:51:03] [0188m.20s.483ms] [0] iCDB Server PI: Saving storage
+[2017.12.06 17:51:03] [0188m.20s.483ms] [0] iCDB Server PI: Closing database
+[2017.12.06 17:51:03] [0188m.20s.492ms] [1] iCDB Server PI: Stats: Database defragmentation: max[3] avg[1] holes[9%] data[88%]
+[2017.12.06 17:51:03] [0188m.20s.492ms] [1] iCDB Server PI: Stats: Database file size [451480 (440.9 kB)]
+[2017.12.06 17:51:03] [0188m.20s.501ms] [0] iCDB Server PI: Database closed
+[2017.12.06 17:51:03] [0188m.20s.501ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [541502] ticks
+[2017.12.06 17:51:03] [0188m.20s.501ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [213752] microseconds
+[2017.12.06 17:51:03] [0188m.20s.501ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [1647]
+[2017.12.06 17:51:03] [0188m.20s.501ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [7705] commands per second
+[2017.12.06 17:51:03] [0188m.20s.509ms] [0] Single file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] closed with size [451480 (440.9 kB)]
+[2017.12.06 17:51:03] [0188m.20s.552ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2017.12.06 17:51:03] [0188m.20s.720ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.06 17:51:03] [0188m.20s.721ms] [0] MWT: STOP
+[2017.12.06 17:51:03] [0188m.20s.722ms] [0] S: STOP
