@@ -11,7 +11,7 @@ int sc_main(int argc, char** argv) {
     sc_report_handler::set_handler(report_handler);
     Verilated::commandArgs(argc, argv);
 
-    const sc_time T(60, SC_NS);
+    const sc_time T(15, SC_NS);
 
     const unsigned int STEPS = 256;
     const unsigned int MAIN_DIV = 4;
@@ -28,6 +28,7 @@ int sc_main(int argc, char** argv) {
     traceFile = sc_create_vcd_trace_file("column_mux");
     sc_trace(traceFile, clk66, "clk_66");
     sc_trace(traceFile, clk33, "clk_33");
+    sc_trace(traceFile, muxOut, "mux_out");
 
     Vclock_lse clock_lse("clock_lse");
     clock_lse.nrst(nrst);
