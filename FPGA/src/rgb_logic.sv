@@ -17,12 +17,15 @@ module rgb_logic #(
 );
 
 localparam IMAGE_SIZE = 80*48;
+localparam IMAGE_IN_RAM = 3;
 
 logic blanking;
 assign blanking = hsync | vsync;
 
 logic new_frame;
 assign new_frame = hsync & vsync;
+
+logic [31:0] pixel_counter;
 
 always_ff @(posedge rgb_clk or negedge nrst)
     if(~nrst) begin
@@ -37,7 +40,7 @@ always_ff @(posedge rgb_clk or negedge nrst)
     if(~nrst) begin
         ram_addr <= '0;
     end else begin
-        if(new_frame) begin
+        if(new_frame || pixel_counter == IMAGE_SIZE*IMAGE_IN_RAM) begin
             ram_addr <= '0;
         end
         ram_addr <= ram_addr + ~32'(blanking);
@@ -46,8 +49,13 @@ always_ff @(posedge rgb_clk or negedge nrst)
 always_ff @(posedge rgb_clk or negedge nrst)
     if(~nrst) begin
         write_enable <= '0;
+        pixel_counter <= '0;
     end else begin
         write_enable <= ~blanking;
+        pixel_counter <= pixel_counter + ~32'(blanking);
+        if(pixel_counter == IMAGE_SIZE*IMAGE_IN_RAM) begin
+            pixel_counter <= '0;
+        end
     end
 
 endmodule
