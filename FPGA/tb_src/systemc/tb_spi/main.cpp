@@ -42,9 +42,9 @@ int sc_main(int argc, char** argv) {
     dut.ss(spiSs);
     dut.mosi(spiMosi);
     dut.miso(spiMiso);
-    dut.newRotationDataAvailable(spiRotationDataAvailable);
-    dut.configOut(spiDriverConfig);
-    dut.newConfigAvailable(spiConfigAvailable);
+    dut.new_rotation_data_available(spiRotationDataAvailable);
+    dut.config_out(spiDriverConfig);
+    dut.new_config_available(spiConfigAvailable);
 
     Monitor monitor("monitor");
     monitor.clk(clk);
