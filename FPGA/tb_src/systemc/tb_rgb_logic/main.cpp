@@ -27,7 +27,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, clk, "clk");
 
     Vrgb_logic dut("rgb_logic");
-    dut.rgbClk(clk);
+    dut.rgb_clk(clk);
     dut.nrst(nrst);
 
     Monitor monitor("monitor");
