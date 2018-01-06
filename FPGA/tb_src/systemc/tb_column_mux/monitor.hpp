@@ -10,6 +10,7 @@ SC_MODULE(Monitor) {
 
     void runTests();
     void checkMuxOutTimings();
+    void checkMuxOutSequence();
     sc_out<bool> nrst;
     sc_in<bool> clk;
     sc_in<uint32_t> muxOut;

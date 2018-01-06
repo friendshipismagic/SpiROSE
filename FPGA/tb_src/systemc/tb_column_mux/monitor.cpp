@@ -10,6 +10,7 @@ void Monitor::runTests() {
     wait(200);
 
     sc_spawn(sc_bind(&Monitor::checkMuxOutTimings, this));
+    sc_spawn(sc_bind(&Monitor::checkMuxOutSequence, this));
 
     while (true) wait();
 }
@@ -30,6 +31,25 @@ void Monitor::checkMuxOutTimings() {
             return;
         }
         t = t2;
+    }
+}
+
+void Monitor::checkMuxOutSequence() {
+    auto previousValue = muxOut.read();
+    while(true) {
+        wait(muxOut.value_changed_event());
+        auto newValue = muxOut.read();
+        auto delta = (newValue >> 1) - previousValue;
+        if(delta != 0 && newValue != 1) {
+            auto msg =
+                "column_mux doesn't respect mux sequences, "
+                "it changed from " +
+                std::to_string(previousValue) + " to " +
+                std::to_string(newValue);
+            SC_REPORT_FATAL("mux", msg.c_str());
+            return;
+        }
+        previousValue = newValue;
     }
 }
 
