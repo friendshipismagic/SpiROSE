@@ -21,6 +21,12 @@ int sc_main(int argc, char** argv) {
 
     sc_clock clk("clk", T);
     sc_signal<bool> nrst("nrst");
+    sc_signal<bool> hsync("hsync");
+    sc_signal<bool> vsync("vsync");
+    sc_signal<bool> write_enable("write_enable");
+    sc_signal<uint32_t> rgb("rgb");
+    sc_signal<uint32_t> ram_addr("ram_addr");
+    sc_signal<uint32_t> ram_data("ram_data");
 
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("rgb_logic");
@@ -29,6 +35,12 @@ int sc_main(int argc, char** argv) {
     Vrgb_logic dut("rgb_logic");
     dut.rgb_clk(clk);
     dut.nrst(nrst);
+    dut.rgb(rgb);
+    dut.hsync(hsync);
+    dut.vsync(vsync);
+    dut.ram_addr(ram_addr);
+    dut.ram_data(ram_data);
+    dut.write_enable(write_enable);
 
     Monitor monitor("monitor");
     monitor.clk(clk);
