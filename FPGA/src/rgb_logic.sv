@@ -11,7 +11,6 @@ module rgb_logic #(
     input hsync,
     input vsync,
 
-    // TODO Check RAM Address is on 16b
     output [RAM_ADDR_WIDTH-1:0] ram_addr,
     output [RAM_DATA_WIDTH-1:0] ram_data,
     output logic write_enable
