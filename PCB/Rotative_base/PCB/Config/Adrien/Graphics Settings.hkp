@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 01/06/18 18:04:29
+! Created 01/06/18 18:54:10
 !
 
 .Global_Constants 200 5
@@ -1530,8 +1530,8 @@
 	0x00ffffff 0x00ffffff	! [47-48] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [49-50] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [51-52] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff         -1	! [53-54] RGB(255,255,255)  undefined
-	        -1         -1	! [55-56] undefined  undefined
+	0x00ffffff 0x00ffffff	! [53-54] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [55-56] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [57-58] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [59-60] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [61-62] RGB(255,255,255)  RGB(255,255,255)
@@ -1567,16 +1567,16 @@
 	0x00ffffff 0x00ffffff	! [121-122] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [123-124] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [125-126] RGB(255,255,255)  RGB(255,255,255)
-	        -1         -1	! [127-128] undefined  undefined
-	        -1         -1	! [129-130] undefined  undefined
-	        -1         -1	! [131-132] undefined  undefined
-	        -1         -1	! [133-134] undefined  undefined
-	        -1         -1	! [135-136] undefined  undefined
-	        -1         -1	! [137-138] undefined  undefined
-	        -1         -1	! [139-140] undefined  undefined
-	        -1         -1	! [141-142] undefined  undefined
-	        -1         -1	! [143-144] undefined  undefined
-	        -1 0x00ffffff	! [145-146] undefined  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [127-128] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [129-130] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [131-132] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [133-134] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [135-136] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [137-138] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [139-140] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [141-142] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [143-144] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00ffffff	! [145-146] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [147-148] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [149-150] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [151-152] RGB(255,255,255)  RGB(255,255,255)
@@ -1677,16 +1677,16 @@
 	F F F F F F F F F F 	! [21 - 30]
 	F F F F F F F F F F 	! [31 - 40]
 	F F F F F F F F F F 	! [41 - 50]
-	F F F T T T F F F F 	! [51 - 60]
+	F F F F F F F F F F 	! [51 - 60]
 	F F F F F F F F F F 	! [61 - 70]
 	F F F F F F F F F F 	! [71 - 80]
 	F F F F F F F F F F 	! [81 - 90]
 	F F F F F F F F F F 	! [91 - 100]
 	F F F F F F F F F F 	! [101 - 110]
 	F F F F F F F F F F 	! [111 - 120]
-	F F F F F F T T T T 	! [121 - 130]
-	T T T T T T T T T T 	! [131 - 140]
-	T T T T T F F F F F 	! [141 - 150]
+	F F F F F F F F F F 	! [121 - 130]
+	F F F F F F F F F F 	! [131 - 140]
+	F F F F F F F F F F 	! [141 - 150]
 	F F F F F F F F F F 	! [151 - 160]
 	F F F F F F F F F F 	! [161 - 170]
 	F F F F F F F F F F 	! [171 - 180]
@@ -2206,8 +2206,8 @@
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
 	"[VirtualGlobal].iDC.SplitViewHeight.0" "148"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "70"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "608"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "68"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "610"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -2222,8 +2222,8 @@
 
 .view "PCB"
     ..extrema
-	(-90485030,37956367)		! (xmin, ymin)
-	(248369151,184392308)		! (xmax, ymax)
+	(-23125491,43844661)		! (xmin, ymin)
+	(237308726,156391390)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
