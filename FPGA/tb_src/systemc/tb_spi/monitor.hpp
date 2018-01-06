@@ -4,7 +4,18 @@
 #include <verilated.h>
 
 SC_MODULE(Monitor) {
-    SC_CTOR(Monitor) : nrst("nrst") { SC_CTHREAD(runTests, clk.pos()); }
+    SC_CTOR(Monitor)
+        : nrst("nrst"),
+          clk("clk"),
+          sck("sck"),
+          ss("ss"),
+          mosi("mosi"),
+          miso("miso"),
+          newRotationDataAvailable("new_rotation_data_available"),
+          configOut("config_out"),
+          newConfigAvailable("new_config_available") {
+        SC_THREAD(runTests);
+    }
 
     void runTests();
 
@@ -21,6 +32,7 @@ SC_MODULE(Monitor) {
     sc_in<bool> newConfigAvailable;
 
     void generateSck(int count);
+
     void checkValue(int count, bool value);
 
     private:
