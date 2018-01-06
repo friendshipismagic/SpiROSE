@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                       02:59 PM Saturday, January 06, 2018
-               Job Name: H:\SPIROSE\PCB\ROTATIVE_BASE\PCB\PCB.pcb
+                       05:56 PM Saturday, January 06, 2018
+               Job Name: D:\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -111,8 +111,8 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       02:59 PM Saturday, January 06, 2018
-               Job Name: H:\SPIROSE\PCB\ROTATIVE_BASE\PCB\PCB.pcb
+                       05:57 PM Saturday, January 06, 2018
+               Job Name: D:\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -124,11 +124,73 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-	WARNING:  "PT40" is being removed from the Layout since it is no longer in the schematic.
+	WARNING:  Physical Net "MUX_0_B" is being renamed to "FPGA_MUL_0_B" to match the change
+	in the schematic.
 
-	WARNING:  "PT41" is being removed from the Layout since it is no longer in the schematic.
+	WARNING:  Physical Net "MUX_4_B" is being renamed to "FPGA_MUL_4_B" to match the change
+	in the schematic.
 
-     Netload completed successfully with 2 warning(s).
+	WARNING:  Physical Net "MUX_1_B" is being renamed to "FPGA_MUL_1_B" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "DRV_GCLK_A" is being renamed to "FPGA_GCLK_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "DRV_GCLK_B" is being renamed to "FPGA_GCLK_B" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "DRV_LAT_A" is being renamed to "FPGA_LAT_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "DRV_LAT_B" is being renamed to "FPGA_LAT_B" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "DRV_SCLK_A" is being renamed to "FPGA_SCLK_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "DRV_SCLK_B" is being renamed to "FPGA_SCLK_B" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_0_A" is being renamed to "FPGA_MUL_0_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_1_A" is being renamed to "FPGA_MUL_1_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_2_A" is being renamed to "FPGA_MUL_2_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_2_B" is being renamed to "FPGA_MUL_2_B" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_3_A" is being renamed to "FPGA_MUL_3_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_3_B" is being renamed to "FPGA_MUL_3_B" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_4_A" is being renamed to "FPGA_MUL_4_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_5_A" is being renamed to "FPGA_MUL_5_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_5_B" is being renamed to "FPGA_MUL_5_B" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_6_A" is being renamed to "FPGA_MUL_6_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_6_B" is being renamed to "FPGA_MUL_6_B" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_7_A" is being renamed to "FPGA_MUL_7_A" to match the change
+	in the schematic.
+
+	WARNING:  Physical Net "MUX_7_B" is being renamed to "FPGA_MUL_7_B" to match the change
+	in the schematic.
+
+     Netload completed successfully with 22 warning(s).
      
      Back Annotating...
 
@@ -160,12 +222,8 @@ Version:  02.11.12
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
 
-Some nets were completely deleted from the Layout Design....
-	Deleted net XSIG030164, which has no pins, from the Layout Design.
-	Deleted net XSIG030172, which has no pins, from the Layout Design.
-
 Forward-Annotation on the Layout Design has been successfully completed.
 
 There were 0 reassignments of nets.
 There were 0 traces broken back.
-There were 2 nets removed from the Layout Design.
+There were 0 nets removed from the Layout Design.
