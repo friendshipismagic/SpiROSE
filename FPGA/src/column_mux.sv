@@ -1,10 +1,14 @@
 // DRIVE_TIME is in µs
 // CAUTION: the LEDs overdrive cannot exceed 10µs at full value
-module column_mux #(parameter DRIVE_TIME = 'd10)
-(
+module column_mux #(
+   parameter SYNC_TO_FIRST_COL_TIME=,
+   parameter COLUMN_DISP_TIME=,
+   parameter ANTIGHOSTING_TIME=
+) (
    input clk_33,
    input nrst,
    input framebuffer_sync,
+   input enable,
 
    output reg [7:0] mux_out
 );
@@ -14,50 +18,76 @@ localparam DRIVE_CLOCK_CYCLES = 330;
 localparam DRIVE_CLOCK_BITS = $clog2(DRIVE_CLOCK_CYCLES);
 
 /*
- * Counter for switching. 33 MHz (30ns) clock is used, the multiplexing can go
- * up to DRIVE_CLOCK_CYCLES.
- */
-logic [DRIVE_CLOCK_BITS - 1:0] switch_counter;
-
-/*
- * Current 'value', between 1 and 8 (included).
- * This is the column to turn on. 0 is a special value meaning 'turn all off'.
+ * Current 'value', between 0 and 7 (included).
+ * This is the column to turn on.
  */
 logic [2:0] disp_value;
 
 /*
- * This muxer is one shot, when it has ended, it should wait for the next sync
- * signal
+ * Mux possible states:
+ * WAIT_FOR_SYNC is a state where the mux should wait for the framebuffer_sync
+ * WAIT_BEFORE_START is a state to wait before displaying the first column
+ * DISP is a state where one column is on
+ * WAIT_BETWEEN_DISP is a state where the columns are off to remove ghosting
  */
-logic wait_for_sync;
-
-always_ff @(posedge clk_33)
+enum logic[1:0] {WAIT_FOR_SYNC, WAIT_BEFORE_START, DISP, WAIT_BETWEEN_DISP} mux_state;
+logic [7:0] mux_state_counter;
+always_ff @(posedge clk_33 or negedge nrst)
    if(~nrst) begin
-      switch_counter <= '0;
+      mux_state <= WAIT_FOR_SYNC;
+      mux_state_counter <= '0;
+      disp_value <= '0;
    end else begin
-      switch_counter <= switch_counter + 1'b1;
-      if(switch_counter == DRIVE_CLOCK_BITS'(DRIVE_CLOCK_CYCLES)) begin
-         switch_counter <= '0;
-      end
+      case(mux_state)
+         WAIT_FOR_SYNC: begin
+            if(framebuffer_sync) begin
+               mux_state <= WAIT_BEFORE_START;
+            end
+         end
+         WAIT_BEFORE_START: begin
+            mux_state_counter <= mux_state_counter + 1'b1;
+            // Remove one clock cycle per transition
+            if(mux_state_counter == SYNC_TO_FIRST_COL_TIME - 1) begin
+               mux_state <= DISP;
+               mux_state_counter <= '0;
+            end
+         end
+         DISP: begin
+            mux_state_counter <= mux_state_counter + 1'b1;
+            // Remove one clock cycle per transition
+            if(mux_state_counter == COLUMN_DISP_TIME - 1) begin
+               mux_state <= WAIT_BETWEEN_DISP;
+               mux_state_counter <= '0;
+               // Change column for next time
+               disp_value <= disp_value + 1'b1;
+               if(disp_value == 7) begin
+                  disp_value <= '0;
+               end
+            end
+         end
+         WAIT_BETWEEN_DISP: begin
+            mux_state_counter <= mux_state_counter + 1'b1;
+            // Remove one clock cycle per transition
+            if(mux_state_counter == ANTIGHOSTING_TIME - 1) begin
+               mux_state <= DISP;
+               mux_state_counter <= '0;
+            end
+         end
    end
 
-always_ff @(posedge clk_33)
+/*
+* Assign the output mux to the right value : disp_value is the column number,
+* mux_out is the 8 columns output.
+*/
+always_comb
    if(~nrst) begin
-      mux_out <= 8'b0;
+      assign mux_out = 8'b0;
    end else begin
-      if(switch_counter == '0) begin
-         case(mux_out)
-            8'b00000000: mux_out <= 8'b00000001;
-            8'b00000001: mux_out <= 8'b00000010;
-            8'b00000010: mux_out <= 8'b00000100;
-            8'b00000100: mux_out <= 8'b00001000;
-            8'b00001000: mux_out <= 8'b00010000;
-            8'b00010000: mux_out <= 8'b00100000;
-            8'b00100000: mux_out <= 8'b01000000;
-            8'b01000000: mux_out <= 8'b10000000;
-            8'b10000000: mux_out <= 8'b00000001;
-            default:mux_out <= 8'b0;
-         endcase
+      if(disp_value == '0) begin
+         assign mux_out = '0;
+      end else if(~enable or mux_state == WAIT_BETWEEN_DISP) begin
+         // Don't turn on if module not enabled, or in anti ghosting mode
+         assign mux_out = 1'b1 << disp_value;
       end
    end
 
