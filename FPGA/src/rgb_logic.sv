@@ -2,7 +2,7 @@ module rgb_logic #(
     parameter RAM_ADDR_WIDTH=32,
     parameter RAM_DATA_WIDTH=16
 )(
-    input rgbClk,
+    input rgb_clk,
     input nrst,
     // We won't use every bits of the rgb because of driver bandwidth issue
     /* verilator lint_off UNUSED */
@@ -12,42 +12,44 @@ module rgb_logic #(
     input vsync,
 
     // TODO Check RAM Address is on 16b
-    output [RAM_ADDR_WIDTH-1:0] ramAddr,
-    output [RAM_DATA_WIDTH-1:0] ramData,
-    output logic writeEnable
+    output [RAM_ADDR_WIDTH-1:0] ram_addr,
+    output [RAM_DATA_WIDTH-1:0] ram_data,
+    output logic write_enable
 );
 
 localparam IMAGE_SIZE = 80*48;
 
-logic isBlanking;
-assign isBlanking = hsync | vsync;
+logic blanking;
+assign blanking = hsync | vsync;
 
-logic isNewFrame;
-assign isNewFrame = hsync & vsync;
+logic new_frame;
+assign new_frame = hsync & vsync;
 
-always_ff @(posedge rgbClk)
-    if(~nrst)
-        ramData <= '0;
-    else
+always_ff @(posedge rgb_clk or negedge nrst)
+    if(~nrst) begin
+        ram_data <= '0;
+    end else begin
         // We don't write anything in blanking area but it is controlled by writeEnable signal
         // We use 5 bits for the red, 6 for the green, and 5 for the blue
-        ramData <= {rgb[23:19], rgb[15:10], rgb[7:3]};
-
-always_ff @(posedge rgbClk or negedge nrst)
-    if(~nrst)
-        ramAddr <= '0;
-    else begin
-        if(isNewFrame)
-            ramAddr <= '0;
-        if(~isBlanking)
-            ramAddr <= ramAddr + 1'b1;
+        ram_data <= {rgb[23:19], rgb[15:10], rgb[7:3]};
     end
 
-always_ff @(posedge rgbClk or negedge nrst)
-    if(~nrst)
-        writeEnable <= '0;
-    else
-        writeEnable <= ~isBlanking;
+always_ff @(posedge rgb_clk or negedge nrst)
+    if(~nrst) begin
+        ram_addr <= '0;
+    end else begin
+        if(new_frame) begin
+            ram_addr <= '0;
+        end
+        ram_addr <= ram_addr + ~32'(blanking);
+    end
+
+always_ff @(posedge rgb_clk or negedge nrst)
+    if(~nrst) begin
+        write_enable <= '0;
+    end else begin
+        write_enable <= ~blanking;
+    end
 
 endmodule
 
