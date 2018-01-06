@@ -4,6 +4,7 @@ module column_mux #(parameter DRIVE_TIME = 'd10)
 (
    input clk_33,
    input nrst,
+   input framebuffer_sync,
 
    output reg [7:0] mux_out
 );
@@ -17,6 +18,18 @@ localparam DRIVE_CLOCK_BITS = $clog2(DRIVE_CLOCK_CYCLES);
  * up to DRIVE_CLOCK_CYCLES.
  */
 logic [DRIVE_CLOCK_BITS - 1:0] switch_counter;
+
+/*
+ * Current 'value', between 1 and 8 (included).
+ * This is the column to turn on. 0 is a special value meaning 'turn all off'.
+ */
+logic [2:0] disp_value;
+
+/*
+ * This muxer is one shot, when it has ended, it should wait for the next sync
+ * signal
+ */
+logic wait_for_sync;
 
 always_ff @(posedge clk_33)
    if(~nrst) begin
