@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                       06:22 PM Thursday, January 04, 2018
- Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+                       02:59 PM Saturday, January 06, 2018
+               Job Name: H:\SPIROSE\PCB\ROTATIVE_BASE\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -85,8 +85,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 198 Symbols:
-             198  ***********************************************
+     Clustering 196 Symbols:
+             196  *********************************************
              150  **************************************************
              100  **************************************************
               50  **************************************************
@@ -96,8 +96,8 @@ Version:  01.01.00
 
 
 
-     199 nets were found containing 869 pins
-     193 components were found
+     197 nets were found containing 867 pins
+     191 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -111,8 +111,8 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       06:22 PM Thursday, January 04, 2018
- Job Name: C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+                       02:59 PM Saturday, January 06, 2018
+               Job Name: H:\SPIROSE\PCB\ROTATIVE_BASE\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -124,9 +124,11 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-	WARNING:  "PT34" is being removed from the Layout since it is no longer in the schematic.
+	WARNING:  "PT40" is being removed from the Layout since it is no longer in the schematic.
 
-     Netload completed successfully with 1 warning(s).
+	WARNING:  "PT41" is being removed from the Layout since it is no longer in the schematic.
+
+     Netload completed successfully with 2 warning(s).
      
      Back Annotating...
 
@@ -159,10 +161,11 @@ Version:  02.11.12
            ---------------------------------------------------
 
 Some nets were completely deleted from the Layout Design....
-	Deleted net XSIG020418, which has no pins, from the Layout Design.
+	Deleted net XSIG030164, which has no pins, from the Layout Design.
+	Deleted net XSIG030172, which has no pins, from the Layout Design.
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
 There were 0 reassignments of nets.
 There were 0 traces broken back.
-There were 1 nets removed from the Layout Design.
+There were 2 nets removed from the Layout Design.

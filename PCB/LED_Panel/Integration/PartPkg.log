@@ -2,21 +2,21 @@
                                     Packager
                                     --------
 
-                       05:58 PM Thursday, January 04, 2018
-            Job Name: D:\Documents\SpiROSE\PCB\Test_LED\Test_LED.prj
+                       02:34 PM Saturday, January 06, 2018
+                Job Name: H:\SpiROSE\PCB\LED_Panel\LED_Panel.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: ""D:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  -jD:\Documents\SpiROSE\PCB\Test_LED\Test_LED.prj -CleanBuild -NoFill"
+        Commandline is: "C:\mentorgraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uH:\SpiROSE\PCB\LED_Panel\Default\default.icdb" -k -CleanBuild -W1PinNets "-jH:\SpiROSE\PCB\LED_Panel\LED_Panel.prj" "
 
-     The Common Database is at "D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb".
+     The Common Database is at "H:\SpiROSE\PCB\LED_Panel\Default\default.icdb".
 
      The Root of this design is "Schematic1".
 
      The Front End Snapshot of this design is "DCDV".
 
-     The PCB Design Path of this design is at "D:\Documents\SpiROSE\PCB\Test_LED\PCB\PCB.pcb".
+     The PCB Design Path of this design is at "H:\SpiROSE\PCB\LED_Panel\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
 
@@ -37,8 +37,10 @@
      Properties that have been checked off in the Property Definition Editor
       found at Library Manager/Common Properties will be checked for value
       differences between the PartsDB and the non-null properties on symbols.
-     Those properties checked off (other than Part Number)
-      will not be transferred from the PartsDB to symbols.
+     Those properties checked off will be transferred from the PartsDB to all
+      symbols, both packaged and unpackaged.  However, the property values
+      transferred will be limited to the precision specified in the Notation
+      Settings dialog.
      The following properties were checked off in the Property Definition Editor:
        "Parametric"
        "Value2"
@@ -179,6 +181,9 @@
      Augmented - Adding phantom pins....
 
      Numbering Nets....
+
+    After augmentation of supply pins, there are 941 nets where 0 nets have only one pin.
+
 
      Checking Pins....
 

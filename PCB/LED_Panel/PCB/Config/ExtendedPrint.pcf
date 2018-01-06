@@ -1,16 +1,16 @@
 .FILETYPE ExtendedPrint SetupFile
 .VERSION "VB99.0"
-.CREATOR "Expedition PCB PDF Output"
-.DATE "Tuesday, September 06, 2016 02:55 AM"
+.CREATOR "Xpedition Layout PDF Output"
+.DATE "Friday, January 05, 2018 01:20 AM"
 
 .BaseUnits "1NM"
 
-.FillText Yes
+.FillText No
 .FitDrawing No
-.PDFFileName "Output\\PDF\\PCB"
+.PDFFileName "H:\\AMPEROSE\\PCB\\AMPEROSE_PCB\\PCB\\Output\\PDF\\PCB"
 
 
-.SheetName "Top"
+.SheetName "Sheet1"
  ..ProcessSheet Yes
  ..UseLayering No
  ..PageSize None
@@ -18,7 +18,7 @@
  ..ScaleFactor 1.000000
  ..CurrentView No
  ..HeaderText
-   ...CommentLine "Top layer"
+   ...CommentLine ""
  ..TrailerText
    ...CommentLine ""
  ..LayerOrder
@@ -31,7 +31,7 @@
    ...LayerName "Die Pins - Bottom"
    ...LayerName "Bond Wires - Top"
    ...LayerName "Bond Wires - Bottom"
-   ...LayerName "Board Origin"
+   ...LayerName "Design Origin"
    ...LayerName "NCDrill Origin"
    ...LayerName "Drill Drawing - Through"
    ...LayerName "Holes"
@@ -44,69 +44,51 @@
    ...LayerName "Cavity"
    ...LayerName "Contour"
    ...LayerName "DRC Window"
-   ...LayerName "Board Outline"
+   ...LayerName "Design Outline"
    ...LayerName "Route Border"
    ...LayerName "Manufacturing Outline"
    ...LayerName "Test Fixture Outline"
    ...LayerName "Redline Layer"
    ...LayerName "Lyr 1"
    ...LayerName "Lyr 2"
-   ...LayerName "Default User Layer"
-   ...LayerName "DRAWTRACE_CLEARANCEGEOM"
-   ...LayerName "SVG Import"
-   ...LayerName "Dimensions"
-   ...LayerName "SVG Import battery"
-   ...LayerName "DRC Assertion Assistant Layer"
-   ...LayerName "DRC Assertion Assistant Layer:1"
-   ...LayerName "DRC Assertion Assistant Layer:2"
-   ...LayerName "QEDraw"
-   ...LayerName "QEDraw2"
-   ...LayerName "QEDraw3"
-   ...LayerName "QEDrawText"
+   ...LayerName "Lyr 3"
+   ...LayerName "Lyr 4"
 
  ..ConductiveLayer 1
    ...ProcessLayer Yes
-   ...ConductiveItem Thieving
+   ...ConductiveItem Bondpads
    ...ConductiveItem EmbeddedCapPads
    ...ConductiveItem EmbeddedResPads
    ...ConductiveItem EtchedText
    ...ConductiveItem Fiducials
+   ...ConductiveItem Thieving
+   ...ConductiveItem MountingHolesByLayer
+   ...ConductiveItem PartHolesByLayer
    ...ConductiveItem PartPadsSMD
    ...ConductiveItem PartPadsTest
    ...ConductiveItem PartPadsThru
    ...ConductiveItem PlaneData
+   ...ConductiveItem PlaneNoConnect
+   ...ConductiveItem PlaneObstruct
+   ...ConductiveItem PlaneShape
    ...ConductiveItem ResistorAreas
+   ...ConductiveItem RouteObstruct
+   ...ConductiveItem RuleArea
    ...ConductiveItem Traces
+   ...ConductiveItem ViaHoles
    ...ConductiveItem ViaPads
 
  ..ConductiveLayer 2
    ...ProcessLayer No
- ..BoardItem BoardOutline
- ..BoardCellType Buried
- ..BoardCellType Connector
- ..BoardCellType DiscreteAxial
- ..BoardCellType DiscreteChip
- ..BoardCellType DiscreteOther
- ..BoardCellType DiscreteRadial
- ..BoardCellType EdgeConnector
- ..BoardCellType EmbeddedPassive
- ..BoardCellType General
- ..BoardCellType Graphic
- ..BoardCellType ICBareDie
- ..BoardCellType ICBGA
- ..BoardCellType ICDIP
- ..BoardCellType ICFlipChip
- ..BoardCellType ICLCC
- ..BoardCellType ICOther
- ..BoardCellType ICPGA
- ..BoardCellType ICPLCC
- ..BoardCellType ICSIP
- ..BoardCellType ICSOIC
- ..BoardCellType Jumper
- ..BoardCellType Mechanical
- ..BoardCellType TestPoint
 
-.SheetName "Bottom"
+ ..ConductiveLayer 3
+   ...ProcessLayer No
+
+ ..ConductiveLayer 4
+   ...ProcessLayer No
+ ..BoardItem BoardOutline
+
+.SheetName "Sheet4"
  ..ProcessSheet Yes
  ..UseLayering No
  ..PageSize None
@@ -114,7 +96,7 @@
  ..ScaleFactor 1.000000
  ..CurrentView No
  ..HeaderText
-   ...CommentLine "Bottom Layer"
+   ...CommentLine ""
  ..TrailerText
    ...CommentLine ""
  ..LayerOrder
@@ -127,7 +109,7 @@
    ...LayerName "Die Pins - Bottom"
    ...LayerName "Bond Wires - Top"
    ...LayerName "Bond Wires - Bottom"
-   ...LayerName "Board Origin"
+   ...LayerName "Design Origin"
    ...LayerName "NCDrill Origin"
    ...LayerName "Drill Drawing - Through"
    ...LayerName "Holes"
@@ -140,69 +122,42 @@
    ...LayerName "Cavity"
    ...LayerName "Contour"
    ...LayerName "DRC Window"
-   ...LayerName "Board Outline"
+   ...LayerName "Design Outline"
    ...LayerName "Route Border"
    ...LayerName "Manufacturing Outline"
    ...LayerName "Test Fixture Outline"
    ...LayerName "Redline Layer"
    ...LayerName "Lyr 1"
    ...LayerName "Lyr 2"
-   ...LayerName "Default User Layer"
-   ...LayerName "DRAWTRACE_CLEARANCEGEOM"
-   ...LayerName "SVG Import"
-   ...LayerName "Dimensions"
-   ...LayerName "SVG Import battery"
-   ...LayerName "DRC Assertion Assistant Layer"
-   ...LayerName "DRC Assertion Assistant Layer:1"
-   ...LayerName "DRC Assertion Assistant Layer:2"
-   ...LayerName "QEDraw"
-   ...LayerName "QEDraw2"
-   ...LayerName "QEDraw3"
-   ...LayerName "QEDrawText"
+   ...LayerName "Lyr 3"
+   ...LayerName "Lyr 4"
 
- ..ConductiveLayer 2
+ ..ConductiveLayer 4
    ...ProcessLayer Yes
-   ...ConductiveItem Thieving
+   ...ConductiveItem Bondpads
    ...ConductiveItem EmbeddedCapPads
    ...ConductiveItem EmbeddedResPads
    ...ConductiveItem EtchedText
    ...ConductiveItem Fiducials
+   ...ConductiveItem Thieving
+   ...ConductiveItem MountingHolesByLayer
+   ...ConductiveItem PartHolesByLayer
    ...ConductiveItem PartPadsSMD
    ...ConductiveItem PartPadsTest
    ...ConductiveItem PartPadsThru
    ...ConductiveItem PlaneData
+   ...ConductiveItem PlaneNoConnect
+   ...ConductiveItem PlaneObstruct
+   ...ConductiveItem PlaneShape
    ...ConductiveItem ResistorAreas
+   ...ConductiveItem RouteObstruct
+   ...ConductiveItem RuleArea
    ...ConductiveItem Traces
+   ...ConductiveItem ViaHoles
    ...ConductiveItem ViaPads
-
- ..ConductiveLayer 1
-   ...ProcessLayer No
  ..BoardItem BoardOutline
- ..BoardCellType Buried
- ..BoardCellType Connector
- ..BoardCellType DiscreteAxial
- ..BoardCellType DiscreteChip
- ..BoardCellType DiscreteOther
- ..BoardCellType DiscreteRadial
- ..BoardCellType EdgeConnector
- ..BoardCellType EmbeddedPassive
- ..BoardCellType General
- ..BoardCellType Graphic
- ..BoardCellType ICBareDie
- ..BoardCellType ICBGA
- ..BoardCellType ICDIP
- ..BoardCellType ICFlipChip
- ..BoardCellType ICLCC
- ..BoardCellType ICOther
- ..BoardCellType ICPGA
- ..BoardCellType ICPLCC
- ..BoardCellType ICSIP
- ..BoardCellType ICSOIC
- ..BoardCellType Jumper
- ..BoardCellType Mechanical
- ..BoardCellType TestPoint
 
-.SheetName "Assembly Top"
+.SheetName "Sheet2"
  ..ProcessSheet Yes
  ..UseLayering No
  ..PageSize None
@@ -210,7 +165,7 @@
  ..ScaleFactor 1.000000
  ..CurrentView No
  ..HeaderText
-   ...CommentLine "Assembly Top"
+   ...CommentLine ""
  ..TrailerText
    ...CommentLine ""
  ..LayerOrder
@@ -223,7 +178,7 @@
    ...LayerName "Die Pins - Bottom"
    ...LayerName "Bond Wires - Top"
    ...LayerName "Bond Wires - Bottom"
-   ...LayerName "Board Origin"
+   ...LayerName "Design Origin"
    ...LayerName "NCDrill Origin"
    ...LayerName "Drill Drawing - Through"
    ...LayerName "Holes"
@@ -236,63 +191,42 @@
    ...LayerName "Cavity"
    ...LayerName "Contour"
    ...LayerName "DRC Window"
-   ...LayerName "Board Outline"
+   ...LayerName "Design Outline"
    ...LayerName "Route Border"
    ...LayerName "Manufacturing Outline"
    ...LayerName "Test Fixture Outline"
    ...LayerName "Redline Layer"
    ...LayerName "Lyr 1"
    ...LayerName "Lyr 2"
-   ...LayerName "Default User Layer"
-   ...LayerName "DRAWTRACE_CLEARANCEGEOM"
-   ...LayerName "SVG Import"
-   ...LayerName "Dimensions"
-   ...LayerName "SVG Import battery"
-   ...LayerName "DRC Assertion Assistant Layer"
-   ...LayerName "DRC Assertion Assistant Layer:1"
-   ...LayerName "DRC Assertion Assistant Layer:2"
-   ...LayerName "QEDraw"
-   ...LayerName "QEDraw2"
-   ...LayerName "QEDraw3"
-   ...LayerName "QEDrawText"
-
- ..ConductiveLayer 1
-   ...ProcessLayer No
+   ...LayerName "Lyr 3"
+   ...LayerName "Lyr 4"
 
  ..ConductiveLayer 2
-   ...ProcessLayer No
+   ...ProcessLayer Yes
+   ...ConductiveItem Bondpads
+   ...ConductiveItem EmbeddedCapPads
+   ...ConductiveItem EmbeddedResPads
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem Thieving
+   ...ConductiveItem MountingHolesByLayer
+   ...ConductiveItem PartHolesByLayer
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsTest
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem PlaneNoConnect
+   ...ConductiveItem PlaneObstruct
+   ...ConductiveItem PlaneShape
+   ...ConductiveItem ResistorAreas
+   ...ConductiveItem RouteObstruct
+   ...ConductiveItem RuleArea
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaHoles
+   ...ConductiveItem ViaPads
  ..BoardItem BoardOutline
- ..BoardItem MountingHoles
- ..BoardItem PartHoles
- ..BoardCellType Buried
- ..BoardCellType Connector
- ..BoardCellType DiscreteAxial
- ..BoardCellType DiscreteChip
- ..BoardCellType DiscreteOther
- ..BoardCellType DiscreteRadial
- ..BoardCellType EdgeConnector
- ..BoardCellType EmbeddedPassive
- ..BoardCellType General
- ..BoardCellType Graphic
- ..BoardCellType ICBareDie
- ..BoardCellType ICBGA
- ..BoardCellType ICDIP
- ..BoardCellType ICFlipChip
- ..BoardCellType ICLCC
- ..BoardCellType ICOther
- ..BoardCellType ICPGA
- ..BoardCellType ICPLCC
- ..BoardCellType ICSIP
- ..BoardCellType ICSOIC
- ..BoardCellType Jumper
- ..BoardCellType Mechanical
- ..BoardCellType TestPoint
- ..CellItemsSide Both
-   ...CellItemsLayer 1
-   ...CellItem AssemblyOutline
-   ...CellItem AssemblyReferenceDesignator
 
-.SheetName "Assembly Bottom"
+.SheetName "Sheet3"
  ..ProcessSheet Yes
  ..UseLayering No
  ..PageSize None
@@ -300,7 +234,7 @@
  ..ScaleFactor 1.000000
  ..CurrentView No
  ..HeaderText
-   ...CommentLine "Assembly Bottom"
+   ...CommentLine ""
  ..TrailerText
    ...CommentLine ""
  ..LayerOrder
@@ -313,7 +247,7 @@
    ...LayerName "Die Pins - Bottom"
    ...LayerName "Bond Wires - Top"
    ...LayerName "Bond Wires - Bottom"
-   ...LayerName "Board Origin"
+   ...LayerName "Design Origin"
    ...LayerName "NCDrill Origin"
    ...LayerName "Drill Drawing - Through"
    ...LayerName "Holes"
@@ -326,235 +260,42 @@
    ...LayerName "Cavity"
    ...LayerName "Contour"
    ...LayerName "DRC Window"
-   ...LayerName "Board Outline"
+   ...LayerName "Design Outline"
    ...LayerName "Route Border"
    ...LayerName "Manufacturing Outline"
    ...LayerName "Test Fixture Outline"
    ...LayerName "Redline Layer"
    ...LayerName "Lyr 1"
    ...LayerName "Lyr 2"
-   ...LayerName "Default User Layer"
-   ...LayerName "DRAWTRACE_CLEARANCEGEOM"
-   ...LayerName "SVG Import"
-   ...LayerName "Dimensions"
-   ...LayerName "SVG Import battery"
-   ...LayerName "DRC Assertion Assistant Layer"
-   ...LayerName "DRC Assertion Assistant Layer:1"
-   ...LayerName "DRC Assertion Assistant Layer:2"
-   ...LayerName "QEDraw"
-   ...LayerName "QEDraw2"
-   ...LayerName "QEDraw3"
-   ...LayerName "QEDrawText"
+   ...LayerName "Lyr 3"
+   ...LayerName "Lyr 4"
 
- ..ConductiveLayer 1
-   ...ProcessLayer No
-
- ..ConductiveLayer 2
-   ...ProcessLayer No
+ ..ConductiveLayer 3
+   ...ProcessLayer Yes
+   ...ConductiveItem Bondpads
+   ...ConductiveItem EmbeddedCapPads
+   ...ConductiveItem EmbeddedResPads
+   ...ConductiveItem EtchedText
+   ...ConductiveItem Fiducials
+   ...ConductiveItem Thieving
+   ...ConductiveItem MountingHolesByLayer
+   ...ConductiveItem PartHolesByLayer
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsTest
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem PlaneNoConnect
+   ...ConductiveItem PlaneObstruct
+   ...ConductiveItem PlaneShape
+   ...ConductiveItem ResistorAreas
+   ...ConductiveItem RouteObstruct
+   ...ConductiveItem RuleArea
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaHoles
+   ...ConductiveItem ViaPads
  ..BoardItem BoardOutline
- ..BoardItem MountingHoles
- ..BoardItem PartHoles
- ..BoardCellType Buried
- ..BoardCellType Connector
- ..BoardCellType DiscreteAxial
- ..BoardCellType DiscreteChip
- ..BoardCellType DiscreteOther
- ..BoardCellType DiscreteRadial
- ..BoardCellType EdgeConnector
- ..BoardCellType EmbeddedPassive
- ..BoardCellType General
- ..BoardCellType Graphic
- ..BoardCellType ICBareDie
- ..BoardCellType ICBGA
- ..BoardCellType ICDIP
- ..BoardCellType ICFlipChip
- ..BoardCellType ICLCC
- ..BoardCellType ICOther
- ..BoardCellType ICPGA
- ..BoardCellType ICPLCC
- ..BoardCellType ICSIP
- ..BoardCellType ICSOIC
- ..BoardCellType Jumper
- ..BoardCellType Mechanical
- ..BoardCellType TestPoint
- ..CellItemsSide Both
-   ...CellItemsLayer 2
-   ...CellItem AssemblyOutline
-   ...CellItem AssemblyReferenceDesignator
-
-.SheetName "SilkScreenTop"
- ..ProcessSheet Yes
- ..UseLayering No
- ..PageSize None
- ..Orientation BestFit
- ..ScaleFactor 1.000000
- ..CurrentView No
- ..HeaderText
-   ...CommentLine "Silk Screen Top"
- ..TrailerText
-   ...CommentLine ""
- ..LayerOrder
-   ...LayerName "Detailed Views"
-   ...LayerName "Assembly - Top"
-   ...LayerName "Assembly - Bottom"
-   ...LayerName "Silkscreen - Top"
-   ...LayerName "Silkscreen - Bottom"
-   ...LayerName "Die Pins - Top"
-   ...LayerName "Die Pins - Bottom"
-   ...LayerName "Bond Wires - Top"
-   ...LayerName "Bond Wires - Bottom"
-   ...LayerName "Board Origin"
-   ...LayerName "NCDrill Origin"
-   ...LayerName "Drill Drawing - Through"
-   ...LayerName "Holes"
-   ...LayerName "Top"
-   ...LayerName "Bottom"
-   ...LayerName "Solderpaste - Top"
-   ...LayerName "Solderpaste - Bottom"
-   ...LayerName "Soldermask - Top"
-   ...LayerName "Soldermask - Bottom"
-   ...LayerName "Cavity"
-   ...LayerName "Contour"
-   ...LayerName "DRC Window"
-   ...LayerName "Board Outline"
-   ...LayerName "Route Border"
-   ...LayerName "Manufacturing Outline"
-   ...LayerName "Test Fixture Outline"
-   ...LayerName "Redline Layer"
-   ...LayerName "Lyr 1"
-   ...LayerName "Lyr 2"
-   ...LayerName "Default User Layer"
-   ...LayerName "DRAWTRACE_CLEARANCEGEOM"
-   ...LayerName "SVG Import"
-   ...LayerName "Dimensions"
-   ...LayerName "SVG Import battery"
-   ...LayerName "DRC Assertion Assistant Layer"
-   ...LayerName "DRC Assertion Assistant Layer:1"
-   ...LayerName "DRC Assertion Assistant Layer:2"
-   ...LayerName "QEDraw"
-   ...LayerName "QEDraw2"
-   ...LayerName "QEDraw3"
-   ...LayerName "QEDrawText"
-
- ..ConductiveLayer 1
-   ...ProcessLayer No
-
- ..ConductiveLayer 2
-   ...ProcessLayer No
- ..BoardItem GeneratedSilkscreenTop
- ..BoardItem MountingHoles
- ..BoardItem PartHoles
- ..BoardCellType Buried
- ..BoardCellType Connector
- ..BoardCellType DiscreteAxial
- ..BoardCellType DiscreteChip
- ..BoardCellType DiscreteOther
- ..BoardCellType DiscreteRadial
- ..BoardCellType EdgeConnector
- ..BoardCellType EmbeddedPassive
- ..BoardCellType General
- ..BoardCellType Graphic
- ..BoardCellType ICBareDie
- ..BoardCellType ICBGA
- ..BoardCellType ICDIP
- ..BoardCellType ICFlipChip
- ..BoardCellType ICLCC
- ..BoardCellType ICOther
- ..BoardCellType ICPGA
- ..BoardCellType ICPLCC
- ..BoardCellType ICSIP
- ..BoardCellType ICSOIC
- ..BoardCellType Jumper
- ..BoardCellType Mechanical
- ..BoardCellType TestPoint
-
-.SheetName "SilkScreenBottom"
- ..ProcessSheet Yes
- ..UseLayering No
- ..PageSize None
- ..Orientation BestFit
- ..ScaleFactor 1.000000
- ..CurrentView No
- ..HeaderText
-   ...CommentLine "Silk Screen Bottom"
- ..TrailerText
-   ...CommentLine ""
- ..LayerOrder
-   ...LayerName "Detailed Views"
-   ...LayerName "Assembly - Top"
-   ...LayerName "Assembly - Bottom"
-   ...LayerName "Silkscreen - Top"
-   ...LayerName "Silkscreen - Bottom"
-   ...LayerName "Die Pins - Top"
-   ...LayerName "Die Pins - Bottom"
-   ...LayerName "Bond Wires - Top"
-   ...LayerName "Bond Wires - Bottom"
-   ...LayerName "Board Origin"
-   ...LayerName "NCDrill Origin"
-   ...LayerName "Drill Drawing - Through"
-   ...LayerName "Holes"
-   ...LayerName "Top"
-   ...LayerName "Bottom"
-   ...LayerName "Solderpaste - Top"
-   ...LayerName "Solderpaste - Bottom"
-   ...LayerName "Soldermask - Top"
-   ...LayerName "Soldermask - Bottom"
-   ...LayerName "Cavity"
-   ...LayerName "Contour"
-   ...LayerName "DRC Window"
-   ...LayerName "Board Outline"
-   ...LayerName "Route Border"
-   ...LayerName "Manufacturing Outline"
-   ...LayerName "Test Fixture Outline"
-   ...LayerName "Redline Layer"
-   ...LayerName "Lyr 1"
-   ...LayerName "Lyr 2"
-   ...LayerName "Default User Layer"
-   ...LayerName "DRAWTRACE_CLEARANCEGEOM"
-   ...LayerName "SVG Import"
-   ...LayerName "Dimensions"
-   ...LayerName "SVG Import battery"
-   ...LayerName "DRC Assertion Assistant Layer"
-   ...LayerName "DRC Assertion Assistant Layer:1"
-   ...LayerName "DRC Assertion Assistant Layer:2"
-   ...LayerName "QEDraw"
-   ...LayerName "QEDraw2"
-   ...LayerName "QEDraw3"
-   ...LayerName "QEDrawText"
-
- ..ConductiveLayer 1
-   ...ProcessLayer No
-
- ..ConductiveLayer 2
-   ...ProcessLayer No
- ..BoardItem GeneratedSilkscreenBottom
- ..BoardItem MountingHoles
- ..BoardItem PartHoles
- ..BoardCellType Buried
- ..BoardCellType Connector
- ..BoardCellType DiscreteAxial
- ..BoardCellType DiscreteChip
- ..BoardCellType DiscreteOther
- ..BoardCellType DiscreteRadial
- ..BoardCellType EdgeConnector
- ..BoardCellType EmbeddedPassive
- ..BoardCellType General
- ..BoardCellType Graphic
- ..BoardCellType ICBareDie
- ..BoardCellType ICBGA
- ..BoardCellType ICDIP
- ..BoardCellType ICFlipChip
- ..BoardCellType ICLCC
- ..BoardCellType ICOther
- ..BoardCellType ICPGA
- ..BoardCellType ICPLCC
- ..BoardCellType ICSIP
- ..BoardCellType ICSOIC
- ..BoardCellType Jumper
- ..BoardCellType Mechanical
- ..BoardCellType TestPoint
 
 .OutputVariants NO
 .VariantList "Master"
 
-.EzPrintConfigFilePath "CONFIG\\ExtendedPrint.xml"
+.EzPrintConfigFilePath "C:\\Users\\alexi\\Application Data\\mgc\\ezprint\\defaultEzPrintConfig.xml"
