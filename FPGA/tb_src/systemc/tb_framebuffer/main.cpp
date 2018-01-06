@@ -7,8 +7,24 @@
 
 #include "Vframebuffer.h"
 #include "monitor.hpp"
+#include "report_handler.hpp"
+
+void tb_report_handler(const sc_report& report, const sc_actions& actions) {
+    if (report.get_process_name()) {
+        auto name = std::string(report.get_process_name());
+        auto it = name.find("monitor.framebuffer");
+        std::string allowedName = "monitor.framebuffer_1.";
+        if (it != std::string::npos && 
+            name.substr(0, allowedName.size()) != allowedName)
+            return;
+    }
+    report_handler(report, actions);
+}
 
 int sc_main(int argc, char** argv) {
+    sc_core::sc_report_handler::set_actions( "/IEEE_Std_1666/deprecated",
+            sc_core::SC_DO_NOTHING );
+    sc_report_handler::set_handler(tb_report_handler);
     Verilated::commandArgs(argc, argv);
 
     const sc_time T(30, SC_NS);
@@ -17,7 +33,7 @@ int sc_main(int argc, char** argv) {
     const unsigned int MAIN_DIV = 4;
     const unsigned int DIV_RATIO = 1;
 
-    sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 1024 * 2;
+    sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 64 * 2;
 
     sc_clock clk33("clk33", T);
     sc_signal<bool> nrst("nrst");
@@ -68,5 +84,7 @@ int sc_main(int argc, char** argv) {
 
     sc_close_vcd_trace_file(traceFile);
 
-    return EXIT_SUCCESS;
+    printReport();
+
+    return errorCount();;
 }

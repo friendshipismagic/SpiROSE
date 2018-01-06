@@ -8,7 +8,8 @@ SC_MODULE(Monitor) {
         sensitive << ram_addr;
         SC_CTHREAD(continuousCycleCount, clk33.pos());
         SC_CTHREAD(storeOutputData, clk33.pos());
-        SC_CTHREAD(checkWRTGSBlanking, clk33.pos());
+        SC_CTHREAD(runTests, clk33.pos());
+        SC_CTHREAD(checkDataIntegrity, clk33.pos());
     }
 
     sc_in<bool> clk33;
@@ -40,14 +41,11 @@ SC_MODULE(Monitor) {
 
 
     /* 
-     * cycleCounter is a variable that monitors the location inside
-     * each 512-bit wide process.
      * continuousCycleCount is a CTHREAD that keeps incrementing cycleCount
-     * until it reaches 512. This counter isthe base of synchronisation for
+     * until it reaches 512. This counter is the base of synchronisation for
      * all other implemented threads/methods, since the framebuffer is 
      * supposed to be synchronised on 512 cycles.
      */
-    int cycleCounter;
     void continuousCycleCount();
 
     /* 
@@ -57,6 +55,7 @@ SC_MODULE(Monitor) {
     void storeOutputData();
 
     void checkDataIntegrity();
+    
     void ramEmulator();
 
     /* 
@@ -67,7 +66,32 @@ SC_MODULE(Monitor) {
      */
     void checkWRTGSBlanking();
 
+    void runTests();
+
     private:
 
+    /* 
+     * numberOfolumnsRead keeps track of the the number of 512-bit wide
+     * cycles passed. Its value is 0 only during the first cycle of this 
+     * kind, which indicates that the first buffer is being written and that
+     * no relevant data is output from the framebuffer.
+     */
+    int numberOfColumnsRead;
+    
+    /* 
+     * cycleCounter is a variable that monitors the location inside
+     * each 512-bit wide process.
+     */
+    int cycleCounter;
+
+    // Indicates the current multiplexing number (from 0 to 7)
+    int currentMultiplexing;
+    
     void reset();
+
+    /*
+     * Returns 1 if the cycle number corresponds to a blanking cycle needed
+     * for a WRTGS command, else 0
+     */
+    int isWRTGSBlankingCycle(int cycle);
 };
