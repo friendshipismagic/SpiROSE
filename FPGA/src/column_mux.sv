@@ -1,9 +1,10 @@
 // DRIVE_TIME is in µs
 // CAUTION: the LEDs overdrive cannot exceed 10µs at full value
+// Parameters to change
 module column_mux #(
-   parameter SYNC_TO_FIRST_COL_TIME=,
-   parameter COLUMN_DISP_TIME=,
-   parameter ANTIGHOSTING_TIME=
+   parameter SYNC_TO_FIRST_COL_TIME=10,
+   parameter COLUMN_DISP_TIME=10,
+   parameter ANTIGHOSTING_TIME=10
 ) (
    input clk_33,
    input nrst,
@@ -73,6 +74,7 @@ always_ff @(posedge clk_33 or negedge nrst)
                mux_state_counter <= '0;
             end
          end
+	 endcase
    end
 
 /*
@@ -85,7 +87,7 @@ always_comb
    end else begin
       if(disp_value == '0) begin
          assign mux_out = '0;
-      end else if(~enable or mux_state == WAIT_BETWEEN_DISP) begin
+      end else if(enable || (mux_state == DISP)) begin
          // Don't turn on if module not enabled, or in anti ghosting mode
          assign mux_out = 1'b1 << disp_value;
       end

@@ -14,7 +14,8 @@ INCDIR = ${TOP_DIR}/src
 SRCS = driver_controller.sv \
 	   framebuffer_emulator.sv \
 	   clock_lse_inverse.sv \
-		clock_lse.sv \
+	   clock_lse.sv \
+	   column_mux.sv \
 	   driver_testbench.sv
 #$(wildcard ${TOP_DIR}/src/*.sv ${TOP_DIR}/tb_src/*.sv ${TOP_DIR}/src/*.v ${TOP_DIR}/tb_src/*.v)
 
