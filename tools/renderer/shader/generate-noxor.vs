@@ -32,9 +32,8 @@ void main() {
     gl_Position = matModel * vec4(in_Pos, 1.0);
 
     // Map back to [0, 1]
-    vec3 p =
-        (gl_Position.xyz * vec3(1.0, 1.0, float(RES_W) / float(RES_H))) / 2.0 +
-        0.5;
+    float resRatio = float(RES_H) / float(RES_W);
+    vec3 p = (gl_Position.xyz * vec3(resRatio, resRatio, 1.0)) / 2.0 + 0.5;
 
     vec4 c;
     // Fetch the texel that concerns us.

@@ -23,14 +23,14 @@ void emit(in vec3 v) {
     EmitVertex();
 }
 
-vec3 v[8] = vec3[](vec3(1.0, 1.0, 0.0) / float(RES_W) * 2.0,
-                   vec3(0.0, 1.0, 0.0) / float(RES_W) * 2.0,
-                   vec3(1.0, 0.0, 0.0) / float(RES_W) * 2.0,
-                   vec3(0.0, 0.0, 0.0) / float(RES_W) * 2.0,
-                   vec3(1.0, 1.0, 1.0) / float(RES_W) * 2.0,
-                   vec3(0.0, 1.0, 1.0) / float(RES_W) * 2.0,
-                   vec3(0.0, 0.0, 1.0) / float(RES_W) * 2.0,
-                   vec3(1.0, 0.0, 1.0) / float(RES_W) * 2.0);
+vec3 v[8] = vec3[](vec3(1.0, 1.0, 0.0) / float(RES_H) * 2.0,
+                   vec3(0.0, 1.0, 0.0) / float(RES_H) * 2.0,
+                   vec3(1.0, 0.0, 0.0) / float(RES_H) * 2.0,
+                   vec3(0.0, 0.0, 0.0) / float(RES_H) * 2.0,
+                   vec3(1.0, 1.0, 1.0) / float(RES_H) * 2.0,
+                   vec3(0.0, 1.0, 1.0) / float(RES_H) * 2.0,
+                   vec3(0.0, 0.0, 1.0) / float(RES_H) * 2.0,
+                   vec3(1.0, 0.0, 1.0) / float(RES_H) * 2.0);
 
 // Thanks to the following paper on how to make a cube with a single triangle
 // strip http://www.cs.umd.edu/gvil/papers/av_ts.pdf
@@ -59,7 +59,7 @@ void main() {
     // Convert the input float to an int that we can work with
     ivec4 c = ivec4(vColor[0] * 255.0);
     // Map back to [0, 1]
-    float z = vert.z * float(RES_W) / float(RES_H) / 2.0 + 0.5;
+    float z = vert.z / 2.0 + 0.5;
 
     // Get our bitwise position
     int p = 1 << int(mod(z * 32.0, 8.0));

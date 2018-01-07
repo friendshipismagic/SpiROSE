@@ -276,12 +276,12 @@ int main(int argc, char *argv[]) {
     }
 
     // Matricies
+    float resRatio = float(RES_W) / float(RES_H);
     glm::mat4 matModel = glm::mat4(1.f), matView = glm::mat4(1.f),
               matProjection =
                   glm::perspective(glm::radians(90.f), 16.f / 9.f, .1f, 100.f),
-              matOrtho =
-                  glm::ortho(-1.f, 1.f, -1.f, 1.f, -float(RES_H) / float(RES_W),
-                             float(RES_H) / float(RES_W));
+              matOrtho = glm::ortho(-resRatio, resRatio, -resRatio, resRatio,
+                                    -1.f, 1.f);
 
     glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matV, 1, GL_FALSE,
                        &matView[0][0]);
@@ -340,11 +340,11 @@ int main(int argc, char *argv[]) {
         for (int j = 0; j < RES_W; j++)
             for (int k = 0; k < RES_H; k++) {
                 voxPoints[3 * (RES_H * (i * RES_W + j) + k) + 0] =
-                    (float(i) - float(RES_W / 2)) / float(RES_W / 2);
+                    (float(i) - float(RES_W / 2)) / float(RES_H / 2);
                 voxPoints[3 * (RES_H * (i * RES_W + j) + k) + 1] =
-                    (float(j) - float(RES_W / 2)) / float(RES_W / 2);
+                    (float(j) - float(RES_W / 2)) / float(RES_H / 2);
                 voxPoints[3 * (RES_H * (i * RES_W + j) + k) + 2] =
-                    (float(k) - float(RES_H / 2)) / float(RES_W / 2);
+                    (float(k) - float(RES_H / 2)) / float(RES_H / 2);
             }
     GLuint vaoVox, vboVox;
     glGenVertexArrays(1, &vaoVox);

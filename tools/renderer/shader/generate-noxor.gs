@@ -23,14 +23,14 @@ void emit(in vec3 v) {
     EmitVertex();
 }
 
-vec3 v[8] = vec3[](vec3(1.0, 1.0, 0.0) / float(RES_W) * 2.0,
-                   vec3(0.0, 1.0, 0.0) / float(RES_W) * 2.0,
-                   vec3(1.0, 0.0, 0.0) / float(RES_W) * 2.0,
-                   vec3(0.0, 0.0, 0.0) / float(RES_W) * 2.0,
-                   vec3(1.0, 1.0, 1.0) / float(RES_W) * 2.0,
-                   vec3(0.0, 1.0, 1.0) / float(RES_W) * 2.0,
-                   vec3(0.0, 0.0, 1.0) / float(RES_W) * 2.0,
-                   vec3(1.0, 0.0, 1.0) / float(RES_W) * 2.0);
+vec3 v[8] = vec3[](vec3(1.0, 1.0, 0.0) / float(RES_H) * 2.0,
+                   vec3(0.0, 1.0, 0.0) / float(RES_H) * 2.0,
+                   vec3(1.0, 0.0, 0.0) / float(RES_H) * 2.0,
+                   vec3(0.0, 0.0, 0.0) / float(RES_H) * 2.0,
+                   vec3(1.0, 1.0, 1.0) / float(RES_H) * 2.0,
+                   vec3(0.0, 1.0, 1.0) / float(RES_H) * 2.0,
+                   vec3(0.0, 0.0, 1.0) / float(RES_H) * 2.0,
+                   vec3(1.0, 0.0, 1.0) / float(RES_H) * 2.0);
 
 // Thanks to the following paper on how to make a cube with a single triangle
 // strip http://www.cs.umd.edu/gvil/papers/av_ts.pdf
@@ -57,9 +57,7 @@ void main() {
     vec3 vert = gl_in[0].gl_Position.xyz;
 
     // Map back to [0, 1]
-    float z = mod(
-        (vert.z * float(RES_W) / float(RES_H) / 2.0 + 0.5) * float(RES_H / 4),
-        1.0);
+    float z = mod((vert.z / 2.0 + 0.5) * float(RES_H / 4), 1.0);
 
     // To help visualisation
     color.rgb = vert.xyz / 2.0 + vec3(0.5);
