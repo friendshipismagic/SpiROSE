@@ -3,7 +3,7 @@ module framebuffer #(
     parameter RAM_DATA_WIDTH=16,
     parameter RAM_BASE=0,
     parameter POKER_MODE=9,
-    parameter BLANKING_CYCLES=80
+    parameter BLANKING_CYCLES=72
 )(
     input clk_33,
     input nrst,
@@ -23,7 +23,11 @@ module framebuffer #(
 
 localparam MULTIPLEXING = 8;
 localparam LED_PER_DRIVER = 16;
-localparam ROW_SIZE = 80;
+/*
+ * As explained below, the drivers of one panel faces the ones on the other
+ * panel, thus we only need 40 columns at a time.
+ */
+localparam ROW_SIZE = 40;
 localparam COLUMN_SIZE = 48;
 localparam IMAGE_SIZE = ROW_SIZE*COLUMN_SIZE;
 // We use 16-bits rgb : 5 bits red, 6 bits green, 5 bit blue.
@@ -38,64 +42,78 @@ localparam [2:0] [15:0] COLOR_BASE = '{0,5,11};
  * | driver 21/22 (8*16 led)|| driver 23/24 (8*16 led)| ... | driver 29/30 (8*16 led)|
  * |++++++++++++++++++++++++||++++++++++++++++++++++++|     |++++++++++++++++++++++++|
  *
- * Driver 1 and 2 are intertwined as follow:
- * d1_pixel1  d2_pixel1  ... d1_pixel8  d2 pixel_8
+ * Driver 1 and 2 are NOT intertwined, they are facing each other as follow:
+ *
+ * d1_pixel1/d2_pixel1  ... d1_pixel8/d2 pixel_8
  *                       ...
- * d1_pixel16 d2_pixel16 ... d1_pixel128 d2 pixel_128
+ * d1_pixel16/d2_pixel16 ... d1_pixel128/d2 pixel_128
+ *
+ * Driver 1 and 2 will display the same pixel at the same time. Thus we
+ * display only 40 columns out of 80 at a time, and half a turn later we need
+ * to display the other 40. In order for the framebuffer to remain position
+ * agnostic, the SBC will handle this problem when generating the slices : it
+ * will send the even columns during 128 slices (hence a half turn), then it
+ * will send the odd columns (actually it needs to reverse those columns
+ * because the panel will have turn by 180°).
  *
  * In the buffers we will store only a column at a time for each driver, hence
- * we have the following layout:
+ * we have the following layout for the buffers' data:
  *
- * d1_pixel1 d2_pixel1     ... d9_pixel1 d10_pixel1
+ * d1_pixel1   d3_pixel1   ... d9_pixel1
  *                         ...
- * d1_pixel16 d2_pixel16   ... d9_pixel16 d10_pixel16
- * d11_pixel1 d12_pixel1   ... d19_pixel1 d20_pixel1
+ * d1_pixel16  d3_pixel16  ... d9_pixel16
+ *
+ * d11_pixel1  d13_pixel1  ... d19_pixel1
  *                         ...
- * d11_pixel16 d12_pixel16 ... d19_pixel16 d20_pixel16
- * d21_pixel1  d22_pixel1  ... d29_pixel1  d30_pixel1
+ * d11_pixel16 d13_pixel16 ... d19_pixel16
+ *
+ * d21_pixel1  d23_pixel1  ... d29_pixel1
  *                         ...
- * d21_pixel16 d22_pixel16 ... d29_pixel16 d30_pixel16
+ * d21_pixel16 d23_pixel16 ... d29_pixel16
  *
  * We need to precompute the base read address for each driver in order to
  * send the right data easily and in one cycle:
  *
- * - The base address for driver 1 to 10 is 0 to 9.
- * - For driver 11 the base address is 10*LED_PER_DRIVER. Thus on each
- *   line of driver the offset increases by 10*LED_PER_DRIVER.
+ * - The base addresses for driver 1,3,5,7,9 are 0,2,4,6,8.
+ * - For driver 11 the base address is 5*LED_PER_DRIVER. Thus on each
+ *   line of driver the offset increases by 5*LED_PER_DRIVER.
+ * - For even drivers, the base adress is the same as the related odd driver:
+ *   driver 1 and 2 share the same base address, thus the same data, because
+ *   as said above they are facing each other.
  */
-localparam BUFF_SIZE = 30*LED_PER_DRIVER;
+localparam BUFF_SIZE = 15*LED_PER_DRIVER;
 localparam BUFF_SIZE_LOG = $clog2(BUFF_SIZE);
 localparam [29:0] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
-    0 + 0*10*LED_PER_DRIVER,
-    1 + 0*10*LED_PER_DRIVER,
-    2 + 0*10*LED_PER_DRIVER,
-    3 + 0*10*LED_PER_DRIVER,
-    4 + 0*10*LED_PER_DRIVER,
-    5 + 0*10*LED_PER_DRIVER,
-    6 + 0*10*LED_PER_DRIVER,
-    7 + 0*10*LED_PER_DRIVER,
-    8 + 0*10*LED_PER_DRIVER,
-    9 + 0*10*LED_PER_DRIVER,
-    0 + 1*10*LED_PER_DRIVER,
-    1 + 1*10*LED_PER_DRIVER,
-    2 + 1*10*LED_PER_DRIVER,
-    3 + 1*10*LED_PER_DRIVER,
-    4 + 1*10*LED_PER_DRIVER,
-    5 + 1*10*LED_PER_DRIVER,
-    6 + 1*10*LED_PER_DRIVER,
-    7 + 1*10*LED_PER_DRIVER,
-    8 + 1*10*LED_PER_DRIVER,
-    9 + 1*10*LED_PER_DRIVER,
-    0 + 2*10*LED_PER_DRIVER,
-    1 + 2*10*LED_PER_DRIVER,
-    2 + 2*10*LED_PER_DRIVER,
-    3 + 2*10*LED_PER_DRIVER,
-    4 + 2*10*LED_PER_DRIVER,
-    5 + 2*10*LED_PER_DRIVER,
-    6 + 2*10*LED_PER_DRIVER,
-    7 + 2*10*LED_PER_DRIVER,
-    8 + 2*10*LED_PER_DRIVER,
-    9 + 2*10*LED_PER_DRIVER
+    0 + 0*5*LED_PER_DRIVER,
+    0 + 0*5*LED_PER_DRIVER,
+    1 + 0*5*LED_PER_DRIVER,
+    1 + 0*5*LED_PER_DRIVER,
+    2 + 0*5*LED_PER_DRIVER,
+    2 + 0*5*LED_PER_DRIVER,
+    3 + 0*5*LED_PER_DRIVER,
+    3 + 0*5*LED_PER_DRIVER,
+    4 + 0*5*LED_PER_DRIVER,
+    4 + 0*5*LED_PER_DRIVER,
+    0 + 1*5*LED_PER_DRIVER,
+    0 + 1*5*LED_PER_DRIVER,
+    1 + 1*5*LED_PER_DRIVER,
+    1 + 1*5*LED_PER_DRIVER,
+    2 + 1*5*LED_PER_DRIVER,
+    2 + 1*5*LED_PER_DRIVER,
+    3 + 1*5*LED_PER_DRIVER,
+    3 + 1*5*LED_PER_DRIVER,
+    4 + 1*5*LED_PER_DRIVER,
+    4 + 1*5*LED_PER_DRIVER,
+    0 + 2*5*LED_PER_DRIVER,
+    0 + 2*5*LED_PER_DRIVER,
+    1 + 2*5*LED_PER_DRIVER,
+    1 + 2*5*LED_PER_DRIVER,
+    2 + 2*5*LED_PER_DRIVER,
+    2 + 2*5*LED_PER_DRIVER,
+    3 + 2*5*LED_PER_DRIVER,
+    3 + 2*5*LED_PER_DRIVER,
+    4 + 2*5*LED_PER_DRIVER,
+    4 + 2*5*LED_PER_DRIVER
 };
 
 /*
@@ -109,7 +127,7 @@ logic [RAM_DATA_WIDTH-1:0] buffer2 [BUFF_SIZE-1:0];
 /*
  * CAUTION: Fill the buffers with 0 at runtime. This remove the verilator error
  * about large for loop but means that they won't be initialized again at
- * reset, thus this have to be removed in the latets design.
+ * reset, thus this have to be removed in the latest design.
  */
 initial begin
     for(int i = 0; i < BUFF_SIZE; i++) begin
@@ -122,7 +140,7 @@ end
 logic current_buffer;
 // The write index of the buffer reading the ram
 logic [BUFF_SIZE_LOG-1:0] write_idx;
-// The column we are currently sending
+// The column we are currently sending (relatively to a driver)
 logic [$clog2(MULTIPLEXING)-1:0] mul_idx;
 // The led we are currently sending data to
 logic [$clog2(LED_PER_DRIVER)-1:0] led_idx;
@@ -132,21 +150,19 @@ logic [$clog2(POKER_MODE)-1:0] bit_idx;
 logic [1:0] rgb_idx;
 
 // We need to do BLANKING_CYCLES cycles of blanking each time we change column
-wire blanking;
+logic blanking;
 logic [$clog2(BLANKING_CYCLES)-1:0] blanking_cnt;
 
-// The three following wires help to compute the correct voxel and bit address
-wire [$clog2(RAM_DATA_WIDTH)-1:0] color_addr;
-wire [BUFF_SIZE_LOG-1:0] voxel_addr;
-wire [$clog2(POKER_MODE)-1:0] color_bit_idx;
+// The three following logics help to compute the correct voxel and bit address
+logic [$clog2(RAM_DATA_WIDTH)-1:0] color_addr;
+logic [BUFF_SIZE_LOG-1:0] voxel_addr;
+logic [$clog2(POKER_MODE)-1:0] color_bit_idx;
 // Indicates that we have written a whole slice in the buffer
-wire has_reached_end;
+logic has_reached_end;
 // Indicates that the buffers need to be swapped
-wire new_image;
+logic new_image;
 // Start address of the next image to display
-wire [RAM_ADDR_WIDTH-1:0] image_start_addr;
-// The increment we need to apply to the ram read address
-wire [RAM_ADDR_WIDTH-1:0] ram_addr_increment;
+logic [RAM_ADDR_WIDTH-1:0] image_start_addr;
 
 // Tells the driver that we start a new slice
 assign sync = (blanking_cnt == BLANKING_CYCLES-2) && (mul_idx == 0);
@@ -154,14 +170,10 @@ assign sync = (blanking_cnt == BLANKING_CYCLES-2) && (mul_idx == 0);
 /*
  * Read ram to fill the reading buffer.
  *
- * We need to read only a column per driver, thus if are at column i for the
- * driver j, if we add 1 to the read address we access the column i+1 in the
- * slice which is part of the driver j+1. If we add MULTIPLEXING-1 from here
- * we access column i+MULTIPLEXING which is part of driver j+2. Hence we have
- * to alternate between increasing by 1 and by MULTIPLEXING-1. This is the
- * role of the ram_addr_increment.
+ * We need to read only a column per driver, thus if we are at column i for the
+ * driver j, if we add MULTIPLEXING from here we access column i+MULTIPLEXING
+ * which is part of driver j+2.
  */
-assign ram_addr_increment = (write_idx % 2 == 0) ? '1 : MULTIPLEXING-1;
 assign has_reached_end = write_idx == BUFF_SIZE-1;
 assign image_start_addr = enc_position*IMAGE_SIZE + RAM_BASE;
 assign new_image = enc_sync;
@@ -176,7 +188,7 @@ always_ff @(posedge clk_33)
             ram_addr <= image_start_addr;
             write_idx <= '0;
         end else if(~has_reached_end) begin
-            ram_addr <= ram_addr + ram_addr_increment;
+            ram_addr <= ram_addr + MULTIPLEXING;
             write_idx <= write_idx + 1'b1;
             if(current_buffer) begin
                 buffer1[write_idx] <= ram_data;
@@ -184,26 +196,23 @@ always_ff @(posedge clk_33)
                 buffer2[write_idx] <= ram_data;
             end
         end else begin
-            /*
-             * The next column for the first driver starts after the column of
-             * the second one, thus we increase by 2.
-             */
-            ram_addr <= image_start_addr + 2*mul_idx;
+            // Next time we fill a buffer we want the next column
+            ram_addr <= image_start_addr + 1;
         end
     end
 
 /*
  * Read the writing_buffer to send data to the driver main controller.
  *
- * If a driver start at address n, his first voxel is at address n, the second
- * one is at address n+10 because of the buffers' layout described above, hence
- * we add 10*led_idx to the base address to get the right line.
+ * If a driver starts at address n, his first voxel is at address n, the second
+ * one is at address n+5 because of the buffers' layout described above, hence
+ * we add 5*led_idx to the base address to get the right line.
  *
  * The color_bit_idx goes from 5 to 0, thus if we add the base address for the
  * green color for instance we get bits 10 to 5. The red and blue color have
  * 5 bits instead of 6, hence we need to substract 1 to color_addr.
  */
-assign voxel_addr = led_idx*10;
+assign voxel_addr = 5*led_idx;
 assign color_bit_idx = (bit_idx >= 3) ? bit_idx - 3 : 0;
 assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]) - 4'(rgb_idx != 1);
 assign blanking = (blanking_cnt != 0);
@@ -212,15 +221,18 @@ always_ff @(posedge clk_33)
     if(~nrst) begin
         data <= '0;
     end else begin
-        // Since we only have 16 bit per led we have to pad with 0.
+        /*
+         * Since we only have 16 bit per led, but the poker mode ask for 27
+         * bits, we have to pad with 0.
+         */
         data <= '0;
         /*
          * If we haven't sent 16 bit yet we don't pad with 0.
+         * bit_idx > 3 means that we don't send the 4 first LSB.
          * rgb_idx == 1 means we are sending the green color which has 6 bits
          * instead of 5.
          */
-        if(~blanking
-            && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
+        if(~blanking && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
             for(int i = 0; i < 30; ++i) begin
                 if(current_buffer) begin
                     data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr][color_addr];
