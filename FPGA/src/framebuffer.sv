@@ -195,9 +195,11 @@ always_ff @(posedge clk_33)
             end else begin
                 buffer2[write_idx] <= ram_data;
             end
-        end else begin
-            // Next time we fill a buffer we want the next column
+        // We have sent all data so we fill a new buffer
+        end else if(bit_idx == 0) begin
+            // We will fill the new buffer with the next column
             ram_addr <= image_start_addr + 1;
+            write_idx <= '0;
         end
     end
 
@@ -266,11 +268,14 @@ always_ff @(posedge clk_33)
             rgb_idx <= rgb_idx + 1'b1;
             // We have sent the three color, time to go to the next led
             if(rgb_idx == 2) begin
+                rgb_idx <= '0;
                 led_idx <= led_idx + 1'b1;
                 // We have sent the right bit for each leds in the column
                 if(led_idx == 4'(LED_PER_DRIVER-1)) begin
                     led_idx <= '0;
                     bit_idx <= bit_idx - 1'b1;
+                    // We need to wait one cycle because of driver timing issue
+                    blanking_cnt <= 7'b1;
                     // We have sent all the bits for each led
                     if(bit_idx == 0) begin
                         bit_idx <= POKER_MODE-1;
