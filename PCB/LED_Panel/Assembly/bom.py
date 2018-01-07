@@ -3,19 +3,18 @@
 
 """
 Generates BOM and Pick'nPlace files for PCBPool :
-  - BOM condensed with order codes (and link to distributor) to verify thta the component is in stock
-  - Pick'n'Place file
+  - BOM condensed with order codes (and link to distributor) to verify that the component is in stock
+  - Pick'n'Place files
 
 This program needs:
   - two files generated from schematics by iCDB-to-BOM utility:
-    - ../BOM-condensed.csv: a condensed BOM (csv, tab separated, with cdb2bom-condensed.asc parameter)
-    - ../BOM-split.csv: a split BOM file (csv, tab separated, with cdb2bom-split.asc parameter)
+    - ../BOM-condensed.bom: a condensed BOM (csv, tab separated, with cdb2bom-condensed.asc parameter)
+    - ../BOM-split.bom: a split BOM file (csv, tab separated, with cdb2bom-split.asc parameter)
   - four files generated from PCB by Report Writer utility (physical extractor):
     - ../PCB/vbreport/work/VBPCBP.TFI (fiducials)
     - ../PCB/vbreport/work/VBPCBP.TCM (components)
     - ../PCB/vbreport/work/VBPCBP.TCV (Part Number)
     - ../PCB/vbreport/work/VBPCBP.TCP (Part Number Property)
-  - three templates of each output file : Template_Pick_Place.csv, Template_Fiducials.csv, Template_BOM.xslx
 """
 
 import os, sys
@@ -29,10 +28,10 @@ COMPONENTS_FILENAME = "../PCB/vbreport/work/VBPCBP.TCM"
 PARTS_FILENAME = "../PCB/vbreport/work/VBPCBP.TCV"
 PARTS_PROPS_FILENAME = "../PCB/vbreport/work/VBPCBP.TCP"
 
-BOM_SPLIT_FILENAME = "../BOM-split.csv"
+BOM_SPLIT_FILENAME = "../BOM-split.bom"
 BOM_SPLIT_PARAMS_FILENAME = "../BOM-split.asc"
 
-BOM_CONDENSED_FILENAME = "../BOM-condensed.csv"
+BOM_CONDENSED_FILENAME = "../BOM-condensed.bom"
 BOM_CONDENSED_PARAMS_FILENAME = "../BOM-condensed.asc"
 
 FIDUCIALS_OUTPUT_FILENAME = "Fiducials.txt"
@@ -40,6 +39,11 @@ PNP_OUTPUT_FILENAME = "PicknPlace.txt"
 BOM_OUTPUT_FILENAME = "BOM.xlsx"
 
 parts = {}
+
+# Get a copy of the default headers that requests would use
+headers = requests.utils.default_headers()
+headers.update({'User-Agent': 'Myagent',})
+timeout = 2
 
 def build_fiducials():
     """
@@ -65,7 +69,7 @@ def build_fiducials():
             line = [v.strip(" \t\r\n") for v in line.split("\t")]
             vals.append(line)
 
-        # Extract to layer number from values
+        # Extract layer number from values
         top = min([v[2] for v in vals])
         bottom = max([v[2] for v in vals])
 
@@ -86,14 +90,14 @@ def build_fiducials():
 
 def read_components():
     """
-    Read VBPCBP.TCM and VBPCBP.TCV and build a database of every component with
+    Read VBPCBP.TCM and co and build a database of every component with
     all necessary fields. Return the components list.
     """
     comps = []
 
     with open(COMPONENTS_FILENAME, encoding="iso8859-1") as fin:
         """
-        First read and parse VPBCPB.TCM which has the following format:
+        First read and parse VBPBCBP.TCM which has the following format:
          CompID	RefDes	MountType	X	Y	ROT	Side	Mirror	Fixed	PartNumberID	CellID	PinCount
          3	R5	SMD	16.230	41.010	90.000	BOTTOM	YES	NO	26	11	2
          4	C14	SMD	18.130	41.736	270.000	BOTTOM	YES	NO	5	8	2
@@ -111,10 +115,12 @@ def read_components():
             comp["Layer"] = fields[6]
             comp["PNID"] = fields[9]
             comp["CellID"] = fields[10]
-            comps.append(comp)
+            # Strip out test points
+            if not comp["RefDes"].startswith("PT"):
+                comps.append(comp)
 
         """
-        Then read and parse VPBCPB.TCV which has the following format:
+        Then read and parse VBPBCBP.TCV which has the following format:
           PartNumberID	PartNumber	PartName	PartLabel	RefDesPre	TopCell	BottomCell	PartSource	Description
           23	00-0033	RES_0603_E24	RES_20_0603	R	R0603	R0603		Resistor20ohms/5%/case0603
           24	00-0074	RES_0603_E24	RES_1.0k_0603	R	R0603	R0603		Resistor1.0kohms/5%/case0603
@@ -171,7 +177,7 @@ def read_components():
         fetch_distributor_infos()
 
         """
-        Then read BOM_split.csv which has the following format :
+        Then read BOM_split.bom which has the following format :
           Ref Des	Quantity	Value	Part Label	Part Number	Description	Distributor code	Option	Cell	Placed
           R13	1	20 	RES_20_0603	00-0033	Resistor 20 ohms / 5% / case 0603	YES
           R31	1	20 	RES_20_0603	00-0033	Resistor 20 ohms / 5% / case 0603	NO
@@ -186,6 +192,9 @@ def read_components():
                 if len(fields) != 9:
                     print("Continue pour ligne", line, " fields = ", fields)
                     continue
+                # Strip test points
+                if fields[0].startswith("PT"):
+                    continue
                 cl = [c for c in comps if c["RefDes"] == fields[0]]
                 if cl is None or len(cl) == 0:
                     print("Error : no ref des for component:", fields)
@@ -198,8 +207,10 @@ def read_components():
                 if c["Value"] == "":
                     c["Value"] = fields[3].strip()
                 c["Place"] = fields[8].lower()
-                if c["Place"].lower() != "yes" and c["Place"].lower() != "no":
-                    c["Place"] = "no"
+                if c["Place"].lower() != "no":
+                    c["Place"] = "YES"
+                else:
+                    c["Place"] = "NO"
 
         """
         Then update Distributor, Stock and URL from parts database.
@@ -267,31 +278,38 @@ def get_Farnell_infos(code):
     """
     url = "http://fr.farnell.com/webapp/wcs/stores/servlet/Search?exaMfpn=true&mfpn=%s"%(code, )
     #url = "http://fr.farnell.com/webapp/wcs/stores/servlet/Search?catalogId=15001&exaMfpn=true&mfpn=%s&categoryId=&langId=-2&searchRef=SearchLookAhead0&storeId=10160"%(code, )
-    resp = requests.get(url)
+
+    resp = None
+    while(resp == None):
+        try:
+            resp = requests.get(url, headers=headers, timeout=timeout)
+        except requests.Timeout:
+            pass
     if resp.reason != "OK":
         print("Farnell site returned an error : status code = %d, reason = %s." % (
             resp.status_code, resp.reason))
         return "Error", "Error", "Error"
     # Find usefull part in HTML page
     root = BeautifulSoup(resp.content, 'html.parser')
-    product = root.find("div", id="product")
-    # Description
-    description = product.h1.text + product.h2.find("span", itemprop="name").text
-    print("Description=", description)
-    # Disponibility
-    availability = root.find("div", class_="avalabilityContainer")
-    dispo = availability.find("p", class_="available")
-    if dispo != None:
-        dispo = "".join(dispo.text.strip().strip("En stock").split())
-    else:
+    try:
+        product = root.find("div", id="product")
+        # Description
+        description = product.h1.text + product.h2.find("span", itemprop="name").text
+        print("Description=", description)
+        # Disponibility
+        availability = root.find("div", class_="avalabilityContainer")
+        dispo = availability.find("p", class_="available")
+        if dispo != None:
+            dispo = "".join(dispo.text.strip().strip("En stock").split())
+        else:
+            dispo = "Plus stocké"
+    except Exception:
         dispo = "Plus stocké"
-    #else:
-    #    dispo = availability.dd
-    #    dispo = dispo.text.strip()
+        description = ""
     print("Dispo=", dispo)
     return description, dispo, url
 
-def build_PNP(comps):
+def build_PNP(comps, fetch=True):
     """
     Build the PNP file according to this template :
 
@@ -316,7 +334,7 @@ def build_PNP(comps):
             line = [comp["RefDes"], comp["X"], comp["Y"], comp["Rot"], comp["Value"], comp["Cell"], comp["Layer"]]
             fout.write("\t".join(line) + "\n")
 
-def generate_BOM(comps):
+def generate_BOM(comps, split=False):
     """
     Build the BOM for PCBPool.
     Format of the BOM : first line is the columns header with the following meaning:
@@ -376,31 +394,75 @@ def generate_BOM(comps):
             # Filter placed components from non placed ones
             placed_comps = [c for c in comps if c["RefDes"] in fields[0].split(",") and c["Place"].lower() == "yes"]
             unplaced_comps = [c for c in comps if c["RefDes"] in fields[0].split(",") and c["Place"].lower() != "yes"]
+            top_placed_comps = [c for c in placed_comps if c["Layer"].lower() == "top"]
+            bottom_placed_comps = [c for c in placed_comps if c["Layer"].lower() == "bottom"]
+            top_unplaced_comps = [c for c in placed_comps if c["Layer"].lower() == "top"]
+            bottom_unplaced_comps = [c for c in placed_comps if c["Layer"].lower() == "bottom"]
             # Fill in BOM file
-            #"RefDes", "Value", "PartLabel", "Cell", "Description", "Description2",
-            #"Qty", "Place", "Provided_by_customer", "Distributor", "Ordernumber",
-            #"Weblink", "Remarks_customer", "Unit_price", "Total_price",
-            #"REMARKS_BETA", "OPTION1", "OPTION2", "OPTION3"]
             if placed_comps != []:
-                fill_BOM_line(ws, row, placed_comps, True)
-                row = row + 1
+                if split:
+                    if top_placed_comps != []:
+                        fill_BOM_line(ws, row, top_placed_comps, True)
+                        row = row + 1
+                    if bottom_placed_comps != []:
+                        fill_BOM_line(ws, row, bottom_placed_comps, True)
+                        row = row + 1
+                else:
+                    fill_BOM_line(ws, row, placed_comps, True)
+                    row = row + 1
             if unplaced_comps != []:
-                fill_BOM_line(ws, row, unplaced_comps, False)
-                row = row + 1
+                if split:
+                    if top_unplaced_comps != []:
+                        fill_BOM_line(ws, row, top_unplaced_comps, True)
+                        row = row + 1
+                    if bottom_unplaced_comps != []:
+                        fill_BOM_line(ws, row, bottom_unplaced_comps, True)
+                        row = row + 1
+                else:
+                    fill_BOM_line(ws, row, unplaced_comps, True)
+                    row = row + 1
+
+    # Set formulas for total components and total to solder
+    cell = ws.cell(row=row+1, column=6)
+    cell.value = "Total components"
+    cell.font = cell.font.copy(bold=True)
+    cell.alignment = styles.Alignment(horizontal='right')
+
+    cell = ws.cell(row=row+2, column=6)
+    cell.value = "Total to solder"
+    cell.font = cell.font.copy(bold=True)
+    cell.alignment = styles.Alignment(horizontal='right')
+
+    cell = ws.cell(row=row+1, column=7)
+    cell.value = """=SUM($G2:$G%d)"""%row
+    cell.font = cell.font.copy(bold=True)
+    cell.alignment = styles.Alignment(horizontal='center')
+
+    cell = ws.cell(row=row+2, column=7)
+    cell.value = """=SUMIF($H2:$H%d,"YES",$G2:$G%d)"""%(row, row)
+    cell.font = cell.font.copy(bold=True)
+    cell.alignment = styles.Alignment(horizontal='center')
 
     # Adjust cell size
     dims = {}
     for row in ws.rows:
         for cell in row:
             if cell.value:
-                dims[cell.column] = max((dims.get(cell.column, 0), len(cell.value)))
+                dims[cell.column] = max((dims.get(cell.column, 0), len(str(cell.value))))
     for col, value in dims.items():
         ws.column_dimensions[col].width = value
+    # Special value for column G
+    ws.column_dimensions["G"].width = 6
 
     # Save BOM file
     wb.save(BOM_OUTPUT_FILENAME)
 
 def fill_BOM_line(ws, line, comp_list, placed):
+    #"RefDes", "Value", "PartLabel", "Cell", "Description", "Description2",
+    #"Qty", "Place", "Provided_by_customer", "Distributor", "Ordernumber",
+    #"Weblink", "Remarks_customer", "Unit_price", "Total_price",
+    #"REMARKS_BETA", "OPTION1", "OPTION2", "OPTION3"]
+
     # RefDes
     cell = ws.cell(row=line, column=1)
     cell.value = ",".join([c["RefDes"] for c in comp_list])
@@ -429,14 +491,12 @@ def fill_BOM_line(ws, line, comp_list, placed):
 
     # Qty
     cell = ws.cell(row=line, column=7)
-    cell.value = str(len(comp_list))
+    cell.value = int(str(len(comp_list)))
+    cell.alignment = styles.Alignment(horizontal='center')
 
     # Place
     cell = ws.cell(row=line, column=8)
-    if placed :
-        cell.value = "YES"
-    else:
-        cell.value = "NO"
+    cell.value = c["Place"]
 
     # Distributor
     cell = ws.cell(row=line, column=10)
@@ -454,14 +514,23 @@ def fill_BOM_line(ws, line, comp_list, placed):
 
     # Remarks_customer (available or not at distributor)
     cell = ws.cell(row=line, column=13)
-    cell.value = c["Stock"]
+    cell.value = "Stock: %s"%c["Stock"]
 
     # PN to ease library update
-    cell = ws.cell(row=line, column=14)
+    cell = ws.cell(row=line, column=17)
     cell.value = c["PartNumber"]
 
+import argparse
+parser = argparse.ArgumentParser()
+parser.add_argument("-s", "--split",
+                        help="split top and bottom components on different lines",
+                        action="store_true")
+parser.add_argument("-f", "--fetch",
+                        help="fetch distributor information",
+                        action="store_true")
+args = parser.parse_args()
+
 comps = read_components()
-#pprint(comps)
 build_fiducials()
-build_PNP(comps)
-generate_BOM(comps)
+build_PNP(comps, fetch=args.fetch)
+generate_BOM(comps, split=args.split)
