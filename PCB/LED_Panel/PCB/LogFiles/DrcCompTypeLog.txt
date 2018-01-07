@@ -1,33 +1,3 @@
 
 DRC PROXIMITY COMPONENT TYPE CHECKS
 ===================================
-
-Side               = TOP
-Component1CellName = 851-87-014-40-252101
-Component2CellName = 851-87-014-40-252101
-Component1RefDes   = J2
-Component2RefDes   = J1
-CompType1Name      = Connector (From Cell)
-CompType2Name      = Connector (From Cell)
-Component1Rotation = 0.000000
-Component2Rotation = 0.000000
-   "Connector" not found.  CompType1Clearance = Not Defined
-   "Connector" not found.  CompType2Clearance = Not Defined
-DefaultClearance   = 0mm (Netclass Component To Component Clearance)
-TypeToType not found.
-Clearance = 0mm (DefaultClearance).
-
-Side               = TOP
-Component1CellName = C0603
-Component2CellName = L080505
-Component1RefDes   = C42
-Component2RefDes   = L3
-CompType1Name      = Discrete - Chip (From Cell)
-CompType2Name      = Discrete - Chip (From Cell)
-Component1Rotation = 180.000000
-Component2Rotation = 180.000000
-   "Discrete - Chip" not found.  CompType1Clearance = Not Defined
-   "Discrete - Chip" not found.  CompType2Clearance = Not Defined
-DefaultClearance   = 0mm (Netclass Component To Component Clearance)
-TypeToType not found.
-Clearance = 0mm (DefaultClearance).

@@ -1,7 +1,7 @@
 .FILETYPE GerberPlotSetupFile
 .VERSION "VB99.0"
-.CREATOR "Expedition PCB Gerber Output"
-.DATE "Tuesday, December 20, 2016 02:00 PM"
+.CREATOR "Xpedition Layout Gerber Output"
+.DATE "Sunday, January 07, 2018 03:43 AM"
 
 .BaseUnits "1NM"
 
@@ -32,6 +32,29 @@
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem SoldermaskBottom
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType EmbeddedPassive
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
 
 .GerberOutputFile "SolderPasteTop.gdo"
  ..ProcessFile Yes
@@ -49,66 +72,6 @@
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem SolderpasteBottom
 
-.GerberOutputFile "SilkScreenTop.gdo"
- ..ProcessFile Yes
- ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\SilkScreenTop.gdo"
- ..BoardItem AlteredSilkscreenTop
- ..BoardItem BoardOutline
- ..CellType Buried
- ..CellType Connector
- ..CellType DiscreteAxial
- ..CellType DiscreteChip
- ..CellType DiscreteOther
- ..CellType DiscreteRadial
- ..CellType EdgeConnector
- ..CellType EmbeddedPassive
- ..CellType General
- ..CellType Graphic
- ..CellType ICBareDie
- ..CellType ICBGA
- ..CellType ICDIP
- ..CellType ICFlipChip
- ..CellType ICLCC
- ..CellType ICOther
- ..CellType ICPGA
- ..CellType ICPLCC
- ..CellType ICSIP
- ..CellType ICSOIC
- ..CellType Jumper
- ..CellType Mechanical
- ..CellType TestPoint
-
-.GerberOutputFile "SilkScreenBottom.gdo"
- ..ProcessFile Yes
- ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\SilkScreenBottom.gdo"
- ..BoardItem AlteredSilkscreenBottom
- ..BoardItem BoardOutline
- ..CellType Buried
- ..CellType Connector
- ..CellType DiscreteAxial
- ..CellType DiscreteChip
- ..CellType DiscreteOther
- ..CellType DiscreteRadial
- ..CellType EdgeConnector
- ..CellType EmbeddedPassive
- ..CellType General
- ..CellType Graphic
- ..CellType ICBareDie
- ..CellType ICBGA
- ..CellType ICDIP
- ..CellType ICFlipChip
- ..CellType ICLCC
- ..CellType ICOther
- ..CellType ICPGA
- ..CellType ICPLCC
- ..CellType ICSIP
- ..CellType ICSOIC
- ..CellType Jumper
- ..CellType Mechanical
- ..CellType TestPoint
-
 .GerberOutputFile "EtchLayerTop.gdo"
  ..ProcessFile Yes
  ..FlashPads Yes
@@ -116,6 +79,7 @@
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..ConductiveLayer 1
+   ...ConductiveItem BondPads
    ...ConductiveItem EtchedText
    ...ConductiveItem Fiducials
    ...ConductiveItem PartPadsSMD
@@ -125,6 +89,9 @@
    ...ConductiveItem ResistorAreas
    ...ConductiveItem Traces
    ...ConductiveItem ViaPads
+   ...ConductiveItem CopperBalancing
+   ...ConductiveItem EmbeddedCapPads
+   ...ConductiveItem EmbeddedResPads
    ...ProcessUnconnectedPads Yes
  ..BoardItem BoardOutline
  ..CellType Buried
@@ -157,7 +124,8 @@
  ..GerberOutputPath "Output\\Gerber\\EtchLayerBottom.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
- ..ConductiveLayer 2
+ ..ConductiveLayer 6
+   ...ConductiveItem BondPads
    ...ConductiveItem EtchedText
    ...ConductiveItem Fiducials
    ...ConductiveItem PartPadsSMD
@@ -167,6 +135,177 @@
    ...ConductiveItem ResistorAreas
    ...ConductiveItem Traces
    ...ConductiveItem ViaPads
+   ...ConductiveItem CopperBalancing
+   ...ConductiveItem EmbeddedCapPads
+   ...ConductiveItem EmbeddedResPads
+   ...ProcessUnconnectedPads Yes
+ ..BoardItem BoardOutline
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType EmbeddedPassive
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
+
+.GerberOutputFile "EtchLayer5.gdo"
+ ..ProcessFile Yes
+ ..FlashPads Yes
+ ..GerberOutputPath "Output\\Gerber\\EtchLayer5.gdo"
+ ..ConductiveLayer 5
+   ...ConductiveItem BondPads
+   ...ConductiveItem EtchedText
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem ResistorAreas
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ConductiveItem CopperBalancing
+   ...ConductiveItem EmbeddedCapPads
+   ...ConductiveItem EmbeddedResPads
+   ...ProcessUnconnectedPads Yes
+ ..BoardItem BoardOutline
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType EmbeddedPassive
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
+
+.GerberOutputFile "EtchLayer4.gdo"
+ ..ProcessFile Yes
+ ..FlashPads Yes
+ ..GerberOutputPath "Output\\Gerber\\EtchLayer4.gdo"
+ ..ConductiveLayer 4
+   ...ConductiveItem BondPads
+   ...ConductiveItem EtchedText
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem ResistorAreas
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ConductiveItem CopperBalancing
+   ...ConductiveItem EmbeddedCapPads
+   ...ConductiveItem EmbeddedResPads
+   ...ProcessUnconnectedPads Yes
+ ..BoardItem BoardOutline
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType EmbeddedPassive
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
+
+.GerberOutputFile "EtchLayer3.gdo"
+ ..ProcessFile Yes
+ ..FlashPads Yes
+ ..GerberOutputPath "Output\\Gerber\\EtchLayer3.gdo"
+ ..ConductiveLayer 3
+   ...ConductiveItem BondPads
+   ...ConductiveItem EtchedText
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem ResistorAreas
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ConductiveItem CopperBalancing
+   ...ConductiveItem EmbeddedCapPads
+   ...ConductiveItem EmbeddedResPads
+   ...ProcessUnconnectedPads Yes
+ ..BoardItem BoardOutline
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType EmbeddedPassive
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
+
+.GerberOutputFile "EtchLayer2.gdo"
+ ..ProcessFile Yes
+ ..FlashPads Yes
+ ..GerberOutputPath "Output\\Gerber\\EtchLayer2.gdo"
+ ..ConductiveLayer 2
+   ...ConductiveItem BondPads
+   ...ConductiveItem EtchedText
+   ...ConductiveItem PartPadsSMD
+   ...ConductiveItem PartPadsThru
+   ...ConductiveItem PlaneData
+   ...ConductiveItem ResistorAreas
+   ...ConductiveItem Traces
+   ...ConductiveItem ViaPads
+   ...ConductiveItem CopperBalancing
+   ...ConductiveItem EmbeddedCapPads
+   ...ConductiveItem EmbeddedResPads
    ...ProcessUnconnectedPads Yes
  ..BoardItem BoardOutline
  ..CellType Buried
@@ -199,13 +338,8 @@
  ..GerberOutputPath "Output\\Gerber\\DrillDrawingThrough.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
- ..BoardItem DrillDrawingThru
-
-.GerberOutputFile "BoardOutlline.gdo"
- ..ProcessFile Yes
- ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\BoardOutlline.gdo"
  ..BoardItem BoardOutline
+ ..BoardItem DrillDrawingThru
  ..CellType Buried
  ..CellType Connector
  ..CellType DiscreteAxial

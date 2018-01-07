@@ -1,7 +1,7 @@
 .FILETYPE NC_DRILL_PREFERENCES
-.VERSION "WG2004"
+.VERSION "2.0"
 .CREATOR "Mentor Graphics Corporation"
-.DATE "Tuesday December 20 13:59:55 2016"
+.DATE "Sunday January 07 03:43:17 2018"
 
 .Units mm
 
@@ -56,11 +56,9 @@
   ..FCFData
    ...HoleFCF "Rnd 0.3 +Tol 0.05 -Tol -0.1"
     ....valFCF "" "" "" "" ""
-   ...HoleFCF "Rnd 1 +Tol 0.1 -Tol -0.05"
+   ...HoleFCF "Rnd 0.4 +Tol 0.05 -Tol -0.1"
     ....valFCF "" "" "" "" ""
-   ...HoleFCF "Rnd 1.1 +Tol 0.15 -Tol -0.1"
-    ....valFCF "" "" "" "" ""
-   ...HoleFCF "Rnd 1.5 +/-Tol 0.1 Non-Plated"
+   ...HoleFCF "Rnd 3.375 +/-Tol 0.025"
     ....valFCF "" "" "" "" ""
 .SymbolScheme    "Default"
 .SchemeLocation    "Loc"
