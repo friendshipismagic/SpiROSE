@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 01/07/18 03:46:34
+! Created 01/07/18 16:10:24
 !
 
 .Global_Constants 944 2
@@ -16,8 +16,8 @@
 	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
 	(9, 5) (647,443)	! ..rcNormalPosition
-    ..Active_Place_Layer_Top             False
-    ..Active_Place_Layer_Bottom          True
+    ..Active_Place_Layer_Top             True
+    ..Active_Place_Layer_Bottom          False
     ..Active_Place_Layer_Internal        False
     ..Active_Route_Layer 0
     ..Trace_Layer_Color ( 
@@ -1286,49 +1286,49 @@
 	"UnConnected_Net"	! [1]
 	"(Net0)"	! [2]
 	"(Spacer_Net)"	! [3]
-	"UB0_MUL0"	! [4]
-	"UB0_MUL1"	! [5]
-	"UB0_MUL2"	! [6]
-	"UB0_MUL3"	! [7]
-	"UB0_MUL4"	! [8]
-	"UB0_MUL5"	! [9]
-	"UB0_MUL6"	! [10]
-	"UB0_MUL7"	! [11]
-	"UB1_MUL0"	! [12]
-	"UB1_MUL1"	! [13]
-	"UB1_MUL2"	! [14]
-	"UB1_MUL3"	! [15]
-	"UB1_MUL4"	! [16]
-	"UB1_MUL5"	! [17]
-	"UB1_MUL6"	! [18]
-	"UB1_MUL7"	! [19]
-	"UB2_MUL0"	! [20]
-	"UB2_MUL1"	! [21]
-	"UB2_MUL2"	! [22]
-	"UB2_MUL3"	! [23]
-	"UB2_MUL4"	! [24]
-	"UB2_MUL5"	! [25]
-	"UB2_MUL6"	! [26]
-	"UB2_MUL7"	! [27]
-	"UB3_MUL0"	! [28]
-	"UB3_MUL1"	! [29]
-	"UB3_MUL2"	! [30]
-	"UB3_MUL3"	! [31]
-	"UB3_MUL4"	! [32]
-	"UB3_MUL5"	! [33]
-	"UB3_MUL6"	! [34]
-	"UB3_MUL7"	! [35]
-	"UB4_MUL0"	! [36]
-	"UB4_MUL1"	! [37]
-	"UB4_MUL2"	! [38]
-	"UB4_MUL3"	! [39]
-	"UB4_MUL4"	! [40]
-	"UB4_MUL5"	! [41]
-	"UB4_MUL6"	! [42]
-	"UB4_MUL7"	! [43]
-	"+3.3V"	! [44]
-	"GND"	! [45]
-	"+5V"	! [46]
+	"GND"	! [4]
+	"+5V"	! [5]
+	"UB0_MUL0"	! [6]
+	"UB0_MUL1"	! [7]
+	"UB0_MUL2"	! [8]
+	"UB0_MUL3"	! [9]
+	"UB0_MUL4"	! [10]
+	"UB0_MUL5"	! [11]
+	"UB0_MUL6"	! [12]
+	"UB0_MUL7"	! [13]
+	"UB1_MUL0"	! [14]
+	"UB1_MUL1"	! [15]
+	"UB1_MUL2"	! [16]
+	"UB1_MUL3"	! [17]
+	"UB1_MUL4"	! [18]
+	"UB1_MUL5"	! [19]
+	"UB1_MUL6"	! [20]
+	"UB1_MUL7"	! [21]
+	"UB2_MUL0"	! [22]
+	"UB2_MUL1"	! [23]
+	"UB2_MUL2"	! [24]
+	"UB2_MUL3"	! [25]
+	"UB2_MUL4"	! [26]
+	"UB2_MUL5"	! [27]
+	"UB2_MUL6"	! [28]
+	"UB2_MUL7"	! [29]
+	"UB3_MUL0"	! [30]
+	"UB3_MUL1"	! [31]
+	"UB3_MUL2"	! [32]
+	"UB3_MUL3"	! [33]
+	"UB3_MUL4"	! [34]
+	"UB3_MUL5"	! [35]
+	"UB3_MUL6"	! [36]
+	"UB3_MUL7"	! [37]
+	"UB4_MUL0"	! [38]
+	"UB4_MUL1"	! [39]
+	"UB4_MUL2"	! [40]
+	"UB4_MUL3"	! [41]
+	"UB4_MUL4"	! [42]
+	"UB4_MUL5"	! [43]
+	"UB4_MUL6"	! [44]
+	"UB4_MUL7"	! [45]
+	"+3.3V"	! [46]
 	"UB0D0_B0"	! [47]
 	"UB0D0_B1"	! [48]
 	"UB0D0_B2"	! [49]
@@ -2239,8 +2239,8 @@
     )
     ..Net_Color ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [3-4] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [5-6] RGB(255,255,255)  RGB(255,255,255)
+	0x00ffffff 0x00006699	! [3-4] RGB(255,255,255)  RGB(153,102,  0)
+	0x006699ff 0x00ffffff	! [5-6] RGB(255,153,102)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [7-8] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [9-10] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [11-12] RGB(255,255,255)  RGB(255,255,255)
@@ -2260,7 +2260,7 @@
 	0x00ffffff 0x00ffffff	! [39-40] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [41-42] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [43-44] RGB(255,255,255)  RGB(255,255,255)
-	0x00006699 0x006699ff	! [45-46] RGB(153,102,  0)  RGB(255,153,102)
+	0x00ffffff 0x00ffffff	! [45-46] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [47-48] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [49-50] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [51-52] RGB(255,255,255)  RGB(255,255,255)
@@ -3003,11 +3003,11 @@
 	F F F F ! [941 - 944]
 	)
     ..Net_Outline ( 
-	T T F F F F F F F F 	! [1 - 10]
+	T T F T F F F F F F 	! [1 - 10]
 	F F F F F F F F F F 	! [11 - 20]
 	F F F F F F F F F F 	! [21 - 30]
 	F F F F F F F F F F 	! [31 - 40]
-	F F F F T F F F F F 	! [41 - 50]
+	F F F F F F F F F F 	! [41 - 50]
 	F F F F F F F F F F 	! [51 - 60]
 	F F F F F F F F F F 	! [61 - 70]
 	F F F F F F F F F F 	! [71 - 80]
@@ -3141,7 +3141,7 @@
 	F F F F F F F F F F 	! [11 - 20]
 	F F F F F F F F F F 	! [21 - 30]
 	F F F F F F F F F F 	! [31 - 40]
-	F F F F T F F F F F 	! [41 - 50]
+	F F F F F F F F F F 	! [41 - 50]
 	F F F F F F F F F F 	! [51 - 60]
 	F F F F F F F F F F 	! [61 - 70]
 	F F F F F F F F F F 	! [71 - 80]
@@ -4050,7 +4050,7 @@
 	"Global.Option.ColorByNetClass.Enabled" "1"
 	"Global.Option.ColorByNetClass.NetClasses.Enabled" "0"
 	"Global.Option.ColorByNetClass.Netlines" "1"
-	"Global.Option.ColorByNetClass.Nets.Enabled" "1"
+	"Global.Option.ColorByNetClass.Nets.Enabled" "0"
 	"Global.Option.ColorByNetClass.Pads" "1"
 	"Global.Option.ColorByNetClass.PatternConstrainedNets" "0"
 	"Global.Option.ColorByNetClass.Planes" "1"
@@ -4231,8 +4231,8 @@
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
 	"[VirtualGlobal].iDC.SplitViewHeight.0" "116"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "267"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "229"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "263"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "233"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -4247,8 +4247,8 @@
 
 .view "PCB"
     ..extrema
-	(-411266768,-86409516)		! (xmin, ymin)
-	(531219379,275631092)		! (xmax, ymax)
+	(52763471,22115097)		! (xmin, ymin)
+	(94681719,38217305)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -16329,9 +16329,11 @@
 	"Internal.Part.SpecialPlaceOutlineTop.254" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Internal.Part.SpecialPlaceOutlineTop.255" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
 	"Internal.Part.SpecialPlaceOutlineTop.256" "d:1" "e:1" "s:1" "se:1" "c:16776960" "a:100" "p:2" "t:0" "o:1"
-	"[Net].UnConnected_Net" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"[Net].(Net0)" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
-	"[Net].(Spacer_Net)" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].UnConnected_Net" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"[Net].(Net0)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
+	"[Net].(Spacer_Net)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].GND" "d:1" "e:0" "s:1" "se:1" "c:26265" "a:100" "p:0" "t:0" "o:1"
+	"[Net].+5V" "d:1" "e:0" "s:1" "se:1" "c:6724095" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB0_MUL0" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB0_MUL1" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB0_MUL2" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -16373,8 +16375,6 @@
 	"[Net].UB4_MUL6" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB4_MUL7" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].+3.3V" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].GND" "d:1" "e:1" "s:1" "se:1" "c:26265" "a:100" "p:0" "t:0" "o:1"
-	"[Net].+5V" "d:1" "e:0" "s:1" "se:1" "c:6724095" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB0D0_B0" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB0D0_B1" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB0D0_B2" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
