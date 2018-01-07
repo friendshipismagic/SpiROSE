@@ -47,7 +47,7 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> enc_sync("enc_sync");
 
     sc_trace_file* traceFile;
-    traceFile = sc_create_vcd_trace_file("driver_controller");
+    traceFile = sc_create_vcd_trace_file("framebuffer");
     sc_trace(traceFile, clk33, "clk33");
     sc_trace(traceFile, nrst, "nrst");
     sc_trace(traceFile, data, "data");

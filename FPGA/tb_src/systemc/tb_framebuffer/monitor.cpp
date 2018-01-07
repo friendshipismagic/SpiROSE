@@ -10,21 +10,21 @@ static uint8_t fbOutputReference[30][9][48];
 // Array with the base ram addresses for each driver
 static const std::array<unsigned int, 30> ramBaseDriverAddress
 {
-    0      , 1, 
-    16     , 17, 
-    32     , 33, 
-    48     , 49, 
-    64     , 65,
-    1280   , 1281, 
-    1280+16, 1280+17, 
-    1280+32, 1280+33,
-    1280+48, 1280+49,
-    1280+64, 1280+65,
-    2560   , 2561,
-    2560+16, 2560+17,
-    2560+32, 2560+33,
-    2560+48, 2560+49,
-    2560+64, 2560+65
+    0      ,       0, 
+    16     ,      16, 
+    32     ,      32, 
+    48     ,      48, 
+    64     ,      64,
+    640    ,     640, 
+    640+16 ,  640+16, 
+    640+32 ,  640+32,
+    640+48 ,  640+48,
+    640+64 ,  640+64,
+    1280   ,    1280,
+    1280+16, 1280+16,
+    1280+32, 1280+32,
+    1280+48, 1280+48,
+    1280+64, 1280+64
 };
 
 
@@ -36,14 +36,14 @@ void Monitor::reset() {
 }
 
 int Monitor::isWRTGSBlankingCycle(int cycle) {
-    if ( cycle == 48
-        || cycle == 97
-        || cycle == 146
-        || cycle == 195
-        || cycle == 244
-        || cycle == 293
-        || cycle == 342
-        || cycle == 391) {
+    if ( cycle == 72+48
+        || cycle == 72+97
+        || cycle == 72+146
+        || cycle == 72+195
+        || cycle == 72+244
+        || cycle == 72+293
+        || cycle == 72+342
+        || cycle == 72+391) {
         return 1;
     }
     return 0;
@@ -67,13 +67,23 @@ void Monitor::continuousCycleCount() {
             cycleCounter = 0;
             numberOfColumnsRead = 0;
             currentMultiplexing = 0;
+            enc_position = 0;
+            enc_sync = 1;
         }
         else {
+            if (enc_sync == 1)
+                enc_sync = 0;
             if (cycleCounter == 512) {
                 cycleCounter = 0;
                 numberOfColumnsRead++;
-                if (currentMultiplexing == 7)
+                if (currentMultiplexing == 7) {
                     currentMultiplexing = 0;
+                    enc_sync = 1;
+                    if (enc_position == 255)
+                        enc_position = 0;
+                    else
+                        enc_position = enc_position + 1;
+                }
                 else
                     if (numberOfColumnsRead > 0)
                         currentMultiplexing++;
@@ -98,12 +108,13 @@ void Monitor::storeOutputData() {
                 }
             }
         }
-        else if (cycleCounter >= 0 
-                    && cycleCounter < 440
+        else if (cycleCounter >= 72 
+                    && cycleCounter < 512
                     && !isWRTGSBlankingCycle(cycleCounter)
                     && (numberOfColumnsRead != 0)) {
             for (int i = 0; i < 30; i++) {
-                fbOutput[i][cycleCounter/49][cycleCounter%49] = (data >> i) & 0x1;
+                fbOutput[i][(cycleCounter-72)/49][(cycleCounter-72)%49] 
+                    = (data >> i) & 0x1;
             }
         }
         wait();
@@ -115,10 +126,10 @@ void Monitor::checkWRTGSBlanking() {
         wait(clk33.posedge_event());
         if (isWRTGSBlankingCycle(cycleCounter) && (numberOfColumnsRead != 0)) {
             for (int i = 0; i < 30; i++) {
-                if (fbOutput[i][(cycleCounter-1)/49][(cycleCounter-1)%49] 
+                if (fbOutput[i][(cycleCounter-1-72)/49][(cycleCounter-1-72)%49] 
                         != (data >> i) & 0x1) {
                     std::string msg = "Missing blanking cycle number ";
-                    unsigned int cyclePosition = (cycleCounter-1)/49;
+                    unsigned int cyclePosition = (cycleCounter-1-72)/49;
                     msg += sc_uint<5>(cyclePosition).to_string();
                     msg += " out of 8 for driver ";
                     msg += sc_int<30>(i).to_string();
@@ -151,7 +162,7 @@ void Monitor::checkDataIntegrity() {
     while(1) {
         wait();
         // Verification performed during a blanking cycle
-        if (cycleCounter == 500 && numberOfColumnsRead > 0) {
+        if (cycleCounter == 30 && numberOfColumnsRead > 0) {
             /*
              * We create a reference data output of the framebuffer, 
              * ie what we should obtain, to compare it to what we get
@@ -163,7 +174,7 @@ void Monitor::checkDataIntegrity() {
                  * given the current multiplexing
                  */
                 int driverBaseAddress = ramBaseDriverAddress[i]
-                        + currentMultiplexing*2;
+                        + currentMultiplexing;
                 for (int j = 0; j < 9; j++) {
                     for (int k = 0; k < 48; k++) {
                         /*
@@ -174,7 +185,7 @@ void Monitor::checkDataIntegrity() {
                          * j is the poker sequence number.
                          * k is the bit number.
                          */
-                        int lineAddress = driverBaseAddress + ((47-k)/3)*80;
+                        int lineAddress = driverBaseAddress + ((47-k)/3)*40;
                         // Index of the color (B=2, G=1, R=0)
                         int color = (47-k) % 3;
                         // 16 bit reference data
