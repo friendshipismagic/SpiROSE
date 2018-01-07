@@ -2,8 +2,8 @@
                                Forward Annotation
                                ------------------
 
-                       06:53 PM Saturday, January 06, 2018
-               Job Name: D:\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+                        12:26 AM Monday, January 08, 2018
+               Job Name: H:\SPIROSE\PCB\ROTATIVE_BASE\PCB\PCB.pcb
 
 
 Version:  01.01.00
@@ -85,8 +85,8 @@ Version:  01.01.00
 
 
      The Common DataBase has been read and will be packaged.
-     Clustering 196 Symbols:
-             196  *********************************************
+     Clustering 185 Symbols:
+             185  **********************************
              150  **************************************************
              100  **************************************************
               50  **************************************************
@@ -96,8 +96,8 @@ Version:  01.01.00
 
 
 
-     197 nets were found containing 867 pins
-     191 components were found
+     184 nets were found containing 846 pins
+     180 components were found
 
      Creating a formatted Schematic Netlist (LogFiles\SchematicNetlist.txt)...
      A formatted Schematic Netlist has been created.
@@ -111,8 +111,8 @@ Version:  01.01.00
                                      NetLoad
                                      -------
 
-                       06:53 PM Saturday, January 06, 2018
-               Job Name: D:\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb
+                        12:27 AM Monday, January 08, 2018
+               Job Name: H:\SPIROSE\PCB\ROTATIVE_BASE\PCB\PCB.pcb
 
 
 Version:  02.11.12
@@ -124,7 +124,38 @@ Version:  02.11.12
 	Schematic reference designator changes will be forward annotated.
 
 
-     Netload completed successfully with 0 warning(s).
+	WARNING:  "PT80" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT78" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT88" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT81" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT79" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT89" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT82" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT83" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT84" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT85" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT86" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT77" is being removed from the Layout since it is no longer in the schematic.
+
+	WARNING:  "PT87" is being removed from the Layout since it is no longer in the schematic.
+
+     The following 2 components have not been placed:
+
+        C67
+        C74
+
+     Netload completed successfully with 13 warning(s).
      
      Back Annotating...
 
@@ -155,9 +186,37 @@ Version:  02.11.12
 
                  Beginning Netload on the Layout Design.
            ---------------------------------------------------
+	Assigned net (Net0) to a trace which was originally on net XSIG030210.
+	Assigned net (Net0) to a trace which was originally on net XSIG030211.
+	Assigned net (Net0) to a trace which was originally on net XSIG030212.
+	Assigned net (Net0) to a trace which was originally on net XSIG030218.
+	Assigned net (Net0) to a trace which was originally on net XSIG030213.
+	Assigned net (Net0) to a trace which was originally on net XSIG030214.
+	Assigned net (Net0) to a trace which was originally on net XSIG030215.
+	Assigned net (Net0) to a trace which was originally on net XSIG030216.
+	Assigned net (Net0) to a trace which was originally on net XSIG030217.
+	Assigned net (Net0) to a trace which was originally on net XSIG030219.
+	Assigned net (Net0) to a trace which was originally on net XSIG030220.
+	Assigned net (Net0) to a trace which was originally on net XSIG030221.
+	Assigned net (Net0) to a trace which was originally on net XSIG030222.
+
+Some nets were completely deleted from the Layout Design....
+	Deleted net XSIG030210, which has no pins, from the Layout Design.
+	Deleted net XSIG030211, which has no pins, from the Layout Design.
+	Deleted net XSIG030212, which has no pins, from the Layout Design.
+	Deleted net XSIG030213, which has no pins, from the Layout Design.
+	Deleted net XSIG030214, which has no pins, from the Layout Design.
+	Deleted net XSIG030215, which has no pins, from the Layout Design.
+	Deleted net XSIG030216, which has no pins, from the Layout Design.
+	Deleted net XSIG030217, which has no pins, from the Layout Design.
+	Deleted net XSIG030218, which has no pins, from the Layout Design.
+	Deleted net XSIG030219, which has no pins, from the Layout Design.
+	Deleted net XSIG030220, which has no pins, from the Layout Design.
+	Deleted net XSIG030221, which has no pins, from the Layout Design.
+	Deleted net XSIG030222, which has no pins, from the Layout Design.
 
 Forward-Annotation on the Layout Design has been successfully completed.
 
-There were 0 reassignments of nets.
+There were 13 reassignments of nets.
 There were 0 traces broken back.
-There were 0 nets removed from the Layout Design.
+There were 13 nets removed from the Layout Design.
