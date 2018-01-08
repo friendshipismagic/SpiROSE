@@ -47,19 +47,19 @@ void main() {
         c = texture(voxels2, modST);
     else if (modZ < 4.0)
         c = texture(voxels3, modST);
-#if N_DRAW_BUFFER <= 5
+#if N_DRAW_BUFFER >= 5
     else if (modZ < 5.0)
         c = texture(voxels4, modST);
 #endif
-#if N_DRAW_BUFFER <= 6
+#if N_DRAW_BUFFER >= 6
     else if (modZ < 6.0)
         c = texture(voxels5, modST);
 #endif
-#if N_DRAW_BUFFER <= 7
+#if N_DRAW_BUFFER >= 7
     else if (modZ < 7.0)
         c = texture(voxels6, modST);
 #endif
-#if N_DRAW_BUFFER <= 8
+#if N_DRAW_BUFFER >= 8
     else if (modZ < 8.0)
         c = texture(voxels7, modST);
 #endif

@@ -61,19 +61,19 @@ void main() {
         color = texture(tex2, modST);
     else if (modZ < 4.0)
         color = texture(tex3, modST);
-#if N_DRAW_BUFFER <= 5
+#if N_DRAW_BUFFER >= 5
     else if (modZ < 5.0)
         color = texture(tex4, modST);
 #endif
-#if N_DRAW_BUFFER <= 6
+#if N_DRAW_BUFFER >= 6
     else if (modZ < 6.0)
         color = texture(tex5, modST);
 #endif
-#if N_DRAW_BUFFER <= 7
+#if N_DRAW_BUFFER >= 7
     else if (modZ < 7.0)
         color = texture(tex6, modST);
 #endif
-#if N_DRAW_BUFFER <= 8
+#if N_DRAW_BUFFER >= 8
     else if (modZ < 8.0)
         color = texture(tex7, modST);
 #endif
