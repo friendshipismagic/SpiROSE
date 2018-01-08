@@ -10,14 +10,6 @@ uniform sampler2D tex4;
 uniform sampler2D tex5;
 uniform sampler2D tex6;
 uniform sampler2D tex7;
-uniform sampler2D tex8;
-uniform sampler2D tex9;
-uniform sampler2D tex10;
-uniform sampler2D tex11;
-uniform sampler2D tex12;
-uniform sampler2D tex13;
-uniform sampler2D tex14;
-uniform sampler2D tex15;
 uniform bool doPizza;
 
 const float M_PI = 3.14159265359;
@@ -69,30 +61,22 @@ void main() {
         color = texture(tex2, modST);
     else if (modZ < 4.0)
         color = texture(tex3, modST);
+#if N_DRAW_BUFFER <= 5
     else if (modZ < 5.0)
         color = texture(tex4, modST);
+#endif
+#if N_DRAW_BUFFER <= 6
     else if (modZ < 6.0)
         color = texture(tex5, modST);
+#endif
+#if N_DRAW_BUFFER <= 7
     else if (modZ < 7.0)
         color = texture(tex6, modST);
+#endif
+#if N_DRAW_BUFFER <= 8
     else if (modZ < 8.0)
         color = texture(tex7, modST);
-    else if (modZ < 9.0)
-        color = texture(tex8, modST);
-    else if (modZ < 10.0)
-        color = texture(tex9, modST);
-    else if (modZ < 11.0)
-        color = texture(tex10, modST);
-    else if (modZ < 12.0)
-        color = texture(tex11, modST);
-    else if (modZ < 13.0)
-        color = texture(tex12, modST);
-    else if (modZ < 14.0)
-        color = texture(tex13, modST);
-    else if (modZ < 15.0)
-        color = texture(tex14, modST);
-    else if (modZ < 16.0)
-        color = texture(tex15, modST);
+#endif
 
     // Get our height in the texture
     float z = mod(fragPos.z * float(RES_H / 4), 1.0);

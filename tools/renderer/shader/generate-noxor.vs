@@ -19,14 +19,6 @@ uniform sampler2D voxels4;
 uniform sampler2D voxels5;
 uniform sampler2D voxels6;
 uniform sampler2D voxels7;
-uniform sampler2D voxels8;
-uniform sampler2D voxels9;
-uniform sampler2D voxels10;
-uniform sampler2D voxels11;
-uniform sampler2D voxels12;
-uniform sampler2D voxels13;
-uniform sampler2D voxels14;
-uniform sampler2D voxels15;
 
 const float nVoxelPass = float(N_VOXEL_PASS);
 
@@ -55,30 +47,22 @@ void main() {
         c = texture(voxels2, modST);
     else if (modZ < 4.0)
         c = texture(voxels3, modST);
+#if N_DRAW_BUFFER <= 5
     else if (modZ < 5.0)
         c = texture(voxels4, modST);
+#endif
+#if N_DRAW_BUFFER <= 6
     else if (modZ < 6.0)
         c = texture(voxels5, modST);
+#endif
+#if N_DRAW_BUFFER <= 7
     else if (modZ < 7.0)
         c = texture(voxels6, modST);
+#endif
+#if N_DRAW_BUFFER <= 8
     else if (modZ < 8.0)
         c = texture(voxels7, modST);
-    else if (modZ < 9.0)
-        c = texture(voxels8, modST);
-    else if (modZ < 10.0)
-        c = texture(voxels9, modST);
-    else if (modZ < 11.0)
-        c = texture(voxels10, modST);
-    else if (modZ < 12.0)
-        c = texture(voxels11, modST);
-    else if (modZ < 13.0)
-        c = texture(voxels12, modST);
-    else if (modZ < 14.0)
-        c = texture(voxels13, modST);
-    else if (modZ < 15.0)
-        c = texture(voxels14, modST);
-    else if (modZ < 16.0)
-        c = texture(voxels15, modST);
+#endif
 
 #ifndef HAS_GEOMETRY_SHADER
     color = vec4(p, 1.0);
