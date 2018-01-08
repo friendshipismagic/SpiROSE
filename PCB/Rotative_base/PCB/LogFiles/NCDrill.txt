@@ -1,0 +1,39 @@
+ ----------------------------
+|      Drill Engine Log      |
+|          Started           |
+|  Mon Jan 08 09:44:48 2018  |
+ ----------------------------
+
+
+Created drill file "Output\NCDrill\ThruHolePlated.ncd" for span from 1 to 4
+Total holes, contours in this file 755, 0
+
+    Tool   Size (MM)    Tolerance (MM)     Plated   Count
+    ----   ---------   -----------------   ------   -----
+     04     0.3000     +0.0500 / -0.1000    YES     551
+     01     0.4000     +0.0500 / -0.1000    YES     57
+     02     0.5000        +/- 0.0500        YES     112
+     03     1.5000     +0.1500 / -0.1000    YES     20
+     05     3.3750        +/- 0.0250        YES     15
+
+
+Created drill file "Output\NCDrill\ThruHoleNonPlated.ncd" for span from 1 to 4
+Total holes, contours in this file 13, 0
+
+    Tool   Size (MM)    Tolerance (MM)     Plated   Count
+    ----   ---------   -----------------   ------   -----
+     06     0.5000        +/- 0.0500        NO      4
+     09     1.1000        +/- 0.1000        NO      2
+     11     1.5000        +/- 0.1000        NO      1
+     08     1.6000     +0.1500 / -0.1000    NO      1
+     10     2.3000        +/- 0.1000        NO      4
+     07     8.0000        +/- 0.1000        NO      1
+
+Warning, Duplicate hole detected at XY 55.9473, 19.0801 (Rnd 0.4 +Tol 0.05 -Tol -0.1, Rnd 0.3 +Tol 0.05 -Tol -0.1)
+Warning, Duplicate hole detected at XY 61.0564, -36.6066 (Rnd 0.4 +Tol 0.05 -Tol -0.1, Rnd 0.3 +Tol 0.05 -Tol -0.1)
+
+ ----------------------------
+|      Drill Engine Log      |
+|          Finished          |
+|  Mon Jan 08 09:44:50 2018  |
+ ----------------------------

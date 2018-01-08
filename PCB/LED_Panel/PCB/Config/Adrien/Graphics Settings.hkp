@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 01/07/18 17:40:49
+! Created 01/08/18 10:48:39
 !
 
 .Global_Constants 944 2
@@ -4067,7 +4067,7 @@
 	"Global.Option.FullScreenCursor" "1"
 	"Global.Option.FullScreenCursorDuringMoveOnly" "1"
 	"Global.Option.HalfScreenCursor" "0"
-	"Global.Option.IgnoreSelectionFilter" "1"
+	"Global.Option.IgnoreSelectionFilter" "0"
 	"Global.Option.LinkSketchNetlineDisplayToLayerVisibility" "1"
 	"Global.Option.NetNamesOnTraces" "1"
 	"Global.Option.PlaneDataBehindTraces" "0"
@@ -4233,8 +4233,8 @@
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
 	"[VirtualGlobal].iDC.SplitViewHeight.0" "452"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "209"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "469"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "72"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "606"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -4249,8 +4249,8 @@
 
 .view "PCB"
     ..extrema
-	(1530753,-7378502)		! (xmin, ymin)
-	(191399294,87213046)		! (xmax, ymax)
+	(-12977854,-7378502)		! (xmin, ymin)
+	(205907901,87213046)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd

@@ -1,7 +1,7 @@
 .FILETYPE GerberPlotSetupFile
 .VERSION "VB99.0"
-.CREATOR "Expedition PCB Gerber Output"
-.DATE "Tuesday, December 20, 2016 02:00 PM"
+.CREATOR "Xpedition Layout Gerber Output"
+.DATE "Monday, January 08, 2018 09:46 AM"
 
 .BaseUnits "1NM"
 
@@ -18,41 +18,36 @@
 .GerberMachineFormatFile ".\\Config\\GerberMachineFile1.gmf"
 
 .GerberOutputFile "SoldermaskTop.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\SoldermaskTop.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem SoldermaskTop
 
 .GerberOutputFile "SoldermaskBottom.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\SoldermaskBottom.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem SoldermaskBottom
 
 .GerberOutputFile "SolderPasteTop.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\SolderPasteTop.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem SolderpasteTop
 
 .GerberOutputFile "SolderPasteBottom.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\SolderPasteBottom.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem SolderpasteBottom
 
 .GerberOutputFile "SilkScreenTop.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\SilkScreenTop.gdo"
  ..BoardItem AlteredSilkscreenTop
  ..BoardItem BoardOutline
  ..CellType Buried
@@ -80,9 +75,8 @@
  ..CellType TestPoint
 
 .GerberOutputFile "SilkScreenBottom.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\SilkScreenBottom.gdo"
  ..BoardItem AlteredSilkscreenBottom
  ..BoardItem BoardOutline
  ..CellType Buried
@@ -110,9 +104,8 @@
  ..CellType TestPoint
 
 .GerberOutputFile "EtchLayerTop.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\EtchLayerTop.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..ConductiveLayer 1
@@ -152,9 +145,8 @@
  ..CellType TestPoint
 
 .GerberOutputFile "EtchLayerBottom.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\EtchLayerBottom.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..ConductiveLayer 2
@@ -194,9 +186,8 @@
  ..CellType TestPoint
 
 .GerberOutputFile "DrillDrawingThrough.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\DrillDrawingThrough.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem DrillDrawingThru
@@ -229,6 +220,6 @@
  ..CellType Jumper
  ..CellType Mechanical
  ..CellType TestPoint
-.SchemeChanged No 
+.SchemeChanged Yes 
 .Scheme "PlotSetup"
 .SchemeLocation "Local"
