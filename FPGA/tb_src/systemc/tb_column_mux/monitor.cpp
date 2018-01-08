@@ -7,17 +7,27 @@ void Monitor::runTests() {
     sendReset();
 
     // wait some cycles before sending anything
-    wait(200);
+    for (int i = 0; i < 200; ++i) {
+        wait(clk.posedge_event());
+    }
+
+    enable = true;
+    framebufferSync = true;
 
     sc_spawn(sc_bind(&Monitor::checkMuxOutTimings, this));
     sc_spawn(sc_bind(&Monitor::checkMuxOutSequence, this));
 
-    while (true) wait();
+    while (true) wait(clk.posedge_event());
 }
 
 void Monitor::checkMuxOutTimings() {
     auto t = sc_time_stamp();
     while (true) {
+        auto p =
+            sc_spawn(sc_bind(&Monitor::timeoutThread, this, TIME_MUX_CHANGE));
+        sc_event_or_list evt;
+        evt |= muxOut.value_changed_event();
+        evt |= p.terminated_event();
         wait(muxOut.value_changed_event());
         auto t2 = sc_time_stamp();
         sc_time delta = t2 - t;
@@ -36,11 +46,11 @@ void Monitor::checkMuxOutTimings() {
 
 void Monitor::checkMuxOutSequence() {
     auto previousValue = muxOut.read();
-    while(true) {
+    while (true) {
         wait(muxOut.value_changed_event());
         auto newValue = muxOut.read();
         auto delta = (newValue >> 1) - previousValue;
-        if(delta != 0 && newValue != 1) {
+        if (delta != 0 && newValue != 1) {
             auto msg =
                 "column_mux doesn't respect mux sequences, "
                 "it changed from " +
@@ -49,14 +59,16 @@ void Monitor::checkMuxOutSequence() {
             SC_REPORT_FATAL("mux", msg.c_str());
             return;
         }
-        previousValue = newValue;
+        if (newValue != 0) previousValue = newValue;
     }
 }
+
+void Monitor::timeoutThread(sc_time timeout) { wait(timeout); }
 
 void Monitor::sendReset() {
     nrst = 0;
     for (int i = 0; i < 10; ++i) {
-        wait(clk.posedge());
+        wait(clk.posedge_event());
     }
     nrst = 1;
 }

@@ -6,12 +6,16 @@
 const sc_time TIME_MUX_CHANGE = sc_time(10, SC_US);
 
 SC_MODULE(Monitor) {
-    SC_CTOR(Monitor) : nrst("nrst") { SC_CTHREAD(runTests, clk.pos()); }
+    SC_CTOR(Monitor) : nrst("nrst") { SC_THREAD(runTests); }
 
     void runTests();
     void checkMuxOutTimings();
     void checkMuxOutSequence();
+
+    void timeoutThread(sc_time timeout);
     sc_out<bool> nrst;
+    sc_out<bool> framebufferSync;
+    sc_out<bool> enable;
     sc_in<bool> clk;
     sc_in<uint32_t> muxOut;
 

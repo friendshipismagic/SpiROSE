@@ -23,12 +23,16 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> clk33("clk33");
     sc_signal<bool> nrst("nrst");
     sc_signal<uint32_t> muxOut("muxOut");
+    sc_signal<bool> enable("enable");
+    sc_signal<bool> framebufferSync("framebufferSync");
 
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("column_mux");
     sc_trace(traceFile, clk66, "clk_66");
     sc_trace(traceFile, clk33, "clk_33");
     sc_trace(traceFile, muxOut, "mux_out");
+    sc_trace(traceFile, enable, "enable");
+    sc_trace(traceFile, framebufferSync, "framebufferSync");
 
     Vclock_lse clock_lse("clock_lse");
     clock_lse.nrst(nrst);
@@ -39,11 +43,15 @@ int sc_main(int argc, char** argv) {
     dut.clk_33(clk33);
     dut.nrst(nrst);
     dut.mux_out(muxOut);
+    dut.enable(enable);
+    dut.framebuffer_sync(framebufferSync);
 
     Monitor monitor("monitor");
     monitor.clk(clk66);
     monitor.nrst(nrst);
     monitor.muxOut(muxOut);
+    monitor.enable(enable);
+    monitor.framebufferSync(framebufferSync);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
