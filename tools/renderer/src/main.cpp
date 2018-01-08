@@ -183,7 +183,8 @@ int main(int argc, char *argv[]) {
     if (renderOptions.nDrawBuffer != N_BUF_NO_XOR)
         std::cout << "[WARN] GPU only has " << maxDrawBufferCount
                   << " draw buffers. Voxelization will be done in "
-                  << renderOptions.nVoxelPass << " passes." << std::endl;
+                  << renderOptions.nVoxelPass << " passes using "
+                  << renderOptions.nDrawBuffer << " buffers." << std::endl;
 
     // Compute size of display textures
     englobingRectangle(RES_C, dispInterlaceW, dispInterlaceH);
@@ -289,18 +290,19 @@ int main(int argc, char *argv[]) {
                        &matProjection[0][0]);
 
     // Framebuffer to store our voxel thingy
-    GLuint fbo[N_BUF_NO_XOR / 4], texVoxelBufs[N_BUF_NO_XOR];
+    GLuint fbo, texVoxelBufs[N_BUF_NO_XOR];
     GLenum drawBuffers[N_BUF_NO_XOR];
-    for (int i = 0; i < N_BUF_NO_XOR; i++)
+    for (int i = 0; i < renderOptions.nDrawBuffer; i++)
         drawBuffers[i] = GL_COLOR_ATTACHMENT0 + (i % renderOptions.nDrawBuffer);
-    glGenFramebuffers(renderOptions.nVoxelPass, fbo);
+    glGenFramebuffers(1, &fbo);
     // We will still generate all textures as we'll swap them at each pass
-    glGenTextures(N_BUF_NO_XOR, texVoxelBufs);
-    for (int i = 0; i < N_BUF_NO_XOR; i++) {
-        glBindFramebuffer(GL_FRAMEBUFFER, fbo[i / renderOptions.nDrawBuffer]);
+    glGenTextures(renderOptions.nDrawBuffer, texVoxelBufs);
+    glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+    for (int i = 0; i < renderOptions.nDrawBuffer; i++) {
         glActiveTexture(GL_TEXTURE0 + i);
         glBindTexture(GL_TEXTURE_2D, texVoxelBufs[i]);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, RES_W, RES_W, 0, GL_RGBA,
+        glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA,
+                     RES_W * renderOptions.nVoxelPass, RES_W, 0, GL_RGBA,
                      GL_UNSIGNED_BYTE, NULL);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
@@ -311,12 +313,8 @@ int main(int argc, char *argv[]) {
             std::cerr << "[ERR] Incomplete framebuffer "
                       << (i / renderOptions.nDrawBuffer) << std::endl;
     }
-
-    for (int i = 0; i < renderOptions.nVoxelPass; i++) {
-        glBindFramebuffer(GL_FRAMEBUFFER, fbo[i]);
-        glDrawBuffers(renderOptions.nDrawBuffer,
-                      &drawBuffers[i * renderOptions.nDrawBuffer]);
-    }
+    glBindFramebuffer(GL_FRAMEBUFFER, fbo);
+    glDrawBuffers(renderOptions.nDrawBuffer, drawBuffers);
 
     // Small square to texture with the final image
     GLuint vaoSquare, vboSquare;
@@ -379,7 +377,6 @@ int main(int argc, char *argv[]) {
         glfwSetWindowTitle(window, title.c_str());
 
         //// Voxelization
-        glViewport(0, 0, RES_W, RES_W);
         glBindVertexArray(vao);
         glUseProgram(program[renderOptions.useXor].voxel);
         glUniformMatrix4fv(uniforms[renderOptions.useXor].voxel.matP, 1,
@@ -416,8 +413,9 @@ int main(int argc, char *argv[]) {
 
         // Rendering
         glBindVertexArray(vao);
+        glBindFramebuffer(GL_FRAMEBUFFER, fbo);
         for (int i = 0; i < renderOptions.nVoxelPass; i++) {
-            glBindFramebuffer(GL_FRAMEBUFFER, fbo[i]);
+            glViewport(RES_W * i, 0, RES_W, RES_W);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             glUniform1i(uniforms[renderOptions.useXor].voxel.nPass, i);
             glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT,
@@ -436,12 +434,12 @@ int main(int argc, char *argv[]) {
                 saveTGA("output.tga", pixels, RES_W, RES_W, 32);
                 std::cout << "[INFO] Dumped FBO to output.tga" << std::endl;
             } else
-                for (int i = 0; i < N_BUF_NO_XOR; i++) {
+                for (int i = 0; i < renderOptions.nDrawBuffer; i++) {
                     glReadBuffer(GL_COLOR_ATTACHMENT0 + i);
-                    glReadPixels(0, 0, RES_W, RES_W, GL_BGRA, GL_UNSIGNED_BYTE,
-                                 pixels);
+                    glReadPixels(0, 0, RES_W * renderOptions.nVoxelPass, RES_W,
+                                 GL_BGRA, GL_UNSIGNED_BYTE, pixels);
                     saveTGA("output" + std::to_string(i) + ".tga", pixels,
-                            RES_W, RES_W, 32);
+                            RES_W * renderOptions.nVoxelPass, RES_W, 32);
                     std::cout << "[INFO] Dumped FBO layer " << i << " to output"
                               << i << ".tga" << std::endl;
                 }
@@ -505,7 +503,7 @@ int main(int argc, char *argv[]) {
         if (renderOptions.useXor)
             glViewport(0, 0, RES_W, RES_W);
         else
-            glViewport(0, 0, RES_W * 4, RES_W * 4);
+            glViewport(0, 0, RES_W * 3, RES_W * 4);
         glBindVertexArray(vaoSquare);
         glUseProgram(program[renderOptions.useXor].offscreen);
         for (int i = 0; i < N_BUF_NO_XOR; i++)
