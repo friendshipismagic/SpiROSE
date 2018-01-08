@@ -83,7 +83,7 @@ void main() {
     else
         v = c.a;
 
-    if (abs(mod(v * 255.0, 2.0) - 1.0) >= 0.005)
+    if (abs(mod(v * 255.0, 2.0) - 1.0) >= 0.1)
         gl_Position = vec4(1000.0);
     else
         gl_Position = matProjection * matView * gl_Position;
