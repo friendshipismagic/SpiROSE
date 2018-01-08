@@ -28,47 +28,57 @@ uniform sampler2D voxels13;
 uniform sampler2D voxels14;
 uniform sampler2D voxels15;
 
+const float nVoxelPass = float(N_VOXEL_PASS);
+
 void main() {
-    gl_Position = matModel * vec4(in_Pos, 1.0);
+    // The .1 is there cuz' I'm stupid. The points are EXACTLY on the boundaries
+    // of voxels, thus there is a slight rounding error, either above or below.
+    // This sometimes caused the incorrect layer to be sampled, which resulted
+    // in ... very visible visual glitches
+    gl_Position = matModel * vec4(in_Pos + vec3(0.0, 0.0, 0.001), 1.0);
 
     // Map back to [0, 1]
     float resRatio = float(RES_H) / float(RES_W);
     vec3 p = (gl_Position.xyz * vec3(resRatio, resRatio, 1.0)) / 2.0 + 0.5;
 
     vec4 c;
+    float modZ = mod(p.z, 1.0 / nVoxelPass) * float(RES_H / 4);
+    vec2 modST = p.xy / vec2(nVoxelPass, 1.0) +
+                 vec2(floor(p.z * nVoxelPass) / nVoxelPass, 0.0);
+
     // Fetch the texel that concerns us.
-    if (p.z < 1.0 / float(RES_H / 4))
-        c = texture(voxels0, p.xy);
-    else if (p.z < 2.0 / float(RES_H / 4))
-        c = texture(voxels1, p.xy);
-    else if (p.z < 3.0 / float(RES_H / 4))
-        c = texture(voxels2, p.xy);
-    else if (p.z < 4.0 / float(RES_H / 4))
-        c = texture(voxels3, p.xy);
-    else if (p.z < 5.0 / float(RES_H / 4))
-        c = texture(voxels4, p.xy);
-    else if (p.z < 6.0 / float(RES_H / 4))
-        c = texture(voxels5, p.xy);
-    else if (p.z < 7.0 / float(RES_H / 4))
-        c = texture(voxels6, p.xy);
-    else if (p.z < 8.0 / float(RES_H / 4))
-        c = texture(voxels7, p.xy);
-    else if (p.z < 9.0 / float(RES_H / 4))
-        c = texture(voxels8, p.xy);
-    else if (p.z < 10.0 / float(RES_H / 4))
-        c = texture(voxels9, p.xy);
-    else if (p.z < 11.0 / float(RES_H / 4))
-        c = texture(voxels10, p.xy);
-    else if (p.z < 12.0 / float(RES_H / 4))
-        c = texture(voxels11, p.xy);
-    else if (p.z < 13.0 / float(RES_H / 4))
-        c = texture(voxels12, p.xy);
-    else if (p.z < 14.0 / float(RES_H / 4))
-        c = texture(voxels13, p.xy);
-    else if (p.z < 15.0 / float(RES_H / 4))
-        c = texture(voxels14, p.xy);
-    else if (p.z < 16.0 / float(RES_H / 4))
-        c = texture(voxels15, p.xy);
+    if (modZ < 1.0)
+        c = texture(voxels0, modST);
+    else if (modZ < 2.0)
+        c = texture(voxels1, modST);
+    else if (modZ < 3.0)
+        c = texture(voxels2, modST);
+    else if (modZ < 4.0)
+        c = texture(voxels3, modST);
+    else if (modZ < 5.0)
+        c = texture(voxels4, modST);
+    else if (modZ < 6.0)
+        c = texture(voxels5, modST);
+    else if (modZ < 7.0)
+        c = texture(voxels6, modST);
+    else if (modZ < 8.0)
+        c = texture(voxels7, modST);
+    else if (modZ < 9.0)
+        c = texture(voxels8, modST);
+    else if (modZ < 10.0)
+        c = texture(voxels9, modST);
+    else if (modZ < 11.0)
+        c = texture(voxels10, modST);
+    else if (modZ < 12.0)
+        c = texture(voxels11, modST);
+    else if (modZ < 13.0)
+        c = texture(voxels12, modST);
+    else if (modZ < 14.0)
+        c = texture(voxels13, modST);
+    else if (modZ < 15.0)
+        c = texture(voxels14, modST);
+    else if (modZ < 16.0)
+        c = texture(voxels15, modST);
 
 #ifndef HAS_GEOMETRY_SHADER
     color = vec4(p, 1.0);
