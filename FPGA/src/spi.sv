@@ -25,7 +25,7 @@ module spi_slave(
     input  logic mosi,
     output logic miso,
 
-    input logic new_rotation_data_available,
+    input logic [15:0] rotation_data,
 
     output logic [47:0] config_out,
     output logic new_config_available
@@ -46,14 +46,15 @@ logic [3:0] shift_counter;
 // Counter that counts the number of configuration bytes received
 logic [2:0] config_byte_counter;
 
+// Counter that counts the number of rotation bytes transmitted
+logic [1:0] rotation_byte_counter;
+logic transmission;
+
 // 48-bit register that stores the received configuration
 logic [47:0] configuration;
 assign config_out = configuration;
 
-// The MSB of the transmit register is sent when ss is low
 assign miso = ~ss ? transmit_register[7] : '1;
-
-
 
 /*
 * Process for the receiving part:
@@ -100,8 +101,8 @@ end
 
 /*
 * Process for the transmission part of the spi slave
-* Whenever a Hall effect sensor is triggered, it needs to send through miso
-* a special command to the SBC
+* The Hall module sends rotation data to this module, then
+* it needs to send it back through miso to the SBC.
 */
 
 always_ff @(posedge sck or negedge nrst) begin
@@ -109,9 +110,12 @@ always_ff @(posedge sck or negedge nrst) begin
         transmit_register <= DEFAULT_CONFIG_DATA;
     end else begin 
         if (~ss) begin
-            if (shift_counter == 0) begin
-                if (new_rotation_data_available) begin
-                    transmit_register <= ROTATION_COMMAND;
+            if (shift_counter == 7) begin
+                if ({receive_register[6:0], mosi} == ROTATION_COMMAND) begin
+                    transmit_register <= rotation_data[7:0];
+                    transmission <= 1;
+                end else if (transmission) begin
+                    transmit_register <= rotation_data[15:8];
                 end else begin
                     transmit_register <= DEFAULT_CONFIG_DATA;
                 end
