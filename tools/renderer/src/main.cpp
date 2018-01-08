@@ -333,7 +333,7 @@ int main(int argc, char *argv[]) {
     glEnableVertexAttribArray(1);
 
     // Set of points to render the voxels
-    float voxPoints[RES_W * RES_W * RES_H * 3] = {0.f};
+    static float voxPoints[RES_W * RES_W * RES_H * 3] = {0.f};
     for (int i = 0; i < RES_W; i++)
         for (int j = 0; j < RES_W; j++)
             for (int k = 0; k < RES_H; k++) {
