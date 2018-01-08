@@ -1,7 +1,7 @@
 .FILETYPE NC_DRILL_PREFERENCES
 .VERSION "2.0"
 .CREATOR "Mentor Graphics Corporation"
-.DATE "Sunday January 07 22:53:38 2018"
+.DATE "Monday January 08 12:14:01 2018"
 
 .Units mm
 
@@ -58,7 +58,7 @@
     ....valFCF "" "" "" "" ""
    ...HoleFCF "Rnd 0.4 +Tol 0.05 -Tol -0.1"
     ....valFCF "" "" "" "" ""
-   ...HoleFCF "Rnd 3.375 +/-Tol 0.025"
+   ...HoleFCF "Rnd 4 +/-Tol 0.1"
     ....valFCF "" "" "" "" ""
 .SymbolScheme    "Default"
 .SchemeLocation    "Loc"

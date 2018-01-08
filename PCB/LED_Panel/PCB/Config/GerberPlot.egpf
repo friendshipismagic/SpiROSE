@@ -1,7 +1,7 @@
 .FILETYPE GerberPlotSetupFile
 .VERSION "VB99.0"
 .CREATOR "Xpedition Layout Gerber Output"
-.DATE "Monday, January 08, 2018 09:49 AM"
+.DATE "Monday, January 08, 2018 12:14 PM"
 
 .BaseUnits "1NM"
 
@@ -23,7 +23,6 @@
  ..GerberOutputPath "Output\\Gerber\\SoldermaskTop.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
- ..BoardItem BoardOutline
  ..BoardItem SoldermaskTop
  ..CellType Buried
  ..CellType Connector
@@ -55,7 +54,6 @@
  ..GerberOutputPath "Output\\Gerber\\SoldermaskBottom.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
- ..BoardItem BoardOutline
  ..BoardItem SoldermaskBottom
  ..CellType Buried
  ..CellType Connector
@@ -90,9 +88,8 @@
  ..BoardItem SolderpasteTop
 
 .GerberOutputFile "SolderPasteBottom.gdo"
- ..ProcessFile Yes
+ ..ProcessFile No
  ..FlashPads Yes
- ..GerberOutputPath "Output\\Gerber\\SolderPasteBottom.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem SolderpasteBottom
@@ -365,6 +362,35 @@
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem BoardOutline
  ..BoardItem DrillDrawingThru
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType EmbeddedPassive
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
+
+.GerberOutputFile "BoardOutline.gdo"
+ ..ProcessFile Yes
+ ..FlashPads Yes
+ ..GerberOutputPath "Output\\Gerber\\BoardOutline.gdo"
+ ..BoardItem BoardOutline
  ..CellType Buried
  ..CellType Connector
  ..CellType DiscreteAxial
