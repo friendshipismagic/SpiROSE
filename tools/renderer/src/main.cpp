@@ -67,13 +67,14 @@ void englobingRectangle(const int n, int &w, int &h);
 int gcd(int a, int b) { return b == 0 ? a : gcd(b, a % b); }
 
 typedef struct RenderOptions {
-    bool wireframe, pause, pizza, useXor;
+    bool wireframe, pause, pizza, useXor, fps;
     int nDrawBuffer, nVoxelPass;
 } RenderOptions;
 RenderOptions renderOptions = {.wireframe = false,
                                .pause = false,
                                .pizza = false,
                                .useXor = false,
+                               .fps = false,
                                .nDrawBuffer = 0,
                                .nVoxelPass = 0};
 
@@ -114,7 +115,7 @@ int main(int argc, char *argv[]) {
     // Command line options
     int c;
     std::string meshFile = "mesh/suzanne-tight.obj";
-    while ((c = getopt(argc, argv, "wpcxt:m:")) != -1) switch (c) {
+    while ((c = getopt(argc, argv, "wpcxt:m:f")) != -1) switch (c) {
             case 'w':
                 renderOptions.wireframe = true;
                 break;
@@ -132,6 +133,9 @@ int main(int argc, char *argv[]) {
                 break;
             case 'm':
                 meshFile = optarg;
+                break;
+            case 'f':
+                renderOptions.fps = true;
                 break;
 
             case '?':
@@ -358,11 +362,26 @@ int main(int argc, char *argv[]) {
     onMove(window, 0, 0);
     clicking = false;
 
+    // FPS counter data
+    float lastFPSTime = glfwGetTime();
+    int frameCount = 0;
+
     while (!glfwWindowShouldClose(window)) {
         glfwSwapBuffers(window);
         glfwPollEvents();
+        frameCount++;
 
         if (!renderOptions.pause) t = glfwGetTime();
+
+        if (renderOptions.fps) {
+            float curT = glfwGetTime();
+            if (curT - lastFPSTime >= 1.f) {
+                printf("[INFO] FPS = %.1f\n",
+                       float(frameCount) / (curT - lastFPSTime));
+                lastFPSTime = curT;
+                frameCount = 0;
+            }
+        }
 
         std::string title = "ROSE /// [w] wireframe ";
         title += std::to_string(renderOptions.wireframe);
