@@ -1,7 +1,7 @@
 .FILETYPE GerberPlotSetupFile
 .VERSION "VB99.0"
 .CREATOR "Xpedition Layout Gerber Output"
-.DATE "Monday, January 08, 2018 09:46 AM"
+.DATE "Monday, January 08, 2018 11:53 AM"
 
 .BaseUnits "1NM"
 
@@ -186,8 +186,9 @@
  ..CellType TestPoint
 
 .GerberOutputFile "DrillDrawingThrough.gdo"
- ..ProcessFile No
+ ..ProcessFile Yes
  ..FlashPads Yes
+ ..GerberOutputPath "Output\\Gerber\\DrillDrawingThrough.gdo"
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem DrillDrawingThru
