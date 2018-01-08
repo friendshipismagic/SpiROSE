@@ -410,17 +410,20 @@ int main(int argc, char *argv[]) {
             glBlendFunc(GL_ONE, GL_ONE);
         }
         glDisable(GL_DEPTH_TEST);
+        glEnable(GL_SCISSOR_TEST);
 
         // Rendering
         glBindVertexArray(vao);
         glBindFramebuffer(GL_FRAMEBUFFER, fbo);
         for (int i = 0; i < renderOptions.nVoxelPass; i++) {
             glViewport(RES_W * i, 0, RES_W, RES_W);
+            glScissor(RES_W * i, 0, RES_W, RES_W);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             glUniform1i(uniforms[renderOptions.useXor].voxel.nPass, i);
             glDrawElements(GL_TRIANGLES, mesh.indices.size(), GL_UNSIGNED_INT,
                            0);
         }
+        glDisable(GL_SCISSOR_TEST);
 
         // Dump the FBO if required
         if (doDump) {
