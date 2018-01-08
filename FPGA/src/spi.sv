@@ -74,25 +74,26 @@ always_ff @(posedge sck or negedge nrst) begin
         end else begin 
             shift_counter <= 0;
         end
-        if (shift_counter == 8) begin
+        if (shift_counter == 7) begin
             shift_counter <= 0;
-            if (config_byte_counter > 0) begin
-                configuration[(config_byte_counter-1)*8 +: 8] <= receive_register;
-                if (config_byte_counter == 6) begin
-                    // When the whole new configuration is received, reset the
-                    // configbytecounter
-                    config_byte_counter <= 0;
-                    // Signal that a new configuration is available
-                    new_config_available <= 1;
-                end else begin
-                    // A complete byte has been received
-                    config_byte_counter <= config_byte_counter + 1;
-                end
+        end
+        if (config_byte_counter == 0 && shift_counter == 0 
+                && receive_register == CONFIG_COMMAND) begin
+            config_byte_counter <= 1;
+            configuration[7:0] <= receive_register;
+        end
+        if (config_byte_counter > 0 && shift_counter == 0) begin
+            configuration[(config_byte_counter-1)*8 +: 8] <= receive_register;
+            if (config_byte_counter == 6) begin
+                // When the whole new configuration is received, reset the
+                // configbytecounter
+                config_byte_counter <= 0;
+                // Signal that a new configuration is available
+                new_config_available <= 1;
+            end else begin
+                // A complete byte has been received
+                config_byte_counter <= config_byte_counter + 1;
             end
-            else if (config_byte_counter == 0 
-                    && receive_register == CONFIG_COMMAND) begin
-                config_byte_counter <= 1;
-                end
         end
     end
 end
