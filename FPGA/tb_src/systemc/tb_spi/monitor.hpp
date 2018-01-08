@@ -31,9 +31,9 @@ SC_MODULE(Monitor) {
     sc_in<uint64_t> configOut;
     sc_in<bool> newConfigAvailable;
 
-    void generateSck(int count);
+    void sendCommand(char value);
 
-    void checkValue(int count, bool value);
+    int captureValue();
 
     private:
     void sendReset();
