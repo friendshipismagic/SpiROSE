@@ -2,10 +2,10 @@
 ! change it at your own peril
 
 !
-! Created 01/06/18 15:43:12
+! Created 01/08/18 13:30:27
 !
 
-.Global_Constants 200 5
+.Global_Constants 189 5
     ..File_Type Graphics_Scheme
     ..Version Version_7
     ..Num_Views 1
@@ -15,7 +15,7 @@
 	0x00000003	! showCmd
 	(-1, -1)	! ptMinPosition
 	(-1, -1)	! ptMaxPosition
-	(9, 5) (647,443)	! ..rcNormalPosition
+	(498, 321) (1798,961)	! ..rcNormalPosition
     ..Active_Place_Layer_Top             False
     ..Active_Place_Layer_Bottom          True
     ..Active_Place_Layer_Internal        False
@@ -1336,9 +1336,9 @@
 	"LVDS_TX2_P"	! [51]
 	"LVDS_TX3_N"	! [52]
 	"LVDS_TX3_P"	! [53]
-	"MUX_0_B"	! [54]
-	"MUX_4_B"	! [55]
-	"MUX_1_B"	! [56]
+	"FPGA_MUL_0_B"	! [54]
+	"FPGA_MUL_4_B"	! [55]
+	"FPGA_MUL_1_B"	! [56]
 	"RGB_CLK"	! [57]
 	"RGB_D0"	! [58]
 	"RGB_D1"	! [59]
@@ -1385,104 +1385,93 @@
 	"XSIG011282"	! [100]
 	"XSIG020011"	! [101]
 	"XSIG020030"	! [102]
-	"XSIG020076"	! [103]
-	"XSIG040091"	! [104]
-	"XSIG040124"	! [105]
-	"XSIG040125"	! [106]
-	"XSIG040132"	! [107]
-	"XSIG040134"	! [108]
-	"XSIG040136"	! [109]
-	"XSIG040138"	! [110]
-	"CWA_N"	! [111]
-	"CWA_P"	! [112]
-	"CWB_N"	! [113]
-	"CWB_P"	! [114]
-	"CWC_N"	! [115]
-	"CWC_P"	! [116]
-	"CWD_N"	! [117]
-	"CWD_P"	! [118]
-	"ENCODER_A"	! [119]
-	"ENCODER_B"	! [120]
-	"ENCODER_C"	! [121]
-	"ENCODER_D"	! [122]
-	"XSIG040185"	! [123]
-	"XSIG040192"	! [124]
-	"XSIG040194"	! [125]
-	"XSIG040195"	! [126]
-	"DRV_GCLK_A"	! [127]
-	"DRV_GCLK_B"	! [128]
-	"DRV_LAT_A"	! [129]
-	"DRV_LAT_B"	! [130]
-	"DRV_SCLK_A"	! [131]
-	"DRV_SCLK_B"	! [132]
-	"MUX_0_A"	! [133]
-	"MUX_1_A"	! [134]
-	"MUX_2_A"	! [135]
-	"MUX_2_B"	! [136]
-	"MUX_3_A"	! [137]
-	"MUX_3_B"	! [138]
-	"MUX_4_A"	! [139]
-	"MUX_5_A"	! [140]
-	"MUX_5_B"	! [141]
-	"MUX_6_A"	! [142]
-	"MUX_6_B"	! [143]
-	"MUX_7_A"	! [144]
-	"MUX_7_B"	! [145]
-	"XSIG020407"	! [146]
-	"XSIG020408"	! [147]
-	"XSIG020410"	! [148]
-	"XSIG020411"	! [149]
-	"VCC5ENC"	! [150]
-	"XSIG020424"	! [151]
-	"XSIG030173"	! [152]
-	"XSIG030174"	! [153]
-	"XSIG030175"	! [154]
-	"XSIG030176"	! [155]
-	"XSIG030177"	! [156]
-	"XSIG030178"	! [157]
-	"XSIG030179"	! [158]
-	"XSIG030180"	! [159]
-	"XSIG030181"	! [160]
-	"XSIG030182"	! [161]
-	"XSIG030183"	! [162]
-	"XSIG030184"	! [163]
-	"XSIG030186"	! [164]
-	"XSIG030187"	! [165]
-	"XSIG030188"	! [166]
-	"XSIG030190"	! [167]
-	"XSIG030191"	! [168]
-	"XSIG030192"	! [169]
-	"XSIG030193"	! [170]
-	"XSIG030194"	! [171]
-	"XSIG030195"	! [172]
-	"XSIG030196"	! [173]
-	"XSIG030197"	! [174]
-	"XSIG030198"	! [175]
-	"XSIG030199"	! [176]
-	"XSIG030200"	! [177]
-	"XSIG030201"	! [178]
-	"XSIG030202"	! [179]
-	"XSIG030203"	! [180]
-	"XSIG030204"	! [181]
-	"XSIG030205"	! [182]
-	"XSIG030206"	! [183]
-	"XSIG030207"	! [184]
-	"XSIG030208"	! [185]
-	"XSIG030209"	! [186]
-	"XSIG030210"	! [187]
-	"XSIG030211"	! [188]
-	"XSIG030212"	! [189]
-	"XSIG030213"	! [190]
-	"XSIG030214"	! [191]
-	"XSIG030215"	! [192]
-	"XSIG030216"	! [193]
-	"XSIG030217"	! [194]
-	"XSIG030218"	! [195]
-	"XSIG030219"	! [196]
-	"XSIG030220"	! [197]
-	"XSIG030221"	! [198]
-	"XSIG030222"	! [199]
-	"XSIG040204"	! [200]
+	"XSIG040091"	! [103]
+	"XSIG040124"	! [104]
+	"XSIG040125"	! [105]
+	"XSIG040132"	! [106]
+	"XSIG040134"	! [107]
+	"XSIG040136"	! [108]
+	"XSIG040138"	! [109]
+	"CWA_N"	! [110]
+	"CWA_P"	! [111]
+	"CWB_N"	! [112]
+	"CWB_P"	! [113]
+	"CWC_N"	! [114]
+	"CWC_P"	! [115]
+	"CWD_N"	! [116]
+	"CWD_P"	! [117]
+	"ENCODER_A"	! [118]
+	"ENCODER_B"	! [119]
+	"ENCODER_C"	! [120]
+	"ENCODER_D"	! [121]
+	"XSIG040185"	! [122]
+	"XSIG040192"	! [123]
+	"XSIG040194"	! [124]
+	"XSIG040195"	! [125]
+	"FPGA_GCLK_A"	! [126]
+	"FPGA_GCLK_B"	! [127]
+	"FPGA_LAT_A"	! [128]
+	"FPGA_LAT_B"	! [129]
+	"FPGA_SCLK_A"	! [130]
+	"FPGA_SCLK_B"	! [131]
+	"FPGA_MUL_0_A"	! [132]
+	"FPGA_MUL_1_A"	! [133]
+	"FPGA_MUL_2_A"	! [134]
+	"FPGA_MUL_2_B"	! [135]
+	"FPGA_MUL_3_A"	! [136]
+	"FPGA_MUL_3_B"	! [137]
+	"FPGA_MUL_4_A"	! [138]
+	"FPGA_MUL_5_A"	! [139]
+	"FPGA_MUL_5_B"	! [140]
+	"FPGA_MUL_6_A"	! [141]
+	"FPGA_MUL_6_B"	! [142]
+	"FPGA_MUL_7_A"	! [143]
+	"FPGA_MUL_7_B"	! [144]
+	"XSIG020407"	! [145]
+	"XSIG020408"	! [146]
+	"XSIG020410"	! [147]
+	"XSIG020411"	! [148]
+	"VCC5ENC"	! [149]
+	"XSIG020424"	! [150]
+	"XSIG030173"	! [151]
+	"XSIG030174"	! [152]
+	"XSIG030175"	! [153]
+	"XSIG030176"	! [154]
+	"XSIG030177"	! [155]
+	"XSIG030178"	! [156]
+	"XSIG030179"	! [157]
+	"XSIG030180"	! [158]
+	"XSIG030181"	! [159]
+	"XSIG030182"	! [160]
+	"XSIG030183"	! [161]
+	"XSIG030184"	! [162]
+	"XSIG030186"	! [163]
+	"XSIG030187"	! [164]
+	"XSIG030188"	! [165]
+	"XSIG030190"	! [166]
+	"XSIG030191"	! [167]
+	"XSIG030192"	! [168]
+	"XSIG030193"	! [169]
+	"XSIG030194"	! [170]
+	"XSIG030195"	! [171]
+	"XSIG030196"	! [172]
+	"XSIG030197"	! [173]
+	"XSIG030198"	! [174]
+	"XSIG030199"	! [175]
+	"XSIG030200"	! [176]
+	"XSIG030201"	! [177]
+	"XSIG030202"	! [178]
+	"XSIG030203"	! [179]
+	"XSIG030204"	! [180]
+	"XSIG030205"	! [181]
+	"XSIG030206"	! [182]
+	"XSIG030207"	! [183]
+	"XSIG030208"	! [184]
+	"XSIG030209"	! [185]
+	"XSIG040204"	! [186]
+	"FPGA_CONF_DONE"	! [187]
+	"XSIG030223"	! [188]
+	"XSIG030224"	! [189]
     )
     ..Netclass_Names ( 
 	"(Default)"	! [1]
@@ -1597,13 +1586,8 @@
 	0x00ffffff 0x00ffffff	! [181-182] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [183-184] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [185-186] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [187-188] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [189-190] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [191-192] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [193-194] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [195-196] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [197-198] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff 0x00ffffff	! [199-200] RGB(255,255,255)  RGB(255,255,255)
+	        -1         -1	! [187-188] undefined  undefined
+	        -1		! [189] undefined
     )
     ..Net_Ptrnidx ( 
 	0 0 0 0 0 0 0 0 0 0 	! [1 - 10]
@@ -1624,8 +1608,7 @@
 	0 0 0 0 0 0 0 0 0 0 	! [151 - 160]
 	0 0 0 0 0 0 0 0 0 0 	! [161 - 170]
 	0 0 0 0 0 0 0 0 0 0 	! [171 - 180]
-	0 0 0 0 0 0 0 0 0 0 	! [181 - 190]
-	0 0 0 0 0 0 0 0 0 0 	! [191 - 200]
+	0 0 0 0 0 0 0 0 0 ! [181 - 189]
 	)
     ..Net_Alpha ( 
 	100 100 100 100 100 100 100 100 100 100 	! [1 - 10]
@@ -1646,8 +1629,7 @@
 	100 100 100 100 100 100 100 100 100 100 	! [151 - 160]
 	100 100 100 100 100 100 100 100 100 100 	! [161 - 170]
 	100 100 100 100 100 100 100 100 100 100 	! [171 - 180]
-	100 100 100 100 100 100 100 100 100 100 	! [181 - 190]
-	100 100 100 100 100 100 100 100 100 100 	! [191 - 200]
+	100 100 100 100 100 100 100 100 100 ! [181 - 189]
 	)
     ..Net_Nopaque ( 
 	F F F F F F F F F F 	! [1 - 10]
@@ -1668,8 +1650,7 @@
 	F F F F F F F F F F 	! [151 - 160]
 	F F F F F F F F F F 	! [161 - 170]
 	F F F F F F F F F F 	! [171 - 180]
-	F F F F F F F F F F 	! [181 - 190]
-	F F F F F F F F F F 	! [191 - 200]
+	F F F F F F F F F ! [181 - 189]
 	)
     ..Net_Outline ( 
 	T T F T F F F F F F 	! [1 - 10]
@@ -1690,8 +1671,7 @@
 	F F F F F F F F F F 	! [151 - 160]
 	F F F F F F F F F F 	! [161 - 170]
 	F F F F F F F F F F 	! [171 - 180]
-	F F F F F F F F F F 	! [181 - 190]
-	F F F F F F F F F F 	! [191 - 200]
+	F F F F F F T T T ! [181 - 189]
 	)
     ..Netclass_Color ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
@@ -1801,8 +1781,7 @@
 	F F F F F F F F F F 	! [151 - 160]
 	F F F F F F F F F F 	! [161 - 170]
 	F F F F F F F F F F 	! [171 - 180]
-	F F F F F F F F F F 	! [181 - 190]
-	F F F F F F F F F F 	! [191 - 200]
+	F F F F F F F F F ! [181 - 189]
 	)
     ..Netclass_On ( 
 	False ![1]
@@ -2093,7 +2072,7 @@
 	"[VirtualGlobal].iDC.Route Areas.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Sheet Objects.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionState" "1"
-	"[VirtualGlobal].iDC.User Draft Layers.CollapsedSectionState" "1"
+	"[VirtualGlobal].iDC.User Draft Layers.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Valor-NPI.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Vias.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Wirebond Objects.CollapsedSectionState" "0"
@@ -2224,8 +2203,8 @@
 
 .view ""
     ..extrema
-	(92630587,13095074)		! (xmin, ymin)
-	(275984089,94291329)		! (xmax, ymax)
+	(-29846147,36894555)		! (xmin, ymin)
+	(286909447,176785413)		! (xmax, ymax)
     ..WindowPlacement
 	0x00000002	! flags
 	0x00000003	! showCmd
@@ -13875,9 +13854,9 @@
 	"[Net].LVDS_TX2_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].LVDS_TX3_N" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].LVDS_TX3_P" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_0_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_4_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_1_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_0_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_4_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_1_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].RGB_CLK" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].RGB_D0" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].RGB_D1" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -13924,7 +13903,6 @@
 	"[Net].XSIG011282" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG020011" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG020030" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG020076" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG040091" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG040124" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG040125" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -13948,25 +13926,25 @@
 	"[Net].XSIG040192" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG040194" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG040195" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_GCLK_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_GCLK_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_LAT_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_LAT_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SCLK_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].DRV_SCLK_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_0_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_1_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_2_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_2_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_3_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_3_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_4_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_5_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_5_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_6_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_6_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_7_A" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].MUX_7_B" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_GCLK_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_GCLK_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_LAT_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_LAT_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_SCLK_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_SCLK_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_0_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_1_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_2_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_2_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_3_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_3_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_4_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_5_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_5_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_6_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_6_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_7_A" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_MUL_7_B" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG020407" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG020408" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG020410" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -14008,20 +13986,10 @@
 	"[Net].XSIG030207" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG030208" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG030209" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030210" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030211" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030212" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030213" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030214" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030215" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030216" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030217" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030218" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030219" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030220" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030221" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[Net].XSIG030222" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].XSIG040204" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].FPGA_CONF_DONE" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG030223" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
+	"[Net].XSIG030224" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[NetClass].(Default)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[NetClass].MUX" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[NetClass].LVDS" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -14037,7 +14005,7 @@
 	"[ConstraintClass].(All)/ENCODER_DIFF" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
     )
     ..Virtual_String_Options ( 
-	"[Virtual].iDC.SchemeSelectorName" "Sys: SpiROSE - Route"
+	"[Virtual].iDC.SchemeSelectorName" "Loc: SpiROSE - Route"
     )
     ..Named_Options ( 
 	"Internal.Option.FabricationObjects.Propagating" "1"

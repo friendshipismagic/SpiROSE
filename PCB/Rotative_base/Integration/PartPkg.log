@@ -2,21 +2,21 @@
                                     Packager
                                     --------
 
-                        11:44 AM Monday, January 08, 2018
-            Job Name: D:\SpiROSE\PCB\Rotative_base\Rotative_base.prj
+                        01:25 PM Monday, January 08, 2018
+            Job Name: G:\SpiROSE\PCB\Rotative_base\Rotative_base.prj
 
 
      Packager     Version: 020806.00
 
-        Commandline is: ""D:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package.exe"  -jD:\SpiROSE\PCB\Rotative_base\Rotative_base.prj -CleanBuild -NoFill"
+        Commandline is: "C:\mentorgraphics\EEVX.2.2\SDD_HOME\wg\win32\bin\package "-uG:\SpiROSE\PCB\Rotative_base\Default\default.icdb" -k -CleanBuild "-jG:\SpiROSE\PCB\Rotative_base\Rotative_base.prj" "
 
-     The Common Database is at "D:\SpiROSE\PCB\Rotative_base\Default\default.icdb".
+     The Common Database is at "G:\SpiROSE\PCB\Rotative_base\Default\default.icdb".
 
      The Root of this design is "Schematic1".
 
      The Front End Snapshot of this design is "DCDV".
 
-     The PCB Design Path of this design is at "D:\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb".
+     The PCB Design Path of this design is at "G:\SpiROSE\PCB\Rotative_base\PCB\PCB.pcb".
 
      The Central Library is at "F:\Central_Libs\ENST.lmc".
 
@@ -37,8 +37,10 @@
      Properties that have been checked off in the Property Definition Editor
       found at Library Manager/Common Properties will be checked for value
       differences between the PartsDB and the non-null properties on symbols.
-     Those properties checked off (other than Part Number)
-      will not be transferred from the PartsDB to symbols.
+     Those properties checked off will be transferred from the PartsDB to all
+      symbols, both packaged and unpackaged.  However, the property values
+      transferred will be limited to the precision specified in the Notation
+      Settings dialog.
      The following properties were checked off in the Property Definition Editor:
        "Parametric"
        "Value2"
