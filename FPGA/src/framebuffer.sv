@@ -9,15 +9,22 @@ module framebuffer #(
     input clk_33,
     input nrst,
 
-    // Data and sync signal for the driver main controller
-    output reg [29:0] data,
-    output reg        sync,
+    // Data signal for the driver main controller
+    output [29:0] data,
+
+    /*
+     * Sync signal indicating the beginning of the stream. Since we have to
+     * wait for the rgb logic to write enough data in the ram before beginning
+     * the stream, we need this signal to start/stop sending data to the
+     * driver controller.
+     */
+    input stream,
 
     // Ram access
-    output reg [RAM_ADDR_WIDTH-1:0] ram_addr,
-    input      [RAM_DATA_WIDTH-1:0] ram_data,
+    output [RAM_ADDR_WIDTH-1:0] ram_addr,
+    input  [RAM_DATA_WIDTH-1:0] ram_data,
 
-    //Position sync signal
+    // Position sync signal, indicates that the position has changed
     input position_sync
 );
 
@@ -164,8 +171,6 @@ logic [RAM_ADDR_WIDTH-1:0] image_start_addr;
 // Indicates which slice we need to read from the ram
 logic [$clog2(SLICES_IN_RAM)-1:0] slice_cnt;
 
-// Tells the driver that we start a new slice
-assign sync = (blanking_cnt == BLANKING_CYCLES-1) && (mul_idx == 0);
 
 /*
  * Read ram to fill the reading buffer.
@@ -177,19 +182,20 @@ assign sync = (blanking_cnt == BLANKING_CYCLES-1) && (mul_idx == 0);
 assign has_reached_end = write_idx == BUFF_SIZE-1;
 assign image_start_addr = slice_cnt*IMAGE_SIZE + RAM_BASE;
 
-always_ff @(posedge clk_33)
+always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
         ram_addr <= RAM_BASE;
         slice_cnt <= '0;
-    end else begin
-        // The position has changed hence we read a new image
+    end else if(stream) begin
+        // The position has changed hence we read a new slice
         if(position_sync) begin
-            ram_addr <= image_start_addr;
             write_idx <= '0;
             slice_cnt <= slice_cnt + 1'b1;
+            ram_addr <= (32'(slice_cnt)+1'b1)*IMAGE_SIZE + RAM_BASE;
             if(slice_cnt == SLICES_IN_RAM) begin
                 slice_cnt <= '0;
+                ram_addr <= RAM_BASE;
             end
         end else if(~has_reached_end) begin
             ram_addr <= ram_addr + MULTIPLEXING;
@@ -205,6 +211,10 @@ always_ff @(posedge clk_33)
             ram_addr <= image_start_addr + 32'(mul_idx);
             write_idx <= '0;
         end
+    end else begin
+        write_idx <= '0;
+        ram_addr <= RAM_BASE;
+        slice_cnt <= '0;
     end
 
 /*
@@ -223,10 +233,10 @@ assign color_bit_idx = (bit_idx >= 3) ? bit_idx - 3 : 0;
 assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]) - 4'(rgb_idx != 1);
 assign blanking = (blanking_cnt != 0);
 
-always_ff @(posedge clk_33)
+always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         data <= '0;
-    end else begin
+    end else if(stream) begin
         /*
          * Since we only have 16 bit per led, but the poker mode ask for 27
          * bits, we have to pad with 0.
@@ -238,7 +248,8 @@ always_ff @(posedge clk_33)
          * rgb_idx == 1 means we are sending the green color which has 6 bits
          * instead of 5.
          */
-        if(~blanking && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
+        if(stream &&
+            ~blanking && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
             for(int i = 0; i < 30; ++i) begin
                 if(current_buffer) begin
                     data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr][color_addr];
@@ -259,7 +270,7 @@ always_ff @(posedge clk_33)
  * In poker mode we send the MSB of each led first, thus bit_idx is decreased
  * every 16 cycles. When it reaches 0 we change the current column.
  */
-always_ff @(posedge clk_33)
+always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         rgb_idx <= '0;
         mul_idx <= '0;
@@ -267,10 +278,10 @@ always_ff @(posedge clk_33)
         led_idx <= '0;
         blanking_cnt <= BLANKING_CYCLES-1;
         current_buffer <= '0;
-    end else begin
+    end else if(stream) begin
         if(blanking_cnt == 0) begin
             rgb_idx <= rgb_idx + 1'b1;
-            // We have sent the three color, time to go to the next led
+            // We have sent the three colors, time to go to the next led
             if(rgb_idx == 2) begin
                 rgb_idx <= '0;
                 led_idx <= led_idx + 1'b1;
@@ -297,6 +308,13 @@ always_ff @(posedge clk_33)
         end else begin
             blanking_cnt <= blanking_cnt - 1'b1;
         end
+    end else begin
+        rgb_idx <= '0;
+        mul_idx <= '0;
+        bit_idx <= POKER_MODE-1;
+        led_idx <= '0;
+        blanking_cnt <= BLANKING_CYCLES-1;
+        current_buffer <= '0;
     end
 
 endmodule
