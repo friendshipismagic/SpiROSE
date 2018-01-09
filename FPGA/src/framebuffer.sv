@@ -171,6 +171,24 @@ logic [RAM_ADDR_WIDTH-1:0] image_start_addr;
 // Indicates which slice we need to read from the ram
 logic [$clog2(SLICES_IN_RAM)-1:0] slice_cnt;
 
+// State entered by the framebuffer when it has sent the whole slice
+logic wait_for_next_slice;
+
+always_ff @(posedge clk_33 or negedge nrst)
+    if(~nrst) begin
+        wait_for_next_slice <= '0;
+    end else if(stream) begin
+        // The position has changed, stop waiting for the next slice
+        if(position_sync && wait_for_next_slice == 1'b1) begin
+            wait_for_next_slice <= '0;
+        end
+        // We have sent the whole slice, wait for the next
+        if(mul_idx == 3'(MULTIPLEXING-1) && wait_for_next_slice == 0) begin
+            wait_for_next_slice <= 1'b1;
+        end
+    end else begin
+        wait_for_next_slice <= '0;
+    end
 
 /*
  * Read ram to fill the reading buffer.
@@ -185,8 +203,8 @@ assign image_start_addr = slice_cnt*IMAGE_SIZE + RAM_BASE;
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
-        ram_addr <= RAM_BASE;
         slice_cnt <= '0;
+        ram_addr <= RAM_BASE;
     end else if(stream) begin
         // The position has changed hence we read a new slice
         if(position_sync) begin
@@ -197,24 +215,26 @@ always_ff @(posedge clk_33 or negedge nrst)
                 slice_cnt <= '0;
                 ram_addr <= RAM_BASE;
             end
-        end else if(~has_reached_end) begin
-            ram_addr <= ram_addr + MULTIPLEXING;
-            write_idx <= write_idx + 1'b1;
-            if(current_buffer) begin
-                buffer1[write_idx] <= ram_data;
-            end else begin
-                buffer2[write_idx] <= ram_data;
+        end else if(~wait_for_next_slice) begin
+            if(~has_reached_end) begin
+                ram_addr <= ram_addr + MULTIPLEXING;
+                write_idx <= write_idx + 1'b1;
+                if(current_buffer) begin
+                    buffer1[write_idx] <= ram_data;
+                end else begin
+                    buffer2[write_idx] <= ram_data;
+                end
+                // We have sent all data so we fill a new buffer
+            end else if(bit_idx == 0) begin
+                // We will fill the new buffer with the next column
+                ram_addr <= image_start_addr + 32'(mul_idx);
+                write_idx <= '0;
             end
-        // We have sent all data so we fill a new buffer
-        end else if(bit_idx == 0) begin
-            // We will fill the new buffer with the next column
-            ram_addr <= image_start_addr + 32'(mul_idx);
-            write_idx <= '0;
         end
     end else begin
         write_idx <= '0;
-        ram_addr <= RAM_BASE;
         slice_cnt <= '0;
+        ram_addr <= RAM_BASE;
     end
 
 /*
@@ -236,7 +256,7 @@ assign blanking = (blanking_cnt != 0);
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         data <= '0;
-    end else if(stream) begin
+    end else begin
         /*
          * Since we only have 16 bit per led, but the poker mode ask for 27
          * bits, we have to pad with 0.
@@ -278,7 +298,7 @@ always_ff @(posedge clk_33 or negedge nrst)
         led_idx <= '0;
         blanking_cnt <= BLANKING_CYCLES-1;
         current_buffer <= '0;
-    end else if(stream) begin
+    end else if(~wait_for_next_slice) begin
         if(blanking_cnt == 0) begin
             rgb_idx <= rgb_idx + 1'b1;
             // We have sent the three colors, time to go to the next led
