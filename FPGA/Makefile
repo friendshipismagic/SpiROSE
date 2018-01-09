@@ -1,6 +1,12 @@
+SRC_DIR=src
+TOP_LEVEL=top_module.sv
+LINTER=verilator
+LINTER_ARGS=--lint-only -Wall
+
 lint:
 	@echo "Running lint tests"
 	make -C lib -f driver_cmd.mk lint
+	$(LINTER) $(LINTER_ARGS) $(TOP_LEVEL) -y $(SRC_DIR)
 	make -C tb_sc -f tb_driver.mk lint
 	make -C sim gen
 

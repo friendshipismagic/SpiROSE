@@ -188,16 +188,19 @@ static const struct mf_rlefont_char_range_s
 
 const struct mf_rlefont_s mf_rlefont_OpenSans_Bold16 = {
     {
-        "Open Sans Bold 16", "OpenSans_Bold16", 16, /* width */
-        17,                                         /* height */
-        4,                                          /* min x advance */
-        16,                                         /* max x advance */
-        1,                                          /* baseline x */
-        13,                                         /* baseline y */
-        22,                                         /* line height */
-        2,                                          /* flags */
-        63,                                         /* fallback character */
-        &mf_rlefont_character_width, &mf_rlefont_render_character,
+        "Open Sans Bold 16",
+        "OpenSans_Bold16",
+        16, /* width */
+        17, /* height */
+        4,  /* min x advance */
+        16, /* max x advance */
+        1,  /* baseline x */
+        13, /* baseline y */
+        22, /* line height */
+        2,  /* flags */
+        63, /* fallback character */
+        &mf_rlefont_character_width,
+        &mf_rlefont_render_character,
     },
     4, /* version */
     mf_rlefont_OpenSans_Bold16_dictionary_data,

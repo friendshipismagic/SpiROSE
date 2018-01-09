@@ -4,30 +4,21 @@
 import math
 
 specs={"resolution"     : (0.00225, 0.00225), # m
-      "framerate"       : 30  , # Hz
-      "horizontal_staggering":True,
-      "vertical_staggering":False,
+      "framerate"       : 30   , # Hz
       "face_number"     : 2    , # 1 or 2
       "LED_per_face"    : None ,
-      "LED_per_column"  : 48 ,
-      "LED_per_row"     : 40 ,
-      "width"           : 0.187  , # m
-      "height"          : 0.105  , # m
+      "LED_per_column"  : None ,
+      "LED_per_row"     : None ,
+      "width"           : 0.2  , # m
+      "height"          : 0.2  , # m
       "rotation_speed"  : None , # rpm
       "tip_speed"       : None , # m/s
       "bandwidth"       : None , # Mo/s
       "nominal_power"   : None , # Watt
       "bytes_per_LED"   : 2    ,
       "LED_power"       : 0.0465, # Watt
-      "engine_power"    : 0   , # Watt
-      "number_of_voxels":None ,
-      "number_of_driver":None ,
-      "driver_bandwidth":None , # MHz
-      "multiplexing"    :8    ,
-      "driver_bit_per_LED":27 ,
-      "driver_channels":16,
-      "slice_number":256,
-      "fpga_MK9_block":126, # Each MK9 block contains 8192 bits
+      "engine_power"    : 0    , # Watt
+      "number_of_voxels": None ,
       }
 
 LED_per_face_sensibility     = ["LED_per_row", "LED_per_column"]
@@ -43,12 +34,8 @@ bandwidth_sensibility        = ["number_of_voxels", "framerate",\
                                 "bytes_per_LED"]
 power_sensibility            = ["LED_per_face", "LED_power", "engine_power"]
 tip_speed_sensibility        = ["rotation_speed", "width"]
-number_of_voxels_sensibility = ["LED_per_face", "width", "resolution"]
-number_of_driver_sensibility = ["LED_per_face", "multiplexing",\
-                                "driver_channels"]
-driver_bandwidth_sensibility = ["width", "multiplexing",\
-                                "driver_channels", "driver_bit_per_LED",\
-                                "framerate", "resolution"]
+number_of_voxels_sensibility = ["LED_per_row", "LED_per_column",\
+                                "resolution", "face_number"]
 
 # Check if the specs required to compute a specific spec are defined
 def check_sensibility(sensibility_list):
@@ -57,15 +44,12 @@ def check_sensibility(sensibility_list):
 def compute_LED_per_row():
     if not check_sensibility(LED_per_row_sensibility):
         return None
-    specs["LED_per_row"] = math.floor(specs["width"] / specs["resolution"][0]\
-                           / (2 if specs["horizontal_staggering"] else 1))
+    specs["LED_per_row"] = math.floor(specs["width"] / specs["resolution"][0])
 
 def compute_LED_per_column():
     if not check_sensibility(LED_per_column_sensibility):
         return None
-    specs["LED_per_column"] = math.floor(specs["height"]\
-                              / specs["resolution"][1]\
-                              / (2 if specs["vertical_staggering"] else 1))
+    specs["LED_per_column"] = math.floor(specs["height"] / specs["resolution"][1])
 
 def compute_LED_per_face():
     if not check_sensibility(LED_per_face_sensibility):
@@ -75,22 +59,18 @@ def compute_LED_per_face():
 def compute_height():
     if not check_sensibility(height_sensibility):
         return None
-    specs["height"] = specs["LED_per_column"] * specs["resolution"][1]\
-                      * (2 if specs["vertical_staggering"] else 1)
+    specs["height"] = specs["LED_per_column"] * specs["resolution"][1]
 
 def compute_width():
     if not check_sensibility(width_sensibility):
         return None
-    specs["width"] = specs["LED_per_row"] * specs["resolution"][0]\
-                     * (2 if specs["horizontal_staggering"] else 1)
+    specs["width"] = specs["LED_per_row"] * specs["resolution"][0]
 
 def compute_resolution():
     if not check_sensibility(resolution_sensibility):
         return None
-    specs["resolution"] = (specs["width"] / specs["LED_per_row"]\
-                           / (2 if specs["horizontal_staggering"] else 1),\
-                           specs["height"] / specs["LED_per_column"]\
-                           / (2 if specs["vertical_staggering"] else 1))
+    specs["resolution"] = (specs["width"] / specs["LED_per_row"],\
+                           specs["height"] / specs["LED_per_column"])
 
 def compute_framerate():
     if not check_sensibility(framerate_sensibility):
@@ -118,62 +98,22 @@ def compute_tip_speed():
 def compute_number_of_voxels():
     if not check_sensibility(number_of_voxels_sensibility):
         return None
-    refresh_number = math.ceil(math.pi*specs["width"] / specs["resolution"][0])
-    specs["number_of_voxels"] = refresh_number * specs["LED_per_face"]
+    voxel_per_row = 0;
+    ratio = specs["resolution"][0] / specs["resolution"][1]
+    # The n-th LED on a semi-row is at distance n*resolution[0] from the center,
+    # hence it produces 2*pi*n*resolution[0]/resolution[1] voxels
+    for i in range(1, specs["LED_per_row"] // 2 + 1):
+        voxel_per_row += math.ceil(2 * math.pi * i * ratio)
+    specs["number_of_voxels"] = voxel_per_row * specs["LED_per_column"]\
+                                * specs["face_number"]
 
 def compute_bandwidth():
     if not check_sensibility(bandwidth_sensibility):
         return None
     specs["bandwidth"] = math.ceil(specs["number_of_voxels"]\
-                         * specs["face_number"]\
                          * specs["bytes_per_LED"]\
                          * specs["framerate"]\
                          / (1024*1024))
-
-def compute_number_of_driver():
-    if not check_sensibility(number_of_driver_sensibility):
-        return None
-    led_per_driver = specs["multiplexing"] * specs["driver_channels"]
-    specs["number_of_driver"] = specs["face_number"]\
-                                * specs["LED_per_face"] / led_per_driver
-
-def compute_driver_bandwidth():
-    if not check_sensibility(driver_bandwidth_sensibility):
-        return None
-    led_per_driver = specs["multiplexing"] * specs["driver_channels"]
-    refresh_number = math.ceil(math.pi*specs["width"] / specs["resolution"][0])
-    specs["driver_bandwidth"] = led_per_driver * refresh_number\
-                                * specs["framerate"]\
-                                * specs["driver_bit_per_LED"]\
-                                / (1000*1000)
-
-def fpga_requirement():
-    ''' We check the following constraints (see wiki for details):
-        * m < n, m = 2^r
-        * (v2 + dv)t + 2*m - n < v2*t < (v2 + dv)t + m
-        Here v2 and dv are in slice/s, and a slice is nb_led*nb_bit_rgb bit
-    '''
-    dv_max = []
-    v2 = specs["rotation_speed"] / 60 * specs["slice_number"]
-    slice_size = specs["face_number"] * specs["LED_per_face"]\
-                 * specs["bytes_per_LED"]*8
-    n = specs["fpga_MK9_block"] * 8192 // slice_size
-    m = 1
-    while m < n:
-        # dv is the delta v between the reading and the writing
-        dv = 0
-        # t is when we have read a whole semi-turn
-        t = 128 / v2
-        within_requirement = True
-        while within_requirement:
-            dv += 1
-            # check that we don't write before we read
-            within_requirement &= (v2 + dv)*t + 2*m - n < v2*t
-            # check thta we don't read before we write
-            within_requirement &=  v2*t < (v2 + dv)*t + m
-        dv_max.append((int(dv*100/v2), n, m))
-        m *= 2
-    print("FPGA delta v max within requirement:" + str(dv_max))
 
 def fill_spec():
     if specs["LED_per_row"] is None:
@@ -200,10 +140,6 @@ def fill_spec():
         compute_number_of_voxels()
     if specs["bandwidth"] is None:
         compute_bandwidth()
-    if specs["number_of_driver"] is None:
-        compute_number_of_driver()
-    if specs["driver_bandwidth"] is None:
-        compute_driver_bandwidth()
 
 def print_spec():
     for s in specs:
@@ -212,7 +148,6 @@ def print_spec():
 def main():
     fill_spec()
     print_spec()
-    fpga_requirement()
 
 if __name__ == "__main__":
     main()
