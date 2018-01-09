@@ -3,7 +3,8 @@ module framebuffer #(
     parameter RAM_DATA_WIDTH=16,
     parameter RAM_BASE=0,
     parameter POKER_MODE=9,
-    parameter BLANKING_CYCLES=72
+    parameter BLANKING_CYCLES=72,
+    parameter SLICES_IN_RAM=18
 )(
     input clk_33,
     input nrst,
@@ -16,9 +17,8 @@ module framebuffer #(
     output reg [RAM_ADDR_WIDTH-1:0] ram_addr,
     input      [RAM_DATA_WIDTH-1:0] ram_data,
 
-    // Encoder position and sync signal
-    input[7:0] enc_position,
-    input      enc_sync
+    //Position sync signal
+    input position_sync
 );
 
 localparam MULTIPLEXING = 8;
@@ -159,13 +159,13 @@ logic [BUFF_SIZE_LOG-1:0] voxel_addr;
 logic [$clog2(POKER_MODE)-1:0] color_bit_idx;
 // Indicates that we have written a whole slice in the buffer
 logic has_reached_end;
-// Indicates that the buffers need to be swapped
-logic new_image;
 // Start address of the next image to display
 logic [RAM_ADDR_WIDTH-1:0] image_start_addr;
+// Indicates which slice we need to read from the ram
+logic [$clog2(SLICES_IN_RAM)-1:0] slice_cnt;
 
 // Tells the driver that we start a new slice
-assign sync = (blanking_cnt == BLANKING_CYCLES-2) && (mul_idx == 0);
+assign sync = (blanking_cnt == BLANKING_CYCLES-1) && (mul_idx == 0);
 
 /*
  * Read ram to fill the reading buffer.
@@ -175,18 +175,22 @@ assign sync = (blanking_cnt == BLANKING_CYCLES-2) && (mul_idx == 0);
  * which is part of driver j+2.
  */
 assign has_reached_end = write_idx == BUFF_SIZE-1;
-assign image_start_addr = enc_position*IMAGE_SIZE + RAM_BASE;
-assign new_image = enc_sync;
+assign image_start_addr = slice_cnt*IMAGE_SIZE + RAM_BASE;
 
 always_ff @(posedge clk_33)
     if(~nrst) begin
         write_idx <= '0;
         ram_addr <= RAM_BASE;
+        slice_cnt <= '0;
     end else begin
         // The position has changed hence we read a new image
-        if(new_image) begin
+        if(position_sync) begin
             ram_addr <= image_start_addr;
             write_idx <= '0;
+            slice_cnt <= slice_cnt + 1'b1;
+            if(slice_cnt == SLICES_IN_RAM) begin
+                slice_cnt <= '0;
+            end
         end else if(~has_reached_end) begin
             ram_addr <= ram_addr + MULTIPLEXING;
             write_idx <= write_idx + 1'b1;
@@ -198,7 +202,7 @@ always_ff @(posedge clk_33)
         // We have sent all data so we fill a new buffer
         end else if(bit_idx == 0) begin
             // We will fill the new buffer with the next column
-            ram_addr <= image_start_addr + 1;
+            ram_addr <= image_start_addr + 32'(mul_idx);
             write_idx <= '0;
         end
     end
