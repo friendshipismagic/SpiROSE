@@ -3,7 +3,6 @@ module framebuffer #(
     parameter RAM_DATA_WIDTH=16,
     parameter RAM_BASE=0,
     parameter POKER_MODE=9,
-    parameter BLANKING_CYCLES=72,
     parameter SLICES_IN_RAM=18
 )(
     input clk_33,
@@ -18,14 +17,18 @@ module framebuffer #(
      * the stream, we need this signal to start/stop sending data to the
      * driver controller.
      */
-    input stream,
+    input stream_ready,
+    /*
+     * Sync signal indicating that the driver is ready to receive data,
+     * meaning that it has been configured an dis not in a blanking cycle.
+     */
+    input driver_ready,
+    // Position sync signal, indicates that the position has changed
+    input position_sync,
 
     // Ram access
     output [RAM_ADDR_WIDTH-1:0] ram_addr,
-    input  [RAM_DATA_WIDTH-1:0] ram_data,
-
-    // Position sync signal, indicates that the position has changed
-    input position_sync
+    input  [RAM_DATA_WIDTH-1:0] ram_data
 );
 
 localparam MULTIPLEXING = 8;
@@ -156,10 +159,6 @@ logic [$clog2(POKER_MODE)-1:0] bit_idx;
 // The color (red green or blue) we are currently sending
 logic [1:0] rgb_idx;
 
-// We need to do BLANKING_CYCLES cycles of blanking each time we change column
-logic blanking;
-logic [$clog2(BLANKING_CYCLES)-1:0] blanking_cnt;
-
 // The three following logics help to compute the correct voxel and bit address
 logic [$clog2(RAM_DATA_WIDTH)-1:0] color_addr;
 logic [BUFF_SIZE_LOG-1:0] voxel_addr;
@@ -177,17 +176,22 @@ logic wait_for_next_slice;
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         wait_for_next_slice <= '0;
-    end else if(stream) begin
+        slice_cnt <= '0;
+    end else if(stream_ready) begin
         // The position has changed, stop waiting for the next slice
-        if(position_sync && wait_for_next_slice == 1'b1) begin
+        if(wait_for_next_slice && position_sync) begin
             wait_for_next_slice <= '0;
-        end
+            slice_cnt <= slice_cnt + 1'b1;
+            if(slice_cnt == SLICES_IN_RAM) begin
+                slice_cnt <= 0;
+            end
         // We have sent the whole slice, wait for the next
-        if(mul_idx == 3'(MULTIPLEXING-1) && wait_for_next_slice == 0) begin
+        end else if (mul_idx == 3'(MULTIPLEXING-1)) begin
             wait_for_next_slice <= 1'b1;
         end
     end else begin
         wait_for_next_slice <= '0;
+        slice_cnt <= '0;
     end
 
 /*
@@ -203,19 +207,12 @@ assign image_start_addr = slice_cnt*IMAGE_SIZE + RAM_BASE;
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
-        slice_cnt <= '0;
         ram_addr <= RAM_BASE;
-    end else if(stream) begin
-        // The position has changed hence we read a new slice
-        if(position_sync) begin
+    end else if(stream_ready) begin
+        if(wait_for_next_slice) begin
             write_idx <= '0;
-            slice_cnt <= slice_cnt + 1'b1;
-            ram_addr <= (32'(slice_cnt)+1'b1)*IMAGE_SIZE + RAM_BASE;
-            if(slice_cnt == SLICES_IN_RAM) begin
-                slice_cnt <= '0;
-                ram_addr <= RAM_BASE;
-            end
-        end else if(~wait_for_next_slice) begin
+            ram_addr <= image_start_addr;
+        end else begin
             if(~has_reached_end) begin
                 ram_addr <= ram_addr + MULTIPLEXING;
                 write_idx <= write_idx + 1'b1;
@@ -224,7 +221,7 @@ always_ff @(posedge clk_33 or negedge nrst)
                 end else begin
                     buffer2[write_idx] <= ram_data;
                 end
-                // We have sent all data so we fill a new buffer
+            // We have sent all data so we fill a new buffer
             end else if(bit_idx == 0) begin
                 // We will fill the new buffer with the next column
                 ram_addr <= image_start_addr + 32'(mul_idx);
@@ -233,7 +230,6 @@ always_ff @(posedge clk_33 or negedge nrst)
         end
     end else begin
         write_idx <= '0;
-        slice_cnt <= '0;
         ram_addr <= RAM_BASE;
     end
 
@@ -251,7 +247,6 @@ always_ff @(posedge clk_33 or negedge nrst)
 assign voxel_addr = 5*led_idx;
 assign color_bit_idx = (bit_idx >= 3) ? bit_idx - 3 : 0;
 assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]) - 4'(rgb_idx != 1);
-assign blanking = (blanking_cnt != 0);
 
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
@@ -268,8 +263,8 @@ always_ff @(posedge clk_33 or negedge nrst)
          * rgb_idx == 1 means we are sending the green color which has 6 bits
          * instead of 5.
          */
-        if(stream &&
-            ~blanking && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
+        if(stream_ready && driver_ready
+            && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
             for(int i = 0; i < 30; ++i) begin
                 if(current_buffer) begin
                     data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr][color_addr];
@@ -286,6 +281,7 @@ always_ff @(posedge clk_33 or negedge nrst)
  * - mul_idx is the current column
  * - led_idx is the current led
  * - bit_idx is the current bit
+ * - rgb_idx is the current color
  *
  * In poker mode we send the MSB of each led first, thus bit_idx is decreased
  * every 16 cycles. When it reaches 0 we change the current column.
@@ -296,45 +292,39 @@ always_ff @(posedge clk_33 or negedge nrst)
         mul_idx <= '0;
         bit_idx <= POKER_MODE-1;
         led_idx <= '0;
-        blanking_cnt <= BLANKING_CYCLES-1;
         current_buffer <= '0;
-    end else if(~wait_for_next_slice) begin
-        if(blanking_cnt == 0) begin
-            rgb_idx <= rgb_idx + 1'b1;
-            // We have sent the three colors, time to go to the next led
-            if(rgb_idx == 2) begin
-                rgb_idx <= '0;
-                led_idx <= led_idx + 1'b1;
-                // We have sent the right bit for each leds in the column
-                if(led_idx == 4'(LED_PER_DRIVER-1)) begin
-                    led_idx <= '0;
-                    bit_idx <= bit_idx - 1'b1;
-                    // We need to wait one cycle because of driver timing issue
-                    blanking_cnt <= 7'b1;
-                    // We have sent all the bits for each led
-                    if(bit_idx == 0) begin
-                        bit_idx <= POKER_MODE-1;
-                        // Go to next column, swap buffers and do blanking
-                        mul_idx <= mul_idx + 1'b1;
-                        current_buffer <= ~current_buffer;
-                        blanking_cnt <= BLANKING_CYCLES-1;
-                        // We have sent the whole slice
-                        if(mul_idx == 3'(MULTIPLEXING-1)) begin
-                            mul_idx <= '0;
-                        end
-                    end
-                end
-            end
-        end else begin
-            blanking_cnt <= blanking_cnt - 1'b1;
-        end
-    end else begin
-        rgb_idx <= '0;
-        mul_idx <= '0;
-        bit_idx <= POKER_MODE-1;
-        led_idx <= '0;
-        blanking_cnt <= BLANKING_CYCLES-1;
-        current_buffer <= '0;
-    end
+    end else if(stream_ready) begin
+        if(wait_for_next_slice) begin
+             rgb_idx <= '0;
+             mul_idx <= '0;
+             bit_idx <= POKER_MODE-1;
+             led_idx <= '0;
+             current_buffer <= '0;
+         end else if(driver_ready) begin
+             rgb_idx <= rgb_idx + 1'b1;
+             // We have sent the three colors, time to go to the next led
+             if(rgb_idx == 2) begin
+                 rgb_idx <= '0;
+                 led_idx <= led_idx + 1'b1;
+                 // We have sent the right bit for each leds in the column
+                 if(led_idx == 4'(LED_PER_DRIVER-1)) begin
+                     led_idx <= '0;
+                     bit_idx <= bit_idx - 1'b1;
+                     // We need to wait one cycle because of driver timing issue
+                     // We have sent all the bits for each led
+                     if(bit_idx == 0) begin
+                         bit_idx <= POKER_MODE-1;
+                         // Go to next column, swap buffers and do blanking
+                         mul_idx <= mul_idx + 1'b1;
+                         current_buffer <= ~current_buffer;
+                         // We have sent the whole slice
+                         if(mul_idx == 3'(MULTIPLEXING-1)) begin
+                             mul_idx <= '0;
+                         end
+                     end
+                 end
+             end
+         end
+     end
 
 endmodule
