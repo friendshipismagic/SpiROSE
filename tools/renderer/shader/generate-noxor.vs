@@ -27,7 +27,7 @@ void main() {
     // of voxels, thus there is a slight rounding error, either above or below.
     // This sometimes caused the incorrect layer to be sampled, which resulted
     // in ... very visible visual glitches
-    gl_Position = matModel * vec4(in_Pos + vec3(0.0, 0.0, 0.001), 1.0);
+    gl_Position = matModel * vec4(in_Pos + 0.001, 1.0);
 
     // Map back to [0, 1]
     float resRatio = float(RES_H) / float(RES_W);
