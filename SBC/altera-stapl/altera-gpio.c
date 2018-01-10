@@ -43,7 +43,7 @@ enum gpio_pin {
 	GPIO_TDI,
 	GPIO_TMS
 };
-static int gpio_pins[4] = {0,0,0,0};
+static int gpio_pins[4] = {91,191,24,200};
 static int gpio_fds[4] = {0,0,0,0};
 static int gpio_state[4] = {-1,-1,-1,-1};
 static int jtag_hardware_initialized = 0;
