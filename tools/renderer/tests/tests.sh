@@ -28,7 +28,7 @@ function screenshot {
 }
 
 function cropInterlace {
-    convert $1[640x384+640+384] $1
+    convert $1[640x384+640+336] $1
 }
 
 function killApplication {
