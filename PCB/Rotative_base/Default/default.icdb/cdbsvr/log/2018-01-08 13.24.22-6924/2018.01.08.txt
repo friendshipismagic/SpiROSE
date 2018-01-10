@@ -1,0 +1,191 @@
+[2018.01.08 13:24:22] [0000m.00s.061ms] [0] WELCOME
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] Base flow version [VX.2.2]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] Machine [DESKTOP-D6MOGOB]  IP [10.0.2.15,127.0.0.1]  User [alexis]  PID [6924]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] Operating system [Microsoft Business Edition, 64-bit (build 9200)]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] Current working dir [G:\SpiROSE\PCB\Rotative_base]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] PATH [C:\mentorgraphics\EEVX.2.2\SDD_HOME\wg\help;C:\mentorgraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\mentorgraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\mentorgraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\mentorgraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\mentorgraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Users\alexi\AppData\Local\Microsoft\WindowsApps]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] SDD_HOME [C:\mentorgraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] SDD_PLATFORM [win32]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\mentorgraphics\EEVX.2.2\SDD_HOME\standard;]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [1] S: Config file name [ServerWG.cfg]
+[2018.01.08 13:24:22] [0000m.00s.061ms] [2] S: Loading config files
+[2018.01.08 13:24:22] [0000m.00s.077ms] [1] Config file [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2018.01.08 13:24:22] [0000m.00s.077ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2018.01.08 13:24:22] [0000m.00s.077ms] [3] S: Config loaded
+[2018.01.08 13:24:22] [0000m.00s.124ms] [0] S: Project path [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb] on file system [VBoxSharedFolderFS]
+[2018.01.08 13:24:22] [0000m.00s.124ms] [0] S: Project global path [\\vboxsrv\rose\SpiROSE\PCB\Rotative_base\Default\default.icdb] on file system [UNKNOWN]
+[2018.01.08 13:24:22] [0000m.00s.124ms] [1] S: WARNING: No project file (.prj) path specified
+[2018.01.08 13:24:22] [0000m.00s.140ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Multi-user mode (config)
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Event polling mode autodetection
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Started up automatically by iCDB Client: DESKTOP-D6MOGOB:alexis:2804
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Auto close mode
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Database ID [a861-2cf8-b3d4-e0ea-be26-35a0-f263-5a50-846f-509f-9fef-0fc8]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: BEGIN dumping
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: Local -> global path prefix list
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: [E:\] -> [\\vboxsrv\Windows\]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: [F:\] -> [\\vboxsrv\mentor\]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: [G:\] -> [\\vboxsrv\rose\]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: Global -> local path prefix list
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: [\\vboxsrv\Windows\] -> [E:\]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: [\\vboxsrv\mentor\] -> [F:\]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: [\\vboxsrv\rose\] -> [G:\]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] PathTranslator: END dumping
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: START
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Server startup lock file created
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Listening for client connections on port [10001]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Server network ID [DESKTOP-D6MOGOB:10.0.2.15,DESKTOP-D6MOGOB:10001]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Server GUID [4037-3bec-6606-8758-6f26-35ab-f263-5a50-49ee-509f-9fef-0fc8]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Project GUID [a861-2cf8-b3d4-e0ea-be26-35a0-f263-5a50-846f-509f-9fef-0fc8]
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Wrote data to server address file
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] S: Server startup lock file removed
+[2018.01.08 13:24:22] [0000m.00s.140ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2018.01.08 13:24:22] [0000m.00s.187ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2018.01.08 13:24:22] [0000m.00s.187ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\mentorgraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2018.01.08 13:24:22] [0000m.00s.187ms] [0] S: Local disc access time: 32 us
+[2018.01.08 13:24:22] [0000m.00s.187ms] [0] S: File server access time: 293 us
+[2018.01.08 13:24:22] [0000m.00s.187ms] [0] S: Server will not release in-memory storage after read (memory usage overhead) - for better performance
+[2018.01.08 13:24:22] [0000m.00s.187ms] [0] Single file [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] size [326920 (319.3 kB)]
+[2018.01.08 13:24:22] [0000m.00s.187ms] [1] Single file [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] opened in read-write mode
+[2018.01.08 13:24:22] [0000m.00s.187ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 13:24:22] [0000m.00s.187ms] [0] Database GUARD OK: [326920]
+[2018.01.08 13:24:22] [0000m.00s.202ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 13:24:22] [0000m.00s.202ms] [0] Database GUARD OK: [326920]
+[2018.01.08 13:24:22] [0000m.00s.202ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 13:24:22] [0000m.00s.202ms] [0] Database GUARD OK: [326920]
+[2018.01.08 13:24:22] [0000m.00s.202ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 13:24:22] [0000m.00s.202ms] [0] Database GUARD OK: [326920]
+[2018.01.08 13:24:22] [0000m.00s.202ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 13:24:22] [0000m.00s.202ms] [0] Database GUARD OK: [326920]
+[2018.01.08 13:24:22] [0000m.00s.202ms] [0] SingleFile: [dbf6-b139-4628-4a04] SFI version check [1009] [1009]
+[2018.01.08 13:24:22] [0000m.00s.265ms] [0] SingleFile: [dbf6-b139-4628-4a04] Database SFI header has been read in [61ms 935us]
+[2018.01.08 13:24:22] [0000m.00s.265ms] [0] iCDB Server PI: Server & plugin session [5464]
+[2018.01.08 13:24:22] [0000m.00s.265ms] [0] iCDB Server PI: Opening database [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb]
+[2018.01.08 13:24:22] [0000m.00s.265ms] [0] iCDB Server PI: Database [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb] opened
+[2018.01.08 13:24:22] [0000m.00s.280ms] [0] iCDB Database: Checking existence of constraint definitions
+[2018.01.08 13:24:22] [0000m.00s.280ms] [0] iCDB Database: Checking constraint definitions version
+[2018.01.08 13:24:22] [0000m.00s.327ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=55f1-7e2a-a301-bcc1-2f34-1c97-f341-c950-ce00-609f-9fef-0fc8] up to date
+[2018.01.08 13:24:22] [0000m.00s.358ms] [0] iCDB Server PI: Initializing plugins
+[2018.01.08 13:24:22] [0000m.00s.358ms] [0] iCDB Server PI: Plugins initialized
+[2018.01.08 13:24:22] [0000m.00s.358ms] [0] S: iCDB database loaded
+[2018.01.08 13:24:22] [0000m.00s.358ms] [0] S: Starting threads
+[2018.01.08 13:24:22] [0000m.00s.358ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2018.01.08 13:24:22] [0000m.00s.358ms] [0] BT: Listening for broadcast messages on port [10000]
+[2018.01.08 13:24:22] [0000m.00s.358ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2018.01.08 13:24:22] [0000m.00s.358ms] [0] MWT: WindowProc: WM_NCCREATE
+[2018.01.08 13:24:22] [0000m.00s.358ms] [0] IT: Session [5465] for host [DESKTOP-D6MOGOB] user [alexis] with process ID [2804] created
+[2018.01.08 13:24:22] [0000m.00s.358ms] [1] SC[5465]: Registered sub-client [DCDV] with ID [1] for session ID [5465] host [DESKTOP-D6MOGOB] user [alexis] process ID [2804]
+[2018.01.08 13:24:22] [0000m.00s.374ms] [0] IT: iCDB Server Monitor session [1] for host [DESKTOP-D6MOGOB] user [alexis] with process ID [7100] created
+[2018.01.08 13:24:22] [0000m.00s.374ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2018.01.08 13:24:22] [0000m.00s.468ms] [1] CMT: There are [1] clients now: 5465
+[2018.01.08 13:25:02] [0000m.39s.818ms] [0] IT: Session [5466] for host [DESKTOP-D6MOGOB] user [alexis] with process ID [5732] created
+[2018.01.08 13:25:02] [0000m.39s.818ms] [1] SC[5466]: Registered sub-client [ICDBC] with ID [1] for session ID [5466] host [DESKTOP-D6MOGOB] user [alexis] process ID [5732]
+[2018.01.08 13:25:02] [0000m.39s.834ms] [1] CMT: There are [2] clients now: 5465, 5466
+[2018.01.08 13:25:02] [0000m.39s.849ms] [1] SC[5466]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [5466] host [DESKTOP-D6MOGOB] user [alexis] process ID [5732]
+[2018.01.08 13:25:18] [0000m.55s.865ms] [1] SC[5466]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [5466] host [DESKTOP-D6MOGOB] user [alexis] process ID [5732]
+[2018.01.08 13:25:18] [0000m.55s.865ms] [1] SC[5466]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [5466] host [DESKTOP-D6MOGOB] user [alexis] process ID [5732]
+[2018.01.08 13:25:18] [0000m.55s.974ms] [1] CMT: Removed client [5466]
+[2018.01.08 13:25:18] [0000m.55s.974ms] [1] CMT: There are [1] clients now: 5465
+[2018.01.08 13:25:19] [0000m.57s.097ms] [0] IT: Session [5467] for host [DESKTOP-D6MOGOB] user [alexis] with process ID [4680] created
+[2018.01.08 13:25:19] [0000m.57s.097ms] [1] SC[5467]: Registered sub-client [Packager_3999046] with ID [1] for session ID [5467] host [DESKTOP-D6MOGOB] user [alexis] process ID [4680]
+[2018.01.08 13:25:19] [0000m.57s.113ms] [1] CMT: There are [2] clients now: 5465, 5467
+[2018.01.08 13:25:20] [0000m.57s.769ms] [1] SC[5467]: UnRegistered sub-client [Packager_3999046] with ID [1] for session ID [5467] host [DESKTOP-D6MOGOB] user [alexis] process ID [4680]
+[2018.01.08 13:25:20] [0000m.57s.879ms] [1] CMT: Removed client [5467]
+[2018.01.08 13:25:20] [0000m.57s.879ms] [1] CMT: There are [1] clients now: 5465
+[2018.01.08 13:25:55] [0001m.33s.108ms] [0] IT: Session [5468] for host [DESKTOP-D6MOGOB] user [alexis] with process ID [5780] created
+[2018.01.08 13:25:55] [0001m.33s.123ms] [1] SC[5468]: Registered sub-client [ICDBC] with ID [1] for session ID [5468] host [DESKTOP-D6MOGOB] user [alexis] process ID [5780]
+[2018.01.08 13:25:55] [0001m.33s.155ms] [1] CMT: There are [2] clients now: 5465, 5468
+[2018.01.08 13:25:55] [0001m.33s.155ms] [1] SC[5468]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [5468] host [DESKTOP-D6MOGOB] user [alexis] process ID [5780]
+[2018.01.08 13:26:10] [0001m.48s.248ms] [1] SC[5468]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [5468] host [DESKTOP-D6MOGOB] user [alexis] process ID [5780]
+[2018.01.08 13:26:10] [0001m.48s.248ms] [1] SC[5468]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [5468] host [DESKTOP-D6MOGOB] user [alexis] process ID [5780]
+[2018.01.08 13:26:10] [0001m.48s.341ms] [1] CMT: Removed client [5468]
+[2018.01.08 13:26:10] [0001m.48s.341ms] [1] CMT: There are [1] clients now: 5465
+[2018.01.08 13:26:11] [0001m.49s.215ms] [0] IT: Session [5469] for host [DESKTOP-D6MOGOB] user [alexis] with process ID [5256] created
+[2018.01.08 13:26:11] [0001m.49s.215ms] [1] SC[5469]: Registered sub-client [DCDV_TagNets_2995] with ID [1] for session ID [5469] host [DESKTOP-D6MOGOB] user [alexis] process ID [5256]
+[2018.01.08 13:26:11] [0001m.49s.230ms] [1] CMT: There are [2] clients now: 5465, 5469
+[2018.01.08 13:26:11] [0001m.49s.246ms] [1] SC[5469]: UnRegistered sub-client [DCDV_TagNets_2995] with ID [1] for session ID [5469] host [DESKTOP-D6MOGOB] user [alexis] process ID [5256]
+[2018.01.08 13:26:11] [0001m.49s.339ms] [1] CMT: Removed client [5469]
+[2018.01.08 13:26:11] [0001m.49s.339ms] [1] CMT: There are [1] clients now: 5465
+[2018.01.08 13:26:50] [0002m.27s.878ms] [0] DFAMT: File server access time: 1007 us
+[2018.01.08 13:27:52] [0003m.30s.236ms] [0] IT: Session [5470] for host [DESKTOP-D6MOGOB] user [alexis] with process ID [2008] created
+[2018.01.08 13:27:52] [0003m.30s.236ms] [1] SC[5470]: Registered sub-client [ICDB_Tool_26962] with ID [1] for session ID [5470] host [DESKTOP-D6MOGOB] user [alexis] process ID [2008]
+[2018.01.08 13:27:52] [0003m.30s.283ms] [1] CMT: There are [2] clients now: 5465, 5470
+[2018.01.08 13:27:52] [0003m.30s.283ms] [1] SC[5470]: UnRegistered sub-client [ICDB_Tool_26962] with ID [1] for session ID [5470] host [DESKTOP-D6MOGOB] user [alexis] process ID [2008]
+[2018.01.08 13:27:52] [0003m.30s.392ms] [1] CMT: Removed client [5470]
+[2018.01.08 13:27:52] [0003m.30s.392ms] [1] CMT: There are [1] clients now: 5465
+[2018.01.08 13:28:03] [0003m.41s.506ms] [0] IT: Session [5471] for host [DESKTOP-D6MOGOB] user [alexis] with process ID [5508] created
+[2018.01.08 13:28:03] [0003m.41s.506ms] [1] SC[5471]: Registered sub-client [ICDB_Tool_26962] with ID [1] for session ID [5471] host [DESKTOP-D6MOGOB] user [alexis] process ID [5508]
+[2018.01.08 13:28:03] [0003m.41s.553ms] [1] SC[5471]: UnRegistered sub-client [ICDB_Tool_26962] with ID [1] for session ID [5471] host [DESKTOP-D6MOGOB] user [alexis] process ID [5508]
+[2018.01.08 13:28:04] [0003m.41s.600ms] [1] CMT: There are [2] clients now: 5465, 5471
+[2018.01.08 13:28:04] [0003m.41s.600ms] [1] CMT: Removed client [5471]
+[2018.01.08 13:28:04] [0003m.41s.600ms] [1] CMT: There are [1] clients now: 5465
+[2018.01.08 13:29:48] [0005m.25s.756ms] [0] IT: Session [5472] for host [DESKTOP-D6MOGOB] user [alexis] with process ID [6992] created
+[2018.01.08 13:29:48] [0005m.25s.756ms] [1] ProjectBackupManager: Client [ClientData[ClientNetAddress[DESKTOP-D6MOGOB] # ClientUserName[alexis] # ClientProcessID[6992] # SessionID[5472] # Type[0]] # SubClientData[SubClientName[] # SubClientID[0]]] set project file (.prj): local path [G:\SPIROSE\PCB\ROTATIVE_BASE\Rotative_base.prj], global path [\\vboxsrv\rose\SPIROSE\PCB\ROTATIVE_BASE\Rotative_base.prj]
+[2018.01.08 13:29:48] [0005m.25s.788ms] [1] CMT: There are [2] clients now: 5465, 5472
+[2018.01.08 13:29:48] [0005m.25s.834ms] [0] PrjBackupMgr: Migrating iCDB upgrade backups from directory [ROTATIVE_BASE\Default\default.icdb\cdbback] to Project Backup format.
+[2018.01.08 13:29:48] [0005m.25s.834ms] [0] PrjBackupMgr: Migrating iCDB upgrade backup file [2018-01-08 13.24.12-6600].
+[2018.01.08 13:29:48] [0005m.25s.944ms] [1] PrjBackupMgr: Successfully created Project Backup [G:\SPIROSE\PCB\ROTATIVE_BASE\Default\ProjectBackup\backups\2018-01-08 13.24.12 - consDefUpgr.zip] with GUID [2beb-77f6-3cd9-cab4-c346-35a1-4463-5a50-8f8f-509f-9fef-0fc8]
+[2018.01.08 13:29:48] [0005m.25s.944ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[4810-e1b2-ead5-d944-1f42-35a6-f423-5a50-d953-1362-b381-5e98] CreationTime[Monday, January 08, 2018 07:58:31] Type[ConsDefUpgrade] Creator[iCDB Server (2018-01-08 08.59.44-10628)] ApplicationName[iCDB Server (2018-01-08 08.58.31-10272)] UserName[alexis] MachineName[DESKTOP-D6MOGOB] Description[Before constraint definitions upgrade using flow install:\n    Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3\n    Flow Id: EEVX.2.2\n    Install Id: 1589114; 1589126; 1632660\n    iCDB Build Id: 7609807\n    iCDB Version: 3300] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[G:\SPIROSE\PCB\ROTATIVE_BASE\Default\ProjectBackup\backups\2018-01-08 08.58.31 - consDefUpgr.zip] BackupFileSize[2508458] Persistent[FALSE]
+[2018.01.08 13:29:48] [0005m.25s.944ms] [0] PrjBackupMgr: Project Backup file [G:\SPIROSE\PCB\ROTATIVE_BASE\Default\ProjectBackup\backups\2018-01-08 08.58.31 - consDefUpgr.zip] with GUID [4810-e1b2-ead5-d944-1f42-35a6-f423-5a50-d953-1362-b381-5e98] removed
+[2018.01.08 13:29:48] [0005m.25s.944ms] [1] PrjBackupMgr: Migrated iCDB content backup file [G:\SPIROSE\PCB\ROTATIVE_BASE\Default\default.icdb\cdbback\2018-01-08 13.24.12-6600.zip] removed
+[2018.01.08 13:29:48] [0005m.25s.944ms] [0] PrjBackupMgr: Successfully migrated iCDB upgrade backup file [2018-01-08 13.24.12-6600] to Project Backup format [2018-01-08 13.24.12 - consDefUpgr.zip]
+[2018.01.08 13:29:48] [0005m.25s.959ms] [1] SC[5472]: Registered sub-client [Expedition PCB_4267703] with ID [1] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:29:48] [0005m.26s.022ms] [1] SC[5472]: Registered sub-client [EEVM] with ID [2] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:29:48] [0005m.26s.194ms] [1] SC[5472]: UnRegistered sub-client [EEVM] with ID [2] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:29:49] [0005m.27s.037ms] [1] SC[5472]: Registered sub-client [JobPrefsDBPI_4269031] with ID [3] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:29:49] [0005m.27s.068ms] [1] SC[5472]: UnRegistered sub-client [JobPrefsDBPI_4269031] with ID [3] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:29:50] [0005m.28s.427ms] [1] SC[5472]: Registered sub-client [JobPrefsDBPI_4270406] with ID [4] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:29:50] [0005m.28s.427ms] [1] SC[5472]: UnRegistered sub-client [JobPrefsDBPI_4270406] with ID [4] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:29:51] [0005m.29s.176ms] [1] SC[5472]: Registered sub-client [ExpeditionCrossProber] with ID [5] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:29:51] [0005m.29s.176ms] [1] SC[5472]: Registered sub-client [StartServerClient490] with ID [6] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:29:51] [0005m.29s.176ms] [1] SC[5472]: UnRegistered sub-client [StartServerClient490] with ID [6] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 13:36:41] [0012m.18s.627ms] [1] SC[5465]: Registered sub-client [StartServerClient17f8] with ID [2] for session ID [5465] host [DESKTOP-D6MOGOB] user [alexis] process ID [2804]
+[2018.01.08 13:36:41] [0012m.18s.627ms] [1] SC[5465]: UnRegistered sub-client [StartServerClient17f8] with ID [2] for session ID [5465] host [DESKTOP-D6MOGOB] user [alexis] process ID [2804]
+[2018.01.08 14:04:53] [0040m.31s.197ms] [1] PrjBackupMgr: Successfully created Project Backup [G:\SPIROSE\PCB\ROTATIVE_BASE\Default\ProjectBackup\backups\2018-01-08 14.04.52 - auto.zip] with GUID [7069-a0f1-1db0-7ca7-47c6-35a9-7c63-5a50-051e-509f-9fef-0fc8]
+[2018.01.08 14:04:53] [0040m.31s.197ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[20b4-63eb-7bab-f775-3ce2-25a8-ce22-5a50-c05f-509f-9fef-0fc8] CreationTime[Sunday, January 07, 2018 14:29:23] Type[Autosave] Creator[iCDB Server (2018-01-07 15.26.47-1016)] ApplicationName[iCDB Server (2018-01-07 15.26.47-1016)] UserName[alexis] MachineName[DESKTOP-D6MOGOB] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[G:\SPIROSE\PCB\ROTATIVE_BASE\Default\ProjectBackup\backups\2018-01-07 15.29.23 - auto.zip] BackupFileSize[3354056] Persistent[FALSE]
+[2018.01.08 14:04:53] [0040m.31s.197ms] [0] PrjBackupMgr: Project Backup file [G:\SPIROSE\PCB\ROTATIVE_BASE\Default\ProjectBackup\backups\2018-01-07 15.29.23 - auto.zip] with GUID [20b4-63eb-7bab-f775-3ce2-25a8-ce22-5a50-c05f-509f-9fef-0fc8] removed
+[2018.01.08 14:04:53] [0040m.31s.197ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[7069-a0f1-1db0-7ca7-47c6-35a9-7c63-5a50-051e-509f-9fef-0fc8] CreationTime[Monday, January 08, 2018 13:04:52] Type[Autosave] Creator[iCDB Server (2018-01-08 13.24.22-6924)] ApplicationName[iCDB Server (2018-01-08 13.24.22-6924)] UserName[alexis] MachineName[DESKTOP-D6MOGOB] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[G:\SPIROSE\PCB\ROTATIVE_BASE\Default\ProjectBackup\backups\2018-01-08 14.04.52 - auto.zip] BackupFileSize[1492606] Persistent[FALSE]
+[2018.01.08 14:33:36] [0069m.14s.416ms] [1] SC[5472]: UnRegistered sub-client [ExpeditionCrossProber] with ID [5] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 14:33:37] [0069m.15s.274ms] [1] SC[5472]: UnRegistered sub-client [Expedition PCB_4267703] with ID [1] for session ID [5472] host [DESKTOP-D6MOGOB] user [alexis] process ID [6992]
+[2018.01.08 14:33:37] [0069m.15s.289ms] [1] CMT: Removed client [5472]
+[2018.01.08 14:33:37] [0069m.15s.289ms] [1] CMT: There are [1] clients now: 5465
+[2018.01.08 14:33:38] [0069m.16s.149ms] [1] SC[5465]: UnRegistered sub-client [DCDV] with ID [1] for session ID [5465] host [DESKTOP-D6MOGOB] user [alexis] process ID [2804]
+[2018.01.08 14:33:38] [0069m.16s.180ms] [1] CMT: Removed client [5465]
+[2018.01.08 14:33:38] [0069m.16s.180ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2018.01.08 14:33:38] [0069m.16s.258ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2018.01.08 14:33:40] [0069m.17s.663ms] [0] CMT: Starting server auto-close
+[2018.01.08 14:33:40] [0069m.17s.772ms] [0] S: Closing server
+[2018.01.08 14:33:40] [0069m.17s.928ms] [0] iCDB Server PI: Closing plugins
+[2018.01.08 14:33:40] [0069m.17s.928ms] [0] iCDB Server PI: Plugins closed
+[2018.01.08 14:33:40] [0069m.17s.928ms] [0] iCDB Server PI: Unloading database
+[2018.01.08 14:33:40] [0069m.17s.928ms] [0] iCDB Server PI: Saving storage
+[2018.01.08 14:33:40] [0069m.17s.928ms] [0] iCDB Server PI: Closing database
+[2018.01.08 14:33:40] [0069m.17s.928ms] [1] iCDB Server PI: Stats: Database defragmentation: max[2] avg[1] holes[19%] data[94%]
+[2018.01.08 14:33:40] [0069m.17s.928ms] [1] iCDB Server PI: Stats: Database file size [502776 (491.0 kB)]
+[2018.01.08 14:33:40] [0069m.17s.928ms] [1] iCDB Server PI: WARNING: Database needs defragmentation!
+[2018.01.08 14:33:40] [0069m.17s.944ms] [0] iCDB Server PI: Database closed
+[2018.01.08 14:33:40] [0069m.17s.944ms] [0] iCDB Server PI: Defragmenting database
+[2018.01.08 14:33:40] [0069m.17s.944ms] [0] iCDB Server PI: Creating database [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb] backup to file [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbback\2018-01-08 14.33.40-6924-d.zip]
+[2018.01.08 14:33:41] [0069m.18s.879ms] [0] iCDB Server PI: Database backup: DONE
+[2018.01.08 14:33:41] [0069m.18s.895ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 14:33:41] [0069m.18s.895ms] [0] Database GUARD OK: [502776]
+[2018.01.08 14:33:41] [0069m.18s.895ms] [0] SingleFile: [dbf6-b139-4628-4a04] SFI version check [1009] [1009]
+[2018.01.08 14:33:41] [0069m.18s.957ms] [0] SingleFile: [dbf6-b139-4628-4a04] Database SFI header has been read in [59ms 216us]
+[2018.01.08 14:33:41] [0069m.19s.207ms] [1] iCDB Server PI: Stats: Database file sizes: before[502776 (491.0 kB)], after[351168 (342.9 kB)], gain[151608 (148.1 kB)]
+[2018.01.08 14:33:41] [0069m.19s.207ms] [0] Single file [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] closed with size [351168 (342.9 kB)]
+[2018.01.08 14:33:41] [0069m.19s.207ms] [0] iCDB Server PI: Database defragmentation completed successfully
+[2018.01.08 14:33:41] [0069m.19s.207ms] [1] BackupTransaction: Removing database backup [G:\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbback\2018-01-08 14.33.40-6924-d.zip]
+[2018.01.08 14:33:41] [0069m.19s.207ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [823301] ticks
+[2018.01.08 14:33:41] [0069m.19s.207ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [291378] microseconds
+[2018.01.08 14:33:41] [0069m.19s.207ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [2570]
+[2018.01.08 14:33:41] [0069m.19s.207ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [8820] commands per second
+[2018.01.08 14:33:41] [0069m.19s.223ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2018.01.08 14:33:41] [0069m.19s.411ms] [0] MWT: Destroy the shutdown block reason.
+[2018.01.08 14:33:41] [0069m.19s.411ms] [0] MWT: STOP
+[2018.01.08 14:33:41] [0069m.19s.411ms] [0] S: STOP

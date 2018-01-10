@@ -1,0 +1,361 @@
+[2017.12.15 16:38:04] [0000m.00s.046ms] [0] WELCOME
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] Base flow version [VX.2.2]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] Machine [DESKTOP-0AUT0ED]  IP [127.0.0.1,137.194.22.60]  User [Vincent]  PID [4668]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] Operating system [Microsoft Home Premium Edition, 64-bit (build 9200)]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] Current working dir [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\R2013a\runtime\win64;C:\Program Files\MATLAB\R2013a\bin;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;C:\Program Files (x86)\LyX 2.2\Perl\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility;C:\Users\Vincent\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\Vincent\AppData\Local\Programs\Python\Python36\;C:\Users\Vincent\Anaconda3;C:\Users\Vincent\Anaconda3\Scripts;C:\Users\Vincent\Anaconda3\Library\bin;C:\Users\Vincent\AppData\Local\atom\bin;C:\Users\Vincent\AppData\Local\Microsoft\WindowsApps;]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] SDD_PLATFORM [win32]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.15 16:38:04] [0000m.00s.046ms] [2] S: Loading config files
+[2017.12.15 16:38:04] [0000m.00s.062ms] [1] Config file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.15 16:38:04] [0000m.00s.062ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2017.12.15 16:38:04] [0000m.00s.062ms] [3] S: Config loaded
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Project path [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb] on file system [NTFS]
+[2017.12.15 16:38:04] [0000m.00s.078ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.15 16:38:04] [0000m.00s.078ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Multi-user mode (config)
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Event polling mode autodetection
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Started up automatically by iCDB Client: DESKTOP-0AUT0ED:Vincent:10128
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Auto close mode
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Database ID [b204-5b0c-ac1c-f9d4-293c-33a7-93c3-3a50-df53-5423-61cf-8f98]
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] PathTranslator: BEGIN dumping
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] PathTranslator: END dumping
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: START
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Server startup lock file created
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Listening for client connections on port [10000]
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Server network ID [DESKTOP-0AUT0ED:137.194.22.60,DESKTOP-0AUT0ED:10000]
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Server GUID [3db3-ece3-978e-7572-c5ce-33a1-6ce3-3a50-12b4-5423-61cf-8f98]
+[2017.12.15 16:38:04] [0000m.00s.078ms] [0] S: Project GUID [b204-5b0c-ac1c-f9d4-293c-33a7-93c3-3a50-df53-5423-61cf-8f98]
+[2017.12.15 16:38:04] [0000m.00s.156ms] [0] S: Wrote data to server address file
+[2017.12.15 16:38:04] [0000m.00s.156ms] [0] S: Server startup lock file removed
+[2017.12.15 16:38:04] [0000m.00s.156ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.15 16:38:04] [0000m.00s.218ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] S: Local disc access time: 39 us
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] S: File server access time: 43 us
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] Single file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] size [972488 (949.7 kB)]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [1] Single file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] Database GUARD OK: [972488]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] Database GUARD OK: [972488]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] Database GUARD OK: [972488]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] Database GUARD OK: [972488]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] Database GUARD OK: [972488]
+[2017.12.15 16:38:04] [0000m.00s.218ms] [0] SingleFile: [ab93-e2d6-a1af-b3dd] SFI version check [1009] [1009]
+[2017.12.15 16:38:04] [0000m.00s.234ms] [0] SingleFile: [ab93-e2d6-a1af-b3dd] Database SFI header has been read in [12ms 602us]
+[2017.12.15 16:38:04] [0000m.00s.234ms] [0] iCDB Server PI: Server & plugin session [4514]
+[2017.12.15 16:38:04] [0000m.00s.234ms] [0] iCDB Server PI: Opening database [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb]
+[2017.12.15 16:38:04] [0000m.00s.234ms] [0] iCDB Server PI: Database [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb] opened
+[2017.12.15 16:38:05] [0000m.00s.296ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.15 16:38:05] [0000m.00s.296ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.15 16:38:05] [0000m.00s.375ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=6e15-85e3-ce85-616e-53d5-40aa-3d54-0a50-47d4-54d2-e103-9f98] up to date
+[2017.12.15 16:38:05] [0000m.00s.583ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.15 16:38:05] [0000m.00s.583ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.15 16:38:05] [0000m.00s.583ms] [0] S: iCDB database loaded
+[2017.12.15 16:38:05] [0000m.00s.583ms] [0] S: Starting threads
+[2017.12.15 16:38:05] [0000m.00s.583ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.15 16:38:05] [0000m.00s.583ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.15 16:38:05] [0000m.00s.583ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.15 16:38:05] [0000m.00s.583ms] [0] IT: Session [4515] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [10128] created
+[2017.12.15 16:38:05] [0000m.00s.583ms] [1] SC[4515]: Registered sub-client [DCDV] with ID [1] for session ID [4515] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 16:38:05] [0000m.00s.599ms] [0] MWT: WindowProc: WM_NCCREATE
+[2017.12.15 16:38:05] [0000m.00s.693ms] [1] CMT: There are [1] clients now: 4515
+[2017.12.15 16:38:35] [0000m.30s.246ms] [0] DFAMT: File server access time: 148 us
+[2017.12.15 16:38:37] [0000m.32s.474ms] [0] IT: Session [4516] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [10700] created
+[2017.12.15 16:38:37] [0000m.32s.474ms] [1] SC[4516]: Registered sub-client [ICDBC] with ID [1] for session ID [4516] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10700]
+[2017.12.15 16:38:37] [0000m.32s.553ms] [1] CMT: There are [2] clients now: 4515, 4516
+[2017.12.15 16:38:37] [0000m.32s.553ms] [1] SC[4516]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4516] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10700]
+[2017.12.15 16:38:43] [0000m.38s.943ms] [1] SC[4516]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4516] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10700]
+[2017.12.15 16:38:43] [0000m.38s.959ms] [1] SC[4516]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4516] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10700]
+[2017.12.15 16:38:43] [0000m.39s.006ms] [1] CMT: Removed client [4516]
+[2017.12.15 16:38:43] [0000m.39s.006ms] [1] CMT: There are [1] clients now: 4515
+[2017.12.15 16:38:44] [0000m.39s.750ms] [0] IT: Session [4517] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [10784] created
+[2017.12.15 16:38:44] [0000m.39s.750ms] [1] SC[4517]: Registered sub-client [Packager_16425062] with ID [1] for session ID [4517] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10784]
+[2017.12.15 16:38:44] [0000m.39s.765ms] [1] CMT: There are [2] clients now: 4515, 4517
+[2017.12.15 16:38:55] [0000m.50s.755ms] [1] SC[4517]: UnRegistered sub-client [Packager_16425062] with ID [1] for session ID [4517] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10784]
+[2017.12.15 16:38:55] [0000m.50s.787ms] [1] CMT: Removed client [4517]
+[2017.12.15 16:38:55] [0000m.50s.787ms] [1] CMT: There are [1] clients now: 4515
+[2017.12.15 16:39:46] [0001m.41s.299ms] [0] IT: Session [4518] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [5764] created
+[2017.12.15 16:39:46] [0001m.41s.299ms] [1] ProjectBackupManager: Client [ClientData[ClientNetAddress[DESKTOP-0AUT0ED] # ClientUserName[Vincent] # ClientProcessID[5764] # SessionID[4518] # Type[0]] # SubClientData[SubClientName[] # SubClientID[0]]] set project file (.prj): local path [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Test_LED.prj], global path [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Test_LED.prj]
+[2017.12.15 16:39:46] [0001m.41s.377ms] [1] CMT: There are [2] clients now: 4515, 4518
+[2017.12.15 16:39:46] [0001m.41s.444ms] [1] SC[4518]: Registered sub-client [Expedition PCB_16486671] with ID [1] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:39:46] [0001m.41s.709ms] [1] SC[4518]: Registered sub-client [EEVM] with ID [2] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:39:48] [0001m.43s.266ms] [1] SC[4518]: UnRegistered sub-client [EEVM] with ID [2] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:39:49] [0001m.44s.974ms] [1] SC[4518]: Registered sub-client [JobPrefsDBPI_16490406] with ID [3] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:39:49] [0001m.45s.088ms] [1] SC[4518]: UnRegistered sub-client [JobPrefsDBPI_16490406] with ID [3] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:40:03] [0001m.58s.515ms] [1] SC[4518]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:40:03] [0001m.58s.565ms] [1] SC[4518]: Registered sub-client [StartServerClient2118] with ID [5] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:40:03] [0001m.58s.566ms] [1] SC[4518]: UnRegistered sub-client [StartServerClient2118] with ID [5] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:41:28] [0003m.23s.781ms] [1] SC[4518]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:41:28] [0003m.23s.830ms] [1] SC[4518]: Registered sub-client [EEVM_EEVM_1700408] with ID [6] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:41:28] [0003m.23s.833ms] [1] SC[4518]: UnRegistered sub-client [EEVM_EEVM_1700408] with ID [6] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:41:29] [0003m.24s.393ms] [1] SC[4518]: Registered sub-client [JobPrefsDBPI_16589828] with ID [7] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:41:29] [0003m.24s.462ms] [1] SC[4518]: UnRegistered sub-client [JobPrefsDBPI_16589828] with ID [7] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:41:30] [0003m.25s.950ms] [1] SC[4518]: Registered sub-client [JobPrefsDBPI_16591375] with ID [8] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:41:30] [0003m.25s.974ms] [1] SC[4518]: UnRegistered sub-client [JobPrefsDBPI_16591375] with ID [8] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:41:31] [0003m.26s.831ms] [0] IT: Session [4519] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [6068] created
+[2017.12.15 16:41:31] [0003m.26s.832ms] [1] SC[4519]: Registered sub-client [Packager_16592234] with ID [1] for session ID [4519] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6068]
+[2017.12.15 16:41:31] [0003m.26s.917ms] [1] CMT: There are [3] clients now: 4515, 4518, 4519
+[2017.12.15 16:41:41] [0003m.36s.346ms] [1] SC[4519]: UnRegistered sub-client [Packager_16592234] with ID [1] for session ID [4519] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6068]
+[2017.12.15 16:41:41] [0003m.36s.428ms] [1] CMT: Removed client [4519]
+[2017.12.15 16:41:41] [0003m.36s.428ms] [1] CMT: There are [2] clients now: 4515, 4518
+[2017.12.15 16:41:42] [0003m.37s.422ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.15 16:41:42] [0003m.38s.237ms] [0] IT: Session [4520] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [968] created
+[2017.12.15 16:41:42] [0003m.38s.238ms] [1] SC[4520]: Registered sub-client [Expedition_16603640] with ID [1] for session ID [4520] host [DESKTOP-0AUT0ED] user [Vincent] process ID [968]
+[2017.12.15 16:41:43] [0003m.38s.335ms] [1] CMT: There are [3] clients now: 4515, 4518, 4520
+[2017.12.15 16:41:43] [0003m.39s.001ms] [1] SC[4520]: UnRegistered sub-client [Expedition_16603640] with ID [1] for session ID [4520] host [DESKTOP-0AUT0ED] user [Vincent] process ID [968]
+[2017.12.15 16:41:43] [0003m.39s.037ms] [1] CMT: Removed client [4520]
+[2017.12.15 16:41:43] [0003m.39s.037ms] [1] CMT: There are [2] clients now: 4515, 4518
+[2017.12.15 16:41:44] [0003m.39s.841ms] [0] IT: Session [4521] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [968] created
+[2017.12.15 16:41:44] [0003m.39s.841ms] [1] SC[4521]: Registered sub-client [JobPrefsDBPI_16605250] with ID [1] for session ID [4521] host [DESKTOP-0AUT0ED] user [Vincent] process ID [968]
+[2017.12.15 16:41:44] [0003m.39s.921ms] [1] SC[4521]: UnRegistered sub-client [JobPrefsDBPI_16605250] with ID [1] for session ID [4521] host [DESKTOP-0AUT0ED] user [Vincent] process ID [968]
+[2017.12.15 16:41:44] [0003m.39s.940ms] [1] CMT: There are [3] clients now: 4515, 4518, 4521
+[2017.12.15 16:41:44] [0003m.39s.940ms] [1] CMT: Removed client [4521]
+[2017.12.15 16:41:44] [0003m.39s.940ms] [1] CMT: There are [2] clients now: 4515, 4518
+[2017.12.15 16:41:45] [0003m.40s.470ms] [0] IT: Session [4522] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [968] created
+[2017.12.15 16:41:45] [0003m.40s.471ms] [1] SC[4522]: Registered sub-client [JobPrefsDBPI_16605859] with ID [1] for session ID [4522] host [DESKTOP-0AUT0ED] user [Vincent] process ID [968]
+[2017.12.15 16:41:45] [0003m.40s.541ms] [1] CMT: There are [3] clients now: 4515, 4518, 4522
+[2017.12.15 16:41:45] [0003m.40s.542ms] [1] SC[4522]: UnRegistered sub-client [JobPrefsDBPI_16605859] with ID [1] for session ID [4522] host [DESKTOP-0AUT0ED] user [Vincent] process ID [968]
+[2017.12.15 16:41:45] [0003m.40s.642ms] [1] CMT: Removed client [4522]
+[2017.12.15 16:41:45] [0003m.40s.642ms] [1] CMT: There are [2] clients now: 4515, 4518
+[2017.12.15 16:41:48] [0003m.43s.676ms] [0] IT: Session [4523] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [9592] created
+[2017.12.15 16:41:48] [0003m.43s.677ms] [1] SC[4523]: Registered sub-client [JobPrefsDBPI_16609015] with ID [1] for session ID [4523] host [DESKTOP-0AUT0ED] user [Vincent] process ID [9592]
+[2017.12.15 16:41:48] [0003m.43s.747ms] [1] SC[4523]: Registered sub-client [Expedition_16609171] with ID [2] for session ID [4523] host [DESKTOP-0AUT0ED] user [Vincent] process ID [9592]
+[2017.12.15 16:41:48] [0003m.43s.748ms] [1] CMT: There are [3] clients now: 4515, 4518, 4523
+[2017.12.15 16:42:25] [0004m.20s.582ms] [1] SC[4523]: UnRegistered sub-client [JobPrefsDBPI_16609015] with ID [1] for session ID [4523] host [DESKTOP-0AUT0ED] user [Vincent] process ID [9592]
+[2017.12.15 16:42:25] [0004m.21s.227ms] [1] SC[4523]: Registered sub-client [JobPrefsDBPI_16646656] with ID [3] for session ID [4523] host [DESKTOP-0AUT0ED] user [Vincent] process ID [9592]
+[2017.12.15 16:42:25] [0004m.21s.231ms] [1] SC[4523]: UnRegistered sub-client [JobPrefsDBPI_16646656] with ID [3] for session ID [4523] host [DESKTOP-0AUT0ED] user [Vincent] process ID [9592]
+[2017.12.15 16:42:26] [0004m.21s.240ms] [1] SC[4523]: UnRegistered sub-client [Expedition_16609171] with ID [2] for session ID [4523] host [DESKTOP-0AUT0ED] user [Vincent] process ID [9592]
+[2017.12.15 16:42:26] [0004m.21s.291ms] [1] CMT: Removed client [4523]
+[2017.12.15 16:42:26] [0004m.21s.291ms] [1] CMT: There are [2] clients now: 4515, 4518
+[2017.12.15 16:42:26] [0004m.21s.934ms] [1] SC[4518]: Registered sub-client [EEVM_EEVM_422198492] with ID [9] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:26] [0004m.21s.995ms] [1] SC[4518]: UnRegistered sub-client [EEVM_EEVM_422198492] with ID [9] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:26] [0004m.21s.999ms] [1] SC[4518]: Registered sub-client [EEVM_EEVM_422198492] with ID [10] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:26] [0004m.21s.999ms] [1] SC[4518]: UnRegistered sub-client [EEVM_EEVM_422198492] with ID [10] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:26] [0004m.22s.003ms] [1] SC[4518]: Registered sub-client [EEVM_EEVM_422201220] with ID [11] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:26] [0004m.22s.050ms] [1] SC[4518]: UnRegistered sub-client [EEVM_EEVM_422201220] with ID [11] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:28] [0004m.23s.368ms] [1] SC[4518]: UnRegistered sub-client [Expedition PCB_16486671] with ID [1] for session ID [4518] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:28] [0004m.23s.405ms] [1] CMT: Removed client [4518]
+[2017.12.15 16:42:28] [0004m.23s.405ms] [1] CMT: There are [1] clients now: 4515
+[2017.12.15 16:42:29] [0004m.24s.990ms] [0] IT: Session [4524] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [5764] created
+[2017.12.15 16:42:29] [0004m.24s.992ms] [1] SC[4524]: Registered sub-client [Expedition PCB_16650359] with ID [1] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:29] [0004m.25s.009ms] [1] CMT: There are [2] clients now: 4515, 4524
+[2017.12.15 16:42:30] [0004m.25s.453ms] [1] SC[4524]: Registered sub-client [JobPrefsDBPI_16650875] with ID [2] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:30] [0004m.25s.475ms] [1] SC[4524]: UnRegistered sub-client [JobPrefsDBPI_16650875] with ID [2] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:37] [0004m.32s.277ms] [1] SC[4524]: Registered sub-client [JobPrefsDBPI_16657703] with ID [3] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:37] [0004m.32s.282ms] [1] SC[4524]: UnRegistered sub-client [JobPrefsDBPI_16657703] with ID [3] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:47] [0004m.42s.290ms] [1] SC[4524]: Registered sub-client [JobPrefsDBPI_16667703] with ID [4] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:47] [0004m.42s.298ms] [1] SC[4524]: UnRegistered sub-client [JobPrefsDBPI_16667703] with ID [4] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 16:42:47] [0004m.42s.335ms] [1] SC[4524]: Registered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:18:02] [0039m.58s.192ms] [0] IT: Session [4525] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [8536] created
+[2017.12.15 17:18:02] [0039m.58s.192ms] [1] SC[4525]: Registered sub-client [ICDBC] with ID [1] for session ID [4525] host [DESKTOP-0AUT0ED] user [Vincent] process ID [8536]
+[2017.12.15 17:18:02] [0039m.58s.223ms] [1] CMT: There are [3] clients now: 4515, 4524, 4525
+[2017.12.15 17:18:03] [0039m.58s.254ms] [1] SC[4525]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4525] host [DESKTOP-0AUT0ED] user [Vincent] process ID [8536]
+[2017.12.15 17:18:10] [0040m.06s.097ms] [1] SC[4525]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4525] host [DESKTOP-0AUT0ED] user [Vincent] process ID [8536]
+[2017.12.15 17:18:10] [0040m.06s.112ms] [1] SC[4525]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4525] host [DESKTOP-0AUT0ED] user [Vincent] process ID [8536]
+[2017.12.15 17:18:10] [0040m.06s.144ms] [1] CMT: Removed client [4525]
+[2017.12.15 17:18:10] [0040m.06s.144ms] [1] CMT: There are [2] clients now: 4515, 4524
+[2017.12.15 17:18:11] [0040m.06s.963ms] [0] IT: Session [4526] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [1036] created
+[2017.12.15 17:18:11] [0040m.06s.963ms] [1] SC[4526]: Registered sub-client [Packager_18792359] with ID [1] for session ID [4526] host [DESKTOP-0AUT0ED] user [Vincent] process ID [1036]
+[2017.12.15 17:18:11] [0040m.07s.010ms] [1] CMT: There are [3] clients now: 4515, 4524, 4526
+[2017.12.15 17:18:21] [0040m.16s.924ms] [1] SC[4526]: UnRegistered sub-client [Packager_18792359] with ID [1] for session ID [4526] host [DESKTOP-0AUT0ED] user [Vincent] process ID [1036]
+[2017.12.15 17:18:21] [0040m.17s.018ms] [1] CMT: Removed client [4526]
+[2017.12.15 17:18:21] [0040m.17s.018ms] [1] CMT: There are [2] clients now: 4515, 4524
+[2017.12.15 17:25:04] [0046m.59s.682ms] [1] SC[4524]: UnRegistered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:25:04] [0047m.00s.026ms] [1] SC[4524]: Registered sub-client [EEVM_EEVM_1700408] with ID [6] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:25:04] [0047m.00s.026ms] [1] SC[4524]: UnRegistered sub-client [EEVM_EEVM_1700408] with ID [6] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:25:08] [0047m.03s.651ms] [1] SC[4524]: Registered sub-client [JobPrefsDBPI_19209062] with ID [7] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:25:08] [0047m.03s.682ms] [1] SC[4524]: UnRegistered sub-client [JobPrefsDBPI_19209062] with ID [7] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:25:59] [0047m.54s.323ms] [1] SC[4524]: Registered sub-client [JobPrefsDBPI_19259750] with ID [8] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:25:59] [0047m.54s.354ms] [1] SC[4524]: UnRegistered sub-client [JobPrefsDBPI_19259750] with ID [8] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:01] [0047m.56s.557ms] [0] IT: Session [4527] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [10532] created
+[2017.12.15 17:26:01] [0047m.56s.557ms] [1] SC[4527]: Registered sub-client [Packager_19261843] with ID [1] for session ID [4527] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10532]
+[2017.12.15 17:26:01] [0047m.56s.589ms] [1] CMT: There are [3] clients now: 4515, 4524, 4527
+[2017.12.15 17:26:11] [0048m.06s.897ms] [1] SC[4527]: UnRegistered sub-client [Packager_19261843] with ID [1] for session ID [4527] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10532]
+[2017.12.15 17:26:11] [0048m.06s.960ms] [1] CMT: Removed client [4527]
+[2017.12.15 17:26:11] [0048m.06s.960ms] [1] CMT: There are [2] clients now: 4515, 4524
+[2017.12.15 17:26:13] [0048m.08s.363ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.15 17:26:14] [0048m.09s.552ms] [0] IT: Session [4528] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [6180] created
+[2017.12.15 17:26:14] [0048m.09s.552ms] [1] SC[4528]: Registered sub-client [Expedition_19274937] with ID [1] for session ID [4528] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6180]
+[2017.12.15 17:26:14] [0048m.09s.661ms] [1] CMT: There are [3] clients now: 4515, 4524, 4528
+[2017.12.15 17:26:15] [0048m.10s.302ms] [1] SC[4528]: UnRegistered sub-client [Expedition_19274937] with ID [1] for session ID [4528] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6180]
+[2017.12.15 17:26:15] [0048m.10s.317ms] [1] CMT: Removed client [4528]
+[2017.12.15 17:26:15] [0048m.10s.317ms] [1] CMT: There are [2] clients now: 4515, 4524
+[2017.12.15 17:26:15] [0048m.11s.190ms] [0] IT: Session [4529] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [6180] created
+[2017.12.15 17:26:15] [0048m.11s.190ms] [1] SC[4529]: Registered sub-client [JobPrefsDBPI_19276562] with ID [1] for session ID [4529] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6180]
+[2017.12.15 17:26:16] [0048m.11s.268ms] [1] SC[4529]: UnRegistered sub-client [JobPrefsDBPI_19276562] with ID [1] for session ID [4529] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6180]
+[2017.12.15 17:26:16] [0048m.11s.300ms] [1] CMT: There are [3] clients now: 4515, 4524, 4529
+[2017.12.15 17:26:16] [0048m.11s.300ms] [1] CMT: Removed client [4529]
+[2017.12.15 17:26:16] [0048m.11s.300ms] [1] CMT: There are [2] clients now: 4515, 4524
+[2017.12.15 17:26:16] [0048m.12s.073ms] [0] IT: Session [4530] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [6180] created
+[2017.12.15 17:26:16] [0048m.12s.073ms] [1] SC[4530]: Registered sub-client [JobPrefsDBPI_19277343] with ID [1] for session ID [4530] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6180]
+[2017.12.15 17:26:16] [0048m.12s.151ms] [1] SC[4530]: UnRegistered sub-client [JobPrefsDBPI_19277343] with ID [1] for session ID [4530] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6180]
+[2017.12.15 17:26:16] [0048m.12s.167ms] [1] CMT: There are [3] clients now: 4515, 4524, 4530
+[2017.12.15 17:26:16] [0048m.12s.167ms] [1] CMT: Removed client [4530]
+[2017.12.15 17:26:16] [0048m.12s.167ms] [1] CMT: There are [2] clients now: 4515, 4524
+[2017.12.15 17:26:20] [0048m.15s.427ms] [0] IT: Session [4531] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [11716] created
+[2017.12.15 17:26:20] [0048m.15s.427ms] [1] SC[4531]: Registered sub-client [JobPrefsDBPI_19280734] with ID [1] for session ID [4531] host [DESKTOP-0AUT0ED] user [Vincent] process ID [11716]
+[2017.12.15 17:26:20] [0048m.15s.443ms] [1] CMT: There are [3] clients now: 4515, 4524, 4531
+[2017.12.15 17:26:20] [0048m.15s.489ms] [1] SC[4531]: Registered sub-client [Expedition_19280921] with ID [2] for session ID [4531] host [DESKTOP-0AUT0ED] user [Vincent] process ID [11716]
+[2017.12.15 17:26:20] [0048m.16s.005ms] [1] SC[4531]: UnRegistered sub-client [JobPrefsDBPI_19280734] with ID [1] for session ID [4531] host [DESKTOP-0AUT0ED] user [Vincent] process ID [11716]
+[2017.12.15 17:26:22] [0048m.17s.557ms] [1] SC[4531]: UnRegistered sub-client [Expedition_19280921] with ID [2] for session ID [4531] host [DESKTOP-0AUT0ED] user [Vincent] process ID [11716]
+[2017.12.15 17:26:22] [0048m.17s.620ms] [1] CMT: Removed client [4531]
+[2017.12.15 17:26:22] [0048m.17s.620ms] [1] CMT: There are [2] clients now: 4515, 4524
+[2017.12.15 17:26:22] [0048m.18s.144ms] [1] SC[4524]: Registered sub-client [EEVM_EEVM_422182620] with ID [9] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:22] [0048m.18s.206ms] [1] SC[4524]: UnRegistered sub-client [EEVM_EEVM_422182620] with ID [9] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:22] [0048m.18s.206ms] [1] SC[4524]: Registered sub-client [EEVM_EEVM_422182620] with ID [10] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:22] [0048m.18s.206ms] [1] SC[4524]: UnRegistered sub-client [EEVM_EEVM_422182620] with ID [10] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:22] [0048m.18s.206ms] [1] SC[4524]: Registered sub-client [EEVM_EEVM_676510500] with ID [11] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:23] [0048m.18s.253ms] [1] SC[4524]: UnRegistered sub-client [EEVM_EEVM_676510500] with ID [11] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:24] [0048m.20s.143ms] [1] SC[4524]: UnRegistered sub-client [Expedition PCB_16650359] with ID [1] for session ID [4524] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:24] [0048m.20s.221ms] [1] CMT: Removed client [4524]
+[2017.12.15 17:26:24] [0048m.20s.221ms] [1] CMT: There are [1] clients now: 4515
+[2017.12.15 17:26:27] [0048m.23s.221ms] [0] IT: Session [4532] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [5764] created
+[2017.12.15 17:26:27] [0048m.23s.237ms] [1] SC[4532]: Registered sub-client [Expedition PCB_19288484] with ID [1] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:28] [0048m.23s.268ms] [1] CMT: There are [2] clients now: 4515, 4532
+[2017.12.15 17:26:28] [0048m.24s.026ms] [1] SC[4532]: Registered sub-client [JobPrefsDBPI_19289453] with ID [2] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:28] [0048m.24s.041ms] [1] SC[4532]: UnRegistered sub-client [JobPrefsDBPI_19289453] with ID [2] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:49] [0048m.44s.945ms] [1] SC[4532]: Registered sub-client [JobPrefsDBPI_19310359] with ID [3] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:49] [0048m.44s.961ms] [1] SC[4532]: UnRegistered sub-client [JobPrefsDBPI_19310359] with ID [3] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:26:49] [0048m.44s.976ms] [1] SC[4532]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 17:29:20] [0051m.15s.693ms] [1] SC[4515]: Registered sub-client [StartServerClient291c] with ID [2] for session ID [4515] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 17:29:20] [0051m.15s.693ms] [1] SC[4515]: UnRegistered sub-client [StartServerClient291c] with ID [2] for session ID [4515] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 17:30:11] [0052m.07s.142ms] [1] SC[4515]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4515] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 17:30:11] [0052m.07s.173ms] [1] CMT: Removed client [4515]
+[2017.12.15 17:30:11] [0052m.07s.173ms] [1] CMT: There are [1] clients now: 4532
+[2017.12.15 17:30:13] [0052m.09s.183ms] [0] IT: Session [4533] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [10128] created
+[2017.12.15 17:30:13] [0052m.09s.183ms] [1] SC[4533]: Registered sub-client [DCDV] with ID [1] for session ID [4533] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 17:30:13] [0052m.09s.199ms] [1] SC[4533]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4533] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 17:30:14] [0052m.09s.246ms] [1] CMT: There are [2] clients now: 4532, 4533
+[2017.12.15 17:30:14] [0052m.09s.246ms] [1] CMT: Removed client [4533]
+[2017.12.15 17:30:14] [0052m.09s.246ms] [1] CMT: There are [1] clients now: 4532
+[2017.12.15 17:30:14] [0052m.09s.835ms] [0] IT: Session [4534] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [10128] created
+[2017.12.15 17:30:14] [0052m.09s.835ms] [1] SC[4534]: Registered sub-client [DCDV] with ID [1] for session ID [4534] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 17:30:14] [0052m.09s.835ms] [1] SC[4534]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4534] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 17:30:14] [0052m.09s.897ms] [1] CMT: There are [2] clients now: 4532, 4534
+[2017.12.15 17:30:14] [0052m.09s.897ms] [1] CMT: Removed client [4534]
+[2017.12.15 17:30:14] [0052m.09s.897ms] [1] CMT: There are [1] clients now: 4532
+[2017.12.15 17:30:24] [0052m.19s.909ms] [0] IT: Session [4535] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [10128] created
+[2017.12.15 17:30:24] [0052m.19s.909ms] [1] SC[4535]: Registered sub-client [DCDV] with ID [1] for session ID [4535] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 17:30:24] [0052m.20s.018ms] [1] CMT: There are [2] clients now: 4532, 4535
+[2017.12.15 18:33:00] [0114m.55s.925ms] [1] SC[4532]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:00] [0114m.55s.940ms] [1] SC[4532]: Registered sub-client [EEVM_EEVM_1700408] with ID [5] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:00] [0114m.55s.940ms] [1] SC[4532]: UnRegistered sub-client [EEVM_EEVM_1700408] with ID [5] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:02] [0114m.57s.405ms] [1] SC[4532]: Registered sub-client [JobPrefsDBPI_23282843] with ID [6] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:02] [0114m.57s.452ms] [1] SC[4532]: UnRegistered sub-client [JobPrefsDBPI_23282843] with ID [6] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:04] [0115m.00s.081ms] [1] SC[4532]: Registered sub-client [ExpeditionCrossProber] with ID [7] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:17] [0115m.12s.405ms] [1] SC[4532]: UnRegistered sub-client [ExpeditionCrossProber] with ID [7] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:17] [0115m.12s.421ms] [1] SC[4532]: Registered sub-client [EEVM_EEVM_1700408] with ID [8] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:17] [0115m.12s.421ms] [1] SC[4532]: UnRegistered sub-client [EEVM_EEVM_1700408] with ID [8] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:17] [0115m.12s.640ms] [1] SC[4532]: Registered sub-client [JobPrefsDBPI_23298078] with ID [9] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:17] [0115m.12s.671ms] [1] SC[4532]: UnRegistered sub-client [JobPrefsDBPI_23298078] with ID [9] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:18] [0115m.13s.956ms] [1] SC[4532]: Registered sub-client [JobPrefsDBPI_23299390] with ID [10] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:18] [0115m.13s.986ms] [1] SC[4532]: UnRegistered sub-client [JobPrefsDBPI_23299390] with ID [10] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:20] [0115m.15s.530ms] [0] IT: Session [4536] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [7932] created
+[2017.12.15 18:33:20] [0115m.15s.530ms] [1] SC[4536]: Registered sub-client [Packager_23300937] with ID [1] for session ID [4536] host [DESKTOP-0AUT0ED] user [Vincent] process ID [7932]
+[2017.12.15 18:33:20] [0115m.15s.561ms] [1] CMT: There are [3] clients now: 4532, 4535, 4536
+[2017.12.15 18:33:29] [0115m.25s.218ms] [1] SC[4536]: UnRegistered sub-client [Packager_23300937] with ID [1] for session ID [4536] host [DESKTOP-0AUT0ED] user [Vincent] process ID [7932]
+[2017.12.15 18:33:29] [0115m.25s.234ms] [1] CMT: Removed client [4536]
+[2017.12.15 18:33:29] [0115m.25s.234ms] [1] CMT: There are [2] clients now: 4532, 4535
+[2017.12.15 18:33:31] [0115m.26s.702ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.15 18:33:32] [0115m.27s.786ms] [0] IT: Session [4537] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [6060] created
+[2017.12.15 18:33:32] [0115m.27s.786ms] [1] SC[4537]: Registered sub-client [Expedition_23313171] with ID [1] for session ID [4537] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6060]
+[2017.12.15 18:33:32] [0115m.27s.864ms] [1] CMT: There are [3] clients now: 4532, 4535, 4537
+[2017.12.15 18:33:33] [0115m.28s.503ms] [1] SC[4537]: UnRegistered sub-client [Expedition_23313171] with ID [1] for session ID [4537] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6060]
+[2017.12.15 18:33:33] [0115m.28s.612ms] [1] CMT: Removed client [4537]
+[2017.12.15 18:33:33] [0115m.28s.612ms] [1] CMT: There are [2] clients now: 4532, 4535
+[2017.12.15 18:33:33] [0115m.29s.190ms] [0] IT: Session [4538] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [6060] created
+[2017.12.15 18:33:33] [0115m.29s.190ms] [1] SC[4538]: Registered sub-client [JobPrefsDBPI_23314593] with ID [1] for session ID [4538] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6060]
+[2017.12.15 18:33:34] [0115m.29s.268ms] [1] CMT: There are [3] clients now: 4532, 4535, 4538
+[2017.12.15 18:33:34] [0115m.29s.268ms] [1] SC[4538]: UnRegistered sub-client [JobPrefsDBPI_23314593] with ID [1] for session ID [4538] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6060]
+[2017.12.15 18:33:34] [0115m.29s.378ms] [1] CMT: Removed client [4538]
+[2017.12.15 18:33:34] [0115m.29s.378ms] [1] CMT: There are [2] clients now: 4532, 4535
+[2017.12.15 18:33:34] [0115m.30s.222ms] [0] IT: Session [4539] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [6060] created
+[2017.12.15 18:33:34] [0115m.30s.222ms] [1] SC[4539]: Registered sub-client [JobPrefsDBPI_23315218] with ID [1] for session ID [4539] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6060]
+[2017.12.15 18:33:35] [0115m.30s.253ms] [1] CMT: There are [3] clients now: 4532, 4535, 4539
+[2017.12.15 18:33:35] [0115m.30s.331ms] [1] SC[4539]: UnRegistered sub-client [JobPrefsDBPI_23315218] with ID [1] for session ID [4539] host [DESKTOP-0AUT0ED] user [Vincent] process ID [6060]
+[2017.12.15 18:33:35] [0115m.30s.362ms] [1] CMT: Removed client [4539]
+[2017.12.15 18:33:35] [0115m.30s.362ms] [1] CMT: There are [2] clients now: 4532, 4535
+[2017.12.15 18:33:38] [0115m.33s.348ms] [0] IT: Session [4540] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [7232] created
+[2017.12.15 18:33:38] [0115m.33s.348ms] [1] SC[4540]: Registered sub-client [JobPrefsDBPI_23318687] with ID [1] for session ID [4540] host [DESKTOP-0AUT0ED] user [Vincent] process ID [7232]
+[2017.12.15 18:33:38] [0115m.33s.402ms] [1] CMT: There are [3] clients now: 4532, 4535, 4540
+[2017.12.15 18:33:38] [0115m.33s.437ms] [1] SC[4540]: Registered sub-client [Expedition_23318859] with ID [2] for session ID [4540] host [DESKTOP-0AUT0ED] user [Vincent] process ID [7232]
+[2017.12.15 18:33:38] [0115m.33s.888ms] [1] SC[4540]: UnRegistered sub-client [JobPrefsDBPI_23318687] with ID [1] for session ID [4540] host [DESKTOP-0AUT0ED] user [Vincent] process ID [7232]
+[2017.12.15 18:33:39] [0115m.34s.472ms] [1] SC[4540]: UnRegistered sub-client [Expedition_23318859] with ID [2] for session ID [4540] host [DESKTOP-0AUT0ED] user [Vincent] process ID [7232]
+[2017.12.15 18:33:39] [0115m.34s.488ms] [1] CMT: Removed client [4540]
+[2017.12.15 18:33:39] [0115m.34s.488ms] [1] CMT: There are [2] clients now: 4532, 4535
+[2017.12.15 18:33:39] [0115m.34s.988ms] [1] SC[4532]: Registered sub-client [EEVM_EEVM_422198740] with ID [11] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:39] [0115m.35s.035ms] [1] SC[4532]: UnRegistered sub-client [EEVM_EEVM_422198740] with ID [11] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:39] [0115m.35s.050ms] [1] SC[4532]: Registered sub-client [EEVM_EEVM_422198740] with ID [12] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:39] [0115m.35s.050ms] [1] SC[4532]: UnRegistered sub-client [EEVM_EEVM_422198740] with ID [12] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:39] [0115m.35s.050ms] [1] SC[4532]: Registered sub-client [EEVM_EEVM_422195516] with ID [13] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:39] [0115m.35s.097ms] [1] SC[4532]: UnRegistered sub-client [EEVM_EEVM_422195516] with ID [13] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:40] [0115m.36s.155ms] [1] SC[4532]: UnRegistered sub-client [Expedition PCB_19288484] with ID [1] for session ID [4532] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:40] [0115m.36s.233ms] [1] CMT: Removed client [4532]
+[2017.12.15 18:33:40] [0115m.36s.233ms] [1] CMT: There are [1] clients now: 4535
+[2017.12.15 18:33:41] [0115m.37s.114ms] [0] IT: Session [4541] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [5764] created
+[2017.12.15 18:33:41] [0115m.37s.114ms] [1] SC[4541]: Registered sub-client [Expedition PCB_23322515] with ID [1] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:41] [0115m.37s.224ms] [1] CMT: There are [2] clients now: 4535, 4541
+[2017.12.15 18:33:42] [0115m.37s.814ms] [1] SC[4541]: Registered sub-client [JobPrefsDBPI_23323234] with ID [2] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:42] [0115m.37s.830ms] [1] SC[4541]: UnRegistered sub-client [JobPrefsDBPI_23323234] with ID [2] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:59] [0115m.54s.662ms] [1] SC[4541]: Registered sub-client [JobPrefsDBPI_23340093] with ID [3] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:59] [0115m.54s.693ms] [1] SC[4541]: UnRegistered sub-client [JobPrefsDBPI_23340093] with ID [3] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 18:33:59] [0115m.54s.709ms] [1] SC[4541]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 19:25:43] [0167m.38s.787ms] [1] SC[4541]: Registered sub-client [JobPrefsDBPI_26444203] with ID [5] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 19:25:43] [0167m.38s.875ms] [1] SC[4541]: UnRegistered sub-client [JobPrefsDBPI_26444203] with ID [5] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 19:25:44] [0167m.39s.344ms] [1] SC[4541]: Registered sub-client [JobPrefsDBPI_26444765] with ID [6] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 19:25:44] [0167m.39s.360ms] [1] SC[4541]: UnRegistered sub-client [JobPrefsDBPI_26444765] with ID [6] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 19:50:15] [0192m.10s.254ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-15 19.50.11 - auto.zip] with GUID [46c1-3707-e4ae-627d-3691-43a8-6914-3a50-1b74-5423-61cf-8f98]
+[2017.12.15 19:50:15] [0192m.10s.270ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[20ee-d4a8-76af-b0ca-158d-13a6-58d1-3a50-7474-f060-1af8-3773] CreationTime[Thursday, December 14, 2017 01:48:01] Type[Autosave] Creator[iCDB Server (2017-12-14 02.25.38-13068)] ApplicationName[iCDB Server (2017-12-14 02.25.38-13068)] UserName[Alexis] MachineName[ALEXIS-PC] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-14 02.48.01 - auto.zip] BackupFileSize[1481637] Persistent[FALSE]
+[2017.12.15 19:50:15] [0192m.10s.270ms] [0] PrjBackupMgr: Project Backup file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-14 02.48.01 - auto.zip] with GUID [20ee-d4a8-76af-b0ca-158d-13a6-58d1-3a50-7474-f060-1af8-3773] removed
+[2017.12.15 19:50:15] [0192m.10s.332ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[46c1-3707-e4ae-627d-3691-43a8-6914-3a50-1b74-5423-61cf-8f98] CreationTime[Friday, December 15, 2017 18:50:11] Type[Autosave] Creator[iCDB Server (2017-12-15 16.38.04-4668)] ApplicationName[iCDB Server (2017-12-15 16.38.04-4668)] UserName[Vincent] MachineName[DESKTOP-0AUT0ED] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-15 19.50.11 - auto.zip] BackupFileSize[1614394] Persistent[FALSE]
+[2017.12.15 19:56:48] [0198m.44s.019ms] [1] SC[4541]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 19:56:50] [0198m.45s.770ms] [1] SC[4541]: UnRegistered sub-client [Expedition PCB_23322515] with ID [1] for session ID [4541] host [DESKTOP-0AUT0ED] user [Vincent] process ID [5764]
+[2017.12.15 19:56:50] [0198m.45s.786ms] [1] CMT: Removed client [4541]
+[2017.12.15 19:56:50] [0198m.45s.786ms] [1] CMT: There are [1] clients now: 4535
+[2017.12.15 19:57:05] [0199m.00s.954ms] [1] SC[4535]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4535] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10128]
+[2017.12.15 19:57:05] [0199m.01s.059ms] [1] CMT: Removed client [4535]
+[2017.12.15 19:57:05] [0199m.01s.059ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.15 19:57:07] [0199m.02s.264ms] [0] CMT: Starting server auto-close
+[2017.12.15 19:57:07] [0199m.02s.313ms] [0] S: Closing server
+[2017.12.15 19:57:07] [0199m.02s.412ms] [0] iCDB Server PI: Closing plugins
+[2017.12.15 19:57:07] [0199m.02s.413ms] [0] iCDB Server PI: Plugins closed
+[2017.12.15 19:57:07] [0199m.02s.502ms] [0] iCDB Server PI: Unloading database
+[2017.12.15 19:57:07] [0199m.02s.502ms] [0] iCDB Server PI: Saving storage
+[2017.12.15 19:57:07] [0199m.02s.502ms] [0] iCDB Server PI: Closing database
+[2017.12.15 19:57:07] [0199m.02s.781ms] [1] iCDB Server PI: Stats: Database defragmentation: max[2] avg[1] holes[55%] data[97%]
+[2017.12.15 19:57:07] [0199m.02s.781ms] [1] iCDB Server PI: Stats: Database file size [1593944 (1.5 MB)]
+[2017.12.15 19:57:07] [0199m.02s.831ms] [1] iCDB Server PI: WARNING: Database needs defragmentation!
+[2017.12.15 19:57:07] [0199m.02s.864ms] [0] iCDB Server PI: Database closed
+[2017.12.15 19:57:07] [0199m.02s.864ms] [0] iCDB Server PI: Defragmenting database
+[2017.12.15 19:57:07] [0199m.02s.864ms] [0] iCDB Server PI: Creating database [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb] backup to file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-15 19.57.07-4668-d.zip]
+[2017.12.15 19:57:07] [0199m.03s.098ms] [0] iCDB Server PI: Database backup: DONE
+[2017.12.15 19:57:08] [0199m.03s.266ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.15 19:57:08] [0199m.03s.266ms] [0] Database GUARD OK: [1593944]
+[2017.12.15 19:57:08] [0199m.03s.266ms] [0] SingleFile: [ab93-e2d6-a1af-b3dd] SFI version check [1009] [1009]
+[2017.12.15 19:57:08] [0199m.03s.266ms] [0] SingleFile: [ab93-e2d6-a1af-b3dd] Database SFI header has been read in [10ms 759us]
+[2017.12.15 19:57:08] [0199m.03s.760ms] [1] iCDB Server PI: Stats: Database file sizes: before[1593944 (1.5 MB)], after[632064 (617.3 kB)], gain[961880 (939.3 kB)]
+[2017.12.15 19:57:08] [0199m.03s.791ms] [0] Single file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] closed with size [632064 (617.3 kB)]
+[2017.12.15 19:57:08] [0199m.03s.791ms] [0] iCDB Server PI: Database defragmentation completed successfully
+[2017.12.15 19:57:08] [0199m.03s.791ms] [1] BackupTransaction: Removing database backup [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-15 19.57.07-4668-d.zip]
+[2017.12.15 19:57:08] [0199m.03s.791ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [4908973] ticks
+[2017.12.15 19:57:08] [0199m.03s.791ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [2288211] microseconds
+[2017.12.15 19:57:08] [0199m.03s.791ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [1254]
+[2017.12.15 19:57:08] [0199m.03s.791ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [548] commands per second
+[2017.12.15 19:57:08] [0199m.03s.997ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.15 19:57:08] [0199m.03s.997ms] [0] MWT: STOP
+[2017.12.15 19:57:08] [0199m.03s.997ms] [0] S: STOP

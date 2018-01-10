@@ -1,0 +1,173 @@
+[2017.12.22 16:00:18] [0000m.00s.054ms] [0] WELCOME
+[2017.12.22 16:00:18] [0000m.00s.054ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.22 16:00:18] [0000m.00s.054ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.22 16:00:18] [0000m.00s.055ms] [1] Base flow version [VX.2.2]
+[2017.12.22 16:00:18] [0000m.00s.055ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.22 16:00:18] [0000m.00s.055ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.22 16:00:18] [0000m.00s.055ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.22 16:00:18] [0000m.00s.061ms] [1] Machine [DESKTOP-Q0OU6Q6]  IP [10.0.75.1,127.0.0.1,172.24.149.193,192.168.0.103]  User [janni]  PID [11328]
+[2017.12.22 16:00:18] [0000m.00s.061ms] [1] Operating system [Microsoft Business Edition, 64-bit (build 9200)]
+[2017.12.22 16:00:18] [0000m.00s.061ms] [1] Current working dir [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base]
+[2017.12.22 16:00:18] [0000m.00s.061ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Calibre2\;C:\Program Files\nodejs\;C:\Users\janni\.cargo\bin;C:\Users\janni\AppData\Local\Microsoft\WindowsApps;C:\Users\janni\AppData\Local\atom\bin;C:\Users\janni\AppData\Roaming\npm;C:\Users\janni\AppData\Local\GitHubDesktop\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps]
+[2017.12.22 16:00:18] [0000m.00s.061ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.22 16:00:18] [0000m.00s.061ms] [1] SDD_PLATFORM [win32]
+[2017.12.22 16:00:18] [0000m.00s.061ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.22 16:00:18] [0000m.00s.061ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.22 16:00:18] [0000m.00s.062ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.22 16:00:18] [0000m.00s.062ms] [2] S: Loading config files
+[2017.12.22 16:00:19] [0000m.00s.078ms] [1] Config file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.22 16:00:19] [0000m.00s.078ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2017.12.22 16:00:19] [0000m.00s.080ms] [3] S: Config loaded
+[2017.12.22 16:00:19] [0000m.00s.105ms] [0] S: Project path [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb] on file system [NTFS]
+[2017.12.22 16:00:19] [0000m.00s.105ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.22 16:00:19] [0000m.00s.105ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.22 16:00:19] [0000m.00s.105ms] [0] S: Multi-user mode (config)
+[2017.12.22 16:00:19] [0000m.00s.105ms] [0] S: Event polling mode autodetection
+[2017.12.22 16:00:19] [0000m.00s.106ms] [0] S: Started up automatically by iCDB Client: DESKTOP-Q0OU6Q6:janni:2608
+[2017.12.22 16:00:19] [0000m.00s.106ms] [0] S: Auto close mode
+[2017.12.22 16:00:19] [0000m.00s.106ms] [0] S: Database ID [09d2-b93f-0aa9-e950-21c2-d3a7-1c2d-3a50-f9dc-bccb-8b3a-259e]
+[2017.12.22 16:00:19] [0000m.00s.106ms] [0] PathTranslator: BEGIN dumping
+[2017.12.22 16:00:19] [0000m.00s.106ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.22 16:00:19] [0000m.00s.106ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.22 16:00:19] [0000m.00s.106ms] [0] PathTranslator: END dumping
+[2017.12.22 16:00:19] [0000m.00s.106ms] [0] S: START
+[2017.12.22 16:00:19] [0000m.00s.107ms] [0] S: Server startup lock file created
+[2017.12.22 16:00:19] [0000m.00s.107ms] [0] S: Listening for client connections on port [10001]
+[2017.12.22 16:00:19] [0000m.00s.108ms] [0] S: Server network ID [DESKTOP-Q0OU6Q6:10.0.75.1,172.24.149.193,192.168.0.103,DESKTOP-Q0OU6Q6:10001]
+[2017.12.22 16:00:19] [0000m.00s.108ms] [0] S: Server GUID [e146-652f-1048-025b-31c2-d3a8-1c2d-3a50-ba5d-bccb-8b3a-259e]
+[2017.12.22 16:00:19] [0000m.00s.108ms] [0] S: Project GUID [09d2-b93f-0aa9-e950-21c2-d3a7-1c2d-3a50-f9dc-bccb-8b3a-259e]
+[2017.12.22 16:00:19] [0000m.00s.115ms] [0] S: Wrote data to server address file
+[2017.12.22 16:00:19] [0000m.00s.115ms] [0] S: Server startup lock file removed
+[2017.12.22 16:00:19] [0000m.00s.115ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.22 16:00:19] [0000m.00s.629ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.22 16:00:19] [0000m.00s.630ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.22 16:00:19] [0000m.00s.630ms] [0] S: Local disc access time: 52 us
+[2017.12.22 16:00:19] [0000m.00s.630ms] [0] S: File server access time: 60 us
+[2017.12.22 16:00:19] [0000m.00s.631ms] [0] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] size [310720 (303.4 kB)]
+[2017.12.22 16:00:19] [0000m.00s.631ms] [1] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.22 16:00:19] [0000m.00s.632ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:19] [0000m.00s.632ms] [0] Database GUARD OK: [310720]
+[2017.12.22 16:00:19] [0000m.00s.633ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:19] [0000m.00s.633ms] [0] Database GUARD OK: [310720]
+[2017.12.22 16:00:19] [0000m.00s.633ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:19] [0000m.00s.633ms] [0] Database GUARD OK: [310720]
+[2017.12.22 16:00:19] [0000m.00s.633ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:19] [0000m.00s.633ms] [0] Database GUARD OK: [310720]
+[2017.12.22 16:00:19] [0000m.00s.634ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.22 16:00:19] [0000m.00s.634ms] [0] Database GUARD OK: [310720]
+[2017.12.22 16:00:19] [0000m.00s.634ms] [0] SingleFile: [1472-4aa2-b111-594f] SFI version check [1009] [1009]
+[2017.12.22 16:00:19] [0000m.00s.646ms] [0] SingleFile: [1472-4aa2-b111-594f] Database SFI header has been read in [12ms 47us]
+[2017.12.22 16:00:19] [0000m.00s.653ms] [0] iCDB Server PI: Server & plugin session [4893]
+[2017.12.22 16:00:19] [0000m.00s.653ms] [0] iCDB Server PI: Opening database [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb]
+[2017.12.22 16:00:19] [0000m.00s.653ms] [0] iCDB Server PI: Database [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb] opened
+[2017.12.22 16:00:19] [0000m.00s.846ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.22 16:00:19] [0000m.00s.846ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.22 16:00:19] [0000m.00s.954ms] [0] iCDB Database: Creating database content backup before upgrade
+[2017.12.22 16:00:19] [0000m.00s.954ms] [1] iCDB Storage Server: Database backup: ProjectPath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb]
+[2017.12.22 16:00:19] [0000m.00s.999ms] [0] iCDB Storage Server Backup Thread: Database backup: BackupPath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbback\2017-12-22 16.00.19-11328.zip]
+[2017.12.22 16:00:19] [0000m.01s.050ms] [0] iCDB Storage Server Backup Thread: Backup database DONE: Result[ Succeeded[TRUE]] BackupPath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbback\2017-12-22 16.00.19-11328.zip]
+[2017.12.22 16:00:19] [0000m.01s.051ms] [0] iCDB Database: Database content backed up to [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbback\2017-12-22 16.00.19-11328.zip] of size [516 108 bytes (504.0 kB)]  in [97ms 583us]
+[2017.12.22 16:00:19] [0000m.01s.055ms] [0] iCDB Database: Upgrading constraint definitions from version [ce_ee.cns=7.10.56;user.cns=6cfa-4eda-0a69-a076-411e-2f99-11e2-f950-1721-50df-bf46-e506]
+[2017.12.22 16:00:19] [0000m.01s.065ms] [0] iCDB Database: Loading snapshot [1:DCDV] version [3300]
+[2017.12.22 16:00:20] [0000m.01s.092ms] [0] iCDB Database: Snapshot [1:DCDV] loaded in [26ms 751us]
+[2017.12.22 16:00:20] [0000m.01s.093ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [1:DCDV]
+[2017.12.22 16:00:20] [0000m.01s.202ms] [0] iCDB Database: Constraint definitions for snapshot [1:DCDV] upgraded in [108ms 918us]
+[2017.12.22 16:00:20] [0000m.01s.202ms] [0] iCDB Database: Saving snapshot [1:DCDV]
+[2017.12.22 16:00:20] [0000m.01s.203ms] [0] iCDB Database: Snapshot [1:DCDV] saved in [631us]
+[2017.12.22 16:00:20] [0000m.01s.205ms] [1] CORE: Applying a fix no 110 stage [fsAtlasLoaded] to atlas [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcmps\dxdatl]
+[2017.12.22 16:00:20] [0000m.01s.206ms] [1] CORE: Fix: cleared overlapping drawing order!
+[2017.12.22 16:00:20] [0000m.01s.206ms] [1] CORE: Atlas fixed stage [fsAtlasLoaded] successfully [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcmps\dxdatl]
+[2017.12.22 16:00:20] [0000m.01s.229ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s1\cdbcatlg\catlgatl.v] - auto-saving it
+[2017.12.22 16:00:20] [0000m.01s.231ms] [0] iCDB Database: Loading snapshot [2:PCB_Layout_Temp] version [3300]
+[2017.12.22 16:00:20] [0000m.01s.243ms] [0] iCDB Database: Snapshot [2:PCB_Layout_Temp] loaded in [11ms 163us]
+[2017.12.22 16:00:20] [0000m.01s.243ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [2:PCB_Layout_Temp]
+[2017.12.22 16:00:20] [0000m.01s.261ms] [0] iCDB Database: Constraint definitions for snapshot [2:PCB_Layout_Temp] upgraded in [18ms 463us]
+[2017.12.22 16:00:20] [0000m.01s.261ms] [0] iCDB Database: Saving snapshot [2:PCB_Layout_Temp]
+[2017.12.22 16:00:20] [0000m.01s.262ms] [0] iCDB Database: Snapshot [2:PCB_Layout_Temp] saved in [46us]
+[2017.12.22 16:00:20] [0000m.01s.275ms] [0] iCDB Database: Loading snapshot [3:PCB] version [3300]
+[2017.12.22 16:00:20] [0000m.01s.286ms] [0] iCDB Database: Snapshot [3:PCB] loaded in [10ms 806us]
+[2017.12.22 16:00:20] [0000m.01s.286ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [3:PCB]
+[2017.12.22 16:00:20] [0000m.01s.305ms] [0] iCDB Database: Constraint definitions for snapshot [3:PCB] upgraded in [18ms 313us]
+[2017.12.22 16:00:20] [0000m.01s.305ms] [0] iCDB Database: Saving snapshot [3:PCB]
+[2017.12.22 16:00:20] [0000m.01s.305ms] [0] iCDB Database: Snapshot [3:PCB] saved in [42us]
+[2017.12.22 16:00:20] [0000m.01s.318ms] [0] iCDB Database: Loading snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE] version [3300]
+[2017.12.22 16:00:20] [0000m.01s.320ms] [0] iCDB Database: Snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE] loaded in [1ms 868us]
+[2017.12.22 16:00:20] [0000m.01s.320ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE]
+[2017.12.22 16:00:20] [0000m.01s.320ms] [0] iCDB Database: Constraint definitions for snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE] upgraded in [125us]
+[2017.12.22 16:00:20] [0000m.01s.320ms] [0] iCDB Database: Saving snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE]
+[2017.12.22 16:00:20] [0000m.01s.320ms] [0] iCDB Database: Snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE] saved in [14us]
+[2017.12.22 16:00:20] [0000m.01s.321ms] [0] iCDB Database: Loading snapshot [5:RefSync] version [3300]
+[2017.12.22 16:00:20] [0000m.01s.329ms] [0] iCDB Database: Snapshot [5:RefSync] loaded in [7ms 493us]
+[2017.12.22 16:00:20] [0000m.01s.329ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [5:RefSync]
+[2017.12.22 16:00:20] [0000m.01s.336ms] [0] iCDB Database: Constraint definitions for snapshot [5:RefSync] upgraded in [6ms 880us]
+[2017.12.22 16:00:20] [0000m.01s.336ms] [0] iCDB Database: Saving snapshot [5:RefSync]
+[2017.12.22 16:00:20] [0000m.01s.336ms] [0] iCDB Database: Snapshot [5:RefSync] saved in [31us]
+[2017.12.22 16:00:20] [0000m.01s.337ms] [1] CORE: Applying a fix no 110 stage [fsAtlasLoaded] to atlas [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s5\cdbcmps\dxdatl]
+[2017.12.22 16:00:20] [0000m.01s.337ms] [1] CORE: Fix: cleared overlapping drawing order!
+[2017.12.22 16:00:20] [0000m.01s.337ms] [1] CORE: Atlas fixed stage [fsAtlasLoaded] successfully [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s5\cdbcmps\dxdatl]
+[2017.12.22 16:00:20] [0000m.01s.343ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s5\cdbcatlg\catlgatl.v] - auto-saving it
+[2017.12.22 16:00:20] [0000m.01s.343ms] [0] iCDB Database: Loading snapshot [6:PCB_RefSync] version [3300]
+[2017.12.22 16:00:20] [0000m.01s.356ms] [0] iCDB Database: Snapshot [6:PCB_RefSync] loaded in [12ms 754us]
+[2017.12.22 16:00:20] [0000m.01s.356ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [6:PCB_RefSync]
+[2017.12.22 16:00:20] [0000m.01s.375ms] [0] iCDB Database: Constraint definitions for snapshot [6:PCB_RefSync] upgraded in [18ms 702us]
+[2017.12.22 16:00:20] [0000m.01s.375ms] [0] iCDB Database: Saving snapshot [6:PCB_RefSync]
+[2017.12.22 16:00:20] [0000m.01s.375ms] [0] iCDB Database: Snapshot [6:PCB_RefSync] saved in [45us]
+[2017.12.22 16:00:20] [0000m.01s.376ms] [1] CORE: Applying a fix no 110 stage [fsAtlasLoaded] to atlas [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s6\cdbcmps\dxdatl]
+[2017.12.22 16:00:20] [0000m.01s.376ms] [1] CORE: Fix: cleared overlapping drawing order!
+[2017.12.22 16:00:20] [0000m.01s.376ms] [1] CORE: Atlas fixed stage [fsAtlasLoaded] successfully [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s6\cdbcmps\dxdatl]
+[2017.12.22 16:00:20] [0000m.01s.390ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s6\cdbcatlg\catlgatl.v] - auto-saving it
+[2017.12.22 16:00:20] [0000m.01s.390ms] [0] iCDB Database: Loading snapshot [7:PCB_LDDTemp] version [3300]
+[2017.12.22 16:00:20] [0000m.01s.403ms] [0] iCDB Database: Snapshot [7:PCB_LDDTemp] loaded in [12ms 422us]
+[2017.12.22 16:00:20] [0000m.01s.403ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [7:PCB_LDDTemp]
+[2017.12.22 16:00:20] [0000m.01s.422ms] [0] iCDB Database: Constraint definitions for snapshot [7:PCB_LDDTemp] upgraded in [18ms 524us]
+[2017.12.22 16:00:20] [0000m.01s.422ms] [0] iCDB Database: Saving snapshot [7:PCB_LDDTemp]
+[2017.12.22 16:00:20] [0000m.01s.422ms] [0] iCDB Database: Snapshot [7:PCB_LDDTemp] saved in [47us]
+[2017.12.22 16:00:20] [0000m.01s.422ms] [1] CORE: Applying a fix no 110 stage [fsAtlasLoaded] to atlas [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s7\cdbcmps\dxdatl]
+[2017.12.22 16:00:20] [0000m.01s.422ms] [1] CORE: Fix: cleared overlapping drawing order!
+[2017.12.22 16:00:20] [0000m.01s.423ms] [1] CORE: Atlas fixed stage [fsAtlasLoaded] successfully [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s7\cdbcmps\dxdatl]
+[2017.12.22 16:00:20] [0000m.01s.437ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s7\cdbcatlg\catlgatl.v] - auto-saving it
+[2017.12.22 16:00:20] [0000m.01s.437ms] [0] iCDB Database: Constraint definitions upgraded to version [ce_ee.cns=7.10.56;user.cns=d825-d31d-cb4f-e66d-fd66-50a4-e665-0a50-e1d6-b6d5-d4c3-428b]
+[2017.12.22 16:00:20] [0000m.01s.473ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.22 16:00:20] [0000m.01s.475ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.22 16:00:20] [0000m.01s.476ms] [0] S: iCDB database loaded
+[2017.12.22 16:00:20] [0000m.01s.479ms] [0] S: Starting threads
+[2017.12.22 16:00:20] [0000m.01s.480ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.22 16:00:20] [0000m.01s.480ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.22 16:00:20] [0000m.01s.481ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.22 16:00:20] [0000m.01s.487ms] [0] IT: Session [4894] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2608] created
+[2017.12.22 16:00:20] [0000m.01s.488ms] [0] MWT: WindowProc: WM_NCCREATE
+[2017.12.22 16:00:20] [0000m.01s.490ms] [1] SC[4894]: Registered sub-client [DCDV] with ID [1] for session ID [4894] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2608]
+[2017.12.22 16:00:20] [0000m.01s.491ms] [0] IT: iCDB Server Monitor session [1] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12036] created
+[2017.12.22 16:00:20] [0000m.01s.491ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2017.12.22 16:00:20] [0000m.01s.498ms] [1] SC[4894]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4894] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2608]
+[2017.12.22 16:00:20] [0000m.01s.581ms] [1] CMT: There are [1] clients now: 4894
+[2017.12.22 16:00:20] [0000m.01s.582ms] [1] CMT: Removed client [4894]
+[2017.12.22 16:00:20] [0000m.01s.582ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.22 16:00:20] [0000m.01s.998ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2017.12.22 16:00:20] [0000m.02s.023ms] [0] IT: Session [4895] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2608] created
+[2017.12.22 16:00:20] [0000m.02s.024ms] [1] SC[4895]: Registered sub-client [DCDV] with ID [1] for session ID [4895] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2608]
+[2017.12.22 16:00:20] [0000m.02s.032ms] [1] SC[4895]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4895] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2608]
+[2017.12.22 16:00:21] [0000m.02s.086ms] [1] CMT: Removed client [4895]
+[2017.12.22 16:00:21] [0000m.02s.086ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.22 16:00:21] [0000m.02s.533ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2017.12.22 16:00:23] [0000m.04s.103ms] [0] CMT: Starting server auto-close
+[2017.12.22 16:00:23] [0000m.04s.124ms] [0] S: Closing server
+[2017.12.22 16:00:23] [0000m.04s.125ms] [0] ProjectBackupManager: WARNING: Could not shutdown Project Backup engine - not started yet
+[2017.12.22 16:00:23] [0000m.04s.220ms] [0] iCDB Server PI: Closing plugins
+[2017.12.22 16:00:23] [0000m.04s.220ms] [0] iCDB Server PI: Plugins closed
+[2017.12.22 16:00:23] [0000m.04s.220ms] [0] iCDB Server PI: Unloading database
+[2017.12.22 16:00:23] [0000m.04s.226ms] [0] iCDB Server PI: Saving storage
+[2017.12.22 16:00:23] [0000m.04s.226ms] [0] iCDB Server PI: Closing database
+[2017.12.22 16:00:23] [0000m.04s.227ms] [1] iCDB Server PI: Stats: Database defragmentation: max[2] avg[1] holes[0%] data[97%]
+[2017.12.22 16:00:23] [0000m.04s.227ms] [1] iCDB Server PI: Stats: Database file size [323080 (315.5 kB)]
+[2017.12.22 16:00:23] [0000m.04s.231ms] [0] iCDB Server PI: Database closed
+[2017.12.22 16:00:23] [0000m.04s.231ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [36] ticks
+[2017.12.22 16:00:23] [0000m.04s.231ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [12] microseconds
+[2017.12.22 16:00:23] [0000m.04s.231ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [2]
+[2017.12.22 16:00:23] [0000m.04s.231ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [159850] commands per second
+[2017.12.22 16:00:23] [0000m.04s.238ms] [0] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] closed with size [323080 (315.5 kB)]
+[2017.12.22 16:00:23] [0000m.04s.281ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2017.12.22 16:00:23] [0000m.04s.298ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.22 16:00:23] [0000m.04s.484ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.22 16:00:23] [0000m.04s.485ms] [0] MWT: STOP
+[2017.12.22 16:00:23] [0000m.04s.485ms] [0] S: STOP

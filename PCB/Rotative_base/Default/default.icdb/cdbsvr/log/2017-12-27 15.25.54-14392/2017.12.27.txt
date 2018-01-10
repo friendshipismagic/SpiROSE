@@ -1,0 +1,229 @@
+[2017.12.27 15:25:54] [0000m.00s.056ms] [0] WELCOME
+[2017.12.27 15:25:54] [0000m.00s.057ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.27 15:25:54] [0000m.00s.057ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.27 15:25:54] [0000m.00s.057ms] [1] Base flow version [VX.2.2]
+[2017.12.27 15:25:54] [0000m.00s.057ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.27 15:25:54] [0000m.00s.057ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.27 15:25:54] [0000m.00s.058ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [1] Machine [DESKTOP-Q0OU6Q6]  IP [10.0.75.1,127.0.0.1,137.194.8.248,172.24.149.193]  User [janni]  PID [14392]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [1] Operating system [Microsoft Business Edition, 64-bit (build 9200)]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [1] Current working dir [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\Program Files\Docker\Docker\Resources\bin;C:\Program Files (x86)\Common Files\Intel\Shared Libraries\redist\intel64\compiler;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Calibre2\;C:\Program Files\nodejs\;C:\Users\janni\.cargo\bin;C:\Users\janni\AppData\Local\Microsoft\WindowsApps;C:\Users\janni\AppData\Local\atom\bin;C:\Users\janni\AppData\Roaming\npm;C:\Users\janni\AppData\Local\GitHubDesktop\bin;%USERPROFILE%\AppData\Local\Microsoft\WindowsApps]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [1] SDD_PLATFORM [win32]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.27 15:25:54] [0000m.00s.065ms] [2] S: Loading config files
+[2017.12.27 15:25:54] [0000m.00s.070ms] [1] Config file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.27 15:25:54] [0000m.00s.070ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2017.12.27 15:25:54] [0000m.00s.073ms] [3] S: Config loaded
+[2017.12.27 15:25:54] [0000m.00s.098ms] [0] S: Project path [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb] on file system [NTFS]
+[2017.12.27 15:25:54] [0000m.00s.098ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.27 15:25:54] [0000m.00s.098ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.27 15:25:54] [0000m.00s.098ms] [0] S: Multi-user mode (config)
+[2017.12.27 15:25:54] [0000m.00s.098ms] [0] S: Event polling mode autodetection
+[2017.12.27 15:25:54] [0000m.00s.099ms] [0] S: Started up automatically by iCDB Client: DESKTOP-Q0OU6Q6:janni:13924
+[2017.12.27 15:25:54] [0000m.00s.099ms] [0] S: Auto close mode
+[2017.12.27 15:25:54] [0000m.00s.099ms] [0] S: Database ID [4325-5a8c-30f8-0b74-fff8-24a4-0092-4a50-fb3c-1d0c-db6a-e49e]
+[2017.12.27 15:25:54] [0000m.00s.099ms] [0] PathTranslator: BEGIN dumping
+[2017.12.27 15:25:54] [0000m.00s.099ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.27 15:25:54] [0000m.00s.099ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.27 15:25:54] [0000m.00s.099ms] [0] PathTranslator: END dumping
+[2017.12.27 15:25:54] [0000m.00s.099ms] [0] S: START
+[2017.12.27 15:25:54] [0000m.00s.100ms] [0] S: Server startup lock file created
+[2017.12.27 15:25:54] [0000m.00s.100ms] [0] S: Listening for client connections on port [10001]
+[2017.12.27 15:25:54] [0000m.00s.101ms] [0] S: Server network ID [DESKTOP-Q0OU6Q6:10.0.75.1,137.194.8.248,172.24.149.193,DESKTOP-Q0OU6Q6:10001]
+[2017.12.27 15:25:54] [0000m.00s.101ms] [0] S: Server GUID [33e9-d158-fc90-5703-28bb-34a7-8bb3-4a50-395e-1d0c-db6a-e49e]
+[2017.12.27 15:25:54] [0000m.00s.101ms] [0] S: Project GUID [4325-5a8c-30f8-0b74-fff8-24a4-0092-4a50-fb3c-1d0c-db6a-e49e]
+[2017.12.27 15:25:54] [0000m.00s.109ms] [0] S: Wrote data to server address file
+[2017.12.27 15:25:54] [0000m.00s.110ms] [0] S: Server startup lock file removed
+[2017.12.27 15:25:54] [0000m.00s.110ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.27 15:25:54] [0000m.00s.152ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.27 15:25:54] [0000m.00s.152ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.27 15:25:54] [0000m.00s.152ms] [0] S: Local disc access time: 52 us
+[2017.12.27 15:25:54] [0000m.00s.152ms] [0] S: File server access time: 59 us
+[2017.12.27 15:25:54] [0000m.00s.153ms] [0] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] size [294600 (287.7 kB)]
+[2017.12.27 15:25:54] [0000m.00s.153ms] [1] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.27 15:25:54] [0000m.00s.154ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.27 15:25:54] [0000m.00s.154ms] [0] Database GUARD OK: [294600]
+[2017.12.27 15:25:54] [0000m.00s.155ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.27 15:25:54] [0000m.00s.155ms] [0] Database GUARD OK: [294600]
+[2017.12.27 15:25:54] [0000m.00s.155ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.27 15:25:54] [0000m.00s.155ms] [0] Database GUARD OK: [294600]
+[2017.12.27 15:25:54] [0000m.00s.155ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.27 15:25:54] [0000m.00s.155ms] [0] Database GUARD OK: [294600]
+[2017.12.27 15:25:54] [0000m.00s.156ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.27 15:25:54] [0000m.00s.156ms] [0] Database GUARD OK: [294600]
+[2017.12.27 15:25:54] [0000m.00s.156ms] [0] SingleFile: [2f5a-9b3d-1ce5-3a63] SFI version check [1009] [1009]
+[2017.12.27 15:25:54] [0000m.00s.167ms] [0] SingleFile: [2f5a-9b3d-1ce5-3a63] Database SFI header has been read in [11ms 845us]
+[2017.12.27 15:25:54] [0000m.00s.175ms] [0] iCDB Server PI: Server & plugin session [4989]
+[2017.12.27 15:25:54] [0000m.00s.175ms] [0] iCDB Server PI: Opening database [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb]
+[2017.12.27 15:25:54] [0000m.00s.175ms] [0] iCDB Server PI: Database [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb] opened
+[2017.12.27 15:25:54] [0000m.00s.199ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.27 15:25:54] [0000m.00s.199ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.27 15:25:54] [0000m.00s.286ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=d825-d31d-cb4f-e66d-fd66-50a4-e665-0a50-e1d6-b6d5-d4c3-428b] up to date
+[2017.12.27 15:25:54] [0000m.00s.298ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.27 15:25:54] [0000m.00s.298ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.27 15:25:54] [0000m.00s.298ms] [0] S: iCDB database loaded
+[2017.12.27 15:25:54] [0000m.00s.299ms] [0] S: Starting threads
+[2017.12.27 15:25:54] [0000m.00s.299ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.27 15:25:54] [0000m.00s.300ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.27 15:25:54] [0000m.00s.300ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.27 15:25:54] [0000m.00s.301ms] [0] IT: Session [4990] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [13924] created
+[2017.12.27 15:25:54] [0000m.00s.302ms] [1] SC[4990]: Registered sub-client [DCDV] with ID [1] for session ID [4990] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13924]
+[2017.12.27 15:25:54] [0000m.00s.305ms] [0] IT: iCDB Server Monitor session [1] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12036] created
+[2017.12.27 15:25:54] [0000m.00s.305ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2017.12.27 15:25:54] [0000m.00s.327ms] [0] MWT: WindowProc: WM_NCCREATE
+[2017.12.27 15:25:54] [0000m.00s.401ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 15:26:04] [0000m.10s.102ms] [0] IT: Session [4991] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15612] created
+[2017.12.27 15:26:04] [0000m.10s.103ms] [1] SC[4991]: Registered sub-client [ICDBC] with ID [1] for session ID [4991] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15612]
+[2017.12.27 15:26:04] [0000m.10s.128ms] [1] SC[4991]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4991] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15612]
+[2017.12.27 15:26:04] [0000m.10s.170ms] [1] CMT: There are [2] clients now: 4990, 4991
+[2017.12.27 15:26:04] [0000m.10s.676ms] [1] SC[4991]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4991] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15612]
+[2017.12.27 15:26:04] [0000m.10s.680ms] [1] SC[4991]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4991] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15612]
+[2017.12.27 15:26:04] [0000m.10s.776ms] [1] CMT: Removed client [4991]
+[2017.12.27 15:26:04] [0000m.10s.776ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 15:26:05] [0000m.11s.526ms] [0] IT: Session [4992] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [16308] created
+[2017.12.27 15:26:05] [0000m.11s.526ms] [1] SC[4992]: Registered sub-client [Packager_461806250] with ID [1] for session ID [4992] host [DESKTOP-Q0OU6Q6] user [janni] process ID [16308]
+[2017.12.27 15:26:05] [0000m.11s.582ms] [1] CMT: There are [2] clients now: 4990, 4992
+[2017.12.27 15:26:06] [0000m.12s.017ms] [1] SC[4992]: UnRegistered sub-client [Packager_461806250] with ID [1] for session ID [4992] host [DESKTOP-Q0OU6Q6] user [janni] process ID [16308]
+[2017.12.27 15:26:06] [0000m.12s.087ms] [1] CMT: Removed client [4992]
+[2017.12.27 15:26:06] [0000m.12s.087ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 15:26:31] [0000m.37s.061ms] [0] DFAMT: File server access time: 70 us
+[2017.12.27 15:26:51] [0000m.57s.603ms] [0] IT: Session [4993] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [16172] created
+[2017.12.27 15:26:51] [0000m.57s.604ms] [1] SC[4993]: Registered sub-client [ICDBC] with ID [1] for session ID [4993] host [DESKTOP-Q0OU6Q6] user [janni] process ID [16172]
+[2017.12.27 15:26:51] [0000m.57s.610ms] [1] CMT: There are [2] clients now: 4990, 4993
+[2017.12.27 15:26:51] [0000m.57s.627ms] [1] SC[4993]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4993] host [DESKTOP-Q0OU6Q6] user [janni] process ID [16172]
+[2017.12.27 15:26:55] [0001m.01s.070ms] [1] SC[4993]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4993] host [DESKTOP-Q0OU6Q6] user [janni] process ID [16172]
+[2017.12.27 15:26:55] [0001m.01s.074ms] [1] SC[4993]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4993] host [DESKTOP-Q0OU6Q6] user [janni] process ID [16172]
+[2017.12.27 15:26:55] [0001m.01s.144ms] [1] CMT: Removed client [4993]
+[2017.12.27 15:26:55] [0001m.01s.144ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 15:26:55] [0001m.01s.757ms] [0] IT: Session [4994] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [13516] created
+[2017.12.27 15:26:55] [0001m.01s.758ms] [1] CMT: There are [2] clients now: 4990, 4994
+[2017.12.27 15:26:55] [0001m.01s.758ms] [1] SC[4994]: Registered sub-client [Packager_461856484] with ID [1] for session ID [4994] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13516]
+[2017.12.27 15:26:56] [0001m.02s.322ms] [1] SC[4994]: UnRegistered sub-client [Packager_461856484] with ID [1] for session ID [4994] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13516]
+[2017.12.27 15:26:56] [0001m.02s.365ms] [1] CMT: Removed client [4994]
+[2017.12.27 15:26:56] [0001m.02s.365ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 15:31:36] [0005m.42s.332ms] [0] IT: Session [4995] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15328] created
+[2017.12.27 15:31:36] [0005m.42s.332ms] [1] ProjectBackupManager: Client [ClientData[ClientNetAddress[DESKTOP-Q0OU6Q6] # ClientUserName[janni] # ClientProcessID[15328] # SessionID[4995] # Type[0]] # SubClientData[SubClientName[] # SubClientID[0]]] set project file (.prj): local path [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Rotative_base.prj], global path [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Rotative_base.prj]
+[2017.12.27 15:31:36] [0005m.42s.386ms] [1] SC[4995]: Registered sub-client [Expedition PCB_462137046] with ID [1] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:31:36] [0005m.42s.427ms] [1] CMT: There are [2] clients now: 4990, 4995
+[2017.12.27 15:31:36] [0005m.42s.456ms] [1] SC[4995]: Registered sub-client [EEVM] with ID [2] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:31:36] [0005m.42s.577ms] [1] SC[4995]: UnRegistered sub-client [EEVM] with ID [2] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:31:36] [0005m.42s.780ms] [1] SC[4995]: Registered sub-client [JobPrefsDBPI_462137546] with ID [3] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:31:36] [0005m.42s.792ms] [1] SC[4995]: UnRegistered sub-client [JobPrefsDBPI_462137546] with ID [3] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:31:41] [0005m.47s.330ms] [1] SC[4995]: Registered sub-client [JobPrefsDBPI_462142093] with ID [4] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:31:41] [0005m.47s.334ms] [1] SC[4995]: UnRegistered sub-client [JobPrefsDBPI_462142093] with ID [4] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:31:44] [0005m.50s.935ms] [1] SC[4995]: Registered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:31:45] [0005m.50s.941ms] [1] SC[4995]: Registered sub-client [StartServerClient2d58] with ID [6] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:31:45] [0005m.50s.941ms] [1] SC[4995]: UnRegistered sub-client [StartServerClient2d58] with ID [6] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:32:58] [0007m.04s.643ms] [1] SC[4995]: UnRegistered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:33:01] [0007m.07s.542ms] [1] SC[4995]: UnRegistered sub-client [Expedition PCB_462137046] with ID [1] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15328]
+[2017.12.27 15:33:01] [0007m.07s.552ms] [1] CMT: Removed client [4995]
+[2017.12.27 15:33:01] [0007m.07s.552ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 15:33:16] [0007m.21s.950ms] [0] IT: Session [4996] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [14792] created
+[2017.12.27 15:33:16] [0007m.21s.952ms] [1] SC[4996]: Registered sub-client [ICDBC] with ID [1] for session ID [4996] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14792]
+[2017.12.27 15:33:16] [0007m.21s.988ms] [1] CMT: There are [2] clients now: 4990, 4996
+[2017.12.27 15:33:16] [0007m.21s.988ms] [1] SC[4996]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4996] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14792]
+[2017.12.27 15:33:17] [0007m.23s.037ms] [1] SC[4996]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4996] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14792]
+[2017.12.27 15:33:17] [0007m.23s.040ms] [1] SC[4996]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4996] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14792]
+[2017.12.27 15:33:17] [0007m.23s.100ms] [1] CMT: Removed client [4996]
+[2017.12.27 15:33:17] [0007m.23s.100ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 15:33:17] [0007m.23s.856ms] [0] IT: Session [4997] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [14572] created
+[2017.12.27 15:33:17] [0007m.23s.857ms] [1] SC[4997]: Registered sub-client [Packager_462238562] with ID [1] for session ID [4997] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14572]
+[2017.12.27 15:33:17] [0007m.23s.908ms] [1] CMT: There are [2] clients now: 4990, 4997
+[2017.12.27 15:33:18] [0007m.24s.399ms] [1] SC[4997]: UnRegistered sub-client [Packager_462238562] with ID [1] for session ID [4997] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14572]
+[2017.12.27 15:33:18] [0007m.24s.433ms] [1] CMT: Removed client [4997]
+[2017.12.27 15:33:18] [0007m.24s.433ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 15:42:23] [0016m.29s.690ms] [0] IT: Session [4998] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [11492] created
+[2017.12.27 15:42:23] [0016m.29s.692ms] [1] SC[4998]: Registered sub-client [Expedition PCB_462784421] with ID [1] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:42:23] [0016m.29s.716ms] [1] CMT: There are [2] clients now: 4990, 4998
+[2017.12.27 15:42:23] [0016m.29s.757ms] [1] SC[4998]: Registered sub-client [EEVM] with ID [2] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:42:23] [0016m.29s.874ms] [1] SC[4998]: UnRegistered sub-client [EEVM] with ID [2] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:42:24] [0016m.30s.071ms] [1] SC[4998]: Registered sub-client [JobPrefsDBPI_462784843] with ID [3] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:42:24] [0016m.30s.084ms] [1] SC[4998]: UnRegistered sub-client [JobPrefsDBPI_462784843] with ID [3] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:42:27] [0016m.33s.033ms] [1] SC[4998]: Registered sub-client [JobPrefsDBPI_462787812] with ID [4] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:42:27] [0016m.33s.037ms] [1] SC[4998]: UnRegistered sub-client [JobPrefsDBPI_462787812] with ID [4] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:42:28] [0016m.34s.898ms] [1] SC[4998]: Registered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:42:28] [0016m.34s.901ms] [1] SC[4998]: Registered sub-client [StartServerClient2878] with ID [6] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:42:28] [0016m.34s.902ms] [1] SC[4998]: UnRegistered sub-client [StartServerClient2878] with ID [6] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:43:01] [0017m.07s.304ms] [1] SC[4998]: UnRegistered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:43:04] [0017m.10s.156ms] [1] SC[4998]: UnRegistered sub-client [Expedition PCB_462784421] with ID [1] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 15:43:04] [0017m.10s.235ms] [1] CMT: Removed client [4998]
+[2017.12.27 15:43:04] [0017m.10s.235ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 16:33:20] [0067m.26s.755ms] [0] IT: Session [4999] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [11492] created
+[2017.12.27 16:33:20] [0067m.26s.757ms] [1] SC[4999]: Registered sub-client [Expedition PCB_465841484] with ID [1] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:33:20] [0067m.26s.792ms] [1] CMT: There are [2] clients now: 4990, 4999
+[2017.12.27 16:33:20] [0067m.26s.825ms] [1] SC[4999]: Registered sub-client [EEVM] with ID [2] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:33:21] [0067m.26s.940ms] [1] SC[4999]: UnRegistered sub-client [EEVM] with ID [2] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:33:21] [0067m.27s.117ms] [1] SC[4999]: Registered sub-client [JobPrefsDBPI_465841890] with ID [3] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:33:21] [0067m.27s.132ms] [1] SC[4999]: UnRegistered sub-client [JobPrefsDBPI_465841890] with ID [3] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:33:23] [0067m.29s.258ms] [1] SC[4999]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:33:23] [0067m.29s.262ms] [1] SC[4999]: Registered sub-client [StartServerClient2878] with ID [5] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:33:23] [0067m.29s.262ms] [1] SC[4999]: UnRegistered sub-client [StartServerClient2878] with ID [5] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:36] [0071m.42s.464ms] [1] SC[4999]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:36] [0071m.42s.472ms] [1] SC[4999]: Registered sub-client [EEVM_EEVM_1700400] with ID [6] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:36] [0071m.42s.473ms] [1] SC[4999]: UnRegistered sub-client [EEVM_EEVM_1700400] with ID [6] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:37] [0071m.43s.235ms] [1] SC[4999]: Registered sub-client [JobPrefsDBPI_466098000] with ID [7] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:37] [0071m.43s.250ms] [1] SC[4999]: UnRegistered sub-client [JobPrefsDBPI_466098000] with ID [7] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:39] [0071m.45s.064ms] [1] SC[4999]: Registered sub-client [JobPrefsDBPI_466099843] with ID [8] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:39] [0071m.45s.079ms] [1] SC[4999]: UnRegistered sub-client [JobPrefsDBPI_466099843] with ID [8] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:39] [0071m.45s.661ms] [0] IT: Session [5000] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [10320] created
+[2017.12.27 16:37:39] [0071m.45s.662ms] [1] SC[5000]: Registered sub-client [Packager_466100390] with ID [1] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10320]
+[2017.12.27 16:37:39] [0071m.45s.664ms] [1] CMT: There are [3] clients now: 4990, 4999, 5000
+[2017.12.27 16:37:40] [0071m.46s.173ms] [1] SC[5000]: UnRegistered sub-client [Packager_466100390] with ID [1] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10320]
+[2017.12.27 16:37:40] [0071m.46s.268ms] [1] CMT: Removed client [5000]
+[2017.12.27 16:37:40] [0071m.46s.268ms] [1] CMT: There are [2] clients now: 4990, 4999
+[2017.12.27 16:37:41] [0071m.47s.413ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.27 16:37:41] [0071m.47s.818ms] [0] IT: Session [5001] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15684] created
+[2017.12.27 16:37:41] [0071m.47s.819ms] [1] SC[5001]: Registered sub-client [Expedition_466102546] with ID [1] for session ID [5001] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15684]
+[2017.12.27 16:37:41] [0071m.47s.883ms] [1] CMT: There are [3] clients now: 4990, 4999, 5001
+[2017.12.27 16:37:42] [0071m.47s.939ms] [1] SC[5001]: UnRegistered sub-client [Expedition_466102546] with ID [1] for session ID [5001] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15684]
+[2017.12.27 16:37:42] [0071m.47s.984ms] [1] CMT: Removed client [5001]
+[2017.12.27 16:37:42] [0071m.47s.984ms] [1] CMT: There are [2] clients now: 4990, 4999
+[2017.12.27 16:37:42] [0071m.48s.613ms] [0] IT: Session [5002] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15684] created
+[2017.12.27 16:37:42] [0071m.48s.615ms] [1] SC[5002]: Registered sub-client [JobPrefsDBPI_466103343] with ID [1] for session ID [5002] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15684]
+[2017.12.27 16:37:42] [0071m.48s.650ms] [1] SC[5002]: UnRegistered sub-client [JobPrefsDBPI_466103343] with ID [1] for session ID [5002] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15684]
+[2017.12.27 16:37:42] [0071m.48s.690ms] [1] CMT: There are [3] clients now: 4990, 4999, 5002
+[2017.12.27 16:37:42] [0071m.48s.690ms] [1] CMT: Removed client [5002]
+[2017.12.27 16:37:42] [0071m.48s.690ms] [1] CMT: There are [2] clients now: 4990, 4999
+[2017.12.27 16:37:43] [0071m.49s.333ms] [0] IT: Session [5003] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15684] created
+[2017.12.27 16:37:43] [0071m.49s.338ms] [1] SC[5003]: Registered sub-client [JobPrefsDBPI_466104015] with ID [1] for session ID [5003] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15684]
+[2017.12.27 16:37:43] [0071m.49s.362ms] [1] SC[5003]: UnRegistered sub-client [JobPrefsDBPI_466104015] with ID [1] for session ID [5003] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15684]
+[2017.12.27 16:37:43] [0071m.49s.404ms] [1] CMT: There are [3] clients now: 4990, 4999, 5003
+[2017.12.27 16:37:43] [0071m.49s.404ms] [1] CMT: Removed client [5003]
+[2017.12.27 16:37:43] [0071m.49s.404ms] [1] CMT: There are [2] clients now: 4990, 4999
+[2017.12.27 16:37:44] [0071m.50s.934ms] [0] IT: Session [5004] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [6616] created
+[2017.12.27 16:37:45] [0071m.50s.937ms] [1] SC[5004]: Registered sub-client [JobPrefsDBPI_466105625] with ID [1] for session ID [5004] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6616]
+[2017.12.27 16:37:45] [0071m.50s.973ms] [1] SC[5004]: Registered sub-client [Expedition_466105750] with ID [2] for session ID [5004] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6616]
+[2017.12.27 16:37:45] [0071m.51s.028ms] [1] CMT: There are [3] clients now: 4990, 4999, 5004
+[2017.12.27 16:37:45] [0071m.51s.046ms] [1] SC[5004]: UnRegistered sub-client [JobPrefsDBPI_466105625] with ID [1] for session ID [5004] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6616]
+[2017.12.27 16:37:45] [0071m.51s.177ms] [1] SC[5004]: UnRegistered sub-client [Expedition_466105750] with ID [2] for session ID [5004] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6616]
+[2017.12.27 16:37:45] [0071m.51s.230ms] [1] CMT: Removed client [5004]
+[2017.12.27 16:37:45] [0071m.51s.230ms] [1] CMT: There are [2] clients now: 4990, 4999
+[2017.12.27 16:37:45] [0071m.51s.697ms] [1] SC[4999]: Registered sub-client [EEVM_EEVM_779588956] with ID [9] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:45] [0071m.51s.711ms] [1] SC[4999]: UnRegistered sub-client [EEVM_EEVM_779588956] with ID [9] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:45] [0071m.51s.714ms] [1] SC[4999]: Registered sub-client [EEVM_EEVM_779588956] with ID [10] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:45] [0071m.51s.715ms] [1] SC[4999]: UnRegistered sub-client [EEVM_EEVM_779588956] with ID [10] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:45] [0071m.51s.718ms] [1] SC[4999]: Registered sub-client [EEVM_EEVM_388404948] with ID [11] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:45] [0071m.51s.731ms] [1] SC[4999]: UnRegistered sub-client [EEVM_EEVM_388404948] with ID [11] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:48] [0071m.54s.902ms] [1] SC[4999]: UnRegistered sub-client [Expedition PCB_465841484] with ID [1] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:49] [0071m.54s.964ms] [1] CMT: Removed client [4999]
+[2017.12.27 16:37:49] [0071m.54s.964ms] [1] CMT: There are [1] clients now: 4990
+[2017.12.27 16:37:49] [0071m.55s.209ms] [0] IT: Session [5005] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [11492] created
+[2017.12.27 16:37:49] [0071m.55s.210ms] [1] SC[5005]: Registered sub-client [Expedition PCB_466109937] with ID [1] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:49] [0071m.55s.267ms] [1] CMT: There are [2] clients now: 4990, 5005
+[2017.12.27 16:37:49] [0071m.55s.321ms] [1] SC[5005]: Registered sub-client [JobPrefsDBPI_466110093] with ID [2] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:37:49] [0071m.55s.335ms] [1] SC[5005]: UnRegistered sub-client [JobPrefsDBPI_466110093] with ID [2] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:38:01] [0072m.07s.391ms] [1] SC[5005]: Registered sub-client [JobPrefsDBPI_466122156] with ID [3] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:38:01] [0072m.07s.396ms] [1] SC[5005]: UnRegistered sub-client [JobPrefsDBPI_466122156] with ID [3] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:38:01] [0072m.07s.417ms] [1] SC[5005]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:38:25] [0072m.30s.964ms] [1] SC[5005]: Registered sub-client [JobPrefsDBPI_466145734] with ID [5] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:38:25] [0072m.30s.971ms] [1] SC[5005]: UnRegistered sub-client [JobPrefsDBPI_466145734] with ID [5] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:38:25] [0072m.31s.831ms] [1] SC[5005]: Registered sub-client [JobPrefsDBPI_466146609] with ID [6] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 16:38:25] [0072m.31s.834ms] [1] SC[5005]: UnRegistered sub-client [JobPrefsDBPI_466146609] with ID [6] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11492]
+[2017.12.27 19:24:22] [0238m.28s.477ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-27 19.24.21 - auto.zip] with GUID [1661-6ae7-96bd-024d-563f-34aa-63f3-4a50-f0ec-1d0c-db6a-e49e]
+[2017.12.27 19:24:22] [0238m.28s.483ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[108b-90ac-8116-1c51-e369-24a3-4692-4a50-7d3d-1d0c-db6a-e49e] CreationTime[Tuesday, December 26, 2017 18:34:38] Type[Autosave] Creator[iCDB Server (2017-12-26 18.13.27-1628)] ApplicationName[iCDB Server (2017-12-26 18.13.27-1628)] UserName[janni] MachineName[DESKTOP-Q0OU6Q6] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-26 18.34.38 - auto.zip] BackupFileSize[1105117] Persistent[FALSE]
+[2017.12.27 19:24:22] [0238m.28s.488ms] [0] PrjBackupMgr: Project Backup file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-26 18.34.38 - auto.zip] with GUID [108b-90ac-8116-1c51-e369-24a3-4692-4a50-7d3d-1d0c-db6a-e49e] removed
+[2017.12.27 19:24:22] [0238m.28s.493ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[1661-6ae7-96bd-024d-563f-34aa-63f3-4a50-f0ec-1d0c-db6a-e49e] CreationTime[Wednesday, December 27, 2017 19:24:21] Type[Autosave] Creator[iCDB Server (2017-12-27 15.25.54-14392)] ApplicationName[iCDB Server (2017-12-27 15.25.54-14392)] UserName[janni] MachineName[DESKTOP-Q0OU6Q6] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-27 19.24.21 - auto.zip] BackupFileSize[1133702] Persistent[FALSE]

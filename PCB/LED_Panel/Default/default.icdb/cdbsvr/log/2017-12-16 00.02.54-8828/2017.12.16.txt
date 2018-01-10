@@ -1,0 +1,129 @@
+[2017.12.16 00:02:54] [0000m.00s.062ms] [0] WELCOME
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] Base flow version [VX.2.2]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] Machine [DESKTOP-0AUT0ED]  IP [127.0.0.1,137.194.11.184]  User [Vincent]  PID [8828]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] Operating system [Microsoft Home Premium Edition, 64-bit (build 9200)]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] Current working dir [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\ProgramData\Oracle\Java\javapath;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\MATLAB\R2013a\runtime\win64;C:\Program Files\MATLAB\R2013a\bin;C:\Program Files (x86)\MiKTeX 2.9\miktex\bin\;C:\Program Files (x86)\LyX 2.2\Perl\bin;C:\Program Files (x86)\Skype\Phone\;C:\Program Files (x86)\STMicroelectronics\STM32 ST-LINK Utility\ST-LINK Utility;C:\Users\Vincent\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\Vincent\AppData\Local\Programs\Python\Python36\;C:\Users\Vincent\Anaconda3;C:\Users\Vincent\Anaconda3\Scripts;C:\Users\Vincent\Anaconda3\Library\bin;C:\Users\Vincent\AppData\Local\atom\bin;C:\Users\Vincent\AppData\Local\Microsoft\WindowsApps;]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] SDD_PLATFORM [win32]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.16 00:02:54] [0000m.00s.062ms] [2] S: Loading config files
+[2017.12.16 00:02:55] [0000m.00s.078ms] [1] Config file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.16 00:02:55] [0000m.00s.078ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2017.12.16 00:02:55] [0000m.00s.078ms] [3] S: Config loaded
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Project path [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb] on file system [NTFS]
+[2017.12.16 00:02:55] [0000m.00s.093ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.16 00:02:55] [0000m.00s.093ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Multi-user mode (config)
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Event polling mode autodetection
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Started up automatically by iCDB Client: DESKTOP-0AUT0ED:Vincent:11152
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Auto close mode
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Database ID [b204-5b0c-ac1c-f9d4-293c-33a7-93c3-3a50-df53-5423-61cf-8f98]
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] PathTranslator: BEGIN dumping
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] PathTranslator: END dumping
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: START
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Server startup lock file created
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Listening for client connections on port [10001]
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Server network ID [DESKTOP-0AUT0ED:137.194.11.184,DESKTOP-0AUT0ED:10001]
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Server GUID [a3ae-d986-c964-feef-f945-43a4-a454-3a50-44e2-54d2-e103-9f98]
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Project GUID [b204-5b0c-ac1c-f9d4-293c-33a7-93c3-3a50-df53-5423-61cf-8f98]
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Wrote data to server address file
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] S: Server startup lock file removed
+[2017.12.16 00:02:55] [0000m.00s.093ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.16 00:02:55] [0000m.00s.124ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.16 00:02:55] [0000m.00s.124ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.16 00:02:55] [0000m.00s.124ms] [0] S: Local disc access time: 37 us
+[2017.12.16 00:02:55] [0000m.00s.124ms] [0] S: File server access time: 42 us
+[2017.12.16 00:02:55] [0000m.00s.124ms] [0] Single file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] size [799568 (780.8 kB)]
+[2017.12.16 00:02:55] [0000m.00s.124ms] [1] Single file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.16 00:02:55] [0000m.00s.124ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.16 00:02:55] [0000m.00s.124ms] [0] Database GUARD OK: [799568]
+[2017.12.16 00:02:55] [0000m.00s.140ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.16 00:02:55] [0000m.00s.140ms] [0] Database GUARD OK: [799568]
+[2017.12.16 00:02:55] [0000m.00s.140ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.16 00:02:55] [0000m.00s.140ms] [0] Database GUARD OK: [799568]
+[2017.12.16 00:02:55] [0000m.00s.140ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.16 00:02:55] [0000m.00s.140ms] [0] Database GUARD OK: [799568]
+[2017.12.16 00:02:55] [0000m.00s.140ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.16 00:02:55] [0000m.00s.140ms] [0] Database GUARD OK: [799568]
+[2017.12.16 00:02:55] [0000m.00s.140ms] [0] SingleFile: [ab93-e2d6-a1af-b3dd] SFI version check [1009] [1009]
+[2017.12.16 00:02:55] [0000m.00s.156ms] [0] SingleFile: [ab93-e2d6-a1af-b3dd] Database SFI header has been read in [15ms 86us]
+[2017.12.16 00:02:55] [0000m.00s.156ms] [0] iCDB Server PI: Server & plugin session [4555]
+[2017.12.16 00:02:55] [0000m.00s.156ms] [0] iCDB Server PI: Opening database [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb]
+[2017.12.16 00:02:55] [0000m.00s.156ms] [0] iCDB Server PI: Database [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb] opened
+[2017.12.16 00:02:55] [0000m.00s.203ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.16 00:02:55] [0000m.00s.203ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.16 00:02:55] [0000m.00s.286ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=6e15-85e3-ce85-616e-53d5-40aa-3d54-0a50-47d4-54d2-e103-9f98] up to date
+[2017.12.16 00:02:55] [0000m.00s.506ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.16 00:02:55] [0000m.00s.506ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.16 00:02:55] [0000m.00s.506ms] [0] S: iCDB database loaded
+[2017.12.16 00:02:55] [0000m.00s.506ms] [0] S: Starting threads
+[2017.12.16 00:02:55] [0000m.00s.506ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.16 00:02:55] [0000m.00s.506ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.16 00:02:55] [0000m.00s.506ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.16 00:02:55] [0000m.00s.506ms] [0] IT: Session [4556] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [11152] created
+[2017.12.16 00:02:55] [0000m.00s.506ms] [1] SC[4556]: Registered sub-client [DCDV] with ID [1] for session ID [4556] host [DESKTOP-0AUT0ED] user [Vincent] process ID [11152]
+[2017.12.16 00:02:55] [0000m.00s.522ms] [0] MWT: WindowProc: WM_NCCREATE
+[2017.12.16 00:02:55] [0000m.00s.522ms] [0] IT: iCDB Server Monitor session [1] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [4504] created
+[2017.12.16 00:02:55] [0000m.00s.522ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2017.12.16 00:02:55] [0000m.00s.616ms] [1] CMT: There are [1] clients now: 4556
+[2017.12.16 00:03:25] [0000m.30s.140ms] [0] DFAMT: File server access time: 158 us
+[2017.12.16 00:08:10] [0005m.15s.740ms] [0] IT: Session [4557] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [10628] created
+[2017.12.16 00:08:10] [0005m.15s.740ms] [1] ProjectBackupManager: Client [ClientData[ClientNetAddress[DESKTOP-0AUT0ED] # ClientUserName[Vincent] # ClientProcessID[10628] # SessionID[4557] # Type[0]] # SubClientData[SubClientName[] # SubClientID[0]]] set project file (.prj): local path [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Test_LED.prj], global path [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Test_LED.prj]
+[2017.12.16 00:08:10] [0005m.15s.838ms] [1] CMT: There are [2] clients now: 4556, 4557
+[2017.12.16 00:08:11] [0005m.16s.164ms] [1] SC[4557]: Registered sub-client [Expedition PCB_43391265] with ID [1] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 00:08:11] [0005m.16s.447ms] [1] SC[4557]: Registered sub-client [EEVM] with ID [2] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 00:08:12] [0005m.18s.038ms] [1] SC[4557]: UnRegistered sub-client [EEVM] with ID [2] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 00:08:39] [0005m.44s.126ms] [1] SC[4557]: Registered sub-client [JobPrefsDBPI_43419718] with ID [3] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 00:08:39] [0005m.44s.151ms] [1] SC[4557]: UnRegistered sub-client [JobPrefsDBPI_43419718] with ID [3] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 00:08:47] [0005m.52s.423ms] [1] SC[4557]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 00:08:47] [0005m.52s.429ms] [1] SC[4557]: Registered sub-client [StartServerClient2fc4] with ID [5] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 00:08:47] [0005m.52s.478ms] [1] SC[4557]: UnRegistered sub-client [StartServerClient2fc4] with ID [5] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 00:21:15] [0018m.20s.655ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-16 00.21.11 - auto.zip] with GUID [20be-3f0b-8271-8281-7e85-43ac-e854-3a50-8f14-54d2-e103-9f98]
+[2017.12.16 00:21:15] [0018m.20s.661ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[7080-d849-b169-e9ca-59ba-23aa-9ba2-3a50-4b43-22c2-14ee-ce98] CreationTime[Thursday, December 14, 2017 16:49:25] Type[Autosave] Creator[iCDB Server (2017-12-14 17.48.46-2916)] ApplicationName[iCDB Server (2017-12-14 17.48.46-2916)] UserName[mentor] MachineName[DESKTOP-KA2KT78] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-14 17.49.25 - auto.zip] BackupFileSize[1456597] Persistent[FALSE]
+[2017.12.16 00:21:15] [0018m.20s.667ms] [0] PrjBackupMgr: Project Backup file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-14 17.49.25 - auto.zip] with GUID [7080-d849-b169-e9ca-59ba-23aa-9ba2-3a50-4b43-22c2-14ee-ce98] removed
+[2017.12.16 00:21:15] [0018m.20s.699ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[20be-3f0b-8271-8281-7e85-43ac-e854-3a50-8f14-54d2-e103-9f98] CreationTime[Friday, December 15, 2017 23:21:11] Type[Autosave] Creator[iCDB Server (2017-12-16 00.02.54-8828)] ApplicationName[iCDB Server (2017-12-16 00.02.54-8828)] UserName[Vincent] MachineName[DESKTOP-0AUT0ED] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-16 00.21.11 - auto.zip] BackupFileSize[1633766] Persistent[FALSE]
+[2017.12.16 00:38:20] [0035m.25s.525ms] [0] IT: Session [4558] for host [DESKTOP-0AUT0ED] user [Vincent] with process ID [2864] created
+[2017.12.16 00:38:20] [0035m.25s.526ms] [1] SC[4558]: Registered sub-client [Vincent (BE CES)] with ID [1] for session ID [4558] host [DESKTOP-0AUT0ED] user [Vincent] process ID [2864]
+[2017.12.16 00:38:20] [0035m.25s.527ms] [1] CMT: There are [3] clients now: 4556, 4557, 4558
+[2017.12.16 00:38:30] [0035m.35s.215ms] [1] SC[4558]: UnRegistered sub-client [Vincent (BE CES)] with ID [1] for session ID [4558] host [DESKTOP-0AUT0ED] user [Vincent] process ID [2864]
+[2017.12.16 00:38:30] [0035m.35s.262ms] [1] CMT: Removed client [4558]
+[2017.12.16 00:38:30] [0035m.35s.262ms] [1] CMT: There are [2] clients now: 4556, 4557
+[2017.12.16 00:38:38] [0035m.43s.888ms] [1] SC[4556]: Registered sub-client [StartServerClient2528] with ID [2] for session ID [4556] host [DESKTOP-0AUT0ED] user [Vincent] process ID [11152]
+[2017.12.16 00:38:38] [0035m.43s.890ms] [1] SC[4556]: UnRegistered sub-client [StartServerClient2528] with ID [2] for session ID [4556] host [DESKTOP-0AUT0ED] user [Vincent] process ID [11152]
+[2017.12.16 01:58:37] [0115m.42s.292ms] [1] SC[4557]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 01:58:39] [0115m.44s.091ms] [1] SC[4557]: UnRegistered sub-client [Expedition PCB_43391265] with ID [1] for session ID [4557] host [DESKTOP-0AUT0ED] user [Vincent] process ID [10628]
+[2017.12.16 01:58:39] [0115m.44s.169ms] [1] CMT: Removed client [4557]
+[2017.12.16 01:58:39] [0115m.44s.169ms] [1] CMT: There are [1] clients now: 4556
+[2017.12.16 01:58:40] [0115m.45s.450ms] [1] SC[4556]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4556] host [DESKTOP-0AUT0ED] user [Vincent] process ID [11152]
+[2017.12.16 01:58:40] [0115m.45s.531ms] [1] CMT: Removed client [4556]
+[2017.12.16 01:58:40] [0115m.45s.531ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.16 01:58:40] [0115m.45s.937ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2017.12.16 01:58:42] [0115m.47s.156ms] [0] CMT: Starting server auto-close
+[2017.12.16 01:58:42] [0115m.47s.209ms] [0] S: Closing server
+[2017.12.16 01:58:42] [0115m.47s.312ms] [0] iCDB Server PI: Closing plugins
+[2017.12.16 01:58:42] [0115m.47s.312ms] [0] iCDB Server PI: Plugins closed
+[2017.12.16 01:58:42] [0115m.47s.343ms] [0] iCDB Server PI: Unloading database
+[2017.12.16 01:58:42] [0115m.47s.343ms] [0] iCDB Server PI: Saving storage
+[2017.12.16 01:58:42] [0115m.47s.343ms] [0] iCDB Server PI: Closing database
+[2017.12.16 01:58:42] [0115m.47s.406ms] [1] iCDB Server PI: Stats: Database defragmentation: max[4] avg[1] holes[0%] data[99%]
+[2017.12.16 01:58:42] [0115m.47s.406ms] [1] iCDB Server PI: Stats: Database file size [801376 (782.6 kB)]
+[2017.12.16 01:58:42] [0115m.47s.546ms] [0] iCDB Server PI: Database closed
+[2017.12.16 01:58:42] [0115m.47s.546ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [580584] ticks
+[2017.12.16 01:58:42] [0115m.47s.546ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [270626] microseconds
+[2017.12.16 01:58:42] [0115m.47s.546ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [138]
+[2017.12.16 01:58:42] [0115m.47s.546ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [509] commands per second
+[2017.12.16 01:58:42] [0115m.47s.562ms] [0] Single file [C:\Users\Vincent\Documents\ROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] closed with size [801376 (782.6 kB)]
+[2017.12.16 01:58:42] [0115m.47s.671ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2017.12.16 01:58:42] [0115m.47s.968ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.16 01:58:42] [0115m.47s.968ms] [0] MWT: STOP
+[2017.12.16 01:58:42] [0115m.47s.968ms] [0] S: STOP
