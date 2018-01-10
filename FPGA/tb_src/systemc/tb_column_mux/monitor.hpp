@@ -14,8 +14,7 @@ SC_MODULE(Monitor) {
 
     void timeoutThread(sc_time timeout);
     sc_out<bool> nrst;
-    sc_out<bool> framebufferSync;
-    sc_out<bool> enable;
+    sc_out<bool> columnReady;
     sc_in<bool> clk;
     sc_in<uint32_t> muxOut;
 

@@ -11,8 +11,7 @@ void Monitor::runTests() {
         wait(clk.posedge_event());
     }
 
-    enable = true;
-    framebufferSync = true;
+    columnReady = true;
 
     sc_spawn(sc_bind(&Monitor::checkMuxOutTimings, this));
     sc_spawn(sc_bind(&Monitor::checkMuxOutSequence, this));
@@ -46,11 +45,12 @@ void Monitor::checkMuxOutTimings() {
 
 void Monitor::checkMuxOutSequence() {
     auto previousValue = muxOut.read();
+    bool zeroed = muxOut.read() == 0;
     while (true) {
         wait(muxOut.value_changed_event());
         auto newValue = muxOut.read();
         auto delta = (newValue >> 1) - previousValue;
-        if (delta != 0 && newValue != 1) {
+        if (delta != 0 && newValue != 0 && (newValue != 1 || !zeroed)) {
             auto msg =
                 "column_mux doesn't respect mux sequences, "
                 "it changed from " +
@@ -60,6 +60,7 @@ void Monitor::checkMuxOutSequence() {
             return;
         }
         if (newValue != 0) previousValue = newValue;
+        zeroed = newValue == 0;
     }
 }
 
