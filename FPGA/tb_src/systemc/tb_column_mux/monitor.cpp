@@ -22,6 +22,9 @@ void Monitor::runTests() {
 void Monitor::checkMuxOutTimings() {
     auto t = sc_time_stamp();
     while (true) {
+        while (muxOut == 0) {
+            wait(clk.posedge_event());
+        }
         auto p =
             sc_spawn(sc_bind(&Monitor::timeoutThread, this, TIME_MUX_CHANGE));
         sc_event_or_list evt;
