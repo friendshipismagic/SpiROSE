@@ -15,11 +15,11 @@ SC_MODULE(Monitor) {
     sc_out<bool> nrst;
 
     // Signals that enough images has been cached to start displaying frames
-    sc_in<bool> stream_ready;
+    sc_out<bool> stream_ready;
     // Signals that drivers have been configured and are ready to display frames
-    sc_in<bool> driver_ready;
+    sc_out<bool> driver_ready;
     // Signal indicating when a whole slice has been sent
-    sc_in<bool> position_sync;
+    sc_out<bool> position_sync;
 
     // Serial data sent over the 30 drivers
     sc_in<unsigned int> data;
@@ -57,16 +57,11 @@ SC_MODULE(Monitor) {
      */
     void checkWRTGSBlanking();
 
+    void cycleSync();
+
     void runTests();
 
     private:
-    /*
-     * numberOfolumnsRead keeps track of the the number of 512-bit wide
-     * cycles passed. Its value is 0 only during the first cycle of this
-     * kind, which indicates that the first buffer is being written and that
-     * no relevant data is output from the framebuffer.
-     */
-    int numberOfColumnsRead;
 
     /*
      * cycleCounter is a variable that monitors the location inside
@@ -84,4 +79,6 @@ SC_MODULE(Monitor) {
      * for a WRTGS command, else 0
      */
     int isWRTGSBlankingCycle(int cycle);
+
+    void singleFrameCheck(int cycleNumber);
 };

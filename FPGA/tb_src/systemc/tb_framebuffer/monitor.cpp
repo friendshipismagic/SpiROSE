@@ -17,6 +17,16 @@ static const std::array<unsigned int, 30> ramBaseDriverAddress{
 
 void Monitor::reset() {
     nrst = 0;
+    // Reset the value of the output test array
+    int i, j, k;
+    for (i = 0; i < 30; i++) {
+        for (j = 0; j < 9; j++) {
+            for (k = 0; k < 48; k++) {
+                fbOutput[i][j][k] = 0;
+                fbOutputReference[i][j][k] = 0;
+            }
+        }    
+    }
     wait(clk33.posedge());
     nrst = 1;
 }
@@ -30,36 +40,59 @@ int Monitor::isWRTGSBlankingCycle(int cycle) {
     return 0;
 }
 
+void Monitor::singleFrameCheck(int cycleNumber) {
+    cycleCounter = 0;
+    auto cycleSync_p = sc_spawn(sc_bind(&Monitor::cycleSync, this));
+    // Signals that a new slice has begun
+    position_sync = 1;
+    wait();
+    position_sync = 0;
+    for (int i = 0; i < cycleNumber - 1; i++) {
+        wait(clk33.posedge());
+    }
+    cycleSync_p.kill();
+}
+
 void Monitor::runTests() {
     reset();
 
+    stream_ready = 1;
+
     auto blanking_p = sc_spawn(sc_bind(&Monitor::checkWRTGSBlanking, this));
+    singleFrameCheck(4096);
+    cycleCounter = 0;
 
     while (1) {
         wait();
     }
 }
 
+void Monitor::cycleSync() {
+    while (1) {
+        wait(clk33.posedge_event());
+        if (cycleCounter == 511 && currentMultiplexing < 8) {
+            cycleCounter = 0;
+            currentMultiplexing++;
+        }
+        else {
+            cycleCounter++;
+        }
+    }
+}
+
+
 void Monitor::storeOutputData() {
     while (1) {
-        if (!nrst) {
-            // Reset the value of the output test array
-            int i, j, k;
-            for (i = 0; i < 30; i++) {
-                for (j = 0; j < 9; j++) {
-                    for (k = 0; k < 48; k++) {
-                        fbOutput[i][j][k] = 0;
-                        fbOutputReference[i][j][k] = 0;
-                    }
-                }
-            }
-        } else if (cycleCounter >= 72 && cycleCounter < 512 &&
+        if (cycleCounter >= 72 && cycleCounter < 512 &&
                    !isWRTGSBlankingCycle(cycleCounter) &&
-                   (numberOfColumnsRead != 0)) {
+                   (stream_ready != 0)) {
+            driver_ready = 1;
             for (int i = 0; i < 30; i++) {
                 fbOutput[i][(cycleCounter - 72) / 49]
                         [(cycleCounter - 72) % 49] = (data >> i) & 0x1;
             }
+        } else {
+            driver_ready = 0;
         }
         wait();
     }
@@ -68,7 +101,7 @@ void Monitor::storeOutputData() {
 void Monitor::checkWRTGSBlanking() {
     while (1) {
         wait(clk33.posedge_event());
-        if (isWRTGSBlankingCycle(cycleCounter) && (numberOfColumnsRead != 0)) {
+        if (isWRTGSBlankingCycle(cycleCounter) && (stream_ready == 1)) {
             for (int i = 0; i < 30; i++) {
                 if (fbOutput[i][(cycleCounter - 1 - 72) / 49]
                             [(cycleCounter - 1 - 72) % 49] != (data >> i) &
@@ -106,7 +139,7 @@ void Monitor::checkDataIntegrity() {
     while (1) {
         wait();
         // Verification performed during a blanking cycle
-        if (cycleCounter == 30 && numberOfColumnsRead > 0) {
+        if (cycleCounter == 30 && stream_ready) {
             /*
              * We create a reference data output of the framebuffer,
              * ie what we should obtain, to compare it to what we get
@@ -155,18 +188,7 @@ void Monitor::checkDataIntegrity() {
                         // Data needs to be remapped, because of PCB constraints
                         int kRemapped;
                         // Upper drivers
-                        if (i < 10) {
-                            if (color == 0)
-                                kRemapped = driver_LUT_D0_RG[(47 - k) / 3] * 3;
-                            else if (color == 1)
-                                kRemapped =
-                                    driver_LUT_D0_RG[(47 - k) / 3] * 3 + 1;
-                            else if (color == 2)
-                                kRemapped =
-                                    driver_LUT_D0_B[(47 - k) / 3] * 3 + 2;
-                        }
-                        // Lower drivers
-                        else {
+                        if (i < 20) {
                             if (color == 0)
                                 kRemapped = driver_LUT_D12_RG[(47 - k) / 3] * 3;
                             else if (color == 1)
@@ -175,6 +197,17 @@ void Monitor::checkDataIntegrity() {
                             else if (color == 2)
                                 kRemapped =
                                     driver_LUT_D12_B[(47 - k) / 3] * 3 + 2;
+                        }
+                        // Lower drivers
+                        else {
+                            if (color == 0)
+                                kRemapped = driver_LUT_D0_RG[(47 - k) / 3] * 3;
+                            else if (color == 1)
+                                kRemapped =
+                                    driver_LUT_D0_RG[(47 - k) / 3] * 3 + 1;
+                            else if (color == 2)
+                                kRemapped =
+                                    driver_LUT_D0_B[(47 - k) / 3] * 3 + 2;
                         }
 
                         fbOutputReference[i][j][47 - kRemapped] = resultBit;
@@ -195,8 +228,7 @@ void Monitor::checkDataIntegrity() {
                             msg += sc_uint<8>(k).to_string();
                             msg += " out of 47 (For Driver ";
                             msg += sc_uint<8>(i).to_string();
-                            msg += "). Output check number ";
-                            msg += sc_uint<16>(numberOfColumnsRead).to_string();
+                            msg += ").";
                             SC_REPORT_ERROR("data", msg.c_str());
                             return;
                         }
@@ -221,4 +253,4 @@ void Monitor::checkDataIntegrity() {
  * in the following order:
  * B15[n] || G15[n] || R15[n] || ... || B0[n] || G0[n] || R0[n]
  */
-void Monitor::ramEmulator() { ram_data = ram_addr % (1 << 16); }
+void Monitor::ramEmulator() { ram_data = 0xff; }
