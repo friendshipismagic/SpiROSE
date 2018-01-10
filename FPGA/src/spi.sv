@@ -48,13 +48,13 @@ logic [2:0] config_byte_counter;
 
 // Counter that counts the number of rotation bytes transmitted
 logic [1:0] rotation_byte_counter;
-logic transmission;
+logic [1:0] transmission;
 
 // 48-bit register that stores the received configuration
 logic [47:0] configuration;
 assign config_out = configuration;
 
-assign miso = ~ss ? transmit_register[7] : '1;
+assign miso = transmission == 0 ? 1'b1 : transmit_register[7];
 
 /*
 * Process for the receiving part:
@@ -114,14 +114,16 @@ always_ff @(posedge sck or negedge nrst) begin
                 if ({receive_register[6:0], mosi} == ROTATION_COMMAND) begin
                     transmit_register <= rotation_data[7:0];
                     transmission <= 1;
-                end else if (transmission) begin
+                end else if (transmission == 1) begin
                     transmit_register <= rotation_data[15:8];
-                end else begin
-                    transmit_register <= DEFAULT_CONFIG_DATA;
+                    transmission <= 2;
+                end else if (transmission == 2) begin
+                    transmission <= 0;
                 end
-            end else begin
-                transmit_register <= {transmit_register[6:0],1'b1};
             end
+            transmit_register <= {transmit_register[6:0],1'b1};
+        end else begin
+            transmit_register[7] <= 1;
         end
     end
 end
