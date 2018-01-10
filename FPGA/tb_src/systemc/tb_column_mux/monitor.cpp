@@ -20,13 +20,14 @@ void Monitor::runTests() {
 }
 
 void Monitor::checkMuxOutIsZeroWithoutColumnReady() {
+    std::string msg;
+    msg += "column_mux changed value while column_ready was off";
     while (true) {
-        wait(muxOut.value_changed_event());
         if (!columnReady && muxOut.read() != 0) {
-            std::string msg;
-            msg += "column_mux changed value while column_ready was off";
             SC_REPORT_ERROR("mux", msg.c_str());
+            return;
         }
+        wait(muxOut.value_changed_event());
     }
 }
 
