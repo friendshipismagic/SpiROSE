@@ -7,6 +7,12 @@ CXXFLAGS = -Wall -O2 -g -std=c++14 -iquote$(SRCDIR) -MMD -MP \
            -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS \
            -isystem./lib
 
+# Allow to disable geometry shader at build time
+ifeq ($(NO_GEOMETRY_SHADER),yes)
+    CXXFLAGS += -DNO_GEOMETRY_SHADER
+endif
+
+
 LDLIBS =
 LDFLAGS = -flto
 

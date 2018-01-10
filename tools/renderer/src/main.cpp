@@ -49,6 +49,11 @@
 #endif
 #include <GLFW/glfw3.h>
 
+// OpenGL ES < 3.2 does not have geometry shaders...
+#ifdef NO_GEOMETRY_SHADER
+#undef GL_GEOMETRY_SHADER
+#endif
+
 #include <glm/glm.hpp>
 #include <glm/gtx/rotate_vector.hpp>
 #include <glm/gtx/transform.hpp>
