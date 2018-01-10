@@ -27,6 +27,10 @@ function screenshot {
 
 }
 
+function cropInterlace {
+    convert $1[640x384+640+384] $1
+}
+
 function killApplication {
     kill %2 2> /dev/null
     wait %2 2> /dev/null
@@ -40,7 +44,7 @@ trap finish EXIT
 clean
 
 echo Start the renderer
-EXE -x -p
+EXE -p
 
 screenshot tests/grab.png
 
@@ -73,26 +77,88 @@ fi
 
 echo
 
+echo Start the renderer with text mesh
+EXE -pt 0 -m mesh/text.obj
+screenshot tests/text_gl_gs_t0.png
+cropInterlace tests/text_gl_gs_t0.png
+killApplication
+EXE -pt 5 -m mesh/text.obj
+screenshot tests/text_gl_gs_t5.png
+cropInterlace tests/text_gl_gs_t5.png
+killApplication
+
+echo
+
 echo Rebuild the renderer without geometry shaders
 make clean
 make NO_GEOMETRY_SHADER=yes
+
+echo
 
 echo Start the renderer with the monkey
 EXE -p -t 0
 screenshot tests/monkey_gl.png
 killApplication
 
+echo Start the renderer with text mesh
+EXE -pt 0 -m mesh/text.obj
+screenshot tests/text_gl_t0.png
+cropInterlace tests/text_gl_t0.png
+killApplication
+EXE -pt 5 -m mesh/text.obj
+screenshot tests/text_gl_t5.png
+cropInterlace tests/text_gl_t5.png
+killApplication
+
+compare_out=$(compare -metric AE tests/text_gl_gs_t0.png tests/text_gl_t0.png tests/text_gl_t0_difference.png 2>&1)
+compare_out_t5=$(compare -metric AE tests/text_gl_gs_t5.png tests/text_gl_t5.png tests/text_gl_t5_difference.png 2>&1)
+echo AE: t0: $compare_out, t5: $compare_out_t5
+if [[ $compare_out == "0" ]] && [[ $compare_out_t5 == "0" ]]; then
+    echo Interlace output is the same with and without geometry shaders
+else
+    echo Interlace output is different with and without geometry shaders, see tests/text_gl_t0_difference.png and tests/text_gl_t5_difference.png
+    exit 1
+fi
+
+echo
+
 echo Recompile in GLES mode
 make clean
 make UNAME_P=armv7l || exit 1
+
+echo
+
+echo Start the renderer with the monkey
 EXE -p -t 0
 screenshot tests/monkey_gles.png
+killApplication
+
+echo Start the renderer with text mesh
+EXE -pt 0 -m mesh/text.obj
+screenshot tests/text_gles_t0.png
+cropInterlace tests/text_gles_t0.png
+killApplication
+EXE -pt 5 -m mesh/text.obj
+screenshot tests/text_gles_t5.png
+cropInterlace tests/text_gles_t5.png
+killApplication
+
 compare_out=`compare -metric AE "tests/monkey_gl.png" "tests/monkey_gles.png" tests/monkey_gles_difference.png 2>&1`
 echo "AE: $compare_out"
 if [[ $compare_out == "0" ]]; then
     echo The GLES and GL methods are doing the same voxelization
 else
     echo The GLES and GL methods are differents, see tests/monkey_gles_difference.png
+    exit 1
+fi
+
+compare_out=$(compare -metric AE tests/text_gl_gs_t0.png tests/text_gles_t0.png tests/text_gles_t0_difference.png 2>&1)
+compare_out_t5=$(compare -metric AE tests/text_gl_gs_t5.png tests/text_gles_t5.png tests/text_gles_t5_difference.png 2>&1)
+echo AE: t0: $compare_out, t5: $compare_out_t5
+if [[ $compare_out == "0" ]] && [[ $compare_out_t5 == "0" ]]; then
+    echo Interlace output is the same both in GL and GLES
+else
+    echo Interlace output is different between GL and GLES, see tests/text_gl_t0_difference.png and tests/text_gl_t5_difference.png
     exit 1
 fi
 
