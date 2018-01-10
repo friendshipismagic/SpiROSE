@@ -89,7 +89,7 @@ always_comb
          assign mux_out = '0;
       end else if(enable || (mux_state == DISP)) begin
          // Don't turn on if module not enabled, or in anti ghosting mode
-         assign mux_out = 1'b1 << disp_value;
+         assign mux_out = 1'b1 << (disp_value - 1);
       end
    end
 
