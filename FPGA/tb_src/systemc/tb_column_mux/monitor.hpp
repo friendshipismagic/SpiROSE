@@ -6,9 +6,13 @@
 const sc_time TIME_MUX_CHANGE = sc_time(10, SC_US);
 
 SC_MODULE(Monitor) {
-    SC_CTOR(Monitor) : nrst("nrst") { SC_THREAD(runTests); }
+    SC_CTOR(Monitor) : nrst("nrst") {
+        SC_THREAD(runTests);
+        SC_THREAD(checkMuxOutIsZeroWithoutColumnReady);
+    }
 
     void runTests();
+    void checkMuxOutIsZeroWithoutColumnReady();
     void checkMuxOutTimings();
     void checkMuxOutSequence();
 
