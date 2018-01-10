@@ -120,8 +120,9 @@ always_ff @(posedge sck or negedge nrst) begin
                 end else if (transmission == 2) begin
                     transmission <= 0;
                 end
+            end else begin
+                transmit_register <= {transmit_register[6:0],1'b1};
             end
-            transmit_register <= {transmit_register[6:0],1'b1};
         end else begin
             transmit_register[7] <= 1;
         end
