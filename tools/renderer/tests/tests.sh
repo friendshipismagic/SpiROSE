@@ -86,6 +86,15 @@ EXE -pt 5 -m mesh/text.obj
 screenshot tests/text_gl_gs_t5.png
 cropInterlace tests/text_gl_gs_t5.png
 killApplication
+compare_out=$(compare -metric AE tests/text_gl_gs_t0.png tests/text_t0_ref.png tests/text_gl_t0_difference.png 2>&1)
+compare_out_t5=$(compare -metric AE tests/text_gl_gs_t5.png tests/text_t5_ref.png tests/text_gl_t5_difference.png 2>&1)
+echo AE: t0: $compare_out, t5: $compare_out_t5
+if [[ $compare_out == "0" ]] && [[ $compare_out_t5 == "0" ]]; then
+    echo Output is correctly interlaced
+else
+    echo The interlace has changed since the previous snapshot, see tests/text_gl_t0_difference.png and tests/text_gl_t5_difference.png
+    exit 1
+fi
 
 echo
 
