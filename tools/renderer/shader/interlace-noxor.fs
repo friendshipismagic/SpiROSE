@@ -2,14 +2,7 @@ in vec2 ex_UV;
 
 layout(location = 0) out vec4 out_Color;
 
-uniform sampler2D tex0;
-uniform sampler2D tex1;
-uniform sampler2D tex2;
-uniform sampler2D tex3;
-uniform sampler2D tex4;
-uniform sampler2D tex5;
-uniform sampler2D tex6;
-uniform sampler2D tex7;
+uniform sampler2D tex[N_DRAW_BUFFER];
 uniform bool doPizza;
 
 const float M_PI = 3.14159265359;
@@ -51,31 +44,34 @@ void main() {
     vec2 modST = fragPos.xy / vec2(nVoxelPass, 1.0) +
                  vec2(floor(fragPos.z * nVoxelPass) / nVoxelPass, 0.0);
 
-    // As usual, decode our voxel thingy
+    // As usual, decode our voxel thingy. This may look stupid to do conditions
+    // on the value of modZ if this very same value is our index. But most GL
+    // implementations don't allow dynamic indexing of sampler arrays, neither
+    // does OpenGL ES (whatever the version is).
     vec4 color;
     if (modZ < 1.0)
-        color = texture(tex0, modST);
+        color = texture(tex[0], modST);
     else if (modZ < 2.0)
-        color = texture(tex1, modST);
+        color = texture(tex[1], modST);
     else if (modZ < 3.0)
-        color = texture(tex2, modST);
+        color = texture(tex[2], modST);
     else if (modZ < 4.0)
-        color = texture(tex3, modST);
+        color = texture(tex[3], modST);
 #if N_DRAW_BUFFER >= 5
     else if (modZ < 5.0)
-        color = texture(tex4, modST);
+        color = texture(tex[4], modST);
 #endif
 #if N_DRAW_BUFFER >= 6
     else if (modZ < 6.0)
-        color = texture(tex5, modST);
+        color = texture(tex[5], modST);
 #endif
 #if N_DRAW_BUFFER >= 7
     else if (modZ < 7.0)
-        color = texture(tex6, modST);
+        color = texture(tex[6], modST);
 #endif
 #if N_DRAW_BUFFER >= 8
     else if (modZ < 8.0)
-        color = texture(tex7, modST);
+        color = texture(tex[7], modST);
 #endif
 
     // Get our height in the texture

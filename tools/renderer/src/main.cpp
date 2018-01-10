@@ -271,13 +271,13 @@ int main(int argc, char *argv[]) {
 
         for (int i = 0; i < N_BUF_NO_XOR; i++)
             u->offscreen.tex[i] = glGetUniformLocation(
-                s->offscreen, ("tex" + std::to_string(i)).c_str());
+                s->offscreen, ("tex[" + std::to_string(i) + "]").c_str());
         for (int i = 0; i < N_BUF_NO_XOR; i++)
             u->generate.tex[i] = glGetUniformLocation(
-                s->generate, ("voxels" + std::to_string(i)).c_str());
+                s->generate, ("voxels[" + std::to_string(i) + "]").c_str());
         for (int i = 0; i < N_BUF_NO_XOR; i++)
             u->interlace.tex[i] = glGetUniformLocation(
-                s->interlace, ("tex" + std::to_string(i)).c_str());
+                s->interlace, ("tex[" + std::to_string(i) + "]").c_str());
     }
 
     // Matricies

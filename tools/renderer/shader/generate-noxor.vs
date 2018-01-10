@@ -11,14 +11,7 @@ uniform mat4 matModel;
 uniform mat4 matProjection, matView;
 #endif
 
-uniform sampler2D voxels0;
-uniform sampler2D voxels1;
-uniform sampler2D voxels2;
-uniform sampler2D voxels3;
-uniform sampler2D voxels4;
-uniform sampler2D voxels5;
-uniform sampler2D voxels6;
-uniform sampler2D voxels7;
+uniform sampler2D voxels[N_DRAW_BUFFER];
 
 const float nVoxelPass = float(N_VOXEL_PASS);
 
@@ -38,30 +31,33 @@ void main() {
     vec2 modST = p.xy / vec2(nVoxelPass, 1.0) +
                  vec2(floor(p.z * nVoxelPass) / nVoxelPass, 0.0);
 
-    // Fetch the texel that concerns us.
+    // Fetch the texel that concerns us. This may look stupid to do conditions
+    // on the value of modZ if this very same value is our index. But most GL
+    // implementations don't allow dynamic indexing of sampler arrays, neither
+    // does OpenGL ES (whatever the version is).
     if (modZ < 1.0)
-        c = texture(voxels0, modST);
+        c = texture(voxels[0], modST);
     else if (modZ < 2.0)
-        c = texture(voxels1, modST);
+        c = texture(voxels[1], modST);
     else if (modZ < 3.0)
-        c = texture(voxels2, modST);
+        c = texture(voxels[2], modST);
     else if (modZ < 4.0)
-        c = texture(voxels3, modST);
+        c = texture(voxels[3], modST);
 #if N_DRAW_BUFFER >= 5
     else if (modZ < 5.0)
-        c = texture(voxels4, modST);
+        c = texture(voxels[4], modST);
 #endif
 #if N_DRAW_BUFFER >= 6
     else if (modZ < 6.0)
-        c = texture(voxels5, modST);
+        c = texture(voxels[5], modST);
 #endif
 #if N_DRAW_BUFFER >= 7
     else if (modZ < 7.0)
-        c = texture(voxels6, modST);
+        c = texture(voxels[6], modST);
 #endif
 #if N_DRAW_BUFFER >= 8
     else if (modZ < 8.0)
-        c = texture(voxels7, modST);
+        c = texture(voxels[7], modST);
 #endif
 
 #ifndef HAS_GEOMETRY_SHADER
