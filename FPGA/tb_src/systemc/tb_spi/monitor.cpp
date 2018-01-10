@@ -61,7 +61,7 @@ void Monitor::runTests() {
         sendCommand(0xA1 + i);
     }
 
-    checkValueEq<48>(configOut.read(), 0xA1A2A3A4A5A6);
+    checkValueEq<48>(configOut.read(), 0xA6A5A4A3A2A1);
 
     // Get rotation data
     rotationData = 0xBEEF;
@@ -74,11 +74,11 @@ void Monitor::runTests() {
         sendCommand(0xA0);
     }
 
-    if (bytes[0] != 0xBE && bytes[1] != 0xEF) {
+    if (bytes[1] != 0xBE && bytes[0] != 0xEF) {
         std::string msg;
         msg += "Error during the process of get_rotation command, expected ";
         msg += "0xBEEF, got 0xXXXX";
-        sprintf(&msg[msg.size() - 4], "%x%x", bytes[0], bytes[1]);
+        sprintf(&msg[msg.size() - 4], "%x%x", bytes[1], bytes[0]);
 
         SC_REPORT_ERROR("spi", msg.c_str());
     }
