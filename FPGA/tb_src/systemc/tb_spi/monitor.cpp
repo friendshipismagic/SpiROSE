@@ -26,7 +26,7 @@ void Monitor::runTests() {
     // wait some cycles before sending anything
     for (int i = 0; i < 200; ++i) wait(clk.posedge_event());
 
-    int capturedValue = 0;
+    unsigned char capturedValue = 0;
 
     sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
     sendCommand(0b00000000);
@@ -58,13 +58,30 @@ void Monitor::runTests() {
     sendCommand(0xBF);
 
     for (int i = 0; i < 7; ++i) {
+        sendCommand(0xA1 + i);
+    }
+
+    checkValueEq<48>(configOut.read(), 0xA1A2A3A4A5A6);
+
+    // Get rotation data
+    rotationData = 0xBEEF;
+    sendCommand(0xA0);
+    sendCommand(0x4C);
+
+    unsigned char bytes[2];
+    for (int i = 0; i < 2; ++i) {
+        sc_spawn(&bytes[i], sc_bind(&Monitor::captureValue, this));
         sendCommand(0xA0);
     }
 
-    checkValueEq<48>(configOut.read(), 0xA0A0A0A0A0A0);
+    if (bytes[0] != 0xBE && bytes[1] != 0xEF) {
+        std::string msg;
+        msg += "Error during the process of get_rotation command, expected ";
+        msg += "0xBEEF, got 0xXXXX";
+        sprintf(&msg[msg.size() - 4], "%x%x", bytes[0], bytes[1]);
 
-    sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
-    sendCommand(0x4C);
+        SC_REPORT_ERROR("spi", msg.c_str());
+    }
 
     sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
     sendCommand(0x4C);
@@ -87,11 +104,12 @@ void Monitor::sendCommand(char value) {
         mosi = (value >> (SPI_CYCLES - i / 2 - 1)) & 1;
         wait(clk.value_changed_event());
     }
+    mosi = 0;
     sck = 0;
 }
 
-int Monitor::captureValue() {
-    int value = 0;
+unsigned char Monitor::captureValue() {
+    unsigned char value = 0;
     for (int i = 0; i < SPI_CYCLES; ++i) {
         wait(clk.posedge_event());
         value = (value << 1) | miso.read();

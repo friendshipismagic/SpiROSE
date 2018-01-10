@@ -27,7 +27,7 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> spiSs;
     sc_signal<bool> spiMosi;
     sc_signal<bool> spiMiso;
-    sc_signal<unsigned int> spiRotationDataAvailable;
+    sc_signal<uint32_t> spiRotationData;
     sc_signal<uint64_t> spiDriverConfig;
     sc_signal<bool> spiConfigAvailable;
 
@@ -39,8 +39,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, spiSs, "ss");
     sc_trace(traceFile, spiMosi, "mosi");
     sc_trace(traceFile, spiMiso, "miso");
-    sc_trace(traceFile, spiRotationDataAvailable,
-             "new_rotation_data_available");
+    sc_trace(traceFile, spiRotationData, "rotation_data");
     sc_trace(traceFile, spiDriverConfig, "config_out");
     sc_trace(traceFile, spiConfigAvailable, "new_config_available");
 
@@ -50,7 +49,7 @@ int sc_main(int argc, char** argv) {
     dut.ss(spiSs);
     dut.mosi(spiMosi);
     dut.miso(spiMiso);
-    dut.rotation_data(spiRotationDataAvailable);
+    dut.rotation_data(spiRotationData);
     dut.config_out(spiDriverConfig);
     dut.new_config_available(spiConfigAvailable);
 
@@ -61,7 +60,7 @@ int sc_main(int argc, char** argv) {
     monitor.ss(spiSs);
     monitor.mosi(spiMosi);
     monitor.miso(spiMiso);
-    monitor.newRotationDataAvailable(spiRotationDataAvailable);
+    monitor.rotationData(spiRotationData);
     monitor.configOut(spiDriverConfig);
     monitor.newConfigAvailable(spiConfigAvailable);
 
