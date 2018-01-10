@@ -2,32 +2,18 @@
 #include <verilated.h>
 #include <array>
 
-#include "monitor.hpp"
 #include "driver_LUT.hpp"
+#include "monitor.hpp"
 
 static uint8_t fbOutput[30][9][48];
 static uint8_t fbOutputReference[30][9][48];
 // Array with the base ram addresses for each driver
-static const std::array<unsigned int, 30> ramBaseDriverAddress
-{
-    0      ,       0, 
-    16     ,      16, 
-    32     ,      32, 
-    48     ,      48, 
-    64     ,      64,
-    640    ,     640, 
-    640+16 ,  640+16, 
-    640+32 ,  640+32,
-    640+48 ,  640+48,
-    640+64 ,  640+64,
-    1280   ,    1280,
-    1280+16, 1280+16,
-    1280+32, 1280+32,
-    1280+48, 1280+48,
-    1280+64, 1280+64
-};
-
-
+static const std::array<unsigned int, 30> ramBaseDriverAddress{
+    0,         0,         16,        16,        32,        32,
+    48,        48,        64,        64,        640,       640,
+    640 + 16,  640 + 16,  640 + 32,  640 + 32,  640 + 48,  640 + 48,
+    640 + 64,  640 + 64,  1280,      1280,      1280 + 16, 1280 + 16,
+    1280 + 32, 1280 + 32, 1280 + 48, 1280 + 48, 1280 + 64, 1280 + 64};
 
 void Monitor::reset() {
     nrst = 0;
@@ -36,14 +22,9 @@ void Monitor::reset() {
 }
 
 int Monitor::isWRTGSBlankingCycle(int cycle) {
-    if ( cycle == 72+48
-        || cycle == 72+97
-        || cycle == 72+146
-        || cycle == 72+195
-        || cycle == 72+244
-        || cycle == 72+293
-        || cycle == 72+342
-        || cycle == 72+391) {
+    if (cycle == 72 + 48 || cycle == 72 + 97 || cycle == 72 + 146 ||
+        cycle == 72 + 195 || cycle == 72 + 244 || cycle == 72 + 293 ||
+        cycle == 72 + 342 || cycle == 72 + 391) {
         return 1;
     }
     return 0;
@@ -52,50 +33,15 @@ int Monitor::isWRTGSBlankingCycle(int cycle) {
 void Monitor::runTests() {
     reset();
 
-    auto blanking_p =
-            sc_spawn(sc_bind(&Monitor::checkWRTGSBlanking, this));
+    auto blanking_p = sc_spawn(sc_bind(&Monitor::checkWRTGSBlanking, this));
 
-
-    while(1) {
-        wait();
-    }
-}
-
-void Monitor::continuousCycleCount() {
-    while(1) {
-        if (!nrst) {
-            cycleCounter = 0;
-            numberOfColumnsRead = 0;
-            currentMultiplexing = 0;
-            enc_position = 0;
-            enc_sync = 1;
-        }
-        else {
-            if (enc_sync == 1)
-                enc_sync = 0;
-            if (cycleCounter == 512) {
-                cycleCounter = 0;
-                numberOfColumnsRead++;
-                if (currentMultiplexing == 7) {
-                    currentMultiplexing = 0;
-                    enc_sync = 1;
-                    if (enc_position == 255)
-                        enc_position = 0;
-                    else
-                        enc_position = enc_position + 1;
-                }
-                else
-                    if (numberOfColumnsRead > 0)
-                        currentMultiplexing++;
-            }
-            cycleCounter++;
-        }
+    while (1) {
         wait();
     }
 }
 
 void Monitor::storeOutputData() {
-    while(1) {
+    while (1) {
         if (!nrst) {
             // Reset the value of the output test array
             int i, j, k;
@@ -107,14 +53,12 @@ void Monitor::storeOutputData() {
                     }
                 }
             }
-        }
-        else if (cycleCounter >= 72 
-                    && cycleCounter < 512
-                    && !isWRTGSBlankingCycle(cycleCounter)
-                    && (numberOfColumnsRead != 0)) {
+        } else if (cycleCounter >= 72 && cycleCounter < 512 &&
+                   !isWRTGSBlankingCycle(cycleCounter) &&
+                   (numberOfColumnsRead != 0)) {
             for (int i = 0; i < 30; i++) {
-                fbOutput[i][(cycleCounter-72)/49][(cycleCounter-72)%49] 
-                    = (data >> i) & 0x1;
+                fbOutput[i][(cycleCounter - 72) / 49]
+                        [(cycleCounter - 72) % 49] = (data >> i) & 0x1;
             }
         }
         wait();
@@ -126,10 +70,11 @@ void Monitor::checkWRTGSBlanking() {
         wait(clk33.posedge_event());
         if (isWRTGSBlankingCycle(cycleCounter) && (numberOfColumnsRead != 0)) {
             for (int i = 0; i < 30; i++) {
-                if (fbOutput[i][(cycleCounter-1-72)/49][(cycleCounter-1-72)%49] 
-                        != (data >> i) & 0x1) {
+                if (fbOutput[i][(cycleCounter - 1 - 72) / 49]
+                            [(cycleCounter - 1 - 72) % 49] != (data >> i) &
+                    0x1) {
                     std::string msg = "Missing blanking cycle number ";
-                    unsigned int cyclePosition = (cycleCounter-1-72)/49;
+                    unsigned int cyclePosition = (cycleCounter - 1 - 72) / 49;
                     msg += sc_uint<5>(cyclePosition).to_string();
                     msg += " out of 8 for driver ";
                     msg += sc_int<30>(i).to_string();
@@ -141,40 +86,39 @@ void Monitor::checkWRTGSBlanking() {
     }
 }
 
-
-/* 
+/*
  * The aims of this testing method is to check that the data
  * that is output by the framebuffer module is correct,
  * relatively to the frames structure and the order in which
  * the data is meant to be ouput aka in poker mode.
  * The idea of the framebuffer is that it reads 30 16-bit wide
  * data from RAM and at the next cycle outputs it.
- * 
+ *
  * Besides, since the pin assignment for the drivers was changed,
  * look-up tables need to be implemented in the framebuffer module
- * so as to modify the order of the data half words between the moment 
+ * so as to modify the order of the data half words between the moment
  * they are read in RAM and they are sent to the driver controller.
  * Taking the led panel schematic notations, there are two different
- * driver pin assignments for {UB0, {UB1, UB2}}. The 16-bit data is 
+ * driver pin assignments for {UB0, {UB1, UB2}}. The 16-bit data is
  * thus changed depending of which driver it corresponds to.
  */
 void Monitor::checkDataIntegrity() {
-    while(1) {
+    while (1) {
         wait();
         // Verification performed during a blanking cycle
         if (cycleCounter == 30 && numberOfColumnsRead > 0) {
             /*
-             * We create a reference data output of the framebuffer, 
+             * We create a reference data output of the framebuffer,
              * ie what we should obtain, to compare it to what we get
              * from the implemented framebuffer module.
              */
             for (int i = 0; i < 30; i++) {
-                /* 
+                /*
                  * Compute the base address of the i-th driver
                  * given the current multiplexing
                  */
-                int driverBaseAddress = ramBaseDriverAddress[i]
-                        + currentMultiplexing;
+                int driverBaseAddress =
+                    ramBaseDriverAddress[i] + currentMultiplexing;
                 for (int j = 0; j < 9; j++) {
                     for (int k = 0; k < 48; k++) {
                         /*
@@ -185,9 +129,10 @@ void Monitor::checkDataIntegrity() {
                          * j is the poker sequence number.
                          * k is the bit number.
                          */
-                        int lineAddress = driverBaseAddress + ((47-k)/3)*40;
+                        int lineAddress =
+                            driverBaseAddress + ((47 - k) / 3) * 40;
                         // Index of the color (B=2, G=1, R=0)
-                        int color = (47-k) % 3;
+                        int color = (47 - k) % 3;
                         // 16 bit reference data
                         int data = lineAddress % (1 << 16);
                         uint8_t resultBit;
@@ -203,8 +148,7 @@ void Monitor::checkDataIntegrity() {
                             if (color == 2) {
                                 resultBit = (data >> (4 - j)) & 0x1;
                             }
-                        }
-                        else if (j == 5 && color == 1) {
+                        } else if (j == 5 && color == 1) {
                             // Case of the 6-th bit of color Green
                             resultBit = (data >> 5) & 0x1;
                         }
@@ -213,23 +157,27 @@ void Monitor::checkDataIntegrity() {
                         // Upper drivers
                         if (i < 10) {
                             if (color == 0)
-                                kRemapped = driver_LUT_D0_RG[(47-k)/3] *3;
+                                kRemapped = driver_LUT_D0_RG[(47 - k) / 3] * 3;
                             else if (color == 1)
-                                kRemapped = driver_LUT_D0_RG[(47-k)/3] *3+1;
+                                kRemapped =
+                                    driver_LUT_D0_RG[(47 - k) / 3] * 3 + 1;
                             else if (color == 2)
-                                kRemapped = driver_LUT_D0_B[(47-k)/3] *3+2;
+                                kRemapped =
+                                    driver_LUT_D0_B[(47 - k) / 3] * 3 + 2;
                         }
                         // Lower drivers
                         else {
                             if (color == 0)
-                                kRemapped = driver_LUT_D12_RG[(47-k)/3] *3;
+                                kRemapped = driver_LUT_D12_RG[(47 - k) / 3] * 3;
                             else if (color == 1)
-                                kRemapped = driver_LUT_D12_RG[(47-k)/3] *3+1;
+                                kRemapped =
+                                    driver_LUT_D12_RG[(47 - k) / 3] * 3 + 1;
                             else if (color == 2)
-                                kRemapped = driver_LUT_D12_B[(47-k)/3] *3+2;
+                                kRemapped =
+                                    driver_LUT_D12_B[(47 - k) / 3] * 3 + 2;
                         }
 
-                        fbOutputReference[i][j][47-kRemapped] = resultBit;
+                        fbOutputReference[i][j][47 - kRemapped] = resultBit;
                     }
                 }
             }
@@ -259,9 +207,7 @@ void Monitor::checkDataIntegrity() {
     }
 }
 
-
-
-/* 
+/*
  * To emulate the RAM, we simply have an emulator that gives
  * back data as a function of the address to the framebuffer.
  * It will be tested, to be sure that the framebuffer correctly
@@ -275,6 +221,4 @@ void Monitor::checkDataIntegrity() {
  * in the following order:
  * B15[n] || G15[n] || R15[n] || ... || B0[n] || G0[n] || R0[n]
  */
-void Monitor::ramEmulator() {
-    ram_data = ram_addr % (1 << 16);
-}
+void Monitor::ramEmulator() { ram_data = ram_addr % (1 << 16); }
