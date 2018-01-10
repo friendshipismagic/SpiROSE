@@ -11,7 +11,12 @@ function EXE {
 
 function clean {
     echo "Removing artefacts"
-    rm -rf tests/grab.png tests/sphere.png tests/monkey_noxor.png tests/monkey_xor.png
+    pushd tests
+    rm -rf grab.png \
+           sphere{_difference,}.png \
+           monkey_{gl,gles,gles_difference}.png \
+           text_{gl,gles}{_gs,}_t{0,5}{_difference,}.png
+    popd
 }
 
 function finish {
