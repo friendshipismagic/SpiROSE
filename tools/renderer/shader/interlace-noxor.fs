@@ -37,8 +37,9 @@ void main() {
         fragPos.y = abs(fragPos.y - 0.5) * 2.0;
     } else
         // Just polar coordinates from the (0.5, 0.5) point as origin
-        fragPos.xy =
-            0.5 + vec2(sin(refreshNo), -cos(refreshNo)) * (fragPos.y - 0.5);
+        fragPos.xy = 0.5 + vec2(sin(refreshNo * 2.0 * M_PI),
+                                -cos(refreshNo * 2.0 * M_PI)) *
+                               (fragPos.y - 0.5);
 
     float modZ = mod(fragPos.z, 1.0 / nVoxelPass) * float(RES_H / 4);
     vec2 modST = fragPos.xy / vec2(nVoxelPass, 1.0) +
