@@ -6,6 +6,7 @@ module top_module (
     // RGB bus
     input [23:0] rgb,
     input hsync, vsync, rgb_clk,
+    input rgb_enable,
 
     // Driver output
     output sclk,
@@ -49,6 +50,11 @@ logic        write_enable;
 logic [29:0] framebuffer_dat;
 logic        framebuffer_sync;
 
+// RGB
+/* verilator lint_off UNUSED */
+logic stream_ready;
+/* verilator lint_on UNUSED */
+
 /*
  * Temporary zone where signals are driven while unused
  */
@@ -73,7 +79,9 @@ rgb_logic main_rgb_logic (
     .vsync(vsync),
     .ram_addr(ram_write_addr),
     .ram_data(ram_write_data),
-    .write_enable(write_enable)
+    .write_enable(write_enable),
+    .rgb_enable(rgb_enable),
+    .stream_ready(stream_ready)
 );
 
 ram main_ram (
