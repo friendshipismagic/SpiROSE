@@ -20,7 +20,7 @@
 module spi_slave(
     input  logic sck,
     input  logic nrst,
-    
+
     input  logic ss,
     input  logic mosi,
     output logic miso,

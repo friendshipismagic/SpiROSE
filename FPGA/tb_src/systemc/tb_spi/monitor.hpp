@@ -11,7 +11,7 @@ SC_MODULE(Monitor) {
           ss("ss"),
           mosi("mosi"),
           miso("miso"),
-          newRotationDataAvailable("new_rotation_data_available"),
+          rotationData("rotation_data"),
           configOut("config_out"),
           newConfigAvailable("new_config_available") {
         SC_THREAD(runTests);
@@ -27,13 +27,13 @@ SC_MODULE(Monitor) {
     sc_out<bool> mosi;
     sc_in<bool> miso;
 
-    sc_out<unsigned int> newRotationDataAvailable;
+    sc_out<uint32_t> rotationData;
     sc_in<uint64_t> configOut;
     sc_in<bool> newConfigAvailable;
 
     void sendCommand(char value);
 
-    int captureValue();
+    unsigned char captureValue();
 
     private:
     void sendReset();
