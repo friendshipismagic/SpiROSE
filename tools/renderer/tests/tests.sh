@@ -77,9 +77,9 @@ echo Rebuild the renderer without geometry shaders
 make clean
 make NO_GEOMETRY_SHADER=yes
 
-echo Start the renderer in non-xor mode
+echo Start the renderer with the monkey
 EXE -p -t 0
-screenshot tests/monkey_noxor.png
+screenshot tests/monkey_gl.png
 killApplication
 
 echo Recompile in GLES mode
@@ -87,7 +87,7 @@ make clean
 make UNAME_P=armv7l || exit 1
 EXE -p -t 0
 screenshot tests/monkey_gles.png
-compare_out=`compare -metric AE "tests/monkey_noxor.png" "tests/monkey_gles.png" tests/monkey_gles_difference.png 2>&1`
+compare_out=`compare -metric AE "tests/monkey_gl.png" "tests/monkey_gles.png" tests/monkey_gles_difference.png 2>&1`
 echo "AE: $compare_out"
 if [[ $compare_out == "0" ]]; then
     echo The GLES and GL methods are doing the same voxelization
