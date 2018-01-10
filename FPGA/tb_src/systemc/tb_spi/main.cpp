@@ -27,7 +27,7 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> spiSs;
     sc_signal<bool> spiMosi;
     sc_signal<bool> spiMiso;
-    sc_signal<bool> spiRotationDataAvailable;
+    sc_signal<unsigned int> spiRotationDataAvailable;
     sc_signal<uint64_t> spiDriverConfig;
     sc_signal<bool> spiConfigAvailable;
 
@@ -50,7 +50,7 @@ int sc_main(int argc, char** argv) {
     dut.ss(spiSs);
     dut.mosi(spiMosi);
     dut.miso(spiMiso);
-    dut.new_rotation_data_available(spiRotationDataAvailable);
+    dut.rotation_data(spiRotationDataAvailable);
     dut.config_out(spiDriverConfig);
     dut.new_config_available(spiConfigAvailable);
 

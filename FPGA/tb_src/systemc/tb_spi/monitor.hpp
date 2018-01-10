@@ -27,7 +27,7 @@ SC_MODULE(Monitor) {
     sc_out<bool> mosi;
     sc_in<bool> miso;
 
-    sc_out<bool> newRotationDataAvailable;
+    sc_out<unsigned int> newRotationDataAvailable;
     sc_in<uint64_t> configOut;
     sc_in<bool> newConfigAvailable;
 
