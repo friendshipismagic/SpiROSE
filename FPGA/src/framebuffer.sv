@@ -127,6 +127,98 @@ localparam [29:0] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
 };
 
 /*
+ * Drivers' LUT.
+ *
+ * There are two types of driver and for each one a LUT for red and green, and
+ * a LUT for blue. Drivers 1 to 20 are part of group 1, drivers 21 to 30 are
+ * part of group 0.
+ *
+ * If a driver starts at address n, his first voxel is at address n, the second
+ * one is at address n+5 because of the buffers' layout described above, hence
+ * we multiply the index by 5 in the following LUTs.
+ */
+
+// Red-Green
+localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_RG = '{
+    5*6 ,
+    5*7 ,
+    5*9 ,
+    5*8 ,
+    5*10,
+    5*11,
+    5*13,
+    5*12,
+    5*14,
+    5*15,
+    5*1 ,
+    5*0 ,
+    5*2 ,
+    5*3 ,
+    5*5 ,
+    5*4
+};
+
+//Blue
+localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_B = '{
+    5*8 ,
+    5*9 ,
+    5*14,
+    5*15,
+    5*12,
+    5*13,
+    5*2 ,
+    5*3 ,
+    5*0 ,
+    5*1 ,
+    5*6 ,
+    5*7 ,
+    5*4 ,
+    5*5 ,
+    5*10,
+    5*11
+};
+
+// Red-Green
+localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_RG = '{
+    5*2 ,
+    5*3 ,
+    5*5 ,
+    5*4 ,
+    5*6 ,
+    5*7 ,
+    5*9 ,
+    5*8 ,
+    5*10,
+    5*11,
+    5*13,
+    5*12,
+    5*14,
+    5*15,
+    5*1 ,
+    5*0
+};
+
+//Blue
+localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
+    5*0 ,
+    5*1 ,
+    5*6 ,
+    5*7 ,
+    5*4 ,
+    5*5 ,
+    5*9 ,
+    5*11,
+    5*8 ,
+    5*10,
+    5*14,
+    5*15,
+    5*12,
+    5*13,
+    5*2 ,
+    5*3
+};
+
+/*
  * The two framebuffers, while one is reading the ram the other is sending
  * data to the driver_main_controller. In the buffers we store only a column
  * for each driver, hence we have to swap buffer when we change the
@@ -161,7 +253,7 @@ logic [1:0] rgb_idx;
 
 // The three following logics help to compute the correct voxel and bit address
 logic [$clog2(RAM_DATA_WIDTH)-1:0] color_addr;
-logic [BUFF_SIZE_LOG-1:0] voxel_addr;
+logic [29:0] [BUFF_SIZE_LOG-1:0] voxel_addr;
 logic [$clog2(POKER_MODE)-1:0] color_bit_idx;
 // Indicates that we have written a whole slice in the buffer
 logic has_reached_end;
@@ -235,16 +327,29 @@ always_ff @(posedge clk_33 or negedge nrst)
 
 /*
  * Read the writing_buffer to send data to the driver main controller.
- *
- * If a driver starts at address n, his first voxel is at address n, the second
- * one is at address n+5 because of the buffers' layout described above, hence
- * we add 5*led_idx to the base address to get the right line.
- *
+ */
+
+/*
+ * There are two types of driver and for each one a LUT for red and green, and
+ * a LUT for blue. Drivers 1 to 20 are part of group 1, drivers 21 to 30 are
+ * part of group 0. rgb_idx == 2 means that we are sending blue color.
+ */
+always_comb begin
+    for(int i = 0; i < 30; ++i) begin
+        if(i < 20) begin
+            voxel_addr[i] = (rgb_idx == 2) ? DRIVER_LUT1_B[led_idx]
+                                           : DRIVER_LUT1_RG[led_idx];
+        end else begin
+            voxel_addr[i] = (rgb_idx == 2) ? DRIVER_LUT0_B[led_idx]
+                                           : DRIVER_LUT0_RG[led_idx];
+        end
+    end
+end
+/*
  * The color_bit_idx goes from 5 to 0, thus if we add the base address for the
  * green color for instance we get bits 10 to 5. The red and blue color have
  * 5 bits instead of 6, hence we need to substract 1 to color_addr.
  */
-assign voxel_addr = 5*led_idx;
 assign color_bit_idx = (bit_idx >= 3) ? bit_idx - 3 : 0;
 assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]) - 4'(rgb_idx != 1);
 
@@ -267,9 +372,9 @@ always_ff @(posedge clk_33 or negedge nrst)
             && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
             for(int i = 0; i < 30; ++i) begin
                 if(current_buffer) begin
-                    data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr][color_addr];
+                    data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
                 end else begin
-                    data[i] <= buffer1[DRIVER_BASE[i] + voxel_addr][color_addr];
+                    data[i] <= buffer1[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
                 end
             end
         end
