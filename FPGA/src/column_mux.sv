@@ -47,7 +47,7 @@ always_ff @(posedge clk_33 or negedge nrst)
             DISP: begin
                 mux_state_counter <= mux_state_counter + 1'b1;
                 // Remove one clock cycle per transition
-                if(mux_state_counter == COLUMN_DISP_TIME - 1) begin
+                if(mux_state_counter == DRIVE_CLOCK_CYCLES[7:0] - 1) begin
                     mux_state <= WAIT_COLUMN_READY;
                     // Change column for next time
                     disp_value <= disp_value + 1'b1;
