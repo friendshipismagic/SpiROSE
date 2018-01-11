@@ -20,7 +20,7 @@ module framebuffer #(
     input stream_ready,
     /*
      * Sync signal indicating that the driver is ready to receive data,
-     * meaning that it has been configured an dis not in a blanking cycle.
+     * meaning that it has been configured and is not in a blanking cycle.
      */
     input driver_ready,
     // Position sync signal, indicates that the position has changed
@@ -41,7 +41,7 @@ localparam ROW_SIZE = 40;
 localparam COLUMN_SIZE = 48;
 localparam IMAGE_SIZE = ROW_SIZE*COLUMN_SIZE;
 // We use 16-bits rgb : 5 bits red, 6 bits green, 5 bit blue.
-localparam [2:0] [15:0] COLOR_BASE = '{0,5,11};
+localparam [2:0] [15:0] COLOR_BASE = '{11,5,0};
 /*
  * The drivers are layout as follow:
  * |++++++++++++++++++++++||++++++++++++++++++++++|     |+++++++++++++++++++++++|
@@ -93,7 +93,8 @@ localparam [2:0] [15:0] COLOR_BASE = '{0,5,11};
  */
 localparam BUFF_SIZE = 15*LED_PER_DRIVER;
 localparam BUFF_SIZE_LOG = $clog2(BUFF_SIZE);
-localparam [29:0] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
+/* verilator lint_off LITENDIAN */
+localparam [0:29] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
     0 + 0*5*LED_PER_DRIVER,
     0 + 0*5*LED_PER_DRIVER,
     1 + 0*5*LED_PER_DRIVER,
@@ -139,7 +140,7 @@ localparam [29:0] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
  */
 
 // Red-Green
-localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_RG = '{
+localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_RG = '{
     5*6 ,
     5*7 ,
     5*9 ,
@@ -159,7 +160,7 @@ localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_RG = '{
 };
 
 //Blue
-localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_B = '{
+localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_B = '{
     5*8 ,
     5*9 ,
     5*14,
@@ -179,7 +180,7 @@ localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_B = '{
 };
 
 // Red-Green
-localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_RG = '{
+localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_RG = '{
     5*2 ,
     5*3 ,
     5*5 ,
@@ -199,7 +200,7 @@ localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_RG = '{
 };
 
 //Blue
-localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
+localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
     5*0 ,
     5*1 ,
     5*6 ,
@@ -217,6 +218,7 @@ localparam [15:0] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
     5*2 ,
     5*3
 };
+/* verilator lint_on LITENDIAN */
 
 /*
  * The two framebuffers, while one is reading the ram the other is sending
@@ -261,28 +263,25 @@ logic has_reached_end;
 logic [RAM_ADDR_WIDTH-1:0] image_start_addr;
 // Indicates which slice we need to read from the ram
 logic [$clog2(SLICES_IN_RAM)-1:0] slice_cnt;
+// Indicates that we have sent a column, so we need to fill a new buffer
+logic column_sent;
 
 // State entered by the framebuffer when it has sent the whole slice
 logic wait_for_next_slice;
 
+// Count the number of slices read so far, so we assert the correct ram address
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
-        wait_for_next_slice <= '0;
         slice_cnt <= '0;
     end else if(stream_ready) begin
         // The position has changed, stop waiting for the next slice
         if(wait_for_next_slice && position_sync) begin
-            wait_for_next_slice <= '0;
             slice_cnt <= slice_cnt + 1'b1;
             if(slice_cnt == SLICES_IN_RAM) begin
                 slice_cnt <= 0;
             end
-        // We have sent the whole slice, wait for the next
-        end else if (mul_idx == 3'(MULTIPLEXING-1)) begin
-            wait_for_next_slice <= 1'b1;
         end
     end else begin
-        wait_for_next_slice <= '0;
         slice_cnt <= '0;
     end
 
@@ -293,7 +292,7 @@ always_ff @(posedge clk_33 or negedge nrst)
  * driver j, if we add MULTIPLEXING from here we access column i+MULTIPLEXING
  * which is part of driver j+2.
  */
-assign has_reached_end = write_idx == BUFF_SIZE-1;
+assign has_reached_end = write_idx == BUFF_SIZE;
 assign image_start_addr = slice_cnt*IMAGE_SIZE + RAM_BASE;
 
 always_ff @(posedge clk_33 or negedge nrst)
@@ -314,7 +313,7 @@ always_ff @(posedge clk_33 or negedge nrst)
                     buffer2[write_idx] <= ram_data;
                 end
             // We have sent all data so we fill a new buffer
-            end else if(bit_idx == 0) begin
+            end else if(column_sent) begin
                 // We will fill the new buffer with the next column
                 ram_addr <= image_start_addr + 32'(mul_idx);
                 write_idx <= '0;
@@ -391,6 +390,10 @@ always_ff @(posedge clk_33 or negedge nrst)
  * In poker mode we send the MSB of each led first, thus bit_idx is decreased
  * every 16 cycles. When it reaches 0 we change the current column.
  */
+assign column_sent = driver_ready && rgb_idx == 2
+                                  && led_idx == 4'(LED_PER_DRIVER - 1)
+                                  && bit_idx == 0;
+
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         rgb_idx <= '0;
@@ -398,6 +401,7 @@ always_ff @(posedge clk_33 or negedge nrst)
         bit_idx <= POKER_MODE-1;
         led_idx <= '0;
         current_buffer <= '0;
+        wait_for_next_slice <= '0;
     end else if(stream_ready) begin
         if(wait_for_next_slice) begin
              rgb_idx <= '0;
@@ -405,6 +409,7 @@ always_ff @(posedge clk_33 or negedge nrst)
              bit_idx <= POKER_MODE-1;
              led_idx <= '0;
              current_buffer <= '0;
+             wait_for_next_slice <= position_sync;
          end else if(driver_ready) begin
              rgb_idx <= rgb_idx + 1'b1;
              // We have sent the three colors, time to go to the next led
@@ -415,16 +420,16 @@ always_ff @(posedge clk_33 or negedge nrst)
                  if(led_idx == 4'(LED_PER_DRIVER-1)) begin
                      led_idx <= '0;
                      bit_idx <= bit_idx - 1'b1;
-                     // We need to wait one cycle because of driver timing issue
                      // We have sent all the bits for each led
                      if(bit_idx == 0) begin
                          bit_idx <= POKER_MODE-1;
-                         // Go to next column, swap buffers and do blanking
+                         // Go to next column, swap buffers
                          mul_idx <= mul_idx + 1'b1;
                          current_buffer <= ~current_buffer;
                          // We have sent the whole slice
                          if(mul_idx == 3'(MULTIPLEXING-1)) begin
                              mul_idx <= '0;
+                             wait_for_next_slice <= 1'b1;
                          end
                      end
                  end
