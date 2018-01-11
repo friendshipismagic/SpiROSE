@@ -13,6 +13,17 @@ SC_MODULE(Monitor) {
     sc_out<bool> nrst;
     sc_in<bool> clk;
 
+    sc_out<uint32_t> rgb;
+    sc_out<bool> hsync;
+    sc_out<bool> vsync;
+
+    sc_in<uint32_t> ramAddr;
+    sc_in<uint32_t> ramData;
+    sc_in<bool> writeEnable;
+
+    sc_out<bool> rgbEnable;
+    sc_in<bool> streamReady;
+
     private:
     void sendReset();
 };

@@ -23,14 +23,25 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> nrst("nrst");
     sc_signal<bool> hsync("hsync");
     sc_signal<bool> vsync("vsync");
-    sc_signal<bool> write_enable("write_enable");
+    sc_signal<bool> writeEnable("write_enable");
     sc_signal<uint32_t> rgb("rgb");
-    sc_signal<uint32_t> ram_addr("ram_addr");
-    sc_signal<uint32_t> ram_data("ram_data");
+    sc_signal<uint32_t> ramAddr("ram_addr");
+    sc_signal<uint32_t> ramData("ram_data");
+    sc_signal<bool> rgbEnable("rgb_enable");
+    sc_signal<bool> streamReady("stream_ready");
 
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("rgb_logic");
     sc_trace(traceFile, clk, "clk");
+    sc_trace(traceFile, nrst, "nrst");
+    sc_trace(traceFile, hsync, "hsync");
+    sc_trace(traceFile, vsync, "vsync");
+    sc_trace(traceFile, writeEnable, "write_enable");
+    sc_trace(traceFile, rgb, "rgb");
+    sc_trace(traceFile, ramAddr, "ram_addr");
+    sc_trace(traceFile, ramData, "ram_data");
+    sc_trace(traceFile, rgbEnable, "rgb_enable");
+    sc_trace(traceFile, streamReady, "stream_ready");
 
     Vrgb_logic dut("rgb_logic");
     dut.rgb_clk(clk);
@@ -38,13 +49,23 @@ int sc_main(int argc, char** argv) {
     dut.rgb(rgb);
     dut.hsync(hsync);
     dut.vsync(vsync);
-    dut.ram_addr(ram_addr);
-    dut.ram_data(ram_data);
-    dut.write_enable(write_enable);
+    dut.ram_addr(ramAddr);
+    dut.ram_data(ramData);
+    dut.write_enable(writeEnable);
+    dut.rgb_enable(rgbEnable);
+    dut.stream_ready(streamReady);
 
     Monitor monitor("monitor");
     monitor.clk(clk);
     monitor.nrst(nrst);
+    monitor.rgb(rgb);
+    monitor.hsync(hsync);
+    monitor.vsync(vsync);
+    monitor.ramAddr(ramAddr);
+    monitor.ramData(ramData);
+    monitor.writeEnable(writeEnable);
+    monitor.rgbEnable(rgbEnable);
+    monitor.streamReady(streamReady);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
