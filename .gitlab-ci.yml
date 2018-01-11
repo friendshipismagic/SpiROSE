@@ -84,28 +84,13 @@ build_renderer-poc:
   except:
     - master
 
-build_renderer-poc:master:
-  stage: build
-  image: tuetuopay/glfw
-  script:
-    - cd $RENDERER_POC_DIR
-    - make build
-    - make test
-  artifacts:
-    paths:
-      - $RENDERER_POC_DIR/rose-renderer-poc
-      - $RENDERER_POC_DIR/shader
-      - $RENDERER_POC_DIR/mesh
-    expire_in: 1 week
-  only:
-    - master
-
 host_renderer-poc:
   stage: host
   image: tuetuopay/glfw
   script:
     - cd $RENDERER_POC_DIR
     - make host
+
 bundle_renderer-poc:
   stage: bundle
   image: tuetuopay/glfw
