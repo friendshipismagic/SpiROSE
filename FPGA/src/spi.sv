@@ -122,6 +122,7 @@ end
 always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
         transmit_register <= DEFAULT_CONFIG_DATA;
+        transmission_step <= NO_TRANSMISSION;
     end else begin 
         if (~spi_ss) begin
             if (shift_counter == 7) begin
