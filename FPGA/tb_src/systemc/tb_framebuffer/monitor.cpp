@@ -5,15 +5,18 @@
 #include "driver_LUT.hpp"
 #include "monitor.hpp"
 
+#define BIT(x, n) ((x >> n) & 0x1)
+
 static uint8_t fbOutput[30][9*48];
 static uint8_t fbOutputReference[30][9*48];
 // Array with the base ram addresses for each driver
 static const std::array<unsigned int, 30> ramBaseDriverAddress{
-    0,         0,         16,        16,        32,        32,
-    48,        48,        64,        64,        640,       640,
-    640 + 16,  640 + 16,  640 + 32,  640 + 32,  640 + 48,  640 + 48,
-    640 + 64,  640 + 64,  1280,      1280,      1280 + 16, 1280 + 16,
-    1280 + 32, 1280 + 32, 1280 + 48, 1280 + 48, 1280 + 64, 1280 + 64};
+    0,         0,         8,          8,        16,        16,
+    24,        24,        32,        32,        640,       640,
+    640 + 8,   640 + 8,   640 + 16,  640 + 16,  640 + 24,  640 + 24,
+    640 + 32,  640 + 32,  1280,      1280,      1280 + 8,  1280 + 8,
+    1280 + 16, 1280 + 16, 1280 + 24, 1280 + 24, 1280 + 32, 1280 + 32
+};
 
 void Monitor::reset() {
     nrst = 0;
@@ -99,7 +102,7 @@ void Monitor::storeOutputData() {
             && !isWRTGSBlankingCycle(cycleCounter-1)
             && (stream_ready != 0)) {
             for (int i = 0; i < 30; i++) {
-                fbOutput[i][write_idx] = (data >> i) & 0x1;
+                fbOutput[i][write_idx] = BIT(data, i);
             }
             write_idx++;
         }
@@ -115,7 +118,7 @@ void Monitor::checkWRTGSBlanking() {
         wait(clk33.posedge_event());
         if (isWRTGSBlankingCycle(cycleCounter-1) && (stream_ready == 1)) {
             for (int i = 0; i < 30; i++) {
-                auto fbSinDriver_i = (data >> i) & 0x1;
+                auto fbSinDriver_i = BIT(data, i);
                 if (fbSinDriver_i != 0) {
                     std::string msg = "Missing blanking cycle number ";
                     msg += sc_uint<5>((cycleCounter-1-72) / 48).to_string();
@@ -152,7 +155,7 @@ void Monitor::checkDataIntegrity() {
     while (1) {
         wait();
         // Verification performed during a blanking cycle
-        if (cycleCounter == 30 && stream_ready && currentMultiplexing > 2) {
+        if (cycleCounter == 30 && stream_ready && currentMultiplexing >= 2) {
             /*
              * We create a reference data output of the framebuffer,
              * ie what we should obtain, to compare it to what we get
@@ -161,10 +164,13 @@ void Monitor::checkDataIntegrity() {
             for (int i = 0; i < 30; i++) {
                 /*
                  * Compute the base address of the i-th driver
-                 * given the current multiplexing
+                 * given the current multiplexing. The fbOutput contains the
+                 * data output by the framebuffer on the previous multiplexing
+                 * phase, which was read in ram on the multiplexing phase
+                 * before, hence we use currentMultiplexing-2.
                  */
                 int driverBaseAddress =
-                    ramBaseDriverAddress[i] + currentMultiplexing;
+                    ramBaseDriverAddress[i] + currentMultiplexing-2;
                 for (int j = 0; j < 9; j++) {
                     for (int k = 0; k < 48; k++) {
                         /*
@@ -175,61 +181,49 @@ void Monitor::checkDataIntegrity() {
                          * j is the poker sequence number.
                          * k is the bit number.
                          */
-                        int lineAddress =
-                            driverBaseAddress + ((47 - k) / 3) * 40;
+                        int ledNumber = (47 - k) / 3;
                         // Index of the color (B=2, G=1, R=0)
                         int color = (47 - k) % 3;
+                        // Data needs to be remapped, because of PCB constraints
+                        int ledRemapped;
+                        // Upper drivers
+                        if (i < 20) {
+                            if (color != 2)
+                                ledRemapped = driver_LUT_D12_RG[ledNumber] ;
+                            else
+                                ledRemapped = driver_LUT_D12_B[ledNumber];
+                        }
+                        // Lower drivers
+                        else {
+                            if (color != 2)
+                                ledRemapped = driver_LUT_D0_RG[ledNumber];
+                            else
+                                ledRemapped = driver_LUT_D0_B[ledNumber];
+                        }
+
+                        int lineAddress = driverBaseAddress + ledRemapped * 40;
                         // 16 bit reference data
-                        // int data = lineAddress % (1 << 16);
-                        int data = 0xffffffff;
+                        int data = ram(lineAddress);
                         uint8_t resultBit = 0;
 
                         if (j < 5) {
                             // up to 5 bits for each color
-                            if (color == 0) {
-                                resultBit = (data >> (15 - j)) & 0x1;
+                            if (color == 2) {
+                                resultBit = BIT(data, 15 - j);
                             }
                             if (color == 1) {
-                                resultBit = (data >> (10 - j)) & 0x1;
+                                resultBit = BIT(data, 10 - j);
                             }
-                            if (color == 2) {
-                                resultBit = (data >> (4 - j)) & 0x1;
+                            if (color == 0) {
+                                resultBit = BIT(data, 4 - j);
                             }
-                        } else if (j == 5 && color == 1) {
-                            // Case of the 6-th bit of color Green
-                            resultBit = (data >> 5) & 0x1;
                         }
-                        // Data needs to be remapped, because of PCB constraints
-                        int kRemapped;
-                        // Upper drivers
-                        if (i < 20) {
-                            if (color == 0)
-                                kRemapped = driver_LUT_D12_RG[(47 - k) / 3] * 3;
-                            else if (color == 1)
-                                kRemapped =
-                                    driver_LUT_D12_RG[(47 - k) / 3] * 3 + 1;
-                            else if (color == 2)
-                                kRemapped =
-                                    driver_LUT_D12_B[(47 - k) / 3] * 3 + 2;
-                        }
-                        // Lower drivers
-                        else {
-                            if (color == 0)
-                                kRemapped = driver_LUT_D0_RG[(47 - k) / 3] * 3;
-                            else if (color == 1)
-                                kRemapped =
-                                    driver_LUT_D0_RG[(47 - k) / 3] * 3 + 1;
-                            else if (color == 2)
-                                kRemapped =
-                                    driver_LUT_D0_B[(47 - k) / 3] * 3 + 2;
-                        }
-
-                        fbOutputReference[i][48*j + 47 - kRemapped] = resultBit;
+                        fbOutputReference[i][48*j + k] = resultBit;
                     }
                 }
             }
 
-                       // Comparison between the 2 arrays
+            // Comparison between the 2 arrays
             for (int i = 0; i < 30; i++) {
                 for (int j = 0; j < 9; j++) {
                     for (int k = 0; k < 48; k++) {
@@ -252,10 +246,10 @@ void Monitor::checkDataIntegrity() {
                             }
 
                             std::string msg = "Invalid data for multiplexing ";
-                            msg += sc_uint<5>(currentMultiplexing).to_string();
+                            msg += sc_uint<5>(currentMultiplexing-1).to_string();
                             msg += " for the 48-bit poker sequence number ";
                             msg += sc_uint<5>(j).to_string();
-                            msg += " out of 8, and bit number ";
+                            msg += " out of 7, and bit number ";
                             msg += sc_uint<8>(k).to_string();
                             msg += " out of 47 (For Driver ";
                             msg += sc_uint<8>(i).to_string();
@@ -285,4 +279,6 @@ void Monitor::checkDataIntegrity() {
  * in the following order:
  * B15[n] || G15[n] || R15[n] || ... || B0[n] || G0[n] || R0[n]
  */
-void Monitor::ramEmulator() { ram_data = 0xffffffff; }
+void Monitor::ramEmulator() { ram_data = ram(ram_addr.read()); }
+
+unsigned int Monitor::ram(unsigned int addr) { return addr % (1 << 16); };

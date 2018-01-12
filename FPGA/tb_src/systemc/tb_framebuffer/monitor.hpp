@@ -81,4 +81,5 @@ SC_MODULE(Monitor) {
     int isWRTGSBlankingCycle(int cycle);
 
     void singleFrameCheck(int cycleNumber);
+    unsigned int ram(unsigned int addr);
 };
