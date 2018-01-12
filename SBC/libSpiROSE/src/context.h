@@ -58,10 +58,10 @@ class Context {
      * @brief Visualize the voxelized scene as a set of 3D voxels in a real 3D
      *        view.
      * @param glm::vec4    color     Color to give to the 3D voxels
-     * @param glm::mat4    matrixMVP Combined model-view-projection matrix to
+     * @param glm::mat4    matrixVP  Combined view-projection matrix to
      *                               apply to the 3D voxels.
      */
-    void visualize(glm::vec4 color, glm::mat4 matrixMVP);
+    void visualize(glm::vec4 color, glm::mat4 matrixVP);
 
     /**
      * @brief Updates the display by swapping the draw and display buffer.
@@ -120,7 +120,7 @@ class Context {
         } synth;
         struct {
             std::vector<GLint> voxels;
-            GLint matrixModel, matrixView, matrixProjection;
+            GLint matrixViewProjection;
         } view;
     } uniforms;
 

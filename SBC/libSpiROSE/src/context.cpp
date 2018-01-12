@@ -73,7 +73,7 @@ void Context::voxelize(Object object) {
 void Context::synthesize(glm::vec4 color) {
     // TODO
 }
-void Context::visualize(glm::vec4 color, glm::mat4 matrixMVP) {
+void Context::visualize(glm::vec4 color, glm::mat4 matrixVP) {
     // TODO
 }
 
@@ -187,7 +187,23 @@ void Context::loadShaders() {
 }
 
 void Context::loadUniforms() {
-    // TODO
+    uniforms.voxel.matrixModel = glGetUniformLocation(shaderVoxel, "matModel");
+    uniforms.voxel.matrixView = glGetUniformLocation(shaderVoxel, "matView");
+    uniforms.voxel.matrixProjection =
+        glGetUniformLocation(shaderVoxel, "matProjection");
+    uniforms.voxel.passNo = glGetUniformLocation(shaderVoxel, "passNo");
+
+    uniforms.synth.voxels.reserve(nVoxelBuffer);
+    for (int i = 0; i < nVoxelBuffer; i++)
+        uniforms.synth.voxels[i] = glGetUniformLocation(
+            shaderSynth, ("voxels[" + std::to_string(i) + "]").c_str());
+
+    uniforms.view.matrixViewProjection =
+        glGetUniformLocation(shaderView, "matViewProjection");
+    uniforms.view.voxels.reserve(nVoxelBuffer);
+    for (int i = 0; i < nVoxelBuffer; i++)
+        uniforms.view.voxels[i] = glGetUniformLocation(
+            shaderView, ("voxels[" + std::to_string(i) + "]").c_str());
 }
 
 }  // namespace spirose
