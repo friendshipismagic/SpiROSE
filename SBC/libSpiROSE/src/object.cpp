@@ -4,7 +4,7 @@ namespace spirose {
 
 Object::Object(float *vertices, int nVertices, int *indices, int nIndices,
                glm::mat4 matrixModel)
-    : matrixModel(matrixModel) {
+    : matrixModel(matrixModel), nIndices(nIndices) {
     // Create the VAO
     glGenVertexArrays(1, &vao);
     glBindVertexArray(vao);
@@ -34,7 +34,8 @@ Object::~Object() {
 }
 
 void Object::draw() const {
-    // TODO
+    bindVertexArray(vao);
+    glDrawElements(GL_TRIANGLES, nIndices, GL_UNSIGNED_INT, 0);
 }
 
 }  // namespace spirose

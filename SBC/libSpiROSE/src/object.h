@@ -55,6 +55,11 @@ class Object {
      * @brief Index buffer object holding indices
      */
     GLuint ibo;
+
+    /**
+     * @brief Index count
+     */
+    int nIndices;
 };
 
 }  // namespace spirose
