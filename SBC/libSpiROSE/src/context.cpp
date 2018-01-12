@@ -1,4 +1,5 @@
 #include "context.h"
+#include "object.h"
 
 namespace spirose {
 
@@ -35,4 +36,4 @@ bool Context::dumpPNG(std::string filename) {
     return false;
 }
 
-}
+}  // namespace spirose
