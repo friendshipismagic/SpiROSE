@@ -47,10 +47,13 @@ always_ff @(posedge rgb_clk or negedge nrst)
     if(~nrst) begin
         ram_addr <= '0;
     end else begin
-        if(pixel_counter == IMAGE_SIZE*IMAGE_IN_RAM) begin
-            ram_addr <= '0;
+        ram_addr <= '0;
+        if(rgb_enable && pixel_counter != IMAGE_SIZE*IMAGE_IN_RAM) begin
+            if(blanking)
+                ram_addr <= ram_addr;
+            else
+                ram_addr <= ram_addr + '1;
         end
-        ram_addr <= ram_addr + ~32'(blanking);
     end
 
 always_ff @(posedge rgb_clk or negedge nrst)
