@@ -44,6 +44,7 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixWorld)
                                textureVoxel[i], 0);
     }
     glDrawBuffers(nVoxelBuffer, &drawBuffers[0]);
+    glBindFramebuffer(GL_FRAMEBUFFER, 0);
 
     if (glCheckFramebufferStatus(GL_FRAMEBUFFER) != GL_FRAMEBUFFER_COMPLETE) {
         std::cerr << "[ERR] Incomplete framebuffer object" << std::endl;
@@ -68,10 +69,12 @@ Context::~Context() {
 }
 
 void Context::clearVoxels() {
-    // TODO
+    bindFramebuffer(fboVoxel);
+    glClear(GL_COLOR_BUFFER_BIT);
 }
 void Context::clearScreen(glm::vec4 color) {
-    // TODO
+    bindFramebuffer(0);
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Context::voxelize(Object object) {
