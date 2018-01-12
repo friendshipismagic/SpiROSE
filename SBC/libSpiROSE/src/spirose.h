@@ -52,6 +52,19 @@ inline void bindFramebuffer(const GLuint framebuffer) {
     }
 }
 /**
+ * @brief Bind a vertex array object. Avoids redundant rebinds by keeping track
+ *        of the last bound buffer.
+ * @param GLuint array Specifies the name of the vertex array to bind.
+ */
+inline void bindVertexArray(GLuint array) {
+    static GLuint current = 0;
+
+    if (current != array) {
+        glBindVertexArray(array);
+        current = array;
+    }
+}
+/**
  * @brief Set the program, and avoid redundant rebinds by keeping track of the
  *        last bound buffer.
  * @param GLuint program Specifies the handle of the program object whose
