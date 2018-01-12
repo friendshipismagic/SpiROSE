@@ -44,11 +44,11 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, spiConfigAvailable, "new_config_available");
 
     Vspi dut("spi");
-    dut.sck(spiSck);
+    dut.spi_clk(spiSck);
     dut.nrst(nrst);
-    dut.ss(spiSs);
-    dut.mosi(spiMosi);
-    dut.miso(spiMiso);
+    dut.spi_ss(spiSs);
+    dut.spi_mosi(spiMosi);
+    dut.spi_miso(spiMiso);
     dut.rotation_data(spiRotationData);
     dut.config_out(spiDriverConfig);
     dut.new_config_available(spiConfigAvailable);
