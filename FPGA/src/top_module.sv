@@ -14,17 +14,16 @@ module top_module (
     output gclk,
     output lat,
     output [29:0] sin,
+    output driver_ready,
+    output column_ready,
+    output [4:0] sout_mux,
 
     // Driver input
     input sout,
-    output [4:0] sout_mux,
+    input position_sync,
 
     //Columns multiplexers
     output [7:0] mux_out,
-
-    // UART
-    // input rx,
-    // output tx,
 
 /* verilator lint_off UNUSED */
     // Encoder
@@ -35,14 +34,13 @@ module top_module (
 /*
  * Interconnect signals
  */
-wire [29:0] framebuffer_dat;
-wire        framebuffer_sync;
+logic [29:0] framebuffer_dat;
+logic        framebuffer_sync;
 
-// DONT KEEP THIS ONE
-wire        clk_lse;
+logic clk_lse;
 
 /*
- * Temporary zone where interconnect wires are driven while unused
+ * Temporary zone where interconnect logics are driven while unused
  */
 assign framebuffer_dat = 30'h0;
 assign framebuffer_sync = 1'b0;
@@ -61,14 +59,16 @@ driver_controller #(.BLANKING_TIME(80)) main_driver_controller (
     .clk_lse(clk_lse),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_dat),
-    .framebuffer_sync(framebuffer_sync),
+    .position_sync(position_sync),
     .driver_sclk(sclk),
     .driver_gclk(gclk),
     .driver_lat(lat),
     .drivers_sin(sin),
     .driver_sout(sout),
     .driver_sout_mux(sout_mux),
-    .serialized_conf(serialized_conf)
+    .serialized_conf(serialized_conf),
+    .driver_ready(driver_ready),
+    .column_ready(column_ready)
 );
 
 endmodule
