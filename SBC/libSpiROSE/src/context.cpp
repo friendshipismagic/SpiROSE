@@ -51,7 +51,8 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixWorld)
     }
 
     // Get synthesized resolution
-    glm::vec2 synthResolution = windowSize(resW, resH, resC);
+    glm::vec2 synthResolution =
+        windowSize(resW, resH, resC) / glm::vec2(resW, resH);
     synthW = synthResolution.x;
     synthH = synthResolution.y;
 }
