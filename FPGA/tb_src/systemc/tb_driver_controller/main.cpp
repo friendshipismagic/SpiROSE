@@ -44,10 +44,12 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> clk33("clk33");
     sc_signal<bool> nrst("nrst");
     sc_signal<unsigned int> framebufferData("framebuffer_data");
-    sc_signal<bool> framebufferSync("framebuffer_sync");
     sc_signal<bool> driverSclk("driver_sclk");
     sc_signal<bool> driverGclk("driver_gclk");
     sc_signal<bool> driverLat("driver_lat");
+    sc_signal<bool> positionSync("position_sync");
+    sc_signal<bool> driverReady("driverReady");
+    sc_signal<bool> columnReady("column_ready");
 
     sc_signal<unsigned int> driversSin("drivers_sin");
     sc_signal<bool> driverSout;
@@ -61,6 +63,8 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, driverGclk, "GCLK");
     sc_trace(traceFile, driverSclk, "SCLK");
     sc_trace(traceFile, driverLat, "LAT");
+    sc_trace(traceFile, columnReady, "column_ready");
+    sc_trace(traceFile, driverReady, "driver_ready");
     sc_trace(traceFile, clk66, "clk_66");
     sc_trace(traceFile, clk33, "clk_33");
 
@@ -74,7 +78,6 @@ int sc_main(int argc, char** argv) {
     dut.clk_lse(clk33);
     dut.nrst(nrst);
     dut.framebuffer_dat(framebufferData);
-    dut.framebuffer_sync(framebufferSync);
     dut.driver_sclk(driverSclk);
     dut.driver_gclk(driverGclk);
     dut.driver_lat(driverLat);
@@ -82,6 +85,9 @@ int sc_main(int argc, char** argv) {
     dut.driver_sout(driverSout);
     dut.driver_sout_mux(driverSoutMux);
     dut.serialized_conf(serializedConf);
+    dut.position_sync(positionSync);
+    dut.driver_ready(driverReady);
+    dut.column_ready(columnReady);
 
     Monitor monitor("monitor");
     monitor.clk(clk66);
@@ -91,16 +97,15 @@ int sc_main(int argc, char** argv) {
     monitor.gclk(driverGclk);
     monitor.sclk(driverSclk);
     monitor.framebufferData(framebufferData);
-    monitor.framebufferSync(framebufferSync);
+    monitor.positionSync(positionSync);
+    monitor.driverReady(driverReady);
+    monitor.columnReady(columnReady);
     monitor.config(serializedConf);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
         sc_start(T);
     }
-
-    // TODO: should we resync by sending a TGMRST if we receive a
-    // famebuffer_sync ?
 
     sc_close_vcd_trace_file(traceFile);
 

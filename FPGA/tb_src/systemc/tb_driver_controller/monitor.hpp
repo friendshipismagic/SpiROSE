@@ -71,12 +71,14 @@ struct Monitor : public LatHandler {
     sc_in<bool> gclk;
     sc_out<uint64_t> config;
     sc_out<uint32_t> framebufferData;
-    sc_out<bool> framebufferSync;
+    sc_out<bool> positionSync;
+    sc_in<bool> columnReady;
+    sc_in<bool> driverReady;
 
     private:
     void sendReset();
 
-    void sendFramebufferSync();
+    void sendPositionSync();
 
     void setConfig(Driver::RegBuff conf);
 
