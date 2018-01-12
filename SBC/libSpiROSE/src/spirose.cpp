@@ -1,4 +1,4 @@
-#include "libSpiROSE.h"
+#include "spirose.h"
 
 namespace spirose {
 

@@ -1,6 +1,6 @@
 SONAME = libSpiROSE.so
 SRCDIR = src
-CXXSRC = $(SRCDIR)/libSpiROSE.cpp \
+CXXSRC = $(SRCDIR)/spirose.cpp \
          $(SRCDIR)/context.cpp \
          $(SRCDIR)/object.cpp
 
