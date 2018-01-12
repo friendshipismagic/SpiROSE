@@ -25,6 +25,7 @@ module spi_slave(
     input  logic mosi,
     output logic miso,
 
+    // 
     input logic [15:0] rotation_data,
 
     output logic [47:0] config_out,
@@ -35,49 +36,61 @@ localparam CONFIG_COMMAND = 191;
 localparam ROTATION_COMMAND = 76;
 localparam DEFAULT_CONFIG_DATA = 'hff;
 
-// ReceiveRegister is a shift register for the received byte
-// TransmitRegister is a shift register for the byte to be transmitted
+/* ReceiveRegister is a shift register for the received byte
+ * TransmitRegister is a shift register for the byte to be transmitted
+ */
 logic [7:0] receive_register, transmit_register;
 
-// shift_counter keeps trace of the number of times the receive_register is
-// shifted
+/*
+* shift_counter keeps trace of the number of times the receive_register is
+* shifted
+*/
 logic [3:0] shift_counter;
 
 // Counter that counts the number of configuration bytes received
 logic [2:0] config_byte_counter;
 
-// Counter that counts the number of rotation bytes transmitted
-logic [1:0] rotation_byte_counter;
+//  
 logic [1:0] transmission;
 
 // 48-bit register that stores the received configuration
 logic [47:0] configuration;
 assign config_out = configuration;
 
+// Send bit of the 
 assign miso = transmission == 0 ? 1'b1 : transmit_register[7];
 
 /*
 * Process for the receiving part:
-* The master sends data through mosi while ss is low
+* The master sends data through mosi while ss is low,
+* it is stored in the receive_register, which is then
+* shifted.
 */
 always_ff @(posedge sck or negedge nrst) begin
     if (~nrst) begin
         shift_counter <= 0;
-        config_byte_counter <= 0;
-        new_config_available <= 0;
     end else begin
         if (~ss) begin
             // Shift the receive register
             receive_register[7:1] <= receive_register[6:0];
             // Store the incoming mosi data in the receive register LSB
             receive_register[0] <= mosi;
-            shift_counter <= shift_counter + 1;
+            if (shift_counter == 7) begin
+                shift_counter <= 0;
+            end else begin
+                shift_counter <= shift_counter + 1;
+            end
         end else begin 
             shift_counter <= 0;
         end
-        if (shift_counter == 7) begin
-            shift_counter <= 0;
-        end
+    end
+end
+
+always_ff @(posedge sck or negedge nrst) begin
+    if (~nrst) begin
+        config_byte_counter <= 0;
+        new_config_available <= 0;
+    end else begin
         if (config_byte_counter == 0 && shift_counter == 0 
                 && receive_register == CONFIG_COMMAND) begin
             config_byte_counter <= 1;
@@ -86,8 +99,10 @@ always_ff @(posedge sck or negedge nrst) begin
         if (config_byte_counter > 0 && shift_counter == 0) begin
             configuration[(config_byte_counter-1)*8 +: 8] <= receive_register;
             if (config_byte_counter == 6) begin
-                // When the whole new configuration is received, reset the
-                // configbytecounter
+                /*
+                * When the whole new configuration is received, reset the
+                * config_byte_counter
+                */
                 config_byte_counter <= 0;
                 // Signal that a new configuration is available
                 new_config_available <= 1;
