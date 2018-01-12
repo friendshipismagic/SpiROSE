@@ -6,3 +6,6 @@ authors = ["Clément Decoodt <clement@decoodt.eu>"]
 [dependencies.clap]
 version = "*"
 features = ["yaml", "suggestions", "color"]
+
+[dependencies.spidev]
+version = "*"
