@@ -42,18 +42,15 @@ logic [2:0] config_byte_counter;
 
 /*
  * State and counter for the transmission,
- * 0 -> no transmission
- * 1 -> first byte being sent
- * 2 -> second byte being sent
  */
-logic [1:0] transmission_counter;
+enum logic [1:0] {NO_TRANSMISSION, FIRST_BYTE, SECOND_BYTE} transmission_step;
 
 // 48-bit register that stores the received configuration
 logic [47:0] configuration;
 assign config_out = configuration;
 
 // Send bit of the transmission shift register when in transmission mode
-assign spi_miso = transmission_counter == 0 ? 1'b1 : transmit_register[7];
+assign spi_miso = transmission_step == NO_TRANSMISSION ? 1'b1 : transmit_register[7];
 
 /*
  * Process for the receiving part:
@@ -130,12 +127,12 @@ always_ff @(posedge spi_clk or negedge nrst) begin
             if (shift_counter == 7) begin
                 if ({receive_register[6:0], spi_mosi} == ROTATION_COMMAND) begin
                     transmit_register <= rotation_data[7:0];
-                    transmission_counter <= 1;
-                end else if (transmission_counter == 1) begin
+                    transmission_step <= FIRST_BYTE;
+                end else if (transmission_step == 1) begin
                     transmit_register <= rotation_data[15:8];
-                    transmission_counter <= 2;
-                end else if (transmission_counter == 2) begin
-                    transmission_counter <= 0;
+                    transmission_step <= SECOND_BYTE;
+                end else if (transmission_step == 2) begin
+                    transmission_step <= NO_TRANSMISSION;
                 end
             end else begin
                 transmit_register <= {transmit_register[6:0],1'b1};
