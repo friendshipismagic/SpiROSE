@@ -74,6 +74,7 @@ int sc_main(int argc, char** argv) {
     monitor.data(data);
     monitor.ram_addr(ram_addr);
     monitor.ram_data(ram_data);
+    sc_trace(traceFile, monitor.cycleCounter, "cycleCounter");
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;

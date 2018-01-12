@@ -26,6 +26,12 @@ SC_MODULE(Monitor) {
 
     sc_in<unsigned int> ram_addr;
     sc_out<unsigned int> ram_data;
+    /*
+     * cycleCounter is a variable that monitors the location inside
+     * each 512-bit wide process.
+     */
+    sc_signal<int> cycleCounter;
+
 
     /*
      * Description of the operations needed for a single slice:
@@ -62,12 +68,6 @@ SC_MODULE(Monitor) {
     void runTests();
 
     private:
-
-    /*
-     * cycleCounter is a variable that monitors the location inside
-     * each 512-bit wide process.
-     */
-    int cycleCounter;
 
     // Indicates the current multiplexing number (from 0 to 7)
     int currentMultiplexing;
