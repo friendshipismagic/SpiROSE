@@ -29,7 +29,7 @@ CPPFLAGS = -I../src/systemc/ \
 		   -I$(VERILATOR_ROOT) \
 		   -I$(SYSTEMC_INCLUDE)
 
-CXXFLAGS = -DSC_INCLUDE_DYNAMIC_PROCESSES -g -std=c++11 -DSC_DISABLE_API_VERSION_CHECK
+CXXFLAGS = -DSC_INCLUDE_DYNAMIC_PROCESSES -g
 
 obj_dir/V%.cpp obj_dir/V%__Syms.cpp obj_dir/V%.h: %.sv
 	$(VERILATOR) $(VERILATOR_FLAGS) -y $(SV_MODULE_PATH) $<
