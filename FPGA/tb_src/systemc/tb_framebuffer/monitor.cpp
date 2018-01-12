@@ -6,6 +6,11 @@
 #include "monitor.hpp"
 
 #define BIT(x, n) ((x >> n) & 0x1)
+/*
+ * As parameter are unsupported this cvalue has to be harcoded to match the
+ * one in framebuffer.sv.
+ */
+#define SLICES_IN_RAM 18
 
 static uint8_t fbOutput[30][9*48];
 static uint8_t fbOutputReference[30][9*48];
@@ -30,7 +35,7 @@ void Monitor::reset() {
             }
         }
     }
-    wait(clk33.posedge());
+    wait();
     nrst = 1;
 }
 
@@ -43,14 +48,27 @@ int Monitor::isWRTGSBlankingCycle(int cycle) {
     return 0;
 }
 
-void Monitor::singleFrameCheck(int cycleNumber) {
+void Monitor::frameCheck(int frameNumber, int waitForNextSliceCycles) {
+    ramBaseAddress = 0;
     auto cycleSync_p = sc_spawn(sc_bind(&Monitor::cycleSync, this));
-    // Signals that a new slice has begun
-    position_sync = 1;
-    wait();
-    position_sync = 0;
-    for (int i = 0; i < cycleNumber - 1; i++) {
-        wait(clk33.posedge());
+    for(int f = 0; f < frameNumber; f++) {
+        // Signals that a new slice has begun
+        position_sync = 1;
+        wait();
+        position_sync = 0;
+        // Send data for a whole slice
+        for (int i = 0; i < 4096 - 1; i++) {
+            wait();
+        }
+        // Wait for the next slice
+        for (int i = 0; i < waitForNextSliceCycles - 1; i++) {
+            wait();
+        }
+        // Read the next slice in ram
+        ramBaseAddress += 1920;
+        // reset the base ram address as we have read all slices
+        if(f == SLICES_IN_RAM)
+            ramBaseAddress = 0;
     }
     cycleSync_p.kill();
 }
@@ -61,7 +79,7 @@ void Monitor::runTests() {
     stream_ready = 1;
 
     auto blanking_p = sc_spawn(sc_bind(&Monitor::checkWRTGSBlanking, this));
-    singleFrameCheck(4096);
+    frameCheck(20, 207);
 
     while (1) {
         wait();
@@ -70,14 +88,22 @@ void Monitor::runTests() {
 
 void Monitor::cycleSync() {
     cycleCounter = 0;
+    bool endOfSlice = true;
     while (1) {
         wait(clk33.posedge_event());
-        if (cycleCounter == 511 && currentMultiplexing < 8) {
-            cycleCounter = 0;
-            currentMultiplexing++;
-        }
-        else {
-            cycleCounter = cycleCounter.read() + 1;
+        if(endOfSlice) {
+            endOfSlice = position_sync.read() == 0;
+        } else {
+            if (cycleCounter == 511) {
+                cycleCounter = 0;
+                currentMultiplexing++;
+                if(currentMultiplexing == 8) {
+                    endOfSlice = true;
+                    currentMultiplexing = 0;
+                }
+            } else {
+                cycleCounter = cycleCounter.read() + 1;
+            }
         }
     }
 }
@@ -169,8 +195,8 @@ void Monitor::checkDataIntegrity() {
                  * phase, which was read in ram on the multiplexing phase
                  * before, hence we use currentMultiplexing-2.
                  */
-                int driverBaseAddress =
-                    ramBaseDriverAddress[i] + currentMultiplexing-2;
+                int driverBaseAddress = ramBaseAddress + ramBaseDriverAddress[i]
+                                        + currentMultiplexing-2;
                 for (int j = 0; j < 9; j++) {
                     for (int k = 0; k < 48; k++) {
                         /*

@@ -71,6 +71,7 @@ SC_MODULE(Monitor) {
 
     // Indicates the current multiplexing number (from 0 to 7)
     int currentMultiplexing;
+    int ramBaseAddress;
 
     void reset();
 
@@ -80,6 +81,6 @@ SC_MODULE(Monitor) {
      */
     int isWRTGSBlankingCycle(int cycle);
 
-    void singleFrameCheck(int cycleNumber);
+    void frameCheck(int frameNumber, int waitForNextSliceCycles);
     unsigned int ram(unsigned int addr);
 };
