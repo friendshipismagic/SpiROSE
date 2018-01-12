@@ -64,7 +64,7 @@ always_ff @(negedge clk_hse or negedge nrst)
  * LOD for 1 clock cycle (TODO), then waits for position_sync signal
  * alternate between STREAM and WAIT_FOR_NEXT_SLICE until reset
  */
-enum logic[2:0] { STALL              ,
+enum logic[3:0] { STALL              ,
                   PREPARE_CONFIG     ,
                   CONFIG             ,
                   STREAM             ,
@@ -307,10 +307,17 @@ always_comb begin
                 driver_gclk = '0;
             end
         end
+
+        WAIT_FOR_NEXT_SLICE: begin
+            driver_sclk = '0;
+            driver_gclk = '0;
+        end
+
         LOD: begin
             driver_sclk = '0;
             driver_gclk = '0;
         end
+
         default: begin
             driver_sclk = clk_lse_quad;
             driver_gclk = '0;
@@ -394,5 +401,10 @@ always_comb begin
         end
     endcase
 end
+
+assign driver_ready = driver_state == STREAM
+                      && shift_register_counter != 48
+                      && ~blanking_period;
+assign column_ready = driver_state == STREAM && segment_counter == 512;
 
 endmodule
