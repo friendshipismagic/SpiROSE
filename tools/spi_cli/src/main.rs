@@ -1,9 +1,9 @@
+#[macro_use]
 extern crate clap;
+
 use clap::App;
 
 fn main() {
-    App::new("SPI ROSE Command Line Tool")
-        .version("0.1.0")
-        .about("Yet Another CLI for SPI matching the SpiROSE SPI behaviour")
-        .get_matches();
+    let yaml_cli_config = load_yaml!("cli.yml");
+    let matches = App::from_yaml(yaml_cli_config).get_matches();
 }

@@ -1,0 +1,16 @@
+name: SPI ROSE Command Line Tool
+version: "0.1.0"
+about: "Yet Another CLI for SPI matching the SpiROSE SPI behaviour"
+subcommands:
+   - send:
+      about: "Send the following command to the SPI"
+      args:
+         - command:
+            help: "Command to send to the SPI device"
+            required: true
+   - get:
+      about: "Send the command and display the response from the SPI device"
+      args:
+         - command:
+            help: "Command to send to the SPI device"
+            required: true
