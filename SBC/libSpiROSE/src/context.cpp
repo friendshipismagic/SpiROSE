@@ -20,8 +20,8 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixWorld)
      */
     while ((resH / 4) % nVoxelBuffer) nVoxelBuffer--;
 
-    // TODO: shader loading and compiling
-    // TODO: uniform loading
+    loadShaders();
+    loadUniforms();
 
     // FBO color attachments binding points
     std::vector<GLenum> drawBuffers(nVoxelBuffer);
