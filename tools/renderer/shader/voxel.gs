@@ -1,5 +1,3 @@
-#version 330 core
-
 layout(triangles) in;
 layout(triangle_strip, max_vertices = 42) out;
 
@@ -52,7 +50,7 @@ Vertex intersect(in Vertex v1, in Vertex v2) {
  * @returns        Interpolated vertex
  */
 Vertex intersect(in Vertex v1, in Vertex v2, in Vertex v3) {
-    vec2 p = vec2(0), p0 = v1.p.xy, p1 = v2.p.xy, p2 = v3.p.xy;
+    vec2 p = vec2(0.0), p0 = v1.p.xy, p1 = v2.p.xy, p2 = v3.p.xy;
 
     // Compute the barycentric coordinates inside the triangle of the
     // x, y = 0, 0 point to interpolate color and texture coordinates
@@ -64,7 +62,7 @@ Vertex intersect(in Vertex v1, in Vertex v2, in Vertex v3) {
     float v = (d11 * d20 - d01 * d21) / d, w = (d00 * d21 - d01 * d20) / d,
           u = 1.0 - v - w;
 
-    return Vertex(vec3(0, 0, u * v1.p.z + v * v2.p.z + w * v3.p.z),
+    return Vertex(vec3(0.0, 0.0, u * v1.p.z + v * v2.p.z + w * v3.p.z),
                   u * v1.c + v * v2.c + w * v3.c,
                   u * v1.t + v * v2.t + w * v3.t);
 }
@@ -73,7 +71,7 @@ Vertex intersect(in Vertex v1, in Vertex v2, in Vertex v3) {
 // plane between those two points
 bool intersects(in vec3 p1, in vec3 p2) {
     vec3 p = intersect(p1, p2);
-    return p.y <= 0 && p.x >= min(p1.x, p2.x) && p.x <= max(p1.x, p2.x) &&
+    return p.y <= 0.0 && p.x >= min(p1.x, p2.x) && p.x <= max(p1.x, p2.x) &&
            p.y >= min(p1.y, p2.y) && p.y <= max(p1.y, p2.y);
 }
 bool intersects(in Vertex v1, in Vertex v2) { return intersects(v1.p, v2.p); }
@@ -81,7 +79,7 @@ bool intersects(in Vertex v1, in Vertex v2) { return intersects(v1.p, v2.p); }
 bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
     float area = (-p1.y * p2.x + p0.y * (p2.x - p1.x) + p0.x * (p1.y - p2.y) +
                   p1.x * p2.y) /
-                 2,
+                 2.0,
           sA = sign(area),
           s = (p0.y * p2.x - p0.x * p2.y + (p2.y - p0.y) * p.x +
                (p0.x - p2.x) * p.y) *
@@ -89,22 +87,22 @@ bool isInTriangle(in vec2 p, in vec2 p0, in vec2 p1, in vec2 p2) {
           t = (p0.x * p1.y - p0.y * p1.x + (p0.y - p1.y) * p.x +
                (p1.x - p0.x) * p.y) *
               sA;
-    return s > 0 && t > 0 && (s + t) < 2 * area * sA;
+    return s > 0.0 && t > 0.0 && (s + t) < 2.0 * area * sA;
 }
 bool isInTriangle(in vec2 p, in Vertex p0, in Vertex p1, in Vertex p2) {
     return isInTriangle(p, p0.p.xy, p1.p.xy, p2.p.xy);
 }
 
 bool overrideColor = false;
-vec3 overColor = vec3(1);
+vec3 overColor = vec3(1.0);
 
 void emit(in vec3 v) {
-    fPosition = matProjection * matView * vec4(v, 1);
+    fPosition = matProjection * matView * vec4(v, 1.0);
     gl_Position = fPosition;
     EmitVertex();
 }
 void emit(in Vertex v) {
-    fPosition = matProjection * matView * vec4(v.p, 1);
+    fPosition = matProjection * matView * vec4(v.p, 1.0);
     gl_Position = fPosition;
     fColor = overrideColor ? overColor : v.c;
     fTexture = v.t;
@@ -118,14 +116,14 @@ const float M_PI = 3.14159265359;
 vec3 transform(in vec3 v, in vec3 ref) {
     float l = length(v.xy), angle = atan(ref.x / -ref.y);
 
-    if (ref.y == 0) angle = ref.x > 0 ? M_PI / 2 : 3 * M_PI / 2;
-    if (ref.y > 0) angle += M_PI;
-    if (ref.y < 0 && ref.x < 0) angle += 4 * M_PI / 2;
+    if (ref.y == 0.0) angle = ref.x > 0.0 ? M_PI / 2.0 : 3.0 * M_PI / 2.0;
+    if (ref.y > 0.0) angle += M_PI;
+    if (ref.y < 0.0 && ref.x < 0.0) angle += 4.0 * M_PI / 2.0;
 
     return vec3(angle / M_PI - 1.0, l * 2.0 - 1.0, v.z);
 }
 vec3 transform(in vec3 v, in float sign) {
-    return vec3(max(sign, 0) * 2.0 - 1.0, length(v.xy) * 2.0 - 1.0, v.z);
+    return vec3(max(sign, 0.0) * 2.0 - 1.0, length(v.xy) * 2.0 - 1.0, v.z);
 }
 vec3 transform(in vec3 v) { return transform(v, v); }
 
@@ -169,9 +167,9 @@ void main() {
          v23c = intersects(v2, v3);
 
     // If the triangle is not being cut
-    if ((v1.p.x >= 0 && v2.p.x >= 0 && v3.p.x >= 0) ||
-        (v1.p.x <= 0 && v2.p.x <= 0 && v3.p.x <= 0) ||
-        (v1.p.y >= 0 && v2.p.y >= 0 && v3.p.y >= 0) ||
+    if ((v1.p.x >= 0.0 && v2.p.x >= 0.0 && v3.p.x >= 0.0) ||
+        (v1.p.x <= 0.0 && v2.p.x <= 0.0 && v3.p.x <= 0.0) ||
+        (v1.p.y >= 0.0 && v2.p.y >= 0.0 && v3.p.y >= 0.0) ||
         !(v12c || v13c || v23c) && !originInTriangle) {
 #ifdef DISABLE_OTHERS
         return;
@@ -195,17 +193,17 @@ void main() {
         Vertex d1, d2, u;
         bool d1uc;
 
-        if (v1.p.x * v2.p.x > 0) {
+        if (v1.p.x * v2.p.x > 0.0) {
             d1 = v1;
             d2 = v2;
             u = v3;
             d1uc = v13c;
-        } else if (v1.p.x * v3.p.x > 0) {
+        } else if (v1.p.x * v3.p.x > 0.0) {
             d1 = v1;
             d2 = v3;
             u = v2;
             d1uc = v12c;
-        } else if (v2.p.x * v3.p.x > 0) {
+        } else if (v2.p.x * v3.p.x > 0.0) {
             d1 = v2;
             d2 = v3;
             u = v1;
@@ -234,18 +232,18 @@ void main() {
     }
 
     // Simple case : one vertex is on the slicing plane
-    if (v1.p.x == 0 || v2.p.x == 0 || v3.p.x == 0) {
+    if (v1.p.x == 0.0 || v2.p.x == 0.0 || v3.p.x == 0.0) {
 #ifdef DISABLE_OTHERS
         return;
 #endif
 
         Vertex a, b, c;
 
-        if (v1.p.x == 0) {
+        if (v1.p.x == 0.0) {
             a = v1;
             b = v2;
             c = v3;
-        } else if (v2.p.x == 0) {
+        } else if (v2.p.x == 0.0) {
             a = v2;
             b = v1;
             c = v3;
@@ -276,17 +274,17 @@ void main() {
     // left is the side with two vertices.
     Vertex l1, l2, r;
 
-    if (v1.p.x * v2.p.x > 0) {
+    if (v1.p.x * v2.p.x > 0.0) {
         l1 = v1;
         l2 = v2;
         r = v3;
     }
-    if (v1.p.x * v3.p.x > 0) {
+    if (v1.p.x * v3.p.x > 0.0) {
         l1 = v1;
         l2 = v3;
         r = v2;
     }
-    if (v2.p.x * v3.p.x > 0) {
+    if (v2.p.x * v3.p.x > 0.0) {
         l1 = v2;
         l2 = v3;
         r = v1;

@@ -7,6 +7,12 @@ CXXFLAGS = -Wall -O2 -g -std=c++14 -iquote$(SRCDIR) -MMD -MP \
            -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS \
            -isystem./lib
 
+# Allow to disable geometry shader at build time
+ifeq ($(NO_GEOMETRY_SHADER),yes)
+    CXXFLAGS += -DNO_GEOMETRY_SHADER
+endif
+
+
 LDLIBS =
 LDFLAGS = -flto
 
@@ -31,8 +37,15 @@ else
 
 	UNAME = $(shell uname -s)
 	ifeq ($(UNAME),Linux)
-		LDLIBS += $(WINDOW_BACKEND_LIB) -lGLEW -lm -lGL
+		UNAME_P := $(shell uname -p)
+		LDLIBS += $(WINDOW_BACKEND_LIB) -lm
 		CXXFLAGS += -DOS_LINUX
+		ifeq ($(UNAME_P),armv7l)
+			LDLIBS += -lEGL -lGLESv2
+			CPPFLAGS += -DGLES
+		else
+			LDLIBS += -lGLEW -lGL
+		endif
 	endif
 	ifeq ($(UNAME),Darwin)
 		LDLIBS += -framework OpenGL $(WINDOW_BACKEND_LIB)
@@ -53,6 +66,11 @@ $(EXE): $(OBJS)
 	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
 -include $(DEPS)
 
+# Artifact target
+ARTIFACT = renderer-poc.tar.gz
+$(ARTIFACT): $(EXE) mesh shader
+	tar czvf $@ --transform 's,^,renderer/,' $^ mesh shader
+
 RUNFLAGS = -x
 
 run: $(EXE)
@@ -68,4 +86,5 @@ test: $(EXE)
 	/bin/sh tests/tests.sh
 host:
 	@echo "Host"
+bundle: $(ARTIFACT)
 

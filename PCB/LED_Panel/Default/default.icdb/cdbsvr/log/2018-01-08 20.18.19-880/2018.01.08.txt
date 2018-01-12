@@ -1,0 +1,151 @@
+[2018.01.08 20:18:19] [0000m.00s.205ms] [0] WELCOME
+[2018.01.08 20:18:19] [0000m.00s.205ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2018.01.08 20:18:19] [0000m.00s.205ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2018.01.08 20:18:19] [0000m.00s.205ms] [1] Base flow version [VX.2.2]
+[2018.01.08 20:18:19] [0000m.00s.205ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2018.01.08 20:18:19] [0000m.00s.205ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2018.01.08 20:18:19] [0000m.00s.205ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] Machine [GRIMA]  IP [127.0.0.1,172.16.23.135]  User [Alexis]  PID [880]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] Operating system [Microsoft Business Edition, 64-bit (build 9200)]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] Current working dir [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\PCB]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\xe\win32\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Users\Alexis\.babun;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common3D\win32\lib]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] SDD_PLATFORM [win32]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] S: Config file name [ServerWG.cfg]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [2] S: Loading config files
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] Config file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2018.01.08 20:18:19] [0000m.00s.220ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2018.01.08 20:18:19] [0000m.00s.220ms] [3] S: Config loaded
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Project path [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\default.icdb] on file system [NTFS]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Project file (.prj) path [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\LED_Panel.prj] on file system [NTFS]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Multi-user mode (config)
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Event polling mode autodetection
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Started up automatically by iCDB Client: GRIMA:Alexis:5072
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Auto close mode
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Database ID [b0fc-2775-8aee-c433-076b-35a5-76b3-5a50-d0e1-40df-7f46-e506]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] PathTranslator: BEGIN dumping
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] PathTranslator: Local -> global path prefix list
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] PathTranslator: [F:\] -> [\\vmware-host\Shared Folders\mentor\]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] PathTranslator: [Z:\] -> [\\vmware-host\Shared Folders\]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] PathTranslator: Global -> local path prefix list
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] PathTranslator: [\\vmware-host\Shared Folders\mentor\] -> [F:\]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] PathTranslator: [\\vmware-host\Shared Folders\] -> [Z:\]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] PathTranslator: END dumping
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: START
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Server startup lock file created
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Listening for client connections on port [10001]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Server network ID [grima:172.16.23.135,grima:10001]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Server GUID [ee30-7972-8806-268c-bf3c-35a0-04c3-5a50-df61-40df-7f46-e506]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Project GUID [b0fc-2775-8aee-c433-076b-35a5-76b3-5a50-d0e1-40df-7f46-e506]
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Wrote data to server address file
+[2018.01.08 20:18:19] [0000m.00s.236ms] [0] S: Server startup lock file removed
+[2018.01.08 20:18:19] [0000m.00s.236ms] [1] ProjectBackupManager: Setting project file (.prj) path: [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\LED_Panel.prj]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2018.01.08 20:18:19] [0000m.00s.330ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] S: Local disc access time: 26 us
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] S: File server access time: 25 us
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] Single file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\default.icdb\icdb.dat] size [832856 (813.3 kB)]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [1] Single file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\default.icdb\icdb.dat] opened in read-write mode
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] Database GUARD OK: [832856]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] Database GUARD OK: [832856]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] Database GUARD OK: [832856]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] Database GUARD OK: [832856]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] Database GUARD OK: [832856]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] SingleFile: [883a-acea-70f8-0599] SFI version check [1009] [1009]
+[2018.01.08 20:18:19] [0000m.00s.330ms] [0] SingleFile: [883a-acea-70f8-0599] Database SFI header has been read in [8ms 916us]
+[2018.01.08 20:18:19] [0000m.00s.345ms] [0] iCDB Server PI: Server & plugin session [5321]
+[2018.01.08 20:18:19] [0000m.00s.345ms] [0] iCDB Server PI: Opening database [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\default.icdb]
+[2018.01.08 20:18:19] [0000m.00s.345ms] [0] iCDB Server PI: Database [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\default.icdb] opened
+[2018.01.08 20:18:19] [0000m.00s.361ms] [0] iCDB Database: Checking existence of constraint definitions
+[2018.01.08 20:18:19] [0000m.00s.361ms] [0] iCDB Database: Checking constraint definitions version
+[2018.01.08 20:18:19] [0000m.00s.424ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=6cfa-4eda-0a69-a076-411e-2f99-11e2-f950-1721-50df-bf46-e506] up to date
+[2018.01.08 20:18:19] [0000m.00s.424ms] [0] iCDB Server PI: Initializing plugins
+[2018.01.08 20:18:19] [0000m.00s.424ms] [0] iCDB Server PI: Plugins initialized
+[2018.01.08 20:18:19] [0000m.00s.424ms] [0] S: iCDB database loaded
+[2018.01.08 20:18:19] [0000m.00s.424ms] [0] S: Starting threads
+[2018.01.08 20:18:19] [0000m.00s.424ms] [0] BT: Listening for broadcast messages on port [10000]
+[2018.01.08 20:18:19] [0000m.00s.424ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2018.01.08 20:18:19] [0000m.00s.424ms] [0] IT: Session [5322] for host [grima] user [Alexis] with process ID [5072] created
+[2018.01.08 20:18:19] [0000m.00s.439ms] [0] IT: iCDB Server Monitor session [1] for host [grima] user [Alexis] with process ID [3952] created
+[2018.01.08 20:18:19] [0000m.00s.439ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2018.01.08 20:18:19] [0000m.00s.439ms] [1] SC[5322]: Registered sub-client [Expedition PCB_838984] with ID [1] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:18:19] [0000m.00s.439ms] [0] MWT: WindowProc: WM_NCCREATE
+[2018.01.08 20:18:19] [0000m.00s.549ms] [1] CMT: There are [1] clients now: 5322
+[2018.01.08 20:18:19] [0000m.00s.646ms] [1] SC[5322]: Registered sub-client [EEVM] with ID [2] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:18:20] [0000m.00s.977ms] [1] SC[5322]: UnRegistered sub-client [EEVM] with ID [2] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:18:20] [0000m.01s.287ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_840281] with ID [3] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:18:20] [0000m.01s.303ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_840281] with ID [3] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:18:30] [0000m.11s.576ms] [1] SC[5322]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:18:30] [0000m.11s.591ms] [1] SC[5322]: Registered sub-client [StartServerClientcdc] with ID [5] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:18:30] [0000m.11s.591ms] [1] SC[5322]: UnRegistered sub-client [StartServerClientcdc] with ID [5] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:18:46] [0000m.27s.802ms] [0] DFAMT: File server access time: 50 us
+[2018.01.08 20:22:23] [0004m.04s.078ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1083093] with ID [6] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:22:23] [0004m.04s.082ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1083093] with ID [6] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:22:23] [0004m.04s.169ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1083187] with ID [7] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:22:23] [0004m.04s.195ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1083218] with ID [8] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:22:23] [0004m.04s.198ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1083218] with ID [8] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:22:29] [0004m.10s.237ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1089250] with ID [9] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:22:29] [0004m.10s.240ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1089250] with ID [9] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:22:29] [0004m.10s.319ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1083187] with ID [7] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:24:56] [0006m.37s.039ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1236062] with ID [10] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:24:56] [0006m.37s.042ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1236062] with ID [10] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:24:56] [0006m.37s.117ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1236140] with ID [11] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:24:56] [0006m.37s.148ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1236171] with ID [12] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:24:56] [0006m.37s.151ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1236171] with ID [12] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:25:05] [0006m.46s.641ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1245671] with ID [13] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:25:05] [0006m.46s.644ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1245671] with ID [13] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:25:14] [0006m.55s.707ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1254734] with ID [14] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:25:14] [0006m.55s.710ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1254734] with ID [14] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:25:14] [0006m.55s.784ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1236140] with ID [11] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:31:17] [0012m.57s.861ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1616906] with ID [15] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:31:17] [0012m.57s.876ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1616906] with ID [15] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:31:17] [0012m.57s.970ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1617015] with ID [16] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:31:17] [0012m.58s.002ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1617046] with ID [17] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:31:17] [0012m.58s.002ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1617046] with ID [17] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:31:20] [0013m.01s.549ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\ProjectBackup\backups\2018-01-08 20.31.19 - auto.zip] with GUID [2908-ce19-b9a1-4542-707c-35ac-07c3-5a50-1f71-40df-7f46-e506]
+[2018.01.08 20:31:20] [0013m.01s.549ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[26a1-c474-1ba3-961d-d2a8-25a2-3a82-5a50-ce7e-509f-9fef-0fc8] CreationTime[Sunday, January 07, 2018 20:59:25] Type[Autosave] Creator[iCDB Server (2018-01-07 21.45.37-6072)] ApplicationName[iCDB Server (2018-01-07 21.45.37-6072)] UserName[alexis] MachineName[DESKTOP-D6MOGOB] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\ProjectBackup\backups\2018-01-07 21.59.25 - auto.zip] BackupFileSize[2028536] Persistent[FALSE]
+[2018.01.08 20:31:20] [0013m.01s.549ms] [0] PrjBackupMgr: Project Backup file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\ProjectBackup\backups\2018-01-07 21.59.25 - auto.zip] with GUID [26a1-c474-1ba3-961d-d2a8-25a2-3a82-5a50-ce7e-509f-9fef-0fc8] removed
+[2018.01.08 20:31:20] [0013m.01s.549ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[2908-ce19-b9a1-4542-707c-35ac-07c3-5a50-1f71-40df-7f46-e506] CreationTime[Monday, January 08, 2018 19:31:19] Type[Autosave] Creator[iCDB Server (2018-01-08 20.18.19-880)] ApplicationName[iCDB Server (2018-01-08 20.18.19-880)] UserName[Alexis] MachineName[GRIMA] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\ProjectBackup\backups\2018-01-08 20.31.19 - auto.zip] BackupFileSize[7385940] Persistent[FALSE]
+[2018.01.08 20:31:31] [0013m.11s.893ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1630937] with ID [18] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:31:31] [0013m.11s.893ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1630937] with ID [18] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:31:31] [0013m.11s.969ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1617015] with ID [16] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:35:09] [0016m.49s.865ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1848906] with ID [19] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:35:09] [0016m.49s.869ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1848906] with ID [19] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:35:09] [0016m.49s.944ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1848984] with ID [20] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:35:09] [0016m.49s.972ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1849015] with ID [21] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:35:09] [0016m.49s.974ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1849015] with ID [21] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:35:28] [0017m.08s.901ms] [1] SC[5322]: Registered sub-client [JobPrefsDBPI_1867953] with ID [22] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:35:28] [0017m.08s.904ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1867953] with ID [22] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:35:28] [0017m.08s.983ms] [1] SC[5322]: UnRegistered sub-client [JobPrefsDBPI_1848984] with ID [20] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:38:10] [0019m.51s.131ms] [1] SC[5322]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:38:11] [0019m.52s.657ms] [1] SC[5322]: UnRegistered sub-client [Expedition PCB_838984] with ID [1] for session ID [5322] host [grima] user [Alexis] process ID [5072]
+[2018.01.08 20:38:11] [0019m.52s.676ms] [1] CMT: Removed client [5322]
+[2018.01.08 20:38:11] [0019m.52s.676ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2018.01.08 20:38:11] [0019m.52s.832ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2018.01.08 20:38:13] [0019m.53s.886ms] [0] CMT: Starting server auto-close
+[2018.01.08 20:38:13] [0019m.53s.934ms] [0] S: Closing server
+[2018.01.08 20:38:13] [0019m.54s.001ms] [0] iCDB Server PI: Closing plugins
+[2018.01.08 20:38:13] [0019m.54s.001ms] [0] iCDB Server PI: Plugins closed
+[2018.01.08 20:38:13] [0019m.54s.001ms] [0] iCDB Server PI: Unloading database
+[2018.01.08 20:38:13] [0019m.54s.001ms] [0] iCDB Server PI: Saving storage
+[2018.01.08 20:38:13] [0019m.54s.001ms] [0] iCDB Server PI: Closing database
+[2018.01.08 20:38:13] [0019m.54s.003ms] [1] iCDB Server PI: Stats: Database defragmentation: max[1] avg[1] holes[8%] data[98%]
+[2018.01.08 20:38:13] [0019m.54s.003ms] [1] iCDB Server PI: Stats: Database file size [856536 (836.5 kB)]
+[2018.01.08 20:38:13] [0019m.54s.011ms] [0] iCDB Server PI: Database closed
+[2018.01.08 20:38:13] [0019m.54s.011ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [650355] ticks
+[2018.01.08 20:38:13] [0019m.54s.011ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [303420] microseconds
+[2018.01.08 20:38:13] [0019m.54s.011ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [5960]
+[2018.01.08 20:38:13] [0019m.54s.011ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [19642] commands per second
+[2018.01.08 20:38:13] [0019m.54s.012ms] [0] Single file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\LED_Panel\Default\default.icdb\icdb.dat] closed with size [856536 (836.5 kB)]
+[2018.01.08 20:38:13] [0019m.54s.072ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2018.01.08 20:38:13] [0019m.54s.141ms] [0] MWT: Destroy the shutdown block reason.
+[2018.01.08 20:38:13] [0019m.54s.143ms] [0] MWT: STOP
+[2018.01.08 20:38:13] [0019m.54s.144ms] [0] S: STOP

@@ -1,8 +1,6 @@
-#version 330 core
-
 in vec2 ex_UV;
 
-out vec4 out_Color;
+layout(location = 0) out vec4 out_Color;
 
 uniform sampler2D tex;
 uniform bool doPizza;
@@ -13,17 +11,21 @@ void main() {
     // Get our coordinates in the texture
     // For now, we'll do a 2D array of images, each image representing a panel
     // refresh
-    vec2 refreshMod = mod(ex_UV, 1.0 / vec2(8.0, 4.0));
-    vec2 refreshPos = (ex_UV - refreshMod) * vec2(8.0, 4.0);
+    vec2 refreshMod =
+        mod(ex_UV, 1.0 / vec2(DISP_INTERLACE_H, DISP_INTERLACE_W));
+    vec2 refreshPos =
+        (ex_UV - refreshMod) * vec2(DISP_INTERLACE_H, DISP_INTERLACE_W);
     // Angle would be more correct, since this value is in [0, 1]
-    float refreshNo = (refreshPos.y * 8.0 + refreshPos.x) / 32.0;
+    float refreshNo =
+        (refreshPos.y * float(DISP_INTERLACE_H) + refreshPos.x) / float(RES_C);
 
     /* Pack coordinates in a vector
      * As our current y value represents how deep we are in the voxels, it is
      * our 3D z position.
      * And xy will be xy in 3D :)
      */
-    vec3 fragPos = vec3(refreshNo, refreshMod.x * 8, refreshMod.y * 4);
+    vec3 fragPos = vec3(refreshNo, refreshMod.x * float(DISP_INTERLACE_H),
+                        refreshMod.y* float(DISP_INTERLACE_W));
 
     if (doPizza) {
         /* In pizza mode, the voxel texture only represents half of a slice.
@@ -31,16 +33,16 @@ void main() {
          * slice
          */
         if (fragPos.y < 0.5) fragPos.x += 0.5;
-        fragPos.y = abs(fragPos.y - 0.5) * 2;
+        fragPos.y = abs(fragPos.y - 0.5) * 2.0;
     } else
         // Just polar coordinates from the (0.5, 0.5) point as origin
         fragPos.xy =
             0.5 + vec2(sin(refreshNo), -cos(refreshNo)) * (fragPos.y - 0.5);
 
     // As usual, decode our voxel thingy
-    ivec4 color = ivec4(texture(tex, fragPos.xy) * 255);
+    ivec4 color = ivec4(texture(tex, fragPos.xy) * 255.0);
 
-    int p = 1 << int(mod(fragPos.z * 32, 8));
+    int p = 1 << int(mod(fragPos.z * 32.0, 8.0));
     int v;
     if (fragPos.z < 0.25)
         v = color.r;
@@ -51,6 +53,6 @@ void main() {
     else
         v = color.a;
 
-    out_Color = vec4(0);
-    if ((v & p) != 0) out_Color = vec4(1);
+    out_Color = vec4(0.0);
+    if ((v & p) != 0) out_Color = vec4(1.0);
 }

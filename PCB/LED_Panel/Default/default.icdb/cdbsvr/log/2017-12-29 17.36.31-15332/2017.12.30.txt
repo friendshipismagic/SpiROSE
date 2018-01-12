@@ -1,0 +1,492 @@
+[2017.12.30 02:51:20] [0554m.48s.684ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-30 02.51.20 - auto.zip] with GUID [55f8-3867-afb1-43d8-82ff-64ad-2ff6-4a50-7e2e-1d0c-db6a-e49e]
+[2017.12.30 02:51:20] [0554m.48s.721ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[3870-e916-e323-5b3f-b61b-34a0-71b3-4a50-d7d8-8888-47c5-528b] CreationTime[Wednesday, December 27, 2017 15:42:51] Type[Autosave] Creator[iCDB Server (2017-12-27 15.41.24-516)] ApplicationName[iCDB Server (2017-12-27 15.41.24-516)] UserName[mentor] MachineName[DESKTOP-KA2KT78] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-27 15.42.51 - auto.zip] BackupFileSize[1680845] Persistent[FALSE]
+[2017.12.30 02:51:20] [0554m.48s.727ms] [0] PrjBackupMgr: Project Backup file [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-27 15.42.51 - auto.zip] with GUID [3870-e916-e323-5b3f-b61b-34a0-71b3-4a50-d7d8-8888-47c5-528b] removed
+[2017.12.30 02:51:20] [0554m.48s.732ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[55f8-3867-afb1-43d8-82ff-64ad-2ff6-4a50-7e2e-1d0c-db6a-e49e] CreationTime[Saturday, December 30, 2017 02:51:20] Type[Autosave] Creator[iCDB Server (2017-12-29 17.36.31-15332)] ApplicationName[iCDB Server (2017-12-29 17.36.31-15332)] UserName[janni] MachineName[DESKTOP-Q0OU6Q6] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-30 02.51.20 - auto.zip] BackupFileSize[2074496] Persistent[FALSE]
+[2017.12.30 13:34:49] [1198m.17s.825ms] [0] IT: Session [4974] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15744] created
+[2017.12.30 13:34:49] [1198m.17s.827ms] [1] SC[4974]: Registered sub-client [ICDBC] with ID [1] for session ID [4974] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15744]
+[2017.12.30 13:34:49] [1198m.17s.873ms] [1] CMT: There are [3] clients now: 4964, 4973, 4974
+[2017.12.30 13:34:49] [1198m.17s.886ms] [1] SC[4974]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4974] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15744]
+[2017.12.30 13:34:55] [1198m.23s.972ms] [1] SC[4974]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4974] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15744]
+[2017.12.30 13:34:55] [1198m.23s.981ms] [1] SC[4974]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4974] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15744]
+[2017.12.30 13:34:55] [1198m.24s.042ms] [1] CMT: Removed client [4974]
+[2017.12.30 13:34:55] [1198m.24s.042ms] [1] CMT: There are [2] clients now: 4964, 4973
+[2017.12.30 13:34:56] [1198m.24s.728ms] [0] IT: Session [4975] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [14264] created
+[2017.12.30 13:34:56] [1198m.24s.730ms] [1] SC[4975]: Registered sub-client [Packager_714337187] with ID [1] for session ID [4975] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14264]
+[2017.12.30 13:34:56] [1198m.24s.749ms] [1] CMT: There are [3] clients now: 4964, 4973, 4975
+[2017.12.30 13:35:07] [1198m.35s.355ms] [1] SC[4975]: UnRegistered sub-client [Packager_714337187] with ID [1] for session ID [4975] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14264]
+[2017.12.30 13:35:07] [1198m.35s.441ms] [1] CMT: Removed client [4975]
+[2017.12.30 13:35:07] [1198m.35s.441ms] [1] CMT: There are [2] clients now: 4964, 4973
+[2017.12.30 13:35:09] [1198m.37s.435ms] [1] SC[4973]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:09] [1198m.37s.479ms] [1] SC[4973]: Registered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:09] [1198m.37s.480ms] [1] SC[4973]: UnRegistered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:09] [1198m.37s.776ms] [1] SC[4973]: Registered sub-client [JobPrefsDBPI_714350296] with ID [6] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:09] [1198m.37s.811ms] [1] SC[4973]: UnRegistered sub-client [JobPrefsDBPI_714350296] with ID [6] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:10] [1198m.39s.021ms] [1] SC[4973]: Registered sub-client [JobPrefsDBPI_714351531] with ID [7] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:10] [1198m.39s.044ms] [1] SC[4973]: UnRegistered sub-client [JobPrefsDBPI_714351531] with ID [7] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:11] [1198m.39s.492ms] [0] IT: Session [4976] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [800] created
+[2017.12.30 13:35:11] [1198m.39s.494ms] [1] SC[4976]: Registered sub-client [Packager_714351953] with ID [1] for session ID [4976] host [DESKTOP-Q0OU6Q6] user [janni] process ID [800]
+[2017.12.30 13:35:11] [1198m.39s.582ms] [1] CMT: There are [3] clients now: 4964, 4973, 4976
+[2017.12.30 13:35:21] [1198m.50s.128ms] [1] SC[4976]: UnRegistered sub-client [Packager_714351953] with ID [1] for session ID [4976] host [DESKTOP-Q0OU6Q6] user [janni] process ID [800]
+[2017.12.30 13:35:21] [1198m.50s.188ms] [1] CMT: Removed client [4976]
+[2017.12.30 13:35:21] [1198m.50s.188ms] [1] CMT: There are [2] clients now: 4964, 4973
+[2017.12.30 13:35:22] [1198m.50s.794ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.30 13:35:23] [1198m.51s.272ms] [0] IT: Session [4977] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [1204] created
+[2017.12.30 13:35:23] [1198m.51s.274ms] [1] SC[4977]: Registered sub-client [Expedition_714363734] with ID [1] for session ID [4977] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1204]
+[2017.12.30 13:35:23] [1198m.51s.302ms] [1] CMT: There are [3] clients now: 4964, 4973, 4977
+[2017.12.30 13:35:24] [1198m.52s.408ms] [1] SC[4977]: UnRegistered sub-client [Expedition_714363734] with ID [1] for session ID [4977] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1204]
+[2017.12.30 13:35:24] [1198m.52s.415ms] [1] CMT: Removed client [4977]
+[2017.12.30 13:35:24] [1198m.52s.415ms] [1] CMT: There are [2] clients now: 4964, 4973
+[2017.12.30 13:35:25] [1198m.53s.210ms] [0] IT: Session [4978] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [1204] created
+[2017.12.30 13:35:25] [1198m.53s.213ms] [1] SC[4978]: Registered sub-client [JobPrefsDBPI_714365671] with ID [1] for session ID [4978] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1204]
+[2017.12.30 13:35:25] [1198m.53s.223ms] [1] CMT: There are [3] clients now: 4964, 4973, 4978
+[2017.12.30 13:35:25] [1198m.53s.296ms] [1] SC[4978]: UnRegistered sub-client [JobPrefsDBPI_714365671] with ID [1] for session ID [4978] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1204]
+[2017.12.30 13:35:25] [1198m.53s.324ms] [1] CMT: Removed client [4978]
+[2017.12.30 13:35:25] [1198m.53s.324ms] [1] CMT: There are [2] clients now: 4964, 4973
+[2017.12.30 13:35:25] [1198m.53s.876ms] [0] IT: Session [4979] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [1204] created
+[2017.12.30 13:35:25] [1198m.53s.877ms] [1] SC[4979]: Registered sub-client [JobPrefsDBPI_714366343] with ID [1] for session ID [4979] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1204]
+[2017.12.30 13:35:25] [1198m.53s.930ms] [1] CMT: There are [3] clients now: 4964, 4973, 4979
+[2017.12.30 13:35:25] [1198m.53s.938ms] [1] SC[4979]: UnRegistered sub-client [JobPrefsDBPI_714366343] with ID [1] for session ID [4979] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1204]
+[2017.12.30 13:35:25] [1198m.54s.031ms] [1] CMT: Removed client [4979]
+[2017.12.30 13:35:25] [1198m.54s.031ms] [1] CMT: There are [2] clients now: 4964, 4973
+[2017.12.30 13:35:28] [1198m.56s.371ms] [0] IT: Session [4980] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [1444] created
+[2017.12.30 13:35:28] [1198m.56s.372ms] [1] SC[4980]: Registered sub-client [JobPrefsDBPI_714368796] with ID [1] for session ID [4980] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1444]
+[2017.12.30 13:35:28] [1198m.56s.444ms] [1] SC[4980]: Registered sub-client [Expedition_714368953] with ID [2] for session ID [4980] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1444]
+[2017.12.30 13:35:28] [1198m.56s.461ms] [1] CMT: There are [3] clients now: 4964, 4973, 4980
+[2017.12.30 13:35:28] [1198m.57s.012ms] [1] SC[4980]: UnRegistered sub-client [JobPrefsDBPI_714368796] with ID [1] for session ID [4980] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1444]
+[2017.12.30 13:35:29] [1198m.57s.741ms] [1] SC[4980]: UnRegistered sub-client [Expedition_714368953] with ID [2] for session ID [4980] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1444]
+[2017.12.30 13:35:29] [1198m.57s.774ms] [1] CMT: Removed client [4980]
+[2017.12.30 13:35:29] [1198m.57s.774ms] [1] CMT: There are [2] clients now: 4964, 4973
+[2017.12.30 13:35:29] [1198m.58s.188ms] [1] SC[4973]: Registered sub-client [EEVM_EEVM_625569060] with ID [8] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:30] [1198m.58s.244ms] [1] SC[4973]: UnRegistered sub-client [EEVM_EEVM_625569060] with ID [8] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:30] [1198m.58s.248ms] [1] SC[4973]: Registered sub-client [EEVM_EEVM_625569060] with ID [9] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:30] [1198m.58s.248ms] [1] SC[4973]: UnRegistered sub-client [EEVM_EEVM_625569060] with ID [9] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:30] [1198m.58s.252ms] [1] SC[4973]: Registered sub-client [EEVM_EEVM_625569060] with ID [10] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:30] [1198m.58s.302ms] [1] SC[4973]: UnRegistered sub-client [EEVM_EEVM_625569060] with ID [10] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:33] [1199m.02s.012ms] [1] SC[4973]: UnRegistered sub-client [Expedition PCB_661507046] with ID [1] for session ID [4973] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:33] [1199m.02s.030ms] [1] CMT: Removed client [4973]
+[2017.12.30 13:35:33] [1199m.02s.030ms] [1] CMT: There are [1] clients now: 4964
+[2017.12.30 13:35:38] [1199m.06s.270ms] [0] IT: Session [4981] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12748] created
+[2017.12.30 13:35:38] [1199m.06s.271ms] [1] SC[4981]: Registered sub-client [Expedition PCB_714378718] with ID [1] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:38] [1199m.06s.278ms] [1] CMT: There are [2] clients now: 4964, 4981
+[2017.12.30 13:35:38] [1199m.06s.561ms] [1] SC[4981]: Registered sub-client [JobPrefsDBPI_714379078] with ID [2] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:38] [1199m.06s.581ms] [1] SC[4981]: UnRegistered sub-client [JobPrefsDBPI_714379078] with ID [2] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:46] [1199m.14s.233ms] [1] SC[4981]: Registered sub-client [JobPrefsDBPI_714386750] with ID [3] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:46] [1199m.14s.237ms] [1] SC[4981]: UnRegistered sub-client [JobPrefsDBPI_714386750] with ID [3] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:59] [1199m.27s.212ms] [1] SC[4981]: Registered sub-client [JobPrefsDBPI_714399718] with ID [4] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:59] [1199m.27s.218ms] [1] SC[4981]: UnRegistered sub-client [JobPrefsDBPI_714399718] with ID [4] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:35:59] [1199m.27s.237ms] [1] SC[4981]: Registered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:37:00] [1200m.28s.995ms] [1] SC[4981]: Registered sub-client [JobPrefsDBPI_714461515] with ID [6] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:37:00] [1200m.29s.002ms] [1] SC[4981]: UnRegistered sub-client [JobPrefsDBPI_714461515] with ID [6] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:37:01] [1200m.29s.218ms] [1] SC[4981]: Registered sub-client [JobPrefsDBPI_714461718] with ID [7] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:37:01] [1200m.29s.221ms] [1] SC[4981]: UnRegistered sub-client [JobPrefsDBPI_714461718] with ID [7] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:41:23] [1204m.51s.240ms] [0] IT: Session [4982] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [11776] created
+[2017.12.30 13:41:23] [1204m.51s.243ms] [1] SC[4982]: Registered sub-client [ICDBC] with ID [1] for session ID [4982] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11776]
+[2017.12.30 13:41:23] [1204m.51s.276ms] [1] CMT: There are [3] clients now: 4964, 4981, 4982
+[2017.12.30 13:41:23] [1204m.51s.301ms] [1] SC[4982]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4982] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11776]
+[2017.12.30 13:41:30] [1204m.58s.919ms] [1] SC[4982]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4982] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11776]
+[2017.12.30 13:41:30] [1204m.58s.930ms] [1] SC[4982]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4982] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11776]
+[2017.12.30 13:41:30] [1204m.58s.960ms] [1] CMT: Removed client [4982]
+[2017.12.30 13:41:30] [1204m.58s.960ms] [1] CMT: There are [2] clients now: 4964, 4981
+[2017.12.30 13:41:31] [1204m.59s.959ms] [0] IT: Session [4983] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12012] created
+[2017.12.30 13:41:31] [1204m.59s.960ms] [1] SC[4983]: Registered sub-client [Packager_714732296] with ID [1] for session ID [4983] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12012]
+[2017.12.30 13:41:31] [1204m.59s.970ms] [1] CMT: There are [3] clients now: 4964, 4981, 4983
+[2017.12.30 13:41:42] [1205m.10s.911ms] [1] SC[4983]: UnRegistered sub-client [Packager_714732296] with ID [1] for session ID [4983] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12012]
+[2017.12.30 13:41:42] [1205m.10s.979ms] [1] CMT: Removed client [4983]
+[2017.12.30 13:41:42] [1205m.10s.979ms] [1] CMT: There are [2] clients now: 4964, 4981
+[2017.12.30 13:43:15] [1206m.43s.484ms] [1] SC[4981]: UnRegistered sub-client [ExpeditionCrossProber] with ID [5] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:15] [1206m.43s.490ms] [1] SC[4981]: Registered sub-client [EEVM_EEVM_1700400] with ID [8] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:15] [1206m.43s.491ms] [1] SC[4981]: UnRegistered sub-client [EEVM_EEVM_1700400] with ID [8] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:17] [1206m.45s.783ms] [1] SC[4981]: Registered sub-client [JobPrefsDBPI_714838296] with ID [9] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:17] [1206m.45s.812ms] [1] SC[4981]: UnRegistered sub-client [JobPrefsDBPI_714838296] with ID [9] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:19] [1206m.47s.230ms] [1] SC[4981]: Registered sub-client [JobPrefsDBPI_714839734] with ID [10] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:19] [1206m.47s.251ms] [1] SC[4981]: UnRegistered sub-client [JobPrefsDBPI_714839734] with ID [10] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:19] [1206m.47s.699ms] [0] IT: Session [4984] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2304] created
+[2017.12.30 13:43:19] [1206m.47s.701ms] [1] SC[4984]: Registered sub-client [Packager_714840156] with ID [1] for session ID [4984] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2304]
+[2017.12.30 13:43:19] [1206m.47s.794ms] [1] CMT: There are [3] clients now: 4964, 4981, 4984
+[2017.12.30 13:43:30] [1206m.58s.513ms] [1] SC[4984]: UnRegistered sub-client [Packager_714840156] with ID [1] for session ID [4984] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2304]
+[2017.12.30 13:43:30] [1206m.58s.602ms] [1] CMT: Removed client [4984]
+[2017.12.30 13:43:30] [1206m.58s.602ms] [1] CMT: There are [2] clients now: 4964, 4981
+[2017.12.30 13:43:31] [1206m.59s.547ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.30 13:43:31] [1206m.59s.996ms] [0] IT: Session [4985] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [5440] created
+[2017.12.30 13:43:31] [1206m.59s.997ms] [1] SC[4985]: Registered sub-client [Expedition_714852453] with ID [1] for session ID [4985] host [DESKTOP-Q0OU6Q6] user [janni] process ID [5440]
+[2017.12.30 13:43:31] [1207m.00s.015ms] [1] CMT: There are [3] clients now: 4964, 4981, 4985
+[2017.12.30 13:43:32] [1207m.01s.145ms] [1] SC[4985]: UnRegistered sub-client [Expedition_714852453] with ID [1] for session ID [4985] host [DESKTOP-Q0OU6Q6] user [janni] process ID [5440]
+[2017.12.30 13:43:33] [1207m.01s.227ms] [1] CMT: Removed client [4985]
+[2017.12.30 13:43:33] [1207m.01s.227ms] [1] CMT: There are [2] clients now: 4964, 4981
+[2017.12.30 13:43:33] [1207m.01s.941ms] [0] IT: Session [4986] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [5440] created
+[2017.12.30 13:43:33] [1207m.01s.942ms] [1] SC[4986]: Registered sub-client [JobPrefsDBPI_714854406] with ID [1] for session ID [4986] host [DESKTOP-Q0OU6Q6] user [janni] process ID [5440]
+[2017.12.30 13:43:33] [1207m.02s.025ms] [1] SC[4986]: UnRegistered sub-client [JobPrefsDBPI_714854406] with ID [1] for session ID [4986] host [DESKTOP-Q0OU6Q6] user [janni] process ID [5440]
+[2017.12.30 13:43:33] [1207m.02s.035ms] [1] CMT: There are [3] clients now: 4964, 4981, 4986
+[2017.12.30 13:43:33] [1207m.02s.035ms] [1] CMT: Removed client [4986]
+[2017.12.30 13:43:33] [1207m.02s.035ms] [1] CMT: There are [2] clients now: 4964, 4981
+[2017.12.30 13:43:34] [1207m.02s.620ms] [0] IT: Session [4987] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [5440] created
+[2017.12.30 13:43:34] [1207m.02s.621ms] [1] SC[4987]: Registered sub-client [JobPrefsDBPI_714855078] with ID [1] for session ID [4987] host [DESKTOP-Q0OU6Q6] user [janni] process ID [5440]
+[2017.12.30 13:43:34] [1207m.02s.641ms] [1] CMT: There are [3] clients now: 4964, 4981, 4987
+[2017.12.30 13:43:34] [1207m.02s.682ms] [1] SC[4987]: UnRegistered sub-client [JobPrefsDBPI_714855078] with ID [1] for session ID [4987] host [DESKTOP-Q0OU6Q6] user [janni] process ID [5440]
+[2017.12.30 13:43:34] [1207m.02s.742ms] [1] CMT: Removed client [4987]
+[2017.12.30 13:43:34] [1207m.02s.742ms] [1] CMT: There are [2] clients now: 4964, 4981
+[2017.12.30 13:43:36] [1207m.05s.087ms] [0] IT: Session [4988] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [8768] created
+[2017.12.30 13:43:36] [1207m.05s.088ms] [1] SC[4988]: Registered sub-client [JobPrefsDBPI_714857500] with ID [1] for session ID [4988] host [DESKTOP-Q0OU6Q6] user [janni] process ID [8768]
+[2017.12.30 13:43:36] [1207m.05s.159ms] [1] SC[4988]: Registered sub-client [Expedition_714857671] with ID [2] for session ID [4988] host [DESKTOP-Q0OU6Q6] user [janni] process ID [8768]
+[2017.12.30 13:43:36] [1207m.05s.168ms] [1] CMT: There are [3] clients now: 4964, 4981, 4988
+[2017.12.30 13:43:37] [1207m.05s.721ms] [1] SC[4988]: UnRegistered sub-client [JobPrefsDBPI_714857500] with ID [1] for session ID [4988] host [DESKTOP-Q0OU6Q6] user [janni] process ID [8768]
+[2017.12.30 13:43:38] [1207m.06s.451ms] [1] SC[4988]: UnRegistered sub-client [Expedition_714857671] with ID [2] for session ID [4988] host [DESKTOP-Q0OU6Q6] user [janni] process ID [8768]
+[2017.12.30 13:43:38] [1207m.06s.481ms] [1] CMT: Removed client [4988]
+[2017.12.30 13:43:38] [1207m.06s.481ms] [1] CMT: There are [2] clients now: 4964, 4981
+[2017.12.30 13:43:38] [1207m.06s.908ms] [1] SC[4981]: Registered sub-client [EEVM_EEVM_625572036] with ID [11] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:38] [1207m.06s.967ms] [1] SC[4981]: UnRegistered sub-client [EEVM_EEVM_625572036] with ID [11] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:38] [1207m.06s.970ms] [1] SC[4981]: Registered sub-client [EEVM_EEVM_625572036] with ID [12] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:38] [1207m.06s.971ms] [1] SC[4981]: UnRegistered sub-client [EEVM_EEVM_625572036] with ID [12] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:38] [1207m.06s.974ms] [1] SC[4981]: Registered sub-client [EEVM_EEVM_728315876] with ID [13] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:38] [1207m.07s.026ms] [1] SC[4981]: UnRegistered sub-client [EEVM_EEVM_728315876] with ID [13] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:42] [1207m.10s.926ms] [1] SC[4981]: UnRegistered sub-client [Expedition PCB_714378718] with ID [1] for session ID [4981] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:42] [1207m.10s.935ms] [1] CMT: Removed client [4981]
+[2017.12.30 13:43:42] [1207m.10s.935ms] [1] CMT: There are [1] clients now: 4964
+[2017.12.30 13:43:43] [1207m.11s.689ms] [0] IT: Session [4989] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12748] created
+[2017.12.30 13:43:43] [1207m.11s.691ms] [1] SC[4989]: Registered sub-client [Expedition PCB_714864156] with ID [1] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:43] [1207m.11s.743ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:43:43] [1207m.11s.983ms] [1] SC[4989]: Registered sub-client [JobPrefsDBPI_714864500] with ID [2] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:43:43] [1207m.12s.004ms] [1] SC[4989]: UnRegistered sub-client [JobPrefsDBPI_714864500] with ID [2] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:44:07] [1207m.36s.024ms] [1] SC[4989]: Registered sub-client [JobPrefsDBPI_714888531] with ID [3] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:44:07] [1207m.36s.028ms] [1] SC[4989]: UnRegistered sub-client [JobPrefsDBPI_714888531] with ID [3] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:44:07] [1207m.36s.047ms] [1] SC[4989]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:54:16] [1217m.44s.328ms] [0] IT: Session [4990] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [14096] created
+[2017.12.30 13:54:16] [1217m.44s.329ms] [1] SC[4990]: Registered sub-client [ICDBC] with ID [1] for session ID [4990] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14096]
+[2017.12.30 13:54:16] [1217m.44s.362ms] [1] CMT: There are [3] clients now: 4964, 4989, 4990
+[2017.12.30 13:54:16] [1217m.44s.391ms] [1] SC[4990]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4990] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14096]
+[2017.12.30 13:54:16] [1217m.45s.191ms] [0] IT: Session [4991] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [6224] created
+[2017.12.30 13:54:16] [1217m.45s.192ms] [1] SC[4991]: Registered sub-client [ICDBC] with ID [1] for session ID [4991] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6224]
+[2017.12.30 13:54:17] [1217m.45s.261ms] [1] SC[4991]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4991] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6224]
+[2017.12.30 13:54:17] [1217m.45s.279ms] [1] CMT: There are [4] clients now: 4964, 4989, 4990, 4991
+[2017.12.30 13:54:17] [1217m.45s.279ms] [1] CMT: Removed client [4991]
+[2017.12.30 13:54:17] [1217m.45s.279ms] [1] CMT: There are [3] clients now: 4964, 4989, 4990
+[2017.12.30 13:54:23] [1217m.52s.088ms] [1] SC[4990]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4990] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14096]
+[2017.12.30 13:54:23] [1217m.52s.099ms] [1] SC[4990]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4990] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14096]
+[2017.12.30 13:54:23] [1217m.52s.188ms] [1] CMT: Removed client [4990]
+[2017.12.30 13:54:23] [1217m.52s.188ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:54:24] [1217m.52s.719ms] [0] IT: Session [4992] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [6904] created
+[2017.12.30 13:54:24] [1217m.52s.720ms] [1] SC[4992]: Registered sub-client [ICDBC] with ID [1] for session ID [4992] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6904]
+[2017.12.30 13:54:24] [1217m.52s.779ms] [1] SC[4992]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [4992] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6904]
+[2017.12.30 13:54:24] [1217m.52s.796ms] [1] CMT: There are [3] clients now: 4964, 4989, 4992
+[2017.12.30 13:54:31] [1217m.59s.794ms] [1] SC[4992]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [4992] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6904]
+[2017.12.30 13:54:31] [1217m.59s.803ms] [1] SC[4992]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [4992] host [DESKTOP-Q0OU6Q6] user [janni] process ID [6904]
+[2017.12.30 13:54:31] [1217m.59s.869ms] [1] CMT: Removed client [4992]
+[2017.12.30 13:54:31] [1217m.59s.869ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:54:32] [1218m.00s.884ms] [0] IT: Session [4993] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [1696] created
+[2017.12.30 13:54:32] [1218m.00s.885ms] [1] SC[4993]: Registered sub-client [Packager_715513265] with ID [1] for session ID [4993] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1696]
+[2017.12.30 13:54:32] [1218m.00s.980ms] [1] CMT: There are [3] clients now: 4964, 4989, 4993
+[2017.12.30 13:54:43] [1218m.11s.853ms] [1] SC[4993]: UnRegistered sub-client [Packager_715513265] with ID [1] for session ID [4993] host [DESKTOP-Q0OU6Q6] user [janni] process ID [1696]
+[2017.12.30 13:54:43] [1218m.11s.891ms] [1] CMT: Removed client [4993]
+[2017.12.30 13:54:43] [1218m.11s.892ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:54:45] [1218m.13s.681ms] [0] IT: Session [4994] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [7904] created
+[2017.12.30 13:54:45] [1218m.13s.682ms] [1] SC[4994]: Registered sub-client [Packager_715526140] with ID [1] for session ID [4994] host [DESKTOP-Q0OU6Q6] user [janni] process ID [7904]
+[2017.12.30 13:54:45] [1218m.13s.710ms] [1] CMT: There are [3] clients now: 4964, 4989, 4994
+[2017.12.30 13:54:56] [1218m.24s.621ms] [1] SC[4994]: UnRegistered sub-client [Packager_715526140] with ID [1] for session ID [4994] host [DESKTOP-Q0OU6Q6] user [janni] process ID [7904]
+[2017.12.30 13:54:56] [1218m.24s.626ms] [1] CMT: Removed client [4994]
+[2017.12.30 13:54:56] [1218m.24s.626ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:56:52] [1220m.21s.170ms] [1] SC[4989]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:56:52] [1220m.21s.177ms] [1] SC[4989]: Registered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:56:52] [1220m.21s.178ms] [1] SC[4989]: UnRegistered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:56:55] [1220m.23s.407ms] [1] SC[4989]: Registered sub-client [JobPrefsDBPI_715655921] with ID [6] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:56:55] [1220m.23s.442ms] [1] SC[4989]: UnRegistered sub-client [JobPrefsDBPI_715655921] with ID [6] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:56:56] [1220m.24s.776ms] [1] SC[4989]: Registered sub-client [JobPrefsDBPI_715657296] with ID [7] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:56:56] [1220m.24s.797ms] [1] SC[4989]: UnRegistered sub-client [JobPrefsDBPI_715657296] with ID [7] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:56:57] [1220m.25s.239ms] [0] IT: Session [4995] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2004] created
+[2017.12.30 13:56:57] [1220m.25s.240ms] [1] SC[4995]: Registered sub-client [Packager_715657703] with ID [1] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2004]
+[2017.12.30 13:56:57] [1220m.25s.262ms] [1] CMT: There are [3] clients now: 4964, 4989, 4995
+[2017.12.30 13:57:07] [1220m.35s.938ms] [1] SC[4995]: UnRegistered sub-client [Packager_715657703] with ID [1] for session ID [4995] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2004]
+[2017.12.30 13:57:07] [1220m.35s.969ms] [1] CMT: Removed client [4995]
+[2017.12.30 13:57:07] [1220m.35s.969ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:57:08] [1220m.37s.057ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.30 13:57:09] [1220m.37s.520ms] [0] IT: Session [4996] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [13580] created
+[2017.12.30 13:57:09] [1220m.37s.521ms] [1] SC[4996]: Registered sub-client [Expedition_715669984] with ID [1] for session ID [4996] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13580]
+[2017.12.30 13:57:09] [1220m.37s.585ms] [1] CMT: There are [3] clients now: 4964, 4989, 4996
+[2017.12.30 13:57:10] [1220m.38s.689ms] [1] SC[4996]: UnRegistered sub-client [Expedition_715669984] with ID [1] for session ID [4996] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13580]
+[2017.12.30 13:57:10] [1220m.38s.700ms] [1] CMT: Removed client [4996]
+[2017.12.30 13:57:10] [1220m.38s.700ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:57:11] [1220m.39s.479ms] [0] IT: Session [4997] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [13580] created
+[2017.12.30 13:57:11] [1220m.39s.480ms] [1] SC[4997]: Registered sub-client [JobPrefsDBPI_715671937] with ID [1] for session ID [4997] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13580]
+[2017.12.30 13:57:11] [1220m.39s.509ms] [1] CMT: There are [3] clients now: 4964, 4989, 4997
+[2017.12.30 13:57:11] [1220m.39s.562ms] [1] SC[4997]: UnRegistered sub-client [JobPrefsDBPI_715671937] with ID [1] for session ID [4997] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13580]
+[2017.12.30 13:57:11] [1220m.39s.610ms] [1] CMT: Removed client [4997]
+[2017.12.30 13:57:11] [1220m.39s.610ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:57:11] [1220m.40s.163ms] [0] IT: Session [4998] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [13580] created
+[2017.12.30 13:57:11] [1220m.40s.164ms] [1] SC[4998]: Registered sub-client [JobPrefsDBPI_715672625] with ID [1] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13580]
+[2017.12.30 13:57:12] [1220m.40s.216ms] [1] CMT: There are [3] clients now: 4964, 4989, 4998
+[2017.12.30 13:57:12] [1220m.40s.227ms] [1] SC[4998]: UnRegistered sub-client [JobPrefsDBPI_715672625] with ID [1] for session ID [4998] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13580]
+[2017.12.30 13:57:12] [1220m.40s.317ms] [1] CMT: Removed client [4998]
+[2017.12.30 13:57:12] [1220m.40s.317ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:57:14] [1220m.42s.602ms] [0] IT: Session [4999] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [13400] created
+[2017.12.30 13:57:14] [1220m.42s.603ms] [1] SC[4999]: Registered sub-client [JobPrefsDBPI_715675031] with ID [1] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13400]
+[2017.12.30 13:57:14] [1220m.42s.642ms] [1] CMT: There are [3] clients now: 4964, 4989, 4999
+[2017.12.30 13:57:14] [1220m.42s.675ms] [1] SC[4999]: Registered sub-client [Expedition_715675187] with ID [2] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13400]
+[2017.12.30 13:57:15] [1220m.43s.244ms] [1] SC[4999]: UnRegistered sub-client [JobPrefsDBPI_715675031] with ID [1] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13400]
+[2017.12.30 13:57:15] [1220m.43s.968ms] [1] SC[4999]: UnRegistered sub-client [Expedition_715675187] with ID [2] for session ID [4999] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13400]
+[2017.12.30 13:57:15] [1220m.44s.056ms] [1] CMT: Removed client [4999]
+[2017.12.30 13:57:15] [1220m.44s.056ms] [1] CMT: There are [2] clients now: 4964, 4989
+[2017.12.30 13:57:16] [1220m.44s.411ms] [1] SC[4989]: Registered sub-client [EEVM_EEVM_625566828] with ID [8] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:16] [1220m.44s.468ms] [1] SC[4989]: UnRegistered sub-client [EEVM_EEVM_625566828] with ID [8] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:16] [1220m.44s.471ms] [1] SC[4989]: Registered sub-client [EEVM_EEVM_625566828] with ID [9] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:16] [1220m.44s.472ms] [1] SC[4989]: UnRegistered sub-client [EEVM_EEVM_625566828] with ID [9] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:16] [1220m.44s.475ms] [1] SC[4989]: Registered sub-client [EEVM_EEVM_705316004] with ID [10] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:16] [1220m.44s.537ms] [1] SC[4989]: UnRegistered sub-client [EEVM_EEVM_705316004] with ID [10] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:20] [1220m.48s.541ms] [1] SC[4989]: UnRegistered sub-client [Expedition PCB_714864156] with ID [1] for session ID [4989] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:20] [1220m.48s.612ms] [1] CMT: Removed client [4989]
+[2017.12.30 13:57:20] [1220m.48s.612ms] [1] CMT: There are [1] clients now: 4964
+[2017.12.30 13:57:21] [1220m.49s.259ms] [0] IT: Session [5000] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12748] created
+[2017.12.30 13:57:21] [1220m.49s.261ms] [1] SC[5000]: Registered sub-client [Expedition PCB_715681718] with ID [1] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:21] [1220m.49s.323ms] [1] CMT: There are [2] clients now: 4964, 5000
+[2017.12.30 13:57:21] [1220m.49s.554ms] [1] SC[5000]: Registered sub-client [JobPrefsDBPI_715682062] with ID [2] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:21] [1220m.49s.575ms] [1] SC[5000]: UnRegistered sub-client [JobPrefsDBPI_715682062] with ID [2] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:40] [1221m.09s.145ms] [1] SC[5000]: Registered sub-client [JobPrefsDBPI_715701656] with ID [3] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:40] [1221m.09s.153ms] [1] SC[5000]: UnRegistered sub-client [JobPrefsDBPI_715701656] with ID [3] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:57:40] [1221m.09s.172ms] [1] SC[5000]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 13:59:39] [1223m.07s.297ms] [0] IT: Session [5001] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2680] created
+[2017.12.30 13:59:39] [1223m.07s.298ms] [1] SC[5001]: Registered sub-client [ICDBC] with ID [1] for session ID [5001] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2680]
+[2017.12.30 13:59:39] [1223m.07s.334ms] [1] CMT: There are [3] clients now: 4964, 5000, 5001
+[2017.12.30 13:59:39] [1223m.07s.355ms] [1] SC[5001]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [5001] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2680]
+[2017.12.30 13:59:47] [1223m.16s.075ms] [1] SC[5001]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [5001] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2680]
+[2017.12.30 13:59:47] [1223m.16s.085ms] [1] SC[5001]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [5001] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2680]
+[2017.12.30 13:59:47] [1223m.16s.130ms] [1] CMT: Removed client [5001]
+[2017.12.30 13:59:47] [1223m.16s.130ms] [1] CMT: There are [2] clients now: 4964, 5000
+[2017.12.30 13:59:48] [1223m.16s.921ms] [0] IT: Session [5002] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2916] created
+[2017.12.30 13:59:48] [1223m.16s.922ms] [1] SC[5002]: Registered sub-client [Packager_715829375] with ID [1] for session ID [5002] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2916]
+[2017.12.30 13:59:48] [1223m.16s.938ms] [1] CMT: There are [3] clients now: 4964, 5000, 5002
+[2017.12.30 13:59:59] [1223m.27s.928ms] [1] SC[5002]: UnRegistered sub-client [Packager_715829375] with ID [1] for session ID [5002] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2916]
+[2017.12.30 13:59:59] [1223m.27s.946ms] [1] CMT: Removed client [5002]
+[2017.12.30 13:59:59] [1223m.27s.946ms] [1] CMT: There are [2] clients now: 4964, 5000
+[2017.12.30 14:00:12] [1223m.40s.452ms] [1] SC[5000]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:12] [1223m.40s.459ms] [1] SC[5000]: Registered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:12] [1223m.40s.460ms] [1] SC[5000]: UnRegistered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:14] [1223m.42s.843ms] [1] SC[5000]: Registered sub-client [JobPrefsDBPI_715855359] with ID [6] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:14] [1223m.42s.875ms] [1] SC[5000]: UnRegistered sub-client [JobPrefsDBPI_715855359] with ID [6] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:15] [1223m.44s.176ms] [1] SC[5000]: Registered sub-client [JobPrefsDBPI_715856687] with ID [7] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:16] [1223m.44s.198ms] [1] SC[5000]: UnRegistered sub-client [JobPrefsDBPI_715856687] with ID [7] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:16] [1223m.44s.814ms] [0] IT: Session [5003] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [9200] created
+[2017.12.30 14:00:16] [1223m.44s.815ms] [1] SC[5003]: Registered sub-client [Packager_715857265] with ID [1] for session ID [5003] host [DESKTOP-Q0OU6Q6] user [janni] process ID [9200]
+[2017.12.30 14:00:16] [1223m.44s.820ms] [1] CMT: There are [3] clients now: 4964, 5000, 5003
+[2017.12.30 14:00:27] [1223m.55s.483ms] [1] SC[5003]: UnRegistered sub-client [Packager_715857265] with ID [1] for session ID [5003] host [DESKTOP-Q0OU6Q6] user [janni] process ID [9200]
+[2017.12.30 14:00:27] [1223m.55s.527ms] [1] CMT: Removed client [5003]
+[2017.12.30 14:00:27] [1223m.55s.527ms] [1] CMT: There are [2] clients now: 4964, 5000
+[2017.12.30 14:00:28] [1223m.56s.621ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.30 14:00:28] [1223m.57s.057ms] [0] IT: Session [5004] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2780] created
+[2017.12.30 14:00:28] [1223m.57s.058ms] [1] SC[5004]: Registered sub-client [Expedition_715869515] with ID [1] for session ID [5004] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2780]
+[2017.12.30 14:00:28] [1223m.57s.145ms] [1] CMT: There are [3] clients now: 4964, 5000, 5004
+[2017.12.30 14:00:29] [1223m.58s.171ms] [1] SC[5004]: UnRegistered sub-client [Expedition_715869515] with ID [1] for session ID [5004] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2780]
+[2017.12.30 14:00:30] [1223m.58s.256ms] [1] CMT: Removed client [5004]
+[2017.12.30 14:00:30] [1223m.58s.256ms] [1] CMT: There are [2] clients now: 4964, 5000
+[2017.12.30 14:00:30] [1223m.59s.015ms] [0] IT: Session [5005] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2780] created
+[2017.12.30 14:00:30] [1223m.59s.016ms] [1] SC[5005]: Registered sub-client [JobPrefsDBPI_715871468] with ID [1] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2780]
+[2017.12.30 14:00:30] [1223m.59s.064ms] [1] CMT: There are [3] clients now: 4964, 5000, 5005
+[2017.12.30 14:00:30] [1223m.59s.099ms] [1] SC[5005]: UnRegistered sub-client [JobPrefsDBPI_715871468] with ID [1] for session ID [5005] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2780]
+[2017.12.30 14:00:30] [1223m.59s.165ms] [1] CMT: Removed client [5005]
+[2017.12.30 14:00:30] [1223m.59s.165ms] [1] CMT: There are [2] clients now: 4964, 5000
+[2017.12.30 14:00:31] [1223m.59s.641ms] [0] IT: Session [5006] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [2780] created
+[2017.12.30 14:00:31] [1223m.59s.642ms] [1] SC[5006]: Registered sub-client [JobPrefsDBPI_715872109] with ID [1] for session ID [5006] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2780]
+[2017.12.30 14:00:31] [1223m.59s.670ms] [1] CMT: There are [3] clients now: 4964, 5000, 5006
+[2017.12.30 14:00:31] [1223m.59s.705ms] [1] SC[5006]: UnRegistered sub-client [JobPrefsDBPI_715872109] with ID [1] for session ID [5006] host [DESKTOP-Q0OU6Q6] user [janni] process ID [2780]
+[2017.12.30 14:00:31] [1223m.59s.771ms] [1] CMT: Removed client [5006]
+[2017.12.30 14:00:31] [1223m.59s.771ms] [1] CMT: There are [2] clients now: 4964, 5000
+[2017.12.30 14:00:33] [1224m.02s.178ms] [0] IT: Session [5007] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [10864] created
+[2017.12.30 14:00:33] [1224m.02s.179ms] [1] SC[5007]: Registered sub-client [JobPrefsDBPI_715874593] with ID [1] for session ID [5007] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10864]
+[2017.12.30 14:00:33] [1224m.02s.195ms] [1] CMT: There are [3] clients now: 4964, 5000, 5007
+[2017.12.30 14:00:34] [1224m.02s.250ms] [1] SC[5007]: Registered sub-client [Expedition_715874765] with ID [2] for session ID [5007] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10864]
+[2017.12.30 14:00:34] [1224m.02s.807ms] [1] SC[5007]: UnRegistered sub-client [JobPrefsDBPI_715874593] with ID [1] for session ID [5007] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10864]
+[2017.12.30 14:00:35] [1224m.03s.531ms] [1] SC[5007]: UnRegistered sub-client [Expedition_715874765] with ID [2] for session ID [5007] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10864]
+[2017.12.30 14:00:35] [1224m.03s.609ms] [1] CMT: Removed client [5007]
+[2017.12.30 14:00:35] [1224m.03s.609ms] [1] CMT: There are [2] clients now: 4964, 5000
+[2017.12.30 14:00:35] [1224m.03s.975ms] [1] SC[5000]: Registered sub-client [EEVM_EEVM_625570796] with ID [8] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:35] [1224m.04s.032ms] [1] SC[5000]: UnRegistered sub-client [EEVM_EEVM_625570796] with ID [8] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:35] [1224m.04s.036ms] [1] SC[5000]: Registered sub-client [EEVM_EEVM_625570796] with ID [9] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:35] [1224m.04s.037ms] [1] SC[5000]: UnRegistered sub-client [EEVM_EEVM_625570796] with ID [9] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:35] [1224m.04s.040ms] [1] SC[5000]: Registered sub-client [EEVM_EEVM_705308068] with ID [10] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:35] [1224m.04s.094ms] [1] SC[5000]: UnRegistered sub-client [EEVM_EEVM_705308068] with ID [10] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:40] [1224m.08s.243ms] [1] SC[5000]: UnRegistered sub-client [Expedition PCB_715681718] with ID [1] for session ID [5000] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:40] [1224m.08s.264ms] [1] CMT: Removed client [5000]
+[2017.12.30 14:00:40] [1224m.08s.264ms] [1] CMT: There are [1] clients now: 4964
+[2017.12.30 14:00:40] [1224m.08s.981ms] [0] IT: Session [5008] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12748] created
+[2017.12.30 14:00:40] [1224m.08s.983ms] [1] SC[5008]: Registered sub-client [Expedition PCB_715881437] with ID [1] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:40] [1224m.09s.072ms] [1] CMT: There are [2] clients now: 4964, 5008
+[2017.12.30 14:00:41] [1224m.09s.271ms] [1] SC[5008]: Registered sub-client [JobPrefsDBPI_715881781] with ID [2] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:00:41] [1224m.09s.292ms] [1] SC[5008]: UnRegistered sub-client [JobPrefsDBPI_715881781] with ID [2] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:01:08] [1224m.36s.849ms] [1] SC[5008]: Registered sub-client [JobPrefsDBPI_715909359] with ID [3] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:01:08] [1224m.36s.854ms] [1] SC[5008]: UnRegistered sub-client [JobPrefsDBPI_715909359] with ID [3] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:01:08] [1224m.36s.875ms] [1] SC[5008]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:12:54] [1236m.22s.744ms] [0] IT: Session [5009] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [4352] created
+[2017.12.30 14:12:54] [1236m.22s.745ms] [1] SC[5009]: Registered sub-client [ICDBC] with ID [1] for session ID [5009] host [DESKTOP-Q0OU6Q6] user [janni] process ID [4352]
+[2017.12.30 14:12:54] [1236m.22s.804ms] [1] SC[5009]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [5009] host [DESKTOP-Q0OU6Q6] user [janni] process ID [4352]
+[2017.12.30 14:12:54] [1236m.22s.812ms] [1] CMT: There are [3] clients now: 4964, 5008, 5009
+[2017.12.30 14:13:03] [1236m.31s.379ms] [1] SC[5009]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [5009] host [DESKTOP-Q0OU6Q6] user [janni] process ID [4352]
+[2017.12.30 14:13:03] [1236m.31s.391ms] [1] SC[5009]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [5009] host [DESKTOP-Q0OU6Q6] user [janni] process ID [4352]
+[2017.12.30 14:13:03] [1236m.31s.492ms] [1] CMT: Removed client [5009]
+[2017.12.30 14:13:03] [1236m.31s.492ms] [1] CMT: There are [2] clients now: 4964, 5008
+[2017.12.30 14:13:04] [1236m.32s.354ms] [0] IT: Session [5010] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [14028] created
+[2017.12.30 14:13:04] [1236m.32s.355ms] [1] SC[5010]: Registered sub-client [Packager_716624812] with ID [1] for session ID [5010] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14028]
+[2017.12.30 14:13:04] [1236m.32s.399ms] [1] CMT: There are [3] clients now: 4964, 5008, 5010
+[2017.12.30 14:13:15] [1236m.43s.404ms] [1] SC[5010]: UnRegistered sub-client [Packager_716624812] with ID [1] for session ID [5010] host [DESKTOP-Q0OU6Q6] user [janni] process ID [14028]
+[2017.12.30 14:13:15] [1236m.43s.477ms] [1] CMT: Removed client [5010]
+[2017.12.30 14:13:15] [1236m.43s.477ms] [1] CMT: There are [2] clients now: 4964, 5008
+[2017.12.30 14:14:08] [1237m.36s.561ms] [1] SC[5008]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:08] [1237m.36s.568ms] [1] SC[5008]: Registered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:08] [1237m.36s.571ms] [1] SC[5008]: UnRegistered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:10] [1237m.38s.811ms] [1] SC[5008]: Registered sub-client [JobPrefsDBPI_716691328] with ID [6] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:10] [1237m.38s.851ms] [1] SC[5008]: UnRegistered sub-client [JobPrefsDBPI_716691328] with ID [6] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:11] [1237m.40s.043ms] [1] SC[5008]: Registered sub-client [JobPrefsDBPI_716692562] with ID [7] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:11] [1237m.40s.064ms] [1] SC[5008]: UnRegistered sub-client [JobPrefsDBPI_716692562] with ID [7] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:12] [1237m.40s.521ms] [0] IT: Session [5011] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [10384] created
+[2017.12.30 14:14:12] [1237m.40s.522ms] [1] CMT: There are [3] clients now: 4964, 5008, 5011
+[2017.12.30 14:14:12] [1237m.40s.522ms] [1] SC[5011]: Registered sub-client [Packager_716692968] with ID [1] for session ID [5011] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10384]
+[2017.12.30 14:14:22] [1237m.51s.148ms] [1] SC[5011]: UnRegistered sub-client [Packager_716692968] with ID [1] for session ID [5011] host [DESKTOP-Q0OU6Q6] user [janni] process ID [10384]
+[2017.12.30 14:14:23] [1237m.51s.202ms] [1] CMT: Removed client [5011]
+[2017.12.30 14:14:23] [1237m.51s.202ms] [1] CMT: There are [2] clients now: 4964, 5008
+[2017.12.30 14:14:24] [1237m.52s.352ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.30 14:14:24] [1237m.52s.792ms] [0] IT: Session [5012] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15168] created
+[2017.12.30 14:14:24] [1237m.52s.793ms] [1] SC[5012]: Registered sub-client [Expedition_716705250] with ID [1] for session ID [5012] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15168]
+[2017.12.30 14:14:24] [1237m.52s.813ms] [1] CMT: There are [3] clients now: 4964, 5008, 5012
+[2017.12.30 14:14:25] [1237m.53s.909ms] [1] SC[5012]: UnRegistered sub-client [Expedition_716705250] with ID [1] for session ID [5012] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15168]
+[2017.12.30 14:14:25] [1237m.53s.926ms] [1] CMT: Removed client [5012]
+[2017.12.30 14:14:25] [1237m.53s.926ms] [1] CMT: There are [2] clients now: 4964, 5008
+[2017.12.30 14:14:26] [1237m.54s.737ms] [0] IT: Session [5013] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15168] created
+[2017.12.30 14:14:26] [1237m.54s.738ms] [1] SC[5013]: Registered sub-client [JobPrefsDBPI_716707203] with ID [1] for session ID [5013] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15168]
+[2017.12.30 14:14:26] [1237m.54s.820ms] [1] SC[5013]: UnRegistered sub-client [JobPrefsDBPI_716707203] with ID [1] for session ID [5013] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15168]
+[2017.12.30 14:14:26] [1237m.54s.834ms] [1] CMT: There are [3] clients now: 4964, 5008, 5013
+[2017.12.30 14:14:26] [1237m.54s.834ms] [1] CMT: Removed client [5013]
+[2017.12.30 14:14:26] [1237m.54s.834ms] [1] CMT: There are [2] clients now: 4964, 5008
+[2017.12.30 14:14:27] [1237m.55s.362ms] [0] IT: Session [5014] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15168] created
+[2017.12.30 14:14:27] [1237m.55s.364ms] [1] SC[5014]: Registered sub-client [JobPrefsDBPI_716707828] with ID [1] for session ID [5014] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15168]
+[2017.12.30 14:14:27] [1237m.55s.426ms] [1] SC[5014]: UnRegistered sub-client [JobPrefsDBPI_716707828] with ID [1] for session ID [5014] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15168]
+[2017.12.30 14:14:27] [1237m.55s.438ms] [1] CMT: There are [3] clients now: 4964, 5008, 5014
+[2017.12.30 14:14:27] [1237m.55s.438ms] [1] CMT: Removed client [5014]
+[2017.12.30 14:14:27] [1237m.55s.438ms] [1] CMT: There are [2] clients now: 4964, 5008
+[2017.12.30 14:14:29] [1237m.57s.898ms] [0] IT: Session [5015] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [3832] created
+[2017.12.30 14:14:29] [1237m.57s.899ms] [1] SC[5015]: Registered sub-client [JobPrefsDBPI_716710312] with ID [1] for session ID [5015] host [DESKTOP-Q0OU6Q6] user [janni] process ID [3832]
+[2017.12.30 14:14:29] [1237m.57s.962ms] [1] CMT: There are [3] clients now: 4964, 5008, 5015
+[2017.12.30 14:14:29] [1237m.57s.972ms] [1] SC[5015]: Registered sub-client [Expedition_716710484] with ID [2] for session ID [5015] host [DESKTOP-Q0OU6Q6] user [janni] process ID [3832]
+[2017.12.30 14:14:30] [1237m.58s.540ms] [1] SC[5015]: UnRegistered sub-client [JobPrefsDBPI_716710312] with ID [1] for session ID [5015] host [DESKTOP-Q0OU6Q6] user [janni] process ID [3832]
+[2017.12.30 14:14:31] [1237m.59s.258ms] [1] SC[5015]: UnRegistered sub-client [Expedition_716710484] with ID [2] for session ID [5015] host [DESKTOP-Q0OU6Q6] user [janni] process ID [3832]
+[2017.12.30 14:14:31] [1237m.59s.277ms] [1] CMT: Removed client [5015]
+[2017.12.30 14:14:31] [1237m.59s.277ms] [1] CMT: There are [2] clients now: 4964, 5008
+[2017.12.30 14:14:31] [1237m.59s.721ms] [1] SC[5008]: Registered sub-client [EEVM_EEVM_625566828] with ID [8] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:31] [1237m.59s.773ms] [1] SC[5008]: UnRegistered sub-client [EEVM_EEVM_625566828] with ID [8] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:31] [1237m.59s.776ms] [1] SC[5008]: Registered sub-client [EEVM_EEVM_625566828] with ID [9] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:31] [1237m.59s.777ms] [1] SC[5008]: UnRegistered sub-client [EEVM_EEVM_625566828] with ID [9] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:31] [1237m.59s.780ms] [1] SC[5008]: Registered sub-client [EEVM_EEVM_705312780] with ID [10] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:31] [1237m.59s.840ms] [1] SC[5008]: UnRegistered sub-client [EEVM_EEVM_705312780] with ID [10] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:35] [1238m.03s.719ms] [1] SC[5008]: UnRegistered sub-client [Expedition PCB_715881437] with ID [1] for session ID [5008] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:35] [1238m.03s.734ms] [1] CMT: Removed client [5008]
+[2017.12.30 14:14:35] [1238m.03s.734ms] [1] CMT: There are [1] clients now: 4964
+[2017.12.30 14:14:36] [1238m.04s.774ms] [0] IT: Session [5016] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12748] created
+[2017.12.30 14:14:36] [1238m.04s.776ms] [1] SC[5016]: Registered sub-client [Expedition PCB_716717234] with ID [1] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:36] [1238m.04s.843ms] [1] CMT: There are [2] clients now: 4964, 5016
+[2017.12.30 14:14:36] [1238m.05s.064ms] [1] SC[5016]: Registered sub-client [JobPrefsDBPI_716717578] with ID [2] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:14:36] [1238m.05s.085ms] [1] SC[5016]: UnRegistered sub-client [JobPrefsDBPI_716717578] with ID [2] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:16:29] [1239m.57s.338ms] [1] SC[5016]: Registered sub-client [JobPrefsDBPI_716829843] with ID [3] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:16:29] [1239m.57s.344ms] [1] SC[5016]: UnRegistered sub-client [JobPrefsDBPI_716829843] with ID [3] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:16:29] [1239m.57s.365ms] [1] SC[5016]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:22:03] [1245m.32s.160ms] [0] IT: Session [5017] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [11112] created
+[2017.12.30 14:22:03] [1245m.32s.161ms] [1] SC[5017]: Registered sub-client [ICDBC] with ID [1] for session ID [5017] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11112]
+[2017.12.30 14:22:03] [1245m.32s.182ms] [1] CMT: There are [3] clients now: 4964, 5016, 5017
+[2017.12.30 14:22:04] [1245m.32s.219ms] [1] SC[5017]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [5017] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11112]
+[2017.12.30 14:22:12] [1245m.41s.085ms] [1] SC[5017]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [5017] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11112]
+[2017.12.30 14:22:12] [1245m.41s.095ms] [1] SC[5017]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [5017] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11112]
+[2017.12.30 14:22:12] [1245m.41s.145ms] [1] CMT: Removed client [5017]
+[2017.12.30 14:22:12] [1245m.41s.145ms] [1] CMT: There are [2] clients now: 4964, 5016
+[2017.12.30 14:22:13] [1245m.41s.738ms] [0] IT: Session [5018] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15996] created
+[2017.12.30 14:22:13] [1245m.41s.739ms] [1] SC[5018]: Registered sub-client [Packager_717174203] with ID [1] for session ID [5018] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15996]
+[2017.12.30 14:22:13] [1245m.41s.751ms] [1] CMT: There are [3] clients now: 4964, 5016, 5018
+[2017.12.30 14:22:24] [1245m.52s.718ms] [1] SC[5018]: UnRegistered sub-client [Packager_717174203] with ID [1] for session ID [5018] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15996]
+[2017.12.30 14:22:24] [1245m.52s.726ms] [1] CMT: Removed client [5018]
+[2017.12.30 14:22:24] [1245m.52s.726ms] [1] CMT: There are [2] clients now: 4964, 5016
+[2017.12.30 14:24:41] [1248m.09s.374ms] [1] SC[5016]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:24:41] [1248m.09s.381ms] [1] SC[5016]: Registered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:24:41] [1248m.09s.382ms] [1] SC[5016]: UnRegistered sub-client [EEVM_EEVM_1700400] with ID [5] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:24:43] [1248m.11s.557ms] [1] SC[5016]: Registered sub-client [JobPrefsDBPI_717324062] with ID [6] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:24:43] [1248m.11s.594ms] [1] SC[5016]: UnRegistered sub-client [JobPrefsDBPI_717324062] with ID [6] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:24:44] [1248m.12s.686ms] [1] SC[5016]: Registered sub-client [JobPrefsDBPI_717325203] with ID [7] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:24:44] [1248m.12s.707ms] [1] SC[5016]: UnRegistered sub-client [JobPrefsDBPI_717325203] with ID [7] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:24:44] [1248m.13s.157ms] [0] IT: Session [5019] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [15292] created
+[2017.12.30 14:24:44] [1248m.13s.159ms] [1] SC[5019]: Registered sub-client [Packager_717325609] with ID [1] for session ID [5019] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15292]
+[2017.12.30 14:24:45] [1248m.13s.227ms] [1] CMT: There are [3] clients now: 4964, 5016, 5019
+[2017.12.30 14:24:55] [1248m.23s.854ms] [1] SC[5019]: UnRegistered sub-client [Packager_717325609] with ID [1] for session ID [5019] host [DESKTOP-Q0OU6Q6] user [janni] process ID [15292]
+[2017.12.30 14:24:55] [1248m.23s.918ms] [1] CMT: Removed client [5019]
+[2017.12.30 14:24:55] [1248m.23s.918ms] [1] CMT: There are [2] clients now: 4964, 5016
+[2017.12.30 14:24:56] [1248m.24s.985ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2017.12.30 14:24:57] [1248m.25s.429ms] [0] IT: Session [5020] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [11664] created
+[2017.12.30 14:24:57] [1248m.25s.430ms] [1] SC[5020]: Registered sub-client [Expedition_717337890] with ID [1] for session ID [5020] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11664]
+[2017.12.30 14:24:57] [1248m.25s.431ms] [1] CMT: There are [3] clients now: 4964, 5016, 5020
+[2017.12.30 14:24:58] [1248m.26s.590ms] [1] SC[5020]: UnRegistered sub-client [Expedition_717337890] with ID [1] for session ID [5020] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11664]
+[2017.12.30 14:24:58] [1248m.26s.640ms] [1] CMT: Removed client [5020]
+[2017.12.30 14:24:58] [1248m.26s.640ms] [1] CMT: There are [2] clients now: 4964, 5016
+[2017.12.30 14:24:59] [1248m.27s.371ms] [0] IT: Session [5021] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [11664] created
+[2017.12.30 14:24:59] [1248m.27s.372ms] [1] SC[5021]: Registered sub-client [JobPrefsDBPI_717339828] with ID [1] for session ID [5021] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11664]
+[2017.12.30 14:24:59] [1248m.27s.448ms] [1] CMT: There are [3] clients now: 4964, 5016, 5021
+[2017.12.30 14:24:59] [1248m.27s.458ms] [1] SC[5021]: UnRegistered sub-client [JobPrefsDBPI_717339828] with ID [1] for session ID [5021] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11664]
+[2017.12.30 14:24:59] [1248m.27s.549ms] [1] CMT: Removed client [5021]
+[2017.12.30 14:24:59] [1248m.27s.549ms] [1] CMT: There are [2] clients now: 4964, 5016
+[2017.12.30 14:24:59] [1248m.28s.012ms] [0] IT: Session [5022] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [11664] created
+[2017.12.30 14:24:59] [1248m.28s.013ms] [1] SC[5022]: Registered sub-client [JobPrefsDBPI_717340484] with ID [1] for session ID [5022] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11664]
+[2017.12.30 14:24:59] [1248m.28s.054ms] [1] CMT: There are [3] clients now: 4964, 5016, 5022
+[2017.12.30 14:24:59] [1248m.28s.075ms] [1] SC[5022]: UnRegistered sub-client [JobPrefsDBPI_717340484] with ID [1] for session ID [5022] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11664]
+[2017.12.30 14:24:59] [1248m.28s.154ms] [1] CMT: Removed client [5022]
+[2017.12.30 14:24:59] [1248m.28s.154ms] [1] CMT: There are [2] clients now: 4964, 5016
+[2017.12.30 14:25:02] [1248m.30s.556ms] [0] IT: Session [5023] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [11720] created
+[2017.12.30 14:25:02] [1248m.30s.557ms] [1] SC[5023]: Registered sub-client [JobPrefsDBPI_717342968] with ID [1] for session ID [5023] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11720]
+[2017.12.30 14:25:02] [1248m.30s.575ms] [1] CMT: There are [3] clients now: 4964, 5016, 5023
+[2017.12.30 14:25:02] [1248m.30s.629ms] [1] SC[5023]: Registered sub-client [Expedition_717343140] with ID [2] for session ID [5023] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11720]
+[2017.12.30 14:25:02] [1248m.31s.192ms] [1] SC[5023]: UnRegistered sub-client [JobPrefsDBPI_717342968] with ID [1] for session ID [5023] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11720]
+[2017.12.30 14:25:03] [1248m.31s.905ms] [1] SC[5023]: UnRegistered sub-client [Expedition_717343140] with ID [2] for session ID [5023] host [DESKTOP-Q0OU6Q6] user [janni] process ID [11720]
+[2017.12.30 14:25:03] [1248m.31s.982ms] [1] CMT: Removed client [5023]
+[2017.12.30 14:25:03] [1248m.31s.982ms] [1] CMT: There are [2] clients now: 4964, 5016
+[2017.12.30 14:25:04] [1248m.32s.412ms] [1] SC[5016]: Registered sub-client [EEVM_EEVM_625565836] with ID [8] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:04] [1248m.32s.465ms] [1] SC[5016]: UnRegistered sub-client [EEVM_EEVM_625565836] with ID [8] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:04] [1248m.32s.469ms] [1] SC[5016]: Registered sub-client [EEVM_EEVM_625565836] with ID [9] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:04] [1248m.32s.469ms] [1] SC[5016]: UnRegistered sub-client [EEVM_EEVM_625565836] with ID [9] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:04] [1248m.32s.473ms] [1] SC[5016]: Registered sub-client [EEVM_EEVM_705311788] with ID [10] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:04] [1248m.32s.524ms] [1] SC[5016]: UnRegistered sub-client [EEVM_EEVM_705311788] with ID [10] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:08] [1248m.36s.722ms] [1] SC[5016]: UnRegistered sub-client [Expedition PCB_716717234] with ID [1] for session ID [5016] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:08] [1248m.36s.735ms] [1] CMT: Removed client [5016]
+[2017.12.30 14:25:08] [1248m.36s.735ms] [1] CMT: There are [1] clients now: 4964
+[2017.12.30 14:25:09] [1248m.37s.376ms] [0] IT: Session [5024] for host [DESKTOP-Q0OU6Q6] user [janni] with process ID [12748] created
+[2017.12.30 14:25:09] [1248m.37s.378ms] [1] SC[5024]: Registered sub-client [Expedition PCB_717349843] with ID [1] for session ID [5024] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:09] [1248m.37s.440ms] [1] CMT: There are [2] clients now: 4964, 5024
+[2017.12.30 14:25:09] [1248m.37s.667ms] [1] SC[5024]: Registered sub-client [JobPrefsDBPI_717350171] with ID [2] for session ID [5024] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:09] [1248m.37s.688ms] [1] SC[5024]: UnRegistered sub-client [JobPrefsDBPI_717350171] with ID [2] for session ID [5024] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:29] [1248m.57s.933ms] [1] SC[5024]: Registered sub-client [JobPrefsDBPI_717370453] with ID [3] for session ID [5024] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:29] [1248m.57s.938ms] [1] SC[5024]: UnRegistered sub-client [JobPrefsDBPI_717370453] with ID [3] for session ID [5024] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:25:29] [1248m.57s.957ms] [1] SC[5024]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5024] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:32:06] [1255m.34s.436ms] [1] SC[5024]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5024] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:32:09] [1255m.37s.866ms] [1] SC[5024]: UnRegistered sub-client [Expedition PCB_717349843] with ID [1] for session ID [5024] host [DESKTOP-Q0OU6Q6] user [janni] process ID [12748]
+[2017.12.30 14:32:09] [1255m.37s.876ms] [1] CMT: Removed client [5024]
+[2017.12.30 14:32:09] [1255m.37s.876ms] [1] CMT: There are [1] clients now: 4964
+[2017.12.30 14:32:11] [1255m.39s.717ms] [1] SC[4964]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4964] host [DESKTOP-Q0OU6Q6] user [janni] process ID [752]
+[2017.12.30 14:32:11] [1255m.39s.828ms] [1] CMT: Removed client [4964]
+[2017.12.30 14:32:11] [1255m.39s.828ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.30 14:32:13] [1255m.41s.244ms] [0] CMT: Starting server auto-close
+[2017.12.30 14:32:13] [1255m.41s.321ms] [0] S: Closing server
+[2017.12.30 14:32:13] [1255m.41s.351ms] [0] iCDB Server PI: Closing plugins
+[2017.12.30 14:32:13] [1255m.41s.351ms] [0] iCDB Server PI: Plugins closed
+[2017.12.30 14:32:13] [1255m.41s.351ms] [0] iCDB Server PI: Unloading database
+[2017.12.30 14:32:13] [1255m.41s.351ms] [0] iCDB Server PI: Saving storage
+[2017.12.30 14:32:13] [1255m.41s.351ms] [0] iCDB Server PI: Closing database
+[2017.12.30 14:32:13] [1255m.41s.353ms] [1] iCDB Server PI: Stats: Database defragmentation: max[2] avg[1] holes[37%] data[95%]
+[2017.12.30 14:32:13] [1255m.41s.353ms] [1] iCDB Server PI: Stats: Database file size [1186192 (1.1 MB)]
+[2017.12.30 14:32:13] [1255m.41s.354ms] [1] iCDB Server PI: WARNING: Database needs defragmentation!
+[2017.12.30 14:32:13] [1255m.41s.360ms] [0] iCDB Server PI: Database closed
+[2017.12.30 14:32:13] [1255m.41s.360ms] [0] iCDB Server PI: Defragmenting database
+[2017.12.30 14:32:13] [1255m.41s.360ms] [0] iCDB Server PI: Creating database [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb] backup to file [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-30 14.32.13-15332-d.zip]
+[2017.12.30 14:32:13] [1255m.41s.838ms] [0] iCDB Server PI: Database backup: DONE
+[2017.12.30 14:32:13] [1255m.41s.871ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.30 14:32:13] [1255m.41s.871ms] [0] Database GUARD OK: [1186192]
+[2017.12.30 14:32:13] [1255m.41s.871ms] [0] SingleFile: [a2ad-c9cb-0c74-832b] SFI version check [1009] [1009]
+[2017.12.30 14:32:13] [1255m.41s.884ms] [0] SingleFile: [a2ad-c9cb-0c74-832b] Database SFI header has been read in [13ms 474us]
+[2017.12.30 14:32:13] [1255m.42s.005ms] [1] iCDB Server PI: Stats: Database file sizes: before[1186192 (1.1 MB)], after[573696 (560.3 kB)], gain[612496 (598.1 kB)]
+[2017.12.30 14:32:13] [1255m.42s.014ms] [0] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb\icdb.dat] closed with size [573696 (560.3 kB)]
+[2017.12.30 14:32:13] [1255m.42s.015ms] [0] iCDB Server PI: Database defragmentation completed successfully
+[2017.12.30 14:32:13] [1255m.42s.015ms] [1] BackupTransaction: Removing database backup [C:\cygwin64\home\janni\ROSE\SpiROSE_LED\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-30 14.32.13-15332-d.zip]
+[2017.12.30 14:32:13] [1255m.42s.020ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [30560791] ticks
+[2017.12.30 14:32:13] [1255m.42s.020ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [10621302] microseconds
+[2017.12.30 14:32:13] [1255m.42s.020ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [4789]
+[2017.12.30 14:32:13] [1255m.42s.020ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [450] commands per second
+[2017.12.30 14:32:13] [1255m.42s.174ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.30 14:32:13] [1255m.42s.176ms] [0] MWT: STOP
+[2017.12.30 14:32:13] [1255m.42s.176ms] [0] S: STOP
