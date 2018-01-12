@@ -40,8 +40,8 @@ localparam LED_PER_DRIVER = 16;
 localparam ROW_SIZE = 40;
 localparam COLUMN_SIZE = 48;
 localparam IMAGE_SIZE = ROW_SIZE*COLUMN_SIZE;
-// We use 16-bits rgb : 5 bits red, 6 bits green, 5 bit blue.
-localparam [2:0] [15:0] COLOR_BASE = '{11,5,0};
+// We use 15-bits rgb : 5 bits red, 5 bits green, 5 bit blue.
+localparam [2:0] [15:0] COLOR_BASE = '{0,6,11};
 /*
  * The drivers are layout as follow:
  * |++++++++++++++++++++++||++++++++++++++++++++++|     |+++++++++++++++++++++++|
@@ -315,7 +315,7 @@ always_ff @(posedge clk_33 or negedge nrst)
             // We have sent all data so we fill a new buffer
             end else if(column_sent) begin
                 // We will fill the new buffer with the next column
-                ram_addr <= image_start_addr + 32'(mul_idx);
+                ram_addr <= image_start_addr + 32'(mul_idx)+1'b1;
                 write_idx <= '0;
             end
         end
@@ -331,26 +331,25 @@ always_ff @(posedge clk_33 or negedge nrst)
 /*
  * There are two types of driver and for each one a LUT for red and green, and
  * a LUT for blue. Drivers 1 to 20 are part of group 1, drivers 21 to 30 are
- * part of group 0. rgb_idx == 2 means that we are sending blue color.
+ * part of group 0. rgb_idx == 0 means that we are sending blue color.
  */
 always_comb begin
     for(int i = 0; i < 30; ++i) begin
         if(i < 20) begin
-            voxel_addr[i] = (rgb_idx == 2) ? DRIVER_LUT1_B[led_idx]
+            voxel_addr[i] = (rgb_idx == 0) ? DRIVER_LUT1_B[led_idx]
                                            : DRIVER_LUT1_RG[led_idx];
         end else begin
-            voxel_addr[i] = (rgb_idx == 2) ? DRIVER_LUT0_B[led_idx]
+            voxel_addr[i] = (rgb_idx == 0) ? DRIVER_LUT0_B[led_idx]
                                            : DRIVER_LUT0_RG[led_idx];
         end
     end
 end
 /*
- * The color_bit_idx goes from 5 to 0, thus if we add the base address for the
- * green color for instance we get bits 10 to 5. The red and blue color have
- * 5 bits instead of 6, hence we need to substract 1 to color_addr.
+ * The color_bit_idx goes from 4 to 0, thus if we add the base address for the
+ * green color for instance we get bits 9 to 5.
  */
-assign color_bit_idx = (bit_idx >= 3) ? bit_idx - 3 : 0;
-assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]) - 4'(rgb_idx != 1);
+assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
+assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]);
 
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
@@ -364,11 +363,8 @@ always_ff @(posedge clk_33 or negedge nrst)
         /*
          * If we haven't sent 16 bit yet we don't pad with 0.
          * bit_idx > 3 means that we don't send the 4 first LSB.
-         * rgb_idx == 1 means we are sending the green color which has 6 bits
-         * instead of 5.
          */
-        if(stream_ready && driver_ready
-            && (bit_idx > 3 || (rgb_idx == 1 && bit_idx == 3))) begin
+        if(stream_ready && driver_ready && bit_idx > 3) begin
             for(int i = 0; i < 30; ++i) begin
                 if(current_buffer) begin
                     data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
@@ -391,7 +387,7 @@ always_ff @(posedge clk_33 or negedge nrst)
  * every 16 cycles. When it reaches 0 we change the current column.
  */
 assign column_sent = driver_ready && rgb_idx == 2
-                                  && led_idx == 4'(LED_PER_DRIVER - 1)
+                                  && led_idx == 0
                                   && bit_idx == 0;
 
 always_ff @(posedge clk_33 or negedge nrst)
@@ -399,7 +395,7 @@ always_ff @(posedge clk_33 or negedge nrst)
         rgb_idx <= '0;
         mul_idx <= '0;
         bit_idx <= POKER_MODE-1;
-        led_idx <= '0;
+        led_idx <= 4'(LED_PER_DRIVER-1);
         current_buffer <= '0;
         wait_for_next_slice <= '0;
     end else if(stream_ready) begin
@@ -407,7 +403,7 @@ always_ff @(posedge clk_33 or negedge nrst)
              rgb_idx <= '0;
              mul_idx <= '0;
              bit_idx <= POKER_MODE-1;
-             led_idx <= '0;
+             led_idx <= 4'(LED_PER_DRIVER-1);
              current_buffer <= '0;
              wait_for_next_slice <= position_sync;
          end else if(driver_ready) begin
@@ -415,10 +411,10 @@ always_ff @(posedge clk_33 or negedge nrst)
              // We have sent the three colors, time to go to the next led
              if(rgb_idx == 2) begin
                  rgb_idx <= '0;
-                 led_idx <= led_idx + 1'b1;
+                 led_idx <= led_idx - 1'b1;
                  // We have sent the right bit for each leds in the column
-                 if(led_idx == 4'(LED_PER_DRIVER-1)) begin
-                     led_idx <= '0;
+                 if(led_idx == 0) begin
+                     led_idx <= 4'(LED_PER_DRIVER-1);
                      bit_idx <= bit_idx - 1'b1;
                      // We have sent all the bits for each led
                      if(bit_idx == 0) begin
