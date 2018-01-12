@@ -6,6 +6,7 @@
 #define GLFW_INCLUDE_ES31
 #else
 #define GLFW_INCLUDE_GLCOREARB
+#include <GL/glew.h>
 #endif
 #define GLFW_INCLUDE_GLEXT
 #include <GLFW/glfw3.h>
