@@ -152,22 +152,22 @@ GLuint Context::compileShader(const GLenum type, const char *source) const {
 void Context::loadShaders() {
     // Declare the sources as static to avoid blowing up the stack
     static const char *srcVoxelV =
-#include "shader/voxel.vs"
+#include "shader/voxel.vss"
         ;
     static const char *srcVoxelF =
-#include "shader/voxel.fs"
+#include "shader/voxel.fss"
         ;
     static const char *srcSynthV =
-#include "shader/synth.vs"
+#include "shader/synth.vss"
         ;
     static const char *srcSynthF =
-#include "shader/synth.fs"
+#include "shader/synth.fss"
         ;
     static const char *srcViewV =
-#include "shader/view.vs"
+#include "shader/view.vss"
         ;
     static const char *srcViewF =
-#include "shader/view.fs"
+#include "shader/view.fss"
         ;
 
     shaderVoxel = glCreateProgram();
