@@ -16,7 +16,7 @@ void Monitor::runTests() {
     std::string revConfStr(confStr.rbegin(), confStr.rend());
     conf = revConfStr.c_str();
     config = conf.to_uint();
-    framebufferSync = false;
+    positionSync = true;
     framebufferData = 0;
 
     sendReset();
@@ -236,8 +236,8 @@ void Monitor::sendReset() {
     nrst = 1;
 }
 
-void Monitor::sendFramebufferSync() {
-    framebufferSync = true;
+void Monitor::sendPositionSync() {
+    positionSync = true;
     wait();
-    framebufferSync = false;
+    positionSync = false;
 }
