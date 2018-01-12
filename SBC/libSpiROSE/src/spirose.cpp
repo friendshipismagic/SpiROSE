@@ -8,8 +8,8 @@ GLFWwindow* createWindow(int resW, int resH, int resC) {
 }
 
 glm::vec2 windowSize(int resW, int resH, int resC) {
-	// TODO
-	return glm::vec2(0);
+    // TODO
+    return glm::vec2(0);
 }
 
 }  // namespace spirose
