@@ -2,13 +2,14 @@
 #define _SPIROSE_CONTEXT_H
 
 #include <string>
+#include <vector>
 
 #include <glm/glm.hpp>
 
-namespace spirose {
-
-// Forward-declaration of the Object class
 class Object;
+#include "spirose.h"
+
+namespace spirose {
 
 class Context {
     public:
@@ -80,6 +81,55 @@ class Context {
      * voxelization.
      */
     glm::mat4 matrixView;
+
+    private:
+    /**
+     * @brief Voxelisation draw buffer count. This is how many different render
+     *        targets will be used during voxelisation. It is a tradeoff between
+     *        available render targets end thr required.
+     */
+    int nVoxelBuffer;
+    /**
+     * @brief Voxelisation passes count. This is how many render passes we need
+     *        to overcome the lack of render targets.
+     */
+    int nVoxelPass;
+
+    /**
+     * @brief Shaders necessary for the voxelisation.
+     */
+    GLuint shaderVoxel, shaderSynth, shaderView;
+
+    /**
+     * @brief Uniforms for the aforementioned shaders
+     */
+    struct {
+        struct {
+            GLint matrixModel, matrixView, matrixProjection, passNo;
+        } voxel;
+        struct {
+            std::vector<GLint> voxels;
+        } synth;
+        struct {
+            std::vector<GLint> voxels;
+            GLint matrixModel, matrixView, matrixProjection;
+        } view;
+    } uniforms;
+
+    /**
+     * @brief Voxel buffer object
+     */
+    GLuint fboVoxel;
+
+    /**
+     * @brief Actual textures holding the voxels. Size is nVoxelBuffer
+     */
+    std::vector<GLuint> textureVoxel;
+
+    /**
+     * @brief Projections matrix used for voxelisation
+     */
+    glm::mat4 matrixProjection;
 };
 
 }  // namespace spirose
