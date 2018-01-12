@@ -57,7 +57,14 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixWorld)
     synthH = synthResolution.y;
 }
 Context::~Context() {
-    // TODO
+    // Release shaders
+    glDeleteProgram(shaderVoxel);
+    glDeleteProgram(shaderSynth);
+    glDeleteProgram(shaderView);
+
+    // Release FBO
+    glDeleteBuffers(1, &fboVoxel);
+    glDeleteTextures(nVoxelBuffer, &textureVoxel[0]);
 }
 
 void Context::clearVoxels() {
