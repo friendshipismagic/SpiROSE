@@ -284,10 +284,10 @@ always_ff @(posedge clk_33 or negedge nrst)
         write_idx <= '0;
         ram_addr <= RAM_BASE;
     end else if(stream_ready) begin
-        if(wait_for_next_slice) begin
+        /*if(wait_for_next_slice) begin
             write_idx <= '0;
             ram_addr <= image_start_addr;
-        end else begin
+        end else begin*/
             if(~has_reached_end) begin
                 ram_addr <= ram_addr + MULTIPLEXING;
                 write_idx <= write_idx + 1'b1;
@@ -299,10 +299,10 @@ always_ff @(posedge clk_33 or negedge nrst)
             // We have sent all data so we fill a new buffer
             end else if(column_sent) begin
                 // We will fill the new buffer with the next column
-                ram_addr <= image_start_addr + 32'(mul_idx)+1'b1;
+                ram_addr <= image_start_addr + 32'(mul_idx);
                 write_idx <= '0;
             end
-        end
+        //end
     end else begin
         write_idx <= '0;
         ram_addr <= RAM_BASE;
@@ -370,9 +370,14 @@ always_ff @(posedge clk_33 or negedge nrst)
  * In poker mode we send the MSB of each led first, thus bit_idx is decreased
  * every 16 cycles. When it reaches 0 we change the current column.
  */
-assign column_sent = driver_ready && rgb_idx == 2
-                                  && led_idx == 0
-                                  && bit_idx == 0;
+always_ff @(posedge clk_33 or negedge nrst)
+    if(~nrst) begin
+        column_sent <= '0;
+    end else begin
+        column_sent <= driver_ready && rgb_idx == 2
+                                    && led_idx == 0
+                                    && bit_idx == 0;
+    end
 
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
