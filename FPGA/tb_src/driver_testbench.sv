@@ -45,7 +45,7 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .serialized_conf(serialized_conf)
 );
 
-column_mux #(.SYNC_TO_FIRST_COL_TIME(5), .COLUMN_DISP_TIME(10), .ANTIGHOSTING_TIME(15)) main_column_mux (
+column_mux main_column_mux (
 	.clk_33(clk_33),
 	.nrst(nrst),
 	.framebuffer_sync(framebuffer_sync),

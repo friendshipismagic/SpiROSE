@@ -1,18 +1,18 @@
 // DRIVE_TIME is in µs
 // CAUTION: the LEDs overdrive cannot exceed 10µs at full value
 // Parameters to change
-module column_mux #(
-   parameter SYNC_TO_FIRST_COL_TIME=10,
-   parameter COLUMN_DISP_TIME=10,
-   parameter ANTIGHOSTING_TIME=10
-) (
+module column_mux
+(
    input clk_33,
    input nrst,
    input column_ready,
    output reg [7:0] mux_out
 );
 
-// Convert the drive time into clock cycles. 30 ns ~ 33.33MHz
+/*
+ * Convert the drive time into clock cycles. 30 ns ~ 33.33MHz
+ * 330 cycles corresponds to 10 µs display time
+ */
 localparam DRIVE_CLOCK_CYCLES = 330;
 localparam DRIVE_CLOCK_BITS = $clog2(DRIVE_CLOCK_CYCLES);
 
@@ -25,12 +25,10 @@ logic [2:0] disp_value;
 /*
  * Mux possible states:
  * WAIT_COLUMN_READY is a state where the mux should wait for the framebuffer_sync
- * WAIT_BEFORE_START is a state to wait before displaying the first column
  * DISP is a state where one column is on
- * WAIT_BETWEEN_DISP is a state where the columns are off to remove ghosting
  */
 enum logic {WAIT_COLUMN_READY, DISP} mux_state;
-logic [7:0] mux_state_counter;
+logic [DRIVE_CLOCK_BITS-1:0] mux_state_counter;
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         mux_state <= WAIT_COLUMN_READY;
@@ -47,7 +45,7 @@ always_ff @(posedge clk_33 or negedge nrst)
             DISP: begin
                 mux_state_counter <= mux_state_counter + 1'b1;
                 // Remove one clock cycle per transition
-                if(mux_state_counter == DRIVE_CLOCK_CYCLES[7:0] - 1) begin
+                if(mux_state_counter == DRIVE_CLOCK_CYCLES - 1) begin
                     mux_state <= WAIT_COLUMN_READY;
                     // Change column for next time
                     disp_value <= disp_value + 1'b1;
