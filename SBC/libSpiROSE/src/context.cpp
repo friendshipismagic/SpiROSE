@@ -150,7 +150,40 @@ GLuint Context::compileShader(const GLenum type, const char *source) const {
     return shader;
 }
 void Context::loadShaders() {
-    // TODO
+    // Declare the sources as static to avoid blowing up the stack
+    static const char *srcVoxelV =
+#include "shader/voxel.vs"
+        ;
+    static const char *srcVoxelF =
+#include "shader/voxel.fs"
+        ;
+    static const char *srcSynthV =
+#include "shader/synth.vs"
+        ;
+    static const char *srcSynthF =
+#include "shader/synth.fs"
+        ;
+    static const char *srcViewV =
+#include "shader/view.vs"
+        ;
+    static const char *srcViewF =
+#include "shader/view.fs"
+        ;
+
+    shaderVoxel = glCreateProgram();
+    glAttachShader(shaderVoxel, compileShader(GL_VERTEX_SHADER, srcVoxelV));
+    glAttachShader(shaderVoxel, compileShader(GL_FRAGMENT_SHADER, srcVoxelF));
+    glLinkProgram(shaderVoxel);
+
+    shaderSynth = glCreateProgram();
+    glAttachShader(shaderSynth, compileShader(GL_VERTEX_SHADER, srcSynthV));
+    glAttachShader(shaderSynth, compileShader(GL_FRAGMENT_SHADER, srcSynthF));
+    glLinkProgram(shaderSynth);
+
+    shaderView = glCreateProgram();
+    glAttachShader(shaderView, compileShader(GL_VERTEX_SHADER, srcViewV));
+    glAttachShader(shaderView, compileShader(GL_FRAGMENT_SHADER, srcViewF));
+    glLinkProgram(shaderView);
 }
 
 void Context::loadUniforms() {
