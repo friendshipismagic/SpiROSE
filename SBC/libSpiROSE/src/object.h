@@ -3,6 +3,8 @@
 
 #include <glm/glm.hpp>
 
+#include "spirose.h"
+
 namespace spirose {
 
 class Object {
