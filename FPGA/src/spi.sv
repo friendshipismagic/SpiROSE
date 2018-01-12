@@ -25,7 +25,8 @@ localparam CONFIG_COMMAND = 191;
 localparam ROTATION_COMMAND = 76;
 localparam DEFAULT_CONFIG_DATA = 'hff;
 
-/* ReceiveRegister is a shift register for the received byte
+/* 
+ * ReceiveRegister is a shift register for the received byte
  * TransmitRegister is a shift register for the byte to be transmitted
  */
 logic [7:0] receive_register, transmit_register;
@@ -51,7 +52,7 @@ logic [1:0] transmission_counter;
 logic [47:0] configuration;
 assign config_out = configuration;
 
-// Send bit of the 
+// Send bit of the transmission shift register when in transmission mode
 assign miso = transmission_counter == 0 ? 1'b1 : transmit_register[7];
 
 /*
