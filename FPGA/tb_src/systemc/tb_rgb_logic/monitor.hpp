@@ -7,10 +7,10 @@
 
 constexpr int FRAME_WIDTH = 40;
 constexpr int FRAME_HEIGHT = 48;
+constexpr int NUMBER_OF_FRAME = 256;
 
 SC_MODULE(Monitor) {
     SC_CTOR(Monitor) : nrst("nrst") {
-        ram.resize(8 * FRAME_WIDTH * FRAME_HEIGHT);
         SC_THREAD(runTests);
         SC_CTHREAD(checkRgbEnable, clk.pos());
         SC_CTHREAD(captureRAM, clk.pos());
@@ -36,10 +36,13 @@ SC_MODULE(Monitor) {
 
     private:
     void sendReset();
-    void sendFrame();
-    void checkRAM(bool zeored);
-    void cleanRAM();
-    int value(int k, int x, int y);
+    void sendFrame(int nb_frame, int width, int height);
+    void checkRAM();
+    uint32_t value(uint32_t k, uint32_t x, uint32_t y);
+    uint32_t v565(uint32_t v);
 
-    std::vector<uint32_t> ram;
+    // last checked address in captureRAM
+    sc_signal<uint32_t> lastAddr;
+
+    sc_signal<bool> lastVsync;
 };
