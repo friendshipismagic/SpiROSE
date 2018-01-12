@@ -31,37 +31,37 @@ assign blanking = ~hsync | ~vsync;
 
 logic [31:0] pixel_counter;
 
-always_ff @(posedge rgb_clk or negedge nrst)
-    if(~nrst) begin
-        ram_data <= '0;
-    end else begin
-        /*
-         * We don't write anything in blanking area but it is controlled by
-         * writeEnable signal. We use 5 bits for the red, 6 for the green,
-         * and 5 for the blue.
-         */
-        ram_data <= {rgb[23:19], rgb[15:10], rgb[7:3]};
-    end
+logic is_end_of_RAM;
+assign is_end_of_RAM= pixel_counter == IMAGE_SIZE*IMAGE_IN_RAM;
+
+logic is_valid_first_frame = vsync || pixel_counter >= IMAGE_SIZE;
+
+/*
+ * We don't write anything in blanking area but it is controlled by
+ * writeEnable signal. We use 5 bits for the red, 6 for the green,
+ * and 5 for the blue.
+ */
+assign ram_data = {rgb[23:19], rgb[15:10], rgb[7:3]};
 
 always_ff @(posedge rgb_clk or negedge nrst)
     if(~nrst) begin
         ram_addr <= '0;
     end else begin
         ram_addr <= '0;
-        if(rgb_enable && pixel_counter != IMAGE_SIZE*IMAGE_IN_RAM) begin
+        if(rgb_enable && pixel_counter != IMAGE_SIZE*IMAGE_IN_RAM-1) begin
             if(blanking)
                 ram_addr <= ram_addr;
             else
-                ram_addr <= ram_addr + '1;
+                ram_addr <= ram_addr + 1;
         end
     end
 
+assign write_enable = ~blanking && rgb_enable && nrst;
+
 always_ff @(posedge rgb_clk or negedge nrst)
     if(~nrst) begin
-        write_enable <= '0;
         pixel_counter <= '0;
-           end else begin
-        write_enable <= '0;
+    end else begin
         pixel_counter <= '0;
         /*
          * when rgb_enable drives high we may be in the middle of a frame, thus
@@ -70,13 +70,11 @@ always_ff @(posedge rgb_clk or negedge nrst)
          * not have been sent so we would not have display those unrelevant data
          * we just write.
          */
-        if (rgb_enable) begin
-            write_enable <= ~blanking;
-            pixel_counter <= pixel_counter + ~32'(blanking);
-            if(pixel_counter == IMAGE_SIZE*IMAGE_IN_RAM
-                || (~vsync && pixel_counter != IMAGE_SIZE)) begin
-                pixel_counter <= '0;
-            end
+        if (rgb_enable && !is_end_of_RAM && is_valid_first_frame) begin
+            if(~blanking)
+                pixel_counter <= pixel_counter + 1;
+            else
+                pixel_counter <= pixel_counter;
         end
     end
 
