@@ -3,6 +3,7 @@
 
 #include "context.h"
 #include "object.h"
+#include "utils.h"
 
 namespace spirose {
 
@@ -69,11 +70,11 @@ Context::~Context() {
 }
 
 void Context::clearVoxels() {
-    bindFramebuffer(fboVoxel);
+    gl::bindFramebuffer(fboVoxel);
     glClear(GL_COLOR_BUFFER_BIT);
 }
 void Context::clearScreen(glm::vec4 color) {
-    bindFramebuffer(0);
+    gl::bindFramebuffer(0);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 

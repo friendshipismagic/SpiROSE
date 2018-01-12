@@ -1,4 +1,5 @@
 #include "object.h"
+#include "utils.h"
 
 namespace spirose {
 
@@ -34,7 +35,7 @@ Object::~Object() {
 }
 
 void Object::draw() const {
-    bindVertexArray(vao);
+    gl::bindVertexArray(vao);
     glDrawElements(GL_TRIANGLES, nIndices, GL_UNSIGNED_INT, 0);
 }
 
