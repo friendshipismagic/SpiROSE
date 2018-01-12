@@ -269,22 +269,6 @@ logic column_sent;
 // State entered by the framebuffer when it has sent the whole slice
 logic wait_for_next_slice;
 
-// Count the number of slices read so far, so we assert the correct ram address
-always_ff @(posedge clk_33 or negedge nrst)
-    if(~nrst) begin
-        slice_cnt <= '0;
-    end else if(stream_ready) begin
-        // The position has changed, stop waiting for the next slice
-        if(wait_for_next_slice && position_sync) begin
-            slice_cnt <= slice_cnt + 1'b1;
-            if(slice_cnt == SLICES_IN_RAM) begin
-                slice_cnt <= 0;
-            end
-        end
-    end else begin
-        slice_cnt <= '0;
-    end
-
 /*
  * Read ram to fill the reading buffer.
  *
@@ -397,7 +381,8 @@ always_ff @(posedge clk_33 or negedge nrst)
         bit_idx <= POKER_MODE-1;
         led_idx <= 4'(LED_PER_DRIVER-1);
         current_buffer <= '0;
-        wait_for_next_slice <= '0;
+        wait_for_next_slice <= 1'b1;
+        slice_cnt <= '0;
     end else if(stream_ready) begin
         if(wait_for_next_slice) begin
              rgb_idx <= '0;
@@ -405,7 +390,7 @@ always_ff @(posedge clk_33 or negedge nrst)
              bit_idx <= POKER_MODE-1;
              led_idx <= 4'(LED_PER_DRIVER-1);
              current_buffer <= '0;
-             wait_for_next_slice <= position_sync;
+             wait_for_next_slice <= ~position_sync;
          end else if(driver_ready) begin
              rgb_idx <= rgb_idx + 1'b1;
              // We have sent the three colors, time to go to the next led
@@ -426,6 +411,14 @@ always_ff @(posedge clk_33 or negedge nrst)
                          if(mul_idx == 3'(MULTIPLEXING-1)) begin
                              mul_idx <= '0;
                              wait_for_next_slice <= 1'b1;
+                             /*
+                              * Count the number of slices read so far, so we
+                              * assert the correct ram address.
+                              */
+                             slice_cnt <= slice_cnt + 1'b1;
+                             if(slice_cnt == SLICES_IN_RAM) begin
+                                 slice_cnt <= 0;
+                             end
                          end
                      end
                  end
