@@ -1,10 +1,10 @@
 /*
-* The SPI is used as an interface between the SOM and
-* the FPGA in order to (from the point of view of the FPGA):
-*   - Receive a new configuration for the drivers
-*   - Transmit rotation information given by the Hall effect
-*   sensors to the SBC
-*/
+ * The SPI is used as an interface between the SOM and
+ * the FPGA in order to (from the point of view of the FPGA):
+ *   - Receive a new configuration for the drivers
+ *   - Transmit rotation information given by the Hall effect
+ *   sensors to the SBC
+ */
 
 module spi_slave(
     input  logic nrst,
@@ -32,9 +32,9 @@ localparam DEFAULT_CONFIG_DATA = 'hff;
 logic [7:0] receive_register, transmit_register;
 
 /*
-* shift_counter keeps trace of the number of times the receive_register is
-* shifted
-*/
+ * shift_counter keeps trace of the number of times the receive_register is
+ * shifted
+ */
 logic [3:0] shift_counter;
 
 // Counter that counts the number of configuration bytes received
@@ -56,11 +56,11 @@ assign config_out = configuration;
 assign spi_miso = transmission_counter == 0 ? 1'b1 : transmit_register[7];
 
 /*
-* Process for the receiving part:
-* The master sends data through spi_mosi while ss is low,
-* it is stored in the receive_register, which is then
-* shifted.
-*/
+ * Process for the receiving part:
+ * The master sends data through spi_mosi while ss is low,
+ * it is stored in the receive_register, which is then
+ * shifted.
+ */
 always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
         shift_counter <= 0;
@@ -117,10 +117,10 @@ always_ff @(posedge spi_clk or negedge nrst) begin
 end
 
 /*
-* Process for the transmission part of the spi slave
-* The Hall module sends rotation data to this module, then
-* it needs to send it back through spi_miso to the SBC.
-*/
+ * Process for the transmission part of the spi slave
+ * The Hall module sends rotation data to this module, then
+ * it needs to send it back through spi_miso to the SBC.
+ */
 
 always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
