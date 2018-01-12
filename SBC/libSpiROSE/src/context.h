@@ -94,6 +94,14 @@ class Context {
      *        to overcome the lack of render targets.
      */
     int nVoxelPass;
+    /**
+     * @brief Voxelization resolution
+     */
+    int resW, resH, resC;
+    /**
+     * @brief Synthesized output size in pixels
+     */
+    int synthW, synthH;
 
     /**
      * @brief Shaders necessary for the voxelisation.
@@ -130,6 +138,21 @@ class Context {
      * @brief Projections matrix used for voxelisation
      */
     glm::mat4 matrixProjection;
+
+    /**
+     * @brief Compiles a shader
+     * @returns Shader ID
+     */
+    GLuint compileShader(const GLenum type, const char* source) const;
+    /**
+     * @brief Loads, compiles and links shaders
+     */
+    void loadShaders();
+
+    /**
+     * @brief Loads uniforms
+     */
+    void loadUniforms();
 };
 
 }  // namespace spirose

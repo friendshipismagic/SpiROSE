@@ -1,11 +1,13 @@
 #include <iostream>
+#include <map>
 
 #include "context.h"
 #include "object.h"
 
 namespace spirose {
 
-Context::Context(int resW, int resH, int resC, glm::mat4 matrixWorld) {
+Context::Context(int resW, int resH, int resC, glm::mat4 matrixWorld)
+    : resW(resW), resH(resH), resC(resC) {
     /* Determine the optimum draw buffer count. A single buffer (~texture) can
      * hold 4 voxel layers. Thus, we'd ideally use resH/4 buffers. However,
      * we have a maximum of color attachemnts (render targets). Thus, fit as
@@ -47,6 +49,11 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixWorld) {
         std::cerr << "[ERR] Incomplete framebuffer object" << std::endl;
         exit(-1);
     }
+
+    // Get synthesized resolution
+    glm::vec2 synthResolution = windowSize(resW, resH, resC);
+    synthW = synthResolution.x;
+    synthH = synthResolution.y;
 }
 Context::~Context() {
     // TODO
@@ -76,6 +83,77 @@ void Context::display() {
 bool Context::dumpPNG(std::string filename) {
     // TODO
     return false;
+}
+
+GLuint Context::compileShader(const GLenum type, const char *source) const {
+    // Set of defines to add to the shader
+    std::map<std::string, int> defines = {{"N_VOXEL_BUFFER", nVoxelBuffer},
+                                          {"N_VOXEL_PASS", nVoxelPass},
+                                          {"RES_W", resW},
+                                          {"RES_H", resH},
+                                          {"RES_C", resC},
+                                          {"SYNTH_W", synthW},
+                                          {"SYNTH_H", synthH}};
+    // Build a usable string
+    std::string definesStr;
+    for (auto &define : defines)
+        definesStr += "#define " + define.first + " " +
+                      std::to_string(define.second) + "\n";
+
+    // Final shader source
+    const char *finalSource[] = {
+#ifdef GLES
+        // GL and GLES have different #version syntaxes...
+        "#version 330 es\n",
+        // GLES needs an explicit float precision declaration
+        "presicion highp float;\n",
+#else
+        "#version 330 core\n",
+#endif
+        definesStr.c_str(), source};
+
+    // Shader compilation
+    GLuint shader = glCreateShader(type);
+    glShaderSource(shader, sizeof(finalSource) / sizeof(char *), finalSource,
+                   nullptr);
+    glCompileShader(shader);
+
+    // Check compilation
+    GLint isOk;
+    glGetShaderiv(shader, GL_COMPILE_STATUS, &isOk);
+    if (!isOk) {
+        std::cerr << "[ERR] Shader compilation error." << std::endl;
+        std::cerr << "[ERR] Source:" << std::endl;
+
+        // Dump final source
+        for (unsigned int i = 0; i < sizeof(finalSource) / sizeof(char *); i++)
+            std::cout << finalSource[i];
+        std::cout << std::endl;
+
+        // Get and print error
+        GLint len = 0;
+        glGetShaderiv(shader, GL_INFO_LOG_LENGTH, &len);
+        GLchar *buf = new GLchar[len];
+        if (!buf) {
+            std::cerr << "[ERR] Failed to allocate " << len
+                      << " bytes to fetch the error." << std::endl;
+            exit(-2);
+        }
+        glGetShaderInfoLog(shader, len, nullptr, buf);
+        std::cerr << buf << std::endl;
+        delete buf;
+
+        exit(-3);
+    }
+
+    return shader;
+}
+void Context::loadShaders() {
+    // TODO
+}
+
+void Context::loadUniforms() {
+    // TODO
 }
 
 }  // namespace spirose
