@@ -69,6 +69,24 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
     glEnableVertexAttribArray(0);
     glEnableVertexAttribArray(1);
 
+    // 3D points cloud for the visualisation
+    glGenVertexArrays(1, &vaoPoints);
+    glBindVertexArray(vaoPoints);
+    glGenBuffers(1, &vboPoints);
+    glBindBuffer(GL_ARRAY_BUFFER, vboPoints);
+    glm::vec3 resD2(float(resW / 2), float(resW / 2), float(resH / 2)),
+        resHD2(float(resH / 2));
+    std::vector<glm::vec3> points(resW * resW * resH);
+    for (int x = 0; x < resW; x++)
+        for (int y = 0; y < resW; y++)
+            for (int z = 0; z < resH; z++)
+                points[3 * (resH * (x * resW + y) + z)] =
+                    (glm::vec3(x, y, z) - resD2) / resHD2;
+    glBufferData(GL_ARRAY_BUFFER, points.size() * 3 * sizeof(float), &points[0],
+                 GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
+    glEnableVertexAttribArray(0);
+
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
@@ -113,6 +131,8 @@ Context::~Context() {
     // Release VAOs and VBOs
     glDeleteBuffers(1, &vboSquare);
     glDeleteVertexArrays(1, &vaoSquare);
+    glDeleteBuffers(1, &vboPoints);
+    glDeleteVertexArrays(1, &vaoPoints);
 }
 
 void Context::clearVoxels() {
@@ -177,8 +197,9 @@ void Context::visualize(glm::vec4 color, glm::mat4 matrixVP) {
 #ifndef GLES
     glPointSize(10.f);
 #endif
+    glViewport(0, 0, resW * synthW, resH * synthH);
 
-    // TODO: draw points
+    glDrawArrays(GL_TRIANGLES, 0, resW * resW * resH * 3);
 }
 
 void Context::display() {

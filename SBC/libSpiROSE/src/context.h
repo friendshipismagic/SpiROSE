@@ -141,6 +141,12 @@ class Context {
     GLuint vaoSquare, vboSquare;
 
     /**
+     * @brief Vertex array and vertex buffer objects for the visualisations
+     *        points "cloud"
+     */
+    GLuint vaoPoints, vboPoints;
+
+    /**
      * @brief Projections matrix used for voxelisation
      */
     glm::mat4 matrixProjection;
