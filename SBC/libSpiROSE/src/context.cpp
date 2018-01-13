@@ -75,6 +75,12 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
     gl::useProgram(shaderVoxel);
     glUniformMatrix4fv(uniforms.voxel.matrixProjection, 1, false,
                        &matrixProjection[0][0]);
+
+    // Upload texture bindings to the shaders
+    for (int i = 0; i < nVoxelBuffer; i++)
+        glUniform1i(uniforms.synth.voxels[i], i);
+    for (int i = 0; i < nVoxelBuffer; i++)
+        glUniform1i(uniforms.view.voxels[i], i);
 }
 Context::~Context() {
     // Release shaders
@@ -121,7 +127,18 @@ void Context::voxelize(Object object) {
     }
 }
 void Context::synthesize(glm::vec4 color) {
-    // TODO
+    clearScreen();
+
+    // Config shader
+    gl::useProgram(shaderSynth);
+
+    // Config GL
+    glDisable(GL_SCISSOR_TEST);
+    glDisable(GL_BLEND);
+    glDisable(GL_DEPTH_TEST);
+    glViewport(0, 0, resW * synthW, resH * synthH);
+
+    // TODO: draw the quad
 }
 void Context::visualize(glm::vec4 color, glm::mat4 matrixVP) {
     // TODO
