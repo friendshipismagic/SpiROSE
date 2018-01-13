@@ -62,20 +62,20 @@ fn decode_command(command: &str) -> Option<SpiCommand> {
 }
 
 fn send(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Result<()> {
-    spi.write(&vec![command.id]);
+    spi.write(&vec![command.id])?;
 
     // Send optionnal arguments with the command (for instance, configuration data)
     if !command_args.is_empty() {
-        spi.write(command_args);
+        spi.write(command_args)?;
     }
 
     Ok(())
 }
 
 fn get(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Result<Vec<u8>> {
-    send(spi, command, command_args);
+    send(spi, command, command_args)?;
     let mut read_vec = vec![0; command.recv_len];
-    spi.read(&mut read_vec);
+    spi.read(&mut read_vec)?;
 
     Ok(read_vec)
 }
