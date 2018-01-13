@@ -101,11 +101,11 @@ fn decode_command(command: &str) -> Option<SpiCommand> {
 }
 
 fn send(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Result<()> {
-    spi.write(&vec![command.id])?;
+    spi.write_all(&vec![command.id])?;
 
     // Send optionnal arguments with the command (for instance, configuration data)
     if !command_args.is_empty() {
-        spi.write(command_args)?;
+        spi.write_all(command_args)?;
     }
 
     Ok(())
@@ -114,7 +114,7 @@ fn send(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Resu
 fn get(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Result<Vec<u8>> {
     send(spi, command, command_args)?;
     let mut read_vec = vec![0; command.recv_len];
-    spi.read(&mut read_vec)?;
+    spi.read_exact(&mut read_vec)?;
 
     Ok(read_vec)
 }
