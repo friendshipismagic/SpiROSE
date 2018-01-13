@@ -143,8 +143,6 @@ void Context::clearScreen(glm::vec4 color) {
 }
 
 void Context::voxelize(Object &object) {
-    clearVoxels();
-
     // Config shader
     glm::mat4 matMVP = matrixProjection * matrixView * object.matrixModel;
     gl::useProgram(shaderVoxel);
@@ -166,8 +164,6 @@ void Context::voxelize(Object &object) {
     }
 }
 void Context::synthesize(glm::vec4 color) {
-    clearScreen();
-
     // Config shader
     gl::useProgram(shaderSynth);
 
@@ -177,6 +173,7 @@ void Context::synthesize(glm::vec4 color) {
     glDisable(GL_DEPTH_TEST);
     glViewport(0, 0, resW * synthW, resH * synthH);
 
+    gl::bindVertexArray(vaoSquare);
     glDrawArrays(GL_TRIANGLES, 0, 6 * 4);
 }
 void Context::visualize(glm::vec4 color, glm::mat4 matrixMVP) {
@@ -195,6 +192,7 @@ void Context::visualize(glm::vec4 color, glm::mat4 matrixMVP) {
 #endif
     glViewport(0, 0, resW * synthW, resH * synthH);
 
+    gl::bindVertexArray(vaoPoints);
     glDrawArrays(GL_TRIANGLES, 0, resW * resW * resH * 3);
 }
 
