@@ -12,6 +12,8 @@ use clap::App;
 use spidev::{Spidev, SpidevOptions};
 use toml::Value;
 
+// LEDDriverConfig is the struct containing the LED Driver Config
+// The serialized version is 48b long
 #[derive(Debug, Deserialize)]
 struct LEDDriverConfig {
     lodvth: u8,
@@ -59,14 +61,18 @@ fn main() {
         config_file
             .read_to_string(&mut serialized_conf)
             .expect("Unknown error when reading configuration file");
+        // Unwrapping inside a LEDDriverConfig forces the full configuration to be available
         let led_config: LEDDriverConfig = toml::from_str(&serialized_conf).unwrap();
-        check_configuration(&led_config);
+        let serialized_conf = serialize_conf(&led_config);
     }
 }
 
-fn check_configuration(led_config: &LEDDriverConfig) -> io::Result<()> {
+fn serialize_conf(led_config: &LEDDriverConfig) -> io::Result<&[u8]> {
     println!("{:?}", led_config);
-    Ok(())
+    // Serialization takes 48b, so 6 8b words
+    let serialized_conf: &[u8] = &[0; 6];
+
+    Ok(serialized_conf)
 }
 
 fn create_spi() -> io::Result<Spidev> {
@@ -78,7 +84,7 @@ fn create_spi() -> io::Result<Spidev> {
         .mode(spidev::SPI_MODE_0)
         .build();
 
-    spi.configure(&spi_options)?;
+    //spi.configure(&spi_options)?;
     Ok(spi)
 }
 
