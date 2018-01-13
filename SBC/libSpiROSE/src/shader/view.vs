@@ -50,7 +50,7 @@ void main() {
 #endif
 
     // Get our height in the layer pack to use the proper color channel
-    float z = mod(fragPos.z * float(RES_H / 4), 1.0);
+    float z = mod(p.z * float(RES_H / 4), 1.0);
     float v;
     if (z < 0.25)
         v = color.r;

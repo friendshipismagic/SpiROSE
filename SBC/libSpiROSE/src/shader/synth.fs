@@ -10,7 +10,7 @@ layout(location = 0) out vec4 out_Color;
 // Voxel buffers
 uniform sampler2D voxels[N_VOXEL_BUFFER];
 
-#define M_PI = 3.14159265359;
+#define M_PI 3.14159265359;
 const float nVoxelPass = float(N_VOXEL_PASS);
 
 void main() {
