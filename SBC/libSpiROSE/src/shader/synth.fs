@@ -1,5 +1,5 @@
 /**
- * Synthesize algorithm, vertex shader.
+ * Synthesize algorithm, fragment shader.
  * Role: generate microblocks
  */
 
