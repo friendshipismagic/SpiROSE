@@ -7,5 +7,8 @@ authors = ["Clément Decoodt <clement@decoodt.eu>"]
 version = "*"
 features = ["yaml"]
 
-[dependencies.spidev]
-version = "*"
+[dependencies]
+spidev = "*"
+toml = "*"
+serde = "*"
+serde_derive = "*"

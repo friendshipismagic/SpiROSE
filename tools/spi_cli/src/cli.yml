@@ -14,3 +14,9 @@ subcommands:
          - command:
             help: "Command to send to the SPI device"
             required: true
+   - configure:
+      about: "Configure the LED drivers"
+      args:
+         - config_file:
+            help: "LED Drivers configuration file, TOML format"
+            required: true
