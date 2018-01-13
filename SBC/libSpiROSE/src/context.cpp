@@ -23,6 +23,13 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
      * dividable by one.
      */
     while ((resH / 4) % nVoxelBuffer) nVoxelBuffer--;
+    nVoxelPass = (resH / 4) / nVoxelBuffer;
+
+    // Get synthesized resolution
+    glm::ivec2 synthResolution =
+        windowSize(resW, resH, resC) / glm::ivec2(resW, resH);
+    synthW = synthResolution.x;
+    synthH = synthResolution.y;
 
     loadShaders();
     loadUniforms();
@@ -90,12 +97,6 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
 
     glBindVertexArray(0);
     glBindBuffer(GL_ARRAY_BUFFER, 0);
-
-    // Get synthesized resolution
-    glm::ivec2 synthResolution =
-        windowSize(resW, resH, resC) / glm::ivec2(resW, resH);
-    synthW = synthResolution.x;
-    synthH = synthResolution.y;
 
     float resRatio = float(resW) / float(resH);
     /* Projection matrix for the voxelisation.
