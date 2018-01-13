@@ -6,10 +6,11 @@
 
 #include <glm/glm.hpp>
 
-class Object;
-#include "spirose.h"
+#include "gl.h"
 
 namespace spirose {
+
+class Object;
 
 class Context {
     public:

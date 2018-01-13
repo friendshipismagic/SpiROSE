@@ -5,6 +5,7 @@
 
 #include "context.h"
 #include "object.h"
+#include "spirose.h"
 #include "utils.h"
 
 namespace spirose {

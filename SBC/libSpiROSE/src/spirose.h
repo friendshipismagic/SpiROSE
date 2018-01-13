@@ -1,15 +1,7 @@
 #ifndef _SPIROSE_LIBSPIROSE_H
 #define _SPIROSE_LIBSPIROSE_H
 
-// Include GLFW headers and the correct OpenGL headers
-#ifdef GLES
-#define GLFW_INCLUDE_ES31
-#else
-#define GLFW_INCLUDE_GLCOREARB
-#include <GL/glew.h>
-#endif
-#define GLFW_INCLUDE_GLEXT
-#include <GLFW/glfw3.h>
+#include "gl.h"
 
 // For convenience for the end user, include the context and object classes
 #include "context.h"

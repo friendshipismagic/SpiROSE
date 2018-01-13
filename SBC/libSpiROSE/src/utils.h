@@ -1,6 +1,8 @@
 #ifndef _SPIROSE_UTILS_H
 #define _SPIROSE_UTILS_H
 
+#include "gl.h"
+
 namespace spirose {
 
 namespace gl {

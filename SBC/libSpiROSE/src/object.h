@@ -3,7 +3,7 @@
 
 #include <glm/glm.hpp>
 
-#include "spirose.h"
+#include "gl.h"
 
 namespace spirose {
 
