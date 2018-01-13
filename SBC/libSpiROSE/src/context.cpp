@@ -71,6 +71,10 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
         // voxelize for z in [-1, 1], from the top, with the camera "up" being y
         glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
                     glm::vec3(0.f, 1.f, 0.f));
+    // Upload it now to the shader since it won't change
+    gl::useProgram(shaderVoxel);
+    glUniformMatrix4fv(uniforms.voxel.matrixProjection, 1, false,
+                       &matrixProjection[0][0]);
 }
 Context::~Context() {
     // Release shaders
@@ -93,7 +97,28 @@ void Context::clearScreen(glm::vec4 color) {
 }
 
 void Context::voxelize(Object object) {
-    // TODO
+    clearVoxels();
+
+    // Config shader
+    gl::useProgram(shaderVoxel);
+    glUniformMatrix4fv(uniforms.voxel.matrixModel, 1, false,
+                       &object.matrixModel[0][0]);
+    glUniformMatrix4fv(uniforms.voxel.matrixView, 1, false, &matrixView[0][0]);
+
+    // Additive blending to simulate the XOR algorithm
+    glEnable(GL_BLEND);
+    glBlendFunc(GL_ONE, GL_ONE);
+
+    glDisable(GL_DEPTH_TEST);
+    glEnable(GL_SCISSOR_TEST);
+
+    // Render object
+    for (int i = 0; i < nVoxelPass; i++) {
+        glViewport(resW * i, 0, resW, resW);
+        glScissor(resW * i, 0, resW, resW);
+        glUniform1i(uniforms.voxel.passNo, i);
+        object.draw();
+    }
 }
 void Context::synthesize(glm::vec4 color) {
     // TODO
