@@ -10,7 +10,7 @@ use spidev::{Spidev, SpidevOptions};
 #[derive(Debug)]
 struct SpiCommand {
     id: u8,
-    len: usize,
+    recv_len: usize,
 }
 
 fn main() {
@@ -45,9 +45,18 @@ fn create_spi() -> io::Result<Spidev> {
 
 fn decode_command(command: &str) -> Option<SpiCommand> {
     match command {
-        "blink_led" => Some(SpiCommand { id: 0xDE, len: 0 }),
-        "rotation" => Some(SpiCommand { id: 0x4C, len: 1 }),
-        "config" => Some(SpiCommand { id: 0xBF, len: 6 }),
+        "blink_led" => Some(SpiCommand {
+            id: 0xDE,
+            recv_len: 0,
+        }),
+        "rotation" => Some(SpiCommand {
+            id: 0x4C,
+            recv_len: 1,
+        }),
+        "config" => Some(SpiCommand {
+            id: 0xBF,
+            recv_len: 6,
+        }),
         _ => None,
     }
 }
@@ -65,7 +74,7 @@ fn send(spi: &mut Spidev, command: &SpiCommand, command_args: Option<&[u8]>) -> 
 
 fn get(spi: &mut Spidev, command: &SpiCommand, command_args: Option<&[u8]>) -> io::Result<Vec<u8>> {
     send(spi, command, command_args);
-    let mut read_vec = Vec::with_capacity(command.len);
+    let mut read_vec = Vec::with_capacity(command.recv_len);
     spi.read(&mut read_vec);
 
     Ok(read_vec)
