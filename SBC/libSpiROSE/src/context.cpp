@@ -202,10 +202,6 @@ void Context::visualize(glm::vec4 color, glm::mat4 matrixVP) {
     glDrawArrays(GL_TRIANGLES, 0, resW * resW * resH * 3);
 }
 
-void Context::display() {
-    // TODO
-}
-
 bool Context::dumpPNG(std::string filename) {
     // TODO
     return false;

@@ -64,11 +64,6 @@ class Context {
     void visualize(glm::vec4 color, glm::mat4 matrixVP);
 
     /**
-     * @brief Updates the display by swapping the draw and display buffer.
-     */
-    void display();
-
-    /**
      * @brief Dumps the synthesized texture to the PNG in filename. Returns true
      *        in case of success.
      * @param std::string   filename  Relative path to the PNG to save.
