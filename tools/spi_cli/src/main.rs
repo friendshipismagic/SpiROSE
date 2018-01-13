@@ -54,9 +54,9 @@ fn decode_command(command: &str) -> Option<SpiCommand> {
     }
 }
 
-fn send(spi: &mut Spidev, command: &SpiCommand) {
-    spi.write(&vec!(command.id))
-        .expect(&format!("Could not send command {:?}", &command));
+fn send(spi: &mut Spidev, command: &SpiCommand) -> io::Result<()> {
+    spi.write(&vec!(command.id));
+    Ok(())
 }
 
 fn get(spi: &mut Spidev, command: &SpiCommand) -> io::Result<Vec<u8>> {
