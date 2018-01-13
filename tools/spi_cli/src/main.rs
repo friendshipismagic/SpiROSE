@@ -16,19 +16,19 @@ use toml::Value;
 struct LEDDriverConfig {
     lodvth: u8,
     sel_td0: u8,
-    sel_gdly: bool,
-    xrefresh: bool,
-    sel_gck_edge: bool,
-    sel_pchg: bool,
-    espwm: bool,
-    lgse3: bool,
-    sel_sck_edge: bool,
+    sel_gdly: u8,
+    xrefresh: u8,
+    sel_gck_edge: u8,
+    sel_pchg: u8,
+    espwm: u8,
+    lgse3: u8,
+    sel_sck_edge: u8,
     lgse1: u8,
     ccb: u16,
     ccg: u16,
     ccr: u16,
     bc: u8,
-    poker_trans_mode: bool,
+    poker_trans_mode: u8,
     lgse2: u8,
 }
 
@@ -59,12 +59,12 @@ fn main() {
         config_file
             .read_to_string(&mut serialized_conf)
             .expect("Unknown error when reading configuration file");
-        let led_config = serialized_conf.parse::<Value>().unwrap();
+        let led_config: LEDDriverConfig = toml::from_str(&serialized_conf).unwrap();
         check_configuration(&led_config);
     }
 }
 
-fn check_configuration(led_config: &Value) -> io::Result<()> {
+fn check_configuration(led_config: &LEDDriverConfig) -> io::Result<()> {
     println!("{:?}", led_config);
     Ok(())
 }
