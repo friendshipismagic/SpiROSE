@@ -1,6 +1,8 @@
 #ifndef _SPIROSE_UTILS_H
 #define _SPIROSE_UTILS_H
 
+#include <string>
+
 #include "gl.h"
 
 namespace spirose {
@@ -55,6 +57,17 @@ inline void useProgram(GLuint program) {
 }
 
 }  // namespace gl
+
+/**
+ * @brief Saves pixels in an RGBA PNG file named filename.
+ * @param std::string filename Relative path of the PNG file
+ * @param int         width    Width of the image in pixels
+ * @param int         height   Height of the image in pixels
+ * @param uint8_t     pixels   Pixels to save
+ * @returns bool Whether the save was a success.
+ */
+bool savePNG(const std::string &filename, const int width, const int height,
+             const uint8_t *pixels);
 
 }  // namespace spirose
 

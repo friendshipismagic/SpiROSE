@@ -2,7 +2,8 @@ SONAME = libSpiROSE.so
 SRCDIR = src
 CXXSRC = $(SRCDIR)/spirose.cpp \
          $(SRCDIR)/context.cpp \
-         $(SRCDIR)/object.cpp
+         $(SRCDIR)/object.cpp \
+         $(SRCDIR)/utils.cpp
 GLSLSRC = $(SRCDIR)/shader/voxel.vss \
           $(SRCDIR)/shader/voxel.fss \
           $(SRCDIR)/shader/synth.vss \
@@ -14,7 +15,8 @@ GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -iquote$(SRCDIR) -MMD -MP \
            -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS -fpic
 
-LDLIBS = -lm $(shell pkg-config --libs glfw3 2> /dev/null)
+LDLIBS = -lm $(shell pkg-config --libs glfw3 2> /dev/null) \
+         $(shell pkg-config --libs libpng 2> /dev/null)
 LDFLAGS = -flto -shared -Wl,-soname,$(SONAME)
 
 UNAME_P := $(shell uname -p)
