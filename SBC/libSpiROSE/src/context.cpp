@@ -204,8 +204,17 @@ void Context::visualize(glm::vec4 color, glm::mat4 matrixVP) {
 }
 
 bool Context::dumpPNG(std::string filename) {
-    // TODO
-    return false;
+    std::vector<GLuint> pixels(resW * resW * 4);
+
+    // Align to byte boundaries
+    glPixelStorei(GL_PACK_ALIGNMENT, 1);
+
+    gl::bindFramebuffer(0);
+    glReadBuffer(GL_COLOR_ATTACHMENT0);
+    glReadPixels(0, 0, resW * synthW, resH * synthH, GL_RGBA, GL_UNSIGNED_BYTE,
+                 &pixels[0]);
+    return savePNG(filename, resW * synthW, resH * synthH,
+                   (uint8_t *)&pixels[0]);
 }
 
 GLuint Context::compileShader(const GLenum type, const char *source) const {
