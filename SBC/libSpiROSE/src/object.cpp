@@ -16,6 +16,7 @@ Object::Object(float *vertices, int nVertices, int *indices, int nIndices,
     glBufferData(GL_ARRAY_BUFFER, nVertices * 3 * sizeof(float), vertices,
                  GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
+    glEnableVertexAttribArray(0);
 
     // Create IBO
     glGenBuffers(1, &ibo);
