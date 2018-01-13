@@ -141,7 +141,22 @@ void Context::synthesize(glm::vec4 color) {
     // TODO: draw the quad
 }
 void Context::visualize(glm::vec4 color, glm::mat4 matrixVP) {
-    // TODO
+    clearScreen();
+
+    // Config shader
+    gl::useProgram(shaderView);
+    glUniformMatrix4fv(uniforms.view.matrixViewProjection, 1, false,
+                       &matrixVP[0][0]);
+
+    // Config GL
+    glDisable(GL_SCISSOR_TEST);
+    glDisable(GL_BLEND);
+    glEnable(GL_DEPTH_TEST);
+#ifndef GLES
+    glPointSize(10.f);
+#endif
+
+    // TODO: draw points
 }
 
 void Context::display() {
