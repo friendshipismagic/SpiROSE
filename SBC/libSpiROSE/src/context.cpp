@@ -1,14 +1,16 @@
 #include <iostream>
 #include <map>
 
+#include <glm/gtx/transform.hpp>
+
 #include "context.h"
 #include "object.h"
 #include "utils.h"
 
 namespace spirose {
 
-Context::Context(int resW, int resH, int resC, glm::mat4 matrixWorld)
-    : resW(resW), resH(resH), resC(resC) {
+Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
+    : matrixView(matrixView), resW(resW), resH(resH), resC(resC) {
     /* Determine the optimum draw buffer count. A single buffer (~texture) can
      * hold 4 voxel layers. Thus, we'd ideally use resH/4 buffers. However,
      * we have a maximum of color attachemnts (render targets). Thus, fit as
@@ -57,6 +59,18 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixWorld)
         windowSize(resW, resH, resC) / glm::vec2(resW, resH);
     synthW = synthResolution.x;
     synthH = synthResolution.y;
+
+    float resRatio = float(resW) / float(resH);
+    /* Projection matrix for the voxelisation.
+     * We bundle a lookAt in it because the relation between the ortho
+     * parameters and the lookAt ones is touchy.
+     */
+    matrixProjection =
+        // resRatio allows us to have a voxelization volume always 2 units high
+        glm::ortho(-resRatio, resRatio, -resRatio, resRatio, -1.f, 1.f) *
+        // voxelize for z in [-1, 1], from the top, with the camera "up" being y
+        glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
+                    glm::vec3(0.f, 1.f, 0.f));
 }
 Context::~Context() {
     // Release shaders

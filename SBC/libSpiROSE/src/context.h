@@ -24,7 +24,7 @@ class Context {
      *                             global model matrix). Defaults to identity.
      */
     Context(int resW, int resH, int resC,
-            glm::mat4 matrixWorld = glm::mat4(1.f));
+            glm::mat4 matrixView = glm::mat4(1.f));
     /**
      * @brief Releases resources held by libSpiROSE.
      */
