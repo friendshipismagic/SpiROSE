@@ -135,6 +135,12 @@ class Context {
     std::vector<GLuint> textureVoxel;
 
     /**
+     * @brief Vertex array and vertex buffer objects for the multipass rendering
+     *        quad
+     */
+    GLuint vaoSquare, vboSquare;
+
+    /**
      * @brief Projections matrix used for voxelisation
      */
     glm::mat4 matrixProjection;

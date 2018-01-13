@@ -54,6 +54,24 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
         exit(-1);
     }
 
+    // 2D square for offscreen multipass
+    glGenVertexArrays(1, &vaoSquare);
+    glBindVertexArray(vaoSquare);
+    glGenBuffers(1, &vboSquare);
+    glBindBuffer(GL_ARRAY_BUFFER, vboSquare);
+    static const float square[] = {// Interleave position and UV
+                                   -1, -1, 0, 0, 1, 1, 1, 1, -1, 1,  0, 1,
+                                   -1, -1, 0, 0, 1, 1, 1, 1, 1,  -1, 1, 0};
+    glBufferData(GL_ARRAY_BUFFER, sizeof(square), square, GL_STATIC_DRAW);
+    glVertexAttribPointer(0, 2, GL_FLOAT, false, 4 * sizeof(float), 0);
+    glVertexAttribPointer(1, 2, GL_FLOAT, false, 4 * sizeof(float),
+                          (void *)(2 * sizeof(float)));
+    glEnableVertexAttribArray(0);
+    glEnableVertexAttribArray(1);
+
+    glBindVertexArray(0);
+    glBindBuffer(GL_ARRAY_BUFFER, 0);
+
     // Get synthesized resolution
     glm::vec2 synthResolution =
         windowSize(resW, resH, resC) / glm::vec2(resW, resH);
@@ -91,6 +109,10 @@ Context::~Context() {
     // Release FBO
     glDeleteBuffers(1, &fboVoxel);
     glDeleteTextures(nVoxelBuffer, &textureVoxel[0]);
+
+    // Release VAOs and VBOs
+    glDeleteBuffers(1, &vboSquare);
+    glDeleteVertexArrays(1, &vaoSquare);
 }
 
 void Context::clearVoxels() {
@@ -138,7 +160,7 @@ void Context::synthesize(glm::vec4 color) {
     glDisable(GL_DEPTH_TEST);
     glViewport(0, 0, resW * synthW, resH * synthH);
 
-    // TODO: draw the quad
+    glDrawArrays(GL_TRIANGLES, 0, 6 * 4);
 }
 void Context::visualize(glm::vec4 color, glm::mat4 matrixVP) {
     clearScreen();
