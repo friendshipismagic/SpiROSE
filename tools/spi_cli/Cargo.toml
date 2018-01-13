@@ -5,7 +5,7 @@ authors = ["Clément Decoodt <clement@decoodt.eu>"]
 
 [dependencies.clap]
 version = "*"
-features = ["yaml", "suggestions", "color"]
+features = ["yaml"]
 
 [dependencies.spidev]
 version = "*"
