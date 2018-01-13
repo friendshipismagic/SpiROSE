@@ -108,10 +108,6 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
         // voxelize for z in [-1, 1], from the top, with the camera "up" being y
         glm::lookAt(glm::vec3(0.f), glm::vec3(0.f, 0.f, -1.f),
                     glm::vec3(0.f, 1.f, 0.f));
-    // Upload it now to the shader since it won't change
-    gl::useProgram(shaderVoxel);
-    glUniformMatrix4fv(uniforms.voxel.matrixProjection, 1, false,
-                       &matrixProjection[0][0]);
 
     // Upload texture bindings to the shaders
     for (int i = 0; i < nVoxelBuffer; i++)
@@ -149,10 +145,9 @@ void Context::voxelize(Object object) {
     clearVoxels();
 
     // Config shader
+    glm::mat4 matMVP = matrixProjection * matrixView * object.matrixModel;
     gl::useProgram(shaderVoxel);
-    glUniformMatrix4fv(uniforms.voxel.matrixModel, 1, false,
-                       &object.matrixModel[0][0]);
-    glUniformMatrix4fv(uniforms.voxel.matrixView, 1, false, &matrixView[0][0]);
+    glUniformMatrix4fv(uniforms.voxel.matrixMVP, 1, false, &matMVP[0][0]);
 
     // Additive blending to simulate the XOR algorithm
     glEnable(GL_BLEND);
@@ -183,13 +178,12 @@ void Context::synthesize(glm::vec4 color) {
 
     glDrawArrays(GL_TRIANGLES, 0, 6 * 4);
 }
-void Context::visualize(glm::vec4 color, glm::mat4 matrixVP) {
+void Context::visualize(glm::vec4 color, glm::mat4 matrixMVP) {
     clearScreen();
 
     // Config shader
     gl::useProgram(shaderView);
-    glUniformMatrix4fv(uniforms.view.matrixViewProjection, 1, false,
-                       &matrixVP[0][0]);
+    glUniformMatrix4fv(uniforms.view.matrixMVP, 1, false, &matrixMVP[0][0]);
 
     // Config GL
     glDisable(GL_SCISSOR_TEST);
@@ -318,10 +312,7 @@ void Context::loadShaders() {
 }
 
 void Context::loadUniforms() {
-    uniforms.voxel.matrixModel = glGetUniformLocation(shaderVoxel, "matModel");
-    uniforms.voxel.matrixView = glGetUniformLocation(shaderVoxel, "matView");
-    uniforms.voxel.matrixProjection =
-        glGetUniformLocation(shaderVoxel, "matProjection");
+    uniforms.voxel.matrixMVP = glGetUniformLocation(shaderVoxel, "matMVP");
     uniforms.voxel.passNo = glGetUniformLocation(shaderVoxel, "passNo");
 
     uniforms.synth.voxels.reserve(nVoxelBuffer);
@@ -329,8 +320,7 @@ void Context::loadUniforms() {
         uniforms.synth.voxels[i] = glGetUniformLocation(
             shaderSynth, ("voxels[" + std::to_string(i) + "]").c_str());
 
-    uniforms.view.matrixViewProjection =
-        glGetUniformLocation(shaderView, "matViewProjection");
+    uniforms.view.matrixMVP = glGetUniformLocation(shaderView, "matMVP");
     uniforms.view.voxels.reserve(nVoxelBuffer);
     for (int i = 0; i < nVoxelBuffer; i++)
         uniforms.view.voxels[i] = glGetUniformLocation(

@@ -59,10 +59,10 @@ class Context {
      * @brief Visualize the voxelized scene as a set of 3D voxels in a real 3D
      *        view.
      * @param glm::vec4    color     Color to give to the 3D voxels
-     * @param glm::mat4    matrixVP  Combined view-projection matrix to
+     * @param glm::mat4    matrixMVP Combined model-view-projection matrix to
      *                               apply to the 3D voxels.
      */
-    void visualize(glm::vec4 color, glm::mat4 matrixVP);
+    void visualize(glm::vec4 color, glm::mat4 matrixMVP);
 
     /**
      * @brief Dumps the synthesized texture to the PNG in filename. Returns true
@@ -109,14 +109,14 @@ class Context {
      */
     struct {
         struct {
-            GLint matrixModel, matrixView, matrixProjection, passNo;
+            GLint matrixMVP, passNo;
         } voxel;
         struct {
             std::vector<GLint> voxels;
         } synth;
         struct {
             std::vector<GLint> voxels;
-            GLint matrixViewProjection;
+            GLint matrixMVP;
         } view;
     } uniforms;
 
