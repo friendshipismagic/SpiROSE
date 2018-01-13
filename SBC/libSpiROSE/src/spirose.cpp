@@ -18,7 +18,7 @@ GLFWwindow* createWindow(int resW, int resH, int resC) {
 #endif
     glfwWindowHint(GLFW_RESIZABLE, false);
 
-    glm::vec2 size = windowSize(resW, resH, resC);
+    glm::ivec2 size = windowSize(resW, resH, resC);
     GLFWwindow* window =
         glfwCreateWindow(size.x, size.y, "SpiROSE", nullptr, nullptr);
     glfwMakeContextCurrent(window);
@@ -32,7 +32,7 @@ GLFWwindow* createWindow(int resW, int resH, int resC) {
     return window;
 }
 
-glm::vec2 windowSize(int resW, int resH, int resC) {
+glm::ivec2 windowSize(int resW, int resH, int resC) {
     int h = int(sqrt(resC)) & ~1;
     return glm::vec2(resC / h, h) * glm::vec2(resW, resH);
 }

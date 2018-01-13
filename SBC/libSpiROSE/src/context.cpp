@@ -92,8 +92,8 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
     glBindBuffer(GL_ARRAY_BUFFER, 0);
 
     // Get synthesized resolution
-    glm::vec2 synthResolution =
-        windowSize(resW, resH, resC) / glm::vec2(resW, resH);
+    glm::ivec2 synthResolution =
+        windowSize(resW, resH, resC) / glm::ivec2(resW, resH);
     synthW = synthResolution.x;
     synthH = synthResolution.y;
 

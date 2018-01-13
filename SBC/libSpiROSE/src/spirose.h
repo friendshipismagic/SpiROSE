@@ -24,9 +24,9 @@ GLFWwindow* createWindow(int resW, int resH, int resC);
  * @param int resW Horizontal voxel resolution
  * @param int resH Vertical voxel resolution
  * @param int resC Circular resolution, aka slice count
- * @returns glm::vec2 Size of the window
+ * @returns glm::ivec2 Size of the window
  */
-glm::vec2 windowSize(int resW, int resH, int resC);
+glm::ivec2 windowSize(int resW, int resH, int resC);
 
 }  // namespace spirose
 
