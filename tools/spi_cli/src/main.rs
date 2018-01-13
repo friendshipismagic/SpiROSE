@@ -23,12 +23,12 @@ fn main() {
         let command = command_args.value_of("command").unwrap();
         let decoded_command = decode_command(&command)
             .expect("Command not recognized");
-        send(&mut spi, &decoded_command);
+        send(&mut spi, &decoded_command, None);
     } else if let Some(command_args) = matches.subcommand_matches("get") {
         let command = command_args.value_of("command").unwrap();
         let decoded_command = decode_command(&command)
             .expect("Command not recognized");
-        send(&mut spi, &decoded_command);
+        send(&mut spi, &decoded_command, None);
     }
 }
 
@@ -54,13 +54,19 @@ fn decode_command(command: &str) -> Option<SpiCommand> {
     }
 }
 
-fn send(spi: &mut Spidev, command: &SpiCommand) -> io::Result<()> {
+fn send(spi: &mut Spidev, command: &SpiCommand, command_args: Option<&[u8]>) -> io::Result<()> {
     spi.write(&vec!(command.id));
+
+    // Send optionnal arguments with the command (for instance, configuration data)
+    if let Some(command_args) = command_args {
+        spi.write(command_args);
+    }
+
     Ok(())
 }
 
-fn get(spi: &mut Spidev, command: &SpiCommand) -> io::Result<Vec<u8>> {
-    send(spi, command);
+fn get(spi: &mut Spidev, command: &SpiCommand, command_args: Option<&[u8]>) -> io::Result<Vec<u8>> {
+    send(spi, command, command_args);
     let mut read_vec = Vec::with_capacity(command.len);
     spi.read(&mut read_vec);
 
