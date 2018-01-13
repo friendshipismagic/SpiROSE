@@ -37,7 +37,7 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
     // FBO color attachments binding points
     std::vector<GLenum> drawBuffers(nVoxelBuffer);
     glGenFramebuffers(1, &fboVoxel);
-    glBindFramebuffer(GL_FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING, fboVoxel);
+    glBindFramebuffer(GL_FRAMEBUFFER, fboVoxel);
     textureVoxel.reserve(nVoxelBuffer);
     glGenTextures(nVoxelBuffer, &textureVoxel[0]);
     for (int i = 0; i < nVoxelBuffer; i++) {
