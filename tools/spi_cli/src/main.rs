@@ -21,11 +21,11 @@ fn main() {
 
     if let Some(command_args) = matches.subcommand_matches("send") {
         let command = command_args.value_of("command").unwrap();
-        let decoded_command = decode_command(&command).expect("Command not recognized");
+        let decoded_command = decode_command(command).expect("Command not recognized");
         send(&mut spi, &decoded_command, &vec![]);
     } else if let Some(command_args) = matches.subcommand_matches("get") {
         let command = command_args.value_of("command").unwrap();
-        let decoded_command = decode_command(&command).expect("Command not recognized");
+        let decoded_command = decode_command(command).expect("Command not recognized");
         send(&mut spi, &decoded_command, &vec![]);
     }
 }
@@ -74,7 +74,7 @@ fn send(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Resu
 
 fn get(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Result<Vec<u8>> {
     send(spi, command, command_args);
-    let mut read_vec = Vec::with_capacity(command.recv_len);
+    let mut read_vec = vec![0; command.recv_len];
     spi.read(&mut read_vec);
 
     Ok(read_vec)
