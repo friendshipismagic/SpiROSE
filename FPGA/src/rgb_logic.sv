@@ -32,9 +32,10 @@ assign blanking = ~hsync | ~vsync;
 logic [31:0] pixel_counter;
 
 logic is_end_of_RAM;
-assign is_end_of_RAM= pixel_counter == IMAGE_SIZE*IMAGE_IN_RAM;
+assign is_end_of_RAM= ram_addr == (IMAGE_SIZE*IMAGE_IN_RAM-1);
 
-logic is_valid_first_frame = vsync || pixel_counter >= IMAGE_SIZE;
+logic is_valid_first_frame;
+assign is_valid_first_frame = vsync | (pixel_counter >= IMAGE_SIZE - 1);
 
 /*
  * We don't write anything in blanking area but it is controlled by
@@ -43,12 +44,12 @@ logic is_valid_first_frame = vsync || pixel_counter >= IMAGE_SIZE;
  */
 assign ram_data = {rgb[23:19], rgb[15:10], rgb[7:3]};
 
-always_ff @(posedge rgb_clk or negedge nrst)
+always_ff @(negedge rgb_clk or negedge nrst)
     if(~nrst) begin
         ram_addr <= '0;
     end else begin
         ram_addr <= '0;
-        if(rgb_enable && pixel_counter != IMAGE_SIZE*IMAGE_IN_RAM-1) begin
+        if(rgb_enable && !is_end_of_RAM && is_valid_first_frame) begin
             if(blanking)
                 ram_addr <= ram_addr;
             else
