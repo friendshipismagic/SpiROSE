@@ -89,7 +89,7 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
         for (int y = 0; y < resW; y++)
             for (int z = 0; z < resH; z++)
                 points[resH * (x * resW + y) + z] =
-                    (glm::vec3(x, y, z) - resD2) / resHD2;
+                    (glm::vec3(x, y, z) - resD2) / resHD2 + .01f;
     glBufferData(GL_ARRAY_BUFFER, points.size() * 3 * sizeof(float), &points[0],
                  GL_STATIC_DRAW);
     glVertexAttribPointer(0, 3, GL_FLOAT, false, 0, 0);
