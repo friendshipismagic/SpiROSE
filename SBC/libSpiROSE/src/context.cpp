@@ -141,10 +141,13 @@ void Context::clearVoxels() {
 }
 void Context::clearScreen(glm::vec4 color) {
     gl::bindFramebuffer(0);
+    glDisable(GL_SCISSOR_TEST);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 }
 
 void Context::voxelize(Object &object) {
+    gl::bindFramebuffer(fboVoxel);
+
     // Config shader
     glm::mat4 matMVP = matrixProjection * matrixView * object.matrixModel;
     gl::useProgram(shaderVoxel);
@@ -166,6 +169,8 @@ void Context::voxelize(Object &object) {
     }
 }
 void Context::synthesize(glm::vec4 color) {
+    gl::bindFramebuffer(0);
+
     // Config shader
     gl::useProgram(shaderSynth);
     glUniform4fv(uniforms.synth.color, 1, &color[0]);
@@ -180,7 +185,7 @@ void Context::synthesize(glm::vec4 color) {
     glDrawArrays(GL_TRIANGLES, 0, 6 * 4);
 }
 void Context::visualize(glm::vec4 color, glm::mat4 matrixMVP) {
-    clearScreen();
+    gl::bindFramebuffer(0);
 
     // Config shader
     gl::useProgram(shaderView);
@@ -197,7 +202,7 @@ void Context::visualize(glm::vec4 color, glm::mat4 matrixMVP) {
     glViewport(0, 0, resW * synthW, resH * synthH);
 
     gl::bindVertexArray(vaoPoints);
-    glDrawArrays(GL_TRIANGLES, 0, resW * resW * resH * 3);
+    glDrawArrays(GL_POINTS, 0, resW * resW * resH);
 }
 
 bool Context::dumpPNG(std::string filename) {
