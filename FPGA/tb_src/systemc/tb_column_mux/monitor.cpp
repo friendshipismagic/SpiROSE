@@ -4,14 +4,14 @@
 #include "monitor.hpp"
 
 void Monitor::runTests() {
-    sendReset();
+    if(muxOut != 0)
+        SC_REPORT_FATAL("mux", "muxOut should be 0 right after reset");
 
     // wait some cycles before sending anything
     for (int i = 0; i < 200; ++i) {
         wait(clk.posedge_event());
     }
 
-    columnReady = true;
 
     sc_spawn(sc_bind(&Monitor::checkMuxOutTimings, this));
     sc_spawn(sc_bind(&Monitor::checkMuxOutSequence, this));
@@ -21,13 +21,17 @@ void Monitor::runTests() {
 
 void Monitor::checkMuxOutIsZeroWithoutColumnReady() {
     std::string msg;
-    msg += "column_mux changed value while column_ready was off";
+    msg += "column_mux turned on a column while column_ready was off";
+    auto previousValue = muxOut.read();
+    auto previousColumnReady = columnReady.read();
     while (true) {
-        if (!columnReady && muxOut.read() != 0) {
+        if (!previousColumnReady && muxOut.read() != previousValue && previousValue == 0) {
             SC_REPORT_ERROR("mux", msg.c_str());
             return;
         }
-        wait(muxOut.value_changed_event());
+        previousValue = muxOut.read();
+        previousColumnReady = columnReady.read();
+        wait(clk.posedge_event());
     }
 }
 
@@ -37,15 +41,16 @@ void Monitor::checkMuxOutTimings() {
         while (muxOut == 0) {
             wait(clk.posedge_event());
         }
+        t = sc_time_stamp();
         auto p =
             sc_spawn(sc_bind(&Monitor::timeoutThread, this, TIME_MUX_CHANGE));
         sc_event_or_list evt;
         evt |= muxOut.value_changed_event();
         evt |= p.terminated_event();
-        wait(muxOut.value_changed_event());
+        wait(evt);
         auto t2 = sc_time_stamp();
         sc_time delta = t2 - t;
-        if (delta > TIME_MUX_CHANGE) {
+        if (delta >= TIME_MUX_CHANGE) {
             auto msg =
                 "column_mux doesn't respect mux timings, it should "
                 "change within " +
@@ -81,10 +86,15 @@ void Monitor::checkMuxOutSequence() {
 
 void Monitor::timeoutThread(sc_time timeout) { wait(timeout); }
 
-void Monitor::sendReset() {
-    nrst = 0;
-    for (int i = 0; i < 10; ++i) {
-        wait(clk.posedge_event());
+void Monitor::sendColumnReady() {
+    int cycleCnt = 0;
+    columnReady = false;
+    while(true)
+    {
+        wait();
+        cycleCnt++;
+        columnReady = cycleCnt == 511;
+        if(cycleCnt == 512)
+            cycleCnt = 0;
     }
-    nrst = 1;
 }

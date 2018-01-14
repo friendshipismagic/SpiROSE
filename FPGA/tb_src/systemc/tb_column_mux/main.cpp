@@ -31,6 +31,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, clk33, "clk_33");
     sc_trace(traceFile, muxOut, "mux_out");
     sc_trace(traceFile, columnReady, "column_ready");
+    sc_trace(traceFile, nrst, "nrst");
 
     Vclock_lse clock_lse("clock_lse");
     clock_lse.nrst(nrst);
@@ -44,11 +45,15 @@ int sc_main(int argc, char** argv) {
     dut.column_ready(columnReady);
 
     Monitor monitor("monitor");
-    monitor.clk(clk66);
+    monitor.clk(clk33);
     monitor.nrst(nrst);
     monitor.muxOut(muxOut);
     monitor.columnReady(columnReady);
 
+    nrst = 0;
+    sc_start(T);
+    sc_start(T);
+    nrst = 1;
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
         sc_start(T);
