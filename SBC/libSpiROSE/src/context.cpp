@@ -89,6 +89,12 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
         for (int y = 0; y < resW; y++)
             for (int z = 0; z < resH; z++)
                 points[resH * (x * resW + y) + z] =
+                    /* Without any offset, points would be exactly on the edge
+                     * of a voxel. When we fetch the voxel from the textures,
+                     * we sometimes have rounding errors making the point land
+                     * in the wrong voxel, thus creating very noticable visual
+                     * glitches. That's the story begind the .01f.
+                     */
                     (glm::vec3(x, y, z) - resD2) / resHD2 + .01f;
     glBufferData(GL_ARRAY_BUFFER, points.size() * 3 * sizeof(float), &points[0],
                  GL_STATIC_DRAW);
