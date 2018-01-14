@@ -22,8 +22,6 @@ void tb_report_handler(const sc_report& report, const sc_actions& actions) {
 }
 
 int sc_main(int argc, char** argv) {
-    sc_core::sc_report_handler::set_actions("/IEEE_Std_1666/deprecated",
-                                            sc_core::SC_DO_NOTHING);
     sc_report_handler::set_handler(tb_report_handler);
     Verilated::commandArgs(argc, argv);
 
@@ -86,5 +84,4 @@ int sc_main(int argc, char** argv) {
     printReport();
 
     return errorCount();
-    ;
 }

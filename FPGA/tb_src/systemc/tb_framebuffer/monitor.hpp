@@ -9,6 +9,7 @@ SC_MODULE(Monitor) {
         SC_CTHREAD(storeOutputData, clk33.pos());
         SC_CTHREAD(runTests, clk33.pos());
         SC_CTHREAD(checkDataIntegrity, clk33.pos());
+        SC_CTHREAD(checkWRTGSBlanking, clk33.pos());
     }
 
     sc_in<bool> clk33;
@@ -32,27 +33,16 @@ SC_MODULE(Monitor) {
      */
     sc_signal<int> cycleCounter;
 
-
-    /*
-     * Description of the operations needed for a single slice:
-     * There a 8 identical 512-cycle-long processes thar take place
-     * for a slide. The number is 8 since we have a 8-multiplexing.
-     * During the i-th 512-cycle-long process, the framebuffer outputs
-     * the i-th multiplexed LED data in poker mode during the first
-     * 440 cycles, with a 1-cycle blanking during each 48-bit wide
-     * output data, corresponding to the required latency for the
-     * driver WRTGS command. The remaining 72 cycles are needed to
-     * have the 512 GCLK cycles.
-     */
-
     /*
      * Function that stores the output data of the framebuffer during
      * the period it is emitted, aka between cycleCounter=0 and 440.
      */
     void storeOutputData();
 
+    // Compare the output of the framebuffer  with a reference
     void checkDataIntegrity();
 
+    // Gives data base on the address
     void ramEmulator();
 
     /*
@@ -63,7 +53,7 @@ SC_MODULE(Monitor) {
      */
     void checkWRTGSBlanking();
 
-    void cycleSync();
+    void cycleCounterGenerator();
 
     void runTests();
 
@@ -71,6 +61,7 @@ SC_MODULE(Monitor) {
 
     // Indicates the current multiplexing number (from 0 to 7)
     int currentMultiplexing;
+    // ram address offset to read the correct slice
     int ramBaseAddress;
 
     void reset();
@@ -81,6 +72,9 @@ SC_MODULE(Monitor) {
      */
     int isWRTGSBlankingCycle(int cycle);
 
-    void frameCheck(int frameNumber, int waitForNextSliceCycles);
-    unsigned int ram(unsigned int addr);
+    // Generate position_sync and updateramBaseAddress
+    void frameInputControlGenerator(int frameNumber, int waitForNextSliceCycles);
+
+    // Generate a data depending on the given address
+    unsigned int dataGenerator(unsigned int addr);
 };

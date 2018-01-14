@@ -33,6 +33,9 @@ module framebuffer #(
 
 localparam MULTIPLEXING = 8;
 localparam LED_PER_DRIVER = 16;
+localparam BUFF_SIZE = 15*LED_PER_DRIVER;
+localparam BUFF_SIZE_LOG = $clog2(BUFF_SIZE);
+
 /*
  * As explained below, the drivers of one panel faces the ones on the other
  * panel, thus we only need 40 columns at a time.
@@ -43,7 +46,8 @@ localparam IMAGE_SIZE = ROW_SIZE*COLUMN_SIZE;
 // We use 15-bits rgb : 5 bits red, 5 bits green, 5 bit blue.
 localparam [2:0] [15:0] COLOR_BASE = '{0,6,11};
 /*
- * The drivers are layout as follow:
+ * The drivers are layout as follow (driver 1 and 2 are at the smae place, so
+ * they should receive the same data):
  * |++++++++++++++++++++++||++++++++++++++++++++++|     |+++++++++++++++++++++++|
  * | driver 1/2 (8*16 led)|| driver 3/4 (8*16 led)| ... | driver 9/10 (8*16 led)|
  * |++++++++++++++++++++++||++++++++++++++++++++++|     |+++++++++++++++++++++++|
@@ -91,8 +95,6 @@ localparam [2:0] [15:0] COLOR_BASE = '{0,6,11};
  *   driver 1 and 2 share the same base address, thus the same data, because
  *   as said above they are facing each other.
  */
-localparam BUFF_SIZE = 15*LED_PER_DRIVER;
-localparam BUFF_SIZE_LOG = $clog2(BUFF_SIZE);
 /* verilator lint_off LITENDIAN */
 localparam [0:29] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
     0 + 0*5*LED_PER_DRIVER,
@@ -228,17 +230,6 @@ localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
  */
 logic [RAM_DATA_WIDTH-1:0] buffer1 [BUFF_SIZE-1:0];
 logic [RAM_DATA_WIDTH-1:0] buffer2 [BUFF_SIZE-1:0];
-/*
- * CAUTION: Fill the buffers with 0 at runtime. This remove the verilator error
- * about large for loop but means that they won't be initialized again at
- * reset, thus this have to be removed in the latest design.
- */
-initial begin
-    for(int i = 0; i < BUFF_SIZE; i++) begin
-        buffer1[i] = '0;
-        buffer2[i] = '0;
-    end
-end
 
 // The index of the buffer we are currently using
 logic current_buffer;
@@ -284,11 +275,7 @@ always_ff @(posedge clk_33 or negedge nrst)
         write_idx <= '0;
         ram_addr <= RAM_BASE;
     end else if(stream_ready) begin
-        /*if(wait_for_next_slice) begin
-            write_idx <= '0;
-            ram_addr <= image_start_addr;
-        end else begin*/
-            if(~has_reached_end) begin
+        if(~has_reached_end) begin
                 ram_addr <= ram_addr + MULTIPLEXING;
                 write_idx <= write_idx + 1'b1;
                 if(current_buffer) begin
@@ -309,10 +296,6 @@ always_ff @(posedge clk_33 or negedge nrst)
     end
 
 /*
- * Read the writing_buffer to send data to the driver main controller.
- */
-
-/*
  * There are two types of driver and for each one a LUT for red and green, and
  * a LUT for blue. Drivers 1 to 20 are part of group 1, drivers 21 to 30 are
  * part of group 0. rgb_idx == 0 means that we are sending blue color.
@@ -328,6 +311,7 @@ always_comb begin
         end
     end
 end
+
 /*
  * The color_bit_idx goes from 4 to 0, thus if we add the base address for the
  * green color for instance we get bits 9 to 5.

@@ -7,15 +7,16 @@
 
 #define BIT(x, n) ((x >> n) & 0x1)
 /*
- * As parameter are unsupported this cvalue has to be harcoded to match the
+ * As parameter are unsupported this value has to be harcoded to match the
  * one in framebuffer.sv.
  */
 #define SLICES_IN_RAM 18
+#define NB_DRIVER 30
 
-static uint8_t fbOutput[30][9*48];
-static uint8_t fbOutputReference[30][9*48];
+static uint8_t fbOutput[NB_DRIVER][9*48];
+static uint8_t fbOutputReference[NB_DRIVER][9*48];
 // Array with the base ram addresses for each driver
-static const std::array<unsigned int, 30> ramBaseDriverAddress{
+static const std::array<unsigned int, NB_DRIVER> ramBaseDriverAddress{
     0,         0,         8,          8,        16,        16,
     24,        24,        32,        32,        640,       640,
     640 + 8,   640 + 8,   640 + 16,  640 + 16,  640 + 24,  640 + 24,
@@ -27,18 +28,17 @@ void Monitor::reset() {
     nrst = 0;
     // Reset the value of the output test array
     int i, j, k;
-    for (i = 0; i < 30; i++) {
-        for (j = 0; j < 9; j++) {
-            for (k = 0; k < 48; k++) {
-                fbOutput[i][48*j+k] = 0;
-                fbOutputReference[i][48*j+k] = 0;
-            }
-        }
+    for (i = 0; i < NB_DRIVER; i++) {
+        std::memset(fbOutput[i], 0, 9*48);
+        std::memset(fbOutputReference[i], 0, 9*48);
     }
     wait();
     nrst = 1;
 }
 
+/* Arbitrary cycle values, should be > 72 to be useful otherwise it falls into
+ * regular blanking.
+ */
 int Monitor::isWRTGSBlankingCycle(int cycle) {
     if (cycle == 72 + 48 || cycle == 72 + 97 || cycle == 72 + 146 ||
         cycle == 72 + 195 || cycle == 72 + 244 || cycle == 72 + 293 ||
@@ -48,29 +48,30 @@ int Monitor::isWRTGSBlankingCycle(int cycle) {
     return 0;
 }
 
-void Monitor::frameCheck(int frameNumber, int waitForNextSliceCycles) {
+// Generate position_sync, update ramBaseAddress
+void Monitor::frameInputControlGenerator(int frameNumber, int waitForNextSliceCycles) {
     ramBaseAddress = 0;
-    auto cycleSync_p = sc_spawn(sc_bind(&Monitor::cycleSync, this));
-    for(int f = 0; f < frameNumber; f++) {
+    auto cycleCounterGenerator_p = sc_spawn(sc_bind(&Monitor::cycleCounterGenerator, this));
+    for(int frame = 0; frame < frameNumber; frame++) {
         // Signals that a new slice has begun
         position_sync = 1;
         wait();
         position_sync = 0;
-        // Send data for a whole slice
+        // Wait for the data of a whole slice to be sent
         for (int i = 0; i < 4096 - 1; i++) {
             wait();
         }
-        // Wait for the next slice
+        // Wait before sending position_sync
         for (int i = 0; i < waitForNextSliceCycles - 1; i++) {
             wait();
         }
         // Read the next slice in ram
         ramBaseAddress += 1920;
         // reset the base ram address as we have read all slices
-        if(f == SLICES_IN_RAM)
+        if(frame == SLICES_IN_RAM)
             ramBaseAddress = 0;
     }
-    cycleSync_p.kill();
+    cycleCounterGenerator_p.kill();
 }
 
 void Monitor::runTests() {
@@ -78,15 +79,15 @@ void Monitor::runTests() {
 
     stream_ready = 1;
 
-    auto blanking_p = sc_spawn(sc_bind(&Monitor::checkWRTGSBlanking, this));
-    frameCheck(20, 207);
+    // Arbitrary values for frameNumber and waitForNextSliceCycles
+    frameInputControlGenerator(20, 207);
 
     while (1) {
         wait();
     }
 }
 
-void Monitor::cycleSync() {
+void Monitor::cycleCounterGenerator() {
     cycleCounter = 0;
     bool endOfSlice = true;
     while (1) {
@@ -127,7 +128,7 @@ void Monitor::storeOutputData() {
         if (((cycleCounter >= 73 && write_idx < 432) || write_idx > 0)
             && !isWRTGSBlankingCycle(cycleCounter-1)
             && (stream_ready != 0)) {
-            for (int i = 0; i < 30; i++) {
+            for (int i = 0; i < NB_DRIVER; i++) {
                 fbOutput[i][write_idx] = BIT(data, i);
             }
             write_idx++;
@@ -141,15 +142,15 @@ void Monitor::storeOutputData() {
 
 void Monitor::checkWRTGSBlanking() {
     while (1) {
-        wait(clk33.posedge_event());
+        wait();
         if (isWRTGSBlankingCycle(cycleCounter-1) && (stream_ready == 1)) {
-            for (int i = 0; i < 30; i++) {
+            for (int i = 0; i < NB_DRIVER; i++) {
                 auto fbSinDriver_i = BIT(data, i);
                 if (fbSinDriver_i != 0) {
                     std::string msg = "Missing blanking cycle number ";
                     msg += sc_uint<5>((cycleCounter-1-72) / 48).to_string();
                     msg += " out of 8 for driver ";
-                    msg += sc_int<30>(i).to_string();
+                    msg += sc_int<NB_DRIVER>(i).to_string();
                     msg += " data: " + std::to_string(fbSinDriver_i);
                     msg += " cycleCounter: " + std::to_string(cycleCounter);
                     msg += " driver_ready: " + std::to_string(driver_ready.read());
@@ -166,7 +167,7 @@ void Monitor::checkWRTGSBlanking() {
  * that is output by the framebuffer module is correct,
  * relatively to the frames structure and the order in which
  * the data is meant to be ouput aka in poker mode.
- * The idea of the framebuffer is that it reads 30 16-bit wide
+ * The idea of the framebuffer is that it reads NB_DRIVER 16-bit wide
  * data from RAM and at the next cycle outputs it.
  *
  * Besides, since the pin assignment for the drivers was changed,
@@ -181,13 +182,13 @@ void Monitor::checkDataIntegrity() {
     while (1) {
         wait();
         // Verification performed during a blanking cycle
-        if (cycleCounter == 30 && stream_ready && currentMultiplexing >= 2) {
+        if (cycleCounter == NB_DRIVER && stream_ready && currentMultiplexing >= 2) {
             /*
              * We create a reference data output of the framebuffer,
              * ie what we should obtain, to compare it to what we get
              * from the implemented framebuffer module.
              */
-            for (int i = 0; i < 30; i++) {
+            for (int i = 0; i < NB_DRIVER; i++) {
                 /*
                  * Compute the base address of the i-th driver
                  * given the current multiplexing. The fbOutput contains the
@@ -229,7 +230,7 @@ void Monitor::checkDataIntegrity() {
 
                         int lineAddress = driverBaseAddress + ledRemapped * 40;
                         // 16 bit reference data
-                        int data = ram(lineAddress);
+                        int data = dataGenerator(lineAddress);
                         uint8_t resultBit = 0;
 
                         if (j < 5) {
@@ -250,7 +251,7 @@ void Monitor::checkDataIntegrity() {
             }
 
             // Comparison between the 2 arrays
-            for (int i = 0; i < 30; i++) {
+            for (int i = 0; i < NB_DRIVER; i++) {
                 for (int j = 0; j < 9; j++) {
                     for (int k = 0; k < 48; k++) {
                         if (fbOutput[i][48*j+k] != fbOutputReference[i][48*j+k]) {
@@ -300,11 +301,11 @@ void Monitor::checkDataIntegrity() {
  *
  * The real RAM structure is as follows:
  * The µblocks are stored one after another (µblock0, ... , µblock18)
- * Each µblock has 80*48 pixels, each pixel being 16-bit wide, aka RGB565.
+ * Each µblock has 40*48 pixels, each pixel being 16-bit wide, aka RGB565.
  * Poker mode implies that the pixels are cut and sent to each driver
  * in the following order:
  * B15[n] || G15[n] || R15[n] || ... || B0[n] || G0[n] || R0[n]
  */
-void Monitor::ramEmulator() { ram_data = ram(ram_addr.read()); }
+void Monitor::ramEmulator() { ram_data = dataGenerator(ram_addr.read()); }
 
-unsigned int Monitor::ram(unsigned int addr) { return addr % (1 << 16); };
+unsigned int Monitor::dataGenerator(unsigned int addr) { return addr % (1 << 16); };
