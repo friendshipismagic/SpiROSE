@@ -1,0 +1,207 @@
+[2018.01.04 17:56:29] [0000m.00s.032ms] [0] WELCOME
+[2018.01.04 17:56:29] [0000m.00s.032ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2018.01.04 17:56:29] [0000m.00s.032ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2018.01.04 17:56:29] [0000m.00s.032ms] [1] Base flow version [VX.2.2]
+[2018.01.04 17:56:29] [0000m.00s.032ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2018.01.04 17:56:29] [0000m.00s.032ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2018.01.04 17:56:29] [0000m.00s.033ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [1] Machine [DESKTOP-6JAMO00]  IP [127.0.0.1,192.168.0.102]  User [Adrien]  PID [12484]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [1] Operating system [Microsoft Home Premium Edition, 64-bit (build 9200)]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [1] Current working dir [D:\Documents\SpiROSE\PCB\Test_LED]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [1] PATH [D:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;D:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;D:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;D:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;D:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;D:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\ProgramData\Oracle\Java\javapath;D:\Programmes\ImageMagick-7.0.7-Q16;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\GtkSharp\2.12\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;D:\Programmes\osmosis-latest\bin;C:\Program Files\Perforce\;C:\Users\Adrien\AppData\Local\Programs\Python\Python36\Scripts\;C:\Users\Adrien\AppData\Local\Programs\Python\Python36\;C:\Users\Adrien\AppData\Local\Microsoft\WindowsApps]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [1] SDD_HOME [D:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [1] SDD_PLATFORM [win32]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [1] WDIR [D:\WDIR\EEVX.2.2;D:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [1] Local iCDB working dir [D:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [1] S: Config file name [ServerWG.cfg]
+[2018.01.04 17:56:29] [0000m.00s.041ms] [2] S: Loading config files
+[2018.01.04 17:56:29] [0000m.00s.047ms] [1] Config file [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2018.01.04 17:56:29] [0000m.00s.047ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2018.01.04 17:56:29] [0000m.00s.049ms] [3] S: Config loaded
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] S: Project path [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb] on file system [NTFS]
+[2018.01.04 17:56:29] [0000m.00s.078ms] [1] S: WARNING: No project file (.prj) path specified
+[2018.01.04 17:56:29] [0000m.00s.078ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] S: Multi-user mode (config)
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] S: Event polling mode autodetection
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] S: Started up automatically by iCDB Client: DESKTOP-6JAMO00:Adrien:7920
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] S: Auto close mode
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] S: Database ID [d9e1-566e-14e0-accc-abc5-e4af-bc5e-4a50-1324-f252-734e-8e98]
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] PathTranslator: BEGIN dumping
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] PathTranslator: Local -> global path prefix list
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] PathTranslator: Global -> local path prefix list
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] PathTranslator: END dumping
+[2018.01.04 17:56:29] [0000m.00s.078ms] [0] S: START
+[2018.01.04 17:56:29] [0000m.00s.079ms] [0] S: Server startup lock file created
+[2018.01.04 17:56:29] [0000m.00s.079ms] [0] S: Listening for client connections on port [10001]
+[2018.01.04 17:56:29] [0000m.00s.080ms] [0] S: Server network ID [DESKTOP-6JAMO00:192.168.0.102,DESKTOP-6JAMO00:10001]
+[2018.01.04 17:56:29] [0000m.00s.080ms] [0] S: Server GUID [420b-0486-71ae-cbc3-dbc5-e4a2-cc5e-4a50-9ca5-f252-734e-8e98]
+[2018.01.04 17:56:29] [0000m.00s.080ms] [0] S: Project GUID [d9e1-566e-14e0-accc-abc5-e4af-bc5e-4a50-1324-f252-734e-8e98]
+[2018.01.04 17:56:29] [0000m.00s.085ms] [0] S: Wrote data to server address file
+[2018.01.04 17:56:29] [0000m.00s.085ms] [0] S: Server startup lock file removed
+[2018.01.04 17:56:29] [0000m.00s.085ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2018.01.04 17:56:29] [0000m.00s.113ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2018.01.04 17:56:29] [0000m.00s.113ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [D:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2018.01.04 17:56:29] [0000m.00s.113ms] [0] S: Local disc access time: 28 us
+[2018.01.04 17:56:29] [0000m.00s.114ms] [0] S: File server access time: 66 us
+[2018.01.04 17:56:29] [0000m.00s.114ms] [0] Single file [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] size [718800 (702.0 kB)]
+[2018.01.04 17:56:29] [0000m.00s.114ms] [1] Single file [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] opened in read-write mode
+[2018.01.04 17:56:29] [0000m.00s.115ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.04 17:56:29] [0000m.00s.115ms] [0] Database GUARD OK: [718800]
+[2018.01.04 17:56:29] [0000m.00s.115ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.04 17:56:29] [0000m.00s.115ms] [0] Database GUARD OK: [718800]
+[2018.01.04 17:56:29] [0000m.00s.116ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.04 17:56:29] [0000m.00s.116ms] [0] Database GUARD OK: [718800]
+[2018.01.04 17:56:29] [0000m.00s.116ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.04 17:56:29] [0000m.00s.116ms] [0] Database GUARD OK: [718800]
+[2018.01.04 17:56:29] [0000m.00s.116ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.04 17:56:29] [0000m.00s.116ms] [0] Database GUARD OK: [718800]
+[2018.01.04 17:56:29] [0000m.00s.116ms] [0] SingleFile: [88db-2e50-548d-75c5] SFI version check [1009] [1009]
+[2018.01.04 17:56:29] [0000m.00s.122ms] [0] SingleFile: [88db-2e50-548d-75c5] Database SFI header has been read in [5ms 964us]
+[2018.01.04 17:56:29] [0000m.00s.126ms] [0] iCDB Server PI: Server & plugin session [5059]
+[2018.01.04 17:56:29] [0000m.00s.126ms] [0] iCDB Server PI: Opening database [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb]
+[2018.01.04 17:56:29] [0000m.00s.126ms] [0] iCDB Server PI: Database [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb] opened
+[2018.01.04 17:56:29] [0000m.00s.151ms] [0] iCDB Database: Checking existence of constraint definitions
+[2018.01.04 17:56:29] [0000m.00s.151ms] [0] iCDB Database: Checking constraint definitions version
+[2018.01.04 17:56:29] [0000m.00s.203ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=6605-5c08-2551-d8f4-e452-2f93-5522-f950-b7b4-1382-937e-4e98] up to date
+[2018.01.04 17:56:29] [0000m.00s.428ms] [0] iCDB Server PI: Initializing plugins
+[2018.01.04 17:56:29] [0000m.00s.428ms] [0] iCDB Server PI: Plugins initialized
+[2018.01.04 17:56:29] [0000m.00s.428ms] [0] S: iCDB database loaded
+[2018.01.04 17:56:29] [0000m.00s.429ms] [0] S: Starting threads
+[2018.01.04 17:56:29] [0000m.00s.429ms] [0] BT: Listening for broadcast messages on port [10000]
+[2018.01.04 17:56:29] [0000m.00s.429ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2018.01.04 17:56:29] [0000m.00s.429ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2018.01.04 17:56:29] [0000m.00s.431ms] [0] IT: Session [5060] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [7920] created
+[2018.01.04 17:56:29] [0000m.00s.432ms] [1] SC[5060]: Registered sub-client [DCDV] with ID [1] for session ID [5060] host [DESKTOP-6JAMO00] user [Adrien] process ID [7920]
+[2018.01.04 17:56:29] [0000m.00s.433ms] [0] MWT: WindowProc: WM_NCCREATE
+[2018.01.04 17:56:29] [0000m.00s.435ms] [0] IT: iCDB Server Monitor session [1] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [13128] created
+[2018.01.04 17:56:29] [0000m.00s.435ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2018.01.04 17:56:30] [0000m.00s.530ms] [1] CMT: There are [1] clients now: 5060
+[2018.01.04 17:56:50] [0000m.20s.705ms] [0] DFAMT: File server access time: 99 us
+[2018.01.04 17:57:52] [0001m.22s.725ms] [0] IT: Session [5061] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [11000] created
+[2018.01.04 17:57:52] [0001m.22s.726ms] [1] SC[5061]: Registered sub-client [ICDBC] with ID [1] for session ID [5061] host [DESKTOP-6JAMO00] user [Adrien] process ID [11000]
+[2018.01.04 17:57:52] [0001m.22s.771ms] [1] SC[5061]: Registered sub-client [ConsReuseSubClient] with ID [2] for session ID [5061] host [DESKTOP-6JAMO00] user [Adrien] process ID [11000]
+[2018.01.04 17:57:52] [0001m.22s.821ms] [1] CMT: There are [2] clients now: 5060, 5061
+[2018.01.04 17:57:57] [0001m.27s.562ms] [1] SC[5061]: UnRegistered sub-client [ICDBC] with ID [1] for session ID [5061] host [DESKTOP-6JAMO00] user [Adrien] process ID [11000]
+[2018.01.04 17:57:57] [0001m.27s.569ms] [1] SC[5061]: UnRegistered sub-client [ConsReuseSubClient] with ID [2] for session ID [5061] host [DESKTOP-6JAMO00] user [Adrien] process ID [11000]
+[2018.01.04 17:57:57] [0001m.27s.639ms] [1] CMT: Removed client [5061]
+[2018.01.04 17:57:57] [0001m.27s.639ms] [1] CMT: There are [1] clients now: 5060
+[2018.01.04 17:57:58] [0001m.28s.460ms] [0] IT: Session [5062] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [3912] created
+[2018.01.04 17:57:58] [0001m.28s.460ms] [1] SC[5062]: Registered sub-client [Packager_528732796] with ID [1] for session ID [5062] host [DESKTOP-6JAMO00] user [Adrien] process ID [3912]
+[2018.01.04 17:57:58] [0001m.28s.546ms] [1] CMT: There are [2] clients now: 5060, 5062
+[2018.01.04 17:58:05] [0001m.35s.952ms] [1] SC[5062]: UnRegistered sub-client [Packager_528732796] with ID [1] for session ID [5062] host [DESKTOP-6JAMO00] user [Adrien] process ID [3912]
+[2018.01.04 17:58:05] [0001m.35s.968ms] [1] CMT: Removed client [5062]
+[2018.01.04 17:58:05] [0001m.35s.968ms] [1] CMT: There are [1] clients now: 5060
+[2018.01.04 17:58:25] [0001m.56s.295ms] [0] IT: Session [5063] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [728] created
+[2018.01.04 17:58:25] [0001m.56s.295ms] [1] ProjectBackupManager: Client [ClientData[ClientNetAddress[DESKTOP-6JAMO00] # ClientUserName[Adrien] # ClientProcessID[728] # SessionID[5063] # Type[0]] # SubClientData[SubClientName[] # SubClientID[0]]] set project file (.prj): local path [D:\Documents\SpiROSE\PCB\Test_LED\Test_LED.prj], global path [D:\Documents\SpiROSE\PCB\Test_LED\Test_LED.prj]
+[2018.01.04 17:58:25] [0001m.56s.370ms] [1] CMT: There are [2] clients now: 5060, 5063
+[2018.01.04 17:58:26] [0001m.56s.495ms] [1] SC[5063]: Registered sub-client [Expedition PCB_528760687] with ID [1] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:26] [0001m.56s.760ms] [1] SC[5063]: Registered sub-client [EEVM] with ID [2] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:27] [0001m.58s.226ms] [1] SC[5063]: UnRegistered sub-client [EEVM] with ID [2] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:28] [0001m.59s.236ms] [1] SC[5063]: Registered sub-client [JobPrefsDBPI_528763656] with ID [3] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:28] [0001m.59s.320ms] [1] SC[5063]: UnRegistered sub-client [JobPrefsDBPI_528763656] with ID [3] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:30] [0002m.00s.466ms] [1] PrjBackupMgr: Successfully created Project Backup [D:\Documents\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2018-01-04 17.58.26 - auto.zip] with GUID [feb0-5d0a-c4de-a565-23d5-e4a7-3d5e-4a50-dcd4-f252-734e-8e98]
+[2018.01.04 17:58:30] [0002m.00s.470ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[c265-00c4-f95d-37a5-04fe-74a5-4fe7-4a50-fb3c-1d0c-db6a-e49e] CreationTime[Saturday, December 30, 2017 18:55:44] Type[Autosave] Creator[iCDB Server (2017-12-30 15.34.24-10432)] ApplicationName[iCDB Server (2017-12-30 15.34.24-10432)] UserName[janni] MachineName[DESKTOP-Q0OU6Q6] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[D:\Documents\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-30 19.55.44 - auto.zip] BackupFileSize[2080909] Persistent[FALSE]
+[2018.01.04 17:58:30] [0002m.00s.475ms] [0] PrjBackupMgr: Project Backup file [D:\Documents\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2017-12-30 19.55.44 - auto.zip] with GUID [c265-00c4-f95d-37a5-04fe-74a5-4fe7-4a50-fb3c-1d0c-db6a-e49e] removed
+[2018.01.04 17:58:30] [0002m.00s.476ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[feb0-5d0a-c4de-a565-23d5-e4a7-3d5e-4a50-dcd4-f252-734e-8e98] CreationTime[Thursday, January 04, 2018 16:58:26] Type[Autosave] Creator[iCDB Server (2018-01-04 17.56.29-12484)] ApplicationName[iCDB Server (2018-01-04 17.56.29-12484)] UserName[Adrien] MachineName[DESKTOP-6JAMO00] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[D:\Documents\SpiROSE\PCB\Test_LED\Default\ProjectBackup\backups\2018-01-04 17.58.26 - auto.zip] BackupFileSize[1860902] Persistent[FALSE]
+[2018.01.04 17:58:34] [0002m.04s.902ms] [1] SC[5063]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:34] [0002m.04s.906ms] [1] SC[5063]: Registered sub-client [StartServerClient16a8] with ID [5] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:34] [0002m.04s.907ms] [1] SC[5063]: UnRegistered sub-client [StartServerClient16a8] with ID [5] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:45] [0002m.15s.983ms] [1] SC[5063]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:45] [0002m.16s.082ms] [1] SC[5063]: Registered sub-client [EEVM_EEVM_1700400] with ID [6] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:45] [0002m.16s.083ms] [1] SC[5063]: UnRegistered sub-client [EEVM_EEVM_1700400] with ID [6] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:45] [0002m.16s.435ms] [1] SC[5063]: Registered sub-client [JobPrefsDBPI_528780843] with ID [7] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:46] [0002m.16s.500ms] [1] SC[5063]: UnRegistered sub-client [JobPrefsDBPI_528780843] with ID [7] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:47] [0002m.18s.324ms] [1] SC[5063]: Registered sub-client [JobPrefsDBPI_528782734] with ID [8] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:47] [0002m.18s.344ms] [1] SC[5063]: UnRegistered sub-client [JobPrefsDBPI_528782734] with ID [8] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:58:48] [0002m.18s.776ms] [0] IT: Session [5064] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [1164] created
+[2018.01.04 17:58:48] [0002m.18s.778ms] [1] SC[5064]: Registered sub-client [Packager_528783171] with ID [1] for session ID [5064] host [DESKTOP-6JAMO00] user [Adrien] process ID [1164]
+[2018.01.04 17:58:48] [0002m.18s.864ms] [1] CMT: There are [3] clients now: 5060, 5063, 5064
+[2018.01.04 17:58:55] [0002m.26s.012ms] [1] SC[5064]: UnRegistered sub-client [Packager_528783171] with ID [1] for session ID [5064] host [DESKTOP-6JAMO00] user [Adrien] process ID [1164]
+[2018.01.04 17:58:55] [0002m.26s.083ms] [1] CMT: Removed client [5064]
+[2018.01.04 17:58:55] [0002m.26s.083ms] [1] CMT: There are [2] clients now: 5060, 5063
+[2018.01.04 17:58:56] [0002m.26s.785ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb\s2\cdbcatlg\grpobj] - auto-saving it
+[2018.01.04 17:58:57] [0002m.27s.461ms] [0] IT: Session [5065] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [5756] created
+[2018.01.04 17:58:57] [0002m.27s.463ms] [1] SC[5065]: Registered sub-client [Expedition_528791843] with ID [1] for session ID [5065] host [DESKTOP-6JAMO00] user [Adrien] process ID [5756]
+[2018.01.04 17:58:57] [0002m.27s.491ms] [1] CMT: There are [3] clients now: 5060, 5063, 5065
+[2018.01.04 17:58:57] [0002m.28s.075ms] [1] SC[5065]: UnRegistered sub-client [Expedition_528791843] with ID [1] for session ID [5065] host [DESKTOP-6JAMO00] user [Adrien] process ID [5756]
+[2018.01.04 17:58:57] [0002m.28s.093ms] [1] CMT: Removed client [5065]
+[2018.01.04 17:58:57] [0002m.28s.093ms] [1] CMT: There are [2] clients now: 5060, 5063
+[2018.01.04 17:58:58] [0002m.28s.953ms] [0] IT: Session [5066] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [5756] created
+[2018.01.04 17:58:58] [0002m.28s.954ms] [1] SC[5066]: Registered sub-client [JobPrefsDBPI_528793250] with ID [1] for session ID [5066] host [DESKTOP-6JAMO00] user [Adrien] process ID [5756]
+[2018.01.04 17:58:58] [0002m.28s.998ms] [1] CMT: There are [3] clients now: 5060, 5063, 5066
+[2018.01.04 17:58:58] [0002m.29s.020ms] [1] SC[5066]: UnRegistered sub-client [JobPrefsDBPI_528793250] with ID [1] for session ID [5066] host [DESKTOP-6JAMO00] user [Adrien] process ID [5756]
+[2018.01.04 17:58:58] [0002m.29s.099ms] [1] CMT: Removed client [5066]
+[2018.01.04 17:58:58] [0002m.29s.099ms] [1] CMT: There are [2] clients now: 5060, 5063
+[2018.01.04 17:58:59] [0002m.29s.545ms] [0] IT: Session [5067] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [5756] created
+[2018.01.04 17:58:59] [0002m.29s.546ms] [1] SC[5067]: Registered sub-client [JobPrefsDBPI_528793937] with ID [1] for session ID [5067] host [DESKTOP-6JAMO00] user [Adrien] process ID [5756]
+[2018.01.04 17:58:59] [0002m.29s.595ms] [1] SC[5067]: UnRegistered sub-client [JobPrefsDBPI_528793937] with ID [1] for session ID [5067] host [DESKTOP-6JAMO00] user [Adrien] process ID [5756]
+[2018.01.04 17:58:59] [0002m.29s.602ms] [1] CMT: There are [3] clients now: 5060, 5063, 5067
+[2018.01.04 17:58:59] [0002m.29s.602ms] [1] CMT: Removed client [5067]
+[2018.01.04 17:58:59] [0002m.29s.602ms] [1] CMT: There are [2] clients now: 5060, 5063
+[2018.01.04 17:59:00] [0002m.31s.377ms] [0] IT: Session [5068] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [7540] created
+[2018.01.04 17:59:00] [0002m.31s.378ms] [1] SC[5068]: Registered sub-client [JobPrefsDBPI_528795734] with ID [1] for session ID [5068] host [DESKTOP-6JAMO00] user [Adrien] process ID [7540]
+[2018.01.04 17:59:00] [0002m.31s.408ms] [1] CMT: There are [3] clients now: 5060, 5063, 5068
+[2018.01.04 17:59:00] [0002m.31s.435ms] [1] SC[5068]: Registered sub-client [Expedition_528795843] with ID [2] for session ID [5068] host [DESKTOP-6JAMO00] user [Adrien] process ID [7540]
+[2018.01.04 17:59:01] [0002m.31s.833ms] [1] SC[5068]: UnRegistered sub-client [JobPrefsDBPI_528795734] with ID [1] for session ID [5068] host [DESKTOP-6JAMO00] user [Adrien] process ID [7540]
+[2018.01.04 17:59:01] [0002m.32s.331ms] [1] SC[5068]: UnRegistered sub-client [Expedition_528795843] with ID [2] for session ID [5068] host [DESKTOP-6JAMO00] user [Adrien] process ID [7540]
+[2018.01.04 17:59:01] [0002m.32s.410ms] [1] CMT: Removed client [5068]
+[2018.01.04 17:59:01] [0002m.32s.410ms] [1] CMT: There are [2] clients now: 5060, 5063
+[2018.01.04 17:59:02] [0002m.32s.675ms] [1] SC[5063]: Registered sub-client [EEVM_EEVM_975512852] with ID [9] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:02] [0002m.32s.722ms] [1] SC[5063]: UnRegistered sub-client [EEVM_EEVM_975512852] with ID [9] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:02] [0002m.32s.725ms] [1] SC[5063]: Registered sub-client [EEVM_EEVM_975512852] with ID [10] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:02] [0002m.32s.726ms] [1] SC[5063]: UnRegistered sub-client [EEVM_EEVM_975512852] with ID [10] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:02] [0002m.32s.729ms] [1] SC[5063]: Registered sub-client [EEVM_EEVM_975508636] with ID [11] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:02] [0002m.32s.778ms] [1] SC[5063]: UnRegistered sub-client [EEVM_EEVM_975508636] with ID [11] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:03] [0002m.33s.953ms] [1] SC[5063]: UnRegistered sub-client [Expedition PCB_528760687] with ID [1] for session ID [5063] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:03] [0002m.34s.033ms] [1] CMT: Removed client [5063]
+[2018.01.04 17:59:03] [0002m.34s.033ms] [1] CMT: There are [1] clients now: 5060
+[2018.01.04 17:59:04] [0002m.34s.699ms] [0] IT: Session [5069] for host [DESKTOP-6JAMO00] user [Adrien] with process ID [728] created
+[2018.01.04 17:59:04] [0002m.34s.701ms] [1] SC[5069]: Registered sub-client [Expedition PCB_528799093] with ID [1] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:04] [0002m.34s.737ms] [1] CMT: There are [2] clients now: 5060, 5069
+[2018.01.04 17:59:04] [0002m.35s.088ms] [1] SC[5069]: Registered sub-client [JobPrefsDBPI_528799500] with ID [2] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:04] [0002m.35s.106ms] [1] SC[5069]: UnRegistered sub-client [JobPrefsDBPI_528799500] with ID [2] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:15] [0002m.45s.520ms] [1] SC[5069]: Registered sub-client [JobPrefsDBPI_528809937] with ID [3] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:15] [0002m.45s.526ms] [1] SC[5069]: UnRegistered sub-client [JobPrefsDBPI_528809937] with ID [3] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:15] [0002m.45s.551ms] [1] SC[5069]: Registered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:57] [0003m.27s.854ms] [1] SC[5069]: Registered sub-client [JobPrefsDBPI_528852265] with ID [5] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:57] [0003m.28s.208ms] [1] SC[5069]: UnRegistered sub-client [JobPrefsDBPI_528852265] with ID [5] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:57] [0003m.28s.364ms] [1] SC[5069]: Registered sub-client [JobPrefsDBPI_528852781] with ID [6] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 17:59:57] [0003m.28s.367ms] [1] SC[5069]: UnRegistered sub-client [JobPrefsDBPI_528852781] with ID [6] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 18:21:07] [0024m.37s.467ms] [1] SC[5060]: UnRegistered sub-client [DCDV] with ID [1] for session ID [5060] host [DESKTOP-6JAMO00] user [Adrien] process ID [7920]
+[2018.01.04 18:21:07] [0024m.37s.481ms] [1] CMT: Removed client [5060]
+[2018.01.04 18:21:07] [0024m.37s.481ms] [1] CMT: There are [1] clients now: 5069
+[2018.01.04 18:31:35] [0035m.06s.429ms] [1] SC[5069]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 18:31:37] [0035m.07s.563ms] [1] SC[5069]: UnRegistered sub-client [Expedition PCB_528799093] with ID [1] for session ID [5069] host [DESKTOP-6JAMO00] user [Adrien] process ID [728]
+[2018.01.04 18:31:37] [0035m.07s.643ms] [1] CMT: Removed client [5069]
+[2018.01.04 18:31:37] [0035m.07s.643ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2018.01.04 18:31:37] [0035m.07s.884ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2018.01.04 18:31:39] [0035m.09s.553ms] [0] CMT: Starting server auto-close
+[2018.01.04 18:31:39] [0035m.09s.609ms] [0] S: Closing server
+[2018.01.04 18:31:39] [0035m.09s.657ms] [0] iCDB Server PI: Closing plugins
+[2018.01.04 18:31:39] [0035m.09s.657ms] [0] iCDB Server PI: Plugins closed
+[2018.01.04 18:31:39] [0035m.09s.657ms] [0] iCDB Server PI: Unloading database
+[2018.01.04 18:31:39] [0035m.09s.657ms] [0] iCDB Server PI: Saving storage
+[2018.01.04 18:31:39] [0035m.09s.658ms] [0] iCDB Server PI: Closing database
+[2018.01.04 18:31:39] [0035m.09s.817ms] [1] iCDB Server PI: Stats: Database defragmentation: max[2] avg[1] holes[17%] data[96%]
+[2018.01.04 18:31:39] [0035m.09s.817ms] [1] iCDB Server PI: Stats: Database file size [876040 (855.5 kB)]
+[2018.01.04 18:31:39] [0035m.09s.849ms] [1] iCDB Server PI: WARNING: Database needs defragmentation!
+[2018.01.04 18:31:39] [0035m.09s.857ms] [0] iCDB Server PI: Database closed
+[2018.01.04 18:31:39] [0035m.09s.857ms] [0] iCDB Server PI: Defragmenting database
+[2018.01.04 18:31:39] [0035m.09s.857ms] [0] iCDB Server PI: Creating database [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb] backup to file [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbback\2018-01-04 18.31.39-12484-d.zip]
+[2018.01.04 18:31:39] [0035m.10s.023ms] [0] iCDB Server PI: Database backup: DONE
+[2018.01.04 18:31:39] [0035m.10s.124ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2018.01.04 18:31:39] [0035m.10s.124ms] [0] Database GUARD OK: [876040]
+[2018.01.04 18:31:39] [0035m.10s.124ms] [0] SingleFile: [88db-2e50-548d-75c5] SFI version check [1009] [1009]
+[2018.01.04 18:31:39] [0035m.10s.131ms] [0] SingleFile: [88db-2e50-548d-75c5] Database SFI header has been read in [7ms 92us]
+[2018.01.04 18:31:39] [0035m.10s.348ms] [1] iCDB Server PI: Stats: Database file sizes: before[876040 (855.5 kB)], after[574528 (561.1 kB)], gain[301512 (294.4 kB)]
+[2018.01.04 18:31:39] [0035m.10s.391ms] [0] Single file [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] closed with size [574528 (561.1 kB)]
+[2018.01.04 18:31:39] [0035m.10s.391ms] [0] iCDB Server PI: Database defragmentation completed successfully
+[2018.01.04 18:31:39] [0035m.10s.391ms] [1] BackupTransaction: Removing database backup [D:\Documents\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbback\2018-01-04 18.31.39-12484-d.zip]
+[2018.01.04 18:31:39] [0035m.10s.396ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [2650526] ticks
+[2018.01.04 18:31:39] [0035m.10s.396ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [966573] microseconds
+[2018.01.04 18:31:39] [0035m.10s.396ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [814]
+[2018.01.04 18:31:39] [0035m.10s.396ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [842] commands per second
+[2018.01.04 18:31:39] [0035m.10s.399ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2018.01.04 18:31:40] [0035m.10s.554ms] [0] MWT: Destroy the shutdown block reason.
+[2018.01.04 18:31:40] [0035m.10s.557ms] [0] MWT: STOP
+[2018.01.04 18:31:40] [0035m.10s.557ms] [0] S: STOP

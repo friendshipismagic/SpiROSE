@@ -1,0 +1,29 @@
+.FILETYPE DRAWING_VIEWS
+.VERSION "3.0"
+.SCHEMA_VERSION 1
+.DATE "06/11/2017 19:14:46"
+.DRAWING_TEMPLATE_FILE "F:\\Central_Libs\\Templates\\Drawing\\4 Layer Template\\template.mdf"
+.DRAWINGS "Default"
+	..ANYINCLUDES YES
+	..OLDNAME "Default"
+		...INCLUDES NO
+	..PLACE_FMT_CELL 0
+	..DRAWING_NUMBER ""
+	..HEADER_TEXT ""
+	..FOOTER_TEXT ""
+	..PROCESS_SHEET YES
+	..USE_LAYERING NO
+	..NEW_VIEWS "Default"
+		...ANYINCLUDES YES
+		...RENAMED 0
+			....ANYINCLUDES NO
+			....OLDNAME "Default"
+				.....INCLUDES NO
+		...INSTANCE_NAME "All Instances"
+			....ANYINCLUDES YES
+			....ASSOC_SCHEME ""
+				.....INCLUDES NO
+		...INSTANCE_NAME "Sheet"
+			....ANYINCLUDES YES
+			....ASSOC_SCHEME "Loc: Min Contents"
+				.....INCLUDES NO

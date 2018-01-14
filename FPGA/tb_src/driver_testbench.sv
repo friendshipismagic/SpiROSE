@@ -10,6 +10,7 @@ logic sout;
 logic [4:0] sout_mux;
 logic [29:0] framebuffer_data;
 logic framebuffer_sync;
+logic [7:0] mux_out;
 
 // 66 MHz clock generator
 always #15ns clk_66 <= ~clk_66;
@@ -29,7 +30,7 @@ framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
 );
 
 // Device Under Test
-driver_controller #(.BLANKING_TIME(72)) dut (
+driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk_hse(clk_66),
     .clk_lse(clk_33),
     .nrst(nrst),
@@ -42,6 +43,14 @@ driver_controller #(.BLANKING_TIME(72)) dut (
     .driver_sout(sout),
     .driver_sout_mux(sout_mux),
     .serialized_conf(serialized_conf)
+);
+
+column_mux main_column_mux (
+	.clk_33(clk_33),
+	.nrst(nrst),
+	.framebuffer_sync(framebuffer_sync),
+	.enable(nrst),
+	.mux_out(mux_out)
 );
 
 clock_lse #(.INVERSE_PHASE(1)) clk_lse_gen (

@@ -1,0 +1,81 @@
+[2017.12.14 20:59:36] [0115m.34s.957ms] [0] WELCOME
+[2017.12.14 20:59:36] [0115m.34s.961ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.14 20:59:36] [0115m.34s.961ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.14 20:59:36] [0115m.34s.961ms] [1] Base flow version [VX.2.2]
+[2017.12.14 20:59:36] [0115m.34s.961ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.14 20:59:36] [0115m.34s.962ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.14 20:59:36] [0115m.34s.962ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.14 20:59:36] [0115m.35s.018ms] [1] Machine [DESKTOP-KA2KT78]  IP [127.0.0.1]  User [mentor]  PID [11160]
+[2017.12.14 20:59:36] [0115m.35s.019ms] [1] Operating system [Microsoft Business Edition, 64-bit (build 9200)]
+[2017.12.14 20:59:36] [0115m.35s.019ms] [1] Current working dir [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED]
+[2017.12.14 20:59:36] [0115m.35s.019ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Git\cmd;C:\Program Files (x86)\Bitvise SSH Client;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x86;C:\Program Files (x86)\Intel\OpenCL SDK\2.0\bin\x64;C:\Program Files (x86)\GNU\GnuPG\pub;C:\Program Files\OpenVPN\bin;C:\Users\mentor\AppData\Local\Microsoft\WindowsApps;]
+[2017.12.14 20:59:36] [0115m.35s.020ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.14 20:59:36] [0115m.35s.020ms] [1] SDD_PLATFORM [win32]
+[2017.12.14 20:59:36] [0115m.35s.020ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.14 20:59:36] [0115m.35s.020ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.14 20:59:36] [0115m.35s.021ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.14 20:59:36] [0115m.35s.021ms] [2] S: Loading config files
+[2017.12.14 20:59:36] [0115m.35s.038ms] [0] Config: ERROR: Line [110]: Syntax error
+[2017.12.14 20:59:36] [0115m.35s.048ms] [0] Config: ERROR: Line [110]: Syntax error
+[2017.12.14 20:59:36] [0115m.35s.048ms] [1] Config file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.14 20:59:36] [0115m.35s.061ms] [3] S: Config loaded
+[2017.12.14 20:59:36] [0115m.35s.207ms] [0] S: Project path [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb] on file system [NTFS]
+[2017.12.14 20:59:36] [0115m.35s.208ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.14 20:59:36] [0115m.35s.217ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.14 20:59:36] [0115m.35s.217ms] [0] S: Single-user mode (auto)
+[2017.12.14 20:59:36] [0115m.35s.217ms] [0] S: Event polling mode autodetection
+[2017.12.14 20:59:36] [0115m.35s.221ms] [0] S: Started up automatically by iCDB Client: DESKTOP-KA2KT78:mentor:12516
+[2017.12.14 20:59:36] [0115m.35s.221ms] [0] S: Auto close mode
+[2017.12.14 20:59:36] [0115m.35s.221ms] [0] S: Database ID [f65b-e170-ebe7-3447-d3ba-23a2-4ba2-3a50-8984-22c2-14ee-ce98]
+[2017.12.14 20:59:36] [0115m.35s.222ms] [0] PathTranslator: BEGIN dumping
+[2017.12.14 20:59:36] [0115m.35s.222ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.14 20:59:36] [0115m.35s.222ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.14 20:59:36] [0115m.35s.222ms] [0] PathTranslator: END dumping
+[2017.12.14 20:59:36] [0115m.35s.222ms] [0] S: START
+[2017.12.14 20:59:36] [0115m.35s.226ms] [0] S: Server startup lock file created
+[2017.12.14 20:59:36] [0115m.35s.233ms] [0] S: Listening for client connections on port [10001]
+[2017.12.14 20:59:36] [0115m.35s.239ms] [0] S: Server network ID [DESKTOP-KA2KT78:127.0.0.1,DESKTOP-KA2KT78:10001]
+[2017.12.14 20:59:36] [0115m.35s.240ms] [0] S: Server GUID [571a-a093-e11f-0dcb-828d-23ad-28d2-3a50-d9be-cb4c-8d4b-8bb5]
+[2017.12.14 20:59:36] [0115m.35s.240ms] [0] S: Project GUID [f65b-e170-ebe7-3447-d3ba-23a2-4ba2-3a50-8984-22c2-14ee-ce98]
+[2017.12.14 20:59:36] [0115m.35s.251ms] [0] S: Wrote data to server address file
+[2017.12.14 20:59:36] [0115m.35s.256ms] [0] S: Server startup lock file removed
+[2017.12.14 20:59:36] [0115m.35s.257ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.14 20:59:37] [0115m.35s.440ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.14 20:59:37] [0115m.35s.440ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.14 20:59:37] [0115m.35s.442ms] [0] S: Local disc access time: 340 us
+[2017.12.14 20:59:37] [0115m.35s.442ms] [0] S: File server access time: 328 us
+[2017.12.14 20:59:37] [0115m.35s.452ms] [0] Single file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] size [878280 (857.7 kB)]
+[2017.12.14 20:59:37] [0115m.35s.453ms] [1] Single file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.14 20:59:37] [0115m.35s.460ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 20:59:37] [0115m.35s.460ms] [0] Database GUARD OK: [878280]
+[2017.12.14 20:59:37] [0115m.35s.468ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 20:59:37] [0115m.35s.468ms] [0] Database GUARD OK: [878280]
+[2017.12.14 20:59:37] [0115m.35s.469ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 20:59:37] [0115m.35s.469ms] [0] Database GUARD OK: [878280]
+[2017.12.14 20:59:37] [0115m.35s.470ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 20:59:37] [0115m.35s.470ms] [0] Database GUARD OK: [878280]
+[2017.12.14 20:59:37] [0115m.35s.472ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 20:59:37] [0115m.35s.472ms] [0] Database GUARD OK: [878280]
+[2017.12.14 20:59:37] [0115m.35s.473ms] [0] SingleFile: [449a-37d5-3b79-3d30] SFI version check [1009] [1009]
+[2017.12.14 20:59:37] [0115m.35s.536ms] [0] SingleFile: [449a-37d5-3b79-3d30] Database SFI header has been read in [64ms 760us]
+[2017.12.14 20:59:37] [0115m.35s.578ms] [0] iCDB Server PI: Server & plugin session [4472]
+[2017.12.14 20:59:37] [0115m.35s.578ms] [0] iCDB Server PI: Opening database [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb]
+[2017.12.14 20:59:37] [0115m.35s.578ms] [0] iCDB Server PI: Database [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb] opened
+[2017.12.14 20:59:37] [0115m.35s.716ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.14 20:59:37] [0115m.35s.716ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.14 20:59:37] [0115m.36s.100ms] [1] iCDB Database: Constraint definitions version [ce_ee.cns=7.10.56;user.cns=9e51-de11-1538-30ec-14b3-3f96-4b33-f950-3272-523f-90be-0f98] up to date
+[2017.12.14 20:59:37] [0115m.36s.126ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.14 20:59:37] [0115m.36s.127ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.14 20:59:37] [0115m.36s.127ms] [0] S: iCDB database loaded
+[2017.12.14 20:59:37] [0115m.36s.131ms] [0] S: Starting threads
+[2017.12.14 20:59:37] [0115m.36s.133ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.14 20:59:37] [0115m.36s.134ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.14 20:59:37] [0115m.36s.136ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.14 20:59:37] [0115m.36s.137ms] [1] BT: WARNING: Could not send broadcast on port [10000]: NotifyProject @ Version[1] # Id[Sender GUID[571a-a093-e11f-0dcb-828d-23ad-28d2-3a50-d9be-cb4c-8d4b-8bb5] Command number[1]] # Proxy[EMPTY] # RequestId[Sender GUID[0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000] Command number[0]] # ReplyPort[10001] # ProjectId[GUID[f65b-e170-ebe7-3447-d3ba-23a2-4ba2-3a50-8984-22c2-14ee-ce98] Address[Host[DESKTOP-KA2KT78] Port[10001]] IsLauncher[FALSE] Launcher[GUID[0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000] Address[Host[] Port[0]]] Path[C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb] ReadOnly[FALSE] Server GUID[571a-a093-e11f-0dcb-828d-23ad-28d2-3a50-d9be-cb4c-8d4b-8bb5]] # ProjectInfo[Project GUID[f65b-e170-ebe7-3447-d3ba-23a2-4ba2-3a50-8984-22c2-14ee-ce98] Global path[C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb] Local path[C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb] Read only[FALSE] Machine[Host[DESKTOP-KA2KT78] Operating system[Microsoft Business Edition, 64-bit (build 9200)] IPs[ (127.0.0.1)]] Server[User[mentor:11160] Address[Host[DESKTOP-KA2KT78] Port[10001]] Status[Working] Mode[AutoClient] StartedBy[DESKTOP-KA2KT78:mentor:12516] LogFile[cdbsvr\log\2017-12-14 19.04.02-11160\2017.12.14.txt] Version[2.202]] IsLauncher[FALSE] Launcher[GUID[0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000-0000] Address[Host[] Port[0]]] Version[3.300] Created[Thursday, January 01, 1970 00:00:00] Modified[Thursday, January 01, 1970 00:00:00]]
+[2017.12.14 20:59:37] [0115m.36s.139ms] [0] IT: Session [4473] for host [DESKTOP-KA2KT78] user [mentor] with process ID [12516] created
+[2017.12.14 20:59:37] [0115m.36s.139ms] [1] SCL: WARNING: Could not find client [4473] stat data
+[2017.12.14 20:59:37] [0115m.36s.148ms] [0] IT: iCDB Server Monitor session [1] for host [DESKTOP-KA2KT78] user [mentor] with process ID [2868] created
+[2017.12.14 20:59:37] [0115m.36s.148ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2017.12.14 20:59:37] [0115m.36s.247ms] [1] SC[4473]: Registered sub-client [DCDV] with ID [1] for session ID [4473] host [DESKTOP-KA2KT78] user [mentor] process ID [12516]
+[2017.12.14 20:59:37] [0115m.36s.263ms] [1] CMT: There are [1] clients now: 4473
+[2017.12.14 20:59:38] [0115m.36s.321ms] [0] MWT: WindowProc: WM_NCCREATE

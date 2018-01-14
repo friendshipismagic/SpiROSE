@@ -1,0 +1,95 @@
+=======================================================================
+Xpedition Layout - Version 117.0.817.8330
+=======================================================================
+
+Job Directory:        H:\SPIROSE\PCB\ROTATIVE_BASE\PCB\
+
+Design Status Report: H:\SPIROSE\PCB\ROTATIVE_BASE\PCB\LogFiles\DesignStatus_12.txt
+
+Tue Jan 09 13:54:06 2018
+
+=======================================================================
+DESIGN STATUS
+=======================================================================
+Board Size Extents  ............ 200 X 238.5 (mm)
+Route Border Extents  .......... 199 X 237.5 (mm)
+Actual Board Area  ............. 26,337.935 (mm)
+Actual Route Area  ............. 26,000.183 (mm)
+
+Placement Areas: Name             Available         Required          Required/Available
+                 Entire Board     52,675.87 Sq. (mm)10,804.159 Sq. (mm)20.51 %
+
+Pins  .......................... 1045
+Pins per Route Area  ........... 0.04 Pins/Sq. (mm)
+
+Layers  ........................ 4
+    Layer 1 is a signal layer
+        Trace Widths  .......... 0.15, 0.4, 0.5, 0.7, 0.8, 1
+    Layer 2 is a Positive Plane Layer with nets
+        GND
+        Trace Widths  .......... None.
+    Layer 3 is a Positive Plane Layer with nets
+        GND
+        Trace Widths  .......... 0.15
+    Layer 4 is a signal layer
+        Trace Widths  .......... 0.15, 0.4, 1, 2, 5, 6
+
+Nets  .......................... 186
+Connections  ................... 730
+Open Connections  .............. 0
+Differential Pairs  ............ 9
+Differential Pair Names:   CWA_N   CWA_P
+                           CWB_N   CWB_P
+                           CWC_N   CWC_P
+                           CWD_N   CWD_P
+                           LVDS_CLK_N   LVDS_CLK_P
+                           LVDS_TX0_N   LVDS_TX0_P
+                           LVDS_TX1_N   LVDS_TX1_P
+                           LVDS_TX2_N   LVDS_TX2_P
+                           LVDS_TX3_N   LVDS_TX3_P
+                           
+Percent Routed  ................ 100.00 %
+
+Netline Length  ................ 0 (mm)
+Netline Manhattan Length  ...... 0 (mm)
+Total Trace Length  ............ 11,415.18 (mm)
+
+Trace Widths Used (mm)  ........ 0.15, 0.4, 0.5, 0.7, 0.8, 1, 2, 5, 6
+Vias  .......................... 980
+Via Span  Name                   Quantity
+   1-4    VIA0.6                 980
+
+Teardrops....................... 76
+    Pad Teardrops............... 72
+    Trace Teardrops............. 4
+    Custom Teardrops............ 0
+Tracedrops...................... 0
+
+Virtual Pins.................... 0
+Guide Pins ..................... 0
+
+Parts Placed  .................. 182
+    Parts Mounted on Top  ...... 119
+        SMD  ................... 48
+        Through  ............... 8
+        Test Points  ........... 63
+        Mechanical  ............ 0
+    Parts Mounted on Bottom  ... 63
+        SMD  ................... 63
+        Through  ............... 0
+        Test Points  ........... 0
+        Mechanical  ............ 0
+    Embedded Components ........ 0
+        Capacitors ............. 0
+        Resistors .............. 0
+    Edge Connector Parts  ...... 0
+
+Parts not Placed  .............. 0
+
+Nested Cells  .................. 0
+
+Jumpers  ....................... 0
+
+Through Holes  ................. 1197
+    Holes per Board Area  ...... 0.045 Holes/Sq. (mm)
+Mounting Holes  ................ 28
