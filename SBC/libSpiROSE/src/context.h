@@ -47,7 +47,7 @@ class Context {
      * @brief Triggers the voxelization of the given object in the context.
      * @param Object       object   object to draw
      */
-    void voxelize(Object &object);
+    void voxelize(Object& object);
     /**
      * @brief Takes the voxels and generates the final slice structure, along
      *        with any needed column shifting, and gives them the specified
