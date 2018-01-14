@@ -197,7 +197,7 @@ void Context::visualize(glm::vec4 color, glm::mat4 matrixMVP) {
 }
 
 bool Context::dumpPNG(std::string filename) {
-    std::vector<GLuint> pixels(resW * resW * 4);
+    std::vector<GLuint> pixels(resW * synthW * resH * synthH * 4);
 
     // Align to byte boundaries
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
