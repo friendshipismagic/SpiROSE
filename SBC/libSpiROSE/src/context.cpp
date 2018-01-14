@@ -111,8 +111,10 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
                     glm::vec3(0.f, 1.f, 0.f));
 
     // Upload texture bindings to the shaders
+    gl::useProgram(shaderSynth);
     for (int i = 0; i < nVoxelBuffer; i++)
         glUniform1i(uniforms.synth.voxels[i], i);
+    gl::useProgram(shaderView);
     for (int i = 0; i < nVoxelBuffer; i++)
         glUniform1i(uniforms.view.voxels[i], i);
 }
