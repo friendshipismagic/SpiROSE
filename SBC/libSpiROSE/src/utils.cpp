@@ -57,7 +57,8 @@ bool savePNG(const std::string &filename, const int width, const int height,
     /* libPNG takes a 2D array in the form of an array of pointers to the rows.
      * Thus generate this array of pointers
      */
-    for (int y = 0; y < height; y++) rows[y] = &pixels[y * width * 4];
+    for (int y = 0; y < height; y++)
+        rows[height - y - 1] = &pixels[y * width * 4];
 
     // Write pixels
     if (setjmp(png_jmpbuf(png))) {
