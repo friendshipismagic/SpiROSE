@@ -5,4 +5,6 @@
 
 layout(location = 0) out vec4 out_Color;
 
-void main() { out_Color = vec4(1.0); }
+uniform vec4 in_Color;
+
+void main() { out_Color = in_Color; }

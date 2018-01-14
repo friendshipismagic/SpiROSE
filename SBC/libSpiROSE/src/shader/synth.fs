@@ -9,6 +9,7 @@ layout(location = 0) out vec4 out_Color;
 
 // Voxel buffers
 uniform sampler2D voxels[N_VOXEL_BUFFER];
+uniform vec4 in_Color;
 
 #define M_PI 3.14159265359;
 const float nVoxelPass = float(N_VOXEL_PASS);
@@ -82,5 +83,5 @@ void main() {
         v = color.a;
 
     out_Color = vec4(0.0);
-    if (abs(mod(v * 255.0, 2.0) - 1.0) < 0.1) out_Color = vec4(1.0);
+    if (abs(mod(v * 255.0, 2.0) - 1.0) < 0.1) out_Color = in_Color;
 }

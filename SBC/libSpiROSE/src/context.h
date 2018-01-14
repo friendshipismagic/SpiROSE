@@ -113,10 +113,11 @@ class Context {
         } voxel;
         struct {
             std::vector<GLint> voxels;
+            GLint color;
         } synth;
         struct {
             std::vector<GLint> voxels;
-            GLint matrixMVP;
+            GLint matrixMVP, color;
         } view;
     } uniforms;
 

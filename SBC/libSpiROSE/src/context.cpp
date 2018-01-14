@@ -166,6 +166,7 @@ void Context::voxelize(Object &object) {
 void Context::synthesize(glm::vec4 color) {
     // Config shader
     gl::useProgram(shaderSynth);
+    glUniform4fv(uniforms.synth.color, 1, &color[0]);
 
     // Config GL
     glDisable(GL_SCISSOR_TEST);
@@ -182,6 +183,7 @@ void Context::visualize(glm::vec4 color, glm::mat4 matrixMVP) {
     // Config shader
     gl::useProgram(shaderView);
     glUniformMatrix4fv(uniforms.view.matrixMVP, 1, false, &matrixMVP[0][0]);
+    glUniform4fv(uniforms.view.color, 1, &color[0]);
 
     // Config GL
     glDisable(GL_SCISSOR_TEST);
@@ -318,12 +320,14 @@ void Context::loadUniforms() {
     for (int i = 0; i < nVoxelBuffer; i++)
         uniforms.synth.voxels[i] = glGetUniformLocation(
             shaderSynth, ("voxels[" + std::to_string(i) + "]").c_str());
+    uniforms.synth.color = glGetUniformLocation(shaderSynth, "in_Color");
 
     uniforms.view.matrixMVP = glGetUniformLocation(shaderView, "matMVP");
     uniforms.view.voxels.reserve(nVoxelBuffer);
     for (int i = 0; i < nVoxelBuffer; i++)
         uniforms.view.voxels[i] = glGetUniformLocation(
             shaderView, ("voxels[" + std::to_string(i) + "]").c_str());
+    uniforms.view.color = glGetUniformLocation(shaderView, "in_Color");
 }
 
 }  // namespace spirose
