@@ -35,7 +35,6 @@ module top_module (
  * Interconnect signals
  */
 logic [29:0] framebuffer_dat;
-logic        framebuffer_sync;
 
 logic clk_lse;
 
@@ -43,7 +42,6 @@ logic clk_lse;
  * Temporary zone where interconnect logics are driven while unused
  */
 assign framebuffer_dat = 30'h0;
-assign framebuffer_sync = 1'b0;
 assign clk_lse = 1'b0;
 assign mux_out = 8'h00;
 
