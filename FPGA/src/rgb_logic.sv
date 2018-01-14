@@ -1,6 +1,7 @@
 module rgb_logic #(
     parameter RAM_ADDR_WIDTH=32,
-    parameter RAM_DATA_WIDTH=16
+    parameter RAM_DATA_WIDTH=16,
+    parameter IMAGE_IN_RAM = 3
 )(
     input rgb_clk,
     input nrst,
@@ -21,9 +22,10 @@ module rgb_logic #(
     output stream_ready
 );
 
-localparam IMAGE_SIZE = 80*48;
-localparam IMAGE_IN_RAM = 3;
-localparam SLICES_IN_RAM_BEFORE_STREAM=1;
+localparam IMAGE_WIDTH = 40;
+localparam IMAGE_HEIGHT = 48;
+localparam IMAGE_SIZE = IMAGE_WIDTH*IMAGE_HEIGHT;
+localparam SLICES_IN_RAM_BEFORE_STREAM = 1;
 
 logic blanking;
 // hsync and vsync drives low when we are on blanking area
@@ -32,18 +34,19 @@ assign blanking = ~hsync | ~vsync;
 logic [31:0] pixel_counter;
 
 logic is_end_of_RAM;
-assign is_end_of_RAM= ram_addr == (IMAGE_SIZE*IMAGE_IN_RAM-1);
+assign is_end_of_RAM = ram_addr == (IMAGE_SIZE*IMAGE_IN_RAM-1);
 
 logic is_valid_first_frame;
 assign is_valid_first_frame = vsync | (pixel_counter >= IMAGE_SIZE - 1);
 
 /*
  * We don't write anything in blanking area but it is controlled by
- * writeEnable signal. We use 5 bits for the red, 6 for the green,
- * and 5 for the blue.
+ * writeEnable signal. We store 5 bits for the red, 6 for the green,
+ * and 5 for the blue. Only 5 bits of the green might be used.
  */
 assign ram_data = {rgb[23:19], rgb[15:10], rgb[7:3]};
 
+// Data is sampled at posedge after module, so we need negedge here
 always_ff @(negedge rgb_clk or negedge nrst)
     if(~nrst) begin
         ram_addr <= '0;
