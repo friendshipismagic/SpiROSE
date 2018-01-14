@@ -28,31 +28,13 @@ void Monitor::runTests() {
 
     unsigned char capturedValue = 0;
 
-    sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
-    sendCommand(0b00000000);
+    ss = 0;
+    wait(clk.posedge_event());
 
-    checkValueEq<8>(capturedValue, "11111111");
-
-    ss = true;
-
-    sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
-    sendCommand(0b11111111);
-
-    checkValueEq<8>(capturedValue, "11111111");
-
-    ss = false;
-
-    sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
-    sendCommand(0b11111111);
-
-    checkValueEq<8>(capturedValue, "11111111");
-
-    ss = false;
-
-    sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
-    sendCommand(0b11111111);
-
-    checkValueEq<8>(capturedValue, "11111111");
+    /*
+     * Note: in case of unknown command, it is undefined behaviour
+     * so we only test known commands
+     */
 
     sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
     sendCommand(0xBF);
