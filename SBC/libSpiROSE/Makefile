@@ -55,6 +55,13 @@ src/context.o: src/context.cpp $(GLSLSRC)
 clean:
 	rm -f $(OBJS) $(DEPS) $(EXE) $(GLSLSRC)
 
+LIBDIR = /usr/lib
+INCDIR = /usr/include
+install: $(SONAME)
+	install -Cd $(INCDIR)/spirose
+	install -C -m 644 src/*.h $(INCDIR)/spirose/
+	install -C -m 755 $(SONAME) $(LIBDIR)/
+
 lint:
 	find . \( -regex '.*\.[vf]s' -or -regex '.*\.[ch]\(pp\)*' \) -exec clang-format -i '{}' \;
 	git status --porcelain | grep -e "^ M" && exit 1 || exit 0
