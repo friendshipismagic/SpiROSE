@@ -112,7 +112,7 @@ fn create_spi() -> io::Result<Spidev> {
 }
 
 
-fn send(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Result<()> {
+fn send<T : Write+Read>(spi: &mut T, command: &SpiCommand, command_args: &[u8]) -> io::Result<()> {
     spi.write_all(&[command.id])?;
 
     // Send optionnal arguments with the command (for instance, configuration data)
@@ -123,7 +123,7 @@ fn send(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Resu
     Ok(())
 }
 
-fn get(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Result<Vec<u8>> {
+fn get<T : Write+Read>(spi: &mut T, command: &SpiCommand, command_args: &[u8]) -> io::Result<Vec<u8>> {
     send(spi, command, command_args)?;
     let mut read_vec = vec![0; command.recv_len];
     spi.read_exact(&mut read_vec)?;
