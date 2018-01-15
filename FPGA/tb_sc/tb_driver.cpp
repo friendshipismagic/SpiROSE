@@ -81,50 +81,48 @@ int sc_main(int, char **) {
      * in the driver code (keeping XREFRESH and ESPWM disabled
      */
     for (int i = 0; i < 10; i++) {
-        testConfig = {
-            (uint32_t)rand() % 4,
-            (uint32_t)rand() % 4,
-            (uint32_t)rand() % 2,
-            1,
-            (uint32_t)rand() % 2,
-            (uint32_t)rand() % 2,
-            1,
-            (uint32_t)rand() % 2,
-            (uint32_t)rand() % 2,
-            (uint32_t)rand() % 8,
-            (uint32_t)rand() % 512,
-            (uint32_t)rand() % 512,
-            (uint32_t)rand() % 512,
-            (uint32_t)rand() % 8,
-            (uint32_t)rand() % 2,
-            (uint32_t)rand() % 8,
-        };
-        sendSequence(configWriteEnableSequence, &sin, &lat, T);
-        writeConfigSequence = make_WRTCFG(testConfig);
-        sendSequence(writeConfigSequence, &sin, &lat, T);
-        lat.write(0);
-        sc_start(T);
+        testConfig.LODVTH = (uint32_t)rand() % 4;
+        testConfig.SEL_TD0 = (uint32_t)rand() % 4;
+        testConfig.SEL_GDLY = (uint32_t)rand() % 2;
+        testConfig.XREFRESH = 1;
+        testConfig.SEL_GCK_EDGE = (uint32_t)rand() % 2;
+        testConfig.SEL_PCHG = (uint32_t)rand() % 2;
+        testConfig.ESPWM = 1;
+        testConfig.LGSE3 = (uint32_t)rand() % 2;
+        testConfig.SEL_SCK_EDGE = (uint32_t)rand() % 2;
+        testConfig.LGSE1 = (uint32_t)rand() % 8;
+        testConfig.CCB = (uint32_t)rand() % 512;
+        testConfig.CCG = (uint32_t)rand() % 512;
+        testConfig.CCR = (uint32_t)rand() % 512;
+        testConfig.BC = (uint32_t)rand() % 8;
+        testConfig.POKER = (uint32_t)rand() % 2;
+        testConfig.LGSE2 = (uint32_t)rand() % 8;
+    };
+    sendSequence(configWriteEnableSequence, &sin, &lat, T);
+    writeConfigSequence = make_WRTCFG(testConfig);
+    sendSequence(writeConfigSequence, &sin, &lat, T);
+    lat.write(0);
+    sc_start(T);
 
-        // Test the configuration register FC
-        printf("Testing configuration of the driver...");
-        assert(testConfig.LODVTH == driver.getLodth().to_uint());
-        assert(testConfig.SEL_TD0 == driver.getTd0().to_uint());
-        assert(testConfig.SEL_GDLY == driver.getGroup());
-        assert(testConfig.XREFRESH == driver.getXrefreshDisabled());
-        assert(testConfig.SEL_GCK_EDGE == driver.getSelGckEdge());
-        assert(testConfig.SEL_PCHG == driver.getSelPchg());
-        assert(testConfig.ESPWM == driver.getEspwm());
-        assert(testConfig.LGSE3 == driver.getLgse3());
-        assert(testConfig.SEL_SCK_EDGE == driver.getSelSckEdge());
-        assert(testConfig.LGSE1 == driver.getLgse1().to_uint());
-        assert(testConfig.CCB == driver.getCcb().to_uint());
-        assert(testConfig.CCG == driver.getCcg().to_uint());
-        assert(testConfig.CCR == driver.getCcr().to_uint());
-        assert(testConfig.BC == driver.getBc().to_uint());
-        assert(testConfig.POKER == driver.getPokerMode());
-        assert(testConfig.LGSE2 == driver.getLgse2().to_uint());
-        printf("DONE\n");
-    }
+    // Test the configuration register FC
+    printf("Testing configuration of the driver...");
+    assert(testConfig.LODVTH == driver.getLodth().to_uint());
+    assert(testConfig.SEL_TD0 == driver.getTd0().to_uint());
+    assert(testConfig.SEL_GDLY == driver.getGroup());
+    assert(testConfig.XREFRESH == driver.getXrefreshDisabled());
+    assert(testConfig.SEL_GCK_EDGE == driver.getSelGckEdge());
+    assert(testConfig.SEL_PCHG == driver.getSelPchg());
+    assert(testConfig.ESPWM == driver.getEspwm());
+    assert(testConfig.LGSE3 == driver.getLgse3());
+    assert(testConfig.SEL_SCK_EDGE == driver.getSelSckEdge());
+    assert(testConfig.LGSE1 == driver.getLgse1().to_uint());
+    assert(testConfig.CCB == driver.getCcb().to_uint());
+    assert(testConfig.CCG == driver.getCcg().to_uint());
+    assert(testConfig.CCR == driver.getCcr().to_uint());
+    assert(testConfig.BC == driver.getBc().to_uint());
+    assert(testConfig.POKER == driver.getPokerMode());
+    assert(testConfig.LGSE2 == driver.getLgse2().to_uint());
+    printf("DONE\n");
 
     // Assign configuration values to be sent to the driver module
     testConfig = {3, 3, 0, 1, 1, 1, 1, 1, 0, 4, 127, 127, 127, 7, 1, 5};
