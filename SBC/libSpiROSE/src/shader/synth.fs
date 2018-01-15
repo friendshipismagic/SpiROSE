@@ -30,11 +30,21 @@ void main() {
     vec3 fragPos = vec3(refreshNo, refreshMod.x * float(SYNTH_W),
                         refreshMod.y* float(SYNTH_H));
 
+    // We need to flip the second half of the slices
+    float flip = step(0.5, refreshNo) * 2.0 - 1.0;
     // Convert refreshNo to the angle of the panel
     refreshNo *= 2.0 * M_PI;
-    // Rotate the panel around the (0.5, 0.5) point
-    fragPos.xy =
-        0.5 + vec2(sin(refreshNo), -cos(refreshNo)) * (fragPos.y - 0.5);
+    /* Rotate the panel around the (0.5, 0.5) point
+     * Adding 0.5/RES_W allows us to shift by half a texel, and because a voxel
+     * texture has 2x more pixels than the synth output, this will effectively
+     * sample even columns, except for the second half where odd will be sampled
+     * thanks to the flip.
+     * The last flip is used to flip the output horizontally for the second half
+     * of a turn.
+     */
+    fragPos.xy = 0.5 + vec2(sin(refreshNo), -cos(refreshNo)) *
+                           (fragPos.y - 0.5 + (flip * 0.5 / float(RES_W))) *
+                           flip;
 
     float modZ = mod(fragPos.z, 1.0 / nVoxelPass) * float(RES_H / 4);
     vec2 modST = fragPos.xy / vec2(nVoxelPass, 1.0) +

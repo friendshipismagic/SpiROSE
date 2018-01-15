@@ -27,7 +27,7 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
 
     // Get synthesized resolution
     glm::ivec2 synthResolution =
-        windowSize(resW, resH, resC) / glm::ivec2(resW, resH);
+        windowSize(resW, resH, resC) / glm::ivec2(resW / 2, resH);
     synthW = synthResolution.x;
     synthH = synthResolution.y;
 
@@ -185,7 +185,7 @@ void Context::synthesize(glm::vec4 color) {
     glDisable(GL_SCISSOR_TEST);
     glDisable(GL_BLEND);
     glDisable(GL_DEPTH_TEST);
-    glViewport(0, 0, resW * synthW, resH * synthH);
+    glViewport(0, 0, resW * synthW / 2, resH * synthH);
 
     gl::bindVertexArray(vaoSquare);
     glDrawArrays(GL_TRIANGLES, 0, 6 * 4);
@@ -205,23 +205,23 @@ void Context::visualize(glm::vec4 color, glm::mat4 matrixMVP) {
 #ifndef GLES
     glPointSize(10.f);
 #endif
-    glViewport(0, 0, resW * synthW, resH * synthH);
+    glViewport(0, 0, resW * synthW / 2, resH * synthH);
 
     gl::bindVertexArray(vaoPoints);
     glDrawArrays(GL_POINTS, 0, resW * resW * resH);
 }
 
 bool Context::dumpPNG(std::string filename) {
-    std::vector<GLuint> pixels(resW * synthW * resH * synthH * 4);
+    std::vector<GLuint> pixels(resW / 2 * synthW * resH * synthH * 4);
 
     // Align to byte boundaries
     glPixelStorei(GL_PACK_ALIGNMENT, 1);
 
     gl::bindFramebuffer(0);
     glReadBuffer(GL_COLOR_ATTACHMENT0);
-    glReadPixels(0, 0, resW * synthW, resH * synthH, GL_RGBA, GL_UNSIGNED_BYTE,
-                 &pixels[0]);
-    return savePNG(filename, resW * synthW, resH * synthH,
+    glReadPixels(0, 0, resW * synthW / 2, resH * synthH, GL_RGBA,
+                 GL_UNSIGNED_BYTE, &pixels[0]);
+    return savePNG(filename, resW * synthW / 2, resH * synthH,
                    (uint8_t *)&pixels[0]);
 }
 
