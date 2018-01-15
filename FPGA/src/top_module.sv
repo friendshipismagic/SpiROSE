@@ -13,10 +13,14 @@ module top_module (
     output gclk,
     output lat,
     output [29:0] sin,
+    output driver_ready,
+    output column_ready,
+    output [4:0] sout_mux,
 
     // Driver input
     input sout,
-    output [4:0] sout_mux,
+    input position_sync,
+    input new_configuration_ready,
 
     //Columns multiplexers
     output [7:0] mux_out,
@@ -36,6 +40,12 @@ module top_module (
 /*
  * Interconnect signals
  */
+logic [29:0] framebuffer_dat;
+
+/*
+ * Temporary zone where interconnect logics are driven while unused
+ */
+assign framebuffer_dat = 30'h0;
 
 // RAM
 logic [31:0] ram_write_addr;
@@ -45,10 +55,6 @@ logic [15:0] ram_write_data;
 logic [15:0] ram_read_data;
 /* verilator lint_on UNUSED */
 logic        write_enable;
-
-// FRAMEBUFFER
-logic [29:0] framebuffer_dat;
-logic        framebuffer_sync;
 
 // RGB
 /* verilator lint_off UNUSED */
@@ -60,7 +66,6 @@ logic stream_ready;
  */
 assign mux_out = 8'h00;
 assign framebuffer_dat ='0;
-assign framebuffer_sync = '0;
 assign ram_read_addr = '0;
 
 // 33 MHz clock generator
@@ -105,14 +110,17 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk_lse(clock_33),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_dat),
-    .framebuffer_sync(framebuffer_sync),
+    .position_sync(position_sync),
     .driver_sclk(sclk),
     .driver_gclk(gclk),
     .driver_lat(lat),
     .drivers_sin(sin),
     .driver_sout(sout),
     .driver_sout_mux(sout_mux),
-    .serialized_conf(serialized_conf)
+    .serialized_conf(serialized_conf),
+    .new_configuration_ready(new_configuration_ready),
+    .driver_ready(driver_ready),
+    .column_ready(column_ready)
 );
 
 endmodule

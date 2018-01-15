@@ -168,7 +168,6 @@ int sc_main(int, char **) {
         printf("Sending 9 sequences of data (9-bit poker mode)...\n");
         for (int i = 0; i < 9; i++) {
             sendSequence(pokerSequence[i], &sin, &lat, T);
-            // TODO: print the shift register value
         }
         lat.write(0);
         printf("DONE\n");
@@ -185,18 +184,6 @@ int sc_main(int, char **) {
             auto readDataGS2 =
                 gs2Data(outputNb * 16 + 7 + 8, outputNb * 16 + 7).to_uint();
             auto expectedData = testData[outputNb / 3].color[outputNb % 3];
-
-            if (outputNb % 3 == 0) {
-                printf("Read data: R%d, G%d, B%d\n", outputNb / 3, outputNb / 3,
-                       outputNb / 3);
-            }
-
-            std::cout << "Expected data :" << sc_bv<16>(expectedData)
-                      << std::endl;
-            std::cout << "Read GS1 data :" << sc_bv<16>(readDataGS1)
-                      << std::endl;
-            std::cout << "Read GS2 data :" << sc_bv<16>(readDataGS2)
-                      << std::endl;
 
             assert(expectedData == readDataGS1);
             assert(expectedData == readDataGS2);
