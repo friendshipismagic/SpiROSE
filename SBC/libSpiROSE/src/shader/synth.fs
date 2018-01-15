@@ -82,6 +82,6 @@ void main() {
     else
         v = color.a;
 
-    out_Color = vec4(0.0);
-    if (abs(mod(v * 255.0, 2.0) - 1.0) < 0.1) out_Color = in_Color;
+    out_Color = in_Color;
+    if (abs(mod(v * 255.0, 2.0) - 1.0) >= 0.1) discard;
 }
