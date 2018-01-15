@@ -55,6 +55,11 @@ always_ff @(posedge clk or negedge nrst) begin
         counter <= 0;
     end else begin
         if (top) begin
+            /*
+             * Store the number of cycles it took to reach this top
+             * In other words, slice_cycle_number is the number of cycles
+             * between the previous top and this top, aka half a turn
+             */
             slice_cycle_number <= (counter >> 7);
             counter <= 1;
         end else begin
@@ -72,13 +77,24 @@ always_ff @(posedge clk or negedge nrst) begin
     if (~nrst) begin
         top <= 0;    
     end else begin
+        /*
+         * Whenever one sensor is triggered and not guarded, 
+         * top is set high for one cycle
+         */
         if ((~hall_1 | ~hall_2) && guard == 0) begin
             top <= 1;
             guard <= 1;
         end
         if (top == 1) begin
             top <= 0;
-        end 
+        end
+        /*
+         * When both sensors are not triggered, remove the guard, for the next
+         * sensor to be able to trigger the "top" signal
+         */ 
+        if (hall_1 & hall_2) begin
+            guard <= 0;
+        end
     end
 end
 
