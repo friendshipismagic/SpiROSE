@@ -15,6 +15,7 @@ SC_MODULE(Monitor) {
           configOut("config_out"),
           newConfigAvailable("new_config_available") {
         SC_THREAD(runTests);
+        SC_THREAD(handleSck);
     }
 
     void runTests();
@@ -32,9 +33,11 @@ SC_MODULE(Monitor) {
     sc_in<bool> newConfigAvailable;
 
     void sendCommand(char value);
+    void handleSck();
 
     unsigned char captureValue();
 
     private:
     void sendReset();
+    sc_signal<bool> enableSck;
 };
