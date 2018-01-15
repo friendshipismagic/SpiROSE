@@ -110,11 +110,6 @@ void Driver::updateBank(Driver::GSBuff& bank, int bufferId,
                 bank[idx] = buffer[i * 3 - j - 1];
             }
         }
-        std::cout << "New GS bank : " << std::endl;
-        displayBank(bank);
-        std::cout << "Reg data : " << std::endl;
-        displayReg(buffer);
-        std::cout << "Buffer id : " << bufferId << std::endl;
     }
 }
 
