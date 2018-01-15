@@ -33,7 +33,8 @@ GLFWwindow* createWindow(int resW, int resH, int resC) {
 }
 
 glm::ivec2 windowSize(int resW, int resH, int resC) {
-    int h = int(sqrt(resC)) & ~1;
+    int h = int(sqrt(resC));
+    while (resC % h) h--;
     return glm::vec2(resC / h, h) * glm::vec2(resW, resH);
 }
 
