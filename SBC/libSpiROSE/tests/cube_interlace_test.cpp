@@ -25,4 +25,3 @@ void runTest(const std::string &testName, GLFWwindow *window,
 
     context.dumpPNG(testName + ".png");
 }
-
