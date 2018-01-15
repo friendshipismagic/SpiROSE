@@ -1,0 +1,27 @@
+[2018.01.09 01:23:09] [0143m.27s.063ms] [1] SC[5508]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [5508] host [DESKTOP-KA2KT78] user [mentor] process ID [23852]
+[2018.01.09 01:23:11] [0143m.28s.724ms] [1] SC[5508]: UnRegistered sub-client [Expedition PCB_87852437] with ID [1] for session ID [5508] host [DESKTOP-KA2KT78] user [mentor] process ID [23852]
+[2018.01.09 01:23:11] [0143m.28s.764ms] [1] CMT: Removed client [5508]
+[2018.01.09 01:23:11] [0143m.28s.764ms] [1] CMT: There are [1] clients now: 5504
+[2018.01.09 01:23:14] [0143m.32s.293ms] [1] SC[5504]: UnRegistered sub-client [DCDV] with ID [1] for session ID [5504] host [DESKTOP-KA2KT78] user [mentor] process ID [2480]
+[2018.01.09 01:23:14] [0143m.32s.400ms] [1] CMT: Removed client [5504]
+[2018.01.09 01:23:14] [0143m.32s.400ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2018.01.09 01:23:14] [0143m.32s.432ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2018.01.09 01:23:16] [0143m.33s.605ms] [0] CMT: Starting server auto-close
+[2018.01.09 01:23:16] [0143m.33s.656ms] [0] S: Closing server
+[2018.01.09 01:23:16] [0143m.33s.724ms] [0] iCDB Server PI: Closing plugins
+[2018.01.09 01:23:16] [0143m.33s.725ms] [0] iCDB Server PI: Plugins closed
+[2018.01.09 01:23:16] [0143m.33s.725ms] [0] iCDB Server PI: Unloading database
+[2018.01.09 01:23:16] [0143m.33s.726ms] [0] iCDB Server PI: Saving storage
+[2018.01.09 01:23:16] [0143m.33s.726ms] [0] iCDB Server PI: Closing database
+[2018.01.09 01:23:16] [0143m.33s.735ms] [1] iCDB Server PI: Stats: Database defragmentation: max[4] avg[1] holes[8%] data[95%]
+[2018.01.09 01:23:16] [0143m.33s.735ms] [1] iCDB Server PI: Stats: Database file size [427728 (417.7 kB)]
+[2018.01.09 01:23:16] [0143m.33s.741ms] [0] iCDB Server PI: Database closed
+[2018.01.09 01:23:16] [0143m.33s.741ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [349599] ticks
+[2018.01.09 01:23:16] [0143m.33s.741ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [138000] microseconds
+[2018.01.09 01:23:16] [0143m.33s.741ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [842]
+[2018.01.09 01:23:16] [0143m.33s.741ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [6101] commands per second
+[2018.01.09 01:23:16] [0143m.33s.745ms] [0] Single file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] closed with size [427728 (417.7 kB)]
+[2018.01.09 01:23:16] [0143m.33s.766ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2018.01.09 01:23:16] [0143m.33s.857ms] [0] MWT: Destroy the shutdown block reason.
+[2018.01.09 01:23:16] [0143m.33s.858ms] [0] MWT: STOP
+[2018.01.09 01:23:16] [0143m.33s.859ms] [0] S: STOP

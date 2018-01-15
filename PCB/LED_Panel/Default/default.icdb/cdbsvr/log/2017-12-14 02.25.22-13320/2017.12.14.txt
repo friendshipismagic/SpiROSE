@@ -1,0 +1,180 @@
+[2017.12.14 02:25:22] [0000m.00s.027ms] [0] WELCOME
+[2017.12.14 02:25:22] [0000m.00s.027ms] [1] iCDB Server ver.2.202, 88Zh1V4+7Fzqu6g9/cuD/w, build:7609807 created 2017-06-23 16:16:29, sources stamp:88Zh1V4+7Fzqu6g9/cuD/w
+[2017.12.14 02:25:22] [0000m.00s.027ms] [1] Copyright 2017 Mentor Graphics Corporation.  All Rights Reserved.
+[2017.12.14 02:25:22] [0000m.00s.027ms] [1] Base flow version [VX.2.2]
+[2017.12.14 02:25:22] [0000m.00s.027ms] [1] Install Id [1589114], Flow Id [X-ENTP VX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.14 02:25:22] [0000m.00s.027ms] [1] Install Id [1589126], Flow Id [X-ENTP DCVX.2.2], Full Flow Name [Xpedition Enterprise X-ENTP VX.2.2], Exact Access Date [2017/05/01]
+[2017.12.14 02:25:22] [0000m.00s.027ms] [1] UPDATE Install Info, Install Id [1632660], UPDATE Name [Xpedition Enterprise X-ENTP VX.2.2 - Update 3]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [1] Machine [ALEXIS-PC]  IP [127.0.0.1,137.194.121.129,192.168.1.19,192.168.244.1,192.168.91.1]  User [Alexis]  PID [13320]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [1] Operating system [Microsoft Business Edition, 64-bit (build 9200)]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [1] Current working dir [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [1] PATH [C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\help;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin;C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\lib;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\bin;C:\MentorGraphics\EEVX.2.2\MGC_HOME.ixn\lib;C:\MentorGraphics\EEVX.2.2\SDD_HOME\wg\win32\lib;C:\Python27\;C:\Python27\Scripts;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v8.0\libnvvp;C:\ProgramData\Oracle\Java\javapath;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\dotnet\;C:\Program Files (x86)\Skype\Phone\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\PuTTY\;C:\Users\Alexis\AppData\Local\Microsoft\WindowsApps;;C:\Users\Alexis\.babun;C:\Program Files\smartmontools\bin]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [1] SDD_HOME [C:\MentorGraphics\EEVX.2.2\SDD_HOME] on file system [NTFS]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [1] SDD_PLATFORM [win32]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [1] WDIR [C:\WDIR\EEVX.2.2;C:\MentorGraphics\EEVX.2.2\SDD_HOME\standard;]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [1] Local iCDB working dir [C:\WDIR\EEVX.2.2\iCDB] on file system [NTFS]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [1] S: Config file name [ServerWG.cfg]
+[2017.12.14 02:25:22] [0000m.00s.031ms] [2] S: Loading config files
+[2017.12.14 02:25:22] [0000m.00s.033ms] [1] Config file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbsvr\ServerWG.cfg] not found
+[2017.12.14 02:25:22] [0000m.00s.033ms] [1] Config: Non-default value [System.SingleUserMode] = [no]
+[2017.12.14 02:25:22] [0000m.00s.034ms] [3] S: Config loaded
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] S: Project path [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb] on file system [NTFS]
+[2017.12.14 02:25:22] [0000m.00s.046ms] [1] S: WARNING: No project file (.prj) path specified
+[2017.12.14 02:25:22] [0000m.00s.046ms] [1] S: WARNING: Database auto-repair support DISABLED
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] S: Multi-user mode (config)
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] S: Event polling mode autodetection
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] S: Started up automatically by iCDB Client: ALEXIS-PC:Alexis:5068
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] S: Auto close mode
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] S: Database ID [ab76-b212-db2e-2663-103d-13a6-03d1-3a50-30c3-f060-1af8-3773]
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] PathTranslator: BEGIN dumping
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] PathTranslator: Local -> global path prefix list
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] PathTranslator: [X:\] -> [\\gimli\tuetuopay\]
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] PathTranslator: [Y:\] -> [\\gimli\storage\]
+[2017.12.14 02:25:22] [0000m.00s.046ms] [0] PathTranslator: [Z:\] -> [\\gimli\public\]
+[2017.12.14 02:25:22] [0000m.00s.047ms] [0] PathTranslator: Global -> local path prefix list
+[2017.12.14 02:25:22] [0000m.00s.047ms] [0] PathTranslator: [\\gimli\tuetuopay\] -> [X:\]
+[2017.12.14 02:25:22] [0000m.00s.047ms] [0] PathTranslator: [\\gimli\storage\] -> [Y:\]
+[2017.12.14 02:25:22] [0000m.00s.047ms] [0] PathTranslator: [\\gimli\public\] -> [Z:\]
+[2017.12.14 02:25:22] [0000m.00s.047ms] [0] PathTranslator: END dumping
+[2017.12.14 02:25:22] [0000m.00s.047ms] [0] S: START
+[2017.12.14 02:25:22] [0000m.00s.047ms] [0] S: Server startup lock file created
+[2017.12.14 02:25:22] [0000m.00s.047ms] [0] S: Listening for client connections on port [10001]
+[2017.12.14 02:25:22] [0000m.00s.048ms] [0] S: Server network ID [ALEXIS-PC:137.194.121.129,192.168.1.19,192.168.244.1,192.168.91.1,ALEXIS-PC:10001]
+[2017.12.14 02:25:22] [0000m.00s.048ms] [0] S: Server GUID [07d6-2639-184c-c59d-203d-13a7-03d1-3a50-7e63-f060-1af8-3773]
+[2017.12.14 02:25:22] [0000m.00s.048ms] [0] S: Project GUID [ab76-b212-db2e-2663-103d-13a6-03d1-3a50-30c3-f060-1af8-3773]
+[2017.12.14 02:25:22] [0000m.00s.049ms] [0] S: Wrote data to server address file
+[2017.12.14 02:25:22] [0000m.00s.049ms] [0] S: Server startup lock file removed
+[2017.12.14 02:25:22] [0000m.00s.049ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.14 02:25:22] [0000m.00s.071ms] [0] S: Plugins loaded: [PIM] [ENetGen70] 
+[2017.12.14 02:25:22] [0000m.00s.071ms] [1] ServerToolkit: INFO: Plugin found in SDD_COMMON_BIN [C:\MentorGraphics\EEVX.2.2\SDD_HOME\common\win32\bin]
+[2017.12.14 02:25:22] [0000m.00s.071ms] [0] S: Local disc access time: 23 us
+[2017.12.14 02:25:22] [0000m.00s.071ms] [0] S: File server access time: 27 us
+[2017.12.14 02:25:22] [0000m.00s.072ms] [0] Single file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] size [782096 (763.8 kB)]
+[2017.12.14 02:25:22] [0000m.00s.072ms] [1] Single file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] opened in read-write mode
+[2017.12.14 02:25:22] [0000m.00s.072ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 02:25:22] [0000m.00s.072ms] [0] Database GUARD OK: [782096]
+[2017.12.14 02:25:22] [0000m.00s.073ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 02:25:22] [0000m.00s.073ms] [0] Database GUARD OK: [782096]
+[2017.12.14 02:25:22] [0000m.00s.073ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 02:25:22] [0000m.00s.073ms] [0] Database GUARD OK: [782096]
+[2017.12.14 02:25:22] [0000m.00s.073ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 02:25:22] [0000m.00s.073ms] [0] Database GUARD OK: [782096]
+[2017.12.14 02:25:22] [0000m.00s.073ms] [0] SingleFile: [0000-0000-0000-0000] SFI header version check [1009] [1009]
+[2017.12.14 02:25:22] [0000m.00s.073ms] [0] Database GUARD OK: [782096]
+[2017.12.14 02:25:22] [0000m.00s.073ms] [0] SingleFile: [eb67-c619-e8f8-9737] SFI version check [1009] [1009]
+[2017.12.14 02:25:22] [0000m.00s.081ms] [0] SingleFile: [eb67-c619-e8f8-9737] Database SFI header has been read in [7ms 720us]
+[2017.12.14 02:25:22] [0000m.00s.085ms] [0] iCDB Server PI: Server & plugin session [4477]
+[2017.12.14 02:25:22] [0000m.00s.085ms] [0] iCDB Server PI: Opening database [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb]
+[2017.12.14 02:25:22] [0000m.00s.085ms] [0] iCDB Server PI: Database [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb] opened
+[2017.12.14 02:25:22] [0000m.00s.096ms] [0] iCDB Database: Checking existence of constraint definitions
+[2017.12.14 02:25:22] [0000m.00s.096ms] [0] iCDB Database: Checking constraint definitions version
+[2017.12.14 02:25:22] [0000m.00s.137ms] [0] iCDB Database: Creating database content backup before upgrade
+[2017.12.14 02:25:22] [0000m.00s.137ms] [1] iCDB Storage Server: Database backup: ProjectPath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb]
+[2017.12.14 02:25:22] [0000m.00s.150ms] [0] iCDB Storage Server Backup Thread: Database backup: BackupPath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-14 02.25.22-13320.zip]
+[2017.12.14 02:25:22] [0000m.00s.912ms] [0] iCDB Storage Server Backup Thread: Backup database DONE: Result[ Succeeded[TRUE]] BackupPath[C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-14 02.25.22-13320.zip]
+[2017.12.14 02:25:22] [0000m.00s.912ms] [0] iCDB Database: Database content backed up to [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\cdbback\2017-12-14 02.25.22-13320.zip] of size [1 214 518 bytes (1.2 MB)]  in [774ms 928us]
+[2017.12.14 02:25:22] [0000m.00s.914ms] [0] iCDB Database: Upgrading constraint definitions from version [ce_ee.cns=7.10.56;user.cns=35ac-6a5a-e16e-a5fa-48f6-00a9-8f60-0a50-8851-eca8-651d-8d8b]
+[2017.12.14 02:25:22] [0000m.00s.920ms] [0] iCDB Database: Loading snapshot [1:DCDV] version [3300]
+[2017.12.14 02:25:22] [0000m.00s.954ms] [0] iCDB Database: Snapshot [1:DCDV] loaded in [34ms 411us]
+[2017.12.14 02:25:22] [0000m.00s.955ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [1:DCDV]
+[2017.12.14 02:25:23] [0000m.01s.010ms] [0] iCDB Database: Constraint definitions for snapshot [1:DCDV] upgraded in [55ms 236us]
+[2017.12.14 02:25:23] [0000m.01s.010ms] [0] iCDB Database: Saving snapshot [1:DCDV]
+[2017.12.14 02:25:23] [0000m.01s.010ms] [0] iCDB Database: Snapshot [1:DCDV] saved in [37us]
+[2017.12.14 02:25:23] [0000m.01s.010ms] [1] CORE: Applying a fix no 110 stage [fsAtlasLoaded] to atlas [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s1\cdbcmps\dxdatl]
+[2017.12.14 02:25:23] [0000m.01s.011ms] [1] CORE: Fix: cleared overlapping drawing order!
+[2017.12.14 02:25:23] [0000m.01s.011ms] [1] CORE: Atlas fixed stage [fsAtlasLoaded] successfully [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s1\cdbcmps\dxdatl]
+[2017.12.14 02:25:23] [0000m.01s.048ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s1\cdbcatlg\catlgatl.v] - auto-saving it
+[2017.12.14 02:25:23] [0000m.01s.048ms] [0] iCDB Database: Loading snapshot [2:PCB_Layout_Temp] version [3300]
+[2017.12.14 02:25:23] [0000m.01s.070ms] [0] iCDB Database: Snapshot [2:PCB_Layout_Temp] loaded in [22ms 275us]
+[2017.12.14 02:25:23] [0000m.01s.070ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [2:PCB_Layout_Temp]
+[2017.12.14 02:25:23] [0000m.01s.104ms] [0] iCDB Database: Constraint definitions for snapshot [2:PCB_Layout_Temp] upgraded in [33ms 87us]
+[2017.12.14 02:25:23] [0000m.01s.104ms] [0] iCDB Database: Saving snapshot [2:PCB_Layout_Temp]
+[2017.12.14 02:25:23] [0000m.01s.104ms] [0] iCDB Database: Snapshot [2:PCB_Layout_Temp] saved in [34us]
+[2017.12.14 02:25:23] [0000m.01s.137ms] [0] iCDB Database: Loading snapshot [3:PCB] version [3300]
+[2017.12.14 02:25:23] [0000m.01s.160ms] [0] iCDB Database: Snapshot [3:PCB] loaded in [22ms 556us]
+[2017.12.14 02:25:23] [0000m.01s.160ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [3:PCB]
+[2017.12.14 02:25:23] [0000m.01s.192ms] [0] iCDB Database: Constraint definitions for snapshot [3:PCB] upgraded in [32ms 726us]
+[2017.12.14 02:25:23] [0000m.01s.192ms] [0] iCDB Database: Saving snapshot [3:PCB]
+[2017.12.14 02:25:23] [0000m.01s.192ms] [0] iCDB Database: Snapshot [3:PCB] saved in [32us]
+[2017.12.14 02:25:23] [0000m.01s.226ms] [0] iCDB Database: Loading snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE] version [3300]
+[2017.12.14 02:25:23] [0000m.01s.227ms] [0] iCDB Database: Snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE] loaded in [1ms 120us]
+[2017.12.14 02:25:23] [0000m.01s.227ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE]
+[2017.12.14 02:25:23] [0000m.01s.227ms] [0] iCDB Database: Constraint definitions for snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE] upgraded in [79us]
+[2017.12.14 02:25:23] [0000m.01s.227ms] [0] iCDB Database: Saving snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE]
+[2017.12.14 02:25:23] [0000m.01s.227ms] [0] iCDB Database: Snapshot [4:DCDV_INST_PROP_TEMPORARY_STORAGE] saved in [10us]
+[2017.12.14 02:25:23] [0000m.01s.228ms] [0] iCDB Database: Loading snapshot [5:RefSync] version [3300]
+[2017.12.14 02:25:23] [0000m.01s.232ms] [0] iCDB Database: Snapshot [5:RefSync] loaded in [4ms 260us]
+[2017.12.14 02:25:23] [0000m.01s.232ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [5:RefSync]
+[2017.12.14 02:25:23] [0000m.01s.236ms] [0] iCDB Database: Constraint definitions for snapshot [5:RefSync] upgraded in [3ms 888us]
+[2017.12.14 02:25:23] [0000m.01s.236ms] [0] iCDB Database: Saving snapshot [5:RefSync]
+[2017.12.14 02:25:23] [0000m.01s.236ms] [0] iCDB Database: Snapshot [5:RefSync] saved in [24us]
+[2017.12.14 02:25:23] [0000m.01s.236ms] [1] CORE: Applying a fix no 110 stage [fsAtlasLoaded] to atlas [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s5\cdbcmps\dxdatl]
+[2017.12.14 02:25:23] [0000m.01s.236ms] [1] CORE: Fix: cleared overlapping drawing order!
+[2017.12.14 02:25:23] [0000m.01s.236ms] [1] CORE: Atlas fixed stage [fsAtlasLoaded] successfully [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s5\cdbcmps\dxdatl]
+[2017.12.14 02:25:23] [0000m.01s.241ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s5\cdbcatlg\catlgatl.v] - auto-saving it
+[2017.12.14 02:25:23] [0000m.01s.241ms] [0] iCDB Database: Loading snapshot [6:PCB_RefSync] version [3300]
+[2017.12.14 02:25:23] [0000m.01s.274ms] [0] iCDB Database: Snapshot [6:PCB_RefSync] loaded in [32ms 954us]
+[2017.12.14 02:25:23] [0000m.01s.274ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [6:PCB_RefSync]
+[2017.12.14 02:25:23] [0000m.01s.308ms] [0] iCDB Database: Constraint definitions for snapshot [6:PCB_RefSync] upgraded in [33ms 730us]
+[2017.12.14 02:25:23] [0000m.01s.308ms] [0] iCDB Database: Saving snapshot [6:PCB_RefSync]
+[2017.12.14 02:25:23] [0000m.01s.308ms] [0] iCDB Database: Snapshot [6:PCB_RefSync] saved in [34us]
+[2017.12.14 02:25:23] [0000m.01s.308ms] [1] CORE: Applying a fix no 110 stage [fsAtlasLoaded] to atlas [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s6\cdbcmps\dxdatl]
+[2017.12.14 02:25:23] [0000m.01s.308ms] [1] CORE: Fix: cleared overlapping drawing order!
+[2017.12.14 02:25:23] [0000m.01s.308ms] [1] CORE: Atlas fixed stage [fsAtlasLoaded] successfully [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s6\cdbcmps\dxdatl]
+[2017.12.14 02:25:23] [0000m.01s.343ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s6\cdbcatlg\catlgatl.v] - auto-saving it
+[2017.12.14 02:25:23] [0000m.01s.344ms] [0] iCDB Database: Loading snapshot [7:PCB_LDDTemp] version [3300]
+[2017.12.14 02:25:23] [0000m.01s.376ms] [0] iCDB Database: Snapshot [7:PCB_LDDTemp] loaded in [32ms 904us]
+[2017.12.14 02:25:23] [0000m.01s.377ms] [0] iCDB Database: Upgrading constraint definitions for snapshot [7:PCB_LDDTemp]
+[2017.12.14 02:25:23] [0000m.01s.409ms] [0] iCDB Database: Constraint definitions for snapshot [7:PCB_LDDTemp] upgraded in [32ms 804us]
+[2017.12.14 02:25:23] [0000m.01s.409ms] [0] iCDB Database: Saving snapshot [7:PCB_LDDTemp]
+[2017.12.14 02:25:23] [0000m.01s.409ms] [0] iCDB Database: Snapshot [7:PCB_LDDTemp] saved in [33us]
+[2017.12.14 02:25:23] [0000m.01s.410ms] [1] CORE: Applying a fix no 110 stage [fsAtlasLoaded] to atlas [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s7\cdbcmps\dxdatl]
+[2017.12.14 02:25:23] [0000m.01s.410ms] [1] CORE: Fix: cleared overlapping drawing order!
+[2017.12.14 02:25:23] [0000m.01s.410ms] [1] CORE: Atlas fixed stage [fsAtlasLoaded] successfully [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s7\cdbcmps\dxdatl]
+[2017.12.14 02:25:23] [0000m.01s.445ms] [1] iCDB Storage Server: WARNING: Unloading CHANGED file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\s7\cdbcatlg\catlgatl.v] - auto-saving it
+[2017.12.14 02:25:23] [0000m.01s.445ms] [0] iCDB Database: Constraint definitions upgraded to version [ce_ee.cns=7.10.56;user.cns=c8d6-6152-d2e3-ebd8-fafa-81a4-bfa8-1a50-3ec1-3160-1af8-3773]
+[2017.12.14 02:25:23] [0000m.01s.474ms] [0] iCDB Server PI: Initializing plugins
+[2017.12.14 02:25:23] [0000m.01s.474ms] [0] iCDB Server PI: Plugins initialized
+[2017.12.14 02:25:23] [0000m.01s.474ms] [0] S: iCDB database loaded
+[2017.12.14 02:25:23] [0000m.01s.475ms] [0] S: Starting threads
+[2017.12.14 02:25:23] [0000m.01s.475ms] [0] BT: Listening for broadcast messages on port [10000]
+[2017.12.14 02:25:23] [0000m.01s.475ms] [0] ProjectBackupManager: WARNING: Could not startup Project Backup engine - functionality not initialized
+[2017.12.14 02:25:23] [0000m.01s.475ms] [1] CMT: There are no clients - waiting [10 seconds]
+[2017.12.14 02:25:23] [0000m.01s.476ms] [0] IT: Session [4478] for host [ALEXIS-PC] user [Alexis] with process ID [5068] created
+[2017.12.14 02:25:23] [0000m.01s.476ms] [1] SCL: WARNING: Could not find client [4478] stat data
+[2017.12.14 02:25:23] [0000m.01s.478ms] [1] SC[4478]: Registered sub-client [DCDV] with ID [1] for session ID [4478] host [ALEXIS-PC] user [Alexis] process ID [5068]
+[2017.12.14 02:25:23] [0000m.01s.481ms] [0] MWT: WindowProc: WM_NCCREATE
+[2017.12.14 02:25:23] [0000m.01s.482ms] [1] SC[4478]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4478] host [ALEXIS-PC] user [Alexis] process ID [5068]
+[2017.12.14 02:25:23] [0000m.01s.484ms] [0] IT: iCDB Server Monitor session [1] for host [ALEXIS-PC] user [Alexis] with process ID [9104] created
+[2017.12.14 02:25:23] [0000m.01s.485ms] [1] DMT: There are [1] iCDB Server Monitor connected now
+[2017.12.14 02:25:23] [0000m.01s.576ms] [1] CMT: There are [1] clients now: 4478
+[2017.12.14 02:25:23] [0000m.01s.576ms] [1] CMT: Removed client [4478]
+[2017.12.14 02:25:23] [0000m.01s.576ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.14 02:25:23] [0000m.01s.986ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2017.12.14 02:25:24] [0000m.01s.998ms] [0] IT: Session [4479] for host [ALEXIS-PC] user [Alexis] with process ID [5068] created
+[2017.12.14 02:25:24] [0000m.01s.999ms] [1] SC[4479]: Registered sub-client [DCDV] with ID [1] for session ID [4479] host [ALEXIS-PC] user [Alexis] process ID [5068]
+[2017.12.14 02:25:24] [0000m.02s.003ms] [1] SC[4479]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4479] host [ALEXIS-PC] user [Alexis] process ID [5068]
+[2017.12.14 02:25:24] [0000m.02s.078ms] [1] CMT: Removed client [4479]
+[2017.12.14 02:25:24] [0000m.02s.078ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.14 02:25:24] [0000m.02s.504ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2017.12.14 02:25:26] [0000m.04s.084ms] [0] CMT: Starting server auto-close
+[2017.12.14 02:25:26] [0000m.04s.103ms] [0] S: Closing server
+[2017.12.14 02:25:26] [0000m.04s.104ms] [0] ProjectBackupManager: WARNING: Could not shutdown Project Backup engine - not started yet
+[2017.12.14 02:25:26] [0000m.04s.191ms] [0] iCDB Server PI: Closing plugins
+[2017.12.14 02:25:26] [0000m.04s.191ms] [0] iCDB Server PI: Plugins closed
+[2017.12.14 02:25:26] [0000m.04s.191ms] [0] iCDB Server PI: Unloading database
+[2017.12.14 02:25:26] [0000m.04s.203ms] [0] iCDB Server PI: Saving storage
+[2017.12.14 02:25:26] [0000m.04s.203ms] [0] iCDB Server PI: Closing database
+[2017.12.14 02:25:26] [0000m.04s.205ms] [1] iCDB Server PI: Stats: Database defragmentation: max[4] avg[1] holes[0%] data[99%]
+[2017.12.14 02:25:26] [0000m.04s.205ms] [1] iCDB Server PI: Stats: Database file size [784280 (765.9 kB)]
+[2017.12.14 02:25:26] [0000m.04s.209ms] [0] iCDB Server PI: Database closed
+[2017.12.14 02:25:26] [0000m.04s.209ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [27] ticks
+[2017.12.14 02:25:26] [0000m.04s.209ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [8] microseconds
+[2017.12.14 02:25:26] [0000m.04s.209ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [2]
+[2017.12.14 02:25:26] [0000m.04s.209ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [238717] commands per second
+[2017.12.14 02:25:26] [0000m.04s.209ms] [0] Single file [C:\Users\Alexis\.babun\cygwin\home\Alexis\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] closed with size [784280 (765.9 kB)]
+[2017.12.14 02:25:26] [0000m.04s.266ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2017.12.14 02:25:26] [0000m.04s.269ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.14 02:25:26] [0000m.04s.383ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.14 02:25:26] [0000m.04s.384ms] [0] MWT: STOP
+[2017.12.14 02:25:26] [0000m.04s.384ms] [0] S: STOP

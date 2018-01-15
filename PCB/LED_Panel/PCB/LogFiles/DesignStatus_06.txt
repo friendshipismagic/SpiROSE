@@ -1,0 +1,135 @@
+=======================================================================
+Xpedition Layout - Version 117.0.817.8330
+=======================================================================
+
+Job Directory:        D:\SpiROSE\PCB\LED_Panel\PCB\
+
+Design Status Report: D:\SpiROSE\PCB\LED_Panel\PCB\LogFiles\DesignStatus_06.txt
+
+Sun Jan 07 17:40:32 2018
+
+=======================================================================
+DESIGN STATUS
+=======================================================================
+Board Size Extents  ............ 193 X 189.54 (mm)
+Route Border Extents  .......... 192.4 X 188.94 (mm)
+Actual Board Area  ............. 36 581.22 (mm)
+Actual Route Area  ............. 36 352.06 (mm)
+
+Placement Areas: Name             Available         Required          Required/Available
+                 Entire Board     73 162.44 Sq. (mm)6 067.53 Sq. (mm) 8.29 %
+
+Pins  .......................... 9204
+Pins per Route Area  ........... 0.25 Pins/Sq. (mm)
+
+Layers  ........................ 6
+    Layer 1 is a signal layer
+        Trace Widths  .......... 0.15, 0.4
+    Layer 2 is a Positive Plane Layer with nets
+        UB0_MUL0
+        UB0_MUL1
+        UB0_MUL2
+        UB0_MUL3
+        UB0_MUL4
+        UB0_MUL5
+        UB0_MUL6
+        UB0_MUL7
+        UB1_MUL0
+        UB1_MUL1
+        UB1_MUL2
+        UB1_MUL3
+        UB1_MUL4
+        UB1_MUL5
+        UB1_MUL6
+        UB1_MUL7
+        UB2_MUL0
+        UB2_MUL1
+        UB2_MUL2
+        UB2_MUL3
+        UB2_MUL4
+        UB2_MUL5
+        UB2_MUL6
+        UB2_MUL7
+        UB3_MUL0
+        UB3_MUL1
+        UB3_MUL2
+        UB3_MUL3
+        UB3_MUL4
+        UB3_MUL5
+        UB3_MUL6
+        UB3_MUL7
+        UB4_MUL0
+        UB4_MUL1
+        UB4_MUL2
+        UB4_MUL3
+        UB4_MUL4
+        UB4_MUL5
+        UB4_MUL6
+        UB4_MUL7
+        +3.3V
+        GND
+        Trace Widths  .......... 0.15
+    Layer 3 is a Positive Plane Layer with nets
+        +5V
+        GND
+        Trace Widths  .......... 0.15
+    Layer 4 is a Positive Plane Layer with nets
+        GND
+        Trace Widths  .......... 0.15
+    Layer 5 is a Positive Plane Layer with nets
+        GND
+        Trace Widths  .......... 0.15
+    Layer 6 is a Positive Plane Layer with nets
+        GND
+        +5V
+        Trace Widths  .......... 0.15
+
+Nets  .......................... 941
+Connections  ................... 8361
+Open Connections  .............. 0
+Differential Pairs  ............ 0
+Percent Routed  ................ 100.00 %
+
+Netline Length  ................ 0 (mm)
+Netline Manhattan Length  ...... 0 (mm)
+Total Trace Length  ............ 76 865.9 (mm)
+
+Trace Widths Used (mm)  ........ 0.15, 0.4
+Vias  .......................... 9668
+Via Span  Name                   Quantity
+   1-6    VIA0.6                 9668
+
+Teardrops....................... 0
+    Pad Teardrops............... 0
+    Trace Teardrops............. 0
+    Custom Teardrops............ 0
+Tracedrops...................... 0
+
+Virtual Pins.................... 0
+Guide Pins ..................... 0
+
+Parts Placed  .................. 2174
+    Parts Mounted on Top  ...... 2174
+        SMD  ................... 2141
+        Through  ............... 0
+        Test Points  ........... 33
+        Mechanical  ............ 0
+    Parts Mounted on Bottom  ... 0
+        SMD  ................... 0
+        Through  ............... 0
+        Test Points  ........... 0
+        Mechanical  ............ 0
+    Embedded Components ........ 0
+        Capacitors ............. 0
+        Resistors .............. 0
+    Edge Connector Parts  ...... 0
+
+Parts not Placed  .............. 0
+
+Nested Cells  .................. 0
+
+Jumpers  ....................... 0
+
+Through Holes  ................. 9713
+    Holes per Board Area  ...... 0.27 Holes/Sq. (mm)
+Mounting Holes  ................ 15
