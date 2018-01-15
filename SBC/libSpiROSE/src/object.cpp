@@ -26,9 +26,7 @@ Object::Object(float *vertices, int nVertices, int *indices, int nIndices,
 
     glBindVertexArray(0);
 }
-/**
- * @brief Releases resources associated with an object.
- */
+
 Object::~Object() {
     glDeleteBuffers(1, &ibo);
     glDeleteBuffers(1, &vbo);
