@@ -93,6 +93,10 @@ fn decode_command(command: &str) -> Option<SpiCommand> {
             id: 0xDE,
             recv_len: 0,
         }),
+        "rgb_enable" => Some(SpiCommand {
+            id: 0xAD,
+            recv_len: 0,
+        }),
         "rotation" => Some(SpiCommand {
             id: 0x4C,
             recv_len: 1,
