@@ -5,6 +5,7 @@ stages:
   - build
   - test
   - host
+  - bundle
 
 variables:
   SBC_DIR: "SBC"
@@ -80,24 +81,6 @@ build_renderer-poc:
     - cd $RENDERER_POC_DIR
     - make build
     - make test
-  except:
-    - master
-
-build_renderer-poc:master:
-  stage: build
-  image: tuetuopay/glfw
-  script:
-    - cd $RENDERER_POC_DIR
-    - make build
-    - make test
-  artifacts:
-    paths:
-      - $RENDERER_POC_DIR/rose-renderer-poc
-      - $RENDERER_POC_DIR/shader
-      - $RENDERER_POC_DIR/mesh
-    expire_in: 1 week
-  only:
-    - master
 
 host_renderer-poc:
   stage: host
@@ -105,6 +88,19 @@ host_renderer-poc:
   script:
     - cd $RENDERER_POC_DIR
     - make host
+
+bundle_renderer-poc:
+  stage: bundle
+  image: tuetuopay/glfw
+  script:
+    - cd $RENDERER_POC_DIR
+    - make bundle
+  artifacts:
+    paths:
+      - $RENDERER_POC_DIR/renderer-poc.tar.gz
+    expire_in: 1 week
+  only:
+    - master
 
 lint_fpga:
   stage: lint

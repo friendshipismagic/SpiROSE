@@ -1,0 +1,222 @@
+
+=======================================================================
+Xpedition Layout - Version 117.0.817.8330
+=======================================================================
+Job Directory:
+	C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\PCB\
+	LogFiles\
+Auto Route Report:   AutoRouteReport05.txt
+Auto Route Scheme (System):   default
+
+Mon Dec 04 09:14:22 2017
+
+=======================================================================
+=======================================================================
+EDITOR CONTROL SETTINGS
+=======================================================================
+Layers Enabled & Bias ............... 1H 2H 3H 4V 
+Allow 45 Degree Corners ............. Yes
+Max Pins for Each Plane Fanout Via .. 9
+Use Part Outlines as Via Blocks ..... No
+
+Allow One Additional Via / SMD Pin .. Yes
+Allow Vias .......................... No
+Regular Pattern ..................... Allow
+Semi-Regular Pattern ................ Allow
+Irregular Pattern ................... Prevent
+Non-Serpentine Pattern .............. Allow
+
+=======================================================================
+AUTO ROUTE SETUP INFORMATION
+=======================================================================
+                    - Effort -
+Router              Start  End
+--------------------------------
+Fanout............. 1      3
+Net Selection ..... All Nets
+
+Unfix Diff Pair Nets Before Pass = No
+Fix Diff Pair Nets After Pass = No
+Unfix Tuned Nets Before Pass = No
+Fix Tuned Nets After Pass = No
+Unfix Other Nets Before Pass = No
+Fix Other Nets After Pass = No
+Fix Nets Routed This Pass = No
+No Via............. 1      2
+Net Selection ..... All Nets
+
+Unfix Diff Pair Nets Before Pass = No
+Fix Diff Pair Nets After Pass = No
+Unfix Tuned Nets Before Pass = No
+Fix Tuned Nets After Pass = No
+Unfix Other Nets Before Pass = No
+Fix Other Nets After Pass = No
+Fix Nets Routed This Pass = No
+Route.............. 1      4
+Net Selection ..... All Nets
+
+Unfix Diff Pair Nets Before Pass = No
+Fix Diff Pair Nets After Pass = No
+Unfix Tuned Nets Before Pass = No
+Fix Tuned Nets After Pass = No
+Unfix Other Nets Before Pass = No
+Fix Other Nets After Pass = No
+Fix Nets Routed This Pass = No
+Via Min............ 1      3
+Net Selection ..... All Nets
+
+Unfix Diff Pair Nets Before Pass = No
+Fix Diff Pair Nets After Pass = No
+Unfix Tuned Nets Before Pass = No
+Fix Tuned Nets After Pass = No
+Unfix Other Nets Before Pass = No
+Fix Other Nets After Pass = No
+Fix Nets Routed This Pass = No
+Remove Hangers..... 1      1
+Net Selection ..... All Nets
+
+Unfix Diff Pair Nets Before Pass = No
+Fix Diff Pair Nets After Pass = No
+Unfix Tuned Nets Before Pass = No
+Fix Tuned Nets After Pass = No
+Unfix Other Nets Before Pass = No
+Fix Other Nets After Pass = No
+Fix Nets Routed This Pass = No
+Smooth............. 1      3
+Net Selection ..... All Nets
+
+Unfix Diff Pair Nets Before Pass = No
+Fix Diff Pair Nets After Pass = No
+Unfix Tuned Nets Before Pass = No
+Fix Tuned Nets After Pass = No
+Unfix Other Nets Before Pass = No
+Fix Other Nets After Pass = No
+Fix Nets Routed This Pass = No
+Allow Final Via Min and Finishing if not Routed 100% = Yes
+Allow trace spreading during finishing = Yes
+Checkpoint Interval = 20 (min)
+
+=======================================================================
+ROUTE REPORT SUMMARY AFTER LAST PASS
+=======================================================================
+=======================================================================
+VIA FANOUT RESULTS
+=======================================================================
+Start Time: Mon Dec 04 09:13:59 2017              Pins to Try   = 114
+
+          --Sig Pins--  --Pln Pins--  Total   Total  CPU Time  CLK Time
+Eff Tried Routed Opens  Routed Opens  Routed  Vias   hh:mm:ss  hh:mm:ss
+-----------------------------------------------------------------------
+1   114   14     100    0      0       94.25% 1697   00:00:00  00:00:00
+2   100   0      100    0      0       94.25% 1697   00:00:00  00:00:00
+3   100   0      100    0      0       94.25% 1697   00:00:00  00:00:00
+                                                     --------  --------
+                          Total Time for this Router 00:00:01  00:00:00
+                   Total Time for Auto Route Session 00:00:01  00:00:00
+
+                                              Total % Routed    = 64.74
+                                                 Total Opens    = 550
+
+=======================================================================
+NO VIA RESULTS
+=======================================================================
+Start Time: Mon Dec 04 09:13:59 2017             Total Netlines = 1560
+                                                 Total Opens    = 550
+
+    --Memory Netlines--  Total  Percent Added Total  CPU Time  CLK Time
+Eff Tried  Routed Opens  Opens  Routed  Vias  Vias   hh:mm:ss  hh:mm:ss
+-----------------------------------------------------------------------
+1   550    58     492    492     10.55% 0     1697   00:00:00  00:00:01
+2   492    331    161    161     67.28% 0     1697   00:00:01  00:00:00
+                                                     --------  --------
+                          Total Time for this Router 00:00:01  00:00:01
+                   Total Time for Auto Route Session 00:00:01  00:00:01
+
+                                              Total % Routed    = 89.68
+                                                 Total Opens    = 161
+
+=======================================================================
+ROUTE RESULTS
+=======================================================================
+Start Time: Mon Dec 04 09:14:01 2017             Total Netlines = 1560
+                                                 Total Opens    = 161
+
+    -Remaining Netlines- Total  Percent Added Total  CPU Time  CLK Time
+Eff Tried  Routed Opens  Opens  Routed  Vias  Vias   hh:mm:ss  hh:mm:ss
+-----------------------------------------------------------------------
+1   161    15     146    146      9.32% 15    1712   00:00:01  00:00:01
+2   144    10     134    134      6.94% 17    1729   00:00:01  00:00:01
+3   134    31     103    103     23.13% 71    1800   00:00:03  00:00:03
+4   103    0      103    103      0.00% 0     1800   00:00:01  00:00:00
+                                                     --------  --------
+                          Total Time for this Router 00:00:06  00:00:05
+                   Total Time for Auto Route Session 00:00:08  00:00:06
+
+                                              Total % Routed    = 93.40
+                                                 Total Opens    = 103
+
+=======================================================================
+VIA MIN RESULTS
+=======================================================================
+Start Time: Mon Dec 04 09:14:08 2017             Total Nets     = 178
+                                                 Total Opens    = 103
+
+    Changed   Total
+    Length    Length     Total  Percent Del   Total  CPU Time  CLK Time
+Eff  (mm)      (mm)      Opens  Routed  Vias  Vias   hh:mm:ss  hh:mm:ss
+-----------------------------------------------------------------------
+1    -69.09   16706.02    103     93.40% 39    1761   00:00:01  00:00:01
+2    -50.71   16655.31    103     93.40% 26    1735   00:00:01  00:00:01
+3      8.50   16663.81    103     93.40% 21    1714   00:00:01  00:00:01
+                                                     --------  --------
+                          Total Time for this Router 00:00:03  00:00:03
+                   Total Time for Auto Route Session 00:00:11  00:00:09
+
+
+# Nets with Min & Matched Length Adjustment = 0
+                                              Total % Routed    = 93.40
+                                                 Total Opens    = 103
+
+=======================================================================
+HANGER REMOVAL RESULTS
+=======================================================================
+Start Time: Mon Dec 04 09:14:12 2017             Total Nets     = 178
+                                                 Total Opens    = 103
+
+    Changed   Total
+    Length    Length     Total  Percent Del   Total  CPU Time  CLK Time
+Eff  (mm)      (mm)      Opens  Routed  Vias  Vias   hh:mm:ss  hh:mm:ss
+-----------------------------------------------------------------------
+1      0.00   16663.81    103     93.40% 0     1714   00:00:00  00:00:00
+                                                     --------  --------
+                          Total Time for this Router 00:00:00  00:00:00
+                   Total Time for Auto Route Session 00:00:11  00:00:09
+
+
+# Nets with Min & Matched Length Adjustment = 0
+                                              Total % Routed    = 93.40
+                                                 Total Opens    = 103
+
+=======================================================================
+SMOOTHING RESULTS
+=======================================================================
+Start Time: Mon Dec 04 09:14:13 2017             Total Nets     = 178
+                                                 Total Opens    = 103
+
+    Changed   Total
+    Length    Length           Total  Percent Total  CPU Time  CLK Time
+Eff  (mm)      (mm)            Opens  Routed  Vias   hh:mm:ss  hh:mm:ss
+-----------------------------------------------------------------------
+1   -100.93   16562.88          103     93.40% 1714   00:00:01  00:00:00
+2   -723.68   15839.21          103     93.40% 1711   00:00:04  00:00:03
+3    -44.71   15794.50          103     93.40% 1708   00:00:04  00:00:04
+                                                     --------  --------
+                          Total Time for this Router 00:00:09  00:00:07
+                   Total Time for Auto Route Session 00:00:20  00:00:16
+
+                                              Total % Routed    = 93.40
+                                                 Total Opens    = 103
+
+=======================================================================
+
+END OF AUTO ROUTE REPORT

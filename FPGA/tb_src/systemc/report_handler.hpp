@@ -3,8 +3,6 @@
 #endif
 #define REPORT_HANDLER_HPP
 
-// Should be included only in main.cpp
-
 #include <systemc.h>
 #include <array>
 
@@ -73,4 +71,3 @@ void printReport() {
 }
 
 int errorCount() { return reportsCount[SC_ERROR] + reportsCount[SC_FATAL]; }
-

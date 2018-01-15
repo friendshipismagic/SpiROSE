@@ -1,0 +1,31 @@
+[2017.12.26 15:52:26] [2948m.06s.107ms] [1] PrjBackupMgr: Successfully created Project Backup [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-26 15.52.25 - auto.zip] with GUID [2609-5592-ae80-91ac-9307-24ae-3072-4a50-341d-1d0c-db6a-e49e]
+[2017.12.26 15:52:26] [2948m.06s.149ms] [0] PrjBackupMgr: Removing excessive backup:  BackupGUID[c0cf-14a9-e0ce-8dd0-0e93-d3a5-e93d-3a50-b9a2-2242-d352-de98] CreationTime[Friday, December 22, 2017 17:59:12] Type[Autosave] Creator[iCDB Server (2017-12-22 17.57.58-8064)] ApplicationName[iCDB Server (2017-12-22 17.57.58-8064)] UserName[mentor] MachineName[DESKTOP-KA2KT78] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-22 17.59.12 - auto.zip] BackupFileSize[1139111] Persistent[FALSE]
+[2017.12.26 15:52:26] [2948m.06s.157ms] [0] PrjBackupMgr: Project Backup file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-22 17.59.12 - auto.zip] with GUID [c0cf-14a9-e0ce-8dd0-0e93-d3a5-e93d-3a50-b9a2-2242-d352-de98] removed
+[2017.12.26 15:52:26] [2948m.06s.163ms] [0] PrjBackupEngine: Successfully created backup:  BackupGUID[2609-5592-ae80-91ac-9307-24ae-3072-4a50-341d-1d0c-db6a-e49e] CreationTime[Tuesday, December 26, 2017 15:52:25] Type[Autosave] Creator[iCDB Server (2017-12-24 14.44.20-13936)] ApplicationName[iCDB Server (2017-12-24 14.44.20-13936)] UserName[janni] MachineName[DESKTOP-Q0OU6Q6] Description[Autosave] FullFlowName[Xpedition Enterprise X-ENTP VX.2.2; Xpedition Enterprise X-ENTP VX.2.2 - Update 3] FlowId[EEVX.2.2] GBSInstallId[1589114; 1589126; 1632660] GBSBuildId[7609807] IcdbVersion[3300] ReferenceLogFilePath[] BackupFilePath[C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\ProjectBackup\backups\2017-12-26 15.52.25 - auto.zip] BackupFileSize[1182441] Persistent[FALSE]
+[2017.12.26 18:02:28] [3078m.07s.855ms] [1] SC[4931]: UnRegistered sub-client [ExpeditionCrossProber] with ID [4] for session ID [4931] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13636]
+[2017.12.26 18:02:31] [3078m.10s.457ms] [1] SC[4931]: UnRegistered sub-client [Expedition PCB_201338000] with ID [1] for session ID [4931] host [DESKTOP-Q0OU6Q6] user [janni] process ID [13636]
+[2017.12.26 18:02:31] [3078m.10s.530ms] [1] CMT: Removed client [4931]
+[2017.12.26 18:02:31] [3078m.10s.530ms] [1] CMT: There are [1] clients now: 4927
+[2017.12.26 18:02:48] [3078m.27s.627ms] [1] SC[4927]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4927] host [DESKTOP-Q0OU6Q6] user [janni] process ID [3776]
+[2017.12.26 18:02:48] [3078m.27s.745ms] [1] CMT: Removed client [4927]
+[2017.12.26 18:02:48] [3078m.27s.745ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.26 18:02:48] [3078m.28s.124ms] [1] SDL: The last connected iCDB Server Monitor [1] is waiting for server close
+[2017.12.26 18:02:50] [3078m.29s.458ms] [0] CMT: Starting server auto-close
+[2017.12.26 18:02:50] [3078m.29s.514ms] [0] S: Closing server
+[2017.12.26 18:02:50] [3078m.29s.572ms] [0] iCDB Server PI: Closing plugins
+[2017.12.26 18:02:50] [3078m.29s.574ms] [0] iCDB Server PI: Plugins closed
+[2017.12.26 18:02:50] [3078m.29s.574ms] [0] iCDB Server PI: Unloading database
+[2017.12.26 18:02:50] [3078m.29s.575ms] [0] iCDB Server PI: Saving storage
+[2017.12.26 18:02:50] [3078m.29s.575ms] [0] iCDB Server PI: Closing database
+[2017.12.26 18:02:50] [3078m.29s.576ms] [1] iCDB Server PI: Stats: Database defragmentation: max[2] avg[1] holes[10%] data[96%]
+[2017.12.26 18:02:50] [3078m.29s.576ms] [1] iCDB Server PI: Stats: Database file size [469472 (458.5 kB)]
+[2017.12.26 18:02:50] [3078m.29s.583ms] [0] iCDB Server PI: Database closed
+[2017.12.26 18:02:50] [3078m.29s.583ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [509583] ticks
+[2017.12.26 18:02:50] [3078m.29s.583ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [177103] microseconds
+[2017.12.26 18:02:50] [3078m.29s.583ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [1060]
+[2017.12.26 18:02:50] [3078m.29s.583ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [5985] commands per second
+[2017.12.26 18:02:50] [3078m.29s.590ms] [0] Single file [C:\cygwin64\home\janni\ROSE\SpiROSE\PCB\Rotative_base\Default\default.icdb\icdb.dat] closed with size [469472 (458.5 kB)]
+[2017.12.26 18:02:50] [3078m.29s.647ms] [1] SD[1]: Removing the last connected iCDB Server Monitor [1]
+[2017.12.26 18:02:50] [3078m.29s.814ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.26 18:02:50] [3078m.29s.815ms] [0] MWT: STOP
+[2017.12.26 18:02:50] [3078m.29s.815ms] [0] S: STOP

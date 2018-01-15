@@ -1,0 +1,25 @@
+[2017.12.15 08:33:43] [0809m.41s.686ms] [1] SC[4473]: UnRegistered sub-client [DCDV] with ID [1] for session ID [4473] host [DESKTOP-KA2KT78] user [mentor] process ID [12516]
+[2017.12.15 08:33:43] [0809m.41s.782ms] [1] CMT: Removed client [4473]
+[2017.12.15 08:33:43] [0809m.41s.782ms] [1] CMT: There are no clients left - waiting [1 seconds]
+[2017.12.15 08:33:43] [0809m.42s.134ms] [0] SD[1]: ERROR: Receiving command: Socket Exception: Category[Socket] Error[ConnectionClosed] Description[Connection closed] Message[]
+[2017.12.15 08:33:43] [0809m.42s.134ms] [1] DMT: Removed iCDB Server Monitor [1]
+[2017.12.15 08:33:45] [0809m.43s.325ms] [0] CMT: Starting server auto-close
+[2017.12.15 08:33:45] [0809m.43s.365ms] [0] S: Closing server
+[2017.12.15 08:33:45] [0809m.43s.369ms] [0] ProjectBackupManager: WARNING: Could not shutdown Project Backup engine - not started yet
+[2017.12.15 08:33:45] [0809m.43s.453ms] [0] iCDB Server PI: Closing plugins
+[2017.12.15 08:33:45] [0809m.43s.453ms] [0] iCDB Server PI: Plugins closed
+[2017.12.15 08:33:45] [0809m.43s.453ms] [0] iCDB Server PI: Unloading database
+[2017.12.15 08:33:45] [0809m.43s.453ms] [0] iCDB Server PI: Saving storage
+[2017.12.15 08:33:45] [0809m.43s.453ms] [0] iCDB Server PI: Closing database
+[2017.12.15 08:33:45] [0809m.43s.461ms] [1] iCDB Server PI: Stats: Database defragmentation: max[3] avg[1] holes[0%] data[99%]
+[2017.12.15 08:33:45] [0809m.43s.461ms] [1] iCDB Server PI: Stats: Database file size [878416 (857.8 kB)]
+[2017.12.15 08:33:45] [0809m.43s.465ms] [0] iCDB Server PI: Database closed
+[2017.12.15 08:33:45] [0809m.43s.465ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [32] ticks
+[2017.12.15 08:33:45] [0809m.43s.465ms] [1] iCDB Server PI: Stats: Total iCDB execution time: [12] microseconds
+[2017.12.15 08:33:45] [0809m.43s.465ms] [1] iCDB Server PI: Stats: Total iCDB commands count: [1]
+[2017.12.15 08:33:45] [0809m.43s.465ms] [1] iCDB Server PI: Stats: Average iCDB speed:        [79166] commands per second
+[2017.12.15 08:33:45] [0809m.43s.465ms] [0] Single file [C:\Users\Lichard Torman\Desktop\SpiROSE\PCB\Test_LED\Default\default.icdb\icdb.dat] closed with size [878416 (857.8 kB)]
+[2017.12.15 08:33:45] [0809m.43s.473ms] [0] ProjectBackupManager: WARNING: Could not create Project Backup - functionality not initialized
+[2017.12.15 08:33:45] [0809m.43s.617ms] [0] MWT: Destroy the shutdown block reason.
+[2017.12.15 08:33:45] [0809m.43s.617ms] [0] MWT: STOP
+[2017.12.15 08:33:45] [0809m.43s.617ms] [0] S: STOP
