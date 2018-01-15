@@ -26,7 +26,7 @@ module driver_controller #(
     output driver_ready,
 
     input [47:0] serialized_conf,
-    input        new_configuration_ready
+    input new_configuration_ready
 );
 
 /*
@@ -64,16 +64,17 @@ always_ff @(negedge clk_hse or negedge nrst)
  * LOD for 1 clock cycle (TODO), then waits for position_sync signal
  * alternate between STREAM and WAIT_FOR_NEXT_SLICE until reset
  */
-enum logic[3:0] { STALL              ,
-                  PREPARE_CONFIG     ,
-                  CONFIG             ,
-                  STREAM             ,
-                  LOD                ,
-                  PREPARE_DUMP_CONFIG,
-                  DUMP_CONFIG        ,
-                  WRTFC_TIMING       ,
-                  WAIT_FOR_NEXT_SLICE
-                } driver_state;
+enum logic[3:0] {
+    STALL,
+    PREPARE_CONFIG,
+    CONFIG,
+    STREAM,
+    LOD,
+    PREPARE_DUMP_CONFIG,
+    DUMP_CONFIG,
+    WRTFC_TIMING,
+    WAIT_FOR_NEXT_SLICE
+} driver_state;
 
 logic [7:0] driver_state_counter;
 always_ff @(posedge clk_lse or negedge nrst)
@@ -161,6 +162,7 @@ always_ff @(posedge clk_lse or negedge nrst)
                 driver_state_counter <= '0;
             end
         endcase
+
         if(new_configuration_ready) begin
             driver_state_counter <= '0;
             driver_state <= PREPARE_CONFIG;
@@ -168,7 +170,7 @@ always_ff @(posedge clk_lse or negedge nrst)
     end
 
 /*
- * GCLK cycle counter. This counter counts the number of GCLK clock cycles in
+ * GCLK cycle counter. This process counts the number of GCLK clock cycles in
  * STREAM state. In 9-bit poker mode a segment should be 512 cycle. To meet the
  * timing requirement it is necessary to pause GCLK for one cycle after a LATGS
  * or LINERESET, thus the segment counter goes up to 512 instead of 511 to
@@ -206,7 +208,7 @@ wire blanking_period;
 assign blanking_period = nrst & (segment_counter < BLANKING_TIME);
 
 /*
- * SCLK data counter. This counter counts the number of SCLK clock cycles in
+ * SCLK data counter. This process counts the number of SCLK clock cycles in
  * STREAM and CONFIG state. In 9-bit poker mode a segment should be 512 cycle.
  * To meet the timing requirement it is necessary to pause SCLK for one cycle
  * after a WRTGS or WRTFC, thus the counter goes up to 48 instead of 47 to
@@ -330,7 +332,6 @@ always_comb begin
 end
 
 /*
- * driver_lat drives the LAT of the drivers.
  * The LAT is a command signal for latching. It does the states transitions.
  * It is used by:
  *
