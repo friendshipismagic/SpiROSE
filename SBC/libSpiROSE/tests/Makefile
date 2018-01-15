@@ -1,4 +1,4 @@
-TESTS = cube cube_view cube_red cube_view_red
+TESTS = cube cube_view cube_red cube_view_red cube_dual_view
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -MMD -MP \
