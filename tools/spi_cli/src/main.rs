@@ -45,6 +45,30 @@ struct SpiCommand {
     recv_len: usize,
 }
 
+impl SpiCommand {
+
+    fn enable_rgb() -> SpiCommand { SpiCommand { id: 0xE0, recv_len: 0 } }
+
+    fn disable_rgb() -> SpiCommand { SpiCommand { id: 0xD0, recv_len: 0 } }
+
+    fn blink_led() -> SpiCommand { SpiCommand { id: 0xDE, recv_len: 0 } }
+
+    fn rotation() -> SpiCommand { SpiCommand { id: 0x4C, recv_len: 1 } }
+
+    fn config() -> SpiCommand { SpiCommand { id: 0xBF, recv_len: 6 } }
+
+    fn decode(command : &str) -> Option<SpiCommand> {
+        match command {
+            "rgb_enable" => Some(SpiCommand::enable_rgb()),
+            "rgb_disable" => Some(SpiCommand::disable_rgb()),
+            "blink_led" => Some(SpiCommand::blink_led()),
+            "rotation" => Some(SpiCommand::rotation()),
+            "config" => Some(SpiCommand::config()),
+            _ => None,
+        }
+    }
+}
+
 fn main() {
     let yaml_cli_config = load_yaml!("cli.yml");
     let matches = App::from_yaml(yaml_cli_config).get_matches();
@@ -53,11 +77,11 @@ fn main() {
 
     if let Some(command_args) = matches.subcommand_matches("send") {
         let command = command_args.value_of("command").unwrap();
-        let decoded_command = decode_command(command).expect("Command not recognized");
+        let decoded_command = SpiCommand::decode(command).expect("Command not recognized");
         send(&mut spi, &decoded_command, &[]).unwrap();
     } else if let Some(command_args) = matches.subcommand_matches("get") {
         let command = command_args.value_of("command").unwrap();
-        let decoded_command = decode_command(command).expect("Command not recognized");
+        let decoded_command = SpiCommand::decode(command).expect("Command not recognized");
         get(&mut spi, &decoded_command, &[]).unwrap();
     } else if let Some(command_args) = matches.subcommand_matches("configure") {
         let config_file_url = command_args.value_of("config_file").unwrap();
@@ -70,7 +94,7 @@ fn main() {
         let led_config: LEDDriverConfig = toml::from_str(&serialized_conf).unwrap();
         let serialized_conf = led_config.pack();
         println!("Serialized conf: {:?}", serialized_conf);
-        send(&mut spi, &decode_command("config").unwrap(), &serialized_conf);
+        send(&mut spi, &SpiCommand::decode("config").unwrap(), &serialized_conf);
     }
 }
 
@@ -87,31 +111,6 @@ fn create_spi() -> io::Result<Spidev> {
     Ok(spi)
 }
 
-fn decode_command(command: &str) -> Option<SpiCommand> {
-    match command {
-        "rgb_enable" => Some(SpiCommand {
-            id: 0xE0,
-            recv_len: 0,
-        }),
-        "rgb_disable" => Some(SpiCommand {
-            id: 0xD0,
-            recv_len: 0,
-        }),
-        "blink_led" => Some(SpiCommand {
-            id: 0xDE,
-            recv_len: 0,
-        }),
-        "rotation" => Some(SpiCommand {
-            id: 0x4C,
-            recv_len: 1,
-        }),
-        "config" => Some(SpiCommand {
-            id: 0xBF,
-            recv_len: 6,
-        }),
-        _ => None,
-    }
-}
 
 fn send(spi: &mut Spidev, command: &SpiCommand, command_args: &[u8]) -> io::Result<()> {
     spi.write_all(&[command.id])?;
