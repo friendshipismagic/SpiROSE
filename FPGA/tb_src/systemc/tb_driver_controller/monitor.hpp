@@ -22,6 +22,8 @@ struct Monitor : public LatHandler {
         SC_METHOD(copySinToArray);
         sensitive << sin;
 
+        SC_CTHREAD(checkThatNewConfigurationIsReceived, clk.pos());
+
         SC_THREAD(checkThatLatIsntMovedOnSCLK);
 
         SC_THREAD(checkThatLatgsFallDuringTheEndOfASegment);
@@ -63,6 +65,8 @@ struct Monitor : public LatHandler {
 
     void checkThatDataIsReceivedInPokerMode();
 
+    void checkThatNewConfigurationIsReceived();
+
     sc_out<bool> nrst;
     sc_in<bool> lat;
     sc_in<uint32_t> sin;
@@ -74,6 +78,7 @@ struct Monitor : public LatHandler {
     sc_out<bool> positionSync;
     sc_in<bool> columnReady;
     sc_in<bool> driverReady;
+    sc_out<bool> newConfigurationReady;
 
     private:
     void sendReset();

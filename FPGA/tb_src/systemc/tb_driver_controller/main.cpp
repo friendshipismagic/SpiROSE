@@ -50,6 +50,7 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> positionSync("position_sync");
     sc_signal<bool> driverReady("driverReady");
     sc_signal<bool> columnReady("column_ready");
+    sc_signal<bool> newConfigurationReady("new_configuration_ready");
 
     sc_signal<unsigned int> driversSin("drivers_sin");
     sc_signal<bool> driverSout;
@@ -65,6 +66,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, driverLat, "LAT");
     sc_trace(traceFile, columnReady, "column_ready");
     sc_trace(traceFile, driverReady, "driver_ready");
+    sc_trace(traceFile, newConfigurationReady, "new_configuration_ready");
     sc_trace(traceFile, clk66, "clk_66");
     sc_trace(traceFile, clk33, "clk_33");
 
@@ -85,6 +87,7 @@ int sc_main(int argc, char** argv) {
     dut.driver_sout(driverSout);
     dut.driver_sout_mux(driverSoutMux);
     dut.serialized_conf(serializedConf);
+    dut.new_configuration_ready(newConfigurationReady);
     dut.position_sync(positionSync);
     dut.driver_ready(driverReady);
     dut.column_ready(columnReady);
@@ -101,6 +104,7 @@ int sc_main(int argc, char** argv) {
     monitor.driverReady(driverReady);
     monitor.columnReady(columnReady);
     monitor.config(serializedConf);
+    monitor.newConfigurationReady(newConfigurationReady);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;

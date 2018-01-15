@@ -11,11 +11,6 @@
 #include "monitor.hpp"
 
 void Monitor::runTests() {
-    Driver::RegBuff conf;
-    std::string confStr = "010111001000001000000001000000000001000";
-    std::string revConfStr(confStr.rbegin(), confStr.rend());
-    conf = revConfStr.c_str();
-    config = conf.to_uint();
     positionSync = true;
     framebufferData = 0;
 
@@ -85,7 +80,7 @@ void Monitor::checkConfig() {
     wait(sclk.posedge_event());
     for (auto& d : m_drivers) {
         auto c = d->getFcData();
-        if (c.to_uint() != config) {
+        if (c.to_uint64() != config) {
             std::string errorMsg = "Drivers didn't read the config correctly";
             errorMsg += ", wanted " + sc_bv<48>(config.read()).to_string();
             errorMsg += ", got " + c.to_string();
@@ -240,4 +235,23 @@ void Monitor::sendPositionSync() {
     positionSync = true;
     wait();
     positionSync = false;
+}
+
+void Monitor::checkThatNewConfigurationIsReceived() {
+    Driver::RegBuff conf;
+    std::string confStr = "010111001000001000000001000000000001000";
+    std::string revConfStr(confStr.rbegin(), confStr.rend());
+    conf = revConfStr.c_str();
+    config = conf.to_uint64();
+
+    newConfigurationReady = 0;
+    wait(300);
+    newConfigurationReady = 1;
+    // Change bright control configuration
+    confStr = "010111001000001000000001000000000101000";
+    revConfStr.assign(confStr.rbegin(), confStr.rend());
+    conf = revConfStr.c_str();
+    config = conf.to_uint64();
+    wait();
+    newConfigurationReady = 0;
 }
