@@ -89,12 +89,16 @@ fn create_spi() -> io::Result<Spidev> {
 
 fn decode_command(command: &str) -> Option<SpiCommand> {
     match command {
-        "blink_led" => Some(SpiCommand {
-            id: 0xDE,
+        "rgb_enable" => Some(SpiCommand {
+            id: 0xE0,
             recv_len: 0,
         }),
-        "rgb_enable" => Some(SpiCommand {
-            id: 0xAD,
+        "rgb_disable" => Some(SpiCommand {
+            id: 0xD0,
+            recv_len: 0,
+        }),
+        "blink_led" => Some(SpiCommand {
+            id: 0xDE,
             recv_len: 0,
         }),
         "rotation" => Some(SpiCommand {
