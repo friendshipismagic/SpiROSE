@@ -1,5 +1,23 @@
 #!/bin/bash
 
+# This files takes two files as arguments, src and dst. Il will create the dst
+# file with the src contents surrounded by R"( and  )". Those are C++ raw
+# strings.
+# This allows to #include any file in a C++ source to bundle it inside. This
+# is far easier than objcopy method since this string will be null-terminated.
+#
+# Example:
+# $ cat toto
+# Hello World!
+# $ ./rawify toto toto-raw
+# $ cat toto-raw
+# R"(Hello world)"
+#
+# Then, in your C++ source, you can simply do the following:
+# char *hello =
+# #include "toto-raw"
+#     ;
+
 echo 'R"(' > $2
 cat $1 >> $2
 echo ')"' >> $2
