@@ -16,6 +16,9 @@ use spidev::{Spidev, SpidevOptions};
 use toml::Value;
 use packed_struct::prelude::*;
 
+#[cfg(test)]
+mod test;
+
 // LEDDriverConfig is the struct containing the LED Driver Config
 // The serialized version is 48b long
 #[derive(Debug, Deserialize, PackedStruct)]
@@ -59,8 +62,8 @@ impl SpiCommand {
 
     fn decode(command : &str) -> Option<SpiCommand> {
         match command {
-            "rgb_enable" => Some(SpiCommand::enable_rgb()),
-            "rgb_disable" => Some(SpiCommand::disable_rgb()),
+            "enable_rgb" => Some(SpiCommand::enable_rgb()),
+            "disable_rgb" => Some(SpiCommand::disable_rgb()),
             "blink_led" => Some(SpiCommand::blink_led()),
             "rotation" => Some(SpiCommand::rotation()),
             "config" => Some(SpiCommand::config()),
