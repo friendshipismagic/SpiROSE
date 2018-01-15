@@ -30,9 +30,25 @@ run: $(TESTS:=-run)
 %_red-ref.png: %-ref.png
 	convert $^ -fill red -opaque white $@
 
+# Interlace test
+%_wide.png: %.png
+	convert $^ -sample 200%x100%! $@
+%_comb.png: %_1_wide.png %_2_wide.png
+	convert $^ -fx 'i % 2 ? u : v' $@
+cube_interlace_1.png: cube_interlace.png
+	convert $^[40x48+0+96] $@
+cube_interlace_2.png: cube_interlace.png
+	convert $^[40x48+0+288] $@
+cube_interlace-run: cube_interlace
+	@echo "Running test $^ ..."
+	./$^
+	$(MAKE) --no-print-directory $^_comb-diff.png
+	@echo "Success!"
+
 clean:
 	$(RM) $(TESTS:=_test.o) $(TESTS:=_test.d) main.d main.o $(TESTS)
 	$(RM) *-diff.png $(TESTS:=.png)
+	$(RM) cube_interlace_{1,2}.png
 
 lint:
 	find . \( -regex '.*\.[vf]s' -or -regex '.*\.[ch]\(pp\)*' \) -exec clang-format -i '{}' \;
