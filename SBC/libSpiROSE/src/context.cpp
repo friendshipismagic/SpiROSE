@@ -14,7 +14,7 @@ Context::Context(int resW, int resH, int resC, glm::mat4 matrixView)
     : matrixView(matrixView), resW(resW), resH(resH), resC(resC) {
     /* Determine the optimum draw buffer count. A single buffer (~texture) can
      * hold 4 voxel layers. Thus, we'd ideally use resH/4 buffers. However,
-     * we have a maximum of color attachemnts (render targets). Thus, fit as
+     * we have a maximum of color attachments (render targets). Thus, fit as
      * many as we can in this amount, while still using all buffers in a single
      * pass.
      */
