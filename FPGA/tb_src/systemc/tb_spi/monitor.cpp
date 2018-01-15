@@ -81,6 +81,10 @@ void Monitor::runTests() {
 
     sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
     sendCommand(0x4C);
+    sendCommand(0xE0);
+    sendCommand(0xff);
+    sendCommand(0xD0);
+    sendCommand(0xff);
     while (true) wait();
 }
 

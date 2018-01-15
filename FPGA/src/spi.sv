@@ -18,11 +18,14 @@ module spi_slave(
     input [15:0] rotation_data,
 
     output [47:0] config_out,
-    output new_config_available
+    output new_config_available,
+    output rgb_enable
 );
 
 localparam CONFIG_COMMAND = 191;
 localparam ROTATION_COMMAND = 76;
+localparam DISABLE_RGB_COMMAND = 'hD0;
+localparam ENABLE_RGB_COMMAND = 'hE0;
 localparam DEFAULT_CONFIG_DATA = 'hff;
 
 /*
@@ -89,10 +92,19 @@ always_ff @(posedge spi_clk or negedge nrst) begin
         config_byte_counter <= 0;
         new_config_available <= 0;
     end else begin
-        if (config_byte_counter == 0 && shift_counter == 0
-                && receive_register == CONFIG_COMMAND) begin
-            config_byte_counter <= 1;
-            configuration[7:0] <= receive_register;
+        if (config_byte_counter == 0 && shift_counter == 0) begin
+            case (receive_register)
+                CONFIG_COMMAND: begin
+                    config_byte_counter <= 1;
+                    configuration[7:0] <= receive_register;
+                end
+                DISABLE_RGB_COMMAND: begin
+                    rgb_enable <= 0;
+                end
+                ENABLE_RGB_COMMAND: begin
+                    rgb_enable <= 1;
+                end
+            endcase
         end
         if (config_byte_counter > 0 && shift_counter == 0) begin
             configuration[(config_byte_counter-1)*8 +: 8] <= receive_register;

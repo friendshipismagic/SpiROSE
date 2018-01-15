@@ -30,6 +30,7 @@ int sc_main(int argc, char** argv) {
     sc_signal<uint32_t> spiRotationData;
     sc_signal<uint64_t> spiDriverConfig;
     sc_signal<bool> spiConfigAvailable;
+    sc_signal<bool> rgbEnable;
 
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("spi");
@@ -42,6 +43,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, spiRotationData, "rotation_data");
     sc_trace(traceFile, spiDriverConfig, "config_out");
     sc_trace(traceFile, spiConfigAvailable, "new_config_available");
+    sc_trace(traceFile, rgbEnable, "rgb_enable");
 
     Vspi dut("spi");
     dut.spi_clk(spiSck);
@@ -52,6 +54,7 @@ int sc_main(int argc, char** argv) {
     dut.rotation_data(spiRotationData);
     dut.config_out(spiDriverConfig);
     dut.new_config_available(spiConfigAvailable);
+    dut.rgb_enable(rgbEnable);
 
     Monitor monitor("monitor");
     monitor.clk(clk);
@@ -63,6 +66,7 @@ int sc_main(int argc, char** argv) {
     monitor.rotationData(spiRotationData);
     monitor.configOut(spiDriverConfig);
     monitor.newConfigAvailable(spiConfigAvailable);
+    monitor.rgbEnable(rgbEnable);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
