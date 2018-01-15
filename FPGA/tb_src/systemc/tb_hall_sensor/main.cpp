@@ -2,7 +2,7 @@
 #include <verilated.h>
 
 #include "Vclock_lse.h"
-#include "Vsensor.h"
+#include "Vhall_sensor.h"
 
 #include "monitor.hpp"
 #include "report_handler.hpp"
@@ -38,7 +38,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, positionSync, "position_sync");
 
 
-    Vsensor dut("sensor");
+    Vhall_sensor dut("hall_sensor");
     dut.clk(clk);
     dut.nrst(nrst);
     dut.hall_1(hall1);

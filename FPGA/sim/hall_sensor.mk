@@ -1,4 +1,4 @@
-MODULE := sensor
+MODULE := hall_sensor
 
 ROOT = tb_$(MODULE)
 OBJS += $(ROOT)/main.o $(ROOT)/monitor.o
