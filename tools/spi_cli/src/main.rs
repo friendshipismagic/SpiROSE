@@ -68,16 +68,10 @@ fn main() {
             .expect("Unknown error when reading configuration file");
         // Unwrapping inside a LEDDriverConfig forces the full configuration to be available
         let led_config: LEDDriverConfig = toml::from_str(&serialized_conf).unwrap();
-        let serialized_conf = serialize_conf(&led_config);
+        let serialized_conf = led_config.pack();
+        println!("Serialized conf: {:?}", serialized_conf);
+        send(&mut spi, &decode_command("config").unwrap(), &serialized_conf);
     }
-}
-
-fn serialize_conf(led_config: &LEDDriverConfig) -> io::Result<&[u8]> {
-    println!("{:?}", led_config);
-    // Serialization takes 48b, so 6 8b words
-    let serialized_conf: &[u8] = &[0; 6];
-
-    Ok(serialized_conf)
 }
 
 fn create_spi() -> io::Result<Spidev> {
