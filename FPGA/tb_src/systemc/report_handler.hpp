@@ -3,6 +3,8 @@
 #endif
 #define REPORT_HANDLER_HPP
 
+// Should be included only in main.cpp
+
 #include <systemc.h>
 #include <array>
 

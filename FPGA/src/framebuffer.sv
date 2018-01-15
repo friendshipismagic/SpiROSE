@@ -343,6 +343,16 @@ always_ff @(posedge clk_33 or negedge nrst)
         end
     end
 
+// column_sent indicates that we need to fill a new buffer
+always_ff @(posedge clk_33 or negedge nrst)
+    if(~nrst) begin
+        column_sent <= '0;
+    end else begin
+        column_sent <= driver_ready && rgb_idx == 2
+                                    && led_idx == 0
+                                    && bit_idx == 0;
+    end
+
 /*
  * Generate counters to send the right data.
  *
@@ -354,15 +364,6 @@ always_ff @(posedge clk_33 or negedge nrst)
  * In poker mode we send the MSB of each led first, thus bit_idx is decreased
  * every 16 cycles. When it reaches 0 we change the current column.
  */
-always_ff @(posedge clk_33 or negedge nrst)
-    if(~nrst) begin
-        column_sent <= '0;
-    end else begin
-        column_sent <= driver_ready && rgb_idx == 2
-                                    && led_idx == 0
-                                    && bit_idx == 0;
-    end
-
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         rgb_idx <= '0;
