@@ -14,8 +14,6 @@ void Monitor::runTests() {
     positionSync = true;
     framebufferData = 0;
 
-    sendReset();
-
     sc_spawn(sc_bind(&Monitor::checkTimingRequirementsLat, this, LATCH_LATGS,
                      sc_time(80, SC_NS)));
     sc_spawn(sc_bind(&Monitor::checkTimingRequirementsLat, this, LATCH_READFC,
@@ -223,14 +221,6 @@ void Monitor::checkThatDataIsReceivedInPokerMode() {
     }
 }
 
-void Monitor::sendReset() {
-    nrst = 0;
-    for (int i = 0; i < 10; ++i) {
-        wait(clk.posedge());
-    }
-    nrst = 1;
-}
-
 void Monitor::sendPositionSync() {
     positionSync = true;
     wait();
@@ -238,20 +228,35 @@ void Monitor::sendPositionSync() {
 }
 
 void Monitor::checkThatNewConfigurationIsReceived() {
+    auto p_latgs =
+        sc_spawn(sc_bind(&Monitor::checkThatLatgsFallDuringTheEndOfASegment, this));
     Driver::RegBuff conf;
     std::string confStr = "010111001000001000000001000000000001000";
     std::string revConfStr(confStr.rbegin(), confStr.rend());
     conf = revConfStr.c_str();
     config = conf.to_uint64();
-
     newConfigurationReady = 0;
-    wait(300);
-    newConfigurationReady = 1;
-    // Change bright control configuration
+
+    // Wait an arbitrary number of cycles before sending a new configuration
+    for(int i = 0; i < 300; ++i)
+        wait(clk.posedge_event());
+
+      // Change bright control configuration
     confStr = "010111001000001000000001000000000101000";
     revConfStr.assign(confStr.rbegin(), confStr.rend());
     conf = revConfStr.c_str();
     config = conf.to_uint64();
-    wait();
+
+    newConfigurationReady = 1;
+    wait(clk.posedge_event());
     newConfigurationReady = 0;
+
+    // reset the latgs check
+    p_latgs.reset();
+
+    // Check that FCWRTEN command is sent
+    auto latCount = waitLat(sclk, lat);
+    if (latCount != LATCH_FCWRTEN) {
+        SC_REPORT_FATAL("config","The new config is not sent");
+    }
 }
