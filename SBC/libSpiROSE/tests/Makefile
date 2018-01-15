@@ -20,7 +20,7 @@ run: $(TESTS:=-run)
 %-run: %
 	@echo "Running test $^ ..."
 	./$^
-	$(MAKE) $^-diff.png
+	$(MAKE) --no-print-directory $^-diff.png
 	@echo "Success!"
 
 %-diff.png: %.png %-ref.png

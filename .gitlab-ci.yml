@@ -8,7 +8,6 @@ stages:
   - bundle
 
 variables:
-  SBC_DIR: "SBC"
   RENDERER_POC_DIR: "tools/renderer"
   FPGA_DIR: "FPGA"
   LIBSPIROSE_DIR: "SBC/libSpiROSE"
@@ -43,30 +42,6 @@ host_lower_tower:
   script:
     - cd LCD_Display
     - make host
-
-lint_sbc:
-  stage: lint
-  script:
-    - cd $SBC_DIR
-    - make lint
-
-build_sbc:
-  stage: build
-  script:
-    - cd $SBC_DIR
-    - make build
-
-test_sbc:
-  stage: test
-  script:
-    - cd $SBC_DIR
-    - make test
-
-host_sbc:
-   stage: host
-   script:
-   - cd $SBC_DIR
-   - make host
 
 lint_renderer-poc:
   stage: lint
