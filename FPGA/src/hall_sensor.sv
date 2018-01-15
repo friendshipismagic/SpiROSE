@@ -34,12 +34,20 @@ always_ff @(posedge clk or negedge nrst) begin
         slice_cycle_counter <= 0;
         slice_cnt <= 0;
     end else begin
-        if (32'(slice_cycle_counter) == slice_cycle_number - 1) begin
+        if (top) begin
+            // Resynchronization for each top
             slice_cycle_counter <= 0;
-            slice_cnt <= slice_cnt + 1;
-            position_sync <= 1;
+            slice_cnt <= 0;
         end else begin
-            slice_cycle_counter <= slice_cycle_counter + 1;
+            if (32'(slice_cycle_counter) == slice_cycle_number - 1) begin
+                slice_cycle_counter <= 0;
+                slice_cnt <= slice_cnt + 1;
+                position_sync <= 1;
+            end else begin
+                slice_cycle_counter <= slice_cycle_counter + 1;
+            end
+        end
+        if (position_sync == 1) begin
             position_sync <= 0;
         end
     end
@@ -75,7 +83,8 @@ logic guard;
 // Process handling the "top" signal generation, given the Hall sensor data
 always_ff @(posedge clk or negedge nrst) begin
     if (~nrst) begin
-        top <= 0;    
+        top <= 0;
+        guard <= 0;
     end else begin
         /*
          * Whenever one sensor is triggered and not guarded, 
