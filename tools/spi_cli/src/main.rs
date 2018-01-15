@@ -1,5 +1,8 @@
 #[macro_use]
 extern crate clap;
+extern crate packed_struct;
+#[macro_use]
+extern crate packed_struct_codegen;
 #[macro_use]
 extern crate serde_derive;
 extern crate spidev;
@@ -11,27 +14,29 @@ use std::fs::File;
 use clap::App;
 use spidev::{Spidev, SpidevOptions};
 use toml::Value;
+use packed_struct::prelude::*;
 
 // LEDDriverConfig is the struct containing the LED Driver Config
 // The serialized version is 48b long
-#[derive(Debug, Deserialize)]
-struct LEDDriverConfig {
-    lodvth: u8,
-    sel_td0: u8,
-    sel_gdly: u8,
-    xrefresh: u8,
-    sel_gck_edge: u8,
-    sel_pchg: u8,
-    espwm: u8,
-    lgse3: u8,
-    sel_sck_edge: u8,
-    lgse1: u8,
-    ccb: u16,
-    ccg: u16,
-    ccr: u16,
-    bc: u8,
-    poker_trans_mode: u8,
-    lgse2: u8,
+#[derive(Debug, Deserialize, PackedStruct)]
+#[packed_struct(bit_numbering = "msb0")]
+pub struct LEDDriverConfig {
+    #[packed_field(bits = "0..1")] lodvth: Integer<u8, ::packed_bits::Bits2>,
+    #[packed_field(bits = "2..3")] sel_td0: Integer<u8, ::packed_bits::Bits2>,
+    #[packed_field(bits = "4")] sel_gdly: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "5")] xrefresh: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "6")] sel_gck_edge: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "7")] sel_pchg: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "8")] espwm: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "9")] lgse3: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "10")] sel_sck_edge: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "11..13")] lgse1: Integer<u8, ::packed_bits::Bits3>,
+    #[packed_field(bits = "14..22", endian="msb")] ccb: Integer<u16, ::packed_bits::Bits9>,
+    #[packed_field(bits = "23..31", endian="msb")] ccg: Integer<u16, ::packed_bits::Bits9>,
+    #[packed_field(bits = "32..40", endian="msb")] ccr: Integer<u16, ::packed_bits::Bits9>,
+    #[packed_field(bits = "41..43")] bc: Integer<u8, ::packed_bits::Bits3>,
+    #[packed_field(bits = "44")] poker_trans_mode: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "45..47")] lgse2: Integer<u8, ::packed_bits::Bits3>,
 }
 
 #[derive(Debug)]

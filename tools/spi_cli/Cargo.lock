@@ -67,6 +67,25 @@ dependencies = [
 ]
 
 [[package]]
+name = "packed_struct"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "serde 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
+ "serde_derive 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "packed_struct_codegen"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+dependencies = [
+ "packed_struct 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "quote 0.3.15 (registry+https://github.com/rust-lang/crates.io-index)",
+ "syn 0.11.11 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "quote"
 version = "0.3.15"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -126,6 +145,8 @@ name = "spi_cli"
 version = "0.1.0"
 dependencies = [
  "clap 2.29.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "packed_struct 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "packed_struct_codegen 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
  "serde_derive 1.0.27 (registry+https://github.com/rust-lang/crates.io-index)",
  "spidev 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -245,6 +266,8 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 "checksum clap 2.29.1 (registry+https://github.com/rust-lang/crates.io-index)" = "8f4a2b3bb7ef3c672d7c13d15613211d5a6976b6892c598b0fcb5d40765f19c2"
 "checksum libc 0.2.36 (registry+https://github.com/rust-lang/crates.io-index)" = "1e5d97d6708edaa407429faa671b942dc0f2727222fb6b6539bf1db936e4b121"
 "checksum nix 0.6.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7a7bb1da2be7da3cbffda73fc681d509ffd9e665af478d2bee1907cee0bc64b2"
+"checksum packed_struct 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "d141f2b75bcd5e7929f8e1f671f32a00350f00b5a1b42b7daef1ef94fe8e9538"
+"checksum packed_struct_codegen 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)" = "a87916c033a2d14539c6ed578106a55259af26964cd38fef0cc7613972f0ed0b"
 "checksum quote 0.3.15 (registry+https://github.com/rust-lang/crates.io-index)" = "7a6e920b65c65f10b2ae65c831a81a073a89edd28c7cce89475bff467ab4167a"
 "checksum redox_syscall 0.1.37 (registry+https://github.com/rust-lang/crates.io-index)" = "0d92eecebad22b767915e4d529f89f28ee96dbbf5a4810d2b844373f136417fd"
 "checksum redox_termios 0.1.1 (registry+https://github.com/rust-lang/crates.io-index)" = "7e891cfe48e9100a70a3b6eb652fef28920c117d366339687bd5576160db0f76"
