@@ -18,15 +18,15 @@ module driver_controller #(
     input driver_sout,
     output [4:0] driver_sout_mux,
 
-    // Default configuration structure
-    input [47:0] serialized_conf,
-
     // Indicates that the position has changed
     input position_sync,
     // Tells the column_mux module to display a column
     output column_ready,
     // Tells the framebuffer module that the drivers are ready to receive data
-    output driver_ready
+    output driver_ready,
+
+    input [47:0] serialized_conf,
+    input        new_configuration_ready
 );
 
 /*
@@ -161,6 +161,10 @@ always_ff @(posedge clk_lse or negedge nrst)
                 driver_state_counter <= '0;
             end
         endcase
+        if(new_configuration_ready) begin
+            driver_state_counter <= '0;
+            driver_state <= PREPARE_CONFIG;
+        end
     end
 
 /*
