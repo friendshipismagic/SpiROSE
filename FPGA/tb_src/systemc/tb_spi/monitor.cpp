@@ -28,9 +28,6 @@ void Monitor::runTests() {
 
     unsigned char capturedValue = 0;
 
-    ss = 0;
-    wait(clk.posedge_event());
-
     /*
      * Note: in case of unknown command, it is undefined behaviour
      * so we only test known commands
@@ -97,14 +94,31 @@ void Monitor::sendReset() {
 
 void Monitor::sendCommand(char value) {
     // Sample data at the rising edge, so we change data at the falling edge
-    sc_assert(clk == 1);
-    for (int i = 0; i < 2 * SPI_CYCLES; ++i) {
-        sck = clk;
-        mosi = (value >> (SPI_CYCLES - i / 2 - 1)) & 1;
-        wait(clk.value_changed_event());
+    enableSck = 1;
+    if(enableSck == 0)
+        wait(clk.negedge_event());
+    for (int i = 0; i < SPI_CYCLES; ++i) {
+        mosi = (value >> (SPI_CYCLES - i-1)) & 1;
+        wait(clk.negedge_event());
     }
     mosi = 0;
-    sck = 0;
+    enableSck = 0;
+}
+
+void Monitor::handleSck() {
+    sc_event_or_list evt;
+    evt |= clk.value_changed_event();
+    evt |= enableSck.value_changed_event();
+    while(1) {
+        wait(evt);
+        if(enableSck) {
+            sck = clk;
+            ss = 0;
+        } else {
+            sck = 0;
+            ss = 1;
+        }
+    }
 }
 
 unsigned char Monitor::captureValue() {
