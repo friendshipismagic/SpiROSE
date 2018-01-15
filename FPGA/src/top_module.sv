@@ -20,6 +20,7 @@ module top_module (
     // Driver input
     input sout,
     input position_sync,
+    input new_configuration_ready,
 
     //Columns multiplexers
     output [7:0] mux_out,
@@ -116,6 +117,7 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .driver_sout(sout),
     .driver_sout_mux(sout_mux),
     .serialized_conf(serialized_conf),
+    .new_configuration_ready(new_configuration_ready),
     .driver_ready(driver_ready),
     .column_ready(column_ready)
 );
