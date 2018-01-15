@@ -1,4 +1,4 @@
-TESTS = cube cube_view
+TESTS = cube cube_view cube_red cube_view_red
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -MMD -MP \
@@ -25,6 +25,10 @@ run: $(TESTS:=-run)
 
 %-diff.png: %.png %-ref.png
 	compare -metric AE $^ $@
+
+# Test-specific targets
+%_red-ref.png: %-ref.png
+	convert $^ -fill red -opaque white $@
 
 clean:
 	$(RM) $(TESTS:=_test.o) $(TESTS:=_test.d) main.d main.o $(TESTS)
