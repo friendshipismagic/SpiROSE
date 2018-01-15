@@ -1,4 +1,5 @@
-TESTS = cube cube_view cube_red cube_view_red cube_dual cube_dual_view
+TESTS = cube cube_view cube_red cube_view_red cube_dual cube_dual_view \
+        cube_interlace_comb
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -MMD -MP \
@@ -15,16 +16,12 @@ CXX = c++
 all: $(TESTS)
 %: %_test.o main.o
 	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
-run: $(TESTS:=-run)
-
-%-run: %
-	@echo "Running test $^ ..."
-	./$^
-	$(MAKE) --no-print-directory $^-diff.png
-	@echo "Success!"
+run: $(TESTS:=-diff.png)
 
 %-diff.png: %.png %-ref.png
 	compare -metric AE $^ $@; code=$$?; echo; exit $$code
+%.png: %
+	./$^
 
 # Test-specific targets
 %_red-ref.png: %-ref.png
@@ -33,17 +30,15 @@ run: $(TESTS:=-run)
 # Interlace test
 %_wide.png: %.png
 	convert $^ -sample 200%x100%! $@
-%_comb.png: %_1_wide.png %_2_wide.png
+%_comb.png:: %_1_wide.png %_2_wide.png
 	convert $^ -fx 'i % 2 ? u : v' $@
 cube_interlace_1.png: cube_interlace.png
 	convert $^[40x48+0+96] $@
 cube_interlace_2.png: cube_interlace.png
 	convert $^[40x48+0+288] $@
-cube_interlace-run: cube_interlace
-	@echo "Running test $^ ..."
-	./$^
-	$(MAKE) --no-print-directory $^_comb-diff.png
-	@echo "Success!"
+
+# cube_interlace.png: cube_interlace
+# 	./$^
 
 clean:
 	$(RM) $(TESTS:=_test.o) $(TESTS:=_test.d) main.d main.o $(TESTS)
