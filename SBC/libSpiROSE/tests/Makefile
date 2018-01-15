@@ -24,7 +24,7 @@ run: $(TESTS:=-run)
 	@echo "Success!"
 
 %-diff.png: %.png %-ref.png
-	compare -metric AE $^ $@
+	compare -metric AE $^ $@; code=$$?; echo; exit $$code
 
 # Test-specific targets
 %_red-ref.png: %-ref.png

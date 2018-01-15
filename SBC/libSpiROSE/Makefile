@@ -79,9 +79,11 @@ test:
 		sleep 2; \
 		pushd tests; \
 		DISPLAY=:10 $(MAKE) run; \
+		code=$$?; \
 		popd; \
 		kill %1; \
-		wait %1
+		wait %1; \
+		exit $$code
 host:
 	@echo "Host"
 bundle: $(ARTIFACT)
