@@ -150,7 +150,9 @@ test_libspirose:
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
-    - make lint
+    - make build
+    - make install
+    - make test
 host_libspirose:
   stage: host
   image: tuetuopay/glfw

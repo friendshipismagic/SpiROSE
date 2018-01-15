@@ -34,7 +34,7 @@ CXX = c++
 OBJS = $(CXXSRC:.cpp=.o)
 DEPS = $(CXXSRC:.cpp=.d)
 
-.PHONY: all run clean
+.PHONY: all run clean install
 
 all: $(SONAME)
 $(SONAME): $(OBJS)
@@ -66,8 +66,15 @@ lint:
 	find . \( -regex '.*\.[vf]s' -or -regex '.*\.[ch]\(pp\)*' \) -exec clang-format -i '{}' \;
 	git status --porcelain | grep -e "^ M" && exit 1 || exit 0
 build: all
-test: $(EXE)
-	@echo "Tests"
+test:
+	export DISPLAY=:10; \
+		Xvfb $$DISPLAY -screen $$DISPLAY 1280x720x24 +extension GLX & \
+		sleep 2; \
+		pushd tests; \
+		DISPLAY=:10 $(MAKE) run; \
+		popd; \
+		kill %1; \
+		wait %1
 host:
 	@echo "Host"
 bundle: $(ARTIFACT)

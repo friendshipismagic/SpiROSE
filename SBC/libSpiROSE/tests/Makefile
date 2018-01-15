@@ -1,4 +1,4 @@
-TESTS = sample cube
+TESTS = cube
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -MMD -MP \
