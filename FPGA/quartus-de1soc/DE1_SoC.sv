@@ -184,8 +184,30 @@ assign ps2_dat2      = 'z;
  */
 `include "drivers_conf.sv"
 
+logic        nrst                   ;
+logic        sout                   ;
+logic        gclk                   ;
+logic        sclk                   ;
+logic        lat                    ;
+logic [29:0] sin                    ;
+logic [4:0]  sout_mux               ;
+logic        framebuffer_data       ;
+logic        position_sync          ;
+logic        column_ready           ;
+logic        driver_ready           ;
+logic        rgb_enable             ;
+logic [47:0] configuration          ;
+logic        new_configuration_ready;
+logic [31:0] ram_waddr              ;
+logic [15:0] ram_wdata              ;
+logic [31:0] ram_raddr              ;
+logic [15:0] ram_rdata              ;
+logic        stream_ready           ;
+logic [23:0] rgb                    ;
+logic [7:0]  mux_out                ;
+
 // 66 MHz clock generator
-wire clock_66, lock;
+logic clock_66, lock;
 clk_66 main_clk_66 (
 	.refclk(clock_50),
 	.rst(sw[0]),
@@ -201,38 +223,69 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_lse(clock_33)
 );
 
-// Project pins assignment
-wire nrst            = key[0] & lock;
-wire sout            = gpio_0[35];
-wire gclk;
-wire sclk;
-wire lat;
-wire [29:0] sin;
-wire [4:0] sout_mux  = gpio_0[4:0];
-wire color_button;
-wire switch_demo_button;
+spi main_spi(
 
-assign gpio_1[35]   = gclk;
-assign gpio_1[33]   = sclk;
-assign gpio_1[31]   = lat;
-assign gpio_1[29]   = sin[0];
-assign gpio_1[21]   = clock_66;
-assign gpio_1[19]   = clock_33;
-/*assign gpio_1[28]   = sin[0];
-assign gpio_1[27]   = sin[0];
-assign gpio_1[26]   = sin[0];
-assign gpio_1[25]   = sin[0];*/
+);
 
-assign gpio_0[10] = sw[9];
-assign gpio_0[12] = sw[8];
-assign gpio_0[14] = sw[7];
-assign gpio_0[16] = sw[6];
-assign gpio_0[18] = sw[5];
-assign gpio_0[20] = sw[4];
-assign gpio_0[22] = sw[3];
-assign gpio_0[24] = sw[2];
-assign color_button = ~key[3];
-assign switch_demo_button = ~key[2];
+rgb_logic main_rgb_logic (
+    .rgb_clk(clock_33),
+    .nrst(nrst),
+    .rgb(rgb),
+    .hsync(hsync),
+    .vsync(vsync),
+    .ram_addr(ram_waddr),
+    .ram_data(ram_wdata),
+    .write_enable(w_enable),
+    .rgb_enable(rgb_enable),
+    .stream_ready(stream_ready)
+);
+
+ram main_ram (
+    .clk(clock_33),
+    .w_enable(w_enable),
+    .w_addr(ram_waddr),
+    .w_data(ram_wdata),
+    .r_addr(ram_raddr),
+    .r_data(ram_rdata)
+);
+
+framebuffer #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb (
+	.clk_33(clock_33),
+	.nrst(nrst),
+	.data(framebuffer_data),
+    .stream_ready(stream_ready),
+    .driver_ready(driver_ready),
+	.position_sync(position_sync),
+    .ram_addr(ram_raddr),
+    .ram_data(ram_rdata)
+);
+
+driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
+    .clk_hse(clock_66),
+	.clk_lse(clock_33),
+    .nrst(nrst),
+    .framebuffer_dat(framebuffer_data),
+    .position_sync(framebuffer_sync),
+    .driver_sclk(sclk),
+    .driver_gclk(gclk),
+    .driver_lat(lat),
+    .drivers_sin(sin),
+    .driver_sout(sout),
+    .driver_sout_mux(sout_mux),
+    .serialized_conf(serialized_conf),
+    .position_sync(position_sync),
+    .driver_ready(driver_ready),
+    .column_ready(column_ready),
+    .configuration(configuration),
+    .new_configuration_ready(new_configuration_ready)
+);
+
+column_mux main_column_mux (
+    .clk_33(clock_33),
+    .nrst(nrst),
+    .column_ready(column_ready),
+    .mux_out(mux_out)
+);
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
@@ -262,31 +315,31 @@ always_ff @(posedge clock_33 or negedge nrst)
 		end
 	end
 
-wire framebuffer_data, framebuffer_sync;
-// Framebuffer emulator, to test driver controller
-framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
-	.clk_33(clock_33),
-	.nrst(nrst),
-	.data(framebuffer_data),
-	.sync(framebuffer_sync),
-	.color_button(color_button),
-    .switch_demo_button(switch_demo_button)
-);
+// Project pins assignment
+assign nrst      = key[0] & lock;
+assign sout      = gpio_0[35]   ;
+assign sout_mux  = gpio_0[4:0]  ;
 
-// Driver output
-driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
-    .clk_hse(clock_66),
-	.clk_lse(clock_33),
-    .nrst(nrst),
-    .framebuffer_dat(framebuffer_data),
-    .framebuffer_sync(framebuffer_sync),
-    .driver_sclk(sclk),
-    .driver_gclk(gclk),
-    .driver_lat(lat),
-    .drivers_sin(sin),
-    .driver_sout(sout),
-    .driver_sout_mux(sout_mux),
-    .serialized_conf(serialized_conf)
-);
+assign gpio_1[35]   = gclk;
+assign gpio_1[33]   = sclk;
+assign gpio_1[31]   = lat;
+assign gpio_1[29]   = sin[0];
+assign gpio_1[21]   = clock_66;
+assign gpio_1[19]   = clock_33;
+/*assign gpio_1[28] = sin[0];
+assign gpio_1[27]   = sin[0];
+assign gpio_1[26]   = sin[0];
+assign gpio_1[25]   = sin[0];*/
+
+assign gpio_0[10] = sw[9];
+assign gpio_0[12] = sw[8];
+assign gpio_0[14] = sw[7];
+assign gpio_0[16] = sw[6];
+assign gpio_0[18] = sw[5];
+assign gpio_0[20] = sw[4];
+assign gpio_0[22] = sw[3];
+assign gpio_0[24] = sw[2];
+assign color_button = ~key[3];
+assign switch_demo_button = ~key[2];
 
 endmodule
