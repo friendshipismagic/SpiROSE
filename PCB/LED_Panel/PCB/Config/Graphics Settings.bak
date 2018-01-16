@@ -2,7 +2,7 @@
 ! change it at your own peril
 
 !
-! Created 01/08/18 22:25:23
+! Created 01/08/18 22:28:25
 !
 
 .Global_Constants 944 2
@@ -3137,7 +3137,7 @@
 	True  ![1]
     )
     ..Net_On ( 
-	F F F T F F F F F F 	! [1 - 10]
+	F F F T T F F F F F 	! [1 - 10]
 	F F F F F F F F F F 	! [11 - 20]
 	F F F F F F F F F F 	! [21 - 30]
 	F F F F F F F F F F 	! [31 - 40]
@@ -16333,7 +16333,7 @@
 	"[Net].(Net0)" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[Net].(Spacer_Net)" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].GND" "d:1" "e:1" "s:1" "se:1" "c:26265" "a:100" "p:0" "t:0" "o:1"
-	"[Net].+5V" "d:1" "e:0" "s:1" "se:1" "c:6724095" "a:100" "p:0" "t:0" "o:0"
+	"[Net].+5V" "d:1" "e:1" "s:1" "se:1" "c:6724095" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB0_MUL0" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB0_MUL1" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[Net].UB0_MUL2" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"

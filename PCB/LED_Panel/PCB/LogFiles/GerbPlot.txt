@@ -1,7 +1,7 @@
  ----------------------------
 |    Gerber Plotting Log     |
 |          Started           |
-|  Mon Jan 08 22:24:36 2018  |
+|  Tue Jan 16 15:36:52 2018  |
  ----------------------------
 
 
@@ -17,7 +17,7 @@ Processing SoldermaskTop.gdo
     Number of Dcode Warnings= 0
     Number of Dcode Errors  = 0
     Total Draw Length       = 44.0937 (IN)
-    Total Move Length       = 1825.06 (IN)
+    Total Move Length       = 1830.94 (IN)
 
 Processing SoldermaskBottom.gdo
     Number of Apertures     = 2
@@ -45,13 +45,29 @@ Processing SolderPasteTop.gdo
     Number of Dcode Warnings= 0
     Number of Dcode Errors  = 0
     Total Draw Length       = 13.1422 (IN)
-    Total Move Length       = 1599.71 (IN)
+    Total Move Length       = 1605.07 (IN)
+
+Processing InsertionOutline.gdo
+    Number of Apertures     = 1
+    Number of Moves         = 1936
+    Number of Draws         = 15488
+    Number of Arcs          = 0
+    Number of Flashes       = 0
+    Number of Comments      = 4
+    Number of Drawn Pads    = 0
+    Number of Filled Shapes = 0
+    Number of Dcode Warnings= 0
+    Number of Dcode Errors  = 0
+    Total Draw Length       = 934.376 (IN)
+    Total Move Length       = 368.801 (IN)
+
+Design has zero width element(s).Replacing with default width (0.005 IN) from gmf file.
 
 Processing EtchLayerTop.gdo
     Number of Apertures     = 22
-    Number of Moves         = 37484
-    Number of Draws         = 29407
-    Number of Arcs          = 8569
+    Number of Moves         = 37517
+    Number of Draws         = 29408
+    Number of Arcs          = 8579
     Number of Flashes       = 18855
     Number of Comments      = 5
     Number of Drawn Pads    = 15
@@ -59,7 +75,7 @@ Processing EtchLayerTop.gdo
     Number of Dcode Warnings= 0
     Number of Dcode Errors  = 0
     Total Draw Length       = 1384.83 (IN)
-    Total Move Length       = 12774.5 (IN)
+    Total Move Length       = 12787.7 (IN)
 
 Design has zero width element(s).Replacing with default width (0.005 IN) from gmf file.
 
@@ -91,7 +107,7 @@ Processing EtchLayer5.gdo
     Number of Dcode Warnings= 0
     Number of Dcode Errors  = 0
     Total Draw Length       = 2685.98 (IN)
-    Total Move Length       = 3887.96 (IN)
+    Total Move Length       = 3888.06 (IN)
 
 Design has zero width element(s).Replacing with default width (0.005 IN) from gmf file.
 
@@ -107,7 +123,7 @@ Processing EtchLayer4.gdo
     Number of Dcode Warnings= 0
     Number of Dcode Errors  = 0
     Total Draw Length       = 1620.87 (IN)
-    Total Move Length       = 5459.12 (IN)
+    Total Move Length       = 5459.88 (IN)
 
 Design has zero width element(s).Replacing with default width (0.005 IN) from gmf file.
 
@@ -139,7 +155,7 @@ Processing EtchLayer2.gdo
     Number of Dcode Warnings= 0
     Number of Dcode Errors  = 0
     Total Draw Length       = 2155.8 (IN)
-    Total Move Length       = 4768.57 (IN)
+    Total Move Length       = 4767.95 (IN)
 
 Design has zero width element(s).Replacing with default width (0.005 IN) from gmf file.
 
@@ -178,5 +194,5 @@ Design has zero width element(s).Replacing with default width (0.005 IN) from gm
  ---------------------------
 |    Gerber Plotting Log     |
 |          Finished          |
-|  Mon Jan 08 22:24:48 2018  |
+|  Tue Jan 16 15:37:04 2018  |
  ----------------------------
