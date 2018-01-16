@@ -76,7 +76,7 @@ fn main() {
     let yaml_cli_config = load_yaml!("cli.yml");
     let matches = App::from_yaml(yaml_cli_config).get_matches();
 
-    let spi_dev = matches.value_of("device").unwrap_or("/dev/spidev0.0");
+    let spi_dev = matches.value_of("device").unwrap();
     let mut spi = create_spi("/dev/null".to_string(), false).unwrap();
     if spi_dev != "none" {
         spi = create_spi(spi_dev.to_string(), true).unwrap();
