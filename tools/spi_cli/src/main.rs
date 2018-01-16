@@ -77,12 +77,9 @@ fn main() {
     let yaml_cli_config = load_yaml!("cli.yml");
     let matches = App::from_yaml(yaml_cli_config).get_matches();
 
-    let spi_dev = matches.value_of("device").unwrap_or("/dev/spidev0.0");
-    let mut spi = create_spi("/dev/null".to_string(), false).unwrap();
-    if spi_dev != "none" {
-        spi = create_spi(spi_dev.to_string(), true).unwrap();
-    }
-
+    let spi_dev = matches.value_of("device").unwrap();
+    let dummy = spi_dev == "none";
+    let mut spi = create_spi(if dummy { "/dev/null" } else { spi_dev }, !dummy).unwrap();
     if let Some(command_args) = matches.subcommand_matches("send") {
         let command = command_args.value_of("command").unwrap();
         let decoded_command = SpiCommand::decode(command).expect("Command not recognized");
@@ -102,11 +99,11 @@ fn main() {
         let led_config: LEDDriverConfig = toml::from_str(&serialized_conf).unwrap();
         let serialized_conf = led_config.pack();
         println!("Serialized conf: {:?}", serialized_conf);
-        send(&mut spi, &SpiCommand::decode("config").unwrap(), &serialized_conf);
+        send(&mut spi, &SpiCommand::decode("config").unwrap(), &serialized_conf).unwrap();
     }
 }
 
-fn create_spi(spi_dev: String, configure: bool) -> io::Result<Spidev> {
+fn create_spi(spi_dev: &str, configure: bool) -> io::Result<Spidev> {
     let mut spi = Spidev::open(spi_dev)?;
 
     let spi_options = SpidevOptions::new()
