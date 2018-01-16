@@ -244,9 +244,9 @@ GLuint Context::compileShader(const GLenum type, const char *source) const {
     const char *finalSource[] = {
 #ifdef GLES
         // GL and GLES have different #version syntaxes...
-        "#version 330 es\n",
+        "#version 300 es\n",
         // GLES needs an explicit float precision declaration
-        "presicion highp float;\n",
+        "precision highp float;\n",
 #else
         "#version 330 core\n",
 #endif
