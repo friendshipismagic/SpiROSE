@@ -78,6 +78,7 @@ test:
 		Xvfb $$DISPLAY -screen $$DISPLAY 1280x720x24 +extension GLX & \
 		sleep 2; \
 		pushd tests; \
+		make clean; \
 		DISPLAY=:10 $(MAKE) run; \
 		code=$$?; \
 		popd; \
