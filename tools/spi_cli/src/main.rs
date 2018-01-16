@@ -76,7 +76,11 @@ fn main() {
     let yaml_cli_config = load_yaml!("cli.yml");
     let matches = App::from_yaml(yaml_cli_config).get_matches();
 
-    let mut spi = create_spi().unwrap();
+    let spi_dev = matches.value_of("device").unwrap_or("/dev/spidev0.0");
+    let mut spi = create_spi("/dev/null".to_string(), false).unwrap();
+    if spi_dev != "none" {
+        spi = create_spi(spi_dev.to_string(), true).unwrap();
+    }
 
     if let Some(command_args) = matches.subcommand_matches("send") {
         let command = command_args.value_of("command").unwrap();
@@ -101,8 +105,8 @@ fn main() {
     }
 }
 
-fn create_spi() -> io::Result<Spidev> {
-    let mut spi = Spidev::open("/dev/null")?;
+fn create_spi(spi_dev: String, configure: bool) -> io::Result<Spidev> {
+    let mut spi = Spidev::open(spi_dev)?;
 
     let spi_options = SpidevOptions::new()
         .bits_per_word(8)
@@ -110,7 +114,10 @@ fn create_spi() -> io::Result<Spidev> {
         .mode(spidev::SPI_MODE_0)
         .build();
 
-    //spi.configure(&spi_options)?;
+    if configure {
+        spi.configure(&spi_options)?;
+    }
+
     Ok(spi)
 }
 
