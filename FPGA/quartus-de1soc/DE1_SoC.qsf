@@ -960,6 +960,10 @@ set_global_assignment -name SEARCH_PATH ../src
 set_global_assignment -name BOARD "DE1-SoC Board"
 
 
+set_global_assignment -name SYSTEMVERILOG_FILE ../src/rgb_logic.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../src/ram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../src/framebuffer.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../src/column_mux.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../src/framebuffer_emulator.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../src/driver_controller.sv
 set_global_assignment -name SYSTEMVERILOG_FILE DE1_SoC.sv

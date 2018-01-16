@@ -202,8 +202,11 @@ logic [31:0] ram_waddr              ;
 logic [15:0] ram_wdata              ;
 logic [31:0] ram_raddr              ;
 logic [15:0] ram_rdata              ;
+logic        w_enable               ;
 logic        stream_ready           ;
 logic [23:0] rgb                    ;
+logic        hsync                  ;
+logic        vsync                  ;
 logic [7:0]  mux_out                ;
 
 // 66 MHz clock generator
@@ -223,9 +226,9 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_lse(clock_33)
 );
 
-spi main_spi(
+/*spi main_spi(
 
-);
+);*/
 
 rgb_logic main_rgb_logic (
     .rgb_clk(clock_33),
@@ -249,7 +252,7 @@ ram main_ram (
     .r_data(ram_rdata)
 );
 
-framebuffer #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb (
+framebuffer #(.POKER_MODE(9)) main_fb (
 	.clk_33(clock_33),
 	.nrst(nrst),
 	.data(framebuffer_data),
@@ -265,7 +268,6 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
 	.clk_lse(clock_33),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_data),
-    .position_sync(framebuffer_sync),
     .driver_sclk(sclk),
     .driver_gclk(gclk),
     .driver_lat(lat),
@@ -339,7 +341,5 @@ assign gpio_0[18] = sw[5];
 assign gpio_0[20] = sw[4];
 assign gpio_0[22] = sw[3];
 assign gpio_0[24] = sw[2];
-assign color_button = ~key[3];
-assign switch_demo_button = ~key[2];
 
 endmodule
