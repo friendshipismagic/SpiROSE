@@ -5,6 +5,16 @@
 
 in vec2 ex_UV;
 
+/* origin_upper_left:
+ *     coordinates origin is at the top left corner of the screen rather than
+ *     the bottom left. This is the desired behaviour since we want to send the
+ *     first slice first, and video output starts at the top left.
+ * pixel_center_integer:
+ *     by default, coordinates are the pixel's corner. However, the math was
+ *     written (and tested) for pixel-center coordinates.
+ */
+layout(origin_upper_left, pixel_center_integer) in vec4 gl_FragCoord;
+
 layout(location = 0) out vec4 out_Color;
 
 // Voxel buffers
@@ -14,7 +24,19 @@ uniform vec4 in_Color;
 #define M_PI 3.14159265359;
 const float nVoxelPass = float(N_VOXEL_PASS);
 
+const float w = float(RES_W * SYNTH_W / 2), h = float(RES_H * SYNTH_H);
+const float resW = float(RES_W / 2), resH = float(RES_H), resC = float(RES_C);
+const float nPixels = resW * resH;
+
 void main() {
+    /* Fetch the pixel number. If we view our screen as a 1D buffer where all
+     * lines follow each other, this is our X coordinate.
+     */
+    float pixelNo = gl_FragCoord.x + gl_FragCoord.y * w;
+    // ublock we are in, and which pixel no of the ublock we are
+    float ublockNo = floor(pixelNo / nPixels),
+          ublockPixelNo = mod(pixelNo, nPixels);
+
     // Get our coordinates in a micro-block
     vec2 refreshMod = mod(ex_UV, 1.0 / vec2(SYNTH_W, SYNTH_H));
     // Get the micro-block coordinates
