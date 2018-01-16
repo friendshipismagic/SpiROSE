@@ -38,6 +38,11 @@ always_ff @(posedge clk or negedge nrst) begin
             // Resynchronization for each top
             slice_cycle_counter <= 0;
             slice_cnt <= 0;
+            /* 
+             * A top corresponds to the first slice, so we need
+             * a position_sync being high
+             */
+            position_sync <= 1;
         end else begin
             if (32'(slice_cycle_counter) == slice_cycle_number - 1) begin
                 slice_cycle_counter <= 0;
