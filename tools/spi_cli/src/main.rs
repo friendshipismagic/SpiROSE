@@ -98,7 +98,7 @@ fn main() {
         let led_config: LEDDriverConfig = toml::from_str(&serialized_conf).unwrap();
         let serialized_conf = led_config.pack();
         println!("Serialized conf: {:?}", serialized_conf);
-        send(&mut spi, &SpiCommand::decode("config").unwrap(), &serialized_conf);
+        send(&mut spi, &SpiCommand::decode("config").unwrap(), &serialized_conf).unwrap();
     }
 }
 
