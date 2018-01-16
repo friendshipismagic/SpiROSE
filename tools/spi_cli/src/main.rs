@@ -77,11 +77,8 @@ fn main() {
     let matches = App::from_yaml(yaml_cli_config).get_matches();
 
     let spi_dev = matches.value_of("device").unwrap();
-    let mut spi = create_spi("/dev/null", false).unwrap();
-    if spi_dev != "none" {
-        spi = create_spi(spi_dev, true).unwrap();
-    }
-
+    let dummy = spi_dev == "none";
+    let mut spi = create_spi(if dummy { "/dev/null" } else { spi_dev }, !dummy).unwrap();
     if let Some(command_args) = matches.subcommand_matches("send") {
         let command = command_args.value_of("command").unwrap();
         let decoded_command = SpiCommand::decode(command).expect("Command not recognized");
