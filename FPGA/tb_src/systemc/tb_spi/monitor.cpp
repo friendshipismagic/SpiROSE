@@ -79,12 +79,20 @@ void Monitor::runTests() {
         wait(clk.posedge_event());
     }
 
-    sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
-    sendCommand(0x4C);
-    sendCommand(0xE0);
-    sendCommand(0xff);
-    sendCommand(0xD0);
-    sendCommand(0xff);
+    const auto msgE0 = "0xE0 command should have turn on the rgb_enable signal";
+    const auto msgD0 =
+        "0xD0 command should have turn off the rgb_enable signal";
+
+    for (int i = 0; i < 10; ++i) {
+        sendCommand(0xE0);
+        sendCommand(0xff);
+        if (!rgbEnable) SC_REPORT_ERROR("rgb", msgE0);
+
+        sendCommand(0xD0);
+        sendCommand(0xff);
+        if (rgbEnable) SC_REPORT_ERROR("rgb", msgD0);
+    }
+
     while (true) wait();
 }
 
@@ -99,10 +107,9 @@ void Monitor::sendReset() {
 void Monitor::sendCommand(char value) {
     // Sample data at the rising edge, so we change data at the falling edge
     enableSck = 1;
-    if(enableSck == 0)
-        wait(clk.negedge_event());
+    if (enableSck == 0) wait(clk.negedge_event());
     for (int i = 0; i < SPI_CYCLES; ++i) {
-        mosi = (value >> (SPI_CYCLES - i-1)) & 1;
+        mosi = (value >> (SPI_CYCLES - i - 1)) & 1;
         wait(clk.negedge_event());
     }
     mosi = 0;
@@ -113,9 +120,9 @@ void Monitor::handleSck() {
     sc_event_or_list evt;
     evt |= clk.value_changed_event();
     evt |= enableSck.value_changed_event();
-    while(1) {
+    while (1) {
         wait(evt);
-        if(enableSck) {
+        if (enableSck) {
             sck = clk;
             ss = 0;
         } else {
