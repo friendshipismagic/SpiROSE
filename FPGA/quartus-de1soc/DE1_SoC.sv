@@ -178,12 +178,6 @@ assign ps2_dat       = 'z;
 assign ps2_dat2      = 'z;
 //   Les sorties non utilisées seront mise à zéro
 
-/*
- * Default configuration for drivers
- * To change the default configuration, please go to drivers_conf.sv
- */
-`include "drivers_conf.sv"
-
 logic        nrst                   ;
 logic        sout                   ;
 logic        gclk                   ;
@@ -191,12 +185,12 @@ logic        sclk                   ;
 logic        lat                    ;
 logic [29:0] sin                    ;
 logic [4:0]  sout_mux               ;
-logic        framebuffer_data       ;
+logic [29:0] framebuffer_data       ;
 logic        position_sync          ;
 logic        column_ready           ;
 logic        driver_ready           ;
 logic        rgb_enable             ;
-logic [47:0] configuration          ;
+logic [47:0] serialized_conf        ;
 logic        new_configuration_ready;
 logic [31:0] ram_waddr              ;
 logic [15:0] ram_wdata              ;
@@ -208,6 +202,11 @@ logic [23:0] rgb                    ;
 logic        hsync                  ;
 logic        vsync                  ;
 logic [7:0]  mux_out                ;
+logic        spi_clk                ;
+logic        spi_ss                 ;
+logic        spi_mosi               ;
+logic        spi_miso               ;
+logic [15:0] rotation_data          ;
 
 // 66 MHz clock generator
 logic clock_66, lock;
@@ -226,9 +225,22 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_lse(clock_33)
 );
 
-/*spi main_spi(
+spi_slave main_spi(
+    .nrst(nrst),
+    .spi_clk(spi_clk),
+    .spi_ss(spi_ss),
+    .spi_mosi(spi_mosi),
+    .spi_miso(spi_miso),
+    .rotation_data(rotation_data),
+    .config_out(serialized_conf),
+    .new_config_available(new_configuration_ready)
+);
 
-);*/
+hall_sensor_emulator main_hall_sensor_emulator (
+    .clk(clock_33),
+    .nrst(nrst),
+    .position_sync(position_sync)
+);
 
 rgb_logic main_rgb_logic (
     .rgb_clk(clock_33),
@@ -243,13 +255,13 @@ rgb_logic main_rgb_logic (
     .stream_ready(stream_ready)
 );
 
-ram main_ram (
-    .clk(clock_33),
-    .w_enable(w_enable),
-    .w_addr(ram_waddr),
-    .w_data(ram_wdata),
-    .r_addr(ram_raddr),
-    .r_data(ram_rdata)
+ram_dual_port main_ram (
+    .clock(clock_33),
+    .wren(w_enable),
+    .wraddress(ram_waddr),
+    .data(ram_wdata),
+    .rdaddress(ram_raddr),
+    .q(ram_rdata)
 );
 
 framebuffer #(.POKER_MODE(9)) main_fb (
@@ -274,11 +286,10 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .drivers_sin(sin),
     .driver_sout(sout),
     .driver_sout_mux(sout_mux),
-    .serialized_conf(serialized_conf),
     .position_sync(position_sync),
     .driver_ready(driver_ready),
     .column_ready(column_ready),
-    .configuration(configuration),
+    .serialized_conf(serialized_conf),
     .new_configuration_ready(new_configuration_ready)
 );
 
@@ -318,28 +329,23 @@ always_ff @(posedge clock_33 or negedge nrst)
 	end
 
 // Project pins assignment
+assign rgb_enable = 1;
 assign nrst      = key[0] & lock;
-assign sout      = gpio_0[35]   ;
-assign sout_mux  = gpio_0[4:0]  ;
+assign sout      = gpio_1[0]    ;
+assign sout_mux  = gpio_0[35:30];
+assign spi_clk   = gpio_0[29]   ;
+assign spi_ss    = gpio_0[28]   ;
+assign spi_mosi  = gpio_0[27]   ;
+assign spi_miso  = gpio_0[26]   ;
+assign hsync     = gpio_0[25]   ;
+assign vsync     = gpio_0[24]   ;
+assign rgb       = gpio_0[23:0] ;
 
-assign gpio_1[35]   = gclk;
-assign gpio_1[33]   = sclk;
-assign gpio_1[31]   = lat;
-assign gpio_1[29]   = sin[0];
-assign gpio_1[21]   = clock_66;
-assign gpio_1[19]   = clock_33;
-/*assign gpio_1[28] = sin[0];
-assign gpio_1[27]   = sin[0];
-assign gpio_1[26]   = sin[0];
-assign gpio_1[25]   = sin[0];*/
-
-assign gpio_0[10] = sw[9];
-assign gpio_0[12] = sw[8];
-assign gpio_0[14] = sw[7];
-assign gpio_0[16] = sw[6];
-assign gpio_0[18] = sw[5];
-assign gpio_0[20] = sw[4];
-assign gpio_0[22] = sw[3];
-assign gpio_0[24] = sw[2];
+assign gpio_1[35] = gclk;
+assign gpio_1[33] = sclk;
+assign gpio_1[31] = lat;
+assign gpio_1[29] = sin[0];
+assign gpio_1[21] = clock_66;
+assign gpio_1[19] = clock_33;
 
 endmodule

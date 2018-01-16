@@ -3,7 +3,7 @@ module framebuffer #(
     parameter RAM_DATA_WIDTH=16,
     parameter RAM_BASE=0,
     parameter POKER_MODE=9,
-    parameter SLICES_IN_RAM=18
+    parameter SLICES_IN_RAM=3
 )(
     input clk_33,
     input nrst,

@@ -64,7 +64,6 @@ logic stream_ready;
 assign framebuffer_dat = 30'h0;
 assign clk_lse = 1'b0;
 assign mux_out = 8'h00;
-assign framebuffer_dat ='0;
 assign ram_read_addr = '0;
 
 // 33 MHz clock generator
