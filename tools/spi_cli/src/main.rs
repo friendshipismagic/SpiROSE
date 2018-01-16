@@ -21,25 +21,26 @@ mod test;
 
 // LEDDriverConfig is the struct containing the LED Driver Config
 // The serialized version is 48b long
+// As we send MSB for each packet, but LSB
 #[derive(Debug, Deserialize, PackedStruct)]
 #[packed_struct(bit_numbering = "msb0")]
 pub struct LEDDriverConfig {
-    #[packed_field(bits = "0..1")] lodvth: Integer<u8, ::packed_bits::Bits2>,
-    #[packed_field(bits = "2..3")] sel_td0: Integer<u8, ::packed_bits::Bits2>,
-    #[packed_field(bits = "4")] sel_gdly: Integer<u8, ::packed_bits::Bits1>,
-    #[packed_field(bits = "5")] xrefresh: Integer<u8, ::packed_bits::Bits1>,
-    #[packed_field(bits = "6")] sel_gck_edge: Integer<u8, ::packed_bits::Bits1>,
-    #[packed_field(bits = "7")] sel_pchg: Integer<u8, ::packed_bits::Bits1>,
-    #[packed_field(bits = "8")] espwm: Integer<u8, ::packed_bits::Bits1>,
-    #[packed_field(bits = "9")] lgse3: Integer<u8, ::packed_bits::Bits1>,
-    #[packed_field(bits = "10")] sel_sck_edge: Integer<u8, ::packed_bits::Bits1>,
-    #[packed_field(bits = "11..13")] lgse1: Integer<u8, ::packed_bits::Bits3>,
-    #[packed_field(bits = "14..22", endian="msb")] ccb: Integer<u16, ::packed_bits::Bits9>,
-    #[packed_field(bits = "23..31", endian="msb")] ccg: Integer<u16, ::packed_bits::Bits9>,
-    #[packed_field(bits = "32..40", endian="msb")] ccr: Integer<u16, ::packed_bits::Bits9>,
-    #[packed_field(bits = "41..43")] bc: Integer<u8, ::packed_bits::Bits3>,
-    #[packed_field(bits = "44")] poker_trans_mode: Integer<u8, ::packed_bits::Bits1>,
-    #[packed_field(bits = "45..47")] lgse2: Integer<u8, ::packed_bits::Bits3>,
+    #[packed_field(bits = "46..47")] lodvth: Integer<u8, ::packed_bits::Bits2>,
+    #[packed_field(bits = "44..45")] sel_td0: Integer<u8, ::packed_bits::Bits2>,
+    #[packed_field(bits = "43")] sel_gdly: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "42")] xrefresh: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "41")] sel_gck_edge: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "40")] sel_pchg: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "39")] espwm: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "38")] lgse3: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "37")] sel_sck_edge: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "34..36")] lgse1: Integer<u8, ::packed_bits::Bits3>,
+    #[packed_field(bits = "25..33", endian="msb")] ccb: Integer<u16, ::packed_bits::Bits9>,
+    #[packed_field(bits = "16..24", endian="msb")] ccg: Integer<u16, ::packed_bits::Bits9>,
+    #[packed_field(bits = "7..15", endian="msb")] ccr: Integer<u16, ::packed_bits::Bits9>,
+    #[packed_field(bits = "4..6")] bc: Integer<u8, ::packed_bits::Bits3>,
+    #[packed_field(bits = "3")] poker_trans_mode: Integer<u8, ::packed_bits::Bits1>,
+    #[packed_field(bits = "0..2")] lgse2: Integer<u8, ::packed_bits::Bits3>,
 }
 
 #[derive(Debug)]
