@@ -13,7 +13,6 @@ use std::io::prelude::*;
 use std::fs::File;
 use clap::App;
 use spidev::{Spidev, SpidevOptions};
-use toml::Value;
 use packed_struct::prelude::*;
 
 #[cfg(test)]
