@@ -45,6 +45,12 @@ logic [2:0] config_byte_counter;
  */
 enum logic [1:0] {NO_TRANSMISSION, FIRST_BYTE, SECOND_BYTE} transmission_step;
 
+/*
+ * Default configuration for drivers
+ * To change the default configuration, please go to drivers_conf.sv
+ */
+`include "drivers_conf.sv"
+
 // 48-bit register that stores the received configuration
 /* verilator lint_off UNUSED */
 logic [47:0] configuration;
@@ -88,6 +94,7 @@ always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
         config_byte_counter <= 0;
         new_config_available <= 0;
+        configuration <= serialized_conf;
     end else begin
         if (config_byte_counter == 0 && shift_counter == 0
                 && receive_register == CONFIG_COMMAND) begin

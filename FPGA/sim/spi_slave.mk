@@ -1,4 +1,4 @@
-MODULE := spi
+MODULE := spi_slave
 DEPS := clock_lse
 
 ROOT = tb_$(MODULE)
