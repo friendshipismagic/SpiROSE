@@ -125,7 +125,13 @@ test_libspirose:
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
+    - echo Testing desktop OpenGL
     - make build
+    - make install
+    - make test
+    - echo Testing OpenGL ES
+    - make clean
+    - make build UNAME_P=armv7l
     - make install
     - make test
 host_libspirose:
