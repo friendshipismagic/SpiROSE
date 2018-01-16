@@ -35,28 +35,32 @@ void Monitor::runTests() {
 
     sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
     sendCommand(0xBF);
+    for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
 
-    for (int i = 0; i < 7; ++i) {
+    for (int i = 0; i < 6; ++i) {
         sendCommand(0xA1 + i);
+        for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
     }
-    sendCommand(0xA0);
 
     // config is sent LSB order
     checkValueEq<48>(configOut.read(), 0xA6A5A4A3A2A1);
 
+    for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
+
     rotationData = 0xB000;
     for (int step = 0; step < 50; ++step) {
-        // Send blank command to add delay, nothing useful happens
-        sendCommand(0xA0);
+        for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
 
         // Send "get rotation data" command
         sendCommand(0x4C);
+        for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
 
         unsigned char bytes[2];
         for (int byteNb = 0; byteNb < 2; ++byteNb) {
             // Record each bytes of the returned value
             sc_spawn(&bytes[byteNb], sc_bind(&Monitor::captureValue, this));
             sendCommand(0xA0);
+            for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
         }
 
         // expected values
@@ -95,10 +99,9 @@ void Monitor::sendReset() {
 void Monitor::sendCommand(char value) {
     // Sample data at the rising edge, so we change data at the falling edge
     enableSck = 1;
-    if(enableSck == 0)
-        wait(clk.negedge_event());
+    if (enableSck == 0) wait(clk.negedge_event());
     for (int i = 0; i < SPI_CYCLES; ++i) {
-        mosi = (value >> (SPI_CYCLES - i-1)) & 1;
+        mosi = (value >> (SPI_CYCLES - i - 1)) & 1;
         wait(clk.negedge_event());
     }
     mosi = 0;
@@ -109,9 +112,9 @@ void Monitor::handleSck() {
     sc_event_or_list evt;
     evt |= clk.value_changed_event();
     evt |= enableSck.value_changed_event();
-    while(1) {
+    while (1) {
         wait(evt);
-        if(enableSck) {
+        if (enableSck) {
             sck = clk;
             ss = 0;
         } else {
