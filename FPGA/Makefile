@@ -8,7 +8,6 @@ lint:
 	make -C lib -f driver_cmd.mk lint
 	$(LINTER) $(LINTER_ARGS) $(TOP_LEVEL) -y $(SRC_DIR)
 	make -C tb_sc -f tb_driver.mk lint
-	make -C sim gen
 
 build :
 	@echo "Building fpga target"
