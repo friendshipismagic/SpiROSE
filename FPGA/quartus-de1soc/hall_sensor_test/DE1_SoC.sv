@@ -144,12 +144,12 @@ module DE1_SoC(
 );
 
 //    Turn off all display     //////////////////////////////////////
-assign    hex0        =    'h7F;
-assign    hex1        =    'h7F;
-assign    hex2        =    'h7F;
-assign    hex3        =    'h7F;
-assign    hex4        =    'h7F;
-assign    hex5        =    'h7F;
+//assign    hex0        =    'h7F;
+//assign    hex1        =    'h7F;
+//assign    hex2        =    'h7F;
+//assign    hex3        =    'h7F;
+//assign    hex4        =    'h7F;
+//assign    hex5        =    'h7F;
 
 /////////////////////////////////////////////////////////////////////
 // Sorties video VGA     ////////////////////////////////////////////
@@ -167,8 +167,8 @@ assign  vga_b         =  '1;       // 10bits de Bleu
 //////////////////////////////////////////////////////////////////////
 //    Tous les ports en entrees/sorties mis au 3e etat       /////////
 //////////////////////////////////////////////////////////////////////
-//assign gpio_0        = 'z;
-//assign gpio_1        = 'z;
+assign gpio_0        = 'z;
+assign gpio_1        = 'z;
 assign adc_cs_n      = 'z;
 assign dram_dq       = 'z;
 assign fpga_i2c_sdat = 'z;
@@ -178,11 +178,14 @@ assign ps2_dat       = 'z;
 assign ps2_dat2      = 'z;
 //   Les sorties non utilisées seront mise à zéro
 
-/*
- * Default configuration for drivers
- * To change the default configuration, please go to drivers_conf.sv
- */
-`include "drivers_conf.sv"
+logic hall_1;
+logic hall_2;
+logic nrst;
+logic [7:0] slice_cnt;
+logic position_sync;
+logic [3:0] digit_0;
+logic [3:0] digit_1;
+logic [3:0] digit_2;
 
 // 66 MHz clock generator
 wire clock_66, lock;
@@ -200,39 +203,6 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .nrst(nrst),
     .clk_lse(clock_33)
 );
-
-// Project pins assignment
-wire nrst            = key[0] & lock;
-wire sout            = gpio_0[35];
-wire gclk;
-wire sclk;
-wire lat;
-wire [29:0] sin;
-wire [4:0] sout_mux  = gpio_0[4:0];
-wire color_button;
-wire switch_demo_button;
-
-assign gpio_1[35]   = gclk;
-assign gpio_1[33]   = sclk;
-assign gpio_1[31]   = lat;
-assign gpio_1[29]   = sin[0];
-assign gpio_1[21]   = clock_66;
-assign gpio_1[19]   = clock_33;
-/*assign gpio_1[28]   = sin[0];
-assign gpio_1[27]   = sin[0];
-assign gpio_1[26]   = sin[0];
-assign gpio_1[25]   = sin[0];*/
-
-assign gpio_0[10] = sw[9];
-assign gpio_0[12] = sw[8];
-assign gpio_0[14] = sw[7];
-assign gpio_0[16] = sw[6];
-assign gpio_0[18] = sw[5];
-assign gpio_0[20] = sw[4];
-assign gpio_0[22] = sw[3];
-assign gpio_0[24] = sw[2];
-assign color_button = ~key[3];
-assign switch_demo_button = ~key[2];
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
@@ -262,31 +232,37 @@ always_ff @(posedge clock_33 or negedge nrst)
 		end
 	end
 
-wire framebuffer_data, framebuffer_sync;
-// Framebuffer emulator, to test driver controller
-framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
-	.clk_33(clock_33),
-	.nrst(nrst),
-	.data(framebuffer_data),
-	.sync(framebuffer_sync),
-	.color_button(color_button),
-    .switch_demo_button(switch_demo_button)
+// Test for hall effect sensors
+hall_sensor main_hall_sensor (
+    .clk(clk_33),
+    .nrst(nrst),
+    .hall_1(hall_1),
+    .hall_2(hall_2),
+    .slice_cnt(slice_cnt),
+    .position_sync(position_sync)
 );
 
-// Driver output
-driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
-    .clk_hse(clock_66),
-	.clk_lse(clock_33),
-    .nrst(nrst),
-    .framebuffer_dat(framebuffer_data),
-    .framebuffer_sync(framebuffer_sync),
-    .driver_sclk(sclk),
-    .driver_gclk(gclk),
-    .driver_lat(lat),
-    .drivers_sin(sin),
-    .driver_sout(sout),
-    .driver_sout_mux(sout_mux),
-    .serialized_conf(serialized_conf)
+SEG7_LUT lut0 (
+    .iDIG(digit_0),
+    .oSEG(hex0)
 );
+
+SEG7_LUT lut1 (
+    .iDIG(digit_1),
+    .oSEG(hex1)
+);
+
+SEG7_LUT lut2 (
+    .iDIG(digit_2),
+    .oSEG(hex2)
+);
+
+assign nrst = key[0] & lock;
+assign hall_1 = key[3];
+assign hall_2 = key[2];
+assign position_sync = ledr[8];
+assign digit_0 = 4'(slice_cnt % 10);
+assign digit_1 = 4'((slice_cnt % 100) - digit_0)/10;
+assign digit_2 = 4'((slice_cnt % 100) - digit_0 - digit_1)/100;
 
 endmodule
