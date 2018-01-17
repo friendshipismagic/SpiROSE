@@ -153,14 +153,14 @@ assign    hex5        =    'h7F;
 
 /////////////////////////////////////////////////////////////////////
 // Sorties video VGA     ////////////////////////////////////////////
-assign  vga_clk       =  '0;       // Horloge du CNA (DAC)
-assign  vga_hs        =  '0;       // Synchro horizontale
-assign  vga_vs        =  '0;       // Synchro verticale
-assign  vga_blank_n   =  '0;       // Autoriser l'affichage
-assign  vga_sync_n    =  '0;       // non utilisé, doit resté à zéro
-assign  vga_r         =  '1;       // 10bits de Rouge
-assign  vga_g         =  '1;       // 10bits de Vert
-assign  vga_b         =  '1;       // 10bits de Bleu
+// assign  vga_clk       =  '0;       // Horloge du CNA (DAC)
+// assign  vga_hs        =  '0;       // Synchro horizontale
+// assign  vga_vs        =  '0;       // Synchro verticale
+// assign  vga_blank_n   =  '0;       // Autoriser l'affichage
+assign  vga_sync_n    =  '0;       // non utilisé, doit rester à zéro
+// assign  vga_r         =  '1;       // 10bits de Rouge
+// assign  vga_g         =  '1;       // 10bits de Vert
+// assign  vga_b         =  '1;       // 10bits de Bleu
 //////////////////////////////////////////////////////////////////////
 
 
@@ -178,115 +178,101 @@ assign ps2_dat       = 'z;
 assign ps2_dat2      = 'z;
 //   Les sorties non utilisées seront mise à zéro
 
-/*
- * Default configuration for drivers
- * To change the default configuration, please go to drivers_conf.sv
- */
-`include "drivers_conf.sv"
-
-// 66 MHz clock generator
-wire clock_66, lock;
-clk_66 main_clk_66 (
-	.refclk(clock_50),
-	.rst(sw[0]),
-	.outclk_0(clock_66),
-	.locked(lock)
-);
-
-// 33 MHz clock generator
-logic clock_33;
-clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
-    .clk_hse(clock_66),
-    .nrst(nrst),
-    .clk_lse(clock_33)
-);
-
 // Project pins assignment
-wire nrst            = key[0] & lock;
-wire sout            = gpio_0[35];
-wire gclk;
-wire sclk;
-wire lat;
-wire [29:0] sin;
-wire [4:0] sout_mux  = gpio_0[4:0];
-wire color_button;
-wire switch_demo_button;
+wire nrst       = key[0] & lock;
+// Choose between RGB output direct to VGA or RAM dump to VGA
+wire rgb_or_ram = key[1];
+// RGB input
+wire disp_clk;
+wire disp_hsync;
+wire disp_vsync;
+wire [2:0] disp_r;
+wire [2:0] disp_g;
+wire [2:0] disp_b;
+// RAM VGA dumper
+wire ram_vga_clk;
+wire ram_vga_hs;
+wire ram_vga_vs;
+wire ram_vga_blank;
+wire [7:0] ram_vga_r;
+wire [7:0] ram_vga_g;
+wire [7:0] ram_vga_b;
+// RAM Signals
+wire w_enable;
+wire [31:0] w_addr;
+wire [31:0] r_addr;
+wire [31:0] w_data;
+wire [31:0] r_data;
 
-assign gpio_1[35]   = gclk;
-assign gpio_1[33]   = sclk;
-assign gpio_1[31]   = lat;
-assign gpio_1[29]   = sin[0];
-assign gpio_1[21]   = clock_66;
-assign gpio_1[19]   = clock_33;
-/*assign gpio_1[28]   = sin[0];
-assign gpio_1[27]   = sin[0];
-assign gpio_1[26]   = sin[0];
-assign gpio_1[25]   = sin[0];*/
-
-assign gpio_0[10] = sw[9];
-assign gpio_0[12] = sw[8];
-assign gpio_0[14] = sw[7];
-assign gpio_0[16] = sw[6];
-assign gpio_0[18] = sw[5];
-assign gpio_0[20] = sw[4];
-assign gpio_0[22] = sw[3];
-assign gpio_0[24] = sw[2];
-assign color_button = ~key[3];
-assign switch_demo_button = ~key[2];
-
-// Heartbeat LED 66MHz
-logic[24:0] heartbeat_counter_66;
-always_ff @(posedge clock_66 or negedge nrst)
+// Heartbeat LED 27MHz
+logic[24:0] heartbeat_counter_27;
+always_ff @(posedge td_clk27 or negedge nrst)
 	if(~nrst) begin
 		ledr[0] <= '0;
-		heartbeat_counter_66 <= '0;
+		heartbeat_counter_27 <= '0;
 	end else begin
-		heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
-		if(heartbeat_counter_66 == 30_000_000) begin
+		heartbeat_counter_27 <= heartbeat_counter_27 + 1'b1;
+		if(heartbeat_counter_27 == 27_000_000) begin
 			ledr[0] <= ~ledr[0];
-			heartbeat_counter_66 <= '0;
+			heartbeat_counter_27 <= '0;
 		end
 	end
 
-// Heartbeat LED 33MHz
-logic[24:0] heartbeat_counter_33;
-always_ff @(posedge clock_33 or negedge nrst)
-	if(~nrst) begin
-		ledr[1] <= '0;
-		heartbeat_counter_33 <= '0;
-	end else begin
-		heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
-		if(heartbeat_counter_33 == 30_000_000) begin
-			ledr[1] <= ~ledr[1];
-			heartbeat_counter_33 <= '0;
-		end
-	end
+always_comb begin
+   if (rgb_or_ram) begin
+      vga_clk   = disp_clk;
+      vga_hs    = disp_hsync;
+      vga_vs    = disp_vsync;
+      vga_blank = disp_vsync || disp_hsync;
+      vga_r     = disp_r;
+      vga_g     = disp_g;
+      vga_b     = disp_b;
+   end else begin
+      vga_clk   = ram_vga_clk;
+      vga_hs    = ram_vga_hs;
+      vga_vs    = ram_vga_vs;
+      vga_blank = ram_vga_blank;
+      vga_r     = ram_vga_r;
+      vga_g     = ram_vga_g;
+      vga_b     = ram_vga_b;
+   end
+end
 
-wire framebuffer_data, framebuffer_sync;
-// Framebuffer emulator, to test driver controller
-framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
-	.clk_33(clock_33),
-	.nrst(nrst),
-	.data(framebuffer_data),
-	.sync(framebuffer_sync),
-	.color_button(color_button),
-    .switch_demo_button(switch_demo_button)
+vga_dumper vga (
+    .CLK(td_clk27),
+    .NRST(nrst),
+    .VGA_HS(ram_vga_hs),
+    .VGA_VS(ram_vga_vs),
+    .VGA_BLANK(ram_vga_blank),
+    .VGA_SYNC(ram_vga_sync),
+    .VGA_R(ram_vga_r),
+    .VGA_G(ram_vga_g),
+    .VGA_G(ram_vga_b)
 );
 
-// Driver output
-driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
-    .clk_hse(clock_66),
-	.clk_lse(clock_33),
+// RAM Module
+ram main_ram (
+    .clk(td_clk27),
+    .w_enable(),
+    .w_addr(),
+    .r_addr(),
+    .w_data(),
+    .r_data()
+);
+
+// Device Under Test
+rgb_logic dut (
+    .rgb_clk(disp_clk),
     .nrst(nrst),
-    .framebuffer_dat(framebuffer_data),
-    .framebuffer_sync(framebuffer_sync),
-    .driver_sclk(sclk),
-    .driver_gclk(gclk),
-    .driver_lat(lat),
-    .drivers_sin(sin),
-    .driver_sout(sout),
-    .driver_sout_mux(sout_mux),
-    .serialized_conf(serialized_conf)
-);
+    input [23:0] rgb,
+    .hsync(disp_hsync),
+    .vsync(disp_vsync),
 
+    .ram_addr(w_addr),
+    .ram_data(w_data),
+    .write_enable(w_enable),
+
+    .rgb_enable(key[2]),
+    .stream_ready(ledr[9])
+);
 endmodule
