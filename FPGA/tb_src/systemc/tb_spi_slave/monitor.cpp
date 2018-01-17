@@ -112,14 +112,9 @@ void Monitor::sendCommand(char value) {
 
 void Monitor::handleSck() {
     sc_event_or_list evt;
-    evt |= clk.value_changed_event();
     while (1) {
-        wait(evt);
-        if (enableSck) {
-            sck = clk;
-        } else {
-            sck = 0;
-        }
+        wait(clk.value_changed_event());
+        sck = enableSck ? clk : 0;
     }
 }
 
