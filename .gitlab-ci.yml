@@ -57,8 +57,6 @@ build_renderer-poc:
     - cd $RENDERER_POC_DIR
     - make build
     - make test
-  except:
-    - master
 
 host_renderer-poc:
   stage: host

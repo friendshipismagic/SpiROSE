@@ -22,9 +22,9 @@ struct Monitor : public LatHandler {
         SC_METHOD(copySinToArray);
         sensitive << sin;
 
-        SC_THREAD(checkThatLatIsntMovedOnSCLK);
+        SC_THREAD(checkThatNewConfigurationIsReceived);
 
-        SC_THREAD(checkThatLatgsFallDuringTheEndOfASegment);
+        SC_THREAD(checkThatLatIsntMovedOnSCLK);
 
         for (int i = 0; i < DRIVER_NB; ++i) {
             std::ostringstream stream;
@@ -63,6 +63,8 @@ struct Monitor : public LatHandler {
 
     void checkThatDataIsReceivedInPokerMode();
 
+    void checkThatNewConfigurationIsReceived();
+
     sc_out<bool> nrst;
     sc_in<bool> lat;
     sc_in<uint32_t> sin;
@@ -71,12 +73,13 @@ struct Monitor : public LatHandler {
     sc_in<bool> gclk;
     sc_out<uint64_t> config;
     sc_out<uint32_t> framebufferData;
-    sc_out<bool> framebufferSync;
+    sc_out<bool> positionSync;
+    sc_in<bool> columnReady;
+    sc_in<bool> driverReady;
+    sc_out<bool> newConfigurationReady;
 
     private:
-    void sendReset();
-
-    void sendFramebufferSync();
+    void sendPositionSync();
 
     void setConfig(Driver::RegBuff conf);
 
