@@ -1,15 +1,14 @@
 module hall_sensor_emulator (
         input clk,
         input nrst,
-
-        output [7:0] slice_cnt,
-        output       position_sync
+        output position_sync
 );
 
 // Slice lenght in cycle
 localparam SLICE_CYCLE = 5000;
 
 logic [$clog2(SLICE_CYCLE)-1:0] slice_cycle_cnt;
+logic [7:0] slice_cnt;
 
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin

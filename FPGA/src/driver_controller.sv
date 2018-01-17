@@ -163,7 +163,7 @@ always_ff @(posedge clk_lse or negedge nrst)
             end
         endcase
 
-        if(new_configuration_ready) begin
+        if(new_configuration_ready && (driver_state == STREAM || driver_state == WAIT_FOR_NEXT_SLICE)) begin
             driver_state_counter <= '0;
             driver_state <= PREPARE_CONFIG;
         end
