@@ -16,65 +16,41 @@ before_script:
   - git submodule init
   - git submodule update
 
-lint_lower_tower:
+lower_tower/lint:
   stage: lint
   script:
     - cd LCD_Display
     - make lint
 
-build_lower_tower:
+lower_tower/build:
   image: tuetuopay/arm-none-eabi
   stage: build
   script:
     - cd LCD_Display
     - make
 
-test_lower_tower:
+lower_tower/test:
   image: tuetuopay/arm-none-eabi
   stage: test
   script:
     - cd LCD_Display
     - make test
 
-host_lower_tower:
+lower_tower/host:
   image: tuetuopay/arm-none-eabi
   stage: host
   script:
     - cd LCD_Display
     - make host
 
-lint_sbc:
-  stage: lint
-  script:
-    - cd $SBC_DIR
-    - make lint
-
-build_sbc:
-  stage: build
-  script:
-    - cd $SBC_DIR
-    - make build
-
-test_sbc:
-  stage: test
-  script:
-    - cd $SBC_DIR
-    - make test
-
-host_sbc:
-   stage: host
-   script:
-   - cd $SBC_DIR
-   - make host
-
-lint_renderer-poc:
+renderer-poc/lint:
   stage: lint
   image: tuetuopay/clang
   script:
     - cd $RENDERER_POC_DIR
     - make lint
 
-build_renderer-poc:
+renderer-poc/build:
   stage: build
   image: tuetuopay/glfw
   script:
@@ -82,14 +58,14 @@ build_renderer-poc:
     - make build
     - make test
 
-host_renderer-poc:
+renderer-poc/host:
   stage: host
   image: tuetuopay/glfw
   script:
     - cd $RENDERER_POC_DIR
     - make host
 
-bundle_renderer-poc:
+renderer-poc/bundle:
   stage: bundle
   image: tuetuopay/glfw
   script:
@@ -102,28 +78,22 @@ bundle_renderer-poc:
   only:
     - master
 
-lint_fpga:
+fpga/lint:
   stage: lint
   image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
     - make lint
 
-build_fpga:
+fpga/build:
   stage: build
   image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
     - make build
-
-test_fpga:
-  stage: test
-  image: tuetuopay/verilator
-  script:
-    - cd $FPGA_DIR
     - make test
 
-host_fpga:
+fpga/host:
   stage: host
   image: tuetuopay/verilator
   script:
