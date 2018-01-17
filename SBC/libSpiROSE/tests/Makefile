@@ -54,6 +54,10 @@ cube_interlace_2.png: cube_interlace.test.png
 cube_interlace-comb.png: cube_interlace_1.png cube_interlace_2.png
 	convert $^ -fx 'i % 2 ? u : v' $@
 
+# Tool to generate a human-readable output
+%-readable.png: %.png
+	./deinterlace.sh $^ $@
+
 clean:
 	@# Binary files
 	$(RM) main.d main.o
