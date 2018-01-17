@@ -13,7 +13,7 @@ TESTS = cube cube_view cube_red cube_view_red cube_dual cube_dual_view
 # <test name>.test.png
 # Also, if intermediate PNG files are generated, add them to the
 # POST_INTERMEDIATE variable for the clean target.
-TESTS_POST = cube_interlace
+TESTS_POST = cube_interlace linear
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -MMD -MP \
@@ -46,13 +46,17 @@ run: $(TESTS:=-diff.png) $(TESTS_POST:=-comb-diff.png)
 	convert $^ -fill red -opaque white $@
 
 # Interlace test
-POST_INTERMEDIATE += cube_interlace_1 png cube_interlace_2
+POST_INTERMEDIATE += cube_interlace_1 cube_interlace_2
 cube_interlace_1.png: cube_interlace.test.png
 	convert $^[40x48+0+96] -sample 200%x100%! $@
 cube_interlace_2.png: cube_interlace.test.png
 	convert $^[40x48+0+288] -sample 200%x100%! $@
 cube_interlace-comb.png: cube_interlace_1.png cube_interlace_2.png
 	convert $^ -fx 'i % 2 ? u : v' $@
+
+# Deinterlace/linear stuff
+linear-comb.png: linear.test.png
+	./deinterlace.sh $^ $@
 
 # Tool to generate a human-readable output
 %-readable.png: %.png
