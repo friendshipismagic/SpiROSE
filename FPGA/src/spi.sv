@@ -79,6 +79,22 @@ always_ff @(posedge spi_clk or negedge nrst) begin
     end
 end
 
+
+logic should_run_configure;
+
+assign should_run_configure = 
+    config_byte_counter == 0
+ && shift_counter == 0
+ && receive_register == CONFIG_COMMAND;
+
+logic next_config_byte_is_ready;
+assign next_config_byte_is_ready = 
+    config_byte_counter > 0
+ && shift_counter == 0;
+
+logic [5:0] current_configuration_addr;
+assign current_configuration_addr = 48 - config_byte_counter*8;
+
 /*
  * Process for the receiver logic.
  * It outputs the received bytes in the right order
@@ -89,20 +105,27 @@ always_ff @(posedge spi_clk or negedge nrst) begin
         config_byte_counter <= 0;
         new_config_available <= 0;
     end else begin
-        if (config_byte_counter == 0 && shift_counter == 0
-                && receive_register == CONFIG_COMMAND) begin
+
+        /*
+         * If we are ready to process a configure command
+         * initialize the appropriate counter
+        */
+        if (should_run_configure) begin
             config_byte_counter <= 1;
             configuration[7:0] <= receive_register;
         end
-        if (config_byte_counter > 0 && shift_counter == 0) begin
-            configuration[(config_byte_counter-1)*8 +: 8] <= receive_register;
+
+        /*
+         * Otherwise, we are ready to process values as soon as they are ready
+        */
+        if (next_config_byte_is_ready) begin
+            configuration[current_configuration_addr +: 8] <= receive_register;
+            /*
+             * Signal that a new configuration is available and start waiting
+             * for a new configuration
+             */
             if (config_byte_counter == 6) begin
-                /*
-                * When the whole new configuration is received, reset the
-                * config_byte_counter
-                */
                 config_byte_counter <= 0;
-                // Signal that a new configuration is available
                 new_config_available <= 1;
             end else begin
                 // A complete byte has been received
