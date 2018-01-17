@@ -6,6 +6,7 @@
  *   sensors to the SBC
  */
 
+
 module spi_slave(
     input  nrst,
 
@@ -24,6 +25,8 @@ module spi_slave(
 localparam CONFIG_COMMAND = 191;
 localparam ROTATION_COMMAND = 76;
 localparam DEFAULT_CONFIG_DATA = 'hff;
+
+`include "drivers_conf.sv"
 
 /*
  * ReceiveRegister is a shift register for the received byte
@@ -102,6 +105,7 @@ always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
         config_byte_counter <= 0;
         new_config_available <= 0;
+        configuration <= serialized_conf;
     end else begin
 
         /*
