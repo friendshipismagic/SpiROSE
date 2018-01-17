@@ -1,7 +1,7 @@
 export SYSTEMC_INCLUDE ?= /usr/include/
 export SYSTEMC_LIBDIR ?= /usr/lib/
 
-MODULES := spi_slave driver_controller framebuffer column_mux rgb_logic
+MODULES := driver_controller framebuffer column_mux rgb_logic spi_slave
 
 SIMULATIONS = $(addsuffix .simu,$(MODULES))
 TESTS = $(addsuffix .test,$(MODULES))

@@ -40,6 +40,7 @@ module top_module (
 /*
  * Interconnect signals
  */
+logic [29:0] framebuffer_dat;
 
 // RAM
 logic [31:0] ram_write_addr;
@@ -49,9 +50,6 @@ logic [15:0] ram_write_data;
 logic [15:0] ram_read_data;
 /* verilator lint_on UNUSED */
 logic        write_enable;
-
-// FRAMEBUFFER
-logic [29:0] framebuffer_dat;
 
 // RGB
 /* verilator lint_off UNUSED */

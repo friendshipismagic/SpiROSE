@@ -31,7 +31,7 @@ typedef struct packed {
  * Drivers configuration.
  * Change this to change boot-time configuration.
  */
-drivers_conf_t drivers_conf = '{
+localparam drivers_conf_t drivers_conf = '{
    LODVTH: 2'b01,
    SEL_TD0: 2'b01,
    SEL_GDLY: 1'b1,
