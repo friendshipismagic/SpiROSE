@@ -9,7 +9,8 @@ module framebuffer_emulator #(
     output [29:0] data,
 
     // Sync signals
-    input driver_ready
+    input driver_ready,
+    input new_configuration_ready
 );
 
 logic [3:0] led_cnt;
@@ -22,7 +23,11 @@ always_ff @(posedge clk_33 or negedge nrst)
         bit_cnt <= '0;
         color_cnt <= '0;
     end else begin
-        if(driver_ready) begin
+        if(new_configuration_ready) begin
+            led_cnt <= '0;
+            bit_cnt <= '0;
+            color_cnt <= '0;
+        end else if(driver_ready) begin
             color_cnt <= color_cnt + 1'b1;
             if(color_cnt == 2) begin
                 color_cnt <= 0;
@@ -43,6 +48,7 @@ always_ff @(posedge clk_33 or negedge nrst)
         data <= '0;
     end else begin
         data <= color_cnt == (led_cnt % 3) && driver_ready;
+		  //data <= '1;
     end
 
 

@@ -184,7 +184,7 @@ assign ps2_dat2      = 'z;
 `include "drivers_conf.sv"
 
 logic        nrst                   ;
-//logic [47:0] serialized_conf        ;
+logic [47:0] conf                   ;
 logic        new_configuration_ready;
 /*logic        spi_clk                ;
 logic        spi_ss                 ;
@@ -203,7 +203,6 @@ logic        driver_ready           ;
 logic        column_ready           ;
 
 assign position_sync = 1'b1;
-assign new_configuration_ready = '0;
 
 // 66 MHz clock generator
 logic clock_66, lock;
@@ -237,7 +236,8 @@ framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
     .clk_33(clock_33),
     .nrst(nrst),
     .data(framebuffer_data),
-    .driver_ready(driver_ready)
+    .driver_ready(driver_ready),
+    .new_configuration_ready(new_configuration_ready)
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
@@ -254,7 +254,7 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
 	 .driver_ready(driver_ready),
     .position_sync(position_sync),
     .column_ready(column_ready),
-    .serialized_conf(serialized_conf),
+    .serialized_conf(conf),
     .new_configuration_ready(new_configuration_ready)
 );
 
@@ -299,8 +299,6 @@ assign gpio_1[35]   = gclk;
 assign gpio_1[33]   = sclk;
 assign gpio_1[31]   = lat;
 assign gpio_1[29]   = sin[0];
-assign gpio_1[21]   = clock_66;
-assign gpio_1[19]   = clock_33;
 /*assign gpio_1[28]   = sin[0];
 * assign gpio_1[27]   = sin[0];
 * assign gpio_1[26]   = sin[0];
@@ -314,5 +312,35 @@ assign gpio_0[18] = sw[5];
 assign gpio_0[20] = sw[4];
 assign gpio_0[22] = sw[3];
 assign gpio_0[24] = sw[2];
+
+logic new_conf;
+logic old_conf;
+
+assign new_conf = ~key[3];
+assign old_conf = ~key[2];
+
+always_ff @(posedge clock_33 or negedge nrst)
+    if(~nrst) begin
+        new_configuration_ready <= '0;
+        conf <= serialized_conf;
+        ledr[2] <= '0;
+        ledr[3] <= '0;
+    end else begin
+        ledr[2] <= '0;
+        ledr[3] <= '0;
+        new_configuration_ready <= '0;
+        if(new_conf) begin
+            ledr[3] <= '1;
+            conf[43:41] <= 3'b111;
+            conf[40:32] <= 9'b1_1111_1111;
+            conf[31:23] <= 9'b0_0100_0000;
+            new_configuration_ready <= 1'b1;
+        end
+        if(old_conf) begin
+            ledr[2] <= '1;
+            conf <= serialized_conf;
+            new_configuration_ready <= 1'b1;
+        end
+    end
 
 endmodule
