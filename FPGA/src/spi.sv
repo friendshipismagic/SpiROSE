@@ -8,6 +8,7 @@
 
 module spi_slave(
     input  nrst,
+    // clk is the FPGA's clk, not to be confused with spi_clk, the spi slave clock
 
     input  spi_clk,
     input  spi_ss,
@@ -29,13 +30,17 @@ localparam DEFAULT_CONFIG_DATA = 'hff;
  * ReceiveRegister is a shift register for the received byte
  * TransmitRegister is a shift register for the byte to be transmitted
  */
-logic [7:0] receive_register, transmit_register;
+logic [6:0] receive_register;
+logic [7:0] transmit_register;
+
+logic [7:0] current_register;
+assign current_register = {receive_register, spi_mosi};
 
 /*
  * shift_counter keeps trace of the number of times the receive_register is
  * shifted
  */
-logic [3:0] shift_counter;
+logic [2:0] shift_counter;
 
 // Counter that counts the number of configuration bytes received
 logic [2:0] config_byte_counter;
@@ -64,17 +69,12 @@ always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
         shift_counter <= '0;
     end else begin
+        shift_counter <= '0;
         if (~spi_ss) begin
             // Shift the receive register
-            receive_register[7:1] <= receive_register[6:0];
-            // Store the incoming spi_mosi data in the receive register LSB
+            receive_register[6:1] <= receive_register[5:0];
             receive_register[0] <= spi_mosi;
             shift_counter <= shift_counter + 1'b1;
-            if (shift_counter == 7) begin
-                shift_counter <= '0;
-            end
-        end else begin
-            shift_counter <= '0;
         end
     end
 end
@@ -84,13 +84,13 @@ logic should_run_configure;
 
 assign should_run_configure = 
     config_byte_counter == 0
- && shift_counter == 0
- && receive_register == CONFIG_COMMAND;
+ && shift_counter == 7
+ && current_register == CONFIG_COMMAND;
 
 logic next_config_byte_is_ready;
 assign next_config_byte_is_ready = 
     config_byte_counter > 0
- && shift_counter == 0;
+ && shift_counter == 7;
 
 logic [5:0] current_configuration_addr;
 assign current_configuration_addr = 48 - config_byte_counter*8;
@@ -112,14 +112,16 @@ always_ff @(posedge spi_clk or negedge nrst) begin
         */
         if (should_run_configure) begin
             config_byte_counter <= 1;
-            configuration[7:0] <= receive_register;
+            configuration[7:0] <= 'h00;
         end
 
         /*
          * Otherwise, we are ready to process values as soon as they are ready
         */
         if (next_config_byte_is_ready) begin
-            configuration[current_configuration_addr +: 8] <= receive_register;
+            config_byte_counter <= config_byte_counter + 1;
+            configuration[current_configuration_addr +: 8] <= current_register;
+
             /*
              * Signal that a new configuration is available and start waiting
              * for a new configuration
@@ -127,9 +129,6 @@ always_ff @(posedge spi_clk or negedge nrst) begin
             if (config_byte_counter == 6) begin
                 config_byte_counter <= 0;
                 new_config_available <= 1;
-            end else begin
-                // A complete byte has been received
-                config_byte_counter <= config_byte_counter + 1;
             end
         end else begin
             new_config_available <= 0;
