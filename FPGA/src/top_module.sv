@@ -62,7 +62,6 @@ logic stream_ready;
  * Temporary zone where signals are driven while unused
  */
 assign framebuffer_dat = 30'h0;
-assign clk_lse = 1'b0;
 assign mux_out = 8'h00;
 assign ram_read_addr = '0;
 
