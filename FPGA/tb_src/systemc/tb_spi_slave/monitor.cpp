@@ -85,8 +85,20 @@ void Monitor::runTests() {
         wait(clk.posedge_event());
     }
 
-    sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
-    sendCommand(0x4C);
+    for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
+
+
+    // test that configure is not interpreted as as command in configure mode
+    for (int i = 0; i < 7; ++i) {
+        sendCommand(0xBF);
+        for (int j = 0; j < 50; ++j) wait(clk.posedge_event());
+    }
+
+    if (configOut != 0xBFBFBFBFBFBF)
+        SC_REPORT_ERROR("spi",
+                        "module continue to parse configure command in the "
+                        "configure state");
+
     while (true) wait();
 }
 
