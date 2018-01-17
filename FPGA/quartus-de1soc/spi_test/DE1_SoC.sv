@@ -176,16 +176,34 @@ assign ps2_clk       = 'z;
 assign ps2_clk2      = 'z;
 assign ps2_dat       = 'z;
 assign ps2_dat2      = 'z;
-//   Les sorties non utilisées seront mise à zéro
+
+/*
+ * Default configuration for drivers
+ * To change the default configuration, please go to drivers_conf.sv
+ */
+`include "drivers_conf.sv"
 
 logic        nrst                   ;
-logic [47:0] serialized_conf        ;
+//logic [47:0] serialized_conf        ;
 logic        new_configuration_ready;
-logic        spi_clk                ;
+/*logic        spi_clk                ;
 logic        spi_ss                 ;
 logic        spi_mosi               ;
 logic        spi_miso               ;
-logic [15:0] rotation_data          ;
+logic [15:0] rotation_data          ;*/
+logic [29:0] framebuffer_data       ;
+logic        position_sync          ;
+logic        sout                   ;
+logic        gclk                   ;
+logic        sclk                   ;
+logic        lat                    ;
+logic [29:0] sin                    ;
+logic [4:0]  sout_mux               ;
+logic        driver_ready           ;
+logic        column_ready           ;
+
+assign position_sync = 1'b1;
+assign new_configuration_ready = '0;
 
 // 66 MHz clock generator
 logic clock_66, lock;
@@ -203,7 +221,7 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .nrst(nrst),
     .clk_lse(clock_33)
 );
-
+/*
 spi_slave main_spi(
     .nrst(nrst),
     .spi_clk(spi_clk),
@@ -213,6 +231,31 @@ spi_slave main_spi(
     .rotation_data(rotation_data),
     .config_out(serialized_conf),
     .new_config_available(new_configuration_ready)
+);*/
+
+framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
+    .clk_33(clock_33),
+    .nrst(nrst),
+    .data(framebuffer_data),
+    .driver_ready(driver_ready)
+);
+
+driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
+    .clk_hse(clock_66),
+    .clk_lse(clock_33),
+    .nrst(nrst),
+    .framebuffer_dat(framebuffer_data),
+    .driver_sclk(sclk),
+    .driver_gclk(gclk),
+    .driver_lat(lat),
+    .drivers_sin(sin),
+    .driver_sout(sout),
+    .driver_sout_mux(sout_mux),
+	 .driver_ready(driver_ready),
+    .position_sync(position_sync),
+    .column_ready(column_ready),
+    .serialized_conf(serialized_conf),
+    .new_configuration_ready(new_configuration_ready)
 );
 
 // Heartbeat LED 66MHz
@@ -243,13 +286,33 @@ always_ff @(posedge clock_33 or negedge nrst)
 		end
 	end
 
-assign ledr[2] = sw[2];
-	
 // Project pins assignment
 assign nrst      = key[0] & lock;
+/*
 assign spi_mosi  = gpio_0[18]   ;
 assign spi_miso  = gpio_0[20]   ;
 assign spi_clk   = gpio_0[22]   ;
 assign spi_ss    = gpio_0[24]   ;
+*/
+
+assign gpio_1[35]   = gclk;
+assign gpio_1[33]   = sclk;
+assign gpio_1[31]   = lat;
+assign gpio_1[29]   = sin[0];
+assign gpio_1[21]   = clock_66;
+assign gpio_1[19]   = clock_33;
+/*assign gpio_1[28]   = sin[0];
+* assign gpio_1[27]   = sin[0];
+* assign gpio_1[26]   = sin[0];
+* assign gpio_1[25]   = sin[0];*/
+
+assign gpio_0[10] = sw[9];
+assign gpio_0[12] = sw[8];
+assign gpio_0[14] = sw[7];
+assign gpio_0[16] = sw[6];
+assign gpio_0[18] = sw[5];
+assign gpio_0[20] = sw[4];
+assign gpio_0[22] = sw[3];
+assign gpio_0[24] = sw[2];
 
 endmodule
