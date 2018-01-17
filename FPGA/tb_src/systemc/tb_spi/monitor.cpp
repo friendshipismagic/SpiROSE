@@ -23,6 +23,8 @@ void checkValueEq(sc_bv<Size> left, sc_bv<Size> right) {
 void Monitor::runTests() {
     sendReset();
 
+    enableSck = false;
+
     // wait some cycles before sending anything
     for (int i = 0; i < 200; ++i) wait(clk.posedge_event());
 
@@ -42,8 +44,8 @@ void Monitor::runTests() {
         for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
     }
 
-    // config is sent LSB order
-    checkValueEq<48>(configOut.read(), 0xA6A5A4A3A2A1);
+    // config is sent MSB order
+    checkValueEq<48>(configOut.read(), 0xA1A2A3A4A5A6);
 
     for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
 
@@ -98,29 +100,38 @@ void Monitor::sendReset() {
 
 void Monitor::sendCommand(char value) {
     // Sample data at the rising edge, so we change data at the falling edge
-    enableSck = 1;
-    if (enableSck == 0) wait(clk.negedge_event());
+    enableSck.write(1);
+    wait(clk.negedge_event());
     for (int i = 0; i < SPI_CYCLES; ++i) {
         mosi = (value >> (SPI_CYCLES - i - 1)) & 1;
         wait(clk.negedge_event());
     }
     mosi = 0;
-    enableSck = 0;
+    enableSck.write(0);
 }
 
 void Monitor::handleSck() {
     sc_event_or_list evt;
     evt |= clk.value_changed_event();
-    evt |= enableSck.value_changed_event();
     while (1) {
         wait(evt);
         if (enableSck) {
             sck = clk;
-            ss = 0;
         } else {
             sck = 0;
-            ss = 1;
         }
+    }
+}
+
+void Monitor::handleSs() {
+    ss = 1;
+    while (true) {
+        ss = !enableSck;
+        wait(enableSck.value_changed_event());
+        ss = !enableSck;
+        wait(enableSck.value_changed_event());
+        wait(clk.negedge_event());
+        ss = !enableSck;
     }
 }
 
