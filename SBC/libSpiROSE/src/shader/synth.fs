@@ -38,19 +38,18 @@ void main() {
           ublockPixelNo = mod(pixelNo, nPixels);
 
     // Get our coordinates in a micro-block
-    vec2 refreshMod = mod(ex_UV, 1.0 / vec2(SYNTH_W, SYNTH_H));
-    // Get the micro-block coordinates
-    vec2 refreshPos = (ex_UV - refreshMod) * vec2(SYNTH_W, SYNTH_H);
+    vec2 refreshMod =
+        (vec2(mod(ublockPixelNo, resW), floor(ublockPixelNo / resW)) + 0.5) /
+        vec2(resW, resH);
+
     // Number in [0, 1] telling at which refresh stop we are
-    float refreshNo =
-        (refreshPos.y * float(SYNTH_W) + refreshPos.x) / float(RES_C);
+    float refreshNo = ublockNo / resC;
 
     /* Pack coordinates in a vector
      * As our current y value represents how deep we are in the voxels, it is
      * our 3D z position.
      */
-    vec3 fragPos = vec3(refreshNo, refreshMod.x * float(SYNTH_W),
-                        refreshMod.y* float(SYNTH_H));
+    vec3 fragPos = vec3(refreshNo, refreshMod.x, 1.0 - refreshMod.y);
 
     // We need to flip the second half of the slices
     float flip = step(0.5, refreshNo) * 2.0 - 1.0;
