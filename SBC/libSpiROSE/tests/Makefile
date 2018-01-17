@@ -46,11 +46,26 @@ run: $(TESTS:=-diff.png) $(TESTS_POST:=-comb-diff.png)
 	convert $^ -fill red -opaque white $@
 
 # Interlace test
-POST_INTERMEDIATE += cube_interlace_1 cube_interlace_2
+POST_INTERMEDIATE += cube_interlace_1 cube_interlace_2 cube_interlace_block_32 \
+                     cube_interlace_block_96
 cube_interlace_1.png: cube_interlace.test.png
-	convert $^[40x48+0+96] -sample 200%x100%! $@
+	montage $(shell for line in {0..47}; do \
+	                    x=$$(($$line * 40 % 640)); \
+	                    y=$$((80 * 3 + $$line / 16)); \
+	                    echo $^[40x1+$$x+$$y]; \
+	                done | xargs) \
+	        -geometry +0+0 -background transparent -tile 1x48 \
+	        cube_interlace_block_80.png
+	convert cube_interlace_block_80.png[40x48+0+96] -sample 200%x100%! $@
 cube_interlace_2.png: cube_interlace.test.png
-	convert $^[40x48+0+288] -sample 200%x100%! $@
+	montage $(shell for line in {0..47}; do \
+	                    x=$$(($$line * 40 % 640)); \
+	                    y=$$((16 * 3 + $$line / 16)); \
+	                    echo $^[40x1+$$x+$$y]; \
+	                done | xargs) \
+	        -geometry +0+0 -background transparent -tile 1x48 \
+	        cube_interlace_block_16.png
+	convert cube_interlace_block_16.png[40x48+0+288] -sample 200%x100%! $@
 cube_interlace-comb.png: cube_interlace_1.png cube_interlace_2.png
 	convert $^ -fx 'i % 2 ? u : v' $@
 
