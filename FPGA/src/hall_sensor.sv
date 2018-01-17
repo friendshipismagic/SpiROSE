@@ -9,6 +9,8 @@ module hall_sensor (
     output logic position_sync
 );
 
+localparam SLICE_PER_HALF_TURN = 128;
+
 // Counter for each half-turn
 logic [31:0] counter;
 
@@ -44,7 +46,8 @@ always_ff @(posedge clk or negedge nrst) begin
              */
             position_sync <= 1;
         end else begin
-            if (32'(slice_cycle_counter) == slice_cycle_number - 1) begin
+            if (32'(slice_cycle_counter) == slice_cycle_number - 1
+                    && slice_cnt < SLICE_PER_HALF_TURN - 1) begin
                 slice_cycle_counter <= 0;
                 slice_cnt <= slice_cnt + 1;
                 position_sync <= 1;

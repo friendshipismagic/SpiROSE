@@ -204,6 +204,17 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_lse(clock_33)
 );
 
+assign nrst = key[0] & lock;
+assign hall_1 = key[3];
+assign hall_2 = key[2]; 
+assign position_sync = ledr[8];
+assign digit_0 = slice_cnt % 10;
+assign digit_1 = ((slice_cnt % 100) - digit_0)/10;
+assign digit_2 = (slice_cnt - digit_0 - digit_1)/100;
+//assign digit_0 = slice_cnt & 4'hf;
+//assign digit_1 = (slice_cnt >> 4) & 4'hf;
+
+
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
 always_ff @(posedge clock_66 or negedge nrst)
@@ -234,7 +245,7 @@ always_ff @(posedge clock_33 or negedge nrst)
 
 // Test for hall effect sensors
 hall_sensor main_hall_sensor (
-    .clk(clk_33),
+    .clk(clock_33),
     .nrst(nrst),
     .hall_1(hall_1),
     .hall_2(hall_2),
@@ -257,12 +268,5 @@ SEG7_LUT lut2 (
     .oSEG(hex2)
 );
 
-assign nrst = key[0] & lock;
-assign hall_1 = key[3];
-assign hall_2 = key[2];
-assign position_sync = ledr[8];
-assign digit_0 = 4'(slice_cnt % 10);
-assign digit_1 = 4'((slice_cnt % 100) - digit_0)/10;
-assign digit_2 = 4'((slice_cnt % 100) - digit_0 - digit_1)/100;
 
 endmodule

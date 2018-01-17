@@ -960,8 +960,10 @@ set_global_assignment -name SEARCH_PATH ../src
 set_global_assignment -name BOARD "DE1-SoC Board"
 
 
-set_global_assignment -name SYSTEMVERILOG_FILE ../src/framebuffer_emulator.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../src/driver_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../src/clock_lse_inverse.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../src/clock_lse.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../src/hall_sensor.sv
+set_global_assignment -name SYSTEMVERILOG_FILE SEG7_LUT.sv
 set_global_assignment -name SYSTEMVERILOG_FILE DE1_SoC.sv
 set_global_assignment -name SDC_FILE DE1_SoC.sdc
 set_global_assignment -name QIP_FILE clk_66.qip
