@@ -1,7 +1,6 @@
 #include <systemc.h>
 #include <verilated.h>
 
-#include "Vclock_lse.h"
 #include "Vhall_sensor.h"
 
 #include "monitor.hpp"

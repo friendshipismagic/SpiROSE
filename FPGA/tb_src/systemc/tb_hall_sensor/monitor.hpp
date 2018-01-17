@@ -25,6 +25,11 @@ SC_MODULE(Monitor) {
     sc_in<bool> positionSync;
     sc_in<unsigned int> sliceCnt;
 
+    int positionSyncCounter;
+    void checkPositionSync();
+    void storePositionSync();
+
     private:
     void sendReset();
+    void sendHallSignals(int value);
 };
