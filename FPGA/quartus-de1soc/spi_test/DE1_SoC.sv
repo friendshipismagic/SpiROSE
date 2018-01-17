@@ -144,12 +144,12 @@ module DE1_SoC(
 );
 
 //    Turn off all display     //////////////////////////////////////
-assign    hex0        =    serialized_conf[6:0];
-assign    hex1        =    serialized_conf[13:7];
-assign    hex2        =    serialized_conf[20:14];
-assign    hex3        =    serialized_conf[27:21];
-assign    hex4        =    serialized_conf[34:28];
-assign    hex5        =    serialized_conf[41:35];
+assign    hex0        =    conf[6:0];
+assign    hex1        =    conf[13:7];
+assign    hex2        =    conf[20:14];
+assign    hex3        =    conf[27:21];
+assign    hex4        =    conf[34:28];
+assign    hex5        =    conf[41:35];
 
 /////////////////////////////////////////////////////////////////////
 // Sorties video VGA     ////////////////////////////////////////////
@@ -177,20 +177,14 @@ assign ps2_clk2      = 'z;
 assign ps2_dat       = 'z;
 assign ps2_dat2      = 'z;
 
-/*
- * Default configuration for drivers
- * To change the default configuration, please go to drivers_conf.sv
- */
-`include "drivers_conf.sv"
-
 logic        nrst                   ;
 logic [47:0] conf                   ;
 logic        new_configuration_ready;
-/*logic        spi_clk                ;
+logic        spi_clk                ;
 logic        spi_ss                 ;
 logic        spi_mosi               ;
 logic        spi_miso               ;
-logic [15:0] rotation_data          ;*/
+logic [15:0] rotation_data          ;
 logic [29:0] framebuffer_data       ;
 logic        position_sync          ;
 logic        sout                   ;
@@ -220,7 +214,7 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .nrst(nrst),
     .clk_lse(clock_33)
 );
-/*
+
 spi_slave main_spi(
     .nrst(nrst),
     .spi_clk(spi_clk),
@@ -228,9 +222,9 @@ spi_slave main_spi(
     .spi_mosi(spi_mosi),
     .spi_miso(spi_miso),
     .rotation_data(rotation_data),
-    .config_out(serialized_conf),
+    .config_out(conf),
     .new_config_available(new_configuration_ready)
-);*/
+);
 
 framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
     .clk_33(clock_33),
@@ -288,21 +282,16 @@ always_ff @(posedge clock_33 or negedge nrst)
 
 // Project pins assignment
 assign nrst      = key[0] & lock;
-/*
-assign spi_mosi  = gpio_0[18]   ;
-assign spi_miso  = gpio_0[20]   ;
-assign spi_clk   = gpio_0[22]   ;
-assign spi_ss    = gpio_0[24]   ;
-*/
+
+assign spi_mosi  = gpio_1[18];
+assign spi_miso  = gpio_1[20];
+assign spi_clk   = gpio_1[22];
+assign spi_ss    = gpio_1[24];
 
 assign gpio_1[35]   = gclk;
 assign gpio_1[33]   = sclk;
 assign gpio_1[31]   = lat;
 assign gpio_1[29]   = sin[0];
-/*assign gpio_1[28]   = sin[0];
-* assign gpio_1[27]   = sin[0];
-* assign gpio_1[26]   = sin[0];
-* assign gpio_1[25]   = sin[0];*/
 
 assign gpio_0[10] = sw[9];
 assign gpio_0[12] = sw[8];
@@ -318,29 +307,5 @@ logic old_conf;
 
 assign new_conf = ~key[3];
 assign old_conf = ~key[2];
-
-always_ff @(posedge clock_33 or negedge nrst)
-    if(~nrst) begin
-        new_configuration_ready <= '0;
-        conf <= serialized_conf;
-        ledr[2] <= '0;
-        ledr[3] <= '0;
-    end else begin
-        ledr[2] <= '0;
-        ledr[3] <= '0;
-        new_configuration_ready <= '0;
-        if(new_conf) begin
-            ledr[3] <= '1;
-            conf[43:41] <= 3'b111;
-            conf[40:32] <= 9'b1_1111_1111;
-            conf[31:23] <= 9'b0_0100_0000;
-            new_configuration_ready <= 1'b1;
-        end
-        if(old_conf) begin
-            ledr[2] <= '1;
-            conf <= serialized_conf;
-            new_configuration_ready <= 1'b1;
-        end
-    end
 
 endmodule
