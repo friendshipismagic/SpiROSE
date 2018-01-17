@@ -6,6 +6,7 @@
  *   sensors to the SBC
  */
 
+
 module spi_slave(
     input  nrst,
 
@@ -25,17 +26,23 @@ localparam CONFIG_COMMAND = 191;
 localparam ROTATION_COMMAND = 76;
 localparam DEFAULT_CONFIG_DATA = 'hff;
 
+`include "drivers_conf.sv"
+
 /*
  * ReceiveRegister is a shift register for the received byte
  * TransmitRegister is a shift register for the byte to be transmitted
  */
-logic [7:0] receive_register, transmit_register;
+logic [6:0] received_bits;
+logic [7:0] transmit_register;
+
+logic [7:0] current_register;
+assign current_register = {received_bits, spi_mosi};
 
 /*
- * shift_counter keeps trace of the number of times the receive_register is
+ * shift_counter keeps trace of the number of times the received_bits is
  * shifted
  */
-logic [3:0] shift_counter;
+logic [2:0] shift_counter;
 
 // Counter that counts the number of configuration bytes received
 logic [2:0] config_byte_counter;
@@ -57,27 +64,37 @@ assign spi_miso = transmission_step == NO_TRANSMISSION ? 1'b1 : transmit_registe
 /*
  * Process for the receiving part:
  * The master sends data through spi_mosi while ss is low,
- * it is stored in the receive_register, which is then
+ * it is stored in the received_bits, which is then
  * shifted.
  */
 always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
         shift_counter <= '0;
     end else begin
+        shift_counter <= '0;
         if (~spi_ss) begin
             // Shift the receive register
-            receive_register[7:1] <= receive_register[6:0];
-            // Store the incoming spi_mosi data in the receive register LSB
-            receive_register[0] <= spi_mosi;
+            received_bits[6:1] <= received_bits[5:0];
+            received_bits[0] <= spi_mosi;
             shift_counter <= shift_counter + 1'b1;
-            if (shift_counter == 7) begin
-                shift_counter <= '0;
-            end
-        end else begin
-            shift_counter <= '0;
         end
     end
 end
+
+
+logic should_run_configure;
+assign should_run_configure =
+    config_byte_counter == 0
+ && shift_counter == 7
+ && current_register == CONFIG_COMMAND;
+
+logic next_config_byte_is_ready;
+assign next_config_byte_is_ready =
+    config_byte_counter > 0
+ && shift_counter == 7;
+
+logic [5:0] current_configuration_addr;
+assign current_configuration_addr = 48 - config_byte_counter*8;
 
 /*
  * Process for the receiver logic.
@@ -88,25 +105,31 @@ always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
         config_byte_counter <= 0;
         new_config_available <= 0;
+        configuration <= serialized_conf;
     end else begin
-        if (config_byte_counter == 0 && shift_counter == 0
-                && receive_register == CONFIG_COMMAND) begin
+
+        /*
+         * If we are ready to process a configure command
+         * initialize the appropriate counter
+        */
+        if (should_run_configure) begin
             config_byte_counter <= 1;
-            configuration[7:0] <= receive_register;
         end
-        if (config_byte_counter > 0 && shift_counter == 0) begin
-            configuration[(config_byte_counter-1)*8 +: 8] <= receive_register;
+
+        /*
+         * Otherwise, we are ready to process values as soon as they are ready
+        */
+        if (next_config_byte_is_ready) begin
+            config_byte_counter <= config_byte_counter + 1;
+            configuration[current_configuration_addr +: 8] <= current_register;
+
+            /*
+             * Signal that a new configuration is available and start waiting
+             * for a new configuration
+             */
             if (config_byte_counter == 6) begin
-                /*
-                * When the whole new configuration is received, reset the
-                * config_byte_counter
-                */
                 config_byte_counter <= 0;
-                // Signal that a new configuration is available
                 new_config_available <= 1;
-            end else begin
-                // A complete byte has been received
-                config_byte_counter <= config_byte_counter + 1;
             end
         end else begin
             new_config_available <= 0;
@@ -120,6 +143,11 @@ end
  * it needs to send it back through spi_miso to the SBC.
  */
 
+logic should_run_rotation;
+assign should_run_rotation =
+    current_register == ROTATION_COMMAND
+ && transmission_step == NO_TRANSMISSION;
+
 always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
         transmit_register <= DEFAULT_CONFIG_DATA;
@@ -127,7 +155,7 @@ always_ff @(posedge spi_clk or negedge nrst) begin
     end else begin
         if (~spi_ss) begin
             if (shift_counter == 7) begin
-                if ({receive_register[6:0], spi_mosi} == ROTATION_COMMAND) begin
+                if (current_register == ROTATION_COMMAND) begin
                     transmit_register <= rotation_data[7:0];
                     transmission_step <= FIRST_BYTE;
                 end else if (transmission_step == 1) begin

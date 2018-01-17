@@ -2,7 +2,7 @@
 #include <verilated.h>
 
 #include "Vclock_lse.h"
-#include "Vspi.h"
+#include "Vspi_slave.h"
 
 #include "monitor.hpp"
 #include "report_handler.hpp"
@@ -43,7 +43,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, spiDriverConfig, "config_out");
     sc_trace(traceFile, spiConfigAvailable, "new_config_available");
 
-    Vspi dut("spi");
+    Vspi_slave dut("spi");
     dut.spi_clk(spiSck);
     dut.nrst(nrst);
     dut.spi_ss(spiSs);
