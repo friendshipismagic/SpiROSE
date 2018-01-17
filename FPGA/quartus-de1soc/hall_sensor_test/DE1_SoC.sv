@@ -206,8 +206,7 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
 
 assign nrst = key[0] & lock;
 assign hall_1 = key[3];
-assign hall_2 = key[2]; 
-assign position_sync = ledr[8];
+assign hall_2 = key[2];
 assign digit_0 = slice_cnt % 10;
 assign digit_1 = ((slice_cnt % 100) - digit_0)/10;
 assign digit_2 = (slice_cnt - digit_0 - digit_1)/100;
@@ -267,6 +266,16 @@ SEG7_LUT lut2 (
     .iDIG(digit_2),
     .oSEG(hex2)
 );
+
+always_ff @(posedge clock_33 or negedge nrst) begin
+	if (~nrst) begin
+		ledr[8] <= '0;
+	end else begin
+		if (position_sync) begin
+			ledr[8] <= ~ledr[8];
+		end
+	end
+end
 
 
 endmodule
