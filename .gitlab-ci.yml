@@ -8,9 +8,10 @@ stages:
   - bundle
 
 variables:
-  SBC_DIR: "SBC"
+  JOBS: 2
   RENDERER_POC_DIR: "tools/renderer"
   FPGA_DIR: "FPGA"
+  LIBSPIROSE_DIR: "SBC/libSpiROSE"
 
 before_script:
   - git submodule init
@@ -99,3 +100,48 @@ fpga/host:
   script:
     - cd $FPGA_DIR
     - make host
+
+libspirose/lint:
+  stage: lint
+  image: tuetuopay/clang
+  script:
+    - cd $LIBSPIROSE_DIR
+    - make lint
+libspirose/build:
+  stage: build
+  image: tuetuopay/glfw
+  script:
+    - cd $LIBSPIROSE_DIR
+    - make build -j$(JOBS)
+libspirose/test:
+  stage: test
+  image: tuetuopay/glfw
+  script:
+    - cd $LIBSPIROSE_DIR
+    - echo Testing desktop OpenGL
+    - make build -j$(JOBS)
+    - make install
+    - make test -j$(JOBS)
+    - echo Testing OpenGL ES
+    - make clean
+    - make build UNAME_P=armv7l -j$(JOBS)
+    - make install
+    - make test -j$(JOBS)
+libspirose/host:
+  stage: host
+  image: tuetuopay/glfw
+  script:
+    - cd $LIBSPIROSE_DIR
+    - make host
+libspirose/bundle:
+  stage: bundle
+  image: tuetuopay/glfw
+  script:
+    - cd $LIBSPIROSE_DIR
+    - make bundle -j$(BUNDLE)
+  artifacts:
+    paths:
+      - $LIBSPIROSE_DIR/libSpiROSE.tar.gz
+    expire_in: 1 week
+  only:
+    - master
