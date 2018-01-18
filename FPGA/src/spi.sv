@@ -22,11 +22,11 @@ module spi_slave(
     output rgb_enable
 );
 
-localparam CONFIG_COMMAND = 191;
-localparam ROTATION_COMMAND = 76;
+localparam CONFIG_COMMAND = 'hBF;
+localparam ROTATION_COMMAND = 'h4C;
 localparam DISABLE_RGB_COMMAND = 'hD0;
 localparam ENABLE_RGB_COMMAND = 'hE0;
-localparam DEFAULT_CONFIG_DATA = 'hff;
+localparam DEFAULT_CONFIG_DATA = 'hFF;
 
 /*
  * ReceiveRegister is a shift register for the received byte
@@ -91,6 +91,7 @@ always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
         config_byte_counter <= 0;
         new_config_available <= 0;
+        rgb_enable <= 0;
     end else begin
         if (config_byte_counter == 0 && shift_counter == 0) begin
             case (receive_register)
