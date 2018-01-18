@@ -32,6 +32,7 @@ SC_MODULE(Monitor) {
     sc_out<uint32_t> rotationData;
     sc_in<uint64_t> configOut;
     sc_in<bool> newConfigAvailable;
+    sc_in<bool> rgbEnable;
 
     void sendCommand(char value);
     void handleSck();

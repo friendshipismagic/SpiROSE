@@ -87,6 +87,25 @@ void Monitor::runTests() {
 
     for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
 
+    const auto msgE0 =
+        "0xE0 command should have turned the rgb_enable signal on, but the "
+        "signal state is off";
+    const auto msgD0 =
+        "0xD0 command should have turned the rgb_enable signal off, but the "
+        "signal state is on";
+
+    for (int i = 0; i < 10; ++i) {
+        sendCommand(0xE0);
+        sendCommand(0xff);
+        if (!rgbEnable) SC_REPORT_ERROR("rgb", msgE0);
+
+        sendCommand(0xD0);
+        sendCommand(0xff);
+        if (rgbEnable) SC_REPORT_ERROR("rgb", msgD0);
+    }
+
+    for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
+
 
     // test that configure is not interpreted as as command in configure mode
     for (int i = 0; i < 7; ++i) {
@@ -113,7 +132,9 @@ void Monitor::sendReset() {
 void Monitor::sendCommand(char value) {
     // Sample data at the rising edge, so we change data at the falling edge
     enableSck.write(1);
-    wait(clk.negedge_event());
+    // If it is the first command we send we wait for sck
+    if(enableSck.read() == 0)
+        wait(clk.negedge_event());
     for (int i = 0; i < SPI_CYCLES; ++i) {
         mosi = (value >> (SPI_CYCLES - i - 1)) & 1;
         wait(clk.negedge_event());

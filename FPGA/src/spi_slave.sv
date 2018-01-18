@@ -18,12 +18,15 @@ module spi_slave(
     input [15:0] rotation_data,
 
     output [47:0] config_out,
-    output new_config_available
+    output new_config_available,
+    output rgb_enable
 );
 
-localparam CONFIG_COMMAND = 191;
-localparam ROTATION_COMMAND = 76;
-localparam DEFAULT_CONFIG_DATA = 'hff;
+localparam CONFIG_COMMAND = 'hBF;
+localparam ROTATION_COMMAND = 'h4C;
+localparam DISABLE_RGB_COMMAND = 'hD0;
+localparam ENABLE_RGB_COMMAND = 'hE0;
+localparam DEFAULT_CONFIG_DATA = 'hFF;
 
 `include "drivers_conf.sv"
 
@@ -52,9 +55,7 @@ logic [2:0] config_byte_counter;
 enum logic [1:0] {NO_TRANSMISSION, FIRST_BYTE, SECOND_BYTE} transmission_step;
 
 // 48-bit register that stores the received configuration
-/* verilator lint_off UNUSED */
 logic [47:0] configuration;
-/* verilatro lint_off WIDTH */
 assign config_out = configuration;
 
 // Send bit of the transmission shift register when in transmission mode
@@ -87,6 +88,18 @@ assign should_run_configure =
  && shift_counter == 7
  && current_register == CONFIG_COMMAND;
 
+logic should_disable_rgb;
+assign should_disable_rgb =
+    config_byte_counter == 0
+ && shift_counter == 7
+ && current_register == DISABLE_RGB_COMMAND;
+
+logic should_enable_rgb;
+assign should_enable_rgb =
+    config_byte_counter == 0
+ && shift_counter == 7
+ && current_register == ENABLE_RGB_COMMAND;
+
 logic next_config_byte_is_ready;
 assign next_config_byte_is_ready =
     config_byte_counter > 0
@@ -105,19 +118,25 @@ always_ff @(posedge spi_clk or negedge nrst) begin
         config_byte_counter <= 0;
         new_config_available <= 0;
         configuration <= serialized_conf;
+        rgb_enable <= 0;
     end else begin
 
         /*
          * If we are ready to process a configure command
-         * initialize the appropriate counter
-        */
+         * initialize the appropriate counter. Otherwise it can be an
+         * enable/disable RGB command, so do it.
+         */
         if (should_run_configure) begin
             config_byte_counter <= 1;
+        end else if (should_disable_rgb) begin
+            rgb_enable <= 0;
+        end else if (should_enable_rgb) begin
+            rgb_enable <= 1;
         end
 
         /*
          * Otherwise, we are ready to process values as soon as they are ready
-        */
+         */
         if (next_config_byte_is_ready) begin
             config_byte_counter <= config_byte_counter + 1;
             configuration[current_configuration_addr +: 8] <= current_register;
