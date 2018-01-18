@@ -100,19 +100,19 @@ fpga/host:
     - cd $FPGA_DIR
     - make host
 
-lint_libspirose:
+libspirose/lint:
   stage: lint
   image: tuetuopay/clang
   script:
     - cd $LIBSPIROSE_DIR
     - make lint
-build_libspirose:
+libspirose/build:
   stage: build
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
     - make build
-test_libspirose:
+libspirose/test:
   stage: test
   image: tuetuopay/glfw
   script:
@@ -126,13 +126,13 @@ test_libspirose:
     - make build UNAME_P=armv7l
     - make install
     - make test
-host_libspirose:
+libspirose/host:
   stage: host
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
     - make host
-bundle_libspirose:
+libspirose/bundle:
   stage: bundle
   image: tuetuopay/glfw
   script:
