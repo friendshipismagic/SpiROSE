@@ -79,9 +79,12 @@ void Monitor::runTests() {
         wait(clk.posedge_event());
     }
 
-    const auto msgE0 = "0xE0 command should have turn on the rgb_enable signal";
+    const auto msgE0 =
+        "0xE0 command should have turned the rgb_enable signal on, but the "
+        "signal state is off";
     const auto msgD0 =
-        "0xD0 command should have turn off the rgb_enable signal";
+        "0xD0 command should have turned the rgb_enable signal off, but the "
+        "signal state is on";
 
     for (int i = 0; i < 10; ++i) {
         sendCommand(0xE0);
