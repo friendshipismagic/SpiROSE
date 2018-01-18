@@ -11,15 +11,8 @@
 #include "monitor.hpp"
 
 void Monitor::runTests() {
-    Driver::RegBuff conf;
-    std::string confStr = "010111001000001000000001000000000001000";
-    std::string revConfStr(confStr.rbegin(), confStr.rend());
-    conf = revConfStr.c_str();
-    config = conf.to_uint();
-    framebufferSync = false;
+    positionSync = true;
     framebufferData = 0;
-
-    sendReset();
 
     sc_spawn(sc_bind(&Monitor::checkTimingRequirementsLat, this, LATCH_LATGS,
                      sc_time(80, SC_NS)));
@@ -85,7 +78,7 @@ void Monitor::checkConfig() {
     wait(sclk.posedge_event());
     for (auto& d : m_drivers) {
         auto c = d->getFcData();
-        if (c.to_uint() != config) {
+        if (c.to_uint64() != config) {
             std::string errorMsg = "Drivers didn't read the config correctly";
             errorMsg += ", wanted " + sc_bv<48>(config.read()).to_string();
             errorMsg += ", got " + c.to_string();
@@ -228,16 +221,42 @@ void Monitor::checkThatDataIsReceivedInPokerMode() {
     }
 }
 
-void Monitor::sendReset() {
-    nrst = 0;
-    for (int i = 0; i < 10; ++i) {
-        wait(clk.posedge());
-    }
-    nrst = 1;
+void Monitor::sendPositionSync() {
+    positionSync = true;
+    wait();
+    positionSync = false;
 }
 
-void Monitor::sendFramebufferSync() {
-    framebufferSync = true;
-    wait();
-    framebufferSync = false;
+void Monitor::checkThatNewConfigurationIsReceived() {
+    auto p_latgs =
+        sc_spawn(sc_bind(&Monitor::checkThatLatgsFallDuringTheEndOfASegment, this));
+    Driver::RegBuff conf;
+    std::string confStr = "010111001000001000000001000000000001000";
+    std::string revConfStr(confStr.rbegin(), confStr.rend());
+    conf = revConfStr.c_str();
+    config = conf.to_uint64();
+    newConfigurationReady = 0;
+
+    // Wait an arbitrary number of cycles before sending a new configuration
+    for(int i = 0; i < 300; ++i)
+        wait(clk.posedge_event());
+
+      // Change bright control configuration
+    confStr = "010111001000001000000001000000000101000";
+    revConfStr.assign(confStr.rbegin(), confStr.rend());
+    conf = revConfStr.c_str();
+    config = conf.to_uint64();
+
+    newConfigurationReady = 1;
+    wait(clk.posedge_event());
+    newConfigurationReady = 0;
+
+    // reset the latgs check
+    p_latgs.reset();
+
+    // Check that FCWRTEN command is sent
+    auto latCount = waitLat(sclk, lat);
+    if (latCount != LATCH_FCWRTEN) {
+        SC_REPORT_FATAL("config","The new config is not sent");
+    }
 }
