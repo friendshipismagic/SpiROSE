@@ -154,10 +154,20 @@ spi-cli/build:
   stage: build
   image: rust
   script:
+    - export CARGO_HOME="$PWD/.cargo"
     - cd tools/spi_cli && cargo build
+  cache:
+    key: cargo
+    paths:
+      - .cargo/
 
 spi-cli/test:
   stage: test
   image: rust
   script:
+    - export CARGO_HOME="$PWD/.cargo"
     - cd tools/spi_cli && cargo test
+  cache:
+    key: cargo
+    paths:
+      - .cargo/
