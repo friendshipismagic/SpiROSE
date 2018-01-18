@@ -199,6 +199,7 @@ logic [15:0] ram_rdata              ;
 logic        w_enable               ;
 logic        stream_ready           ;
 logic [23:0] rgb                    ;
+logic        rgb_clk                ;
 logic        hsync                  ;
 logic        vsync                  ;
 logic [7:0]  mux_out                ;
@@ -233,7 +234,8 @@ spi_slave main_spi(
     .spi_miso(spi_miso),
     .rotation_data(rotation_data),
     .config_out(serialized_conf),
-    .new_config_available(new_configuration_ready)
+    .new_config_available(new_configuration_ready),
+	 .rgb_enable(rgb_enable)
 );
 
 hall_sensor_emulator main_hall_sensor_emulator (
@@ -243,7 +245,7 @@ hall_sensor_emulator main_hall_sensor_emulator (
 );
 
 rgb_logic main_rgb_logic (
-    .rgb_clk(clock_33),
+    .rgb_clk(rgb_clk),
     .nrst(nrst),
     .rgb(rgb),
     .hsync(hsync),
@@ -328,24 +330,54 @@ always_ff @(posedge clock_33 or negedge nrst)
 		end
 	end
 
+// Heartbeat LED 33MHz
+logic[24:0] heartbeat_counter_rgb;
+always_ff @(posedge rgb_clk or negedge nrst)
+	if(~nrst) begin
+		ledr[2] <= '0;
+		heartbeat_counter_rgb <= '0;
+	end else begin
+		heartbeat_counter_rgb <= heartbeat_counter_rgb + 1'b1;
+		if(heartbeat_counter_rgb == 27_000_000) begin
+			ledr[2] <= ~ledr[2];
+			heartbeat_counter_rgb <= '0;
+		end
+	end
+	
 // Project pins assignment
-assign rgb_enable = 1;
 assign nrst      = key[0] & lock;
-assign sout      = gpio_1[0]    ;
-assign sout_mux  = gpio_0[35:30];
-assign spi_clk   = gpio_0[29]   ;
-assign spi_ss    = gpio_0[28]   ;
-assign spi_mosi  = gpio_0[27]   ;
-assign spi_miso  = gpio_0[26]   ;
-assign hsync     = gpio_0[25]   ;
-assign vsync     = gpio_0[24]   ;
-assign rgb       = gpio_0[23:0] ;
 
+// SPI
+assign spi_clk   = gpio_1[22]   ;
+assign spi_ss    = gpio_1[24]   ;
+assign spi_mosi  = gpio_1[18]   ;
+assign spi_miso  = gpio_1[20]   ;
+
+// RGB
+assign rgb[23]   = gpio_0[7]    ;
+assign rgb[22]   = gpio_0[5]    ;
+assign rgb[21]   = gpio_0[3]    ;
+assign rgb[20]   = gpio_0[1]    ;
+assign rgb[19:0] = 0            ;
+assign hsync     = gpio_0[4]    ;
+assign vsync     = gpio_0[2]    ;
+assign rgb_clk   = gpio_0[0]    ;
+
+// Drivers
 assign gpio_1[35] = gclk;
 assign gpio_1[33] = sclk;
 assign gpio_1[31] = lat;
 assign gpio_1[29] = sin[0];
-assign gpio_1[21] = clock_66;
-assign gpio_1[19] = clock_33;
+
+// Multiplexing
+assign gpio_0[10] = sw[9];
+assign gpio_0[12] = sw[8];
+assign gpio_0[14] = sw[7];
+assign gpio_0[16] = sw[6];
+assign gpio_0[18] = sw[5];
+assign gpio_0[20] = sw[4];
+assign gpio_0[22] = sw[3];
+assign gpio_0[24] = sw[2];
+
 
 endmodule
