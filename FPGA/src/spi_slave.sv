@@ -55,9 +55,7 @@ logic [2:0] config_byte_counter;
 enum logic [1:0] {NO_TRANSMISSION, FIRST_BYTE, SECOND_BYTE} transmission_step;
 
 // 48-bit register that stores the received configuration
-/* verilator lint_off UNUSED */
 logic [47:0] configuration;
-/* verilatro lint_off WIDTH */
 assign config_out = configuration;
 
 // Send bit of the transmission shift register when in transmission mode
@@ -131,10 +129,10 @@ always_ff @(posedge spi_clk or negedge nrst) begin
         if (should_run_configure) begin
             config_byte_counter <= 1;
         end else if (should_disable_rgb) begin
-           rgb_enable <= 0;
-         end else if (should_enable_rgb) begin
+            rgb_enable <= 0;
+        end else if (should_enable_rgb) begin
             rgb_enable <= 1;
-         end
+        end
 
         /*
          * Otherwise, we are ready to process values as soon as they are ready

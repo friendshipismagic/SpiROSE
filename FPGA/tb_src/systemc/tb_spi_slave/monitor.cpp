@@ -132,7 +132,9 @@ void Monitor::sendReset() {
 void Monitor::sendCommand(char value) {
     // Sample data at the rising edge, so we change data at the falling edge
     enableSck.write(1);
-    wait(clk.negedge_event());
+    // If it is the first command we send we wait for sck
+    if(enableSck.read() == 0)
+        wait(clk.negedge_event());
     for (int i = 0; i < SPI_CYCLES; ++i) {
         mosi = (value >> (SPI_CYCLES - i - 1)) & 1;
         wait(clk.negedge_event());
