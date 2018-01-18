@@ -4,7 +4,6 @@ stages:
   - lint
   - build
   - test
-  - host
   - bundle
 
 variables:
@@ -37,13 +36,6 @@ lower_tower/test:
     - cd LCD_Display
     - make test
 
-lower_tower/host:
-  image: tuetuopay/arm-none-eabi
-  stage: host
-  script:
-    - cd LCD_Display
-    - make host
-
 renderer-poc/lint:
   stage: lint
   image: tuetuopay/clang
@@ -58,13 +50,6 @@ renderer-poc/build:
     - cd $RENDERER_POC_DIR
     - make build
     - make test
-
-renderer-poc/host:
-  stage: host
-  image: tuetuopay/glfw
-  script:
-    - cd $RENDERER_POC_DIR
-    - make host
 
 renderer-poc/bundle:
   stage: bundle
@@ -94,13 +79,6 @@ fpga/build:
     - make build
     - make test
 
-fpga/host:
-  stage: host
-  image: tuetuopay/verilator
-  script:
-    - cd $FPGA_DIR
-    - make host
-
 libspirose/lint:
   stage: lint
   image: tuetuopay/clang
@@ -129,13 +107,6 @@ libspirose/test:
     - make build UNAME_P=armv7l -j$(JOBS)
     - make install
     - make test -j$(JOBS)
-
-libspirose/host:
-  stage: host
-  image: tuetuopay/glfw
-  script:
-    - cd $LIBSPIROSE_DIR
-    - make host
 
 libspirose/bundle:
   stage: bundle
