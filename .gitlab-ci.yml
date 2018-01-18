@@ -8,6 +8,7 @@ stages:
   - bundle
 
 variables:
+  JOBS: 2
   RENDERER_POC_DIR: "tools/renderer"
   FPGA_DIR: "FPGA"
   LIBSPIROSE_DIR: "SBC/libSpiROSE"
@@ -111,21 +112,21 @@ libspirose/build:
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
-    - make build
+    - make build -j$(JOBS)
 libspirose/test:
   stage: test
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
     - echo Testing desktop OpenGL
-    - make build
+    - make build -j$(JOBS)
     - make install
-    - make test
+    - make test -j$(JOBS)
     - echo Testing OpenGL ES
     - make clean
-    - make build UNAME_P=armv7l
+    - make build UNAME_P=armv7l -j$(JOBS)
     - make install
-    - make test
+    - make test -j$(JOBS)
 libspirose/host:
   stage: host
   image: tuetuopay/glfw
@@ -137,7 +138,7 @@ libspirose/bundle:
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
-    - make bundle
+    - make bundle -j$(BUNDLE)
   artifacts:
     paths:
       - $LIBSPIROSE_DIR/libSpiROSE.tar.gz
