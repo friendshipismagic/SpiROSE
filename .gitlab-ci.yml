@@ -149,3 +149,9 @@ libspirose/bundle:
     expire_in: 1 week
   only:
     - master
+
+spi-cli/build:
+  stage: build
+  image: rust
+  script:
+    - cd tools/spi_cli && cargo build
