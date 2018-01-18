@@ -46,8 +46,8 @@ run: $(TESTS:=-diff.png) $(TESTS_POST:=-comb-diff.png)
 	convert $^ -fill red -opaque white $@
 
 # Interlace test
-POST_INTERMEDIATE += cube_interlace_1 cube_interlace_2 cube_interlace_block_32 \
-                     cube_interlace_block_96
+POST_INTERMEDIATE += cube_interlace_1 cube_interlace_2 cube_interlace_block_16 \
+                     cube_interlace_block_80
 cube_interlace_1.png: cube_interlace.test.png
 	montage $(shell for line in {0..47}; do \
 	                    x=$$(($$line * 40 % 640)); \
