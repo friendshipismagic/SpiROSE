@@ -1,4 +1,5 @@
 #include <cstdio>
+#include <cstring>
 #include <iostream>
 #include <vector>
 
@@ -10,13 +11,23 @@ namespace spirose {
 
 // This implementation is inspired by http://zarb.org/~gc/html/libpng.html
 bool savePNG(const std::string &filename, const int width, const int height,
-             uint8_t *pixels) {
+             const uint8_t *cpixels) {
     bool ret = false;
 
+    uint8_t *pixels = nullptr;
     FILE *fp = nullptr;
     png_structp png = nullptr;
     png_infop info = nullptr;
     std::vector<png_byte *> rows(height);
+
+    // Duplicate pixels because libpng does *not* takes a const pointer...
+    pixels = new uint8_t[width * height * 4];
+    if (!pixels) {
+        std::cerr << "[ERR] savePNG: failed to allocate "
+                  << (width * height * 4) << " bytes" << std::endl;
+        goto end;
+    }
+    memcpy(pixels, cpixels, width * height * 4);
 
     // Open file
     if (!(fp = fopen(filename.c_str(), "wb"))) {
@@ -79,6 +90,7 @@ bool savePNG(const std::string &filename, const int width, const int height,
 end:
     if (fp) fclose(fp);
     if (png) png_destroy_write_struct(&png, info ? &info : nullptr);
+    if (pixels) delete pixels;
 
     return ret;
 }

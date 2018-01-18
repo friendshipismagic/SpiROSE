@@ -67,7 +67,7 @@ inline void useProgram(GLuint program) {
  * @returns bool Whether the save was a success.
  */
 bool savePNG(const std::string &filename, const int width, const int height,
-             uint8_t *pixels);
+             const uint8_t *pixels);
 
 }  // namespace spirose
 
