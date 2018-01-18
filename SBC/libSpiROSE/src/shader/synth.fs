@@ -12,8 +12,17 @@ in vec2 ex_UV;
  * pixel_center_integer:
  *     by default, coordinates are the pixel's corner. However, the math was
  *     written (and tested) for pixel-center coordinates.
+ * NOTE: the layout properties are not supported in GLES, thus are emulated here
+ * The emulation is quite simple :
+ * origin_upper_left: y -> height - y - 1
+ *     we swap the y coordinate, and subtract 1 because y goes from 0 to height
+ *     - 1
+ * pixel_center_integer: (x, y) -> (x, y) - (0.5, 0.5)
+ *     this moves the integer coordinate from the corner of the pixel to its
+ *     center.
+ * For more information:
+ * https://www.khronos.org/registry/OpenGL-Refpages/gl4/html/gl_FragCoord.xhtml
  */
-layout(origin_upper_left, pixel_center_integer) in vec4 gl_FragCoord;
 
 layout(location = 0) out vec4 out_Color;
 
@@ -32,7 +41,7 @@ void main() {
     /* Fetch the pixel number. If we view our screen as a 1D buffer where all
      * lines follow each other, this is our X coordinate.
      */
-    float pixelNo = gl_FragCoord.x + gl_FragCoord.y * w;
+    float pixelNo = gl_FragCoord.x + (h - gl_FragCoord.y - 0.5) * w - 0.5;
     // ublock we are in, and which pixel no of the ublock we are
     float ublockNo = floor(pixelNo / nPixels),
           ublockPixelNo = mod(pixelNo, nPixels);
