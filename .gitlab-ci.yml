@@ -152,7 +152,7 @@ libspirose/bundle:
 
 spi-cli/build:
   stage: build
-  image: rust
+  image: tuetuopay/rust-cc-armv7
   script:
     - export CARGO_HOME="$PWD/.cargo"
     - cd tools/spi_cli && cargo build
@@ -163,7 +163,7 @@ spi-cli/build:
 
 spi-cli/test:
   stage: test
-  image: rust
+  image: tuetuopay/rust-cc-armv7
   script:
     - export CARGO_HOME="$PWD/.cargo"
     - cd tools/spi_cli && cargo test
@@ -171,3 +171,24 @@ spi-cli/test:
     key: cargo
     paths:
       - .cargo/
+
+spi-cli/bundle:
+  stage: bundle
+  image: tuetuopay/rust-cc-armv7
+  script:
+    - export CARGO_HOME="$PWD/.cargo"
+    - echo '[target.armv7-unknown-linux-gnueabihf]' > "$CARGO_HOME/config"
+    - echo 'linker = "arm-linux-gnueabihf-gcc"' >> "$CARGO_HOME/config"
+    - cd tools/spi_cli
+    - cargo build --release --target=armv7-unknown-linux-gnueabihf
+    - tar czvf spi_cli.tar.gz --transform 's,^,spi_cli/,' --transform 's,target/armv7-unknown-linux-gnueabihf/release/,,' led_driver_conf.toml target/armv7-unknown-linux-gnueabihf/release/spi_cli
+  artifacts:
+    paths:
+      - tools/spi_cli/spi_cli.tar.gz
+    expire_in: 1 week
+  cache:
+    key: cargo
+    paths:
+      - .cargo/
+  only:
+    - master
