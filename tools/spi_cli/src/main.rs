@@ -15,9 +15,6 @@ use clap::App;
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
 
-#[cfg(test)]
-mod test;
-
 // LEDDriverConfig is the struct containing the LED Driver Config
 // The serialized version is 48b long
 // As we send MSB for each packet, but LSB
@@ -130,10 +127,43 @@ fn send<T : Write+Read>(spi: &mut T, command: &SpiCommand, command_args: &[u8]) 
     Ok(())
 }
 
-fn get<T : Write+Read>(spi: &mut T, command: &SpiCommand, command_args: &[u8]) -> io::Result<Vec<u8>> {
+fn get<T: Write + Read>(
+    spi: &mut T,
+    command: &SpiCommand,
+    command_args: &[u8],
+) -> io::Result<Vec<u8>> {
     send(spi, command, command_args)?;
     let mut read_vec = vec![0; command.recv_len];
     spi.read_exact(&mut read_vec)?;
 
     Ok(read_vec)
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_that_spicommand_are_recognized() {
+        let commands = vec![
+            "enable_rgb",
+            "disable_rgb",
+            "blink_led",
+            "rotation",
+            "config",
+        ];
+        for command in commands {
+            assert!(
+                ::SpiCommand::decode(command).is_some(),
+                format!("Command {} is not implemented", command)
+            );
+        }
+    }
+
+    #[test]
+    fn serialize() {
+        let led_config: LEDDriverConfig =
+            toml::from_str(include_str!("../data/test_conf.toml")).unwrap();
+        assert_eq!(&led_config.pack(), &[50, 1, 0, 128, 79, 245]);
+    }
 }
