@@ -6,7 +6,6 @@
  *   sensors to the SBC
  */
 
-
 module spi_slave(
     input  nrst,
 
