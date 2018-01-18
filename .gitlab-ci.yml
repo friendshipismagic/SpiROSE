@@ -76,6 +76,13 @@ fpga/build:
   script:
     - cd $FPGA_DIR
     - make build
+
+fpga/test:
+  stage: test
+  image: tuetuopay/verilator
+  script:
+    - cd $FPGA_DIR
+    - make build
     - make test
 
 libspirose/lint:
