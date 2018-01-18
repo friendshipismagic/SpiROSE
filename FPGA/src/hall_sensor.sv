@@ -10,15 +10,18 @@ module hall_sensor (
 );
 
 localparam SLICE_PER_HALF_TURN = 128;
+localparam HALF_TURN_COUNTER_WIDTH = 32;
+localparam SLICE_PER_HALF_TURN_WIDTH = $clog2(SLICE_PER_HALF_TURN);
+localparam INTERNAL_COUNTER_WIDTH = HALF_TURN_COUNTER_WIDTH - SLICE_PER_HALF_TURN_WIDTH; 
 
 // Counter for each half-turn
-logic [31:0] counter;
+logic [HALF_TURN_COUNTER_WIDTH - 1:0] counter;
 
 /* 
- * Cycle counter for each slice (bit width is 128 times smaller 
+ * Cycle counter for each slice (bit width is SLICE_PER_HALF_TURN times smaller 
  * than that of counter)
  */
-logic [23:0] slice_cycle_counter;
+logic [INTERNAL_COUNTER_WIDTH - 1:0] slice_cycle_counter;
 
 // 1-cycle high top signal, when the Hall effect sensor is first triggered
 logic top;
@@ -27,7 +30,7 @@ logic top;
  * Number of cycles between two slices, calculated with 
  * the last half-turn data
  */
-logic [31:0] slice_cycle_number;
+logic [INTERNAL_COUNTER_WIDTH - 1:0] cycles_between_two_slices;
 
 // Process handling the generation of position_sync
 always_ff @(posedge clk or negedge nrst) begin
@@ -46,7 +49,7 @@ always_ff @(posedge clk or negedge nrst) begin
              */
             position_sync <= 1;
         end else begin
-            if (32'(slice_cycle_counter) == slice_cycle_number - 1
+            if (slice_cycle_counter == cycles_between_two_slices - 1
                     && slice_cnt < SLICE_PER_HALF_TURN - 1) begin
                 slice_cycle_counter <= 0;
                 slice_cnt <= slice_cnt + 1;
@@ -73,10 +76,10 @@ always_ff @(posedge clk or negedge nrst) begin
         if (top) begin
             /*
              * Store the number of cycles it took to reach this top
-             * In other words, slice_cycle_number is the number of cycles
+             * In other words, cycles_between_two_slices is the number of cycles
              * between the previous top and this top, aka half a turn
              */
-            slice_cycle_number <= (counter >> 7);
+            cycles_between_two_slices <= INTERNAL_COUNTER_WIDTH'(counter >> SLICE_PER_HALF_TURN_WIDTH);
             counter <= 1;
         end else begin
             counter <= counter + 1;
