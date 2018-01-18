@@ -155,3 +155,9 @@ spi-cli/build:
   image: rust
   script:
     - cd tools/spi_cli && cargo build
+
+spi-cli/test:
+  stage: test
+  image: rust
+  script:
+    - cd tools/spi_cli && cargo test
