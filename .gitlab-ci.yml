@@ -107,12 +107,14 @@ libspirose/lint:
   script:
     - cd $LIBSPIROSE_DIR
     - make lint
+
 libspirose/build:
   stage: build
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
     - make build -j$(JOBS)
+
 libspirose/test:
   stage: test
   image: tuetuopay/glfw
@@ -127,12 +129,14 @@ libspirose/test:
     - make build UNAME_P=armv7l -j$(JOBS)
     - make install
     - make test -j$(JOBS)
+
 libspirose/host:
   stage: host
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
     - make host
+
 libspirose/bundle:
   stage: bundle
   image: tuetuopay/glfw
@@ -145,3 +149,9 @@ libspirose/bundle:
     expire_in: 1 week
   only:
     - master
+
+spi-cli/build:
+  stage: build
+  image: rust
+  script:
+    - cd tools/spi_cli && cargo build
