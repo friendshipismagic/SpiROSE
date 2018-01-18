@@ -1,0 +1,29 @@
+name: SPI ROSE Command Line Tool
+version: "0.1.0"
+about: "Yet Another CLI for SPI matching the SpiROSE SPI behaviour"
+args:
+   - device:
+      help: "SPI device to use. To test, use none as device"
+      short: d
+      long: device
+      takes_value: true
+      default_value: "/dev/spidev0.0"
+subcommands:
+   - send:
+      about: "Send the following command to the SPI"
+      args:
+         - command:
+            help: "Command to send to the SPI device"
+            required: true
+   - get:
+      about: "Send the command and display the response from the SPI device"
+      args:
+         - command:
+            help: "Command to send to the SPI device"
+            required: true
+   - configure:
+      about: "Configure the LED drivers"
+      args:
+         - config_file:
+            help: "LED Drivers configuration file, TOML format"
+            required: true
