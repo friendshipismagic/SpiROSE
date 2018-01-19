@@ -15,6 +15,7 @@ struct {
 } options = {.verbose = false, .meshPath = "", .pngPath = ""};
 
 void parseOptions(int argc, char *argv[]);
+void printUsage();
 
 int main(int argc, char *argv[]) {
     parseOptions(argc, argv);
@@ -101,6 +102,7 @@ void parseOptions(int argc, char *argv[]) {
 
             case '?':
             default:
+                printUsage();
                 exit(-1);
         }
         parsed++;
@@ -110,9 +112,21 @@ void parseOptions(int argc, char *argv[]) {
         fprintf(stderr,
                 "[ERR] Insufficient arguments given. 2 required, got %d.\n",
                 argc - parsed - 1);
+        printUsage();
         exit(-1);
     }
 
     options.meshPath = std::string(argv[parsed + 1]);
     options.pngPath = std::string(argv[parsed + 2]);
+}
+
+void printUsage() {
+    printf(
+        "Framer - converts meshes and scenes to interlaced images for "
+        "SpiROSE.\n"
+        "Usage: ./framer [-v] <source scene> <destination PNG>\n"
+        "    -v - verbose: Prints out informations about the scene\n"
+        "    source scene: Any scene loadable by Assimp. It can handle multi "
+        "mesh scene with multiple colors.\n"
+        "    destination PNG: Output PNG to write the frame to.\n");
 }
