@@ -28,6 +28,19 @@ int main(int argc, char *argv[]) {
 
     std::cout << "[INFO] Scene has " << scene->mNumMeshes << " meshes."
               << std::endl;
+    std::cout << "[INFO] Scene has " << scene->mNumMaterials << " materials."
+              << std::endl;
+
+    // Extract colors from material
+    std::vector<glm::vec4> colors(scene->mNumMaterials);
+    for (unsigned int i = 0; i < scene->mNumMaterials; i++) {
+        aiColor3D color(1.f, 1.f, 1.f);
+        scene->mMaterials[i]->Get(AI_MATKEY_COLOR_DIFFUSE, color);
+        colors[i].r = color.r;
+        colors[i].g = color.g;
+        colors[i].b = color.b;
+        scene->mMaterials[i]->Get(AI_MATKEY_OPACITY, colors[i].a);
+    }
 
     glfwDestroyWindow(window);
     glfwTerminate();
