@@ -42,8 +42,8 @@ module DE1_SoC(
       output logic       fpga_i2c_sclk,
       inout  wire        fpga_i2c_sdat,
       ///////// GPIO /////////
-      inout  wire [35:0] gpio_0,
-      inout  wire [35:0] gpio_1,
+      input  wire [35:0] gpio_0,
+      input   wire [35:0] gpio_1,
       ///////// hex0 /////////
       output logic[6:0]  hex0,
       ///////// hex1 /////////
@@ -144,12 +144,12 @@ module DE1_SoC(
 );
 
 //    Turn off all display     //////////////////////////////////////
-assign    hex0        =    'h7F;
-assign    hex1        =    'h7F;
-assign    hex2        =    'h7F;
-assign    hex3        =    'h7F;
-assign    hex4        =    'h7F;
-assign    hex5        =    'h7F;
+assign    hex0        =    'h7f;
+assign    hex1        =    'h7f;
+assign    hex2        =    'h7f;
+assign    hex3        =    'h7f;
+assign    hex4        =    'h7f;
+assign    hex5        =    'h7f;
 
 /////////////////////////////////////////////////////////////////////
 // Sorties video VGA     ////////////////////////////////////////////
@@ -157,7 +157,7 @@ assign    hex5        =    'h7F;
 // assign  vga_hs        =  '0;       // Synchro horizontale
 // assign  vga_vs        =  '0;       // Synchro verticale
 // assign  vga_blank_n   =  '0;       // Autoriser l'affichage
-assign  vga_sync_n    =  '0;       // non utilisé, doit rester à zéro
+// assign  vga_sync_n    =  '0;       // non utilisé, doit rester à zéro
 // assign  vga_r         =  '1;       // 10bits de Rouge
 // assign  vga_g         =  '1;       // 10bits de Vert
 // assign  vga_b         =  '1;       // 10bits de Bleu
@@ -178,8 +178,7 @@ assign ps2_dat       = 'z;
 assign ps2_dat2      = 'z;
 //   Les sorties non utilisées seront mise à zéro
 
-// Project pins assignment
-wire nrst       = key[0] & lock;
+wire nrst;
 // Choose between RGB output direct to VGA or RAM dump to VGA
 wire rgb_or_ram = key[1];
 // RGB input
@@ -188,12 +187,16 @@ wire disp_hsync;
 wire disp_vsync;
 wire [2:0] disp_r;
 wire [2:0] disp_g;
-wire [2:0] disp_b;
+wire [3:0] disp_b = rgb[23:20];
+wire [23:0] rgb;
+wire stream_ready;
+wire rgb_enable;
 // RAM VGA dumper
 wire ram_vga_clk;
 wire ram_vga_hs;
 wire ram_vga_vs;
 wire ram_vga_blank;
+wire ram_vga_sync;
 wire [7:0] ram_vga_r;
 wire [7:0] ram_vga_g;
 wire [7:0] ram_vga_b;
@@ -201,12 +204,12 @@ wire [7:0] ram_vga_b;
 wire w_enable;
 wire [31:0] w_addr;
 wire [31:0] r_addr;
-wire [31:0] w_data;
-wire [31:0] r_data;
+wire [15:0] w_data;
+wire [15:0] r_data;
 
 // Heartbeat LED 27MHz
 logic[24:0] heartbeat_counter_27;
-always_ff @(posedge td_clk27 or negedge nrst)
+always_ff @(posedge disp_clk or negedge nrst)
 	if(~nrst) begin
 		ledr[0] <= '0;
 		heartbeat_counter_27 <= '0;
@@ -219,52 +222,49 @@ always_ff @(posedge td_clk27 or negedge nrst)
 	end
 
 always_comb begin
-   if (rgb_or_ram) begin
-      vga_clk   = disp_clk;
-      vga_hs    = disp_hsync;
-      vga_vs    = disp_vsync;
-      vga_blank = disp_vsync || disp_hsync;
-      vga_r     = disp_r;
-      vga_g     = disp_g;
-      vga_b     = disp_b;
+      vga_clk     = disp_clk;
+      vga_hs      = disp_hsync;
+      vga_vs      = disp_vsync;
+		vga_sync_n  = '0;
+      vga_blank_n = disp_vsync || disp_hsync;
+   if (~rgb_or_ram) begin
+      vga_r[7:5]  = disp_r;
+      vga_g[7:5]  = disp_g;
+      vga_b[7:4]  = disp_b;
    end else begin
-      vga_clk   = ram_vga_clk;
-      vga_hs    = ram_vga_hs;
-      vga_vs    = ram_vga_vs;
-      vga_blank = ram_vga_blank;
-      vga_r     = ram_vga_r;
-      vga_g     = ram_vga_g;
-      vga_b     = ram_vga_b;
+      vga_r[7:5]  = ram_vga_r[7:5];
+      vga_g[7:5]  = ram_vga_g[7:5];
+      vga_b[7:4]  = ram_vga_b[7:4];
    end
 end
 
 vga_dumper vga (
-    .CLK(td_clk27),
-    .NRST(nrst),
-    .VGA_HS(ram_vga_hs),
-    .VGA_VS(ram_vga_vs),
-    .VGA_BLANK(ram_vga_blank),
-    .VGA_SYNC(ram_vga_sync),
-    .VGA_R(ram_vga_r),
-    .VGA_G(ram_vga_g),
-    .VGA_G(ram_vga_b)
+    .vga_clk(disp_clk),
+    .nrst(nrst),
+    .vga_blank_n(vga_blank_n),
+    .vga_r(ram_vga_r),
+    .vga_g(ram_vga_g),
+    .vga_b(ram_vga_b),
+	 .raddr(r_addr),
+	 .rdata(r_data),
+	 .stream_ready(stream_ready)
 );
 
 // RAM Module
 ram main_ram (
-    .clk(td_clk27),
-    .w_enable(),
-    .w_addr(),
-    .r_addr(),
-    .w_data(),
-    .r_data()
+    .clk(disp_clk),
+    .w_enable(w_enable),
+    .w_addr(w_addr),
+    .r_addr(r_addr),
+    .w_data(w_data),
+    .r_data(r_data)
 );
 
 // Device Under Test
-rgb_logic dut (
+rgb_logic #(.IMAGE_IN_RAM(16)) dut (
     .rgb_clk(disp_clk),
     .nrst(nrst),
-    input [23:0] rgb,
+    .rgb(rgb),
     .hsync(disp_hsync),
     .vsync(disp_vsync),
 
@@ -272,7 +272,23 @@ rgb_logic dut (
     .ram_data(w_data),
     .write_enable(w_enable),
 
-    .rgb_enable(key[2]),
-    .stream_ready(ledr[9])
+    .rgb_enable(rgb_enable),
+    .stream_ready(stream_ready)
 );
+
+// Project pins assignment
+assign nrst    = key[0];
+assign ledr[9] = stream_ready;
+assign rgb_enable  = '1;
+
+// RGB
+assign rgb[23]    = gpio_0[7]   ;
+assign rgb[22]    = gpio_0[5]   ;
+assign rgb[21]    = gpio_0[3]   ;
+assign rgb[20]    = gpio_0[1]   ;
+assign rgb[19:0]  = 0           ;
+assign disp_hsync = gpio_0[4]   ;
+assign disp_vsync = gpio_0[2]   ;
+assign disp_clk   = gpio_0[0]   ;
+
 endmodule

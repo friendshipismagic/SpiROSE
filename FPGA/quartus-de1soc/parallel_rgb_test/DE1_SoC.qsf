@@ -591,6 +591,7 @@ set_location_assignment PIN_E12 -to vga_r[6]
 set_location_assignment PIN_F13 -to vga_r[7]
 set_location_assignment PIN_C10 -to vga_sync_n
 set_location_assignment PIN_D11 -to vga_vs
+set_instance_assignment -name SLEW_RATE 1 -to vga_*
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to vga_b[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to vga_b[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to vga_b[2]
@@ -960,7 +961,10 @@ set_global_assignment -name SEARCH_PATH ../../src
 set_global_assignment -name BOARD "DE1-SoC Board"
 
 
-set_global_assignment -name SYSTEMVERILOG_FILE ../src/framebuffer_emulator.sv
+
+
+set_global_assignment -name SYSTEMVERILOG_FILE ../../src/ram.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../src/vga_dumper.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../src/rgb_logic.sv
 set_global_assignment -name SYSTEMVERILOG_FILE DE1_SoC.sv
 set_global_assignment -name SDC_FILE DE1_SoC.sdc
