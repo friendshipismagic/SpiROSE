@@ -2,6 +2,8 @@
 #include <iostream>
 #include <vector>
 
+#include <glm/gtx/transform.hpp>
+
 #include <assimp/postprocess.h>
 #include <assimp/scene.h>
 #include <assimp/Importer.hpp>
@@ -10,6 +12,7 @@ int main(int argc, char *argv[]) {
     glfwInit();
     GLFWwindow *window = spirose::createWindow(80, 48, 256);
     spirose::Context context(80, 48, 256);
+    context.clearScreen();
 
     // Load mesh
     Assimp::Importer importer;
@@ -41,6 +44,33 @@ int main(int argc, char *argv[]) {
         colors[i].b = color.b;
         scene->mMaterials[i]->Get(AI_MATKEY_OPACITY, colors[i].a);
     }
+
+    // Iterate over objects
+    for (int m = 0; m < scene->mNumMeshes; m++) {
+        const aiMesh *mesh = scene->mMeshes[m];
+
+        // Build index buffer. Assimp gives indices on a per-face basis
+        std::vector<int> indices(mesh->mNumFaces * 3);
+        for (unsigned int i = 0; i < mesh->mNumFaces; i++) {
+            const aiFace &face = mesh->mFaces[i];
+            indices[i * 3 + 0] = face.mIndices[0];
+            indices[i * 3 + 1] = face.mIndices[1];
+            indices[i * 3 + 2] = face.mIndices[2];
+        }
+
+        // Build object
+        spirose::Object object(&mesh->mVertices[0].x, mesh->mNumVertices,
+                               &indices[0], indices.size());
+
+        // Voxelization
+        context.clearVoxels();
+        context.voxelize(object);
+
+        // Synthesis
+        context.synthesize(colors[mesh->mMaterialIndex]);
+    }
+
+    context.dumpPNG(argv[2]);
 
     glfwDestroyWindow(window);
     glfwTerminate();
