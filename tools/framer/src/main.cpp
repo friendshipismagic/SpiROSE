@@ -1,4 +1,5 @@
 #include <spirose/spirose.h>
+#include <unistd.h>
 #include <iostream>
 #include <vector>
 
@@ -8,7 +9,16 @@
 #include <assimp/scene.h>
 #include <assimp/Importer.hpp>
 
+struct {
+    bool verbose;
+    std::string meshPath, pngPath;
+} options = {.verbose = false, .meshPath = "", .pngPath = ""};
+
+void parseOptions(int argc, char *argv[]);
+
 int main(int argc, char *argv[]) {
+    parseOptions(argc, argv);
+
     glfwInit();
     GLFWwindow *window = spirose::createWindow(80, 48, 256);
     spirose::Context context(80, 48, 256);
@@ -20,11 +30,12 @@ int main(int argc, char *argv[]) {
     importer.SetPropertyInteger(AI_CONFIG_PP_SBP_REMOVE,
                                 aiPrimitiveType_LINE | aiPrimitiveType_POINT);
     const aiScene *scene = importer.ReadFile(
-        argv[1], aiProcess_JoinIdenticalVertices | aiProcess_Triangulate |
-                     aiProcess_SortByPType | aiProcess_PreTransformVertices);
+        options.meshPath.c_str(),
+        aiProcess_JoinIdenticalVertices | aiProcess_Triangulate |
+            aiProcess_SortByPType | aiProcess_PreTransformVertices);
 
     if (!scene) {
-        std::cerr << "[ERR] Failed to open scene " << argv[1] << ": "
+        std::cerr << "[ERR] Failed to open scene " << options.meshPath << ": "
                   << importer.GetErrorString() << std::endl;
         exit(-1);
     }
@@ -70,10 +81,36 @@ int main(int argc, char *argv[]) {
         context.synthesize(colors[mesh->mMaterialIndex]);
     }
 
-    context.dumpPNG(argv[2]);
+    context.dumpPNG(options.pngPath);
 
     glfwDestroyWindow(window);
     glfwTerminate();
 
     return 0;
+}
+
+void parseOptions(int argc, char *argv[]) {
+    int c, parsed = 0;
+    while ((c = getopt(argc, argv, "v")) != -1) {
+        switch (c) {
+            case 'v':
+                options.verbose = true;
+                break;
+
+            case '?':
+            default:
+                exit(-1);
+        }
+        parsed++;
+    }
+
+    if (argc - parsed < 3) {
+        fprintf(stderr,
+                "[ERR] Insufficient arguments given. 2 required, got %d.\n",
+                argc - parsed - 1);
+        exit(-1);
+    }
+
+    options.meshPath = std::string(argv[parsed + 1]);
+    options.pngPath = std::string(argv[parsed + 2]);
 }
