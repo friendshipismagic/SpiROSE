@@ -10,9 +10,10 @@
 #include <assimp/Importer.hpp>
 
 struct {
-    bool verbose;
+    bool verbose, visualize;
     std::string meshPath, pngPath;
-} options = {.verbose = false, .meshPath = "", .pngPath = ""};
+} options = {
+    .verbose = false, .visualize = false, .meshPath = "", .pngPath = ""};
 
 void parseOptions(int argc, char *argv[]);
 void printUsage();
@@ -24,6 +25,11 @@ int main(int argc, char *argv[]) {
     GLFWwindow *window = spirose::createWindow(80, 48, 256);
     spirose::Context context(80, 48, 256);
     context.clearScreen();
+
+    // MVP matrix for visualization output
+    glm::mat4 matMVP(
+        glm::perspective(glm::radians(90.f), 40.f / 48.f, .1f, 10.f) *
+        glm::lookAt(glm::vec3(1.f), glm::vec3(0.f), glm::vec3(0.f, 0.f, 1.f)));
 
     // Load mesh
     Assimp::Importer importer;
@@ -81,7 +87,10 @@ int main(int argc, char *argv[]) {
         context.voxelize(object);
 
         // Synthesis
-        context.synthesize(colors[mesh->mMaterialIndex]);
+        if (options.visualize)
+            context.visualize(colors[mesh->mMaterialIndex], matMVP);
+        else
+            context.synthesize(colors[mesh->mMaterialIndex]);
     }
 
     context.dumpPNG(options.pngPath);
@@ -94,10 +103,13 @@ int main(int argc, char *argv[]) {
 
 void parseOptions(int argc, char *argv[]) {
     int c, parsed = 0;
-    while ((c = getopt(argc, argv, "v")) != -1) {
+    while ((c = getopt(argc, argv, "vV")) != -1) {
         switch (c) {
             case 'v':
                 options.verbose = true;
+                break;
+            case 'V':
+                options.visualize = true;
                 break;
 
             case '?':
@@ -126,6 +138,8 @@ void printUsage() {
         "SpiROSE.\n"
         "Usage: ./framer [-v] <source scene> <destination PNG>\n"
         "    -v - verbose: Prints out informations about the scene\n"
+        "    -V - visual: Outputs the 3D representation rather than interlaced "
+        "frames.\n"
         "    source scene: Any scene loadable by Assimp. It can handle multi "
         "mesh scene with multiple colors.\n"
         "    destination PNG: Output PNG to write the frame to.\n");
