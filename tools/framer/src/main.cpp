@@ -40,10 +40,12 @@ int main(int argc, char *argv[]) {
         exit(-1);
     }
 
-    std::cout << "[INFO] Scene has " << scene->mNumMeshes << " meshes."
-              << std::endl;
-    std::cout << "[INFO] Scene has " << scene->mNumMaterials << " materials."
-              << std::endl;
+    if (options.verbose) {
+        std::cout << "[INFO] Scene has " << scene->mNumMeshes << " meshes."
+                  << std::endl;
+        std::cout << "[INFO] Scene has " << scene->mNumMaterials
+                  << " materials." << std::endl;
+    }
 
     // Extract colors from material
     std::vector<glm::vec4> colors(scene->mNumMaterials);
