@@ -30,29 +30,5 @@ set_location_assignment PIN_176 -to rgb_hsync
 set_location_assignment PIN_183 -to rgb_vsync
 
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_clk[0]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[1]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[2]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[3]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[5]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[6]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[7]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[8]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[9]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[10]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[11]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[12]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[13]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[14]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[15]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[16]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[16]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[18]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[19]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[20]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[20]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[21]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[22]
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_d[23]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_*
+
