@@ -60,7 +60,7 @@ int main(int argc, char *argv[]) {
     }
 
     // Iterate over objects
-    for (int m = 0; m < scene->mNumMeshes; m++) {
+    for (unsigned int m = 0; m < scene->mNumMeshes; m++) {
         const aiMesh *mesh = scene->mMeshes[m];
 
         // Build index buffer. Assimp gives indices on a per-face basis
