@@ -2,16 +2,16 @@
 
 module DE1_SoC(
       ///////// CLOCK2 /////////
-      input  wire        clock2_50,
+      input  logic        clock2_50,
       ///////// CLOCK3 /////////
-      input  wire        clock3_50,
+      input  logic        clock3_50,
       ///////// CLOCK4 /////////
-      input  wire        clock4_50,
+      input  logic        clock4_50,
       ///////// CLOCK /////////
-      input  wire        clock_50,
+      input  logic        clock_50,
       ///////// GPIO /////////
-      inout  wire [35:0] gpio_0,
-      inout  wire [35:0] gpio_1,
+      output logic[35:0] gpio_0,
+      output logic[35:0] gpio_1,
       ///////// hex0 /////////
       output logic[6:0]  hex0,
       ///////// hex1 /////////
@@ -25,12 +25,14 @@ module DE1_SoC(
       ///////// hex5 /////////
       output logic[6:0]  hex5,
       ///////// key /////////
-      input  wire [3:0]  key,
+      input  logic[3:0]  key,
       ///////// ledr /////////
       output logic[9:0]  ledr,
       ///////// sw /////////
-      input  wire [9:0]  sw
+      input  logic[9:0]  sw
 );
+
+`include "drivers_conf.sv"
 
 //    Turn off all display     //////////////////////////////////////
 assign    hex0        =    conf[6:0];
@@ -62,8 +64,7 @@ assign position_sync = 1'b1;
 
 // Don't send any data
 assign framebuffer_data = 1'b0;
-assign new_configuration_ready = key[3];
-assign conf = '0;
+assign new_configuration_ready = ~key[3];
 
 // 66 MHz clock generator
 logic clock_66, lock;
@@ -131,10 +132,10 @@ always_ff @(posedge clock_33 or negedge nrst)
 // Project pins assignment
 assign nrst = key[0] & lock;
 
-assign gpio_1[35]   = gclk;
-assign gpio_1[33]   = sclk;
-assign gpio_1[31]   = lat;
-assign gpio_1[29]   = sin[0];
+assign gpio_1[6]   = gclk;
+assign gpio_1[4]   = sclk;
+assign gpio_1[2]   = lat;
+assign gpio_1[0]   = sin[0];
 
 assign gpio_0[10] = sw[9];
 assign gpio_0[12] = sw[8];
@@ -145,9 +146,14 @@ assign gpio_0[20] = sw[4];
 assign gpio_0[22] = sw[3];
 assign gpio_0[24] = sw[2];
 
-assign gpio_0[0]  = key[1];
-assign gpio_0[1]  = key[2];
+assign gpio_0[0]  = key[2];
 
-
+always_comb begin
+    if(~key[1]) begin
+        conf = ledr[1] ? serialized_conf : '0;
+    end else begin
+        conf = sw[1] ? serialized_conf : '0;
+    end
+end
 
 endmodule
