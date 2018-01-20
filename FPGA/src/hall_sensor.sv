@@ -5,6 +5,11 @@ module hall_sensor (
     input hall_1,
     input hall_2,
 
+    /* 
+     * Slice that is meant to be displayed (over a full 256-slice turn).
+     * It is the slice counted after the Hall effect sensor 1 (arbitrarily)
+     * is triggered.
+     */
     output logic [7:0] slice_cnt,
     output logic position_sync
 );
@@ -13,6 +18,12 @@ localparam SLICE_PER_HALF_TURN = 128;
 localparam HALF_TURN_COUNTER_WIDTH = 32;
 localparam SLICE_PER_HALF_TURN_WIDTH = $clog2(SLICE_PER_HALF_TURN);
 localparam INTERNAL_COUNTER_WIDTH = HALF_TURN_COUNTER_WIDTH - SLICE_PER_HALF_TURN_WIDTH; 
+
+// Counter for slices over a half turn only
+logic [SLICE_PER_HALF_TURN_WIDTH:0] slice_half_cnt;
+
+// State for which half-turn we are in. HALFTURN1 after hall_1 trigger.
+enum logic {HALFTURN1, HALFTURN2} half_turn_state;
 
 // Counter for each half-turn
 logic [HALF_TURN_COUNTER_WIDTH - 1:0] counter;
@@ -37,12 +48,12 @@ always_ff @(posedge clk or negedge nrst) begin
     if (~nrst) begin
         position_sync <= 0;
         slice_cycle_counter <= 0;
-        slice_cnt <= 0;
+        slice_half_cnt <= 0;
     end else begin
         if (top) begin
             // Resynchronization for each top
             slice_cycle_counter <= 0;
-            slice_cnt <= 0;
+            slice_half_cnt <= 0;
             /* 
              * A top corresponds to the first slice, so we need
              * a position_sync being high
@@ -50,9 +61,9 @@ always_ff @(posedge clk or negedge nrst) begin
             position_sync <= 1;
         end else begin
             if (slice_cycle_counter == cycles_between_two_slices - 1
-                    && slice_cnt < SLICE_PER_HALF_TURN - 1) begin
+                    && slice_half_cnt < SLICE_PER_HALF_TURN - 1) begin
                 slice_cycle_counter <= 0;
-                slice_cnt <= slice_cnt + 1;
+                slice_half_cnt <= slice_half_cnt + 1;
                 position_sync <= 1;
             end else begin
                 slice_cycle_counter <= slice_cycle_counter + 1;
@@ -96,6 +107,7 @@ always_ff @(posedge clk or negedge nrst) begin
     if (~nrst) begin
         top <= 0;
         guard <= 0;
+        half_turn_state <= HALFTURN1;
     end else begin
         /*
          * Whenever one sensor is triggered and not guarded, 
@@ -104,6 +116,11 @@ always_ff @(posedge clk or negedge nrst) begin
         if ((~hall_1 | ~hall_2) && guard == 0) begin
             top <= 1;
             guard <= 1;
+            if (~hall_1) begin
+                half_turn_state <= HALFTURN1;
+            end else if (~hall_2) begin
+                half_turn_state <= HALFTURN2;
+            end
         end
         if (top == 1) begin
             top <= 0;
@@ -117,5 +134,13 @@ always_ff @(posedge clk or negedge nrst) begin
         end
     end
 end
+
+// Generate the slice counter over 256 slices (a full turn)
+always_comb
+    if (half_turn_state == HALFTURN1) begin
+        slice_cnt = 8'(slice_half_cnt);
+    end else begin
+        slice_cnt = SLICE_PER_HALF_TURN + slice_half_cnt;
+    end
 
 endmodule

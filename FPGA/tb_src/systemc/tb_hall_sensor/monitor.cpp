@@ -10,6 +10,8 @@ void Monitor::runTests() {
     // Run actual hall sensor tests
     sendHallSignals(64000);
 
+    sendHallSignals(64000);
+
     sendHallSignals(32000);
 
     sendHallSignals(13457);
@@ -82,9 +84,6 @@ void Monitor::sendHallSignals(int value) {
     for (int i = 0; i < value; i++) wait(clk.posedge_event());
 
     // Set hall1 low for one cycle
-    hall1 = 0;
-    wait(clk.posedge_event());
-    hall1 = 1;
     wait(clk.posedge_event());
     hall_p1.kill();
     hall_p2.kill();
