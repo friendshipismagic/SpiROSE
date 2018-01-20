@@ -23,7 +23,7 @@ module DE1_SoC(
       ///////// ledr /////////
       output logic[9:0]  ledr,
       ///////// sw /////////
-      input  wire [9:0]  sw,
+      input  wire [9:0]  sw
 );
 
 //    Turn off all display     //////////////////////////////////////
@@ -58,10 +58,10 @@ assign position_sync = 1'b1;
 // 66 MHz clock generator
 logic clock_66, lock;
 clk_66 main_clk_66 (
-	.refclk(clock_50),
-	.rst(sw[0]),
-	.outclk_0(clock_66),
-	.locked(lock)
+    .refclk(clock_50),
+    .rst(sw[0]),
+    .outclk_0(clock_66),
+    .locked(lock)
 );
 
 // 33 MHz clock generator
@@ -72,14 +72,19 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_lse(clock_33)
 );
 
-spi_slave main_spi(
+spi_iff main_spi_iff (
+    .clk(clock_33),
     .nrst(nrst),
     .spi_clk(spi_clk),
     .spi_ss(spi_ss),
     .spi_mosi(spi_mosi),
     .spi_miso(spi_miso),
+);
+
+spi_decoder main_spi_decoder (
+    .clk(clock_33),
     .rotation_data(rotation_data),
-    .config_out(conf),
+    .configuration(conf),
     .new_config_available(new_configuration_ready)
 );
 
