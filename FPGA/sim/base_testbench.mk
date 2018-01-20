@@ -37,7 +37,11 @@ obj_dir/V%.cpp obj_dir/V%__Syms.cpp obj_dir/V%.h: %.sv
 %.d: %.cpp
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(TARGET_ARCH) -MM -MP $^ -MF $@
 
+$(MODULE).simu: $(OBJS)
+	$(LINK.o) $(filter %.o,$^) $(LOADLIBES) $(LIBS) $(TARGET_ARCH) -o $@
+
 clean:
 	rm -rf $(DEPSFILES) $(OBJS) $(MODULE).simu
 
 -include $(DEPSFILES)
+
