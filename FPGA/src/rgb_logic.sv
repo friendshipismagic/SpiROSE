@@ -1,7 +1,7 @@
 module rgb_logic #(
     parameter RAM_ADDR_WIDTH=32,
     parameter RAM_DATA_WIDTH=16,
-    parameter IMAGE_IN_RAM = 3
+    parameter IMAGE_IN_RAM = 18
 )(
     input rgb_clk,
     input nrst,
@@ -29,7 +29,7 @@ localparam SLICES_IN_RAM_BEFORE_STREAM = 1;
 
 logic blanking;
 // hsync and vsync drives low when we are on blanking area
-assign blanking = ~hsync | ~vsync;
+assign blanking = hsync && vsync;
 
 logic [31:0] pixel_counter;
 
@@ -37,7 +37,7 @@ logic is_end_of_RAM;
 assign is_end_of_RAM = ram_addr == (IMAGE_SIZE*IMAGE_IN_RAM-1);
 
 logic is_valid_first_frame;
-assign is_valid_first_frame = vsync | (pixel_counter >= IMAGE_SIZE - 1);
+assign is_valid_first_frame = ~vsync | (pixel_counter >= IMAGE_SIZE - 1);
 
 /*
  * We don't write anything in blanking area but it is controlled by
