@@ -63,12 +63,12 @@ always_ff @(posedge clk_33 or negedge nrst)
 */
 always_comb
     if(~nrst) begin
-        mux_out = 8'b1;
+        mux_out = 8'b0;
     end else begin
-        mux_out = '1;
+        mux_out = '0;
         if(mux_state == DISP) begin
             // Don't turn on if module not enabled, or in anti ghosting mode
-            mux_out = ~(1'b1 << disp_value);
+            mux_out = 1'b1 << disp_value;
         end
     end
 

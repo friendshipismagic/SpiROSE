@@ -229,7 +229,7 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
 
 assign position_sync = '1;
 assign column_ready  = '1;
-assign framebuffer_data = '1;
+assign framebuffer_data = '0;
 assign new_configuration_ready = '0;
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
