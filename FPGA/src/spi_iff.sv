@@ -86,18 +86,16 @@ always @(posedge clk or negedge nrst)
 /*
 *  Shift register to master each time a clock is detected
 */
-always @(posedge clk or negedge nrst or negedge sync_ss)
+always @(posedge clk or negedge nrst)
     if(~nrst) begin
         out_reg <= '0;
     end else begin
         if(posedge_ss) begin
             out_reg <= cmd_write;
-        end
-        if (negedge_ss) begin
+        end else if (negedge_ss) begin
             out_reg <= '0;
-        end
-        if (posedge_sck) begin
-            out_reg <= { out_reg[46:0], 0 };
+        end else if (posedge_sck) begin
+            out_reg <= { out_reg[46:0], 1'b0 };
         end
     end
 

@@ -5,7 +5,7 @@ module sync_sig #(
     input clk,
 
     input in_sig,
-    input out_sig
+    output out_sig
 );
 
 logic defer_sig;
