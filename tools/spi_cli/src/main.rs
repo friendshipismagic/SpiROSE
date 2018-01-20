@@ -117,14 +117,11 @@ fn create_spi(spi_dev: &str, configure: bool) -> io::Result<Spidev> {
 
 
 fn send<T : Write+Read>(spi: &mut T, command: &SpiCommand, command_args: &[u8]) -> io::Result<()> {
-    spi.write_all(&[command.id])?;
-
-    // Send optionnal arguments with the command (for instance, configuration data)
-    if !command_args.is_empty() {
-        spi.write_all(command_args)?;
-    }
-
-    Ok(())
+    // Transmit the command and the arguments as one SPI transaction.
+    let mut transaction = Vec::with_capacity(1 + command_args.len());
+    transaction.push(command.id);
+    transaction.extend(command_args);
+    spi.write_all(&transaction)
 }
 
 fn get<T: Write + Read>(
