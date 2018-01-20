@@ -294,15 +294,15 @@ assign mux_switch    = sw[8];
 // Drivers
 always_comb begin
     if(driver_switch) begin
-        gpio_1[35] = gclk;
-        gpio_1[33] = sclk;
-        gpio_1[31] = lat;
-        gpio_1[29] = sin[0];
+        gpio_1[6] = gclk;
+        gpio_1[4] = sclk;
+        gpio_1[2] = lat;
+        gpio_1[0] = sin[0];
     end else begin
-        gpio_1[35] = 0;
-        gpio_1[33] = 0;
-        gpio_1[31] = 0;
-        gpio_1[29] = 0;
+        gpio_1[6] = 0;
+        gpio_1[4] = 0;
+        gpio_1[2] = 0;
+        gpio_1[0] = 0;
     end
 end
 
@@ -318,14 +318,14 @@ always_comb begin
         gpio_0[22] = mux_out[1];
         gpio_0[24] = mux_out[0];
     end else begin
-        gpio_0[10] = 1;
-        gpio_0[12] = 1;
-        gpio_0[14] = 1;
-        gpio_0[16] = 1;
-        gpio_0[18] = 1;
-        gpio_0[20] = 1;
-        gpio_0[22] = 1;
-        gpio_0[24] = 1;
+        gpio_0[10] = 0;
+        gpio_0[12] = 0;
+        gpio_0[14] = 0;
+        gpio_0[16] = 0;
+        gpio_0[18] = 0;
+        gpio_0[20] = 0;
+        gpio_0[22] = 0;
+        gpio_0[24] = 0;
     end
 end
 
