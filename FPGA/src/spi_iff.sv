@@ -25,7 +25,7 @@ assign negedge_sck = last_sck & ~sync_sck;
 assign posedge_ss = ~last_ss & sync_ss;
 assign negedge_ss = last_ss & ~sync_ss;
 
-assign spi_miso = out_reg[47];
+assign spi_miso = sync_ss ? 'z : out_reg[47];
 
 /*
 * Synchronize input signal from SPI
