@@ -1,4 +1,4 @@
-clean:
-	$(RM) -r board/ db/ *.ddb incremental_db/ output_files/ simulation/ timing/
+QUARTUS131 = /comelec/softs/opt/altera/altera13.1/comelec/quartus_sh
 
-.PHONY: clean
+test:
+	cd prod && $(QUARTUS131) --flow compile spirose
