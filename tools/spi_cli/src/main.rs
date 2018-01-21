@@ -76,7 +76,7 @@ impl SpiCommand {
         match command {
             "enable_rgb" => Ok(SpiCommand::new(0xe0)),
             "disable_rgb" => Ok(SpiCommand::new(0xd0)),
-            "get_rotation" => Ok(SpiCommand::new_with_len(0x4c, 1)),
+            "get_rotation" => Ok(SpiCommand::new_with_len(0x4c, 2)),
             "get_config" => Ok(SpiCommand::new_with_len(0xbf, 6)),
             _ => Err(format!("unknown command `{}'", command)),
         }
