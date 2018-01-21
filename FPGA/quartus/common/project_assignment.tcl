@@ -1,8 +1,3 @@
-set_global_assignment -name FAMILY "Cyclone III"
-set_global_assignment -name DEVICE EP3C40Q240C8
-set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
-set_global_assignment -name LAST_QUARTUS_VERSION 13.1
-
 set_global_assignment -name PROJECT_OUTPUT_DIRECTORY output_files
 set_global_assignment -name MIN_CORE_JUNCTION_TEMP 0
 set_global_assignment -name MAX_CORE_JUNCTION_TEMP 85
@@ -58,7 +53,7 @@ set_global_assignment -name SYNTH_TIMING_DRIVEN_SYNTHESIS ON
 set_global_assignment -name DEVICE_FILTER_SPEED_GRADE 8
 set_global_assignment -name ENABLE_INIT_DONE_OUTPUT ON
 set_global_assignment -name GENERATE_JBC_FILE ON
-set_global_assignment -name CONFIGURATION_VCCIO_LEVEL 3.3V
+set_global_assignment -name CONFIGURATION_VCCIO_LEVEL 3.0V
 
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
