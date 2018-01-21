@@ -25,23 +25,157 @@ logic [15:0] red   = 16'b00000_000000_10000;
 logic [15:0] green = 16'b00000_100000_00000;
 logic [15:0] blue  = 16'b10000_000000_00000;
 logic [15:0] rgb_image [15*16-1:0] = '{
-    green, green, green, green, green, green, green, green, green, green, green, green, green, green, green,
-    red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  ,
-    blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue ,
-    green, green, green, green, green, green, green, green, green, green, green, green, green, green, green,
-    red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  ,
-    blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue ,
-    green, green, green, green, green, green, green, green, green, green, green, green, green, green, green,
-    red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  ,
-    blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue ,
-    green, green, green, green, green, green, green, green, green, green, green, green, green, green, green,
-    red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  ,
-    blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue ,
-    green, green, green, green, green, green, green, green, green, green, green, green, green, green, green,
-    red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  , red  ,
-    blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue , blue ,
-    green, green, green, green, green, green, green, green, green, green, green, green, green, green, green
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red
 };
+logic [15:0] brg_image [15*16-1:0] = '{
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue
+};
+logic [15:0] gbr_image [15*16-1:0] = '{
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
+    green, green, green, green, green
+};
+
+
 
 localparam [2:0] [15:0] COLOR_BASE = '{0,6,11};
 /* verilator lint_off LITENDIAN */
@@ -173,6 +307,16 @@ logic [15:0] color_addr;
 logic [29:0] [BUFF_SIZE_LOG-1:0] voxel_addr;
 logic [$clog2(POKER_MODE)-1:0] color_bit_idx;
 
+integer animation_cnt;
+always_ff @(posedge clk_33 or negedge nrst)
+    if(~nrst) begin
+        animation_cnt <= '0;
+    end else begin
+        animation_cnt <= animation_cnt + 1'b1;
+        if (animation_cnt == 33_000_000) begin
+            animation_cnt <= '0;
+        end
+    end
 /*
  * There are two types of driver and for each one a LUT for red and green, and
  * a LUT for blue. Drivers 1 to 20 are part of group 1, drivers 21 to 30 are
@@ -212,7 +356,13 @@ always_ff @(posedge clk_33 or negedge nrst)
          */
         if(driver_ready && bit_idx > 3) begin
             for(int i = 0; i < 30; ++i) begin
-                data[i] <= rgb_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
+                if(animation_cnt < 11_000_000) begin
+                    data[i] <= rgb_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
+                end else if (animation_cnt > 11_000_000 && animation_cnt < 22_000_000) begin
+                    data[i] <= brg_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
+                end else begin
+                    data[i] <= gbr_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
+                end
             end
         end
     end
