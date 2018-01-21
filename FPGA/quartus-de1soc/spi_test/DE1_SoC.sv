@@ -27,12 +27,12 @@ module DE1_SoC(
 );
 
 //    Turn off all display     //////////////////////////////////////
-assign    hex0        =    conf[6:0];
-assign    hex1        =    conf[13:7];
-assign    hex2        =    conf[20:14];
-assign    hex3        =    conf[27:21];
-assign    hex4        =    conf[34:28];
-assign    hex5        =    conf[41:35];
+assign    hex0        =    ~conf[6:0];
+assign    hex1        =    ~conf[13:7];
+assign    hex2        =    ~conf[20:14];
+assign    hex3        =    ~conf[27:21];
+assign    hex4        =    ~conf[34:28];
+assign    hex5        =    ~conf[41:35];
 
 logic        nrst                   ;
 logic [47:0] conf                   ;
@@ -52,6 +52,10 @@ logic [29:0] sin                    ;
 logic [4:0]  sout_mux               ;
 logic        driver_ready           ;
 logic        column_ready           ;
+logic        rgb_enable             ;
+logic        valid                  ;
+logic [55:0] cmd_read               ;
+logic [47:0] cmd_write              ;
 
 assign position_sync = 1'b1;
 
@@ -73,19 +77,27 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
 );
 
 spi_iff main_spi_iff (
-    .clk(clock_33),
+    .clk(clock_66),
     .nrst(nrst),
     .spi_clk(spi_clk),
     .spi_ss(spi_ss),
     .spi_mosi(spi_mosi),
     .spi_miso(spi_miso),
+    .valid(valid),
+    .cmd_read(cmd_read),
+    .cmd_write(cmd_write)
 );
 
 spi_decoder main_spi_decoder (
-    .clk(clock_33),
+    .nrst(nrst),
+    .clk(clock_66),
+    .valid(valid),
+    .cmd_read(cmd_read),
+    .cmd_write(cmd_write),
     .rotation_data(rotation_data),
     .configuration(conf),
-    .new_config_available(new_configuration_ready)
+    .new_config_available(new_configuration_ready),
+    .rgb_enable(rgb_enable)
 );
 
 framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
@@ -142,19 +154,32 @@ always_ff @(posedge clock_33 or negedge nrst)
         end
     end
 
+assign ledr[9] = rgb_enable;
+always_ff @(posedge clock_33 or negedge nrst)
+    if(~nrst) begin
+        ledr[8] <= '0;
+    end else begin
+		  ledr[8] <= new_configuration_ready || ledr[8];
+	 end
+assign ledr[7] = driver_ready;
+assign ledr[6] = new_configuration_ready;
+
 // Project pins assignment
 assign nrst      = key[0] & lock;
 
-assign spi_mosi  = gpio_1[18];
-assign spi_miso  = gpio_1[20];
-assign spi_clk   = gpio_1[22];
-assign spi_ss    = gpio_1[24];
+// SPI
+assign spi_clk   = gpio_1[22]   ;
+assign spi_ss    = gpio_1[24]   ;
+assign spi_mosi  = gpio_1[18]   ;
+assign spi_miso  = gpio_1[20]   ;
 
-assign gpio_1[35]   = gclk;
-assign gpio_1[33]   = sclk;
-assign gpio_1[31]   = lat;
-assign gpio_1[29]   = sin[0];
+// Drivers
+assign gpio_1[35] = gclk;
+assign gpio_1[33] = sclk;
+assign gpio_1[31] = lat;
+assign gpio_1[29] = sin[0];
 
+// Multiplexing
 assign gpio_0[10] = sw[9];
 assign gpio_0[12] = sw[8];
 assign gpio_0[14] = sw[7];
@@ -163,11 +188,5 @@ assign gpio_0[18] = sw[5];
 assign gpio_0[20] = sw[4];
 assign gpio_0[22] = sw[3];
 assign gpio_0[24] = sw[2];
-
-logic new_conf;
-logic old_conf;
-
-assign new_conf = ~key[3];
-assign old_conf = ~key[2];
 
 endmodule

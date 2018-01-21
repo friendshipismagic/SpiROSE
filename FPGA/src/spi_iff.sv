@@ -14,7 +14,7 @@ module spi_iff(
 );
 
 logic [55:0] in_reg;
-logic [55:0] out_reg;
+logic [47:0] out_reg;
 
 logic sync_mosi, sync_sck, sync_ss;
 logic last_sck, last_ss;
@@ -63,7 +63,7 @@ always @(posedge clk or negedge nrst)
 */
 always @(posedge clk or negedge nrst)
     if(~nrst) begin 
-        last_ss <= '0;
+        last_ss <= '1;
     end else begin
         last_ss <= sync_ss;
     end
@@ -89,6 +89,7 @@ always @(posedge clk or negedge nrst)
 always @(posedge clk or negedge nrst)
     if(~nrst) begin
         out_reg <= '0;
+		  spi_miso <= '1;
     end else begin
         if(posedge_ss) begin
             out_reg <= cmd_write;
@@ -96,6 +97,7 @@ always @(posedge clk or negedge nrst)
             out_reg <= '0;
         end else if (posedge_sck) begin
             out_reg <= { out_reg[46:0], 1'b0 };
+				spi_miso <= out_reg[47];
         end
     end
 
@@ -105,8 +107,13 @@ always @(posedge clk or negedge nrst)
 always @(posedge clk or negedge nrst)
     if(~nrst) begin
         cmd_read <= '0;
-    end else if (posedge_ss) begin
-        cmd_read <= in_reg;
+		  valid <= '0;
+    end else begin
+		valid <= '0;
+		if (posedge_ss) begin
+			cmd_read <= in_reg;
+			valid <= '1;
+		end
     end
 
 endmodule

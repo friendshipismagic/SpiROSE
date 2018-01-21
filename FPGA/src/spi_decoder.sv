@@ -30,6 +30,20 @@ localparam DEFAULT_CONFIG_DATA = 'hFF;
 
 `include "drivers_conf.sv"
 
+logic [55:0] last_cmd_read;
+logic last_valid;
+
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+		last_cmd_read <= '0;
+		last_valid <= '0;
+	end else begin
+		last_valid <= valid;
+		if(valid) begin
+			last_cmd_read <= cmd_read;
+		end
+	end
+	
 always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
         new_config_available <= 0;
@@ -37,13 +51,13 @@ always_ff @(posedge clk or negedge nrst)
         rgb_enable <= 0;
     end else begin
         new_config_available <= '0;
-        if (valid) begin
-            if (cmd_read[55:48] == CONFIG_COMMAND) begin
-                configuration <= cmd_read[47:0];
+        if (last_valid) begin
+            if (last_cmd_read[55:48] == CONFIG_COMMAND) begin
+                configuration <= last_cmd_read[47:0];
                 new_config_available <= '1;
-            end else if (cmd_read[7:0] == ENABLE_RGB_COMMAND) begin
+            end else if (last_cmd_read[7:0] == ENABLE_RGB_COMMAND) begin
                 rgb_enable <= '1;
-            end else if (cmd_read[7:0] == DISABLE_RGB_COMMAND) begin
+            end else if (last_cmd_read[7:0] == DISABLE_RGB_COMMAND) begin
                 rgb_enable <= '0;
             end
         end
