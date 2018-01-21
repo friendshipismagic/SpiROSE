@@ -55,6 +55,7 @@ logic        column_ready           ;
 logic        rgb_enable             ;
 logic        valid                  ;
 logic [55:0] cmd_read               ;
+logic [2:0]  cmd_len_bytes          ;
 logic [47:0] cmd_write              ;
 
 assign position_sync = 1'b1;
@@ -85,6 +86,7 @@ spi_iff main_spi_iff (
     .spi_miso(spi_miso),
     .valid(valid),
     .cmd_read(cmd_read),
+    .cmd_len_bytes(cmd_len_bytes),
     .cmd_write(cmd_write)
 );
 
@@ -93,6 +95,7 @@ spi_decoder main_spi_decoder (
     .clk(clock_33),
     .valid(valid),
     .cmd_read(cmd_read),
+    .cmd_len_bytes(cmd_len_bytes),
     .cmd_write(cmd_write),
     .rotation_data(rotation_data),
     .configuration(conf),

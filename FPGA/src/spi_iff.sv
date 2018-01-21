@@ -8,6 +8,7 @@ module spi_iff(
     output spi_miso,
 
     output [55:0] cmd_read,
+    output [2:0] cmd_len_bytes,
     input  [47:0] cmd_write,
 
     output valid
@@ -15,6 +16,7 @@ module spi_iff(
 
 logic [55:0] in_reg;
 logic [47:0] out_reg;
+logic [5:0] cmd_len_bits;
 
 logic sync_mosi, sync_sck, sync_ss;
 logic last_sck, last_ss;
@@ -26,6 +28,7 @@ assign posedge_ss = ~last_ss & sync_ss;
 assign negedge_ss = last_ss & ~sync_ss;
 
 assign spi_miso = sync_ss ? 'z : out_reg[47];
+assign cmd_len_bytes = cmd_len_bits[5:3];
 
 /*
 * Synchronize input signal from SPI
@@ -77,12 +80,15 @@ always @(posedge clk or negedge nrst)
 always @(posedge clk or negedge nrst)
     if(~nrst) begin
         in_reg <= '0;
+        cmd_len_bits <= '0;
     end else begin
         if(posedge_sck) begin
             in_reg <= { in_reg[54:0], sync_mosi };
+            cmd_len_bits <= cmd_len_bits + 1;
         end
         if(negedge_ss) begin
             in_reg <= '0;
+            cmd_len_bits <= '0;
         end
     end
 
@@ -113,7 +119,7 @@ always @(posedge clk or negedge nrst)
         valid <= '0;
         if (posedge_ss) begin
             cmd_read <= in_reg;
-			valid <= '1;
+            valid <= cmd_len_bits[2:0] == '0;
         end
     end
 
