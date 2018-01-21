@@ -25,6 +25,8 @@ assign negedge_sck = last_sck & ~sync_sck;
 assign posedge_ss = ~last_ss & sync_ss;
 assign negedge_ss = last_ss & ~sync_ss;
 
+assign spi_miso = out_reg[47];
+
 /*
 * Synchronize input signal from SPI
 */
@@ -90,15 +92,13 @@ always @(posedge clk or negedge nrst)
 always @(posedge clk or negedge nrst)
     if(~nrst) begin
         out_reg <= '0;
-        spi_miso <= '1;
     end else begin
-        if(posedge_ss) begin
+        if(negedge_ss) begin
             out_reg <= cmd_write;
-        end else if (negedge_ss) begin
+        else if (posedge_ss) begin
             out_reg <= '0;
-        end else if (negedge_sck) begin
+        end else if (~sync_ss && negedge_sck) begin
             out_reg <= { out_reg[46:0], 1'b0 };
-            spi_miso <= out_reg[47];
         end
     end
 
