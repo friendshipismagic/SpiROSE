@@ -1,6 +1,8 @@
 #============================================================
 # LVDS DISPLAY
 #============================================================
+set_location_assignment PIN_89 -to lvds_clk_p
+set_location_assignment PIN_90 -to lvds_clk_n
 set_location_assignment PIN_99 -to lvds_tx_n[0]
 set_location_assignment PIN_94 -to lvds_tx_n[1]
 set_location_assignment PIN_88 -to lvds_tx_n[2]

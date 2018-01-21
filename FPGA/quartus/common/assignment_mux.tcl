@@ -18,5 +18,5 @@ set_location_assignment PIN_73 -to fpga_mul_b[5]
 set_location_assignment PIN_202 -to fpga_mul_b[6]
 set_location_assignment PIN_189 -to fpga_mul_b[7]
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to fpga_mul_*
+set_instance_assignment -name IO_STANDARD "3.0-V LVCMOS" -to fpga_mul_*
 

@@ -28,8 +28,8 @@ localparam IMAGE_SIZE = IMAGE_WIDTH*IMAGE_HEIGHT;
 localparam SLICES_IN_RAM_BEFORE_STREAM = 1;
 
 logic blanking;
-// hsync and vsync drives low when we are on blanking area
-assign blanking = ~hsync | ~vsync;
+// hsync and vsync drive low when we are on blanking area
+assign blanking = (~hsync | ~vsync);
 
 logic [31:0] pixel_counter;
 
