@@ -52,13 +52,6 @@ src/context.o: src/context.cpp $(GLSLSRC)
 %.fss: %.fs
 	./rawify $^ $@
 
-ARTIFACT = libSpiROSE.tar.gz
-$(ARTIFACT): $(SONAME) src/*.h
-	mkdir -p libSpiROSE/{lib,include}
-	$(MAKE) install LIBDIR=libSpiROSE/lib INCDIR=libSpiROSE/include
-	tar czvf $@ libSpiROSE
-	$(RM) -r libSpiROSE
-
 clean:
 	rm -f $(OBJS) $(DEPS) $(EXE) $(GLSLSRC)
 
@@ -87,5 +80,7 @@ test:
 		exit $$code
 host:
 	@echo "Host"
-bundle: $(ARTIFACT)
+bundle: $(SONAME)
+	mkdir -p {lib,include}
+	$(MAKE) install LIBDIR=lib INCDIR=include
 

@@ -12,8 +12,6 @@ lint:
 build :
 	@echo "Building fpga target"
 	make -C lib -f driver_cmd.mk build
-	make -C tb_sc -f tb_driver.mk build
-	make -C sim build
 
 test:
 	@echo "Running fpga tests"
