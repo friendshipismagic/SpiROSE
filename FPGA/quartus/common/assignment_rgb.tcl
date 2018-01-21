@@ -30,5 +30,5 @@ set_location_assignment PIN_176 -to rgb_hsync
 set_location_assignment PIN_183 -to rgb_vsync
 
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to rgb_*
+set_instance_assignment -name IO_STANDARD "3.0V LVCMOS" -to rgb_*
 

@@ -10,5 +10,5 @@ set_location_assignment PIN_93 -to lvds_tx_p[1]
 set_location_assignment PIN_87 -to lvds_tx_p[2]
 set_location_assignment PIN_81 -to lvds_tx_p[3]
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to lvds_tx_*
+set_instance_assignment -name IO_STANDARD "3.0V LVCMOS" -to lvds_tx_*
 
