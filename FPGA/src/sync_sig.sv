@@ -8,15 +8,18 @@ module sync_sig #(
     output out_sig
 );
 
-logic defer_sig;
+logic reg1;
+logic reg2;
 
 always @(posedge clk or negedge nrst)
     if(~nrst) begin
-        defer_sig = RESET_VALUE;
-        out_sig <= RESET_VALUE;
+        reg1 = RESET_VALUE;
+        reg2 <= RESET_VALUE;
     end else begin
-        defer_sig <= in_sig;
-        out_sig <= defer_sig;
+        reg1 <= in_sig;
+		  reg2 <= reg1;
     end
+	 
+assign out_sig = (in_sig && reg1) || (reg1 && reg2) || (in_sig && reg2);
 
 endmodule

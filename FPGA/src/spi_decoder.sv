@@ -43,7 +43,7 @@ always_ff @(posedge clk or negedge nrst)
 			last_cmd_read <= cmd_read;
 		end
 	end
-	
+
 always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
         new_config_available <= 0;

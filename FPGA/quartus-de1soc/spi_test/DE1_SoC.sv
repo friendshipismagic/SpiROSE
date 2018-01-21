@@ -27,12 +27,12 @@ module DE1_SoC(
 );
 
 //    Turn off all display     //////////////////////////////////////
-assign    hex0        =    ~conf[6:0];
-assign    hex1        =    ~conf[13:7];
-assign    hex2        =    ~conf[20:14];
-assign    hex3        =    ~conf[27:21];
-assign    hex4        =    ~conf[34:28];
-assign    hex5        =    ~conf[41:35];
+assign    hex0        =    ~cmd_read[54:48];
+assign    hex1        =    ~cmd_read[55];
+assign    hex2        =    'h7f;
+assign    hex3        =    'h7f;
+assign    hex4        =    'h7f;
+assign    hex5        =    'h7f;
 
 logic        nrst                   ;
 logic [47:0] conf                   ;
@@ -77,7 +77,7 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
 );
 
 spi_iff main_spi_iff (
-    .clk(clock_66),
+    .clk(clock_33),
     .nrst(nrst),
     .spi_clk(spi_clk),
     .spi_ss(spi_ss),
@@ -90,7 +90,7 @@ spi_iff main_spi_iff (
 
 spi_decoder main_spi_decoder (
     .nrst(nrst),
-    .clk(clock_66),
+    .clk(clock_33),
     .valid(valid),
     .cmd_read(cmd_read),
     .cmd_write(cmd_write),

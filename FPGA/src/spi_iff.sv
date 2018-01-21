@@ -76,7 +76,7 @@ always @(posedge clk or negedge nrst)
     if(~nrst) begin
         in_reg <= '0;
     end else begin
-        if(~sync_ss && posedge_sck) begin
+        if(posedge_sck) begin
             in_reg <= { in_reg[54:0], sync_mosi };
         end
         if(negedge_ss) begin
@@ -90,7 +90,7 @@ always @(posedge clk or negedge nrst)
 always @(posedge clk or negedge nrst)
     if(~nrst) begin
         out_reg <= '0;
-		  spi_miso <= '1;
+        spi_miso <= '1;
     end else begin
         if(posedge_ss) begin
             out_reg <= cmd_write;
@@ -108,13 +108,13 @@ always @(posedge clk or negedge nrst)
 always @(posedge clk or negedge nrst)
     if(~nrst) begin
         cmd_read <= '0;
-		  valid <= '0;
+        valid <= '0;
     end else begin
-		valid <= '0;
-		if (posedge_ss) begin
-			cmd_read <= in_reg;
+        valid <= '0;
+        if (posedge_ss) begin
+            cmd_read <= in_reg;
 			valid <= '1;
-		end
+        end
     end
 
 endmodule
