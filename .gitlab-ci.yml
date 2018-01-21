@@ -4,77 +4,45 @@ stages:
   - lint
   - build
   - test
-  - host
   - bundle
 
 variables:
-  SBC_DIR: "SBC"
   RENDERER_POC_DIR: "tools/renderer"
   FPGA_DIR: "FPGA"
+  LIBSPIROSE_DIR: "SBC/libSpiROSE"
 
 before_script:
   - git submodule init
   - git submodule update
 
-lint_lower_tower:
+lower_tower/lint:
   stage: lint
   script:
     - cd LCD_Display
     - make lint
 
-build_lower_tower:
+lower_tower/build:
   image: tuetuopay/arm-none-eabi
   stage: build
   script:
     - cd LCD_Display
     - make
 
-test_lower_tower:
+lower_tower/test:
   image: tuetuopay/arm-none-eabi
   stage: test
   script:
     - cd LCD_Display
     - make test
 
-host_lower_tower:
-  image: tuetuopay/arm-none-eabi
-  stage: host
-  script:
-    - cd LCD_Display
-    - make host
-
-lint_sbc:
-  stage: lint
-  script:
-    - cd $SBC_DIR
-    - make lint
-
-build_sbc:
-  stage: build
-  script:
-    - cd $SBC_DIR
-    - make build
-
-test_sbc:
-  stage: test
-  script:
-    - cd $SBC_DIR
-    - make test
-
-host_sbc:
-   stage: host
-   script:
-   - cd $SBC_DIR
-   - make host
-
-lint_renderer-poc:
+renderer-poc/lint:
   stage: lint
   image: tuetuopay/clang
   script:
     - cd $RENDERER_POC_DIR
     - make lint
 
-build_renderer-poc:
+renderer-poc/build:
   stage: build
   image: tuetuopay/glfw
   script:
@@ -82,14 +50,7 @@ build_renderer-poc:
     - make build
     - make test
 
-host_renderer-poc:
-  stage: host
-  image: tuetuopay/glfw
-  script:
-    - cd $RENDERER_POC_DIR
-    - make host
-
-bundle_renderer-poc:
+renderer-poc/bundle:
   stage: bundle
   image: tuetuopay/glfw
   script:
@@ -97,35 +58,117 @@ bundle_renderer-poc:
     - make bundle
   artifacts:
     paths:
-      - $RENDERER_POC_DIR/renderer-poc.tar.gz
+      - $RENDERER_POC_DIR/rose-renderer-poc
+      - $RENDERER_POC_DIR/mesh
+      - $RENDERER_POC_DIR/shader
     expire_in: 1 week
   only:
     - master
 
-lint_fpga:
+fpga/lint:
   stage: lint
   image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
     - make lint
 
-build_fpga:
+fpga/build:
   stage: build
   image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
     - make build
 
-test_fpga:
+fpga/test:
   stage: test
   image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
     - make test
 
-host_fpga:
-  stage: host
-  image: tuetuopay/verilator
+libspirose/lint:
+  stage: lint
+  image: tuetuopay/clang
   script:
-    - cd $FPGA_DIR
-    - make host
+    - cd $LIBSPIROSE_DIR
+    - make lint
+
+libspirose/build:
+  stage: build
+  image: tuetuopay/glfw
+  script:
+    - cd $LIBSPIROSE_DIR
+    - make build
+
+libspirose/test:
+  stage: test
+  image: tuetuopay/glfw
+  script:
+    - cd $LIBSPIROSE_DIR
+    - echo Testing desktop OpenGL
+    - make build
+    - make install
+    - make test
+    - echo Testing OpenGL ES
+    - make clean
+    - make build UNAME_P=armv7l
+    - make install
+    - make test
+
+libspirose/bundle:
+  stage: bundle
+  image: tuetuopay/glfw
+  script:
+    - cd $LIBSPIROSE_DIR
+    - make bundle
+  artifacts:
+    paths:
+      - $LIBSPIROSE_DIR/include
+      - $LIBSPIROSE_DIR/lib
+    expire_in: 1 week
+  only:
+    - master
+
+spi-cli/build:
+  stage: build
+  image: tuetuopay/rust-cc-armv7
+  script:
+    - export CARGO_HOME="$PWD/.cargo"
+    - cd tools/spi_cli && cargo build
+  cache:
+    key: cargo
+    paths:
+      - .cargo/
+
+spi-cli/test:
+  stage: test
+  image: tuetuopay/rust-cc-armv7
+  script:
+    - export CARGO_HOME="$PWD/.cargo"
+    - cd tools/spi_cli && cargo test
+  cache:
+    key: cargo
+    paths:
+      - .cargo/
+
+spi-cli/bundle:
+  stage: bundle
+  image: tuetuopay/rust-cc-armv7
+  script:
+    - export CARGO_HOME="$PWD/.cargo"
+    - echo '[target.armv7-unknown-linux-gnueabihf]' > "$CARGO_HOME/config"
+    - echo 'linker = "arm-linux-gnueabihf-gcc"' >> "$CARGO_HOME/config"
+    - cd tools/spi_cli
+    - cargo build --release --target=armv7-unknown-linux-gnueabihf
+    - mv target/armv7-unknown-linux-gnueabihf/release/spi_cli .
+  artifacts:
+    paths:
+      - tools/spi_cli/spi_cli
+      - tools/spi_cli/led_driver_conf.toml
+    expire_in: 1 week
+  cache:
+    key: cargo
+    paths:
+      - .cargo/
+  only:
+    - master

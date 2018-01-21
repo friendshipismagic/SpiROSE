@@ -4,9 +4,9 @@ display=10
 
 function EXE {
     Xvfb :$display -screen 0 1280x720x24 +extension GLX &
-    sleep 2
-    DISPLAY=:$display XDG_RUNTIME_DIR=/tmp ./rose-renderer-poc $@ &
     sleep 5
+    DISPLAY=:$display XDG_RUNTIME_DIR=/tmp ./rose-renderer-poc $@ &
+    sleep 10
 }
 
 function clean {

@@ -2,10 +2,10 @@
 ! change it at your own peril
 
 !
-! Created 01/09/18 00:57:38
+! Created 01/09/18 14:25:56
 !
 
-.Global_Constants 189 5
+.Global_Constants 189 4
     ..File_Type Graphics_Settings
     ..Version Version_7
     ..Num_Views 1
@@ -19,7 +19,7 @@
     ..Active_Place_Layer_Top             False
     ..Active_Place_Layer_Bottom          True
     ..Active_Place_Layer_Internal        False
-    ..Active_Route_Layer 0
+    ..Active_Route_Layer 3
     ..Trace_Layer_Color ( 
 	0x00ff6633 0x009933ff	! [1-2] RGB( 51,102,255)  RGB(255, 51,153)
 	0x0066ff99 0x000000ff	! [3-4] RGB(153,255,102)  RGB(255,  0,  0)
@@ -515,13 +515,13 @@
     ..Netline_Trace_Ends_On              False
     ..Classline_Color 0x00ff00cc	! RGB(204,  0,255)
     ..Netline_Of_Classline_On            False
-    ..Show_Plane_Data                    True
+    ..Show_Plane_Data                    False
     ..Show_Plane_Shapes                  True
-    ..Show_Fill_Plane_Shapes             True
+    ..Show_Fill_Plane_Shapes             False
     ..Show_Plane_Data_Behind_Traces      True
-    ..Show_Dynamic_Area_Fills            True
+    ..Show_Dynamic_Area_Fills            False
     ..Show_Plane_Aps_Outlines            False
-    ..Show_Plane_Aps_Fills               True
+    ..Show_Plane_Aps_Fills               False
     ..All_Plane_Items_Enabled            True
     ..Show_Plane_Plane_Sketches          False
     ..Show_Cubal_Data                    False
@@ -1478,7 +1478,6 @@
 	"MUX"	! [2]
 	"LVDS"	! [3]
 	"DRV"	! [4]
-	"(SpacerNetClass)"	! [5]
     )
     ..Bus_Names ( 
     )
@@ -1676,35 +1675,30 @@
     ..Netclass_Color ( 
 	0x00ffffff 0x00ffffff	! [1-2] RGB(255,255,255)  RGB(255,255,255)
 	0x00ffffff 0x00ffffff	! [3-4] RGB(255,255,255)  RGB(255,255,255)
-	0x00ffffff		! [5] RGB(255,255,255)
     )
     ..Netclass_Ptrnidx ( 
 	0 ![1]
 	0 ![2]
 	0 ![3]
 	0 ![4]
-	0 ![5]
     )
     ..Netclass_Alpha ( 
 	100 ![1]
 	100 ![2]
 	100 ![3]
 	100 ![4]
-	100 ![5]
     )
     ..Netclass_Nopaque ( 
 	False ![1]
 	False ![2]
 	False ![3]
 	False ![4]
-	False ![5]
     )
     ..Netclass_Outline ( 
 	True  ![1]
 	False ![2]
 	False ![3]
 	False ![4]
-	True  ![5]
     )
     ..Bus_Color ( 
     )
@@ -1788,7 +1782,6 @@
 	False ![2]
 	False ![3]
 	False ![4]
-	False ![5]
     )
     ..Bus_On ( 
     )
@@ -2073,7 +2066,7 @@
 	"[VirtualGlobal].iDC.Planes.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Planning.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.RF Objects.CollapsedSectionState" "0"
-	"[VirtualGlobal].iDC.Route Areas.CollapsedSectionState" "1"
+	"[VirtualGlobal].iDC.Route Areas.CollapsedSectionState" "0"
 	"[VirtualGlobal].iDC.Sheet Objects.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionState" "1"
 	"[VirtualGlobal].iDC.User Draft Layers.CollapsedSectionState" "0"
@@ -2092,7 +2085,7 @@
 	"[VirtualGlobal].iDC.3D.Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.3D.Options.CollapsedSectionOrder" "2"
 	"[VirtualGlobal].iDC.3D.PCBs.CollapsedSectionOrder" "8"
-	"[VirtualGlobal].iDC.ActiveTabId" "2"
+	"[VirtualGlobal].iDC.ActiveTabId" "4"
 	"[VirtualGlobal].iDC.AplyTo" "2"
 	"[VirtualGlobal].iDC.AssemblyItems" "2"
 	"[VirtualGlobal].iDC.Batch.CollapsedSectionOrder" "4"
@@ -2190,9 +2183,9 @@
 	"[VirtualGlobal].iDC.SilkscreenItems" "3"
 	"[VirtualGlobal].iDC.SketchPlans.Collapsed" "3"
 	"[VirtualGlobal].iDC.Spacers" "3"
-	"[VirtualGlobal].iDC.SplitViewHeight.0" "116"
-	"[VirtualGlobal].iDC.SplitViewHeight.1" "267"
-	"[VirtualGlobal].iDC.SplitViewHeight.2" "229"
+	"[VirtualGlobal].iDC.SplitViewHeight.0" "118"
+	"[VirtualGlobal].iDC.SplitViewHeight.1" "221"
+	"[VirtualGlobal].iDC.SplitViewHeight.2" "311"
 	"[VirtualGlobal].iDC.Substrate Objects.CollapsedSectionOrder" "3"
 	"[VirtualGlobal].iDC.TestPointItems" "3"
 	"[VirtualGlobal].iDC.TextItems.Collapsed" "3"
@@ -2220,60 +2213,60 @@
     ..Trace_All_Enabled                  True
     ..Pad_All_Enabled                    True
     ..Pad_Layer_On ( 
-	T F F F F F F F F F 	! [1 - 10]
-	F F F F F F F F F F 	! [11 - 20]
-	F F F F F F F F F F 	! [21 - 30]
-	F F F F F F F F F F 	! [31 - 40]
-	F F F F F F F F F F 	! [41 - 50]
-	F F F F F F F F F F 	! [51 - 60]
-	F F F F F F F F F F 	! [61 - 70]
-	F F F F F F F F F F 	! [71 - 80]
-	F F F F F F F F F F 	! [81 - 90]
-	F F F F F F F F F F 	! [91 - 100]
-	F F F F F F F F F F 	! [101 - 110]
-	F F F F F F F F F F 	! [111 - 120]
-	F F F F F F F F F F 	! [121 - 130]
-	F F F F F F F F F F 	! [131 - 140]
-	F F F F F F F F F F 	! [141 - 150]
-	F F F F F F F F F F 	! [151 - 160]
-	F F F F F F F F F F 	! [161 - 170]
-	F F F F F F F F F F 	! [171 - 180]
-	F F F F F F F F F F 	! [181 - 190]
-	F F F F F F F F F F 	! [191 - 200]
-	F F F F F F F F F F 	! [201 - 210]
-	F F F F F F F F F F 	! [211 - 220]
-	F F F F F F F F F F 	! [221 - 230]
-	F F F F F F F F F F 	! [231 - 240]
-	F F F F F F F F F F 	! [241 - 250]
-	F F F F F F ! [251 - 256]
+	T T T T T T T T T T 	! [1 - 10]
+	T T T T T T T T T T 	! [11 - 20]
+	T T T T T T T T T T 	! [21 - 30]
+	T T T T T T T T T T 	! [31 - 40]
+	T T T T T T T T T T 	! [41 - 50]
+	T T T T T T T T T T 	! [51 - 60]
+	T T T T T T T T T T 	! [61 - 70]
+	T T T T T T T T T T 	! [71 - 80]
+	T T T T T T T T T T 	! [81 - 90]
+	T T T T T T T T T T 	! [91 - 100]
+	T T T T T T T T T T 	! [101 - 110]
+	T T T T T T T T T T 	! [111 - 120]
+	T T T T T T T T T T 	! [121 - 130]
+	T T T T T T T T T T 	! [131 - 140]
+	T T T T T T T T T T 	! [141 - 150]
+	T T T T T T T T T T 	! [151 - 160]
+	T T T T T T T T T T 	! [161 - 170]
+	T T T T T T T T T T 	! [171 - 180]
+	T T T T T T T T T T 	! [181 - 190]
+	T T T T T T T T T T 	! [191 - 200]
+	T T T T T T T T T T 	! [201 - 210]
+	T T T T T T T T T T 	! [211 - 220]
+	T T T T T T T T T T 	! [221 - 230]
+	T T T T T T T T T T 	! [231 - 240]
+	T T T T T T T T T T 	! [241 - 250]
+	T T T T T T ! [251 - 256]
 	)
     ..Trace_Layer_On ( 
-	T F F F F F F F F F 	! [1 - 10]
-	F F F F F F F F F F 	! [11 - 20]
-	F F F F F F F F F F 	! [21 - 30]
-	F F F F F F F F F F 	! [31 - 40]
-	F F F F F F F F F F 	! [41 - 50]
-	F F F F F F F F F F 	! [51 - 60]
-	F F F F F F F F F F 	! [61 - 70]
-	F F F F F F F F F F 	! [71 - 80]
-	F F F F F F F F F F 	! [81 - 90]
-	F F F F F F F F F F 	! [91 - 100]
-	F F F F F F F F F F 	! [101 - 110]
-	F F F F F F F F F F 	! [111 - 120]
-	F F F F F F F F F F 	! [121 - 130]
-	F F F F F F F F F F 	! [131 - 140]
-	F F F F F F F F F F 	! [141 - 150]
-	F F F F F F F F F F 	! [151 - 160]
-	F F F F F F F F F F 	! [161 - 170]
-	F F F F F F F F F F 	! [171 - 180]
-	F F F F F F F F F F 	! [181 - 190]
-	F F F F F F F F F F 	! [191 - 200]
-	F F F F F F F F F F 	! [201 - 210]
-	F F F F F F F F F F 	! [211 - 220]
-	F F F F F F F F F F 	! [221 - 230]
-	F F F F F F F F F F 	! [231 - 240]
-	F F F F F F F F F F 	! [241 - 250]
-	F F F F F F ! [251 - 256]
+	T T T T T T T T T T 	! [1 - 10]
+	T T T T T T T T T T 	! [11 - 20]
+	T T T T T T T T T T 	! [21 - 30]
+	T T T T T T T T T T 	! [31 - 40]
+	T T T T T T T T T T 	! [41 - 50]
+	T T T T T T T T T T 	! [51 - 60]
+	T T T T T T T T T T 	! [61 - 70]
+	T T T T T T T T T T 	! [71 - 80]
+	T T T T T T T T T T 	! [81 - 90]
+	T T T T T T T T T T 	! [91 - 100]
+	T T T T T T T T T T 	! [101 - 110]
+	T T T T T T T T T T 	! [111 - 120]
+	T T T T T T T T T T 	! [121 - 130]
+	T T T T T T T T T T 	! [131 - 140]
+	T T T T T T T T T T 	! [141 - 150]
+	T T T T T T T T T T 	! [151 - 160]
+	T T T T T T T T T T 	! [161 - 170]
+	T T T T T T T T T T 	! [171 - 180]
+	T T T T T T T T T T 	! [181 - 190]
+	T T T T T T T T T T 	! [191 - 200]
+	T T T T T T T T T T 	! [201 - 210]
+	T T T T T T T T T T 	! [211 - 220]
+	T T T T T T T T T T 	! [221 - 230]
+	T T T T T T T T T T 	! [231 - 240]
+	T T T T T T T T T T 	! [241 - 250]
+	T T T T T T ! [251 - 256]
 	)
     ..Netline_All_Enabled                True
     ..Netline_Ordered_Routed_On          False
@@ -2298,7 +2291,7 @@
     ..Scoringline_On                     True
     ..Shearingline_On                    True
     ..Soldermask_On                      True 	! top
-                                         False	! bottom
+                                         True 	! bottom
     ..Solderpaste_On                     False	! top
                                          False	! bottom
     ..Group_Outline_On                   False	! top
@@ -2345,7 +2338,7 @@
     ..Mounting_Hole_On                   True
     ..Other_Hole_On                      True
     ..Fiducial_On                        True 	! top
-                                         False	! bottom
+                                         True 	! bottom
     ..Origin_On                          True
     ..Nc_Drill_Origin_On                 True
     ..Route_Obstruct_On                  True
@@ -2366,7 +2359,7 @@
     ..Fill_Patterns_On                   True
     ..Force_Outline_On                   False
     ..Force_Solid_On                     False
-    ..Dsp_Active_Route_Layer_Only        True
+    ..Dsp_Active_Route_Layer_Only        False
     ..Display_Legible_Text_Only          False
     ..Mirror_View_On                     False
     ..All_Text_Items_Enabled             True
@@ -2386,7 +2379,7 @@
     ..Distributed_Part_On                False	! top
                                          False	! bottom
     ..Place_Outline_On                   True 	! top
-                                         False	! bottom
+                                         True 	! bottom
     ..Insert_Outline_On                  False	! top
                                          False	! bottom
     ..Jumper_Wire_On                     True 	! top
@@ -2400,13 +2393,13 @@
     ..Pin_Type_On                        False	! top
                                          False	! bottom
     ..Part_Hazard_On                     True 	! top
-                                         False	! bottom
+                                         True 	! bottom
     ..Thermal_Data_On                    True 	! top
                                          True 	! bottom
     ..All_Assy_Enabled                   True 	! top
                                          True 	! bottom
     ..Assy_Outline_On                    True 	! top
-                                         False	! bottom
+                                         True 	! bottom
     ..Assy_Part_Number_On                False	! top
                                          False	! bottom
     ..Assy_Ref_Des_On                    False	! top
@@ -2432,11 +2425,11 @@
     ..All_Tpoint_Enabled                 True 	! top
                                          True 	! bottom
     ..Tpoint_Pad_On                      True 	! top
-                                         False	! bottom
+                                         True 	! bottom
     ..Tpoint_Obstruct_On                 False	! top
                                          False	! bottom
     ..Tpoint_Assy_Ref_Des_On             True 	! top
-                                         False	! bottom
+                                         True 	! bottom
     ..Tpoint_Silk_Ref_Des_On             False	! top
                                          False	! bottom
     ..Tpoint_Probe_On                    False	! top
@@ -12779,6 +12772,7 @@
 	"Sheet.SheetOutline" "d:1" "e:1" "s:1" "se:1" "c:10092441" "a:100" "p:0" "t:0" "o:1"
 	"Topology.TargetAreaWarnRed" "d:1" "e:1" "s:1" "se:1" "c:255" "a:100" "p:34" "t:1" "o:1"
 	"Topology.TargetAreaWarnYellow" "d:1" "e:1" "s:1" "se:1" "c:65535" "a:100" "p:34" "t:1" "o:1"
+	"User.DXF" "d:0" "e:1" "s:1" "se:1" "c:13408767" "a:100" "p:0" "t:0" "o:1"
 	"User.Dimensions" "d:1" "e:1" "s:1" "se:1" "c:128" "a:100" "p:0" "t:0" "o:1"
 	"User.Measure Drawing" "d:0" "e:1" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"WirebondObjects.WirebondGuides.Top" "d:1" "e:1" "s:1" "se:1" "c:26367" "a:100" "p:0" "t:0" "o:1"
@@ -14001,7 +13995,6 @@
 	"[NetClass].MUX" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[NetClass].LVDS" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[NetClass].DRV" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
-	"[NetClass].(SpacerNetClass)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[ConstraintClass].(All)" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:1"
 	"[ConstraintClass].(All)/RGB" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
 	"[ConstraintClass].(All)/DRV" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
@@ -14012,11 +14005,11 @@
 	"[ConstraintClass].(All)/ENCODER_DIFF" "d:0" "e:0" "s:1" "se:1" "c:16777215" "a:100" "p:0" "t:0" "o:0"
     )
     ..Virtual_String_Options ( 
-	"[Virtual].iDC.SchemeSelectorName" "Sys: SpiROSE - Route active layer"
+	"[Virtual].iDC.SchemeSelectorName" "Sys: SpiROSE - Route"
     )
     ..Named_Options ( 
 	"Internal.Option.FabricationObjects.Propagating" "1"
-	"Option.ActiveLayerOnly" "1"
+	"Option.ActiveLayerOnly" "0"
 	"Option.BoardElements.Enabled" "1"
 	"Option.BoardElements.Selectable" "1"
 	"Option.BoardObjects.Enabled" "1"
@@ -14143,8 +14136,8 @@
 	"Option.PlaceObjects.Parts.Top" "1"
 	"Option.PlaceObjects.Selectable" "1"
 	"Option.PlaceObstructsHeight" "3"
-	"Option.Planes.Data.Enabled" "1"
-	"Option.Planes.Data.Fill" "1"
+	"Option.Planes.Data.Enabled" "0"
+	"Option.Planes.Data.Fill" "3"
 	"Option.Planes.Enabled" "1"
 	"Option.Planes.Selectable" "1"
 	"Option.Planes.Shape.Enabled" "1"

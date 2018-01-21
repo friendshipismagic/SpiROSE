@@ -1,7 +1,7 @@
 .FILETYPE GerberPlotSetupFile
 .VERSION "VB99.0"
 .CREATOR "Xpedition Layout Gerber Output"
-.DATE "Monday, January 08, 2018 10:24 PM"
+.DATE "Tuesday, January 16, 2018 03:36 PM"
 
 .BaseUnits "1NM"
 
@@ -93,6 +93,38 @@
  ..HeaderText
    ...CommentLine "Mentor Graphics Example Gerber Output Definition"
  ..BoardItem SolderpasteBottom
+
+.GerberOutputFile "InsertionOutline.gdo"
+ ..ProcessFile Yes
+ ..FlashPads Yes
+ ..GerberOutputPath "Output\\Gerber\\InsertionOutline.gdo"
+ ..BoardItem BoardOutline
+ ..CellType Buried
+ ..CellType Connector
+ ..CellType DiscreteAxial
+ ..CellType DiscreteChip
+ ..CellType DiscreteOther
+ ..CellType DiscreteRadial
+ ..CellType EdgeConnector
+ ..CellType EmbeddedPassive
+ ..CellType General
+ ..CellType Graphic
+ ..CellType ICBareDie
+ ..CellType ICBGA
+ ..CellType ICDIP
+ ..CellType ICFlipChip
+ ..CellType ICLCC
+ ..CellType ICOther
+ ..CellType ICPGA
+ ..CellType ICPLCC
+ ..CellType ICSIP
+ ..CellType ICSOIC
+ ..CellType Jumper
+ ..CellType Mechanical
+ ..CellType TestPoint
+ ..CellItemsSide Bottom
+   ...CellItemsLayer 1
+   ...CellItem InsertionOutline
 
 .GerberOutputFile "EtchLayerTop.gdo"
  ..ProcessFile Yes

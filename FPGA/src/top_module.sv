@@ -42,11 +42,6 @@ module top_module (
  */
 logic [29:0] framebuffer_dat;
 
-/*
- * Temporary zone where interconnect logics are driven while unused
- */
-assign framebuffer_dat = 30'h0;
-
 // RAM
 logic [31:0] ram_write_addr;
 logic [31:0] ram_read_addr;
@@ -64,8 +59,8 @@ logic stream_ready;
 /*
  * Temporary zone where signals are driven while unused
  */
+assign framebuffer_dat = 30'h0;
 assign mux_out = 8'h00;
-assign framebuffer_dat ='0;
 assign ram_read_addr = '0;
 
 // 33 MHz clock generator
