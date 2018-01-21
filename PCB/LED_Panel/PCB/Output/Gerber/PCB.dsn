@@ -1,6 +1,6 @@
 {Program	Expedition GerbTool(tm)
 	{Version	8.1.2 X1}
-	{Created	Mon Jan 08 22:24:48 2018}
+	{Created	Tue Jan 16 15:37:04 2018}
 }
 {Environment
 	{ViewMetric	Yes}
@@ -28,55 +28,62 @@
 		{Ftype		Gerber}
 	}
 	{Layer  4
+		{File		InsertionOutline.gdo}
+		{LyrName	InsertionOutline}
+		{Visibility	Off}
+		{Type		Other}
+		{Ftype		Gerber}
+	}
+	{Layer  5
 		{File		EtchLayerTop.gdo}
 		{LyrName	EtchLayerTop}
 		{Visibility	Off}
 		{Type		Top}
 		{Ftype		Gerber}
 	}
-	{Layer  5
+	{Layer  6
 		{File		EtchLayerBottom.gdo}
 		{LyrName	EtchLayerBottom}
 		{Visibility	Off}
 		{Type		Bottom}
 		{Ftype		Gerber}
 	}
-	{Layer  6
+	{Layer  7
 		{File		EtchLayer5.gdo}
 		{LyrName	EtchLayer5}
 		{Visibility	Off}
 		{Type		Plane}
 		{Ftype		Gerber}
 	}
-	{Layer  7
+	{Layer  8
 		{File		EtchLayer4.gdo}
 		{LyrName	EtchLayer4}
 		{Visibility	Off}
 		{Type		Plane}
 		{Ftype		Gerber}
 	}
-	{Layer  8
+	{Layer  9
 		{File		EtchLayer3.gdo}
 		{LyrName	EtchLayer3}
 		{Visibility	Off}
 		{Type		Plane}
 		{Ftype		Gerber}
 	}
-	{Layer  9
+	{Layer 10
 		{File		EtchLayer2.gdo}
 		{LyrName	EtchLayer2}
 		{Visibility	Off}
 		{Type		Plane}
 		{Ftype		Gerber}
 	}
-	{Layer 10
+	{Layer 11
 		{File		DrillDrawingThrough.gdo}
 		{LyrName	DrillDrawingThrough}
 		{Visibility	Off}
 		{Type		Other}
 		{Ftype		Gerber}
 	}
-	{Layer 11
+	{Layer 12
 		{File		BoardOutline.gdo}
 		{LyrName	BoardOutline}
 		{Visibility	Off}
