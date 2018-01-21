@@ -12,10 +12,10 @@
 // Altera or its authorized distributors.  Please refer to the
 // applicable agreement for further details.
 
-module project_name
+module blink_pt6
 (
-    input       pt_39;
-    output      pt_6;
+    input       pt_39,
+    output      pt_6
 );
 
 assign pt_6 = pt_39;
