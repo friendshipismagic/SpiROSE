@@ -18,9 +18,10 @@ logic [47:0] out_reg;
 
 logic sync_mosi, sync_sck, sync_ss;
 logic last_sck, last_ss;
-logic posedge_sck, posedge_ss, negedge_ss;
+logic posedge_sck, negedge_sck, posedge_ss, negedge_ss;
 
 assign posedge_sck = ~last_sck & sync_sck;
+assign negedge_sck = last_sck & ~sync_sck;
 assign posedge_ss = ~last_ss & sync_ss;
 assign negedge_ss = last_ss & ~sync_ss;
 
@@ -52,7 +53,7 @@ sync_sig sync_sig_ss (
 *  Synchronize last sck state to detect posedge
 */
 always @(posedge clk or negedge nrst)
-    if(~nrst) begin 
+    if(~nrst) begin
         last_sck <= '0;
     end else begin
         last_sck <= sync_sck;
@@ -62,7 +63,7 @@ always @(posedge clk or negedge nrst)
 *  Synchronize last ss state to detect edges
 */
 always @(posedge clk or negedge nrst)
-    if(~nrst) begin 
+    if(~nrst) begin
         last_ss <= '1;
     end else begin
         last_ss <= sync_ss;
@@ -95,9 +96,9 @@ always @(posedge clk or negedge nrst)
             out_reg <= cmd_write;
         end else if (negedge_ss) begin
             out_reg <= '0;
-        end else if (posedge_sck) begin
+        end else if (negedge_sck) begin
             out_reg <= { out_reg[46:0], 1'b0 };
-				spi_miso <= out_reg[47];
+            spi_miso <= out_reg[47];
         end
     end
 
