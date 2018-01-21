@@ -32,7 +32,7 @@ set_location_assignment PIN_45 -to drv_sin[7]
 set_location_assignment PIN_51 -to drv_sin[8]
 set_location_assignment PIN_44 -to drv_sin[9]
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to drv_sin*
+set_instance_assignment -name IO_STANDARD "3.0V LVCMOS" -to drv_sin*
 
 #============================================================
 # LED DRIVERS (CONTROL)
@@ -45,5 +45,5 @@ set_location_assignment PIN_70 -to fpga_lat_b
 set_location_assignment PIN_218 -to fpga_sclk_a
 set_location_assignment PIN_57 -to fpga_sclk_b
 
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to drv_sout_data
-set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to fpga_*
+set_instance_assignment -name IO_STANDARD "3.0V LVCMOS" -to drv_sout_data
+set_instance_assignment -name IO_STANDARD "3.0V LVCMOS" -to fpga_*
