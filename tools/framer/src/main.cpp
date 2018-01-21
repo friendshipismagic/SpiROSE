@@ -29,7 +29,8 @@ int main(int argc, char *argv[]) {
     // MVP matrix for visualization output
     glm::mat4 matMVP(
         glm::perspective(glm::radians(90.f), 40.f / 48.f, .1f, 10.f) *
-        glm::lookAt(glm::vec3(1.f), glm::vec3(0.f), glm::vec3(0.f, 0.f, 1.f)));
+        glm::lookAt(glm::vec3(2.f, 1.f, 0.f), glm::vec3(0.f),
+                    glm::vec3(0.f, 0.f, 1.f)));
 
     // Load mesh
     Assimp::Importer importer;
