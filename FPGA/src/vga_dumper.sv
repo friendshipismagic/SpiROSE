@@ -26,6 +26,9 @@ always_comb begin
     vga_b[7:3] = rdata[15:11];
     vga_g[7:2] = rdata[10:5];
     vga_r[7:3] = rdata[4:0];
+    vga_b[2:0] = '0;
+    vga_g[1:0] = '0;
+    vga_r[2:0] = '0;
 end
 
 endmodule
