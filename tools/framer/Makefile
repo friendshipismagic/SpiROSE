@@ -23,6 +23,7 @@ run: $(EXE)
 	./$(EXE)
 
 -include $(DEPS)
+-include tests/tests.mk
 
 clean:
 	$(RM) $(DEPS) $(OBJS) $(EXE)
@@ -32,4 +33,13 @@ lint:
 	git status --porcelain | grep -e "^ M" && exit || exit 0
 build: all
 test: all
+	export DISPLAY=:10; \
+		Xvfb $$DISPLAY -screen $$DISPLAY 1280x720x24 +extension GLX & \
+		sleep 2; \
+		$(MAKE) clean-tests; \
+		DISPLAY=:10 $(MAKE) run-tests; \
+		code=$$?; \
+		kill %1; \
+		wait %1; \
+		exit $$code
 
