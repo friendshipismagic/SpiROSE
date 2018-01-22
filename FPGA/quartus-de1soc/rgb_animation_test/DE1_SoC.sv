@@ -92,7 +92,7 @@ framebuffer_emulator #(.POKER_MODE(9)) main_fb_emulator (
     .nrst(nrst),
     .data(framebuffer_data),
     .driver_ready(driver_ready),
-	 .button(~key[3])
+    .button(~key[3])
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (

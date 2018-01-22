@@ -10,17 +10,12 @@ module framebuffer_emulator #(
 
     // Sync signals
     input driver_ready,
-    input new_configuration_ready,
-	 input button
+    input button
 );
 
 localparam BUFF_SIZE = 15*LED_PER_DRIVER;
 localparam LED_PER_DRIVER = 16;
 localparam BUFF_SIZE_LOG = $clog2(BUFF_SIZE);
-
-integer led_cnt;
-integer bit_cnt;
-integer color_cnt;
 
 localparam [15:0] red   = 16'b00000_000000_11111;
 localparam [15:0] green = 16'b00000_111111_00000;
@@ -293,33 +288,35 @@ localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
 /* verilator lint_on LITENDIAN */
 
 // The column we are currently sending (relatively to a driver)
-logic [2:0] mul_idx;
+integer mul_idx;
 // The led we are currently sending data to
-logic [$clog2(LED_PER_DRIVER)-1:0] led_idx;
+integer led_idx;
 // The current bit to send to the driver main controller
-logic [$clog2(POKER_MODE)-1:0] bit_idx;
+integer bit_idx;
 // The color (red green or blue) we are currently sending
-logic [1:0] rgb_idx;
+integer rgb_idx;
 
 // The three following logics help to compute the correct voxel and bit address
-logic [15:0] color_addr;
+/* verilator lint_off UNUSED */
+integer color_addr;
+/* verilator lint_on UNUSED */
 logic [29:0] [BUFF_SIZE_LOG-1:0] voxel_addr;
-logic [$clog2(POKER_MODE)-1:0] color_bit_idx;
+integer color_bit_idx;
 
 logic prev_button;
-logic [1:0] animation;
+integer animation;
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         prev_button <= '0;
-		  animation <= '0;
+        animation <= '0;
     end else begin
-	     prev_button <= button;
-		  if(button && ~prev_button) begin
-				animation <= animation + 1'b1;
-				if(animation == 2) begin
-					 animation <= '0;
-				end
-		  end
+        prev_button <= button;
+        if(button && ~prev_button) begin
+            animation <= animation + 1'b1;
+            if(animation == 2) begin
+                animation <= '0;
+            end
+        end
     end
 /*
  * There are two types of driver and for each one a LUT for red and green, and
@@ -343,7 +340,7 @@ end
  * green color for instance we get bits 9 to 5.
  */
 assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
-assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]);
+assign color_addr = color_bit_idx + 32'(COLOR_BASE[rgb_idx]);
 
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
@@ -387,7 +384,7 @@ always_ff @(posedge clk_33 or negedge nrst)
         rgb_idx <= '0;
         mul_idx <= '0;
         bit_idx <= POKER_MODE-1;
-        led_idx <= 4'(LED_PER_DRIVER-1);
+        led_idx <= LED_PER_DRIVER-1;
     end else if(driver_ready) begin
         rgb_idx <= rgb_idx + 1'b1;
         // We have sent the three colors, time to go to the next led
@@ -396,7 +393,7 @@ always_ff @(posedge clk_33 or negedge nrst)
             led_idx <= led_idx - 1'b1;
             // We have sent the right bit for each leds in the column
             if(led_idx == 0) begin
-                led_idx <= 4'(LED_PER_DRIVER-1);
+                led_idx <= LED_PER_DRIVER-1;
                 bit_idx <= bit_idx - 1'b1;
                 // We have sent all the bits for each led
                 if(bit_idx == 0) begin
