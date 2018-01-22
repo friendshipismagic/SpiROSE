@@ -153,61 +153,39 @@ always_ff @(posedge clock_33 or negedge nrst)
 // Project pins assignment
 assign nrst = key[0] & lock;
 
-logic driver_switch, mux_switch;
-assign driver_switch = sw[9];
-assign mux_switch    = sw[8];
-
 // Drivers
-always_comb begin
-    if(driver_switch) begin
-        gpio_1[35] = gclk;
-        gpio_1[33] = sclk;
-        gpio_1[31] = lat;
-        gpio_1[29] = sin[0];
-    end else begin
-        gpio_1[35] = 0;
-        gpio_1[33] = 0;
-        gpio_1[31] = 0;
-        gpio_1[29] = 0;
-    end
-end
+assign gpio_1[6] = gclk;
+assign gpio_1[4] = sclk;
+assign gpio_1[2] = lat;
+assign gpio_1[0] = sin[0];
 
-// Multiplexing
-always_comb begin
-    if (mux_switch) begin
-        gpio_0[10] = mux_out[7];
-        gpio_0[12] = mux_out[6];
-        gpio_0[14] = mux_out[5];
-        gpio_0[16] = mux_out[4];
-        gpio_0[18] = mux_out[3];
-        gpio_0[20] = mux_out[2];
-        gpio_0[22] = mux_out[1];
-        gpio_0[24] = mux_out[0];
-    end else begin
-        gpio_0[10] = 1;
-        gpio_0[12] = 1;
-        gpio_0[14] = 1;
-        gpio_0[16] = 1;
-        gpio_0[18] = 1;
-        gpio_0[20] = 1;
-        gpio_0[22] = 1;
-        gpio_0[24] = 1;
-    end
-end
+assign gpio_0[10] = mux_out[7];
+assign gpio_0[12] = mux_out[6];
+assign gpio_0[14] = mux_out[5];
+assign gpio_0[16] = mux_out[4];
+assign gpio_0[18] = mux_out[3];
+assign gpio_0[20] = mux_out[2];
+assign gpio_0[22] = mux_out[1];
+assign gpio_0[24] = mux_out[0];
 
-
+logic [1:0] shift;
+assign shift = {sw[1], sw[2]};
 
 // Process to simulate the RAM, changing continuously between R, G and B
 always_ff @(posedge clock_33 or negedge nrst)
     if (~nrst) begin
         ram_rdata <= '0;
     end else begin
-        if (ram_raddr%3 == 0) begin
-            ram_rdata <= 16'b1000000000000000;
-        end else if (ram_raddr%3 == 1) begin
-            ram_rdata <= 16'b0000011000000000;
+        if (shift == 3) begin
+            ram_rdata <= 16'b00100_000100_00100;
         end else begin
-            ram_rdata <= 16'b0000000000010000;
+            if (ram_raddr%3 + shift == 0) begin
+                ram_rdata <= 16'b10000_000000_00000;
+            end else if (ram_raddr%3 + shift == 1) begin
+                ram_rdata <= 16'b00000_110000_00000;
+            end else begin
+                ram_rdata <= 16'b00000_000000_10000;
+            end
         end
     end
 
