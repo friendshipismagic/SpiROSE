@@ -73,7 +73,9 @@ typedef struct {
  *
  * \see make_poker_data, make_normal_data
  */
-typedef struct { uint8_t color[3]; } rgb_t;
+typedef struct {
+    uint8_t color[3];
+} rgb_t;
 
 #ifdef __cplusplus
 extern "C" {
