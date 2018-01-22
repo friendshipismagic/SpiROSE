@@ -29,7 +29,7 @@ localparam DISABLE_RGB_COMMAND = 'hD0;
 localparam ENABLE_RGB_COMMAND = 'hE0;
 localparam DEFAULT_CONFIG_DATA = 'hFF;
 
-`include "drivers_conf.sv"
+`include "drivers_conf.sv.conf"
 
 logic [55:0] last_cmd_read;
 logic [2:0] last_cmd_len_bytes;
