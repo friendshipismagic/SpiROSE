@@ -94,7 +94,7 @@ void Monitor::checkConfigProtocol() {
         auto p_noGclk =
             sc_spawn(sc_bind(&Monitor::checkNoGCLKDuringConfig, this));
 
-        for (int i = 0; i < 47; ++i) wait(sclk.posedge_event());
+        for (int i = 0; i < 48; ++i) wait(sclk.posedge_event());
 
         // Start process checking that config is correctly sent
         auto p_checkConfig = sc_spawn(sc_bind(&Monitor::checkConfig, this));
@@ -238,17 +238,27 @@ void Monitor::checkThatLatgsFallDuringTheEndOfASegment() {
 
     int gclkCounter = 0;
     while (true) {
+
+        // Count LAT to find LAT type
         int latCounter = 0;
-        while (!lat) {
-            wait(gclk.posedge_event());
-            gclkCounter += 1;
+        sc_spawn([this, &latCounter]() {
+            wait(sclk.posedge_event());
             latCounter += lat;
-        }
-        while (lat) {
-            wait(evtList);
-            gclkCounter += gclk;
-            latCounter += lat;
-        }
+        });
+
+        // Count GCLK, shouldn't be more than 512
+        int gclkCounter = 0;
+        sc_spawn([this, &gclkCounter]() {
+            while(gclkCounter <= 511) {
+                wait(gclk.posedge_event());
+                gclkCounter++;
+            }
+        });
+
+        sc_event_or_list evtList;
+        evtList |= lat.negedge_event();
+
+        wait(evtList);
 
         if (latCounter == LATCH_LATGS && gclkCounter != 512) {
             auto error =
