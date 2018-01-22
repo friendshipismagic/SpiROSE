@@ -1,5 +1,6 @@
 # Simple tests: just a reference picture
-TESTS_REF = tests/monkey.synth tests/monkey.view
+TESTS_REF = tests/monkey.synth tests/monkey.view \
+            tests/monkey-colorized.synth tests/monkey-colorized.view
 
 # Object -> PNG
 %.synth.png: %.obj $(EXE)
