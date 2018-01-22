@@ -3,6 +3,7 @@
 #include <sstream>
 
 #include "monitor.hpp"
+#define WAIT_POSEDGE(n) for (int i = 0; i < 200; ++i) wait(clk.posedge_event())
 
 constexpr int SPI_CYCLES = 8;
 
@@ -22,13 +23,10 @@ void checkValueEq(sc_bv<Size> left, sc_bv<Size> right) {
 
 void Monitor::runTests() {
     sendReset();
-
     enableSck = false;
-
-    // wait some cycles before sending anything
-    for (int i = 0; i < 200; ++i) wait(clk.posedge_event());
-
     unsigned char capturedValue = 0;
+    // wait some cycles before sending anything
+    WAIT_POSEDGE(200);
 
     /*
      * Note: in case of unknown command, it is undefined behaviour
@@ -37,32 +35,30 @@ void Monitor::runTests() {
 
     sc_spawn(&capturedValue, sc_bind(&Monitor::captureValue, this));
     sendCommand(0xBF);
-    for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
-
     for (int i = 0; i < 6; ++i) {
         sendCommand(0xA1 + i);
-        for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
     }
 
-    // config is sent MSB order
-    checkValueEq<48>(configOut.read(), 0xA1A2A3A4A5A6);
+    WAIT_POSEDGE(50);
 
-    for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
+    // config is sent MSB order
+    checkValueEq<48>(configuration.read(), 0xA1A2A3A4A5A6);
+
+    WAIT_POSEDGE(50);
 
     rotationData = 0xB000;
     for (int step = 0; step < 50; ++step) {
-        for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
-
+        WAIT_POSEDGE(50);
         // Send "get rotation data" command
         sendCommand(0x4C);
-        for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
+        WAIT_POSEDGE(50);
 
         unsigned char bytes[2];
         for (int byteNb = 0; byteNb < 2; ++byteNb) {
             // Record each bytes of the returned value
             sc_spawn(&bytes[byteNb], sc_bind(&Monitor::captureValue, this));
             sendCommand(0xA0);
-            for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
+            WAIT_POSEDGE(50);
         }
 
         // expected values
@@ -85,7 +81,7 @@ void Monitor::runTests() {
         wait(clk.posedge_event());
     }
 
-    for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
+    WAIT_POSEDGE(50);
 
     const auto msgE0 =
         "0xE0 command should have turned the rgb_enable signal on, but the "
@@ -96,36 +92,20 @@ void Monitor::runTests() {
 
     for (int i = 0; i < 10; ++i) {
         sendCommand(0xE0);
-        sendCommand(0xff);
+        WAIT_POSEDGE(50);
         if (!rgbEnable) SC_REPORT_ERROR("rgb", msgE0);
 
         sendCommand(0xD0);
-        sendCommand(0xff);
+        WAIT_POSEDGE(50);
         if (rgbEnable) SC_REPORT_ERROR("rgb", msgD0);
     }
-
-    for (int i = 0; i < 50; ++i) wait(clk.posedge_event());
-
-
-    // test that configure is not interpreted as as command in configure mode
-    for (int i = 0; i < 7; ++i) {
-        sendCommand(0xBF);
-        for (int j = 0; j < 50; ++j) wait(clk.posedge_event());
-    }
-
-    if (configOut != 0xBFBFBFBFBFBF)
-        SC_REPORT_ERROR("spi",
-                        "module continue to parse configure command in the "
-                        "configure state");
 
     while (true) wait();
 }
 
 void Monitor::sendReset() {
     nrst = 0;
-    for (int i = 0; i < 10; ++i) {
-        wait(clk.posedge_event());
-    }
+    WAIT_POSEDGE(10);
     nrst = 1;
 }
 
@@ -144,7 +124,6 @@ void Monitor::sendCommand(char value) {
 }
 
 void Monitor::handleSck() {
-    sc_event_or_list evt;
     while (1) {
         wait(clk.value_changed_event());
         sck = enableSck ? clk : 0;
