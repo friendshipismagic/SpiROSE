@@ -28,7 +28,7 @@ localparam DISABLE_RGB_COMMAND = 'hD0;
 localparam ENABLE_RGB_COMMAND = 'hE0;
 localparam DEFAULT_CONFIG_DATA = 'hFF;
 
-`include "drivers_conf.sv"
+`include "drivers_conf.sv.conf"
 
 /*
  * ReceiveRegister is a shift register for the received byte
@@ -160,11 +160,6 @@ end
  * The Hall module sends rotation data to this module, then
  * it needs to send it back through spi_miso to the SBC.
  */
-
-logic should_run_rotation;
-assign should_run_rotation =
-    current_register == ROTATION_COMMAND
- && transmission_step == NO_TRANSMISSION;
 
 always_ff @(posedge spi_clk or negedge nrst) begin
     if (~nrst) begin
