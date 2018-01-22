@@ -3,17 +3,17 @@
 // Parameters to change
 module column_mux
 (
-   input clk_33,
+   input clk,
    input nrst,
    input column_ready,
    output reg [7:0] mux_out
 );
 
 /*
- * Convert the drive time into clock cycles. 30 ns ~ 33.33MHz
- * 330 cycles corresponds to 10 µs display time
+ * Convert the drive time into clock cycles. 15 ns ~ 66MHz
+ * 660 cycles corresponds to 10 µs display time
  */
-localparam DRIVE_CLOCK_CYCLES = 330;
+localparam DRIVE_CLOCK_CYCLES = 660;
 localparam DRIVE_CLOCK_BITS = $clog2(DRIVE_CLOCK_CYCLES);
 
 /*
@@ -29,7 +29,7 @@ logic [2:0] disp_value;
  */
 enum logic {WAIT_COLUMN_READY, DISP} mux_state;
 logic [DRIVE_CLOCK_BITS-1:0] mux_state_counter;
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         mux_state <= WAIT_COLUMN_READY;
         mux_state_counter <= '0;
