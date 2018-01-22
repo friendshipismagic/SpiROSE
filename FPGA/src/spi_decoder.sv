@@ -49,8 +49,8 @@ always_ff @(posedge clk or negedge nrst)
 
 always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
-        new_config_available <= 0;
         configuration <= serialized_conf;
+        new_config_available <= 1;       // This will be high for one cycle (STALL)
         rgb_enable <= 0;
     end else begin
         new_config_available <= '0;
