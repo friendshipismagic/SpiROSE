@@ -4,6 +4,7 @@
 `undef ENABLE_HPS
 
 module DE1_SoC(
+	 input clock_50, 
     ///////// GPIO /////////
     inout  wire [35:0] gpio_0,
     inout  wire [35:0] gpio_1,
@@ -22,7 +23,9 @@ module DE1_SoC(
     ///////// key /////////
     input  wire [3:0]  key,
     ///////// ledr /////////
-    output logic[9:0]  ledr
+    output logic[9:0]  ledr,
+    ///////// sw /////////
+	 input  wire[9:0]  sw
 );
 
 //    Turn off all display     //////////////////////////////////////
@@ -45,7 +48,8 @@ logic        position_sync          ;
 logic        column_ready           ;
 logic        driver_ready           ;
 logic        rgb_enable             ;
-logic [47:0] serialized_conf        ;
+//logic [47:0] serialized_conf      ;
+`include "drivers_conf.sv"
 logic        new_configuration_ready;
 logic [31:0] ram_waddr              ;
 logic [15:0] ram_wdata              ;
@@ -87,7 +91,8 @@ framebuffer_emulator #(.POKER_MODE(9)) main_fb_emulator (
     .clk_33(clock_33),
     .nrst(nrst),
     .data(framebuffer_data),
-    .driver_ready(driver_ready)
+    .driver_ready(driver_ready),
+	 .button(~key[3])
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
@@ -107,7 +112,7 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .serialized_conf(serialized_conf),
     .new_configuration_ready(new_configuration_ready)
 );
-
+assign ledr[9] = driver_ready;
 column_mux main_column_mux (
     .clk_33(clock_33),
     .nrst(nrst),
@@ -152,13 +157,13 @@ assign gpio_1[33] = sclk;
 assign gpio_1[31] = lat;
 assign gpio_1[29] = sin[0];
 
-assign gpio_0[10] = mux_out[7];
-assign gpio_0[12] = mux_out[6];
-assign gpio_0[14] = mux_out[5];
-assign gpio_0[16] = mux_out[4];
-assign gpio_0[18] = mux_out[3];
-assign gpio_0[20] = mux_out[2];
-assign gpio_0[22] = mux_out[1];
-assign gpio_0[24] = mux_out[0];
+assign gpio_0[10] = sw[9];
+assign gpio_0[12] = sw[8];
+assign gpio_0[14] = sw[7];
+assign gpio_0[16] = sw[6];
+assign gpio_0[18] = sw[5];
+assign gpio_0[20] = sw[4];
+assign gpio_0[22] = sw[3];
+assign gpio_0[24] = sw[2];
 
 endmodule
