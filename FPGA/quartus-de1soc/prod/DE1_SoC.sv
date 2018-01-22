@@ -144,23 +144,23 @@ module DE1_SoC(
 );
 
 //    Turn off all display     //////////////////////////////////////
-assign    hex0        =    'h7F;
-assign    hex1        =    'h7F;
-assign    hex2        =    'h7F;
-assign    hex3        =    'h7F;
-assign    hex4        =    'h7F;
-assign    hex5        =    'h7F;
+assign    hex0        =   ~serialized_conf[6:0];
+assign    hex1        =   ~serialized_conf[13:7];
+assign    hex2        =   ~serialized_conf[20:14];
+assign    hex3        =   ~serialized_conf[27:21];
+assign    hex4        =   ~serialized_conf[34:28];
+assign    hex5        =   ~serialized_conf[41:35];
 
 /////////////////////////////////////////////////////////////////////
 // Sorties video VGA     ////////////////////////////////////////////
-assign  vga_clk       =  '0;       // Horloge du CNA (DAC)
-assign  vga_hs        =  '0;       // Synchro horizontale
-assign  vga_vs        =  '0;       // Synchro verticale
-assign  vga_blank_n   =  '0;       // Autoriser l'affichage
+assign  vga_clk       =  rgb_clk;       // Horloge du CNA (DAC)
+assign  vga_hs        =  hsync;       // Synchro horizontale
+assign  vga_vs        =  vsync;       // Synchro verticale
+assign  vga_blank_n   =  hsync || vsync;       // Autoriser l'affichage
 assign  vga_sync_n    =  '0;       // non utilisé, doit resté à zéro
-assign  vga_r         =  '1;       // 10bits de Rouge
-assign  vga_g         =  '1;       // 10bits de Vert
-assign  vga_b         =  '1;       // 10bits de Bleu
+assign  vga_r[7:5]    =  rgb[7:5];       // 10bits de Rouge
+assign  vga_g[7:5]    =  rgb[15:13];       // 10bits de Vert
+assign  vga_b[7:4]    =  rgb[23:20];       // 10bits de Bleu
 //////////////////////////////////////////////////////////////////////
 
 
@@ -199,6 +199,7 @@ logic [15:0] ram_rdata              ;
 logic        w_enable               ;
 logic        stream_ready           ;
 logic [23:0] rgb                    ;
+logic        rgb_clk                ;
 logic        hsync                  ;
 logic        vsync                  ;
 logic [7:0]  mux_out                ;
@@ -233,7 +234,8 @@ spi_slave main_spi(
     .spi_miso(spi_miso),
     .rotation_data(rotation_data),
     .config_out(serialized_conf),
-    .new_config_available(new_configuration_ready)
+    .new_config_available(new_configuration_ready),
+	 .rgb_enable(rgb_enable)
 );
 
 hall_sensor_emulator main_hall_sensor_emulator (
@@ -243,7 +245,7 @@ hall_sensor_emulator main_hall_sensor_emulator (
 );
 
 rgb_logic main_rgb_logic (
-    .rgb_clk(clock_33),
+    .rgb_clk(rgb_clk),
     .nrst(nrst),
     .rgb(rgb),
     .hsync(hsync),
@@ -328,24 +330,75 @@ always_ff @(posedge clock_33 or negedge nrst)
 		end
 	end
 
-// Project pins assignment
-assign rgb_enable = 1;
-assign nrst      = key[0] & lock;
-assign sout      = gpio_1[0]    ;
-assign sout_mux  = gpio_0[35:30];
-assign spi_clk   = gpio_0[29]   ;
-assign spi_ss    = gpio_0[28]   ;
-assign spi_mosi  = gpio_0[27]   ;
-assign spi_miso  = gpio_0[26]   ;
-assign hsync     = gpio_0[25]   ;
-assign vsync     = gpio_0[24]   ;
-assign rgb       = gpio_0[23:0] ;
+// Heartbeat LED 33MHz
+logic[24:0] heartbeat_counter_rgb;
+always_ff @(posedge rgb_clk or negedge nrst)
+	if(~nrst) begin
+		ledr[2] <= '0;
+		heartbeat_counter_rgb <= '0;
+	end else begin
+		heartbeat_counter_rgb <= heartbeat_counter_rgb + 1'b1;
+		if(heartbeat_counter_rgb == 27_000_000) begin
+			ledr[2] <= ~ledr[2];
+			heartbeat_counter_rgb <= '0;
+		end
+	end
+	
+assign ledr[9] = rgb_enable;
+assign ledr[8] = stream_ready;
+assign ledr[7] = driver_ready;
 
+// Project pins assignment
+assign nrst      = key[0] & lock;
+
+// SPI
+assign spi_clk   = gpio_1[22]   ;
+assign spi_ss    = gpio_1[24]   ;
+assign spi_mosi  = gpio_1[18]   ;
+assign spi_miso  = gpio_1[20]   ;
+
+// RGB
+// blue
+assign rgb[23]   = gpio_0[7]    ;
+assign rgb[22]   = gpio_0[5]    ;
+assign rgb[21]   = gpio_0[3]    ;
+assign rgb[20]   = gpio_0[1]    ;
+// green
+assign rgb[15]   = gpio_1[0]    ;
+assign rgb[14]   = gpio_1[2]    ;
+assign rgb[13]   = gpio_1[4]    ;
+// red
+assign rgb[7]    = gpio_1[1]    ;
+assign rgb[6]    = gpio_1[3]    ;
+assign rgb[5]    = gpio_1[5]    ;
+// control signals
+assign hsync     = gpio_0[4]    ;
+assign vsync     = gpio_0[2]    ;
+assign rgb_clk   = gpio_0[0]    ;
+
+// Drivers
 assign gpio_1[35] = gclk;
 assign gpio_1[33] = sclk;
 assign gpio_1[31] = lat;
 assign gpio_1[29] = sin[0];
-assign gpio_1[21] = clock_66;
-assign gpio_1[19] = clock_33;
 
+// Multiplexing
+assign gpio_0[10] = mux_out[7];
+assign gpio_0[12] = mux_out[6];
+assign gpio_0[14] = mux_out[5];
+assign gpio_0[16] = mux_out[4];
+assign gpio_0[18] = mux_out[3];
+assign gpio_0[20] = mux_out[2];
+assign gpio_0[22] = mux_out[1];
+assign gpio_0[24] = mux_out[0];
+/*
+assign gpio_0[10] = sw[9];
+assign gpio_0[12] = sw[8];
+assign gpio_0[14] = sw[7];
+assign gpio_0[16] = sw[6];
+assign gpio_0[18] = sw[5];
+assign gpio_0[20] = sw[4];
+assign gpio_0[22] = sw[3];
+assign gpio_0[24] = sw[2];
+*/
 endmodule

@@ -38,7 +38,7 @@ int sc_main(int argc, char** argv) {
     const unsigned int MAIN_DIV = 4;
     const unsigned int DIV_RATIO = 1;
 
-    sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 1024 * 2;
+    sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 128 * 2;
 
     sc_clock clk66("clk66", T);
     sc_signal<bool> clk33("clk33");
@@ -70,6 +70,8 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, newConfigurationReady, "new_configuration_ready");
     sc_trace(traceFile, clk66, "clk_66");
     sc_trace(traceFile, clk33, "clk_33");
+    sc_trace(traceFile, driversSin, "driversSin");
+    sc_trace(traceFile, framebufferData, "framebufferData");
 
     Vclock_lse clock_lse("clock_lse");
     clock_lse.nrst(nrst);

@@ -79,7 +79,7 @@ enum logic[3:0] {
 logic [7:0] driver_state_counter;
 always_ff @(posedge clk_lse or negedge nrst)
     if(~nrst) begin
-        driver_state <= STALL;
+        driver_state <= STREAM;
         driver_state_counter <= '0;
     end else begin
         case(driver_state)
