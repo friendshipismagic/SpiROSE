@@ -175,8 +175,6 @@ logic [15:0] gbr_image [15*16-1:0] = '{
     green, green, green, green, green
 };
 
-
-
 localparam [2:0] [15:0] COLOR_BASE = '{0,6,11};
 /* verilator lint_off LITENDIAN */
 localparam [0:29] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
