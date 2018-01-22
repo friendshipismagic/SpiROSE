@@ -41,7 +41,7 @@ int sc_main(int argc, char** argv) {
     const unsigned int MAIN_DIV = 4;
     const unsigned int DIV_RATIO = 1;
 
-    sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 1024 * 2;
+    sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 128 * 2;
 
     sc_clock clk("clk", T, 0.5, SC_ZERO_TIME, true);
     sc_clock clkQuad("clk_quad", T, 0.5, T_start, true);

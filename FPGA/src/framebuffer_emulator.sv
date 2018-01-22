@@ -13,9 +13,9 @@ module framebuffer_emulator #(
     input new_configuration_ready
 );
 
-logic [3:0] led_cnt;
-logic [3:0] bit_cnt;
-logic [2:0] color_cnt;
+integer led_cnt;
+integer bit_cnt;
+integer color_cnt;
 
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
@@ -47,8 +47,7 @@ always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
         data <= '0;
     end else begin
-        data <= color_cnt == (led_cnt % 3) && driver_ready;
-		  //data <= '1;
+        data[0] <= color_cnt == (led_cnt % 3) && driver_ready;
     end
 
 
