@@ -287,7 +287,7 @@ localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
 };
 /* verilator lint_on LITENDIAN */
 
-// The column we are currently sending (relatively to a driver)
+// The three following logics help to compute the correct voxel and bit address
 integer mul_idx;
 // The led we are currently sending data to
 integer led_idx;

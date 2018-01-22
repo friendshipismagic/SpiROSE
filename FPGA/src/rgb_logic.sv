@@ -1,7 +1,7 @@
 module rgb_logic #(
     parameter RAM_ADDR_WIDTH=32,
     parameter RAM_DATA_WIDTH=16,
-    parameter IMAGE_IN_RAM = 3
+    parameter IMAGE_IN_RAM = 18
 )(
     input rgb_clk,
     input nrst,
