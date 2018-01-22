@@ -35,6 +35,7 @@ obj_dir/V%.cpp obj_dir/V%__Syms.cpp obj_dir/V%.h: %.sv
 	$(VERILATOR) $(VERILATOR_FLAGS) -y $(SV_MODULE_PATH) $<
 
 %.d: %.cpp
+	@mkdir -p $(dir $@)
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $(TARGET_ARCH) -MM -MP $^ -MF $@
 
 $(MODULE).simu: $(OBJS)
