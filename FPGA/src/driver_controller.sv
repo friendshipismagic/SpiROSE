@@ -85,7 +85,7 @@ always_ff @(posedge clk_lse or negedge nrst)
     end else begin
         case(driver_state)
             STALL: begin
-                if (new_config_ready) begin
+                if (new_configuration_ready) begin
                     driver_state <= PREPARE_CONFIG;
                 end
             end
