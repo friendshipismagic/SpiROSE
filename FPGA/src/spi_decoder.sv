@@ -27,7 +27,6 @@ localparam CONFIG_COMMAND = 'hBF;
 localparam ROTATION_COMMAND = 'h4C;
 localparam DISABLE_RGB_COMMAND = 'hD0;
 localparam ENABLE_RGB_COMMAND = 'hE0;
-localparam DEFAULT_CONFIG_DATA = 'hFF;
 
 `include "drivers_conf.svh"
 
