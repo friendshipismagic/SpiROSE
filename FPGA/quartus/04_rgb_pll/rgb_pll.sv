@@ -21,19 +21,12 @@ module rgb_pll
 logic clk33;
 assign pt_6 = clk33;
 
-logic clk33_shifted;
-
 logic locked;
 
 clock_33 main_clock_33 (
     .inclk0(pt_39),
     // Main 33 MHz clock
     .c0(clk33),
-    /*
-     * Secondary 33 MHz clock phase being 90° shifted 
-     * compared to the main one above
-     */
-    .c1(clk33_shifted),
     .locked(locked)
 );
 
@@ -41,7 +34,7 @@ logic [32:0] counter;
 
 // Counter process that outputs a 1 kHz clock
 always_ff @(posedge clk33)
-    if (counter >= 33000) begin
+    if (counter >= 66000) begin
         counter <= 1;
     end else begin
         counter <= counter + 1;
