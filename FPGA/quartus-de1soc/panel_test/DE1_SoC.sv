@@ -34,7 +34,6 @@ module DE1_SoC(
 
 `include "drivers_conf.sv.conf"
 
-//    Turn off all display     //////////////////////////////////////
 assign    hex0        =    conf[6:0];
 assign    hex1        =    conf[13:7];
 assign    hex2        =    conf[20:14];
@@ -42,9 +41,6 @@ assign    hex3        =    conf[27:21];
 assign    hex4        =    conf[34:28];
 assign    hex5        =    conf[41:35];
 
-//////////////////////////////////////////////////////////////////////
-//    Tous les ports en entrees/sorties mis au 3e etat       /////////
-//////////////////////////////////////////////////////////////////////
 logic        nrst                   ;
 logic [47:0] conf                   ;
 logic        new_configuration_ready;
