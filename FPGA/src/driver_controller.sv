@@ -1,8 +1,8 @@
 module driver_controller #(
     parameter BLANKING_TIME=72
 )(
-    input clk_hse,
-    input clk_lse,
+    input clk_quad,
+    input clk,
     input nrst,
 
     // Framebuffer access, 30b wide
@@ -28,19 +28,6 @@ module driver_controller #(
     input [47:0] serialized_conf,
     input new_configuration_ready
 );
-
-/*
- * Here we create a quadrature-phase clock based on clk_lse. It will be use to
- * split the lat/sin/state logic from the sclk/gclk logic in order to meet the
- * timing requirement of the driver.
- */
-logic clk_lse_quad;
-always_ff @(negedge clk_hse or negedge nrst)
-    if(~nrst) begin
-        clk_lse_quad <= '0;
-    end else begin
-        clk_lse_quad <= ~clk_lse_quad;
-    end
 
 /*
  * List of the possible states of the drivers
@@ -77,7 +64,7 @@ enum logic[3:0] {
 } driver_state;
 
 logic [7:0] driver_state_counter;
-always_ff @(posedge clk_lse or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         driver_state <= STALL;
         driver_state_counter <= '0;
@@ -178,7 +165,7 @@ always_ff @(posedge clk_lse or negedge nrst)
  */
 logic [10:0] segment_counter;
 logic [2:0]  mux_counter;
-always_ff @(posedge clk_lse or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         segment_counter <= '0;
         mux_counter <= '0;
@@ -215,7 +202,7 @@ assign blanking_period = nrst & (segment_counter < BLANKING_TIME);
  * count this extra one cycle.
  */
 logic [7:0] shift_register_counter;
-always_ff @(posedge clk_lse or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         shift_register_counter <= '0;
     end else begin
@@ -265,7 +252,7 @@ always_ff @(posedge clk_lse or negedge nrst)
 always_comb begin
     case(driver_state)
         CONFIG: begin
-            driver_sclk = clk_lse_quad;
+            driver_sclk = clk_quad;
             /*
              * After the WRTFC command we pause SCLK for one cycle to meet
              * timing requirement
@@ -282,7 +269,7 @@ always_comb begin
         end
 
         DUMP_CONFIG: begin
-            driver_sclk = clk_lse_quad;
+            driver_sclk = clk_quad;
             /*
              * After the READFC command we pause SCLK for five cycles to meet
              * timing requirement
@@ -300,11 +287,11 @@ always_comb begin
              * thus it is easier to just pause SCLK for the whole blanking
              * period.
              */
-            driver_sclk = clk_lse_quad & ~blanking_period;
+            driver_sclk = clk_quad & ~blanking_period;
             if(shift_register_counter == 0) begin
                 driver_sclk = '0;
             end
-            driver_gclk = clk_lse_quad;
+            driver_gclk = clk_quad;
             /*
              * After the LATGS command we pause GCLK for one cycle to meet
              * timing requirement
@@ -325,7 +312,7 @@ always_comb begin
         end
 
         default: begin
-            driver_sclk = clk_lse_quad;
+            driver_sclk = clk_quad;
             driver_gclk = '0;
         end
     endcase

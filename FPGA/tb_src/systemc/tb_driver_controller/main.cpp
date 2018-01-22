@@ -32,7 +32,10 @@ int sc_main(int argc, char** argv) {
     sc_report_handler::set_handler(tb_report_handler);
     Verilated::commandArgs(argc, argv);
 
-    const sc_time T(15, SC_NS);
+    // Use for defining the period of the main clock
+    const sc_time T(30, SC_NS);
+    // Use for defining the starting time fo the quadrature clock
+    const sc_time T_start(7.5, SC_NS);
 
     const unsigned int STEPS = 256;
     const unsigned int MAIN_DIV = 4;
@@ -40,8 +43,8 @@ int sc_main(int argc, char** argv) {
 
     sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 1024 * 2;
 
-    sc_clock clk66("clk66", T);
-    sc_signal<bool> clk33("clk33");
+    sc_clock clk("clk", T, 0.5, SC_ZERO_TIME, true);
+    sc_clock clkQuad("clk_quad", T, 0.5, T_start, true);
     sc_signal<bool> nrst("nrst");
     sc_signal<unsigned int> framebufferData("framebuffer_data");
     sc_signal<bool> driverSclk("driver_sclk");
@@ -68,17 +71,12 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, driverReady, "driver_ready");
     sc_trace(traceFile, positionSync, "position_sync");
     sc_trace(traceFile, newConfigurationReady, "new_configuration_ready");
-    sc_trace(traceFile, clk66, "clk_66");
-    sc_trace(traceFile, clk33, "clk_33");
-
-    Vclock_lse clock_lse("clock_lse");
-    clock_lse.nrst(nrst);
-    clock_lse.clk_lse(clk33);
-    clock_lse.clk_hse(clk66);
+    sc_trace(traceFile, clk, "clk");
+    sc_trace(traceFile, clkQuad, "clk_quad");
 
     Vdriver_controller dut("driver_controller");
-    dut.clk_hse(clk66);
-    dut.clk_lse(clk33);
+    dut.clk(clk);
+    dut.clk_quad(clkQuad);
     dut.nrst(nrst);
     dut.framebuffer_dat(framebufferData);
     dut.driver_sclk(driverSclk);
@@ -94,7 +92,7 @@ int sc_main(int argc, char** argv) {
     dut.column_ready(columnReady);
 
     Monitor monitor("monitor");
-    monitor.clk(clk33);
+    monitor.clk(clk);
     monitor.nrst(nrst);
     monitor.sin(driversSin);
     monitor.lat(driverLat);
