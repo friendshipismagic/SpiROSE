@@ -101,7 +101,7 @@ always @(posedge clk or negedge nrst)
     end else begin
         if(negedge_ss) begin
             out_reg <= cmd_write;
-        else if (posedge_ss) begin
+        end else if (posedge_ss) begin
             out_reg <= '0;
         end else if (~sync_ss && negedge_sck) begin
             out_reg <= { out_reg[46:0], 1'b0 };
