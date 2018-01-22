@@ -18,9 +18,9 @@ localparam BUFF_SIZE = 15*LED_PER_DRIVER;
 localparam LED_PER_DRIVER = 16;
 localparam BUFF_SIZE_LOG = $clog2(BUFF_SIZE);
 
-logic [3:0] led_cnt;
-logic [3:0] bit_cnt;
-logic [2:0] color_cnt;
+integer led_cnt;
+integer bit_cnt;
+integer color_cnt;
 
 localparam [15:0] red   = 16'b00000_000000_11111;
 localparam [15:0] green = 16'b00000_111111_00000;
@@ -360,13 +360,13 @@ always_ff @(posedge clk_33 or negedge nrst)
          */
         if(driver_ready && bit_idx > 3) begin
             for(int i = 0; i < 30; ++i) begin
-				    if(animation == 0) begin
+                if(animation == 0) begin
                     data[i] <= rgb_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
-					 end else if (animation == 1) begin
+                end else if (animation == 1) begin
                     data[i] <= brg_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
-					 end else begin
+                end else begin
                     data[i] <= gbr_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
-					 end
+                end
             end
         end
     end
