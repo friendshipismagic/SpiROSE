@@ -62,7 +62,7 @@ assign position_sync = 1'b1;
 
 // 66 MHz clock generator
 logic clock_66, lock;
-clk_66 main_clk_66 (
+clk main_clk_66 (
     .refclk(clock_50),
     .rst(sw[0]),
     .outclk_0(clock_66),
@@ -108,7 +108,7 @@ framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
     .nrst(nrst),
     .data(framebuffer_data),
     .driver_ready(driver_ready),
-    .new_configuration_ready(new_configuration_ready)
+    .button(~key[3])
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
@@ -156,16 +156,6 @@ always_ff @(posedge clock_33 or negedge nrst)
             heartbeat_counter_33 <= '0;
         end
     end
-
-assign ledr[9] = rgb_enable;
-always_ff @(posedge clock_33 or negedge nrst)
-    if(~nrst) begin
-        ledr[8] <= '0;
-    end else begin
-		  ledr[8] <= new_configuration_ready || ledr[8];
-	 end
-assign ledr[7] = driver_ready;
-assign ledr[6] = new_configuration_ready;
 
 // Project pins assignment
 assign nrst      = key[0] & lock;
