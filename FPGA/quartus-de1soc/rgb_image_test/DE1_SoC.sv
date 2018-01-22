@@ -46,7 +46,7 @@ logic        position_sync          ;
 logic        column_ready           ;
 logic        driver_ready           ;
 logic        rgb_enable             ;
-`include "drivers_conf.sv"
+`include "drivers_conf.svh"
 logic        new_configuration_ready;
 logic [31:0] ram_waddr              ;
 logic [15:0] ram_wdata              ;
@@ -67,7 +67,7 @@ logic [15:0] rotation_data          ;
 
 // 66 MHz clock generator
 logic clock_66, lock;
-clk_66 main_clk_66 (
+clk main_clk_66 (
 	.refclk(clock_50),
 	.rst(sw[0]),
 	.outclk_0(clock_66),
@@ -130,7 +130,7 @@ always_ff @(posedge clock_66 or negedge nrst)
 		heartbeat_counter_66 <= '0;
 	end else begin
 		heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
-		if(heartbeat_counter_66 == 30_000_000) begin
+		if(heartbeat_counter_66 == 33_000_000) begin
 			ledr[0] <= ~ledr[0];
 			heartbeat_counter_66 <= '0;
 		end
@@ -144,7 +144,7 @@ always_ff @(posedge clock_33 or negedge nrst)
 		heartbeat_counter_33 <= '0;
 	end else begin
 		heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
-		if(heartbeat_counter_33 == 30_000_000) begin
+		if(heartbeat_counter_33 == 33_000_000) begin
 			ledr[1] <= ~ledr[1];
 			heartbeat_counter_33 <= '0;
 		end
