@@ -152,10 +152,10 @@ always_ff @(posedge clock_33 or negedge nrst)
 assign nrst      = key[0] & lock;
 assign sout      = gpio_1[0]    ;
 assign sout_mux  = gpio_0[35:31];
-assign gpio_1[35] = gclk;
-assign gpio_1[33] = sclk;
-assign gpio_1[31] = lat;
-assign gpio_1[29] = sin[0];
+assign gpio_1[6] = gclk;
+assign gpio_1[4] = sclk;
+assign gpio_1[2] = lat;
+assign gpio_1[0] = sin[0];
 
 assign gpio_0[10] = sw[9];
 assign gpio_0[12] = sw[8];
