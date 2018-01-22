@@ -28,8 +28,8 @@ localparam IMAGE_SIZE = IMAGE_WIDTH*IMAGE_HEIGHT;
 localparam SLICES_IN_RAM_BEFORE_STREAM = 1;
 
 logic blanking;
-// hsync and vsync drives low when we are on blanking area
-assign blanking = hsync && vsync;
+// hsync and vsync drive low when we are on blanking area
+assign blanking = (~hsync | ~vsync);
 
 logic [31:0] pixel_counter;
 
@@ -37,7 +37,7 @@ logic is_end_of_RAM;
 assign is_end_of_RAM = ram_addr == (IMAGE_SIZE*IMAGE_IN_RAM-1);
 
 logic is_valid_first_frame;
-assign is_valid_first_frame = ~vsync | (pixel_counter >= IMAGE_SIZE - 1);
+assign is_valid_first_frame = vsync | (pixel_counter >= IMAGE_SIZE - 1);
 
 /*
  * We don't write anything in blanking area but it is controlled by

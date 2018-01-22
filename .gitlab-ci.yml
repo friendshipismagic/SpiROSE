@@ -4,11 +4,9 @@ stages:
   - lint
   - build
   - test
-  - host
   - bundle
 
 variables:
-  JOBS: 2
   RENDERER_POC_DIR: "tools/renderer"
   FPGA_DIR: "FPGA"
   LIBSPIROSE_DIR: "SBC/libSpiROSE"
@@ -37,13 +35,6 @@ lower_tower/test:
     - cd LCD_Display
     - make test
 
-lower_tower/host:
-  image: tuetuopay/arm-none-eabi
-  stage: host
-  script:
-    - cd LCD_Display
-    - make host
-
 renderer-poc/lint:
   stage: lint
   image: tuetuopay/clang
@@ -59,13 +50,6 @@ renderer-poc/build:
     - make build
     - make test
 
-renderer-poc/host:
-  stage: host
-  image: tuetuopay/glfw
-  script:
-    - cd $RENDERER_POC_DIR
-    - make host
-
 renderer-poc/bundle:
   stage: bundle
   image: tuetuopay/glfw
@@ -74,7 +58,9 @@ renderer-poc/bundle:
     - make bundle
   artifacts:
     paths:
-      - $RENDERER_POC_DIR/renderer-poc.tar.gz
+      - $RENDERER_POC_DIR/rose-renderer-poc
+      - $RENDERER_POC_DIR/mesh
+      - $RENDERER_POC_DIR/shader
     expire_in: 1 week
   only:
     - master
@@ -92,14 +78,13 @@ fpga/build:
   script:
     - cd $FPGA_DIR
     - make build
-    - make test
 
-fpga/host:
-  stage: host
+fpga/test:
+  stage: test
   image: tuetuopay/verilator
   script:
     - cd $FPGA_DIR
-    - make host
+    - make test
 
 libspirose/lint:
   stage: lint
@@ -113,7 +98,7 @@ libspirose/build:
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
-    - make build -j$(JOBS)
+    - make build
 
 libspirose/test:
   stage: test
@@ -121,37 +106,69 @@ libspirose/test:
   script:
     - cd $LIBSPIROSE_DIR
     - echo Testing desktop OpenGL
-    - make build -j$(JOBS)
+    - make build
     - make install
-    - make test -j$(JOBS)
+    - make test
     - echo Testing OpenGL ES
     - make clean
-    - make build UNAME_P=armv7l -j$(JOBS)
+    - make build UNAME_P=armv7l
     - make install
-    - make test -j$(JOBS)
-
-libspirose/host:
-  stage: host
-  image: tuetuopay/glfw
-  script:
-    - cd $LIBSPIROSE_DIR
-    - make host
+    - make test
 
 libspirose/bundle:
   stage: bundle
   image: tuetuopay/glfw
   script:
     - cd $LIBSPIROSE_DIR
-    - make bundle -j$(BUNDLE)
+    - make bundle
   artifacts:
     paths:
-      - $LIBSPIROSE_DIR/libSpiROSE.tar.gz
+      - $LIBSPIROSE_DIR/include
+      - $LIBSPIROSE_DIR/lib
     expire_in: 1 week
   only:
     - master
 
 spi-cli/build:
   stage: build
-  image: rust
+  image: tuetuopay/rust-cc-armv7
   script:
+    - export CARGO_HOME="$PWD/.cargo"
     - cd tools/spi_cli && cargo build
+  cache:
+    key: cargo
+    paths:
+      - .cargo/
+
+spi-cli/test:
+  stage: test
+  image: tuetuopay/rust-cc-armv7
+  script:
+    - export CARGO_HOME="$PWD/.cargo"
+    - cd tools/spi_cli && cargo test
+  cache:
+    key: cargo
+    paths:
+      - .cargo/
+
+spi-cli/bundle:
+  stage: bundle
+  image: tuetuopay/rust-cc-armv7
+  script:
+    - export CARGO_HOME="$PWD/.cargo"
+    - echo '[target.armv7-unknown-linux-gnueabihf]' > "$CARGO_HOME/config"
+    - echo 'linker = "arm-linux-gnueabihf-gcc"' >> "$CARGO_HOME/config"
+    - cd tools/spi_cli
+    - cargo build --release --target=armv7-unknown-linux-gnueabihf
+    - mv target/armv7-unknown-linux-gnueabihf/release/spi_cli .
+  artifacts:
+    paths:
+      - tools/spi_cli/spi_cli
+      - tools/spi_cli/led_driver_conf.toml
+    expire_in: 1 week
+  cache:
+    key: cargo
+    paths:
+      - .cargo/
+  only:
+    - master

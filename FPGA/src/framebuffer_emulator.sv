@@ -10,20 +10,16 @@ module framebuffer_emulator #(
 
     // Sync signals
     input driver_ready,
-    input new_configuration_ready
+    input button
 );
 
 localparam BUFF_SIZE = 15*LED_PER_DRIVER;
 localparam LED_PER_DRIVER = 16;
 localparam BUFF_SIZE_LOG = $clog2(BUFF_SIZE);
 
-logic [3:0] led_cnt;
-logic [3:0] bit_cnt;
-logic [2:0] color_cnt;
-
-logic [15:0] red   = 16'b00000_000000_10000;
-logic [15:0] green = 16'b00000_100000_00000;
-logic [15:0] blue  = 16'b10000_000000_00000;
+localparam [15:0] red   = 16'b00000_000000_11111;
+localparam [15:0] green = 16'b00000_111111_00000;
+localparam [15:0] blue  = 16'b11111_000000_00000;
 logic [15:0] rgb_image [15*16-1:0] = '{
     red  , red  , red  , red  , red  ,
     blue , blue , blue , blue , blue ,
@@ -40,7 +36,7 @@ logic [15:0] rgb_image [15*16-1:0] = '{
     red  , red  , red  , red  , red  ,
     blue , blue , blue , blue , blue ,
     green, green, green, green, green,
-    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
     red  , red  , red  , red  , red  ,
     blue , blue , blue , blue , blue ,
     green, green, green, green, green,
@@ -56,7 +52,7 @@ logic [15:0] rgb_image [15*16-1:0] = '{
     red  , red  , red  , red  , red  ,
     blue , blue , blue , blue , blue ,
     green, green, green, green, green,
-    green, green, green, green, green,
+    red  , red  , red  , red  , red  ,
     red  , red  , red  , red  , red  ,
     blue , blue , blue , blue , blue ,
     green, green, green, green, green,
@@ -89,8 +85,8 @@ logic [15:0] brg_image [15*16-1:0] = '{
     red  , red  , red  , red  , red  ,
     blue , blue , blue , blue , blue ,
     green, green, green, green, green,
-    green, green, green, green, green,
     red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
     blue , blue , blue , blue , blue ,
     green, green, green, green, green,
     red  , red  , red  , red  , red  ,
@@ -105,8 +101,8 @@ logic [15:0] brg_image [15*16-1:0] = '{
     red  , red  , red  , red  , red  ,
     blue , blue , blue , blue , blue ,
     green, green, green, green, green,
-    green, green, green, green, green,
     red  , red  , red  , red  , red  ,
+    blue , blue , blue , blue , blue ,
     blue , blue , blue , blue , blue ,
     green, green, green, green, green,
     red  , red  , red  , red  , red  ,
@@ -174,8 +170,6 @@ logic [15:0] gbr_image [15*16-1:0] = '{
     blue , blue , blue , blue , blue ,
     green, green, green, green, green
 };
-
-
 
 localparam [2:0] [15:0] COLOR_BASE = '{0,6,11};
 /* verilator lint_off LITENDIAN */
@@ -293,28 +287,35 @@ localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
 };
 /* verilator lint_on LITENDIAN */
 
-// The column we are currently sending (relatively to a driver)
-logic [2:0] mul_idx;
+// The three following logics help to compute the correct voxel and bit address
+integer mul_idx;
 // The led we are currently sending data to
-logic [$clog2(LED_PER_DRIVER)-1:0] led_idx;
+integer led_idx;
 // The current bit to send to the driver main controller
-logic [$clog2(POKER_MODE)-1:0] bit_idx;
+integer bit_idx;
 // The color (red green or blue) we are currently sending
-logic [1:0] rgb_idx;
+integer rgb_idx;
 
 // The three following logics help to compute the correct voxel and bit address
-logic [15:0] color_addr;
+/* verilator lint_off UNUSED */
+integer color_addr;
+/* verilator lint_on UNUSED */
 logic [29:0] [BUFF_SIZE_LOG-1:0] voxel_addr;
-logic [$clog2(POKER_MODE)-1:0] color_bit_idx;
+integer color_bit_idx;
 
-integer animation_cnt;
+logic prev_button;
+integer animation;
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
-        animation_cnt <= '0;
+        prev_button <= '0;
+        animation <= '0;
     end else begin
-        animation_cnt <= animation_cnt + 1'b1;
-        if (animation_cnt == 33_000_000) begin
-            animation_cnt <= '0;
+        prev_button <= button;
+        if(button && ~prev_button) begin
+            animation <= animation + 1'b1;
+            if(animation == 2) begin
+                animation <= '0;
+            end
         end
     end
 /*
@@ -339,7 +340,7 @@ end
  * green color for instance we get bits 9 to 5.
  */
 assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
-assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]);
+assign color_addr = color_bit_idx + 32'(COLOR_BASE[rgb_idx]);
 
 always_ff @(posedge clk_33 or negedge nrst)
     if(~nrst) begin
@@ -356,9 +357,9 @@ always_ff @(posedge clk_33 or negedge nrst)
          */
         if(driver_ready && bit_idx > 3) begin
             for(int i = 0; i < 30; ++i) begin
-                if(animation_cnt < 11_000_000) begin
+                if(animation == 0) begin
                     data[i] <= rgb_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
-                end else if (animation_cnt > 11_000_000 && animation_cnt < 22_000_000) begin
+                end else if (animation == 1) begin
                     data[i] <= brg_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
                 end else begin
                     data[i] <= gbr_image[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
@@ -383,7 +384,7 @@ always_ff @(posedge clk_33 or negedge nrst)
         rgb_idx <= '0;
         mul_idx <= '0;
         bit_idx <= POKER_MODE-1;
-        led_idx <= 4'(LED_PER_DRIVER-1);
+        led_idx <= LED_PER_DRIVER-1;
     end else if(driver_ready) begin
         rgb_idx <= rgb_idx + 1'b1;
         // We have sent the three colors, time to go to the next led
@@ -392,7 +393,7 @@ always_ff @(posedge clk_33 or negedge nrst)
             led_idx <= led_idx - 1'b1;
             // We have sent the right bit for each leds in the column
             if(led_idx == 0) begin
-                led_idx <= 4'(LED_PER_DRIVER-1);
+                led_idx <= LED_PER_DRIVER-1;
                 bit_idx <= bit_idx - 1'b1;
                 // We have sent all the bits for each led
                 if(bit_idx == 0) begin
