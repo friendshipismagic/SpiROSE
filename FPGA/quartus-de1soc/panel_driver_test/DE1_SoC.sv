@@ -1,14 +1,8 @@
 `default_nettype none
 
 module DE1_SoC(
-      ///////// CLOCK2 /////////
-      input  logic        clock2_50,
-      ///////// CLOCK3 /////////
-      input  logic        clock3_50,
-      ///////// CLOCK4 /////////
-      input  logic        clock4_50,
       ///////// CLOCK /////////
-      input  logic        clock_50,
+      input  logic       clock_50,
       ///////// GPIO /////////
       output logic[35:0] gpio_0,
       output logic[35:0] gpio_1,
@@ -32,7 +26,7 @@ module DE1_SoC(
       input  logic[9:0]  sw
 );
 
-`include "drivers_conf.sv.conf"
+`include "drivers_conf.svh"
 
 assign    hex0        =    conf[6:0];
 assign    hex1        =    conf[13:7];
@@ -63,25 +57,25 @@ assign framebuffer_data = 1'b0;
 assign new_configuration_ready = ~key[3];
 
 // 66 MHz clock generator
-logic clock_66, lock;
-clk main_clk_66 (
+logic clk, lock;
+clk_66 main_clk (
     .refclk(clock_50),
     .rst(sw[0]),
-    .outclk_0(clock_66),
+    .outclk_0(clk),
     .locked(lock)
 );
 
-// 33 MHz clock generator
-logic clock_33;
-clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
-    .clk_hse(clock_66),
+// Divider use by driver_controller
+logic clk_enable;
+clock_enable main_clk_enable (
+    .clk(clk),
     .nrst(nrst),
-    .clk_lse(clock_33)
+    .clk_enable(clk_enable)
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
-    .clk_hse(clock_66),
-    .clk_lse(clock_33),
+    .clk(clk),
+    .clk_enable(clk_enable),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_data),
     .driver_sclk(sclk),
@@ -99,29 +93,15 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
-always_ff @(posedge clock_66 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         ledr[0] <= '0;
         heartbeat_counter_66 <= '0;
     end else begin
         heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
-        if(heartbeat_counter_66 == 33_000_000) begin
+        if(heartbeat_counter_66 == 66_000_000) begin
             ledr[0] <= ~ledr[0];
             heartbeat_counter_66 <= '0;
-        end
-    end
-
-// Heartbeat LED 33MHz
-logic[24:0] heartbeat_counter_33;
-always_ff @(posedge clock_33 or negedge nrst)
-    if(~nrst) begin
-        ledr[1] <= '0;
-        heartbeat_counter_33 <= '0;
-    end else begin
-        heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
-        if(heartbeat_counter_33 == 33_000_000) begin
-            ledr[1] <= ~ledr[1];
-            heartbeat_counter_33 <= '0;
         end
     end
 

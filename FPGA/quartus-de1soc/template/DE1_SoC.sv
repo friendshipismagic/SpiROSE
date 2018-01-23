@@ -1,5 +1,3 @@
-`default_nettype none
-
 module DE1_SoC(
       ///////// CLOCK /////////
       input  wire        clock_50,
@@ -46,7 +44,7 @@ logic        position_sync          ;
 logic        column_ready           ;
 logic        driver_ready           ;
 logic        rgb_enable             ;
-`include "drivers_conf.svh"
+`include "drivers_conf.sv"
 //logic [47:0] serialized_conf        ;
 logic        new_configuration_ready;
 logic [31:0] ram_waddr              ;
@@ -114,7 +112,7 @@ column_mux main_column_mux (
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
-always_ff @(posedge clk or negedge nrst)
+always_ff @(posedge clock_66 or negedge nrst)
     if(~nrst) begin
         ledr[0] <= '0;
         heartbeat_counter_66 <= '0;
