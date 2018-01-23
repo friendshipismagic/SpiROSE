@@ -144,31 +144,31 @@ module DE1_SoC(
 );
 
 //    Turn off all display     //////////////////////////////////////
-assign    hex0        =   ~serialized_conf[6:0];
-assign    hex1        =   ~serialized_conf[13:7];
-assign    hex2        =   ~serialized_conf[20:14];
-assign    hex3        =   ~serialized_conf[27:21];
-assign    hex4        =   ~serialized_conf[34:28];
-assign    hex5        =   ~serialized_conf[41:35];
+assign    hex0        =   'h7f;
+assign    hex1        =   'h7f;
+assign    hex2        =   'h7f;
+assign    hex3        =   'h7f;
+assign    hex4        =   'h7f;
+assign    hex5        =   'h7f;
 
 /////////////////////////////////////////////////////////////////////
 // Sorties video VGA     ////////////////////////////////////////////
-assign  vga_clk       =  rgb_clk;       // Horloge du CNA (DAC)
-assign  vga_hs        =  hsync;       // Synchro horizontale
-assign  vga_vs        =  vsync;       // Synchro verticale
-assign  vga_blank_n   =  hsync || vsync;       // Autoriser l'affichage
-assign  vga_sync_n    =  '0;       // non utilisé, doit resté à zéro
-assign  vga_r[7:5]    =  rgb[7:5];       // 10bits de Rouge
+/*
+assign  vga_clk       =  rgb_clk;          // Horloge du CNA (DAC)
+assign  vga_hs        =  hsync;            // Synchro horizontale
+assign  vga_vs        =  vsync;            // Synchro verticale
+assign  vga_blank_n   =  hsync || vsync;   // Autoriser l'affichage
+assign  vga_sync_n    =  '0;               // non utilisé, doit resté à zéro
+assign  vga_r[7:5]    =  rgb[7:5];         // 10bits de Rouge
 assign  vga_g[7:5]    =  rgb[15:13];       // 10bits de Vert
 assign  vga_b[7:4]    =  rgb[23:20];       // 10bits de Bleu
+*/
 //////////////////////////////////////////////////////////////////////
 
 
 //////////////////////////////////////////////////////////////////////
 //    Tous les ports en entrees/sorties mis au 3e etat       /////////
 //////////////////////////////////////////////////////////////////////
-//assign gpio_0        = 'z;
-//assign gpio_1        = 'z;
 assign adc_cs_n      = 'z;
 assign dram_dq       = 'z;
 assign fpga_i2c_sdat = 'z;
@@ -190,7 +190,8 @@ logic        position_sync          ;
 logic        column_ready           ;
 logic        driver_ready           ;
 logic        rgb_enable             ;
-logic [47:0] serialized_conf        ;
+`include "drivers_conf.sv"
+//logic [47:0] serialized_conf        ;
 logic        new_configuration_ready;
 logic [31:0] ram_waddr              ;
 logic [15:0] ram_wdata              ;
@@ -226,60 +227,14 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_lse(clock_33)
 );
 
-spi_slave main_spi(
-    .nrst(nrst),
-    .spi_clk(spi_clk),
-    .spi_ss(spi_ss),
-    .spi_mosi(spi_mosi),
-    .spi_miso(spi_miso),
-    .rotation_data(rotation_data),
-    .config_out(serialized_conf),
-    .new_config_available(new_configuration_ready),
-	 .rgb_enable(rgb_enable)
-);
-
-hall_sensor_emulator main_hall_sensor_emulator (
-    .clk(clock_33),
-    .nrst(nrst),
-    .position_sync(position_sync)
-);
-
-rgb_logic main_rgb_logic (
-    .rgb_clk(rgb_clk),
-    .nrst(nrst),
-    .rgb(rgb),
-    .hsync(hsync),
-    .vsync(vsync),
-    .ram_addr(ram_waddr),
-    .ram_data(ram_wdata),
-    .write_enable(w_enable),
-    .rgb_enable(rgb_enable),
-    .stream_ready(stream_ready)
-);
-
-ram_dual_port main_ram (
-    .clock(clock_33),
-    .wren(w_enable),
-    .wraddress(ram_waddr),
-    .data(ram_wdata),
-    .rdaddress(ram_raddr),
-    .q(ram_rdata)
-);
-
-framebuffer #(.POKER_MODE(9)) main_fb (
-	.clk_33(clock_33),
-	.nrst(nrst),
-	.data(framebuffer_data),
-    .stream_ready(stream_ready),
-    .driver_ready(driver_ready),
-	.position_sync(position_sync),
-    .ram_addr(ram_raddr),
-    .ram_data(ram_rdata)
-);
+assign position_sync = '1;
+assign column_ready  = '1;
+assign framebuffer_data = '0;
+assign new_configuration_ready = '0;
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk_hse(clock_66),
-	.clk_lse(clock_33),
+	 .clk_lse(clock_33),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_data),
     .driver_sclk(sclk),
@@ -290,7 +245,6 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .driver_sout_mux(sout_mux),
     .position_sync(position_sync),
     .driver_ready(driver_ready),
-    .column_ready(column_ready),
     .serialized_conf(serialized_conf),
     .new_configuration_ready(new_configuration_ready)
 );
@@ -330,75 +284,49 @@ always_ff @(posedge clock_33 or negedge nrst)
 		end
 	end
 
-// Heartbeat LED 33MHz
-logic[24:0] heartbeat_counter_rgb;
-always_ff @(posedge rgb_clk or negedge nrst)
-	if(~nrst) begin
-		ledr[2] <= '0;
-		heartbeat_counter_rgb <= '0;
-	end else begin
-		heartbeat_counter_rgb <= heartbeat_counter_rgb + 1'b1;
-		if(heartbeat_counter_rgb == 27_000_000) begin
-			ledr[2] <= ~ledr[2];
-			heartbeat_counter_rgb <= '0;
-		end
-	end
-	
-assign ledr[9] = rgb_enable;
-assign ledr[8] = stream_ready;
-assign ledr[7] = driver_ready;
-
 // Project pins assignment
-assign nrst      = key[0] & lock;
+assign nrst = key[0] & lock;
 
-// SPI
-assign spi_clk   = gpio_1[22]   ;
-assign spi_ss    = gpio_1[24]   ;
-assign spi_mosi  = gpio_1[18]   ;
-assign spi_miso  = gpio_1[20]   ;
-
-// RGB
-// blue
-assign rgb[23]   = gpio_0[7]    ;
-assign rgb[22]   = gpio_0[5]    ;
-assign rgb[21]   = gpio_0[3]    ;
-assign rgb[20]   = gpio_0[1]    ;
-// green
-assign rgb[15]   = gpio_1[0]    ;
-assign rgb[14]   = gpio_1[2]    ;
-assign rgb[13]   = gpio_1[4]    ;
-// red
-assign rgb[7]    = gpio_1[1]    ;
-assign rgb[6]    = gpio_1[3]    ;
-assign rgb[5]    = gpio_1[5]    ;
-// control signals
-assign hsync     = gpio_0[4]    ;
-assign vsync     = gpio_0[2]    ;
-assign rgb_clk   = gpio_0[0]    ;
+logic driver_switch, mux_switch;
+assign driver_switch = sw[9];
+assign mux_switch    = sw[8];
 
 // Drivers
-assign gpio_1[35] = gclk;
-assign gpio_1[33] = sclk;
-assign gpio_1[31] = lat;
-assign gpio_1[29] = sin[0];
+always_comb begin
+    if(driver_switch) begin
+        gpio_1[6] = gclk;
+        gpio_1[4] = sclk;
+        gpio_1[2] = lat;
+        gpio_1[0] = sin[0];
+    end else begin
+        gpio_1[6] = 0;
+        gpio_1[4] = 0;
+        gpio_1[2] = 0;
+        gpio_1[0] = 0;
+    end
+end
 
 // Multiplexing
-assign gpio_0[10] = mux_out[7];
-assign gpio_0[12] = mux_out[6];
-assign gpio_0[14] = mux_out[5];
-assign gpio_0[16] = mux_out[4];
-assign gpio_0[18] = mux_out[3];
-assign gpio_0[20] = mux_out[2];
-assign gpio_0[22] = mux_out[1];
-assign gpio_0[24] = mux_out[0];
-/*
-assign gpio_0[10] = sw[9];
-assign gpio_0[12] = sw[8];
-assign gpio_0[14] = sw[7];
-assign gpio_0[16] = sw[6];
-assign gpio_0[18] = sw[5];
-assign gpio_0[20] = sw[4];
-assign gpio_0[22] = sw[3];
-assign gpio_0[24] = sw[2];
-*/
+always_comb begin
+    if (mux_switch) begin
+        gpio_0[10] = mux_out[7];
+        gpio_0[12] = mux_out[6];
+        gpio_0[14] = mux_out[5];
+        gpio_0[16] = mux_out[4];
+        gpio_0[18] = mux_out[3];
+        gpio_0[20] = mux_out[2];
+        gpio_0[22] = mux_out[1];
+        gpio_0[24] = mux_out[0];
+    end else begin
+        gpio_0[10] = 0;
+        gpio_0[12] = 0;
+        gpio_0[14] = 0;
+        gpio_0[16] = 0;
+        gpio_0[18] = 0;
+        gpio_0[20] = 0;
+        gpio_0[22] = 0;
+        gpio_0[24] = 0;
+    end
+end
+
 endmodule

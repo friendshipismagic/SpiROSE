@@ -1,11 +1,17 @@
 `default_nettype none
 
 module DE1_SoC(
+      ///////// CLOCK2 /////////
+      input  logic        clock2_50,
+      ///////// CLOCK3 /////////
+      input  logic        clock3_50,
+      ///////// CLOCK4 /////////
+      input  logic        clock4_50,
       ///////// CLOCK /////////
-      input  wire        clock_50,
+      input  logic        clock_50,
       ///////// GPIO /////////
-      inout  wire [35:0] gpio_0,
-      inout  wire [35:0] gpio_1,
+      output logic[35:0] gpio_0,
+      output logic[35:0] gpio_1,
       ///////// hex0 /////////
       output logic[6:0]  hex0,
       ///////// hex1 /////////
@@ -19,28 +25,25 @@ module DE1_SoC(
       ///////// hex5 /////////
       output logic[6:0]  hex5,
       ///////// key /////////
-      input  wire [3:0]  key,
+      input  logic[3:0]  key,
       ///////// ledr /////////
       output logic[9:0]  ledr,
       ///////// sw /////////
-      input  wire [9:0]  sw
+      input  logic[9:0]  sw
 );
 
-//    Turn off all display     //////////////////////////////////////
-assign    hex0        =    ~cmd_read[54:48];
-assign    hex1        =    ~cmd_read[55];
-assign    hex2        =    'h7f;
-assign    hex3        =    'h7f;
-assign    hex4        =    'h7f;
-assign    hex5        =    'h7f;
+`include "drivers_conf.sv.conf"
+
+assign    hex0        =    conf[6:0];
+assign    hex1        =    conf[13:7];
+assign    hex2        =    conf[20:14];
+assign    hex3        =    conf[27:21];
+assign    hex4        =    conf[34:28];
+assign    hex5        =    conf[41:35];
 
 logic        nrst                   ;
 logic [47:0] conf                   ;
 logic        new_configuration_ready;
-logic        spi_clk                ;
-logic        spi_ss                 ;
-logic        spi_mosi               ;
-logic        spi_miso               ;
 logic [15:0] rotation_data          ;
 logic [29:0] framebuffer_data       ;
 logic        position_sync          ;
@@ -52,14 +55,12 @@ logic [29:0] sin                    ;
 logic [4:0]  sout_mux               ;
 logic        driver_ready           ;
 logic        column_ready           ;
-logic        rgb_enable             ;
-logic        valid                  ;
-logic [55:0] cmd_read               ;
-logic [2:0]  cmd_len_bytes          ;
-logic [47:0] cmd_write              ;
 
 assign position_sync = 1'b1;
-assign rotation_data = 16'hBEEF;
+
+// Don't send any data
+assign framebuffer_data = 1'b0;
+assign new_configuration_ready = ~key[3];
 
 // 66 MHz clock generator
 logic clock_66, lock;
@@ -76,40 +77,6 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_hse(clock_66),
     .nrst(nrst),
     .clk_lse(clock_33)
-);
-
-spi_iff main_spi_iff (
-    .clk(clock_33),
-    .nrst(nrst),
-    .spi_clk(spi_clk),
-    .spi_ss(spi_ss),
-    .spi_mosi(spi_mosi),
-    .spi_miso(spi_miso),
-    .valid(valid),
-    .cmd_read(cmd_read),
-    .cmd_len_bytes(cmd_len_bytes),
-    .cmd_write(cmd_write)
-);
-
-spi_decoder main_spi_decoder (
-    .nrst(nrst),
-    .clk(clock_33),
-    .valid(valid),
-    .cmd_read(cmd_read),
-    .cmd_len_bytes(cmd_len_bytes),
-    .cmd_write(cmd_write),
-    .rotation_data(rotation_data),
-    .configuration(conf),
-    .new_config_available(new_configuration_ready),
-    .rgb_enable(rgb_enable)
-);
-
-framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
-    .clk_33(clock_33),
-    .nrst(nrst),
-    .data(framebuffer_data),
-    .driver_ready(driver_ready),
-    .button(~key[3])
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
@@ -138,7 +105,7 @@ always_ff @(posedge clock_66 or negedge nrst)
         heartbeat_counter_66 <= '0;
     end else begin
         heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
-        if(heartbeat_counter_66 == 30_000_000) begin
+        if(heartbeat_counter_66 == 33_000_000) begin
             ledr[0] <= ~ledr[0];
             heartbeat_counter_66 <= '0;
         end
@@ -152,28 +119,20 @@ always_ff @(posedge clock_33 or negedge nrst)
         heartbeat_counter_33 <= '0;
     end else begin
         heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
-        if(heartbeat_counter_33 == 30_000_000) begin
+        if(heartbeat_counter_33 == 33_000_000) begin
             ledr[1] <= ~ledr[1];
             heartbeat_counter_33 <= '0;
         end
     end
 
 // Project pins assignment
-assign nrst      = key[0] & lock;
+assign nrst = key[0] & lock;
 
-// SPI
-assign spi_clk   = gpio_1[22]   ;
-assign spi_ss    = gpio_1[24]   ;
-assign spi_mosi  = gpio_1[18]   ;
-assign gpio_1[20] = spi_miso    ;
+assign gpio_1[6]   = gclk;
+assign gpio_1[4]   = sclk;
+assign gpio_1[2]   = lat;
+assign gpio_1[0]   = sin[0];
 
-// Drivers
-assign gpio_1[35] = gclk;
-assign gpio_1[33] = sclk;
-assign gpio_1[31] = lat;
-assign gpio_1[29] = sin[0];
-
-// Multiplexing
 assign gpio_0[10] = sw[9];
 assign gpio_0[12] = sw[8];
 assign gpio_0[14] = sw[7];
@@ -183,6 +142,14 @@ assign gpio_0[20] = sw[4];
 assign gpio_0[22] = sw[3];
 assign gpio_0[24] = sw[2];
 
-assign ledr[9] = rgb_enable;
+assign gpio_0[0]  = key[2];
+
+always_comb begin
+    if(~key[1]) begin
+        conf = ledr[1] ? serialized_conf : '0;
+    end else begin
+        conf = sw[1] ? serialized_conf : '0;
+    end
+end
 
 endmodule
