@@ -15,5 +15,8 @@ compile/04_rgb_pll:
 compile/05_memory:
 	cd 05_memory && $(QUARTUS131) --flow compile memory
 
+compile/07_single_led:
+	cd 07_single_led && $(QUARTUS131) --flow compile single_led
+
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose
