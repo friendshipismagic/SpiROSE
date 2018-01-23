@@ -25,7 +25,7 @@ int sc_main(int argc, char** argv) {
     sc_report_handler::set_handler(tb_report_handler);
     Verilated::commandArgs(argc, argv);
 
-    const sc_time T(30, SC_NS);
+    const sc_time T(15, SC_NS);
 
     const unsigned int STEPS = 256;
     const unsigned int MAIN_DIV = 4;
@@ -33,7 +33,7 @@ int sc_main(int argc, char** argv) {
 
     sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 64 * 2;
 
-    sc_clock clk33("clk33", T);
+    sc_clock clk("clk", T);
     sc_signal<bool> nrst("nrst");
     sc_signal<unsigned int> data("data");
     sc_signal<bool> stream_ready("stream_ready");
@@ -44,7 +44,7 @@ int sc_main(int argc, char** argv) {
 
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("framebuffer");
-    sc_trace(traceFile, clk33, "clk33");
+    sc_trace(traceFile, clk, "clk");
     sc_trace(traceFile, nrst, "nrst");
     sc_trace(traceFile, data, "data");
     sc_trace(traceFile, stream_ready, "stream_ready");
@@ -54,7 +54,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, ram_data, "ram_data");
 
     Vframebuffer dut("framebuffer");
-    dut.clk_33(clk33);
+    dut.clk(clk);
     dut.nrst(nrst);
     dut.data(data);
     dut.stream_ready(stream_ready);
@@ -64,7 +64,7 @@ int sc_main(int argc, char** argv) {
     dut.ram_data(ram_data);
 
     Monitor monitor("monitor");
-    monitor.clk33(clk33);
+    monitor.clk(clk);
     monitor.nrst(nrst);
     monitor.stream_ready(stream_ready);
     monitor.driver_ready(driver_ready);
