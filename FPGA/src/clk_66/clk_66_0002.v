@@ -1,5 +1,5 @@
 `timescale 1ns/10ps
-module  clk_0002(
+module  clk_66_0002(
 
 	// interface 'refclk'
 	input wire refclk,
