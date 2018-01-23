@@ -4,7 +4,7 @@ module clock_enable (
     output clk_enable
 );
 
-always_ff @(posedge clk or negedge nrst) 
+always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
         clk_enable <= '0;
     end else begin
