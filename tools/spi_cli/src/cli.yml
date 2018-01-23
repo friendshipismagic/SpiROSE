@@ -19,6 +19,8 @@ subcommands:
       about: "Stop display"
    - get_rotation:
       about: "Read rotation slice index"
+   - get_speed:
+      about: "Read speed as 66000nth of a second per turn"
    - get_config:
       about: "Get configuration"
    - send_config:

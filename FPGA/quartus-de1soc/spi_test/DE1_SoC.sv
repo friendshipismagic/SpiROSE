@@ -42,6 +42,7 @@ logic        spi_ss                 ;
 logic        spi_mosi               ;
 logic        spi_miso               ;
 logic [15:0] rotation_data          ;
+logic [15:0] speed_data             ;
 logic [29:0] framebuffer_data       ;
 logic        position_sync          ;
 logic        sout                   ;
@@ -60,6 +61,7 @@ logic [47:0] cmd_write              ;
 
 assign position_sync = 1'b1;
 assign rotation_data = 16'hBEEF;
+assign speed_data = 16'hDEAD;
 
 // 66 MHz clock generator
 logic clock_66, lock;
@@ -99,6 +101,7 @@ spi_decoder main_spi_decoder (
     .cmd_len_bytes(cmd_len_bytes),
     .cmd_write(cmd_write),
     .rotation_data(rotation_data),
+    .speed_data(speed_data),
     .configuration(conf),
     .new_config_available(new_configuration_ready),
     .rgb_enable(rgb_enable)

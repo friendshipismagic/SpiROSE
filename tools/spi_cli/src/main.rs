@@ -55,7 +55,13 @@ pub struct LEDDriverConfig {
     lgse2: Integer<u8, ::packed_bits::Bits3>,
 }
 
-static COMMANDS: [&'static str; 4] = ["enable_rgb", "disable_rgb", "get_rotation", "get_config"];
+static COMMANDS: [&'static str; 5] = [
+    "enable_rgb",
+    "disable_rgb",
+    "get_rotation",
+    "get_speed",
+    "get_config",
+];
 
 #[derive(Debug)]
 struct SpiCommand {
@@ -77,6 +83,7 @@ impl SpiCommand {
             "enable_rgb" => Ok(SpiCommand::new(0xe0)),
             "disable_rgb" => Ok(SpiCommand::new(0xd0)),
             "get_rotation" => Ok(SpiCommand::new_with_len(0x4c, 2)),
+            "get_speed" => Ok(SpiCommand::new_with_len(0x4d, 2)),
             "get_config" => Ok(SpiCommand::new_with_len(0xbf, 6)),
             _ => Err(format!("unknown command `{}'", command)),
         }
