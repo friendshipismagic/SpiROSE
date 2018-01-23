@@ -38,4 +38,4 @@ set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_
 set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/project_assignment.tcl
 set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_pt.tcl
 set_global_assignment -name SYSTEMVERILOG_FILE rgb_pll.sv
-set_global_assignment -name QIP_FILE pll/clock_33.qip
+set_global_assignment -name QIP_FILE pll/clock_66.qip
