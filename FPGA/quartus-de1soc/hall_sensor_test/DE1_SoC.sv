@@ -1,3 +1,5 @@
+`default_nettype none
+
 module DE1_SoC(
       ///////// CLOCK /////////
       input  logic        clock_50,

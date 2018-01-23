@@ -1,3 +1,5 @@
+`default_nettype none
+
 module DE1_SoC(
       ///////// CLOCK /////////
       input  wire        clock_50,
@@ -44,7 +46,7 @@ logic        position_sync          ;
 logic        column_ready           ;
 logic        driver_ready           ;
 logic        rgb_enable             ;
-`include "drivers_conf.sv"
+`include "drivers_conf.svh"
 //logic [47:0] serialized_conf        ;
 logic        new_configuration_ready;
 logic [31:0] ram_waddr              ;
