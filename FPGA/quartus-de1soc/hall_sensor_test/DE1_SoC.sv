@@ -1,8 +1,3 @@
-`default_nettype none
-
-// define if using HPS
-`undef ENABLE_HPS
-
 module DE1_SoC(
       ///////// CLOCK /////////
       input  logic        clock_50,
@@ -39,20 +34,12 @@ logic [3:0] digit_1;
 logic [3:0] digit_2;
 
 // 66 MHz clock generator
-logic clock_66, lock;
-clk main_clk_66 (
-	.refclk(clock_50),
-	.rst(sw[0]),
-	.outclk_0(clock_66),
-	.locked(lock)
-);
-
-// 33 MHz clock generator
-logic clock_33;
-clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
-    .clk_hse(clock_66),
-    .nrst(nrst),
-    .clk_lse(clock_33)
+logic clk, lock;
+clk_66 main_clk (
+    .refclk(clock_50),
+    .rst(sw[0]),
+    .outclk_0(clk),
+    .locked(lock)
 );
 
 assign nrst = key[0] & lock;
@@ -64,35 +51,21 @@ assign digit_2 = (slice_cnt - digit_0 - digit_1)/100;
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
-always_ff @(posedge clock_66 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         ledr[0] <= '0;
         heartbeat_counter_66 <= '0;
     end else begin
         heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
-        if(heartbeat_counter_66 == 33_000_000) begin
+        if(heartbeat_counter_66 == 66_000_000) begin
             ledr[0] <= ~ledr[0];
             heartbeat_counter_66 <= '0;
         end
     end
 
-// Heartbeat LED 33MHz
-logic[24:0] heartbeat_counter_33;
-always_ff @(posedge clock_33 or negedge nrst)
-    if(~nrst) begin
-        ledr[1] <= '0;
-        heartbeat_counter_33 <= '0;
-    end else begin
-        heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
-        if(heartbeat_counter_33 == 33_000_000) begin
-            ledr[1] <= ~ledr[1];
-            heartbeat_counter_33 <= '0;
-        end
-    end
-
 // Test for hall effect sensors
 hall_sensor main_hall_sensor (
-    .clk(clock_33),
+    .clk(clk),
     .nrst(nrst),
     .hall_1(hall_1),
     .hall_2(hall_2),
@@ -115,7 +88,7 @@ SEG7_LUT lut2 (
     .oSEG(hex2)
 );
 
-always_ff @(posedge clock_33 or negedge nrst) begin
+always_ff @(posedge clk or negedge nrst) begin
     if (~nrst) begin
         ledr[8] <= '0;
     end else begin

@@ -112,7 +112,7 @@ column_mux main_column_mux (
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
-always_ff @(posedge clock_66 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         ledr[0] <= '0;
         heartbeat_counter_66 <= '0;
