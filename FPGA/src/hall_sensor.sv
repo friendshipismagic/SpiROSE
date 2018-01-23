@@ -1,11 +1,11 @@
 module hall_sensor (
     input clk,
     input nrst,
-    
+
     input hall_1,
     input hall_2,
 
-    /* 
+    /*
      * Slice that is meant to be displayed (over a full 256-slice turn).
      * It is the slice counted after the Hall effect sensor 1 (arbitrarily)
      * is triggered.
@@ -17,7 +17,7 @@ module hall_sensor (
 localparam SLICE_PER_HALF_TURN = 128;
 localparam HALF_TURN_COUNTER_WIDTH = 32;
 localparam SLICE_PER_HALF_TURN_WIDTH = $clog2(SLICE_PER_HALF_TURN);
-localparam INTERNAL_COUNTER_WIDTH = HALF_TURN_COUNTER_WIDTH - SLICE_PER_HALF_TURN_WIDTH; 
+localparam INTERNAL_COUNTER_WIDTH = HALF_TURN_COUNTER_WIDTH - SLICE_PER_HALF_TURN_WIDTH;
 
 // Counter for slices over a half turn only
 logic [SLICE_PER_HALF_TURN_WIDTH:0] slice_half_cnt;
@@ -28,8 +28,8 @@ enum logic {HALFTURN1, HALFTURN2} half_turn_state;
 // Counter for each half-turn
 logic [HALF_TURN_COUNTER_WIDTH - 1:0] counter;
 
-/* 
- * Cycle counter for each slice (bit width is SLICE_PER_HALF_TURN times smaller 
+/*
+ * Cycle counter for each slice (bit width is SLICE_PER_HALF_TURN times smaller
  * than that of counter)
  */
 logic [INTERNAL_COUNTER_WIDTH - 1:0] slice_cycle_counter;
@@ -38,7 +38,7 @@ logic [INTERNAL_COUNTER_WIDTH - 1:0] slice_cycle_counter;
 logic top;
 
 /*
- * Number of cycles between two slices, calculated with 
+ * Number of cycles between two slices, calculated with
  * the last half-turn data
  */
 logic [INTERNAL_COUNTER_WIDTH - 1:0] cycles_between_two_slices;
@@ -54,7 +54,7 @@ always_ff @(posedge clk or negedge nrst) begin
             // Resynchronization for each top
             slice_cycle_counter <= 0;
             slice_half_cnt <= 0;
-            /* 
+            /*
              * A top corresponds to the first slice, so we need
              * a position_sync being high
              */
@@ -76,7 +76,7 @@ always_ff @(posedge clk or negedge nrst) begin
 end
 
 
-/* 
+/*
  * Process handling the top signals, and extracting the number of cycles that
  * are needed for each slide
  */
@@ -110,7 +110,7 @@ always_ff @(posedge clk or negedge nrst) begin
         half_turn_state <= HALFTURN1;
     end else begin
         /*
-         * Whenever one sensor is triggered and not guarded, 
+         * Whenever one sensor is triggered and not guarded,
          * top is set high for one cycle
          */
         if ((~hall_1 | ~hall_2) && guard == 0) begin
@@ -128,7 +128,7 @@ always_ff @(posedge clk or negedge nrst) begin
         /*
          * When both sensors are not triggered, remove the guard, for the next
          * sensor to be able to trigger the "top" signal
-         */ 
+         */
         if (hall_1 & hall_2) begin
             guard <= 0;
         end
