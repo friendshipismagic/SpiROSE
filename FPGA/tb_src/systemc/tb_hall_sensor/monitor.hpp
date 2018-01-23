@@ -21,15 +21,15 @@ SC_MODULE(Monitor) {
 
     sc_out<bool> hall1;
     sc_out<bool> hall2;
-    
+
     sc_in<bool> positionSync;
     sc_in<unsigned int> sliceCnt;
 
     int positionSyncCounter;
-    void checkPositionSync();
+    void checkPositionSync(int value_hall1_to_hall2, int value_hall2_to_hall1);
     void storePositionSync();
 
     private:
     void sendReset();
-    void sendHallSignals(int value);
+    void sendHallSignals(int value_hall1_to_hall2, int value_hall2_to_hall1);
 };

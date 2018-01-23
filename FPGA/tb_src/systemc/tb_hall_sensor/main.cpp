@@ -10,7 +10,6 @@ int sc_main(int argc, char** argv) {
     sc_report_handler::set_handler(report_handler);
     Verilated::commandArgs(argc, argv);
 
-    // TODO: choose a clock closer to the reality for spi
     const sc_time T(30, SC_NS);
 
     const unsigned int STEPS = 256;
@@ -52,7 +51,7 @@ int sc_main(int argc, char** argv) {
     monitor.hall2(hall2);
     monitor.sliceCnt(sliceCnt);
     monitor.positionSync(positionSync);
-    
+
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
         sc_start(T);

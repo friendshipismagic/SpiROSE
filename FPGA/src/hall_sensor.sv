@@ -50,6 +50,7 @@ always_ff @(posedge clk or negedge nrst) begin
         slice_cycle_counter <= 0;
         slice_half_cnt <= 0;
     end else begin
+        position_sync <= 0;
         if (top) begin
             // Resynchronization for each top
             slice_cycle_counter <= 0;
@@ -60,17 +61,13 @@ always_ff @(posedge clk or negedge nrst) begin
              */
             position_sync <= 1;
         end else begin
+            slice_cycle_counter <= slice_cycle_counter + 1;
             if (slice_cycle_counter == cycles_between_two_slices - 1
-                    && slice_half_cnt < SLICE_PER_HALF_TURN - 1) begin
+                    && slice_half_cnt < SLICE_PER_HALF_TURN) begin
                 slice_cycle_counter <= 0;
                 slice_half_cnt <= slice_half_cnt + 1;
                 position_sync <= 1;
-            end else begin
-                slice_cycle_counter <= slice_cycle_counter + 1;
             end
-        end
-        if (position_sync == 1) begin
-            position_sync <= 0;
         end
     end
 end
@@ -78,7 +75,7 @@ end
 
 /*
  * Process handling the top signals, and extracting the number of cycles that
- * are needed for each slide
+ * are needed for each slice
  */
 always_ff @(posedge clk or negedge nrst) begin
     if (~nrst) begin
@@ -109,6 +106,7 @@ always_ff @(posedge clk or negedge nrst) begin
         guard <= 0;
         half_turn_state <= HALFTURN1;
     end else begin
+        top <= 0;
         /*
          * Whenever one sensor is triggered and not guarded,
          * top is set high for one cycle
@@ -121,9 +119,6 @@ always_ff @(posedge clk or negedge nrst) begin
             end else if (~hall_2) begin
                 half_turn_state <= HALFTURN2;
             end
-        end
-        if (top == 1) begin
-            top <= 0;
         end
         /*
          * When both sensors are not triggered, remove the guard, for the next
