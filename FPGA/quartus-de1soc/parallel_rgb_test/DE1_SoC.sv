@@ -4,8 +4,8 @@ module DE1_SoC(
       ///////// CLOCK /////////
       input  logic       clock_50,
       ///////// GPIO /////////
-      input  logic [35:0] gpio_0,
-      input  logic [35:0] gpio_1,
+      inout  logic [35:0] gpio_0,
+      inout  logic [35:0] gpio_1,
       ///////// hex0 /////////
       output logic[6:0]  hex0,
       ///////// hex1 /////////
