@@ -12,5 +12,8 @@ compile/03_pt6_clock:
 compile/04_rgb_pll:
 	cd 04_rgb_pll && $(QUARTUS131) --flow compile rgb_pll
 
+compile/05_memory:
+	cd 05_memory && $(QUARTUS131) --flow compile memory
+
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose
