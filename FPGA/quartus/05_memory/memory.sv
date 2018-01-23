@@ -11,19 +11,12 @@ logic clk;
 // the PT output is 1 if there was an error in the RAM value verification
 assign pt_6 = error;
 
-logic clk_shifted;
-
 logic locked;
 
-clock_33 main_clock_33 (
+clock_66 main_clock_66 (
     .inclk0(pt_39),
     // Main 33 MHz clock
     .c0(clk),
-    /*
-     * Secondary 33 MHz clock phase being 90° shifted 
-     * compared to the main one above
-     */
-    .c1(clk_shifted),
     .locked(locked)
 );
 
