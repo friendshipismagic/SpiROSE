@@ -28,7 +28,7 @@ SC_MODULE(Monitor) {
     int positionSyncCounter;
     void checkPositionSync(int value_hall1_to_hall2, int value_hall2_to_hall1);
     void storePositionSync();
-    void checkThatPositionSyncAreSpacedEvenly();
+    void checkPositionSyncSpacing(int value_hall1_to_hall2);
 
     private:
     void sendReset();

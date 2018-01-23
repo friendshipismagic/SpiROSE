@@ -79,7 +79,8 @@ void Monitor::storePositionSync() {
     }
 }
 
-void Monitor::checkThatPositionSyncAreSpacedEvenly() {
+void Monitor::checkPositionSyncSpacing(int value_hall1_to_hall2) {
+    int expectedCyclePerSlice = value_hall1_to_hall2 / 128;
     int cyclePerSlice = 0;
     int lastCyclePerSlice = 0;
     int positionSyncReceived = 0;
@@ -88,7 +89,9 @@ void Monitor::checkThatPositionSyncAreSpacedEvenly() {
         cyclePerSlice++;
         if (positionSync == 1) {
             positionSyncReceived++;
-            if(positionSyncReceived > 2 && (lastCyclePerSlice != cyclePerSlice)) {
+            if(positionSyncReceived > 2) {
+                // Check that position_sync are spaced evenly
+                if (lastCyclePerSlice != cyclePerSlice) {
                     std::ostringstream msg;
                     msg << "Position_sync are not spaced evenly, receive one after "
                     << lastCyclePerSlice
@@ -96,6 +99,17 @@ void Monitor::checkThatPositionSyncAreSpacedEvenly() {
                     << cyclePerSlice
                     << " cycles.";
                     SC_REPORT_ERROR("hall_sensor", msg.str().c_str());
+                }
+                // Check that position_sync are spaced with the right length
+                if(cyclePerSlice != expectedCyclePerSlice) {
+                    std::ostringstream msg;
+                    msg << "Slices were expected to last "
+                    << expectedCyclePerSlice
+                    << " cycles but lasted "
+                    << cyclePerSlice
+                    << " cycles.";
+                    SC_REPORT_ERROR("hall_sensor", msg.str().c_str());
+                }
             }
             lastCyclePerSlice = cyclePerSlice;
             cyclePerSlice = 0;
@@ -125,7 +139,8 @@ void Monitor::sendHallSignals(int value_hall1_to_hall2, int value_hall2_to_hall1
     auto hall_p1 = sc_spawn(sc_bind(&Monitor::storePositionSync, this));
     auto hall_p2 = sc_spawn(sc_bind(&Monitor::checkPositionSync, this,
                 value_hall1_to_hall2, value_hall2_to_hall1));
-    auto hall_p3 = sc_spawn(sc_bind(&Monitor::checkThatPositionSyncAreSpacedEvenly, this));
+    auto hall_p3 = sc_spawn(sc_bind(&Monitor::checkPositionSyncSpacing, this,
+                value_hall1_to_hall2));
     for (int i = 0; i < value_hall2_to_hall1; i++) wait(clk.posedge_event());
 
     // Set hall1 low for one cycle
