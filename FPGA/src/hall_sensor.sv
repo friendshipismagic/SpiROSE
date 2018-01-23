@@ -11,7 +11,8 @@ module hall_sensor (
      * is triggered.
      */
     output logic [7:0] slice_cnt,
-    output logic position_sync
+    output logic position_sync,
+    output logic [15:0] speed_data
 );
 
 localparam SLICE_PER_HALF_TURN = 128;
@@ -89,6 +90,8 @@ always_ff @(posedge clk or negedge nrst) begin
              */
             cycles_between_two_slices <= INTERNAL_COUNTER_WIDTH'(counter >> SLICE_PER_HALF_TURN_WIDTH);
             counter <= 1;
+            // Compute the immediate speed value
+            speed_data <= 16'((66000000/(counter+1))/2);
         end else begin
             counter <= counter + 1;
         end
