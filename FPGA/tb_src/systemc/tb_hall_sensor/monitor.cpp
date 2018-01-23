@@ -79,6 +79,30 @@ void Monitor::storePositionSync() {
     }
 }
 
+void Monitor::checkThatPositionSyncAreSpacedEvenly() {
+    int cyclePerSlice = 0;
+    int lastCyclePerSlice = 0;
+    int positionSyncReceived = 0;
+    while (1) {
+        wait(clk.posedge_event());
+        cyclePerSlice++;
+        if (positionSync == 1) {
+            positionSyncReceived++;
+            if(positionSyncReceived > 2 && (lastCyclePerSlice != cyclePerSlice)) {
+                    std::ostringstream msg;
+                    msg << "Position_sync are not spaced evenly, receive one after "
+                    << lastCyclePerSlice
+                    << " cycles then one after "
+                    << cyclePerSlice
+                    << " cycles.";
+                    SC_REPORT_ERROR("hall_sensor", msg.str().c_str());
+            }
+            lastCyclePerSlice = cyclePerSlice;
+            cyclePerSlice = 0;
+        }
+    }
+}
+
 /*
  * Generic function to simulate a whole cycle of hall1
  * and hall2 being triggered in succession
@@ -101,6 +125,7 @@ void Monitor::sendHallSignals(int value_hall1_to_hall2, int value_hall2_to_hall1
     auto hall_p1 = sc_spawn(sc_bind(&Monitor::storePositionSync, this));
     auto hall_p2 = sc_spawn(sc_bind(&Monitor::checkPositionSync, this,
                 value_hall1_to_hall2, value_hall2_to_hall1));
+    auto hall_p3 = sc_spawn(sc_bind(&Monitor::checkThatPositionSyncAreSpacedEvenly, this));
     for (int i = 0; i < value_hall2_to_hall1; i++) wait(clk.posedge_event());
 
     // Set hall1 low for one cycle
@@ -110,4 +135,5 @@ void Monitor::sendHallSignals(int value_hall1_to_hall2, int value_hall2_to_hall1
 
     hall_p1.kill();
     hall_p2.kill();
+    hall_p3.kill();
 }
