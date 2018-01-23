@@ -35,6 +35,7 @@ int sc_main(int argc, char** argv) {
     sc_signal<uint64_t> cmdWrite;
     sc_signal<bool> valid;
     sc_signal<uint32_t> spiRotationData;
+    sc_signal<uint32_t> spiSpeedData;
     sc_signal<uint64_t> spiDriverConfig;
     sc_signal<bool> spiConfigAvailable;
     sc_signal<bool> rgbEnable;
@@ -53,6 +54,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, cmdWrite, "cmd_write");
     sc_trace(traceFile, cmdLenBytes, "cmd_len_bytes");
     sc_trace(traceFile, spiRotationData, "rotation_data");
+    sc_trace(traceFile, spiSpeedData, "speed_data");
     sc_trace(traceFile, spiDriverConfig, "configuration");
     sc_trace(traceFile, spiConfigAvailable, "new_config_available");
     sc_trace(traceFile, rgbEnable, "rgb_enable");
@@ -77,6 +79,7 @@ int sc_main(int argc, char** argv) {
     dut2.cmd_len_bytes(cmdLenBytes);
     dut2.cmd_write(cmdWrite);
     dut2.rotation_data(spiRotationData);
+    dut2.speed_data(spiSpeedData);
     dut2.configuration(spiDriverConfig);
     dut2.new_config_available(spiConfigAvailable);
     dut2.rgb_enable(rgbEnable);
@@ -90,6 +93,7 @@ int sc_main(int argc, char** argv) {
     monitor.miso(spiMiso);
     monitor.valid(valid);
     monitor.rotationData(spiRotationData);
+    monitor.speedData(spiSpeedData);
     monitor.configuration(spiDriverConfig);
     monitor.newConfigAvailable(spiConfigAvailable);
     monitor.rgbEnable(rgbEnable);
