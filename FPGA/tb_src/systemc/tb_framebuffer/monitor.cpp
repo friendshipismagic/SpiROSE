@@ -91,7 +91,7 @@ void Monitor::cycleCounterGenerator() {
     cycleCounter = 0;
     bool endOfSlice = true;
     while (1) {
-        wait(clk33.posedge_event());
+        wait(clk.posedge_event());
         if(endOfSlice) {
             endOfSlice = position_sync.read() == 0;
         } else {

@@ -1,7 +1,6 @@
 #include <systemc.h>
 #include <verilated.h>
 
-#include "Vclock_lse.h"
 #include "Vcolumn_mux.h"
 
 #include "monitor.hpp"
@@ -28,24 +27,18 @@ int sc_main(int argc, char** argv) {
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("column_mux");
     sc_trace(traceFile, clk66, "clk_66");
-    sc_trace(traceFile, clk33, "clk_33");
     sc_trace(traceFile, muxOut, "mux_out");
     sc_trace(traceFile, columnReady, "column_ready");
     sc_trace(traceFile, nrst, "nrst");
 
-    Vclock_lse clock_lse("clock_lse");
-    clock_lse.nrst(nrst);
-    clock_lse.clk_lse(clk33);
-    clock_lse.clk_hse(clk66);
-
     Vcolumn_mux dut("column_mux");
-    dut.clk_33(clk33);
+    dut.clk(clk66);
     dut.nrst(nrst);
     dut.mux_out(muxOut);
     dut.column_ready(columnReady);
 
     Monitor monitor("monitor");
-    monitor.clk(clk33);
+    monitor.clk(clk66);
     monitor.nrst(nrst);
     monitor.muxOut(muxOut);
     monitor.columnReady(columnReady);

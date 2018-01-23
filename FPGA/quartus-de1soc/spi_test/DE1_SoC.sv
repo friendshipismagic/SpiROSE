@@ -23,16 +23,16 @@ module DE1_SoC(
       ///////// ledr /////////
       output logic[9:0]  ledr,
       ///////// sw /////////
-      input  wire [9:0]  sw,
+      input  wire [9:0]  sw
 );
 
 //    Turn off all display     //////////////////////////////////////
-assign    hex0        =    conf[6:0];
-assign    hex1        =    conf[13:7];
-assign    hex2        =    conf[20:14];
-assign    hex3        =    conf[27:21];
-assign    hex4        =    conf[34:28];
-assign    hex5        =    conf[41:35];
+assign    hex0        =    ~cmd_read[54:48];
+assign    hex1        =    ~cmd_read[55];
+assign    hex2        =    'h7f;
+assign    hex3        =    'h7f;
+assign    hex4        =    'h7f;
+assign    hex5        =    'h7f;
 
 logic        nrst                   ;
 logic [47:0] conf                   ;
@@ -52,16 +52,22 @@ logic [29:0] sin                    ;
 logic [4:0]  sout_mux               ;
 logic        driver_ready           ;
 logic        column_ready           ;
+logic        rgb_enable             ;
+logic        valid                  ;
+logic [55:0] cmd_read               ;
+logic [2:0]  cmd_len_bytes          ;
+logic [47:0] cmd_write              ;
 
 assign position_sync = 1'b1;
+assign rotation_data = 16'hBEEF;
 
 // 66 MHz clock generator
 logic clock_66, lock;
-clk_66 main_clk_66 (
-	.refclk(clock_50),
-	.rst(sw[0]),
-	.outclk_0(clock_66),
-	.locked(lock)
+clk main_clk_66 (
+    .refclk(clock_50),
+    .rst(sw[0]),
+    .outclk_0(clock_66),
+    .locked(lock)
 );
 
 // 33 MHz clock generator
@@ -72,15 +78,30 @@ clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
     .clk_lse(clock_33)
 );
 
-spi_slave main_spi(
+spi_iff main_spi_iff (
+    .clk(clock_33),
     .nrst(nrst),
     .spi_clk(spi_clk),
     .spi_ss(spi_ss),
     .spi_mosi(spi_mosi),
     .spi_miso(spi_miso),
+    .valid(valid),
+    .cmd_read(cmd_read),
+    .cmd_len_bytes(cmd_len_bytes),
+    .cmd_write(cmd_write)
+);
+
+spi_decoder main_spi_decoder (
+    .nrst(nrst),
+    .clk(clock_33),
+    .valid(valid),
+    .cmd_read(cmd_read),
+    .cmd_len_bytes(cmd_len_bytes),
+    .cmd_write(cmd_write),
     .rotation_data(rotation_data),
-    .config_out(conf),
-    .new_config_available(new_configuration_ready)
+    .configuration(conf),
+    .new_config_available(new_configuration_ready),
+    .rgb_enable(rgb_enable)
 );
 
 framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
@@ -88,7 +109,7 @@ framebuffer_emulator #(.POKER_MODE(9), .BLANKING_CYCLES(72)) main_fb_emulator (
     .nrst(nrst),
     .data(framebuffer_data),
     .driver_ready(driver_ready),
-    .new_configuration_ready(new_configuration_ready)
+    .button(~key[3])
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
@@ -140,16 +161,19 @@ always_ff @(posedge clock_33 or negedge nrst)
 // Project pins assignment
 assign nrst      = key[0] & lock;
 
-assign spi_mosi  = gpio_1[18];
-assign spi_miso  = gpio_1[20];
-assign spi_clk   = gpio_1[22];
-assign spi_ss    = gpio_1[24];
+// SPI
+assign spi_clk   = gpio_1[22]   ;
+assign spi_ss    = gpio_1[24]   ;
+assign spi_mosi  = gpio_1[18]   ;
+assign gpio_1[20] = spi_miso    ;
 
-assign gpio_1[35]   = gclk;
-assign gpio_1[33]   = sclk;
-assign gpio_1[31]   = lat;
-assign gpio_1[29]   = sin[0];
+// Drivers
+assign gpio_1[35] = gclk;
+assign gpio_1[33] = sclk;
+assign gpio_1[31] = lat;
+assign gpio_1[29] = sin[0];
 
+// Multiplexing
 assign gpio_0[10] = sw[9];
 assign gpio_0[12] = sw[8];
 assign gpio_0[14] = sw[7];
@@ -159,10 +183,6 @@ assign gpio_0[20] = sw[4];
 assign gpio_0[22] = sw[3];
 assign gpio_0[24] = sw[2];
 
-logic new_conf;
-logic old_conf;
-
-assign new_conf = ~key[3];
-assign old_conf = ~key[2];
+assign ledr[9] = rgb_enable;
 
 endmodule
