@@ -81,6 +81,7 @@ end
 always_ff @(posedge clk or negedge nrst) begin
     if (~nrst) begin
         counter <= 0;
+        speed_data <= 0;
     end else begin
         if (top) begin
             /*
