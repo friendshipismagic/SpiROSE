@@ -55,7 +55,8 @@ always_ff @(negedge clk_hse or negedge nrst)
  * WAIT_FOR_NEXT_SLICE we pause gclk and wait for position_sync
  *
  * Boot-time transition is:
- * STALL for 1 clock cycle
+ * STALL for 1 clock cycle (since a new configuration, the default one,
+ *   is available)
  * PREPARE_CONFIG fo 15 cycles
  * CONFIG for 48+1 clock cycles
  * WRTFC_TIMING for 5 cycles
@@ -79,12 +80,14 @@ enum logic[3:0] {
 logic [7:0] driver_state_counter;
 always_ff @(posedge clk_lse or negedge nrst)
     if(~nrst) begin
-        driver_state <= STREAM;
+        driver_state <= STALL;
         driver_state_counter <= '0;
     end else begin
         case(driver_state)
             STALL: begin
-                driver_state <= PREPARE_CONFIG;
+                if (new_configuration_ready) begin
+                    driver_state <= PREPARE_CONFIG;
+                end
             end
 
             PREPARE_CONFIG: begin

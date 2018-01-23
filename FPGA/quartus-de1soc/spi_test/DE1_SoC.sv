@@ -59,6 +59,7 @@ logic [2:0]  cmd_len_bytes          ;
 logic [47:0] cmd_write              ;
 
 assign position_sync = 1'b1;
+assign rotation_data = 16'hBEEF;
 
 // 66 MHz clock generator
 logic clock_66, lock;
@@ -164,7 +165,7 @@ assign nrst      = key[0] & lock;
 assign spi_clk   = gpio_1[22]   ;
 assign spi_ss    = gpio_1[24]   ;
 assign spi_mosi  = gpio_1[18]   ;
-assign spi_miso  = gpio_1[20]   ;
+assign gpio_1[20] = spi_miso    ;
 
 // Drivers
 assign gpio_1[35] = gclk;
@@ -181,5 +182,7 @@ assign gpio_0[18] = sw[5];
 assign gpio_0[20] = sw[4];
 assign gpio_0[22] = sw[3];
 assign gpio_0[24] = sw[2];
+
+assign ledr[9] = rgb_enable;
 
 endmodule

@@ -27,7 +27,6 @@ localparam CONFIG_COMMAND = 'hBF;
 localparam ROTATION_COMMAND = 'h4C;
 localparam DISABLE_RGB_COMMAND = 'hD0;
 localparam ENABLE_RGB_COMMAND = 'hE0;
-localparam DEFAULT_CONFIG_DATA = 'hFF;
 
 `include "drivers_conf.svh"
 
@@ -50,8 +49,8 @@ always_ff @(posedge clk or negedge nrst)
 
 always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
-        new_config_available <= 0;
         configuration <= serialized_conf;
+        new_config_available <= 1;       // This will be high for one cycle (STALL)
         rgb_enable <= 0;
     end else begin
         new_config_available <= '0;
