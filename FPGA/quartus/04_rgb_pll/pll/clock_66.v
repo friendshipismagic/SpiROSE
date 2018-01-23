@@ -36,7 +36,7 @@
 // synopsys translate_off
 `timescale 1 ps / 1 ps
 // synopsys translate_on
-module clock_33 (
+module clock_66 (
 	inclk0,
 	c0,
 	locked);
