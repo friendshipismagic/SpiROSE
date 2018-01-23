@@ -5,7 +5,7 @@ module framebuffer #(
     parameter POKER_MODE=9,
     parameter SLICES_IN_RAM=18
 )(
-    input clk_33,
+    input clk,
     input nrst,
 
     // Data signal for the driver main controller
@@ -270,7 +270,7 @@ logic wait_for_next_slice;
 assign has_reached_end = write_idx == BUFF_SIZE;
 assign image_start_addr = slice_cnt*IMAGE_SIZE + RAM_BASE;
 
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
         ram_addr <= RAM_BASE;
@@ -319,7 +319,7 @@ end
 assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
 assign color_addr = color_bit_idx + 4'(COLOR_BASE[rgb_idx]);
 
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         data <= '0;
     end else begin
@@ -344,7 +344,7 @@ always_ff @(posedge clk_33 or negedge nrst)
     end
 
 // column_sent indicates that we need to fill a new buffer
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         column_sent <= '0;
     end else begin
@@ -364,7 +364,7 @@ always_ff @(posedge clk_33 or negedge nrst)
  * In poker mode we send the MSB of each led first, thus bit_idx is decreased
  * every 16 cycles. When it reaches 0 we change the current column.
  */
-always_ff @(posedge clk_33 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         rgb_idx <= '0;
         mul_idx <= '0;
