@@ -1,5 +1,5 @@
 MODULE := column_mux
-DEPS := clock_lse
+DEPS :=
 
 ROOT = tb_$(MODULE)
 OBJS += $(ROOT)/main.o $(ROOT)/monitor.o

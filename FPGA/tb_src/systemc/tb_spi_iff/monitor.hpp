@@ -13,6 +13,7 @@ SC_MODULE(Monitor) {
           miso("miso"),
           valid("valid"),
           rotationData("rotation_data"),
+          speedData("speed_data"),
           configuration("configuration"),
           newConfigAvailable("new_config_available") {
         SC_THREAD(runTests);
@@ -32,6 +33,7 @@ SC_MODULE(Monitor) {
     sc_in<bool> valid;
 
     sc_out<uint32_t> rotationData;
+    sc_out<uint32_t> speedData;
     sc_in<uint64_t> configuration;
     sc_in<bool> newConfigAvailable;
     sc_in<bool> rgbEnable;

@@ -9,8 +9,14 @@ compile/02_blink_led:
 compile/03_pt6_clock:
 	cd 03_pt6_clock && $(QUARTUS131) --flow compile pt6_clock
 
-compile/05_spi_test:
-	cd 05_spi_test && $(QUARTUS131) --flow compile spi_test
+compile/04_rgb_pll:
+	cd 04_rgb_pll && $(QUARTUS131) --flow compile rgb_pll
+
+compile/05_memory:
+	cd 05_memory && $(QUARTUS131) --flow compile memory
+
+compile/06_spi_test:
+	cd 06_spi_test && $(QUARTUS131) --flow compile spi_test
 
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose

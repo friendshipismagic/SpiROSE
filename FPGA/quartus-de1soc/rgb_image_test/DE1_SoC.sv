@@ -66,20 +66,20 @@ logic        spi_miso               ;
 logic [15:0] rotation_data          ;
 
 // 66 MHz clock generator
-logic clock_66, lock;
-clk main_clk_66 (
-	.refclk(clock_50),
-	.rst(sw[0]),
-	.outclk_0(clock_66),
-	.locked(lock)
+logic clk, lock;
+clk_66 main_clk (
+    .refclk(clock_50),
+    .rst(sw[0]),
+    .outclk_0(clk),
+    .locked(lock)
 );
 
-// 33 MHz clock generator
-logic clock_33;
-clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
-    .clk_hse(clock_66),
+// Divider use by driver_controller
+logic clk_enable;
+clock_enable main_clk_enable (
+    .clk(clk),
     .nrst(nrst),
-    .clk_lse(clock_33)
+    .clk_enable(clk_enable)
 );
 
 assign position_sync = '1;
@@ -88,19 +88,19 @@ assign new_configuration_ready = ~key[3];
 assign stream_ready = '1;
 
 framebuffer #(.SLICES_IN_RAM(1)) main_framebuffer (
-	.clk_33(clock_33),
-	.nrst(nrst),
-	.data(framebuffer_data),
-	.stream_ready(stream_ready),
-	.driver_ready(driver_ready),
-	.position_sync(position_sync),
-	.ram_addr(ram_raddr),
-	.ram_data(ram_rdata)
+    .clk(clk),
+    .nrst(nrst),
+    .data(framebuffer_data),
+    .stream_ready(stream_ready),
+    .driver_ready(driver_ready),
+    .position_sync(position_sync),
+    .ram_addr(ram_raddr),
+    .ram_data(ram_rdata)
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
-    .clk_hse(clock_66),
-	.clk_lse(clock_33),
+    .clk(clk),
+    .clk_enable(clk_enable),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_data),
     .driver_sclk(sclk),
@@ -116,7 +116,7 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
 );
 
 column_mux main_column_mux (
-    .clk_33(clock_33),
+    .clk(clk),
     .nrst(nrst),
     .column_ready(column_ready),
     .mux_out(mux_out)
@@ -124,31 +124,17 @@ column_mux main_column_mux (
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
-always_ff @(posedge clock_66 or negedge nrst)
-	if(~nrst) begin
-		ledr[0] <= '0;
-		heartbeat_counter_66 <= '0;
-	end else begin
-		heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
-		if(heartbeat_counter_66 == 33_000_000) begin
-			ledr[0] <= ~ledr[0];
-			heartbeat_counter_66 <= '0;
-		end
-	end
-
-// Heartbeat LED 33MHz
-logic[24:0] heartbeat_counter_33;
-always_ff @(posedge clock_33 or negedge nrst)
-	if(~nrst) begin
-		ledr[1] <= '0;
-		heartbeat_counter_33 <= '0;
-	end else begin
-		heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
-		if(heartbeat_counter_33 == 33_000_000) begin
-			ledr[1] <= ~ledr[1];
-			heartbeat_counter_33 <= '0;
-		end
-	end
+always_ff @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        ledr[0] <= '0;
+        heartbeat_counter_66 <= '0;
+    end else begin
+        heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
+        if(heartbeat_counter_66 == 66_000_000) begin
+            ledr[0] <= ~ledr[0];
+            heartbeat_counter_66 <= '0;
+        end
+    end
 
 // Project pins assignment
 assign nrst = key[0] & lock;
@@ -172,7 +158,7 @@ logic [1:0] shift;
 assign shift = {sw[1], sw[2]};
 
 // Process to simulate the RAM, changing continuously between R, G and B
-always_ff @(posedge clock_33 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
         ram_rdata <= '0;
     end else begin
