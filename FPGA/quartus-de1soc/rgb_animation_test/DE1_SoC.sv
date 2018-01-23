@@ -4,8 +4,8 @@ module DE1_SoC(
     ///////// CLOCK /////////
     input clock_50,
     ///////// GPIO /////////
-    inout  wire [35:0] gpio_0,
-    inout  wire [35:0] gpio_1,
+    inout  logic [35:0] gpio_0,
+    inout  logic [35:0] gpio_1,
     ///////// hex0 /////////
     output logic[6:0]  hex0,
     ///////// hex1 /////////
@@ -19,11 +19,11 @@ module DE1_SoC(
     ///////// hex5 /////////
     output logic[6:0]  hex5,
     ///////// key /////////
-    input  wire [3:0]  key,
+    input  logic [3:0]  key,
     ///////// ledr /////////
     output logic[9:0]  ledr,
     ///////// sw /////////
-    input  wire[9:0]  sw
+    input  logic[9:0]  sw
 );
 
 //    Turn off all display     //////////////////////////////////////
@@ -74,7 +74,7 @@ clk_66 main_clk (
     .locked(lock)
 );
 
-// Divider use by driver_controller
+// Divider used by driver_controller
 logic clk_enable;
 clock_enable main_clk_enable (
     .clk(clk),
