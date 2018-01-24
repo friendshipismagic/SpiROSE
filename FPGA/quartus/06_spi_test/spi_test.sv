@@ -23,7 +23,7 @@ module spi_test
     */
     output      som_miso,
     input       som_mosi,
-    input       som_clk,
+    input       som_sclk,
     input       som_cs
 );
 
@@ -49,11 +49,18 @@ assign rotation_data = 'hBEEF;
 always_ff @(posedge clk)
     pt_6 <= ~pt_6;
 
+
+clock_66 main_clock_66 (
+    .inclk0(rgb_clk),
+    .c0(clk),
+    .locked(nrst)
+);
+
 spi_iff spi_iff (
     .clk(clk),
     .nrst(nrst),
     // SPI I/O signals
-    .spi_clk(som_clk),
+    .spi_clk(som_sclk),
     .spi_ss(som_cs),
     .spi_mosi(som_mosi),
     .spi_miso(som_miso),

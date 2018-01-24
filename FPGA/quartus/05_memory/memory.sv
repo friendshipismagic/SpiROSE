@@ -1,11 +1,10 @@
 module memory
 (
-    input       pt_39,
-    input       som_cs,
+    input       rgb_clk,
     output      pt_6
 );
 
-wire  nrst = som_cs;
+logic nrst;
 logic clk;
 
 // the PT output is 1 if there was an error in the RAM value verification
@@ -14,11 +13,15 @@ assign pt_6 = error;
 logic locked;
 
 clock_66 main_clock_66 (
-    .inclk0(pt_39),
+    .inclk0(rgb_clk),
     // Main 33 MHz clock
     .c0(clk),
     .locked(locked)
 );
+
+// Resynchronize the locked signal to be used as a reset
+always @(posedge clk)
+    nrst <= locked;
 
 logic [15:0] wdata;
 logic [15:0] raddr;
@@ -26,13 +29,14 @@ logic [15:0] waddr;
 logic [15:0] rdata;
 logic write_enable;
 
-ram main_ram (
-    .clock(clk),
+ram_dual_port main_ram (
     .data(wdata),
     .rdaddress(raddr),
+    .rdclock(clk),
     .wraddress(waddr),
-    .q(rdata),
-    .wren(write_enable)
+    .wrclock(rgb_clk),
+    .wren(write_enable),
+    .q(rdata)
 );
 
 integer ram_count;
