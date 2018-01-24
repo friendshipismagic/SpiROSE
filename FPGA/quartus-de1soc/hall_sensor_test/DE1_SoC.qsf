@@ -347,12 +347,10 @@ set_global_assignment -name SEARCH_PATH ../src
 set_global_assignment -name BOARD "DE1-SoC Board"
 
 
-set_global_assignment -name SYSTEMVERILOG_FILE ../../src/clock_lse_inverse.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../../src/clock_lse.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/hall_sensor.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/SEG7_LUT.sv
 set_global_assignment -name SYSTEMVERILOG_FILE DE1_SoC.sv
 set_global_assignment -name SDC_FILE DE1_SoC.sdc
-set_global_assignment -name QIP_FILE ../../src/clk.qip
-set_global_assignment -name SIP_FILE ../../src/clk.sip
+set_global_assignment -name QIP_FILE ../../src/clk_66.qip
+set_global_assignment -name SIP_FILE ../../src/clk_66.sip
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top

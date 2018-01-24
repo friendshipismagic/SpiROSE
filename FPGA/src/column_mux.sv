@@ -14,13 +14,12 @@ module column_mux
  * 660 cycles corresponds to 10 µs display time
  */
 localparam DRIVE_CLOCK_CYCLES = 660;
-localparam DRIVE_CLOCK_BITS = $clog2(DRIVE_CLOCK_CYCLES);
 
 /*
  * Current 'value', between 0 and 7 (included).
  * This is the column to turn on.
  */
-logic [2:0] disp_value;
+integer disp_value;
 
 /*
  * Mux possible states:
@@ -28,7 +27,7 @@ logic [2:0] disp_value;
  * DISP is a state where one column is on
  */
 enum logic {WAIT_COLUMN_READY, DISP} mux_state;
-logic [DRIVE_CLOCK_BITS-1:0] mux_state_counter;
+integer mux_state_counter;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         mux_state <= WAIT_COLUMN_READY;
@@ -46,6 +45,7 @@ always_ff @(posedge clk or negedge nrst)
                 mux_state_counter <= mux_state_counter + 1'b1;
                 // Remove one clock cycle per transition
                 if(mux_state_counter == DRIVE_CLOCK_CYCLES - 1) begin
+                    mux_state_counter <= '0;
                     mux_state <= WAIT_COLUMN_READY;
                     // Change column for next time
                     disp_value <= disp_value + 1'b1;
