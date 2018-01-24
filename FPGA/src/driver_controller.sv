@@ -64,7 +64,7 @@ enum logic[3:0] {
     WAIT_FOR_NEXT_SLICE
 } driver_state;
 
-logic [7:0] driver_state_counter;
+integer driver_state_counter;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         driver_state <= STALL;
@@ -77,7 +77,7 @@ always_ff @(posedge clk or negedge nrst)
                         driver_state <= PREPARE_CONFIG;
                     end
                 end
-                
+
                 PREPARE_CONFIG: begin
                     // Here we wait 15 cycles to send the FCWRTEN command
                     driver_state_counter <= driver_state_counter + 1'b1;
@@ -168,8 +168,8 @@ always_ff @(posedge clk or negedge nrst)
  * or LINERESET, thus the segment counter goes up to 512 instead of 511 to
  * count this extra one cycle.
  */
-logic [10:0] segment_counter;
-logic [2:0]  mux_counter;
+integer segment_counter;
+integer mux_counter;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         segment_counter <= '0;
@@ -182,6 +182,9 @@ always_ff @(posedge clk or negedge nrst)
                     if(segment_counter == 512) begin
                         segment_counter <= '0;
                         mux_counter <= mux_counter + 1'b1;
+                        if(mux_counter == 7) begin
+                            mux_counter <= '0;
+                        end
                     end
                 end
                 default: begin
@@ -208,7 +211,7 @@ assign blanking_period = nrst & (segment_counter < BLANKING_TIME);
  * after a WRTGS or WRTFC, thus the counter goes up to 48 instead of 47 to
  * count this extra one cycle.
  */
-logic [7:0] shift_register_counter;
+integer shift_register_counter;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         shift_register_counter <= '0;

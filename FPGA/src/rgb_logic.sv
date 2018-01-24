@@ -31,7 +31,7 @@ logic blanking;
 // hsync and vsync drive low when we are on blanking area
 assign blanking = (~hsync | ~vsync);
 
-logic [31:0] pixel_counter;
+integer pixel_counter;
 
 logic is_end_of_RAM;
 assign is_end_of_RAM = ram_addr == (IMAGE_SIZE*IMAGE_IN_RAM-1);
