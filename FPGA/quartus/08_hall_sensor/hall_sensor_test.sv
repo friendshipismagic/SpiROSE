@@ -4,9 +4,9 @@ module hall_sensor_test
     input  [1:0]   hall,
 
     output [29:0]  drv_sin,
-    output         fpga_sclk_a,
-    output         fpga_gclk_a,
-    output         fpga_lat_a,
+    output         drv_sclk_a,
+    output         drv_gclk_a,
+    output         drv_lat_a,
     output [7:0]   fpga_mul_a
 );
 
@@ -43,9 +43,9 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk_enable(clk_enable),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_dat),
-    .driver_sclk(fpga_sclk_a),
-    .driver_gclk(fpga_gclk_a),
-    .driver_lat(fpga_lat_a),
+    .driver_sclk(drv_sclk_a),
+    .driver_gclk(drv_gclk_a),
+    .driver_lat(drv_lat_a),
     .drivers_sin(drv_sin),
     .driver_sout(driver_sout),
     .driver_sout_mux(driver_sout_mux),
