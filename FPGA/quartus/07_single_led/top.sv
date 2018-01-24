@@ -21,8 +21,8 @@ module Top
  output logic        drv_lat_a,
  output logic        drv_lat_b,
  output logic [29:0] drv_sin,
- input logic [7:0]   fpga_mul_a,
- input logic [7:0]   fpga_mul_b,
+ output logic [7:0]   fpga_mul_a,
+ output logic [7:0]   fpga_mul_b,
 
  // SPI
  input logic         som_cs,
@@ -57,7 +57,7 @@ logic locked;
 clock_66 main_clock_66 (
     .inclk0(rgb_clk),
     .c0(clk),
-    .locked(clocked)
+    .locked(locked)
 );
 
 clock_enable main_clock_enable (
@@ -93,7 +93,7 @@ always_ff @(posedge clk or negedge nrst)
         if (count == 50000) begin
             new_configuration_ready <= 1;
         end else begin
-            new_configuration_reay <= 0;
+            new_configuration_ready <= 0;
         end
     end
 
@@ -102,9 +102,9 @@ driver_controller main_driver_controller (
     .clk_enable(clk_enable),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_dat),
-    .driver_sclk(driver_sclk_a),
-    .driver_gclk(driver_gclk_a),
-    .driver_lat(driver_lat_a),
+    .driver_sclk(drv_sclk_a),
+    .driver_gclk(drv_gclk_a),
+    .driver_lat(drv_lat_a),
     .drivers_sin(drv_sin),
     .driver_sout(driver_sout),
     .driver_sout_mux(driver_sout_mux),
@@ -112,7 +112,7 @@ driver_controller main_driver_controller (
     .column_ready(column_ready),
     .driver_ready(driver_ready),
     .serialized_conf(serialized_conf),
-    .new_configuration(new_configuration_ready)
+    .new_configuration_ready(new_configuration_ready)
 );
 
 assign framebuffer_dat = '1;
