@@ -3,7 +3,7 @@ version: "0.1.0"
 about: "Yet Another CLI for SPI matching the SpiROSE SPI behaviour"
 args:
    - device:
-      help: "SPI device to use. To test, use none as device"
+      help: "SPI device to use. To test, use none as device. If no subcommand is given, it will only check that the device can be opened and configured."
       short: d
       long: device
       takes_value: true
