@@ -15,7 +15,7 @@ CC = c++
 CXX = c++
 
 OBJS = $(CXXSRC:.cpp=.o)
-DEPS = $(CSSSRC:.cpp=.d)
+DEPS = $(CXXSRC:.cpp=.d)
 
 .PHONY: all run clean
 
