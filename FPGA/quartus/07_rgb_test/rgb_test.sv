@@ -49,7 +49,9 @@ logic [31:0] debug_data;
 // Clock domains crossings
 logic        hsync, vsync;
 logic [23:0] data;
-sync_sig #(.SIZE(32)) sync_sig (
+sync_sig sync_hsync (.nrst(nrst), .clk(clk), .in_sig(rgb_hsync), .out_sig(hsync));
+sync_sig sync_vsync (.nrst(nrst), .clk(clk), .in_sig(rgb_vsync), .out_sig(vsync));
+sync_sig #(.SIZE(32)) sync_data (
     .nrst(nrst),
     .clk(clk),
     .in_sig(rgb_d),
