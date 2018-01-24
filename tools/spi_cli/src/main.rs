@@ -1,5 +1,7 @@
 #[macro_use]
 extern crate clap;
+#[macro_use]
+extern crate error_chain;
 extern crate packed_struct;
 #[macro_use]
 extern crate packed_struct_codegen;
@@ -14,6 +16,15 @@ use std::fs::File;
 use clap::App;
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
+
+mod errors {
+    error_chain! {
+        foreign_links {
+            Toml(::toml::de::Error);
+            Io(::io::Error);
+        }
+    }
+}
 
 // LEDDriverConfig is the struct containing the LED Driver Config
 // The serialized version is 48b long
@@ -78,59 +89,68 @@ impl SpiCommand {
         SpiCommand { id, recv_len }
     }
 
-    fn decode(command: &str) -> Result<SpiCommand, String> {
+    fn decode(command: &str) -> SpiCommand {
         match command {
-            "enable_rgb" => Ok(SpiCommand::new(0xe0)),
-            "disable_rgb" => Ok(SpiCommand::new(0xd0)),
-            "get_rotation" => Ok(SpiCommand::new_with_len(0x4c, 2)),
-            "get_speed" => Ok(SpiCommand::new_with_len(0x4d, 2)),
-            "get_config" => Ok(SpiCommand::new_with_len(0xbf, 6)),
-            _ => Err(format!("unknown command `{}'", command)),
+            "enable_rgb" => SpiCommand::new(0xe0),
+            "disable_rgb" => SpiCommand::new(0xd0),
+            "get_rotation" => SpiCommand::new_with_len(0x4c, 2),
+            "get_speed" => SpiCommand::new_with_len(0x4d, 2),
+            "get_config" => SpiCommand::new_with_len(0xbf, 6),
+            _ => unreachable!(),
         }
     }
 }
 
 fn main() {
+    match run() {
+        Ok(_) => {}
+        Err(e) => {
+            eprintln!("Error: {}", e);
+            std::process::exit(1);
+        }
+    }
+}
+
+fn run() -> errors::Result<()> {
     let yaml_cli_config = load_yaml!("cli.yml");
     let matches = App::from_yaml(yaml_cli_config).get_matches();
 
     let spi_dev = matches.value_of("device").unwrap();
     let verbose = matches.is_present("verbose");
     let dummy = spi_dev == "none";
-    let mut spi = create_spi(if dummy { "/dev/null" } else { spi_dev }, !dummy).unwrap();
+    let mut spi = create_spi(if dummy { "/dev/null" } else { spi_dev }, !dummy)?;
     if let Some(command_args) = matches.subcommand_matches("send_config") {
         let config_file_url = command_args.value_of("config_file").unwrap();
-        let mut config_file = File::open(config_file_url).expect("Configuration file not found");
+        let mut config_file = File::open(config_file_url).map_err(|e| {
+            format!(
+                "Cannot open configuration file `{}': {}",
+                config_file_url, e
+            )
+        })?;
         let mut serialized_conf = String::new();
-        config_file
-            .read_to_string(&mut serialized_conf)
-            .expect("Unknown error when reading configuration file");
+        config_file.read_to_string(&mut serialized_conf)?;
         // Unwrapping inside a LEDDriverConfig forces the full configuration to be available
-        let led_config: LEDDriverConfig = toml::from_str(&serialized_conf).unwrap();
+        let led_config: LEDDriverConfig = toml::from_str(&serialized_conf)?;
         transfer(
             &mut spi,
-            &SpiCommand::decode("get_config").unwrap(),
+            &SpiCommand::decode("get_config"),
             &led_config.pack(),
             verbose,
             dummy,
-        ).unwrap();
+        )?;
     } else {
         for c in COMMANDS.iter() {
             if matches.subcommand_matches(c).is_some() {
-                transfer(
-                    &mut spi,
-                    &SpiCommand::decode(c).unwrap(),
-                    &[],
-                    verbose,
-                    dummy,
-                ).unwrap();
+                transfer(&mut spi, &SpiCommand::decode(c), &[], verbose, dummy)?;
             }
         }
     }
+    Ok(())
 }
 
-fn create_spi(spi_dev: &str, configure: bool) -> io::Result<Spidev> {
-    let mut spi = Spidev::open(spi_dev)?;
+fn create_spi(spi_dev: &str, configure: bool) -> errors::Result<Spidev> {
+    let mut spi =
+        Spidev::open(spi_dev).map_err(|e| format!("Cannot open SPI device `{}': {}", spi_dev, e))?;
 
     let spi_options = SpidevOptions::new()
         .bits_per_word(8)
@@ -151,7 +171,7 @@ fn transfer<T: Write + Read>(
     command_args: &[u8],
     verbose: bool,
     dummy: bool,
-) -> io::Result<Vec<u8>> {
+) -> errors::Result<Vec<u8>> {
     // Transmit the command and the arguments as one SPI transaction.
     let mut transaction = Vec::with_capacity(1 + command_args.len());
     transaction.push(command.id);
@@ -188,21 +208,6 @@ fn transfer<T: Write + Read>(
 #[cfg(test)]
 mod tests {
     use super::*;
-
-    #[test]
-    fn test_that_spicommand_are_recognized() {
-        for command in COMMANDS.iter() {
-            assert!(
-                SpiCommand::decode(command).is_ok(),
-                format!("Command {} is not implemented", command)
-            );
-        }
-    }
-
-    #[test]
-    fn unrecognized_command() {
-        assert!(SpiCommand::decode("foobar").is_err());
-    }
 
     #[test]
     fn serialize() {

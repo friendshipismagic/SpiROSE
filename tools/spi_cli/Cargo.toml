@@ -1,16 +1,17 @@
 [package]
+authors = ["Clément Decoodt <clement@decoodt.eu>"]
 name = "spi_cli"
 version = "0.1.0"
-authors = ["Clément Decoodt <clement@decoodt.eu>"]
-
-[dependencies.clap]
-version = "*"
-features = ["yaml"]
 
 [dependencies]
-spidev = "*"
-toml = "*"
-serde = "*"
-serde_derive = "*"
+error-chain = "0.11.0"
 packed_struct = "*"
 packed_struct_codegen = "*"
+serde = "*"
+serde_derive = "*"
+spidev = "*"
+toml = "*"
+
+[dependencies.clap]
+features = ["yaml"]
+version = "*"
