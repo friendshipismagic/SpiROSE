@@ -52,7 +52,7 @@ logic nrst;
 logic clk;
 
 // the PT output is 1 if there was an error in the RAM value verification
-assign pt_6 = error;
+assign pt_6 = r_error;
 
 logic locked;
 
@@ -66,59 +66,64 @@ clock_66 main_clock_66 (
 always @(posedge clk)
     nrst <= locked;
 
-logic [15:0] wdata;
-logic [15:0] raddr;
-logic [15:0] waddr;
-logic [15:0] rdata;
-logic write_enable;
+ logic [15:0] w_data;
+ logic [15:0] r_addr;
+ logic [15:0] w_addr;
+ logic [15:0] r_data;
+ logic write_enable;
 
-ram_dual_port main_ram (
-    .data(wdata),
-    .rdaddress(raddr),
+ ram_dual_port main_ram (
+    .data(w_data),
+    .rdaddress(r_addr),
     .rdclock(clk),
-    .wraddress(waddr),
+    .wraddress(w_addr),
     .wrclock(rgb_clk),
     .wren(write_enable),
-    .q(rdata)
-);
+    .q(r_data)
+ );
 
-integer ram_count;
-logic is_ram_written;
-logic error;
+ integer r_ram_count;
+ integer w_ram_count;
+ logic is_ram_written;
+ logic r_error;
 
-assign waddr = is_ram_written ? '0 : ram_count;
-assign wdata = is_ram_written ? '0 : ram_count;
-assign raddr = is_ram_written ? ram_count : '0;
+ assign w_addr = is_ram_written ? '0 : w_ram_count;
+ assign w_data = w_addr;
+ assign r_addr = is_ram_written ? r_ram_count : '0;
 
-// Tests: write in whole RAM then tests the values that are written
-always_ff @(posedge clk or negedge nrst)
-if (!nrst)
-begin
-    write_enable <= 1'b0;
-    ram_count    <= '0;
-    error <= 1'b0;
-    is_ram_written <= 1'b0;
-end
-else
-begin
-    if (~is_ram_written) begin
-        write_enable <= 1;
-        if (write_enable) begin
-            ram_count <= ram_count + 1;
-        end
-        if (ram_count == 'hffff) begin
-            ram_count <= 0;
-            is_ram_written <= 1;
-            write_enable <= 0;
-        end
+ always_ff @(posedge rgb_clk or negedge nrst)
+    if (~nrst) begin
+       w_ram_count <= '0;
+       write_enable <= 1'b0;
+       is_ram_written <= 1'b0;
     end else begin
-        ram_count <= ram_count + 1;
-        if (ram_count > 0 && ram_count < 'hffff) begin
-            if (rdata != ram_count - 1) begin
-                error <= 1;
-            end
-        end
+       if (~is_ram_written) begin
+          write_enable <= 1;
+          if (write_enable) begin
+             w_ram_count <= w_ram_count + 1;
+          end
+          if (w_ram_count == 'hffff) begin
+             w_ram_count <= '0;
+             is_ram_written <= '1;
+             write_enable <= '0;
+          end
+       end
     end
-end
 
-endmodule
+ // Tests: write in whole RAM then tests the values that are written
+ always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+       r_ram_count <= '0;
+       r_error <= 1'b0;
+    end else begin
+       if (is_ram_written) begin
+          r_ram_count <= r_ram_count + 1;
+          if (r_ram_count > 0 && r_ram_count < 'hffff) begin
+             if (r_data != r_ram_count - 1) begin
+                r_error <= 1;
+             end
+          end
+       end
+    end
+
+    endmodule
