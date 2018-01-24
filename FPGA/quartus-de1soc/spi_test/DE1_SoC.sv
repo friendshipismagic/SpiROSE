@@ -133,19 +133,11 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .new_configuration_ready(new_configuration_ready)
 );
 
-// Heartbeat LED 66MHz
-logic[24:0] heartbeat_counter_66;
-always_ff @(posedge clk or negedge nrst)
-    if(~nrst) begin
-        ledr[0] <= '0;
-        heartbeat_counter_66 <= '0;
-    end else begin
-        heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
-        if(heartbeat_counter_66 == 66_000_000) begin
-            ledr[0] <= ~ledr[0];
-            heartbeat_counter_66 <= '0;
-        end
-    end
+heartbeat #(.COUNTER(66_000_000)) hb_66 (
+    .clk(clk),
+    .nrst(nrst),
+    .toggle(ledr[0])
+);
 
 // Project pins assignment
 assign nrst      = key[0] & lock;
