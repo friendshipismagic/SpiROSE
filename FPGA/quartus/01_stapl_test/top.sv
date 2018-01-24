@@ -12,7 +12,7 @@
 // Altera or its authorized distributors.  Please refer to the
 // applicable agreement for further details.
 
-module stapl_test (
+module Top (
     output pt_6
 );
 
