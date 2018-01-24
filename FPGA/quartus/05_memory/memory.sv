@@ -13,7 +13,7 @@ assign pt_6 = error;
 logic locked;
 
 clock_66 main_clock_66 (
-    .inclk0(pt_39),
+    .inclk0(rgb_clk),
     // Main 33 MHz clock
     .c0(clk),
     .locked(locked)
