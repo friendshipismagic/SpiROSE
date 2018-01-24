@@ -10,6 +10,7 @@ variables:
   RENDERER_POC_DIR: "tools/renderer"
   FPGA_DIR: "FPGA"
   LIBSPIROSE_DIR: "SBC/libSpiROSE"
+  FRAMER_DIR: "tools/framer"
 
 before_script:
   - git submodule init
@@ -168,5 +169,48 @@ spi-cli/bundle:
     key: cargo
     paths:
       - .cargo/
+  only:
+    - master
+
+framer/lint:
+  stage: lint
+  image: tuetuopay/clang
+  script:
+    - cd $FRAMER_DIR
+    - make lint
+
+framer/build:
+  stage: build
+  image: tuetuopay/glfw
+  script:
+    - pushd $LIBSPIROSE_DIR
+    - make build
+    - popd
+    - cd $FRAMER_DIR
+    - make build
+
+framer/test:
+  stage: test
+  image: tuetuopay/glfw
+  script:
+    - pushd $LIBSPIROSE_DIR
+    - make build
+    - popd
+    - cd $FRAMER_DIR
+    - make test
+
+framer/bundle:
+  stage: bundle
+  image: tuetuopay/glfw
+  script:
+    - pushd $LIBSPIROSE_DIR
+    - make build
+    - popd
+    - cd $FRAMER_DIR
+    - make bundle
+  artifacts:
+    paths:
+      - $FRAMER_DIR/framer
+    expire_in: 1 week
   only:
     - master
