@@ -19,6 +19,7 @@ localparam SLICE_PER_HALF_TURN = 128;
 localparam HALF_TURN_COUNTER_WIDTH = 32;
 localparam SLICE_PER_HALF_TURN_WIDTH = $clog2(SLICE_PER_HALF_TURN);
 localparam INTERNAL_COUNTER_WIDTH = HALF_TURN_COUNTER_WIDTH - SLICE_PER_HALF_TURN_WIDTH;
+localparam CLOCK_FREQUENCY = 66000000;
 
 // Counter for slices over a half turn only
 logic [SLICE_PER_HALF_TURN_WIDTH:0] slice_half_cnt;
@@ -92,7 +93,7 @@ always_ff @(posedge clk or negedge nrst) begin
             cycles_between_two_slices <= INTERNAL_COUNTER_WIDTH'(counter >> SLICE_PER_HALF_TURN_WIDTH);
             counter <= 1;
             // Compute the immediate speed value
-            speed_data <= 16'((66000000/(counter+1))/2);
+            speed_data <= 16'((CLOCK_FREQUENCY/(counter+1))/2);
         end else begin
             counter <= counter + 1;
         end
