@@ -1,11 +1,11 @@
 module single_led
 (
-    input           rgb_clk,
-    output [29:0]   drv_sin,
-    output          fpga_gclk_a,
-    output          fpga_sclk_a,
-    output          fpga_lat_a,
-    output [7:0]    fpga_mul_a
+    input  logic       rgb_clk,
+    output logic [29:0]   drv_sin,
+    output logic         fpga_gclk_a,
+    output logic         fpga_sclk_a,
+    output logic         fpga_lat_a,
+    output logic [7:0]    fpga_mul_a
 );
 
 logic clk;
@@ -27,13 +27,14 @@ clock_enable main_clock_enable (
     .clk_enable(clk_enable)
 );
 
+`include "drivers_conf.svh"
+
 logic [29:0]    framebuffer_dat;
 logic           driver_sout;
 logic [4:0]     driver_sout_mux;
 logic           position_sync;
 logic           column_ready;
 logic           driver_ready;
-logic [47:0]    serialized_conf;
 logic           new_configuration_ready;
 
 driver_controller main_driver_controller (
