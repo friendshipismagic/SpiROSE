@@ -45,4 +45,5 @@ test: all
 		kill %1; \
 		wait %1; \
 		exit $$code
+bundle: build
 
