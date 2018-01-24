@@ -15,24 +15,22 @@ module hall_sensor (
 );
 
 localparam SLICE_PER_HALF_TURN = 128;
-localparam HALF_TURN_COUNTER_WIDTH = 32;
 localparam SLICE_PER_HALF_TURN_WIDTH = $clog2(SLICE_PER_HALF_TURN);
-localparam INTERNAL_COUNTER_WIDTH = HALF_TURN_COUNTER_WIDTH - SLICE_PER_HALF_TURN_WIDTH;
 
 // Counter for slices over a half turn only
-logic [SLICE_PER_HALF_TURN_WIDTH:0] slice_half_cnt;
+integer slice_half_cnt;
 
 // State for which half-turn we are in. HALFTURN1 after hall_1 trigger.
 enum logic {HALFTURN1, HALFTURN2} half_turn_state;
 
 // Counter for each half-turn
-logic [HALF_TURN_COUNTER_WIDTH - 1:0] counter;
+integer counter;
 
 /*
  * Cycle counter for each slice (bit width is SLICE_PER_HALF_TURN times smaller
  * than that of counter)
  */
-logic [INTERNAL_COUNTER_WIDTH - 1:0] slice_cycle_counter;
+integer slice_cycle_counter;
 
 // 1-cycle high top signal, when the Hall effect sensor is first triggered
 logic top;
@@ -41,7 +39,7 @@ logic top;
  * Number of cycles between two slices, calculated with
  * the last half-turn data
  */
-logic [INTERNAL_COUNTER_WIDTH - 1:0] cycles_between_two_slices;
+integer cycles_between_two_slices;
 
 // Process handling the generation of position_sync
 always_ff @(posedge clk or negedge nrst) begin
@@ -87,7 +85,7 @@ always_ff @(posedge clk or negedge nrst) begin
              * In other words, cycles_between_two_slices is the number of cycles
              * between the previous top and this top, aka half a turn
              */
-            cycles_between_two_slices <= INTERNAL_COUNTER_WIDTH'(counter >> SLICE_PER_HALF_TURN_WIDTH);
+            cycles_between_two_slices <= counter >> SLICE_PER_HALF_TURN_WIDTH;
             counter <= 1;
         end else begin
             counter <= counter + 1;
@@ -135,7 +133,7 @@ always_comb
     if (half_turn_state == HALFTURN1) begin
         slice_cnt = 8'(slice_half_cnt);
     end else begin
-        slice_cnt = SLICE_PER_HALF_TURN + slice_half_cnt;
+        slice_cnt = SLICE_PER_HALF_TURN + 8'(slice_half_cnt);
     end
 
 endmodule
