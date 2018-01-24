@@ -1,4 +1,4 @@
-module memory
+module single_led
 (
     input       rgb_clk,
     output      drv_sin[0],
@@ -47,7 +47,7 @@ driver_controller main_driver_controller (
     .drivers_sin(drv_sin[0]),
     .driver_sout(driver_sout),
     .driver_sout_mux(driver_sout_mux),
-    .position_sout_mux(position_sout_mux),
+    .position_sync(position_sync),
     .column_ready(column_ready),
     .driver_ready(driver_ready),
     .serialized_conf(serialized_conf),
