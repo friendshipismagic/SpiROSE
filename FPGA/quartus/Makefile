@@ -18,5 +18,8 @@ compile/05_memory:
 compile/06_spi_test:
 	cd 06_spi_test && $(QUARTUS131) --flow compile spi_test
 
+compile/08_hall_sensor:
+	cd 08_hall_sensor && $(QUARTUS131) --flow compile hall_sensor_test
+
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose
