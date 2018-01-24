@@ -36,7 +36,7 @@ set_global_assignment -name SEARCH_PATH ../../src
 
 set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/project_assignment.tcl
 set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_pt.tcl
-set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_spi.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_rgb.tcl
 set_global_assignment -name SYSTEMVERILOG_FILE memory.sv
 set_global_assignment -name QIP_FILE pll/clock_66.qip
 
