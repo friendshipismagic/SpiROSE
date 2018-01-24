@@ -3,10 +3,13 @@ EXE = framer
 SRCDIR = src
 CXXSRC = $(SRCDIR)/main.cpp
 
+LIBSPIROSE ?= ../../SBC/libSpiROSE
+
 CXXFLAGS = -Wall -O2 -g -std=c++14 -iquote$(SRCDIR) -MMD -MP \
-           -fdiagnostics-color=auto -DGLM_FORCE_RADIANS
+           -fdiagnostics-color=auto -DGLM_FORCE_RADIANS \
+           -I$(LIBSPIROSE)/src
 LDLIBS = -lm -lSpiROSE $(shell pkg-config --libs glfw3 assimp)
-LDFLAGS = -flto
+LDFLAGS = -flto -L$(LIBSPIROSE)
 
 CC = c++
 CXX = c++
@@ -18,9 +21,9 @@ DEPS = $(CSSSRC:.cpp=.d)
 
 all: $(EXE)
 $(EXE): $(OBJS)
-	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) -o $@
+	$(LINK.o) $^ $(LOADLIBES) $(LDLIBS) $(LDFLAGS) -o $@
 run: $(EXE)
-	./$(EXE)
+	LD_LIBRARY_PATH=$(LIBSPIROSE) ./$(EXE)
 
 -include $(DEPS)
 -include tests/tests.mk

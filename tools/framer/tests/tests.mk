@@ -4,9 +4,9 @@ TESTS_REF = tests/monkey.synth tests/monkey.view \
 
 # Object -> PNG
 %.synth.png: %.obj $(EXE)
-	./$(EXE) $< $@
+	LD_LIBRARY_PATH=$(LIBSPIROSE) ./$(EXE) $< $@
 %.view.png: %.obj $(EXE)
-	./$(EXE) -V $< $@
+	LD_LIBRARY_PATH=$(LIBSPIROSE) ./$(EXE) -V $< $@
 
 # Compare
 %-diff.png: %.png %-ref.png
