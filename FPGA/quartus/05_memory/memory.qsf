@@ -40,7 +40,7 @@ set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_rgb.tcl
 set_global_assignment -name SYSTEMVERILOG_FILE memory.sv
 set_global_assignment -name QIP_FILE pll/clock_66.qip
 
-set_global_assignment -name QIP_FILE ram/ram.qip
+set_global_assignment -name QIP_FILE ../../src/ram_dual_port.qip
 
 set_global_assignment -name SDC_FILE memory.sdc
 
