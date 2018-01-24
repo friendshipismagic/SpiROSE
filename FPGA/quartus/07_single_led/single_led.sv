@@ -41,6 +41,21 @@ logic           column_ready;
 logic           driver_ready;
 logic           new_configuration_ready;
 
+// Send the new_configuration_ready after some time to get to the STREAM state
+integer count;
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+        count <= 0;
+    end else begin
+        count <= count + 1;
+        if (count == 50000) begin
+            new_configuration_ready <= 1;
+        end else begin
+            new_configuration_ready <= 0;
+        end
+    end
+
+
 driver_controller main_driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),
