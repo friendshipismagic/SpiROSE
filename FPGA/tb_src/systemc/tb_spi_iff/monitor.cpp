@@ -120,6 +120,43 @@ void Monitor::runTests() {
 
     WAIT_POSEDGE(50);
 
+    debugData = 0xDEADBEEF;
+    for (int step = 0; step < 50; ++step) {
+        WAIT_POSEDGE(50);
+        // Send "get debug data" command
+        sendCommand(0x4D);
+        WAIT_POSEDGE(50);
+
+        unsigned char bytes[2];
+        for (int byteNb = 0; byteNb < 2; ++byteNb) {
+            // Record each bytes of the returned value
+            sc_spawn(&bytes[byteNb], sc_bind(&Monitor::captureValue, this));
+            sendCommand(0xA0);
+            WAIT_POSEDGE(50);
+        }
+
+        // expected values
+        unsigned char values[] = {
+            static_cast<unsigned char>(debugData.read() & 0x00FF),
+            static_cast<unsigned char>((speedData.read() & 0xFF00) >> 8),
+        };
+
+        if (bytes[1] != values[1] && bytes[0] != values[0]) {
+            std::stringstream msg;
+            msg << "Error during the process of get_debug command, "
+                   "expected ";
+            msg << "0x" << std::hex << (int)values[1] << (int)values[0];
+            msg << ", got 0x";
+            msg << std::hex << (int)bytes[1] << (int)bytes[0];
+
+            SC_REPORT_ERROR("spi", msg.str().c_str());
+        }
+        debugData = debugData.read() + 1;
+        wait(clk.posedge_event());
+    }
+
+    WAIT_POSEDGE(50);
+
     const auto msgE0 =
         "0xE0 command should have turned the rgb_enable signal on, but the "
         "signal state is off";
