@@ -17,7 +17,7 @@ module rgb_test
     input        rgb_clk,
     input        rgb_hsync,
     input        rgb_vsync,
-    input [23:0] rgb_d
+    input [23:0] rgb_d,
     input        pt_39,
     output       pt_6,
 
@@ -59,8 +59,8 @@ sync_sig #(.SIZE(32)) sync_sig (
 // In this test, we read the first pixel of the image and send it in the debug
 // buffer.
 logic last_hsync, last_vsync;
-always_ff @(posedge clk or negedge nrst) begin
-    if ~nrst begin
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
         last_hsync <= 0;
         last_vsync <= 0;
         debug_data <= 32'h0;
@@ -73,7 +73,6 @@ always_ff @(posedge clk or negedge nrst) begin
             debug_data[23:0] <= data;
         end
     end
-end
 
 always_ff @(posedge clk)
     pt_6 <= ~pt_6;
