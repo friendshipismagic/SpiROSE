@@ -1,6 +1,7 @@
 #============================================================
 # RGB PARALLEL DISPLAY
 #============================================================
+set_location_assignment PIN_171 -to rgb_clk2
 set_location_assignment PIN_152 -to rgb_clk
 set_location_assignment PIN_100 -to rgb_d[0]
 set_location_assignment PIN_103 -to rgb_d[1]

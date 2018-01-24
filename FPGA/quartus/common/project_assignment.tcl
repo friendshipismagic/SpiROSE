@@ -65,3 +65,12 @@ set_global_assignment -name RESERVE_DCLK_AFTER_CONFIGURATION "USE AS REGULAR IO"
 set_global_assignment -name ENABLE_CONFIGURATION_PINS OFF
 set_global_assignment -name ENABLE_NCE_PIN OFF
 set_global_assignment -name ENABLE_BOOT_SEL_PIN OFF
+
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_drivers.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_encoder.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_hall.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_lvds.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_mux.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_pt.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_rgb.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_spi.tcl

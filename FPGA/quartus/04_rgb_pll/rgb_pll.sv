@@ -15,9 +15,11 @@
 module rgb_pll
 (
     input       rgb_clk,
+    input       rgb_clk2,
     output      pt_6,
     output      pt_26,
-    output      pt_23
+    output      pt_23,
+    output      pt_27
 );
 
 logic clk66;
@@ -26,10 +28,10 @@ logic locked;
 assign pt_6 = clk66;
 assign pt_23 = rgb_clk;
 assign pt_26 = locked;
+assign pt_27 = rgb_clk2;
 
 clock_66 main_clock_66 (
     .inclk0(rgb_clk),
-    // Main 33 MHz clock
     .c0(clk66),
     .locked(locked)
 );
