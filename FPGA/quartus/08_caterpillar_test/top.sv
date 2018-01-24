@@ -100,7 +100,7 @@ ram_emulator main_ram_emulator (
     .light_pixel_index(light_pixel_index)
 );
 
-frambuffer #(SLICES_IN_RAM(1)) main_fb (
+framebuffer #(SLICES_IN_RAM(1)) main_fb (
     .clk(clk),
     .nrst(nrst),
     .data(framebuffer_data),
