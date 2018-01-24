@@ -48,6 +48,55 @@ module Top
  output logic        pt_27
 );
 
-// Put your code here
+logic nrst;
+logic clk;
+
+// the PT output is 1 if there was an error in the RAM value verification
+assign pt_6 = r_error;
+
+logic locked;
+
+clock_66 main_clock_66 (
+    .inclk0(rgb_clk),
+    .c0(clk),
+    .locked(locked)
+);
+
+// Resynchronize the locked signal to be used as a reset
+always @(posedge clk)
+    nrst <= locked;
+
+ logic [15:0] w_data;
+ logic [15:0] r_addr;
+ logic [15:0] w_addr;
+ logic [15:0] r_data;
+ logic write_enable;
+
+ ram_dual_port main_ram (
+    .data(w_data),
+    .rdaddress(r_addr),
+    .rdclock(clk),
+    .wraddress(w_addr),
+    .wrclock(rgb_clk),
+    .wren(write_enable),
+    .q(r_data)
+ );
+
+ logic is_ram_written;
+ logic r_error;
+
+ assign w_addr = 3;
+ assign w_data = 3;
+ assign write_enable = '1;
+
+ assign r_addr = 3;
+ always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+       r_error <= 1'b0;
+    end else begin
+       if (r_data != w_data) begin
+          r_error <= 1;
+       end
+    end
 
 endmodule
