@@ -17,10 +17,11 @@ TESTS_POST = cube_interlace linear
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -MMD -MP \
-           -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS
+           -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS \
+           -I../src/
 
 LDLIBS = -lm -lSpiROSE $(shell pkg-config --libs glfw3 2> /dev/null)
-LDFLAGS = -flto
+LDFLAGS = -flto -L../
 
 CC = c++
 CXX = c++
@@ -35,7 +36,7 @@ run: $(TESTS:=-diff.png) $(TESTS_POST:=-comb-diff.png)
 %-diff.png: %.test.png %-ref.png
 	compare -metric AE $^ $@; code=$$?; echo; exit $$code
 %.test.png: %.test
-	./$^
+	LD_LIBRARY_PATH=../ ./$^
 
 # Test with post-processing
 %-comb-diff.png: %-comb.png %-ref.png

@@ -401,7 +401,7 @@ always_ff @(posedge clk_33 or negedge nrst)
                     // Go to next column, swap buffers
                     mul_idx <= mul_idx + 1'b1;
                     // We have sent the whole slice
-                    if(mul_idx == 8) begin
+                    if(mul_idx == 7) begin
                         mul_idx <= '0;
                     end
                 end

@@ -1,13 +1,11 @@
 `default_nettype none
 
-// define if using HPS
-`undef ENABLE_HPS
-
 module DE1_SoC(
-	 input clock_50, 
+    ///////// CLOCK /////////
+    input clock_50,
     ///////// GPIO /////////
-    inout  wire [35:0] gpio_0,
-    inout  wire [35:0] gpio_1,
+    inout  logic [35:0] gpio_0,
+    inout  logic [35:0] gpio_1,
     ///////// hex0 /////////
     output logic[6:0]  hex0,
     ///////// hex1 /////////
@@ -21,11 +19,11 @@ module DE1_SoC(
     ///////// hex5 /////////
     output logic[6:0]  hex5,
     ///////// key /////////
-    input  wire [3:0]  key,
+    input  logic [3:0]  key,
     ///////// ledr /////////
     output logic[9:0]  ledr,
     ///////// sw /////////
-	 input  wire[9:0]  sw
+    input  logic[9:0]  sw
 );
 
 //    Turn off all display     //////////////////////////////////////
@@ -49,7 +47,7 @@ logic        column_ready           ;
 logic        driver_ready           ;
 logic        rgb_enable             ;
 //logic [47:0] serialized_conf      ;
-`include "drivers_conf.sv"
+`include "drivers_conf.svh"
 logic        new_configuration_ready;
 logic [31:0] ram_waddr              ;
 logic [15:0] ram_wdata              ;
@@ -67,28 +65,26 @@ logic        spi_mosi               ;
 logic        spi_miso               ;
 logic [15:0] rotation_data          ;
 
-
-assign position_sync = 1;
-
 // 66 MHz clock generator
-logic clock_66, lock;
-clk_66 main_clk_66 (
-	.refclk(clock_50),
-	.rst(sw[0]),
-	.outclk_0(clock_66),
-	.locked(lock)
+logic clk, lock;
+clk_66 main_clk (
+    .refclk(clock_50),
+    .rst(sw[0]),
+    .outclk_0(clk),
+    .locked(lock)
 );
 
-// 33 MHz clock generator
-logic clock_33;
-clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
-    .clk_hse(clock_66),
+// Divider used by driver_controller
+logic clk_enable;
+clock_enable main_clk_enable (
+    .clk(clk),
     .nrst(nrst),
-    .clk_lse(clock_33)
+    .clk_enable(clk_enable)
 );
+
 
 framebuffer_emulator #(.POKER_MODE(9)) main_fb_emulator (
-    .clk_33(clock_33),
+    .clk(clk),
     .nrst(nrst),
     .data(framebuffer_data),
     .driver_ready(driver_ready),
@@ -96,8 +92,8 @@ framebuffer_emulator #(.POKER_MODE(9)) main_fb_emulator (
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
-    .clk_hse(clock_66),
-    .clk_lse(clock_33),
+    .clk(clk),
+    .clk_enable(clk_enable),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_data),
     .driver_sclk(sclk),
@@ -112,9 +108,9 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .serialized_conf(serialized_conf),
     .new_configuration_ready(new_configuration_ready)
 );
-assign ledr[9] = driver_ready;
+
 column_mux main_column_mux (
-    .clk_33(clock_33),
+    .clk(clk),
     .nrst(nrst),
     .column_ready(column_ready),
     .mux_out(mux_out)
@@ -122,33 +118,22 @@ column_mux main_column_mux (
 
 // Heartbeat LED 66MHz
 logic[24:0] heartbeat_counter_66;
-always_ff @(posedge clock_66 or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         ledr[0] <= '0;
         heartbeat_counter_66 <= '0;
     end else begin
         heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
-        if(heartbeat_counter_66 == 30_000_000) begin
+        if(heartbeat_counter_66 == 66_000_000) begin
             ledr[0] <= ~ledr[0];
             heartbeat_counter_66 <= '0;
         end
     end
 
-// Heartbeat LED 33MHz
-logic[24:0] heartbeat_counter_33;
-always_ff @(posedge clock_33 or negedge nrst)
-    if(~nrst) begin
-        ledr[1] <= '0;
-        heartbeat_counter_33 <= '0;
-    end else begin
-        heartbeat_counter_33 <= heartbeat_counter_33 + 1'b1;
-        if(heartbeat_counter_33 == 30_000_000) begin
-            ledr[1] <= ~ledr[1];
-            heartbeat_counter_33 <= '0;
-        end
-    end
-
 // Project pins assignment
+assign position_sync = 1;
+assign ledr[9] = driver_ready;
+
 assign nrst      = key[0] & lock;
 assign sout      = gpio_1[0]    ;
 assign sout_mux  = gpio_0[35:31];

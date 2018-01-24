@@ -1,5 +1,5 @@
 SONAME = libSpiROSE.so
-SRCDIR = src
+SRCDIR = src/spirose
 CXXSRC = $(SRCDIR)/spirose.cpp \
          $(SRCDIR)/context.cpp \
          $(SRCDIR)/object.cpp \
@@ -42,7 +42,7 @@ $(SONAME): $(OBJS)
 
 # Declare this target as a default for context.o, to be overriden by gcc's
 # context.d
-src/context.o: src/context.cpp $(GLSLSRC)
+$(SRCDIR)/context.o: $(SRCDIR)/context.cpp $(GLSLSRC)
 
 -include $(DEPS)
 
@@ -55,11 +55,11 @@ src/context.o: src/context.cpp $(GLSLSRC)
 clean:
 	rm -f $(OBJS) $(DEPS) $(EXE) $(GLSLSRC)
 
-LIBDIR = /usr/lib
-INCDIR = /usr/include
+LIBDIR = /usr/local/lib
+INCDIR = /usr/local/include
 install: $(SONAME)
 	install -Cd $(INCDIR)/spirose
-	install -C -m 644 src/*.h $(INCDIR)/spirose/
+	install -C -m 644 $(SRCDIR)/*.h $(INCDIR)/spirose/
 	install -C -m 755 $(SONAME) $(LIBDIR)/
 
 lint:
