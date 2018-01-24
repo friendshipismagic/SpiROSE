@@ -184,7 +184,7 @@ framer/build:
   image: tuetuopay/glfw
   script:
     - pushd $LIBSPIROSE_DIR
-    - make install
+    - make build
     - popd
     - cd $FRAMER_DIR
     - make build
