@@ -38,6 +38,9 @@ clock_enable main_clock_enable (
     .clk_enable(clk_enable)
 );
 
+always_ff @(posedge clk)
+    nrst <= locked;
+
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),
