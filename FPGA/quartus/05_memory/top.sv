@@ -82,48 +82,21 @@ always @(posedge clk)
     .q(r_data)
  );
 
- integer r_ram_count;
- integer w_ram_count;
  logic is_ram_written;
  logic r_error;
 
- assign w_addr = is_ram_written ? '0 : w_ram_count;
- assign w_data = w_addr;
- assign r_addr = is_ram_written ? r_ram_count : '0;
+ assign w_addr = 3;
+ assign w_data = 3;
+ assign write_enable = '1;
 
- always_ff @(posedge rgb_clk or negedge nrst)
-    if (~nrst) begin
-       w_ram_count <= '0;
-       write_enable <= 1'b0;
-       is_ram_written <= 1'b0;
-    end else begin
-       if (~is_ram_written) begin
-          write_enable <= 1;
-          if (write_enable) begin
-             w_ram_count <= w_ram_count + 1;
-          end
-          if (w_ram_count == 'hffff) begin
-             w_ram_count <= '0;
-             is_ram_written <= '1;
-             write_enable <= '0;
-          end
-       end
-    end
-
- // Tests: write in whole RAM then tests the values that are written
+ assign r_addr = 3;
  always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
-       r_ram_count <= '0;
        r_error <= 1'b0;
     end else begin
-       if (is_ram_written) begin
-          r_ram_count <= r_ram_count + 1;
-          if (r_ram_count > 0 && r_ram_count < 'hffff) begin
-             if (r_data != r_ram_count - 1) begin
-                r_error <= 1;
-             end
-          end
+       if (r_data != w_data) begin
+          r_error <= 1;
        end
     end
 
-    endmodule
+endmodule
