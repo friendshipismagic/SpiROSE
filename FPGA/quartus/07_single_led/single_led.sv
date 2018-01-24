@@ -1,11 +1,11 @@
 module single_led
 (
-    input       rgb_clk,
-    output      drv_sin[0],
-    output      fpga_gclk_a,
-    output      fpga_sclk_a,
-    output      fpga_lat_a,
-    output      fpga_mul_a[0]
+    input           rgb_clk,
+    output [29:0]   drv_sin,
+    output          fpga_gclk_a,
+    output          fpga_sclk_a,
+    output          fpga_lat_a,
+    output [7:0]    fpga_mul_a
 );
 
 logic clk;
@@ -44,7 +44,7 @@ driver_controller main_driver_controller (
     .driver_sclk(fpga_sclk_a),
     .driver_gclk(fpga_gclk_a),
     .driver_lat(fpga_lat_a),
-    .drivers_sin(drv_sin[0]),
+    .drivers_sin(drv_sin),
     .driver_sout(driver_sout),
     .driver_sout_mux(driver_sout_mux),
     .position_sync(position_sync),
@@ -55,7 +55,7 @@ driver_controller main_driver_controller (
 );
 
 assign framebuffer_dat = '1;
-assign fpga_mul_a[0] = '1;
+assign fpga_mul_a = 8'b10000000;
 assign position_sync = '1;
 
 endmodule
