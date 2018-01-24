@@ -23,7 +23,7 @@
 
 # Clock constraints
 
-create_clock -name "rgb_main_clock" -period 37.000ns [get_ports {rgb_logic}]
+create_clock -name "rgb_main_clock" -period 37.000ns [get_ports {rgb_clk}]
 
 
 # Automatically constrain PLL and other generated clocks

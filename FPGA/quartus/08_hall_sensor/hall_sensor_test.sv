@@ -7,7 +7,7 @@ module hall_sensor_test
     output         fpga_sclk_a,
     output         fpga_gclk_a,
     output         fpga_lat_a,
-    output         fpga_mul_a
+    output [7:0]   fpga_mul_a
 );
 
 logic clk;

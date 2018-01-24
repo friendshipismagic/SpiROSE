@@ -35,8 +35,10 @@ set_global_assignment -name LAST_QUARTUS_VERSION 13.1
 set_global_assignment -name SEARCH_PATH ../../src
 
 set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/project_assignment.tcl
-set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_pt.tcl
-set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_spi.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_rgb.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_drivers.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_hall.tcl
+set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_mux.tcl
 set_global_assignment -name SYSTEMVERILOG_FILE hall_sensor_test.sv
 set_global_assignment -name QIP_FILE pll/clock_66.qip
 
