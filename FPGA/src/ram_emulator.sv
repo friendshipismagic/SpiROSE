@@ -16,7 +16,7 @@ localparam SLICE_SIZE = 48*40;
 always_ff@(posedge clk)
 begin
     r_data <= '0;
-    if(r_addr % SLICE_SIZE == light_pixel_index) begin
+    if(r_addr == light_pixel_index) begin
         r_data <= '1;
     end
 end
