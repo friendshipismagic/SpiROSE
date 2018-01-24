@@ -173,13 +173,14 @@ fn transfer<T: Write + Read>(
         if !dummy {
             spi.read_exact(&mut read_vec)?;
         }
-        if verbose {
-            println!(
-                "Received: {:?}{}",
-                read_vec,
-                if dummy { " (dummy mode)" } else { "" }
-            );
-        }
+        println!(
+            "{}",
+            read_vec
+                .iter()
+                .map(|x| format!("{}", x))
+                .collect::<Vec<_>>()
+                .join(",")
+        );
     }
     Ok(read_vec)
 }
