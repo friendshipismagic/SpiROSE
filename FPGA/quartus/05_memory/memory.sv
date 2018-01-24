@@ -29,13 +29,14 @@ logic [15:0] waddr;
 logic [15:0] rdata;
 logic write_enable;
 
-ram main_ram (
-    .clock(clk),
+ram_dual_port main_ram (
     .data(wdata),
     .rdaddress(raddr),
+    .rdclock(clk),
     .wraddress(waddr),
-    .q(rdata),
-    .wren(write_enable)
+    .wrclock(rgb_clk),
+    .wren(write_enable),
+    .q(rdata)
 );
 
 integer ram_count;
