@@ -115,6 +115,11 @@ driver_controller main_driver_controller (
     .new_configuration_ready(new_configuration_ready)
 );
 
+assign drv_sclk_b = drv_sclk_a;
+assign drv_gclk_b = drv_gclk_a;
+assign drv_lat_b = drv_lat_a;
+assign fpga_mul_b = fpga_mul_a;
+
 assign framebuffer_dat = '1;
 assign fpga_mul_a = 8'b10000000;
 assign position_sync = '1;
