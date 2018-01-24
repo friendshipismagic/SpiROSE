@@ -64,19 +64,11 @@ logic [31:0] r_addr;
 logic [15:0] w_data;
 logic [15:0] r_data;
 
-// Heartbeat LED 27MHz
-logic[24:0] heartbeat_counter_27;
-always_ff @(posedge disp_clk or negedge nrst)
-    if(~nrst) begin
-        ledr[0] <= '0;
-        heartbeat_counter_27 <= '0;
-    end else begin
-        heartbeat_counter_27 <= heartbeat_counter_27 + 1'b1;
-        if(heartbeat_counter_27 == 27_000_000) begin
-            ledr[0] <= ~ledr[0];
-            heartbeat_counter_27 <= '0;
-        end
-    end
+heartbeat #(.COUNTER(27_000_000)) hb_27 (
+    .clk(clk),
+    .nrst(nrst),
+    .toggle(ledr[0])
+);
 
 always_comb begin
       vga_clk     = disp_clk;

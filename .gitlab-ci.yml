@@ -49,6 +49,12 @@ renderer-poc/build:
   script:
     - cd $RENDERER_POC_DIR
     - make build
+
+renderer-poc/test:
+  stage: test
+  image: tuetuopay/glfw
+  script:
+    - cd $RENDERER_POC_DIR
     - make test
 
 renderer-poc/bundle:

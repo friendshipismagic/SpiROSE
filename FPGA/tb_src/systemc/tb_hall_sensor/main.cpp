@@ -25,6 +25,7 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> hall2;
     sc_signal<bool> positionSync;
     sc_signal<unsigned int> sliceCnt;
+    sc_signal<unsigned int> speedData;
 
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("sensor");
@@ -34,7 +35,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, hall2, "hall_2");
     sc_trace(traceFile, sliceCnt, "slice_cnt");
     sc_trace(traceFile, positionSync, "position_sync");
-
+    sc_trace(traceFile, speedData, "speedData");
 
     Vhall_sensor dut("hall_sensor");
     dut.clk(clk);
@@ -43,6 +44,7 @@ int sc_main(int argc, char** argv) {
     dut.hall_2(hall2);
     dut.slice_cnt(sliceCnt);
     dut.position_sync(positionSync);
+    dut.speed_data(speedData);
 
     Monitor monitor("monitor");
     monitor.clk(clk);
