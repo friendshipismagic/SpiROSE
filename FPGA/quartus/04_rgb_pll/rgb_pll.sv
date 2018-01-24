@@ -15,13 +15,17 @@
 module rgb_pll
 (
     input       rgb_clk,
-    output      pt_6
+    output      pt_6,
+    output      pt_26,
+    output      pt_23
 );
 
 logic clk66;
-assign pt_6 = clk66;
-
 logic locked;
+
+assign pt_6 = clk66;
+assign pt_23 = rgb_clk;
+assign pt_26 = locked;
 
 clock_66 main_clock_66 (
     .inclk0(rgb_clk),
@@ -29,16 +33,6 @@ clock_66 main_clock_66 (
     .c0(clk66),
     .locked(locked)
 );
-
-logic [32:0] counter;
-
-// Counter process that outputs a 1 kHz clock
-always_ff @(posedge clk66)
-    if (counter >= 66000) begin
-        counter <= 1;
-    end else begin
-        counter <= counter + 1;
-    end
 
 endmodule
 
