@@ -74,3 +74,7 @@ set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_mux.tcl
 set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_pt.tcl
 set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_rgb.tcl
 set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_spi.tcl
+
+set_global_assignment -name QIP_FILE ../common/pll/clock_66.qip
+
+set_global_assignment -name SDC_FILE ../common/timings.sdc

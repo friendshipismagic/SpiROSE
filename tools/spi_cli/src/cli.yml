@@ -23,6 +23,8 @@ subcommands:
       about: "Read speed as 66000nth of a second per turn"
    - get_config:
       about: "Get configuration"
+   - get_debug:
+      about: "Get the 4 bytes FPGA debug module"
    - send_config:
       about: "Configure the LED drivers"
       args:
