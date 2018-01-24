@@ -15,7 +15,8 @@ struct Monitor : public LatHandler {
     static constexpr int DRIVER_NB = 30;
     SC_CTOR(Monitor)
         : sin("sin"), lat("lat"), gclk("gclk"), sclk("sclk"), nrst("nrst") {
-        SC_CTHREAD(runTests, clk.pos());
+        SC_THREAD(runTests);
+        sensitive << clk.pos();
 
         SC_THREAD(checkConfigProtocol);
 
@@ -25,6 +26,10 @@ struct Monitor : public LatHandler {
         SC_THREAD(checkThatNewConfigurationIsReceived);
 
         SC_THREAD(checkThatLatIsntMovedOnSCLK);
+
+        SC_THREAD(checkData);
+
+        SC_THREAD(checkThatDataIsReceivedInPokerMode);
 
         for (int i = 0; i < DRIVER_NB; ++i) {
             std::ostringstream stream;

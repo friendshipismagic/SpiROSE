@@ -5,7 +5,7 @@
 #include <memory>
 #include <sstream>
 
-#include "Vclock_lse.h"
+#include "Vclock_enable.h"
 #include "Vdriver_controller.h"
 
 #include "driver.hpp"
@@ -38,10 +38,9 @@ int sc_main(int argc, char** argv) {
     const unsigned int MAIN_DIV = 4;
     const unsigned int DIV_RATIO = 1;
 
-    sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 1024 * 2;
+    sc_time simulationTime = T * STEPS * MAIN_DIV * DIV_RATIO * 128 * 2;
 
     sc_clock clk66("clk66", T);
-    sc_signal<bool> clk33("clk33");
     sc_signal<bool> nrst("nrst");
     sc_signal<unsigned int> framebufferData("framebuffer_data");
     sc_signal<bool> driverSclk("driver_sclk");
@@ -51,6 +50,8 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> driverReady("driverReady");
     sc_signal<bool> columnReady("column_ready");
     sc_signal<bool> newConfigurationReady("new_configuration_ready");
+
+    sc_signal<bool> clk_enable;
 
     sc_signal<unsigned int> driversSin("drivers_sin");
     sc_signal<bool> driverSout;
@@ -69,16 +70,18 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, positionSync, "position_sync");
     sc_trace(traceFile, newConfigurationReady, "new_configuration_ready");
     sc_trace(traceFile, clk66, "clk_66");
-    sc_trace(traceFile, clk33, "clk_33");
+    sc_trace(traceFile, clk_enable, "clk_enable");
+    sc_trace(traceFile, driversSin, "driversSin");
+    sc_trace(traceFile, framebufferData, "framebufferData");
 
-    Vclock_lse clock_lse("clock_lse");
-    clock_lse.nrst(nrst);
-    clock_lse.clk_lse(clk33);
-    clock_lse.clk_hse(clk66);
+    Vclock_enable main_clock_enable("clock_enable");
+    main_clock_enable.clk(clk66);
+    main_clock_enable.nrst(nrst);
+    main_clock_enable.clk_enable(clk_enable);
 
     Vdriver_controller dut("driver_controller");
-    dut.clk_hse(clk66);
-    dut.clk_lse(clk33);
+    dut.clk(clk66);
+    dut.clk_enable(clk_enable);
     dut.nrst(nrst);
     dut.framebuffer_dat(framebufferData);
     dut.driver_sclk(driverSclk);
@@ -94,7 +97,7 @@ int sc_main(int argc, char** argv) {
     dut.column_ready(columnReady);
 
     Monitor monitor("monitor");
-    monitor.clk(clk33);
+    monitor.clk(clk66);
     monitor.nrst(nrst);
     monitor.sin(driversSin);
     monitor.lat(driverLat);

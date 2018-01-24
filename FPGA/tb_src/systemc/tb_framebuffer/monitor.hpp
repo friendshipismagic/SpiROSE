@@ -6,13 +6,13 @@ SC_MODULE(Monitor) {
     SC_CTOR(Monitor) {
         SC_METHOD(ramEmulator);
         sensitive << ram_addr;
-        SC_CTHREAD(storeOutputData, clk33.pos());
-        SC_CTHREAD(runTests, clk33.pos());
-        SC_CTHREAD(checkDataIntegrity, clk33.pos());
-        SC_CTHREAD(checkWRTGSBlanking, clk33.pos());
+        SC_CTHREAD(storeOutputData, clk.pos());
+        SC_CTHREAD(runTests, clk.pos());
+        SC_CTHREAD(checkDataIntegrity, clk.pos());
+        SC_CTHREAD(checkWRTGSBlanking, clk.pos());
     }
 
-    sc_in<bool> clk33;
+    sc_in<bool> clk;
     sc_out<bool> nrst;
 
     // Signals that enough images has been cached to start displaying frames

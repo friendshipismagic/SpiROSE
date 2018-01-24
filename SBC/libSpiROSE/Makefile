@@ -1,5 +1,5 @@
 SONAME = libSpiROSE.so
-SRCDIR = src
+SRCDIR = src/spirose
 CXXSRC = $(SRCDIR)/spirose.cpp \
          $(SRCDIR)/context.cpp \
          $(SRCDIR)/object.cpp \
@@ -13,7 +13,8 @@ GLSLSRC = $(SRCDIR)/shader/voxel.vss \
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -iquote$(SRCDIR) -MMD -MP \
-           -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS -fpic
+           -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS -fpic \
+           -I./src/
 
 LDLIBS = -lm $(shell pkg-config --libs glfw3 2> /dev/null) \
          $(shell pkg-config --libs libpng 2> /dev/null)
@@ -42,7 +43,7 @@ $(SONAME): $(OBJS)
 
 # Declare this target as a default for context.o, to be overriden by gcc's
 # context.d
-src/context.o: src/context.cpp $(GLSLSRC)
+$(SRCDIR)/context.o: $(SRCDIR)/context.cpp $(GLSLSRC)
 
 -include $(DEPS)
 
@@ -51,13 +52,6 @@ src/context.o: src/context.cpp $(GLSLSRC)
 	./rawify $^ $@
 %.fss: %.fs
 	./rawify $^ $@
-
-ARTIFACT = libSpiROSE.tar.gz
-$(ARTIFACT): $(SONAME) src/*.h
-	mkdir -p libSpiROSE/{lib,include}
-	$(MAKE) install LIBDIR=libSpiROSE/lib INCDIR=libSpiROSE/include
-	tar czvf $@ libSpiROSE
-	$(RM) -r libSpiROSE
 
 clean:
 	rm -f $(OBJS) $(DEPS) $(EXE) $(GLSLSRC)
@@ -87,5 +81,7 @@ test:
 		exit $$code
 host:
 	@echo "Host"
-bundle: $(ARTIFACT)
+bundle: $(SONAME)
+	mkdir -p {lib,include}
+	$(MAKE) install LIBDIR=lib INCDIR=include
 

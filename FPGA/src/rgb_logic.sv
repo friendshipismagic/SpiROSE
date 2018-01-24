@@ -1,7 +1,7 @@
 module rgb_logic #(
     parameter RAM_ADDR_WIDTH=32,
     parameter RAM_DATA_WIDTH=16,
-    parameter IMAGE_IN_RAM = 3
+    parameter IMAGE_IN_RAM = 18
 )(
     input rgb_clk,
     input nrst,
@@ -28,8 +28,8 @@ localparam IMAGE_SIZE = IMAGE_WIDTH*IMAGE_HEIGHT;
 localparam SLICES_IN_RAM_BEFORE_STREAM = 1;
 
 logic blanking;
-// hsync and vsync drives low when we are on blanking area
-assign blanking = ~hsync | ~vsync;
+// hsync and vsync drive low when we are on blanking area
+assign blanking = (~hsync | ~vsync);
 
 logic [31:0] pixel_counter;
 

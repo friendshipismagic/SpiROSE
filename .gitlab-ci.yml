@@ -59,7 +59,9 @@ renderer-poc/bundle:
     - make bundle
   artifacts:
     paths:
-      - $RENDERER_POC_DIR/renderer-poc.tar.gz
+      - $RENDERER_POC_DIR/rose-renderer-poc
+      - $RENDERER_POC_DIR/mesh
+      - $RENDERER_POC_DIR/shader
     expire_in: 1 week
   only:
     - master
@@ -77,6 +79,12 @@ fpga/build:
   script:
     - cd $FPGA_DIR
     - make build
+
+fpga/test:
+  stage: test
+  image: tuetuopay/verilator
+  script:
+    - cd $FPGA_DIR
     - make test
 
 libspirose/lint:
@@ -100,12 +108,10 @@ libspirose/test:
     - cd $LIBSPIROSE_DIR
     - echo Testing desktop OpenGL
     - make build
-    - make install
     - make test
     - echo Testing OpenGL ES
     - make clean
     - make build UNAME_P=armv7l
-    - make install
     - make test
 
 libspirose/bundle:
@@ -116,7 +122,8 @@ libspirose/bundle:
     - make bundle
   artifacts:
     paths:
-      - $LIBSPIROSE_DIR/libSpiROSE.tar.gz
+      - $LIBSPIROSE_DIR/include
+      - $LIBSPIROSE_DIR/lib
     expire_in: 1 week
   only:
     - master
@@ -152,10 +159,11 @@ spi-cli/bundle:
     - echo 'linker = "arm-linux-gnueabihf-gcc"' >> "$CARGO_HOME/config"
     - cd tools/spi_cli
     - cargo build --release --target=armv7-unknown-linux-gnueabihf
-    - tar czvf spi_cli.tar.gz --transform 's,^,spi_cli/,' --transform 's,target/armv7-unknown-linux-gnueabihf/release/,,' led_driver_conf.toml target/armv7-unknown-linux-gnueabihf/release/spi_cli
+    - mv target/armv7-unknown-linux-gnueabihf/release/spi_cli .
   artifacts:
     paths:
-      - tools/spi_cli/spi_cli.tar.gz
+      - tools/spi_cli/spi_cli
+      - tools/spi_cli/led_driver_conf.toml
     expire_in: 1 week
   cache:
     key: cargo

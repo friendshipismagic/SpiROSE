@@ -8,20 +8,22 @@ args:
       long: device
       takes_value: true
       default_value: "/dev/spidev0.0"
+   - verbose:
+      help: "Trace data sent and received"
+      short: v
+      long: verbose
 subcommands:
-   - send:
-      about: "Send the following command to the SPI"
-      args:
-         - command:
-            help: "Command to send to the SPI device"
-            required: true
-   - get:
-      about: "Send the command and display the response from the SPI device"
-      args:
-         - command:
-            help: "Command to send to the SPI device"
-            required: true
-   - configure:
+   - enable_rgb:
+      about: "Start display"
+   - disable_rgb:
+      about: "Stop display"
+   - get_rotation:
+      about: "Read rotation slice index"
+   - get_speed:
+      about: "Read speed as 66000nth of a second per turn"
+   - get_config:
+      about: "Get configuration"
+   - send_config:
       about: "Configure the LED drivers"
       args:
          - config_file:

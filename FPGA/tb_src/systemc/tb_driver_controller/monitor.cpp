@@ -12,7 +12,6 @@
 
 void Monitor::runTests() {
     positionSync = true;
-    framebufferData = 0;
 
     sc_spawn(sc_bind(&Monitor::checkTimingRequirementsLat, this, LATCH_LATGS,
                      sc_time(80, SC_NS)));
@@ -31,7 +30,40 @@ void Monitor::runTests() {
     // wait some cycles before sending anything
     wait(200);
 
-    while (true) wait();
+    while (true) {
+        wait();
+        if (newConfigurationReady == 1) {
+            sc_spawn(sc_bind(&Monitor::checkThatDataIsReceivedInPokerMode, this));
+        }
+        /* 
+         * After the last configuration is processed, send framebufferData to be tested
+         * Send only data for the first 5 poker sequences to meet the system configuration,
+         * pad with 0 everywhere else.
+         */
+        while (1) {
+            int sequenceCount;
+            if (driverReady == 0) {
+                if (sequenceCount == 8) {
+                    sequenceCount = 9;
+                    // Wait until the next 9 sequences need to be sent
+                    wait(driverReady.posedge_event());
+                    sequenceCount = 0;
+                } else {
+                    sequenceCount++;
+                }
+            } else {
+                // Data is sent when driverReady is high and only on the first 5 sequences
+                if (sequenceCount == 0 || sequenceCount == 1
+                        || sequenceCount == 2 || sequenceCount == 3
+                        || sequenceCount == 4) {
+                    framebufferData = rand();
+                } else {
+                    framebufferData = 0;
+                }
+            }
+            wait();
+        }
+    }
 }
 
 /*
@@ -62,7 +94,7 @@ void Monitor::checkConfigProtocol() {
         auto p_noGclk =
             sc_spawn(sc_bind(&Monitor::checkNoGCLKDuringConfig, this));
 
-        for (int i = 0; i < 47; ++i) wait(sclk.posedge_event());
+        for (int i = 0; i < 48; ++i) wait(sclk.posedge_event());
 
         // Start process checking that config is correctly sent
         auto p_checkConfig = sc_spawn(sc_bind(&Monitor::checkConfig, this));
@@ -97,9 +129,26 @@ void Monitor::checkNoGCLKDuringConfig() {
     }
 }
 
+/*
+ * Check that sin is the same as the output 
+ * of the framebuffer when driver_ready is high
+ */
 void Monitor::checkData() {
     while (true) {
-        wait();
+        wait(sclk.posedge_event());
+        if (driverReady) {
+            int maskedData = framebufferData & 0x3fffffff;
+            if (maskedData != sin) {
+                cout << maskedData << "  ...  " << sin << endl;
+                std::string msg = "The output of the framebuffer is not copied "
+                    "properly to sin when driver_ready is high, expected ";
+                msg += sc_bv<30>(framebufferData.read()).to_string();
+                msg += ", got ";
+                msg += sc_bv<30>(sin.read()).to_string();
+                SC_REPORT_ERROR("data", msg.c_str());
+                return;
+            }
+        }
     }
 }
 
@@ -189,17 +238,27 @@ void Monitor::checkThatLatgsFallDuringTheEndOfASegment() {
 
     int gclkCounter = 0;
     while (true) {
+
+        // Count LAT to find LAT type
         int latCounter = 0;
-        while (!lat) {
-            wait(gclk.posedge_event());
-            gclkCounter += 1;
+        sc_spawn([this, &latCounter]() {
+            wait(sclk.posedge_event());
             latCounter += lat;
-        }
-        while (lat) {
-            wait(evtList);
-            gclkCounter += gclk;
-            latCounter += lat;
-        }
+        });
+
+        // Count GCLK, shouldn't be more than 512
+        int gclkCounter = 0;
+        sc_spawn([this, &gclkCounter]() {
+            while(gclkCounter <= 511) {
+                wait(gclk.posedge_event());
+                gclkCounter++;
+            }
+        });
+
+        sc_event_or_list evtList;
+        evtList |= lat.negedge_event();
+
+        wait(evtList);
 
         if (latCounter == LATCH_LATGS && gclkCounter != 512) {
             auto error =
@@ -215,9 +274,30 @@ void Monitor::checkThatLatgsFallDuringTheEndOfASegment() {
 }
 
 void Monitor::checkThatDataIsReceivedInPokerMode() {
+    // Keeps track of the index of the sequence (out of 9) that is received
+    int segmentCount = 0;
+
     while (true) {
-        // Wait until we get WRTGS
-        wait(clk.posedge_event());
+        wait(sclk.posedge_event());
+        if (driverReady == 0) {
+            if (segmentCount == 8) {
+                segmentCount = 9;
+                wait(driverReady.posedge_event());
+                segmentCount = 0;
+            } else {
+                segmentCount++;
+            }
+        } else {
+            if (segmentCount == 5 || segmentCount == 6
+                    || segmentCount == 7 || segmentCount == 8) {
+                // Check that output data is equal to zero when no relevant data is set
+                if (sin != 0) {
+                    SC_REPORT_ERROR("poker mode", "SIN should be 0 because"
+                            " 4 last sequences should be 0.");
+                    return;
+                }
+            }
+        }
     }
 }
 
