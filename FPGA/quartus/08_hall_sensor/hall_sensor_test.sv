@@ -56,6 +56,19 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .new_configuration_ready(new_configuration_ready)
 );
 
+integer count;
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+        count <= 0;
+    end else begin
+        count <= count + 1;
+        if (count == 50000) begin
+            new_configuration_ready <= 1;
+        end else begin
+            new_configuration_ready <= 0;
+        end
+    end
+
 logic [7:0]     slice_cnt;
 logic [15:0]    speed_data;
 
