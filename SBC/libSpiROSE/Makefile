@@ -13,8 +13,7 @@ GLSLSRC = $(SRCDIR)/shader/voxel.vss \
 
 GCC_COLOR_MODE = auto
 CXXFLAGS = -Wall -O2 -g -std=c++14 -iquote$(SRCDIR) -MMD -MP \
-           -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS -fpic \
-           -I./src/
+           -fdiagnostics-color=$(GCC_COLOR_MODE) -DGLM_FORCE_RADIANS -fpic
 
 LDLIBS = -lm $(shell pkg-config --libs glfw3 2> /dev/null) \
          $(shell pkg-config --libs libpng 2> /dev/null)
@@ -56,11 +55,11 @@ $(SRCDIR)/context.o: $(SRCDIR)/context.cpp $(GLSLSRC)
 clean:
 	rm -f $(OBJS) $(DEPS) $(EXE) $(GLSLSRC)
 
-LIBDIR = /usr/lib
-INCDIR = /usr/include
+LIBDIR = /usr/local/lib
+INCDIR = /usr/local/include
 install: $(SONAME)
 	install -Cd $(INCDIR)/spirose
-	install -C -m 644 src/*.h $(INCDIR)/spirose/
+	install -C -m 644 $(SRCDIR)/*.h $(INCDIR)/spirose/
 	install -C -m 755 $(SONAME) $(LIBDIR)/
 
 lint:
