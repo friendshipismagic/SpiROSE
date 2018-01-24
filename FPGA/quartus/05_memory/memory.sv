@@ -1,11 +1,10 @@
 module memory
 (
-    input       pt_39,
-    input       som_cs,
+    input       rgb_clk,
     output      pt_6
 );
 
-wire  nrst = som_cs;
+logic nrst;
 logic clk;
 
 // the PT output is 1 if there was an error in the RAM value verification
@@ -19,6 +18,10 @@ clock_66 main_clock_66 (
     .c0(clk),
     .locked(locked)
 );
+
+// Resynchronize the locked signal to be used as a reset
+always @(posedge clk)
+    nrst <= locked;
 
 logic [15:0] wdata;
 logic [15:0] raddr;
