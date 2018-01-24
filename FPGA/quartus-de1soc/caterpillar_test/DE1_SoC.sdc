@@ -14,24 +14,9 @@ create_clock -period 20 [get_ports clock_50]
 derive_pll_clocks
 
 #**************************************************************
-# Set Clock Latency
-#**************************************************************
-# Nothing
-#**************************************************************
 # Set Clock Uncertainty
 #**************************************************************
 derive_clock_uncertainty
-
-#**************************************************************
-# Set Input Delay
-#**************************************************************
-# Board Delay (Data) + Propagation Delay - Board Delay (Clock)
-
-#**************************************************************
-# Set Output Delay
-#**************************************************************
-# max : Board Delay (Data) - Board Delay (Clock) + tsu (External Device)
-# min : Board Delay (Data) - Board Delay (Clock) - th (External Device)
 
 #**************************************************************
 # Set Clock Groups

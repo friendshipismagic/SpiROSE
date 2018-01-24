@@ -1,14 +1,11 @@
 `default_nettype none
 
-// define if using HPS
-`undef ENABLE_HPS
-
 module DE1_SoC(
       ///////// CLOCK /////////
       input  logic        clock_50,
       ///////// GPIO /////////
-      input  logic [35:0] gpio_0,
-      input  logic [35:0] gpio_1,
+      inout  logic [35:0] gpio_0,
+      inout  logic [35:0] gpio_1,
       ///////// hex0 /////////
       output logic[6:0]  hex0,
       ///////// hex1 /////////
@@ -28,6 +25,26 @@ module DE1_SoC(
            ///////// sw /////////
       input  logic [9:0]  sw
 );
+
+assign nrst = key[0];
+assign new_configuration_ready = ~key[2];
+assign position_sync = '1;
+assign rgb_enable = '1;
+assign stream_ready = '1;
+
+logic prev_key;
+always_ff @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        prev_key <= '0;
+    end else begin
+        prev_key <= key[3];
+        if(~key[3] && prev_key) begin
+            light_pixel_index <= light_pixel_index + 1'b1;
+            if(light_pixel_index == 40*48) begin
+                light_pixel_index <= '0;
+            end
+        end
+    end
 
 logic        nrst                   ;
 logic        sout                   ;
@@ -62,45 +79,45 @@ logic        spi_miso               ;
 logic [15:0] rotation_data          ;
 
 // 66 MHz clock generator
-logic clock_66, lock;
-clk_66 main_clk_66 (
+logic clk, lock;
+clk main_clk_66 (
     .refclk(clock_50),
     .rst(sw[0]),
-    .outclk_0(clock_66),
+    .outclk_0(clk),
     .locked(lock)
 );
 
-// 33 MHz clock generator
-logic clock_33;
-clock_lse #(.INVERSE_PHASE(0)) clk_lse_gen (
-    .clk_hse(clock_66),
+// Divider use by driver_controller
+logic clk_enable;
+clock_enable main_clk_enable (
+    .clk(clk),
     .nrst(nrst),
-    .clk_lse(clock_33)
+    .clk_enable(clk_enable)
 );
 
 // RAM emulator module, produces a caterpillar animation
-logic [31:0] light_pixel_index;
+integer light_pixel_index;
 ram_emulator main_ram_emulator (
-    .clk(clock_66),
-    .r_addr(r_addr),
-    .r_data(r_data),
+    .clk(clk),
+    .r_addr(ram_raddr),
+    .r_data(ram_rdata),
     .light_pixel_index(light_pixel_index)
 );
 
 frambuffer main_fb (
-    .clk_33(clock_66),
+    .clk(clk),
     .nrst(nrst),
     .data(framebuffer_data),
     .stream_ready(stream_ready),
     .driver_ready(driver_ready),
     .position_sync(position_sync),
     .ram_addr(ram_raddr),
-    .ram_data(ram_data)
+    .ram_data(ram_rdata)
 );
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
-    .clk_hse(clock_66),
-    .clk_lse(clock_33),
+    .clk(clk),
+    .clk_enable(clk_enable),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_data),
     .driver_sclk(sclk),
@@ -116,24 +133,48 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
 );
 
 column_mux main_column_mux (
-    .clk_33(clock_33),
+    .clk(clk),
     .nrst(nrst),
     .column_ready(column_ready),
     .mux_out(mux_out)
 );
 
-assign position_sync = '1;
-assign rgb_enable = '1;
-assign stream_ready = '1;
-assign new_configuration_ready = '0;
+// Heartbeat LED 66MHz
+integer heartbeat_counter_66;
+always_ff @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        ledr[0] <= '0;
+        heartbeat_counter_66 <= '0;
+    end else begin
+        heartbeat_counter_66 <= heartbeat_counter_66 + 1'b1;
+        if(heartbeat_counter_66 == 66_000_000) begin
+            ledr[0] <= ~ledr[0];
+            heartbeat_counter_66 <= '0;
+        end
+    end
 
 // Project pins assignment
-assign nrst = key[0];
 // Drivers
-assign gpio_1[35] = gclk;
-assign gpio_1[33] = sclk;
-assign gpio_1[31] = lat;
+assign gpio_1[6] = gclk;
+assign gpio_1[4] = sclk;
+assign gpio_1[2] = lat;
+assign gpio_1[35] = sin[0];
+assign gpio_1[34] = sin[0];
+assign gpio_1[33] = sin[0];
+assign gpio_1[32] = sin[0];
+assign gpio_1[31] = sin[0];
+assign gpio_1[30] = sin[0];
 assign gpio_1[29] = sin[0];
+assign gpio_1[28] = sin[0];
+assign gpio_1[27] = sin[0];
+assign gpio_1[26] = sin[0];
+assign gpio_1[25] = sin[0];
+assign gpio_1[24] = sin[0];
+assign gpio_1[23] = sin[0];
+assign gpio_1[22] = sin[0];
+assign gpio_1[21] = sin[0];
+assign gpio_1[20] = sin[0];
+
 // Multiplexing
 assign gpio_0[10] = mux_out[7];
 assign gpio_0[12] = mux_out[6];
@@ -144,18 +185,5 @@ assign gpio_0[20] = mux_out[2];
 assign gpio_0[22] = mux_out[1];
 assign gpio_0[24] = mux_out[0];
 
-logic prev_key;
-always_ff @(posedge clock_66 or negedge nrst)
-    if(~nrst) begin
-        prev_key <= '0;
-    end else begin
-        prev_key <= key[3];
-        if(~key[3] && prev_key) begin
-            light_pixel_index <= light_pixel_index + 1'b1;
-            if(light_pixel_index == 40*48) begin
-                light_pixel_index <= '0;
-            end
-        end
-    end
 
 endmodule
