@@ -1,11 +1,11 @@
 module single_led
 (
-    input  logic       rgb_clk,
-    output logic [29:0]   drv_sin,
+    input  logic         rgb_clk,
+    output logic [29:0]  drv_sin,
     output logic         fpga_gclk_a,
     output logic         fpga_sclk_a,
     output logic         fpga_lat_a,
-    output logic [7:0]    fpga_mul_a
+    output logic [7:0]   fpga_mul_a
 );
 
 logic clk;
@@ -26,6 +26,10 @@ clock_enable main_clock_enable (
     .nrst(nrst),
     .clk_enable(clk_enable)
 );
+
+// Reset Bridge
+always_ff @(posedge clk)
+    nrst <= locked;
 
 `include "drivers_conf.svh"
 
