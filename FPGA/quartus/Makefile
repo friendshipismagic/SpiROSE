@@ -11,7 +11,8 @@ compile: \
 	compile/04_rgb_pll \
 	compile/05_memory \
 	compile/06_spi_test \
-	compile/07_rgb_test
+	compile/07_rgb_test \
+	compile/08_caterpillar_test
 
 compile/01_stapl_test:
 	cd 01_stapl_test && $(QUARTUS131) --flow compile stapl_test
@@ -34,6 +35,9 @@ compile/06_spi_test:
 compile/07_rgb_test:
 	cd 07_rgb_test && $(QUARTUS131) --flow compile rgb_test
 
+compile/08_caterpillar_test:
+	cd 08_caterpillar_test && $(QUARTUS131) --flow compile caterpillar_test
+
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose
 
@@ -50,4 +54,5 @@ clean-all: clean
 	compile/04_rgb_pll \
 	compile/05_memory \
 	compile/06_spi_test \
-	compile/07_rgb_test
+	compile/07_rgb_test \
+	compile/08_caterpillar_test
