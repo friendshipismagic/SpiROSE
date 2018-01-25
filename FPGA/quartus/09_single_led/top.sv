@@ -75,12 +75,15 @@ always_ff @(posedge clk)
 logic [29:0]    framebuffer_dat;
 logic           driver_sout;
 logic [4:0]     driver_sout_mux;
+logic drv_sclk;
+logic drv_gclk;
+logic drv_lat;
 logic           position_sync;
 logic           column_ready;
 logic           driver_ready;
 logic           new_configuration_ready;
 
-/* 
+/*
  * Send the new_configuration_ready after some time to get
  * to the stream state
  */
@@ -97,15 +100,14 @@ always_ff @(posedge clk_enable or negedge nrst)
       end
    end
 
-
 driver_controller main_driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),
     .nrst(nrst),
     .framebuffer_dat(framebuffer_dat),
-    .driver_sclk(drv_sclk_a),
-    .driver_gclk(drv_gclk_a),
-    .driver_lat(drv_lat_a),
+    .driver_sclk(drv_sclk),
+    .driver_gclk(drv_gclk),
+    .driver_lat(drv_lat),
     .drivers_sin(drv_sin),
     .driver_sout(driver_sout),
     .driver_sout_mux(driver_sout_mux),
@@ -116,14 +118,30 @@ driver_controller main_driver_controller (
     .new_configuration_ready(new_configuration_ready)
 );
 
-assign drv_sclk_b = drv_sclk_a;
-assign drv_gclk_b = drv_gclk_a;
-assign drv_lat_b = drv_lat_a;
+assign drv_sclk_a = drv_sclk;
+assign drv_gclk_a = drv_gclk;
+assign drv_lat_a = drv_lat;
+assign drv_sclk_b = drv_sclk;
+assign drv_gclk_b = drv_gclk;
+assign drv_lat_b = drv_lat;
 assign fpga_mul_a = mux_out;
-assign fpga_mul_b = fpga_mul_a;
+assign fpga_mul_b = mux_out;
 
 assign framebuffer_dat = '1;
-assign position_sync = '1;
+
+integer position_sync_cnt;
+always_ff @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        position_sync_cnt <= '0;
+        position_sync <= '0;
+    end else begin
+        position_sync <= '0;
+        position_sync_cnt <= position_sync_cnt + 1'b1;
+        if(position_sync_cnt == 4096*30) begin
+            position_sync_cnt <= '0;
+            position_sync <= '1;
+        end
+    end
 
 logic [7:0] mux_out;
 column_mux main_column_mux (
