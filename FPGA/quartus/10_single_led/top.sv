@@ -105,7 +105,7 @@ framebuffer #(.SLICES_IN_RAM(1)) main_fb (
 );
 
 // Light only the led number 20
-assign ram_rdata = ram_raddr == 20;
+assign ram_rdata = (ram_raddr == 20) ? '1 : '0;
 
 logic [29:0] drv_sin_tolut;
 always_comb begin
