@@ -38,8 +38,9 @@ compile/07_rgb_test:
 compile/08_caterpillar_test:
 	cd 08_caterpillar_test && $(QUARTUS131) --flow compile caterpillar_test
 
-compile/09_hall_sensor:
-	cd 09_hall_sensor && $(QUARTUS131) --flow compile hall_sensor_test
+compile/11_hall_sensor:
+	cd 11_hall_sensor && $(QUARTUS131) --flow compile hall_sensor_test
+
 
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose
