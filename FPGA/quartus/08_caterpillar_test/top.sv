@@ -112,6 +112,40 @@ framebuffer #(.SLICES_IN_RAM(1)) main_fb (
     .ram_data(ram_rdata)
 );
 
+logic [29:0] drv_sin_tolut;
+always_comb begin
+   drv_sin[0] = drv_sin_tolut[0];
+   drv_sin[27] = drv_sin_tolut[1];
+   drv_sin[3] = drv_sin_tolut[2];
+   drv_sin[25] = drv_sin_tolut[3];
+   drv_sin[8] = drv_sin_tolut[4];
+   drv_sin[24] = drv_sin_tolut[5];
+   drv_sin[7] = drv_sin_tolut[6];
+   drv_sin[18] = drv_sin_tolut[7];
+   drv_sin[11] = drv_sin_tolut[8];
+   drv_sin[19] = drv_sin_tolut[9];
+   drv_sin[4] = drv_sin_tolut[10];
+   drv_sin[28] = drv_sin_tolut[11];
+   drv_sin[1] = drv_sin_tolut[12];
+   drv_sin[29] = drv_sin_tolut[13];
+   drv_sin[13] = drv_sin_tolut[14];
+   drv_sin[22] = drv_sin_tolut[15];
+   drv_sin[9] = drv_sin_tolut[16];
+   drv_sin[16] = drv_sin_tolut[17];
+   drv_sin[10] = drv_sin_tolut[18];
+   drv_sin[15] = drv_sin_tolut[19];
+   drv_sin[5] = drv_sin_tolut[20];
+   drv_sin[23] = drv_sin_tolut[21];
+   drv_sin[2] = drv_sin_tolut[22];
+   drv_sin[21] = drv_sin_tolut[23];
+   drv_sin[6] = drv_sin_tolut[24];
+   drv_sin[26] = drv_sin_tolut[25];
+   drv_sin[12] = drv_sin_tolut[26];
+   drv_sin[17] = drv_sin_tolut[27];
+   drv_sin[14] = drv_sin_tolut[28];
+   drv_sin[20] = drv_sin_tolut[29];
+end
+
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),
@@ -120,7 +154,7 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .driver_sclk(drv_sclk),
     .driver_gclk(drv_gclk),
     .driver_lat(drv_lat),
-    .drivers_sin(drv_sin),
+    .drivers_sin(drv_sin_tolut),
     .position_sync(position_sync),
     .driver_ready(driver_ready),
     .serialized_conf(serialized_conf),
@@ -136,7 +170,6 @@ column_mux main_column_mux (
 );
 
 assign nrst = locked;
-assign position_sync = '1;
 assign rgb_enable = '1;
 assign stream_ready = '1;
 
@@ -155,18 +188,18 @@ always_ff @(posedge clk_enable or negedge nrst)
 
 integer caterpillar_cnt;
 integer light_pixel_index;
-always_ff @(posedge clk or negedge nrst)
+always_ff @(posedge clk_enable or negedge nrst)
     if(~nrst) begin
         caterpillar_cnt <= '0;
+        position_sync <= '0;
+        light_pixel_index <= 20;
     end else begin
         caterpillar_cnt <= caterpillar_cnt + 1'b1;
-        if(caterpillar_cnt == 4096*10) begin
-            caterpillar_cnt <= '0;
-            light_pixel_index <= light_pixel_index + 1'b1;
-            if(light_pixel_index == 40*48) begin
-                light_pixel_index <= '0;
-            end
+        position_sync <= '0;
+        if(caterpillar_cnt == 4096 + 2349) begin
+           position_sync <= '1;
+           caterpillar_cnt <= '0;
         end
-    end
+     end
 
 endmodule
