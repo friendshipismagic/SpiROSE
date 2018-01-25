@@ -84,18 +84,19 @@ logic           new_configuration_ready;
  * Send the new_configuration_ready after some time to get
  * to the stream state
  */
-integer count;
-always_ff @(posedge clk or negedge nrst)
-    if (~nrst) begin
-        count <= 0;
-    end else begin
-        count <= count + 1;
-        if (count == 50000) begin
-            new_configuration_ready <= 1;
-        end else begin
-            new_configuration_ready <= 0;
-        end
-    end
+integer first_conf_counter;
+always_ff @(posedge clk_enable or negedge nrst)
+   if(~nrst) begin
+      new_configuration_ready <= '0;
+      first_conf_counter <= 0;
+   end else begin
+      new_configuration_ready <= '0;
+      if(first_conf_counter < 10) begin
+         first_conf_counter <= first_conf_counter + 1;
+         new_configuration_ready <= '1;
+      end
+   end
+
 
 driver_controller main_driver_controller (
     .clk(clk),
@@ -118,10 +119,18 @@ driver_controller main_driver_controller (
 assign drv_sclk_b = drv_sclk_a;
 assign drv_gclk_b = drv_gclk_a;
 assign drv_lat_b = drv_lat_a;
+assign fpga_mul_a = mux_out;
 assign fpga_mul_b = fpga_mul_a;
 
 assign framebuffer_dat = '1;
-assign fpga_mul_a = 8'b10000000;
 assign position_sync = '1;
+
+logic [7:0] mux_out;
+column_mux main_column_mux (
+    .clk(clk),
+    .nrst(nrst),
+    .column_ready(column_ready),
+    .mux_out(mux_out)
+);
 
 endmodule
