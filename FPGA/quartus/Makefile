@@ -32,14 +32,17 @@ compile/05_memory:
 compile/06_spi_test:
 	cd 06_spi_test && $(QUARTUS131) --flow compile spi_test
 
-compile/09_single_led:
-	cd 09_single_led && $(QUARTUS131) --flow compile single_led
-
 compile/07_rgb_test:
 	cd 07_rgb_test && $(QUARTUS131) --flow compile rgb_test
 
 compile/08_caterpillar_test:
 	cd 08_caterpillar_test && $(QUARTUS131) --flow compile caterpillar_test
+
+compile/09_column_mux:
+	cd 09_column_mux && $(QUARTUS131) --flow compile column_mux
+
+compile/10_single_led:
+	cd 09_single_led && $(QUARTUS131) --flow compile single_led
 
 compile/11_hall_sensor:
 	cd 11_hall_sensor && $(QUARTUS131) --flow compile hall_sensor_test
