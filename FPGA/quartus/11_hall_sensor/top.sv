@@ -103,7 +103,7 @@ always_ff @(posedge clk or negedge nrst)
         count <= 0;
     end else begin
         count <= count + 1;
-        if (count == 50000) begin
+        if (count < 10) begin
             new_configuration_ready <= 1;
         end else begin
             new_configuration_ready <= 0;
