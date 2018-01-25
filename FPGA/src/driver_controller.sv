@@ -416,7 +416,7 @@ always_comb begin
 end
 
 assign driver_ready = driver_state == STREAM
-                      && shift_register_counter != 48
+                      && shift_register_counter != 0
                       && ~blanking_period
                       && ~clk_enable;
 assign column_ready = driver_state == STREAM && segment_counter == 512;
