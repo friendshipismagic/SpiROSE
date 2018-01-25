@@ -13,9 +13,12 @@ extern crate toml;
 use std::io;
 use std::io::prelude::*;
 use std::fs::File;
+use std::str::FromStr;
+
 use clap::App;
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
+
 
 mod errors {
     error_chain! {
@@ -94,6 +97,8 @@ impl SpiCommand {
         match command {
             "enable_rgb" => SpiCommand::new(0xe0),
             "disable_rgb" => SpiCommand::new(0xd0),
+            "enable_mux" => SpiCommand::new_with_len(0xe1, 1),
+            "disable_mux" => SpiCommand::new_with_len(0xd1, 1),
             "get_rotation" => SpiCommand::new_with_len(0x4c, 2),
             "get_speed" => SpiCommand::new_with_len(0x4d, 2),
             "get_config" => SpiCommand::new_with_len(0xbf, 6),
@@ -142,6 +147,16 @@ fn run() -> errors::Result<()> {
                 verbose,
                 dummy,
                 )?;
+            Ok(())
+        },
+
+        ("disable_mux", Some(command_args)) => {
+            let mux_ids = command_args.values_of("mux_id")
+                .unwrap()
+                .map(|mux_id| u8::from_str(mux_id).unwrap());
+            for mux_id in mux_ids {
+                transfer(&mut spi, &SpiCommand::decode("disable_mux"), &[mux_id], verbose, dummy)?;
+            }
             Ok(())
         },
 
