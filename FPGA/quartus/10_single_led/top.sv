@@ -108,38 +108,10 @@ framebuffer #(.SLICES_IN_RAM(1)) main_fb (
 assign ram_rdata = (ram_raddr == 20) ? '1 : '0;
 
 logic [29:0] drv_sin_tolut;
-always_comb begin
-   drv_sin[0] = drv_sin_tolut[0];
-   drv_sin[27] = drv_sin_tolut[1];
-   drv_sin[3] = drv_sin_tolut[2];
-   drv_sin[25] = drv_sin_tolut[3];
-   drv_sin[8] = drv_sin_tolut[4];
-   drv_sin[24] = drv_sin_tolut[5];
-   drv_sin[7] = drv_sin_tolut[6];
-   drv_sin[18] = drv_sin_tolut[7];
-   drv_sin[11] = drv_sin_tolut[8];
-   drv_sin[19] = drv_sin_tolut[9];
-   drv_sin[4] = drv_sin_tolut[10];
-   drv_sin[28] = drv_sin_tolut[11];
-   drv_sin[1] = drv_sin_tolut[12];
-   drv_sin[29] = drv_sin_tolut[13];
-   drv_sin[13] = drv_sin_tolut[14];
-   drv_sin[22] = drv_sin_tolut[15];
-   drv_sin[9] = drv_sin_tolut[16];
-   drv_sin[16] = drv_sin_tolut[17];
-   drv_sin[10] = drv_sin_tolut[18];
-   drv_sin[15] = drv_sin_tolut[19];
-   drv_sin[5] = drv_sin_tolut[20];
-   drv_sin[23] = drv_sin_tolut[21];
-   drv_sin[2] = drv_sin_tolut[22];
-   drv_sin[21] = drv_sin_tolut[23];
-   drv_sin[6] = drv_sin_tolut[24];
-   drv_sin[26] = drv_sin_tolut[25];
-   drv_sin[12] = drv_sin_tolut[26];
-   drv_sin[17] = drv_sin_tolut[27];
-   drv_sin[14] = drv_sin_tolut[28];
-   drv_sin[20] = drv_sin_tolut[29];
-end
+driver_sin_lut main_drv_sin_lut (
+    .drv_sin_tolut(drv_sin_tolut),
+    .drv_sin(drv_sin)
+);
 
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk(clk),
@@ -164,6 +136,12 @@ column_mux main_column_mux (
     .mux_out(mux_out)
 );
 
+hall_sensor_emulator main_hs_emulator (
+    .clk(clk_enable),
+    .nrst(nrst),
+    .position_sync(position_sync)
+);
+
 assign nrst = locked;
 assign rgb_enable = '1;
 assign stream_ready = '1;
@@ -180,20 +158,5 @@ always_ff @(posedge clk_enable or negedge nrst)
          new_configuration_ready <= '1;
       end
    end
-
-integer position_sync_cnt;
-integer light_pixel_index;
-always_ff @(posedge clk_enable or negedge nrst)
-    if(~nrst) begin
-        position_sync_cnt <= '0;
-        position_sync <= '0;
-    end else begin
-        position_sync <= '0;
-        position_sync_cnt <= position_sync_cnt + 1'b1;
-        if(caterpillar_cnt == 4096 + 2349) begin
-           position_sync <= '1;
-           position_sync_cnt <= '0;
-        end
-     end
 
 endmodule
