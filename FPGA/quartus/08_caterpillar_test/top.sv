@@ -70,17 +70,18 @@ assign drv_gclk_b = drv_gclk;
 assign drv_sclk_a = drv_sclk;
 assign drv_sclk_b = drv_sclk;
 assign drv_lat_a = drv_lat;
-assign drv_lat_a = drv_lat;
+assign drv_lat_b = drv_lat;
 
 assign fpga_mul_a = mux_out;
 assign fpga_mul_b = mux_out;
 
+assign pt_6 = drv_gclk;
+
 // 66 MHz clock generator
 logic clk, locked;
-clk main_clk_66 (
-    .refclk(rgb_clk),
-    .rst(sw[0]),
-    .outclk_0(clk),
+clock_66 main_clock_66 (
+    .inclk0(rgb_clk),
+    .c0(clk),
     .locked(locked)
 );
 
@@ -100,7 +101,7 @@ ram_emulator main_ram_emulator (
     .light_pixel_index(light_pixel_index)
 );
 
-framebuffer #(SLICES_IN_RAM(1)) main_fb (
+framebuffer #(.SLICES_IN_RAM(1)) main_fb (
     .clk(clk),
     .nrst(nrst),
     .data(framebuffer_data),
@@ -119,11 +120,12 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .driver_sclk(drv_sclk),
     .driver_gclk(drv_gclk),
     .driver_lat(drv_lat),
-    .drivers_sin(drv_in),
+    .drivers_sin(drv_sin),
     .position_sync(position_sync),
     .driver_ready(driver_ready),
     .serialized_conf(serialized_conf),
-    .new_configuration_ready(new_configuration_ready)
+    .new_configuration_ready(new_configuration_ready),
+    .column_ready(column_ready)
 );
 
 column_mux main_column_mux (
@@ -138,6 +140,19 @@ assign position_sync = '1;
 assign rgb_enable = '1;
 assign stream_ready = '1;
 
+integer first_conf_counter;
+always_ff @(posedge clk_enable or negedge nrst)
+   if(~nrst) begin
+      new_configuration_ready <= '0;
+      first_conf_counter <= 0;
+   end else begin
+      new_configuration_ready <= '0;
+      if(first_conf_counter < 10) begin
+         first_conf_counter <= first_conf_counter + 1;
+         new_configuration_ready <= '1;
+      end
+   end
+
 integer caterpillar_cnt;
 integer light_pixel_index;
 always_ff @(posedge clk or negedge nrst)
@@ -145,7 +160,7 @@ always_ff @(posedge clk or negedge nrst)
         caterpillar_cnt <= '0;
     end else begin
         caterpillar_cnt <= caterpillar_cnt + 1'b1;
-        if(caterpillar_cnt == 33_000_000) begin
+        if(caterpillar_cnt == 4096*10) begin
             caterpillar_cnt <= '0;
             light_pixel_index <= light_pixel_index + 1'b1;
             if(light_pixel_index == 40*48) begin
