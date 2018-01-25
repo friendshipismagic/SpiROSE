@@ -31,3 +31,11 @@ subcommands:
          - config_file:
             help: "LED Drivers configuration file, TOML format"
             required: true
+   - disable_mux:
+      about: "Disable a led multiplexer"
+      args:
+         - mux_id:
+            value_name: mux_id
+            multiple: true
+            possible_values: ["0", "1", "2", "3", "4"]
+
