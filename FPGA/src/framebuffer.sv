@@ -329,12 +329,12 @@ always_comb begin
      * Since we only have 16 bit per led, but the poker mode ask for 27
      * bits, we have to pad with 0.
      */
-    data = '0;
+    //data = '0;
     /*
      * If we haven't sent 16 bit yet we don't pad with 0.
      * bit_idx > 3 means that we don't send the 4 first LSB.
      */
-    if(stream_ready && driver_ready && bit_idx > 3) begin
+    if(/*stream_ready && driver_ready &&*/ bit_idx > 3) begin
         for(int i = 0; i < 30; ++i) begin
             if(current_buffer) begin
                 data[i] = buffer2[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
@@ -342,6 +342,8 @@ always_comb begin
                 data[i] = buffer1[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
             end
         end
+    end else begin
+        data = '0;
     end
 end
 
