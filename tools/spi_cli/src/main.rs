@@ -121,33 +121,39 @@ fn run() -> errors::Result<()> {
     let verbose = matches.is_present("verbose");
     let dummy = spi_dev == "none";
     let mut spi = create_spi(if dummy { "/dev/null" } else { spi_dev }, !dummy)?;
-    if let Some(command_args) = matches.subcommand_matches("send_config") {
-        let config_file_url = command_args.value_of("config_file").unwrap();
-        let mut config_file = File::open(config_file_url).map_err(|e| {
-            format!(
-                "Cannot open configuration file `{}': {}",
-                config_file_url, e
-            )
-        })?;
-        let mut serialized_conf = String::new();
-        config_file.read_to_string(&mut serialized_conf)?;
-        // Unwrapping inside a LEDDriverConfig forces the full configuration to be available
-        let led_config: LEDDriverConfig = toml::from_str(&serialized_conf)?;
-        transfer(
-            &mut spi,
-            &SpiCommand::decode("get_config"),
-            &led_config.pack(),
-            verbose,
-            dummy,
-        )?;
-    } else {
-        for c in COMMANDS.iter() {
-            if matches.subcommand_matches(c).is_some() {
-                transfer(&mut spi, &SpiCommand::decode(c), &[], verbose, dummy)?;
+
+    match matches.subcommand() {
+        ("send_config", Some(command_args)) => {
+            let config_file_url = command_args.value_of("config_file").unwrap();
+            let mut config_file = File::open(config_file_url).map_err(|e| {
+                format!(
+                    "Cannot open configuration file `{}': {}",
+                    config_file_url, e
+                    )
+            })?;
+            let mut serialized_conf = String::new();
+            config_file.read_to_string(&mut serialized_conf)?;
+            // Unwrapping inside a LEDDriverConfig forces the full configuration to be available
+            let led_config: LEDDriverConfig = toml::from_str(&serialized_conf)?;
+            transfer(
+                &mut spi,
+                &SpiCommand::decode("get_config"),
+                &led_config.pack(),
+                verbose,
+                dummy,
+                )?;
+            Ok(())
+        },
+
+        (name, _) =>  {
+            for c in COMMANDS.iter() {
+                if matches.subcommand_matches(c).is_some() {
+                    transfer(&mut spi, &SpiCommand::decode(c), &[], verbose, dummy)?;
+                }
             }
+            Ok(())
         }
     }
-    Ok(())
 }
 
 fn create_spi(spi_dev: &str, configure: bool) -> errors::Result<Spidev> {
