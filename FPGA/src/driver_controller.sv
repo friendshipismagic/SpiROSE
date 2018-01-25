@@ -170,14 +170,17 @@ always_ff @(posedge clk or negedge nrst)
  */
 integer segment_counter;
 integer mux_counter;
+logic stop_gclk;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         segment_counter <= '0;
         mux_counter <= '0;
+        stop_gclk <= '0;
     end else begin
         if (clk_enable) begin
             case(driver_state)
                 STREAM: begin
+                    stop_gclk <= '0;
                     segment_counter <= segment_counter + 1'b1;
                     if(segment_counter == 512) begin
                         segment_counter <= '0;
@@ -187,7 +190,15 @@ always_ff @(posedge clk or negedge nrst)
                         end
                     end
                 end
+                WAIT_FOR_NEXT_SLICE: begin
+                    segment_counter <= segment_counter + 1'b1;
+                    if(segment_counter == 512) begin
+                        segment_counter <= '0;
+                        stop_gclk <= '1;
+                    end
+                end
                 default: begin
+                    stop_gclk <= '0;
                     segment_counter <= '0;
                     mux_counter <= '0;
                 end
@@ -315,7 +326,10 @@ always_comb begin
 
         WAIT_FOR_NEXT_SLICE: begin
             driver_sclk = '0;
-            driver_gclk = '0;
+            driver_gclk <= '0;
+            if(~stop_gclk) begin
+                driver_gclk <= clk_enable;
+            end
         end
 
         LOD: begin
@@ -419,6 +433,7 @@ assign driver_ready = driver_state == STREAM
                       && shift_register_counter != 0
                       && ~blanking_period
                       && ~clk_enable;
-assign column_ready = driver_state == STREAM && segment_counter == 512;
+assign column_ready = (driver_state == STREAM || driver_state == WAIT_FOR_NEXT_SLICE)
+                      && segment_counter == 512;
 
 endmodule
