@@ -42,7 +42,7 @@ compile/09_column_mux:
 	cd 09_column_mux && $(QUARTUS131) --flow compile column_mux
 
 compile/10_single_led:
-	cd 09_single_led && $(QUARTUS131) --flow compile single_led
+	cd 10_single_led && $(QUARTUS131) --flow compile single_led
 
 compile/11_hall_sensor:
 	cd 11_hall_sensor && $(QUARTUS131) --flow compile hall_sensor_test

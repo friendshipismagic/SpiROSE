@@ -1,3 +1,5 @@
+`default_nettype none
+
 module Top
 (
  // RGB
@@ -67,8 +69,7 @@ clock_enable main_clock_enable (
 );
 
 // Reset bridge
-always_ff @(posedge clk)
-    nrst <= locked;
+assign nrst = locked;
 
 `include "drivers_conf.svh"
 
@@ -142,7 +143,7 @@ driver_controller main_driver_controller (
     .driver_sclk(drv_sclk),
     .driver_gclk(drv_gclk),
     .driver_lat(drv_lat),
-    .drivers_sin(drv_sin_to_lut),
+    .drivers_sin(drv_sin_tolut),
     .driver_sout(driver_sout),
     .driver_sout_mux(driver_sout_mux),
     .position_sync(position_sync),
