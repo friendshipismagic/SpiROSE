@@ -18,6 +18,7 @@ use std::str::FromStr;
 use clap::App;
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
+use std::mem::transmute;
 
 
 mod errors {
@@ -170,6 +171,18 @@ fn run() -> errors::Result<()> {
                 transfer(&mut spi, &SpiCommand::decode("disable_mux"), &[mux_id], verbose, dummy)?;
             }
             Ok(())
+        },
+
+        ("send_driver_data", Some(command_args)) => {
+            let driver_data : u64 = command_args.values_of("driver_data")
+                .unwrap()
+                .fold(0, |value, bit_str| {
+                    assert!(bit_str == '0' || bit_str == '1');
+                    let bit = char::to_digit(bit_str);
+                    if value == 0 {(value << 1)} else {(value << 1) | bit}
+                });
+            let data_bytes : [u8; 6] = unsafe { transmute(driver_data.to_be()) };
+            transfer(&mut spi, &SpiCommand::decode("send_driver_data"), &data_bytes, verbose, dummy)
         },
 
         (name, _) =>  {
