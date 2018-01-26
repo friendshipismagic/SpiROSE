@@ -205,7 +205,7 @@ always_ff @(posedge clk or negedge nrst)
 always_comb begin
     drv_sclk = '0;
     case(driver_state)
-        CONFIG: begin
+        PREPARE_CONFIG, CONFIG, WRTFC: begin
             /*
              * After the WRTFC command we pause SCLK for one cycle to meet
              * timing requirement
@@ -259,7 +259,7 @@ always_comb begin
 
         WAIT_FOR_NEXT_SLICE: begin
             if(~stop_gclk && segment_counter != 0) begin
-                drv_gclk <= clk_enable;
+                drv_gclk = clk_enable;
             end
         end
 
@@ -340,7 +340,7 @@ always_comb begin
     end
 end
 
-logic drv_sin_comb;
+logic [29:0] drv_sin_comb;
 driver_sin_lut ublock_lut (
    .drv_sin_tolut(drv_sin_tolut),
    .drv_sin(drv_sin_comb)
