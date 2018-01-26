@@ -12,7 +12,11 @@ compile: \
 	compile/05_memory \
 	compile/06_spi_test \
 	compile/07_rgb_test \
-	compile/08_caterpillar_test
+	compile/08_caterpillar_test \
+	compile/09_column_mux \
+	compile/10_single_led \
+	compile/11_hall_sensor \
+	compile/12_spi_display
 
 compile/01_stapl_test:
 	cd 01_stapl_test && $(QUARTUS131) --flow compile stapl_test
@@ -67,4 +71,8 @@ clean-all: clean
 	compile/05_memory \
 	compile/06_spi_test \
 	compile/07_rgb_test \
-	compile/08_caterpillar_test
+	compile/08_caterpillar_test \
+	compile/09_column_mux \
+	compile/10_single_led \
+	compile/11_hall_sensor \
+	compile/12_spi_display
