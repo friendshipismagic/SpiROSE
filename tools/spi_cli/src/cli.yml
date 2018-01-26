@@ -37,6 +37,7 @@ subcommands:
          - mux_id:
             value_name: mux_id
             multiple: true
+            required: true
             possible_values: ["0", "1", "2", "3", "4", "5", "6", "7"]
    - disable_mux:
       about: "Disable a led multiplexer"
@@ -44,6 +45,7 @@ subcommands:
          - mux_id:
             value_name: mux_id
             multiple: true
+            required: true
             possible_values: ["0", "1", "2", "3", "4", "5", "6", "7"]
    - send_driver_data:
       about: "Send data to a driver, then latch"
