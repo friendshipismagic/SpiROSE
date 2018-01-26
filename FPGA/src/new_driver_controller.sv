@@ -200,9 +200,7 @@ always_ff @(posedge clk or negedge nrst)
     end
 
 /*
- * driver_sclk drives the SCLK of the drivers.
- * There is no difference between the configuration mode and the stream mode.
- * The SCLK is on when device is not in reset and not in blanking mode.
+ * SCLK, directly exported, no delay
  */
 always_comb begin
     drv_sclk = '0;
@@ -244,7 +242,7 @@ always_comb begin
 end
 
 /*
- * GCLK
+ * GCLK, directly exported, no delay
  */
 always_comb begin
     drv_gclk = '0;
@@ -291,18 +289,19 @@ end
  */
 localparam FCWRTEN=15, READFC=11, WRTFC=5, WRTGS=1, LATGS=3, NO_LAT=0;
 
+logic drv_lat_comb;
 always_comb begin
-   drv_lat = 1'b0;
+   drv_lat_comb = 1'b0;
    case(driver_state)
       PREPARE_CONFIG: begin
           // Is in PREPARE_CONFIG for 15 SCLK cycles
-          drv_lat = 1'b1;
+          drv_lat_comb = 1'b1;
       end
 
       CONFIG: begin
           // Send the WRTFC during the 5 last bits to trigger latch at EOT
           if(shift_register_counter >= 49 - WRTFC) begin
-              drv_lat = 1'b1;
+              drv_lat_comb = 1'b1;
           end
       end
 
@@ -311,15 +310,15 @@ always_comb begin
           // Send 1 LATGS, at the end
           // TODO: LINERESET
           if(shift_register_counter >= 49 - WRTGS) begin
-              drv_lat = 1'b1;
+              drv_lat_comb = 1'b1;
           end
           if(segment_counter >= 513 - LATGS) begin
-              drv_lat = 1'b1;
+              drv_lat_comb = 1'b1;
           end
       end
 
       default: begin
-         drv_lat = 1'b0;
+         drv_lat_comb = 1'b0;
       end
    endcase
 end
@@ -341,10 +340,21 @@ always_comb begin
     end
 end
 
+logic drv_sin_comb;
 driver_sin_lut ublock_lut (
    .drv_sin_tolut(drv_sin_tolut),
-   .drv_sin(drv_sin)
+   .drv_sin(drv_sin_comb)
 );
+
+// Export all signals with delay
+always @(posedge clk or negedge nrst)
+   if(~nrst) begin
+      drv_lat <= '0;
+      drv_sin <= '0;
+   end else if(clk_enable) begin
+      drv_lat <= drv_lat_comb;
+      drv_sin <= drv_sin_comb;
+   end
 
 // Is the column ready to be displayed
 assign column_ready = (driver_state == STREAM || driver_state == WAIT_FOR_NEXT_SLICE)
