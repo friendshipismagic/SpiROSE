@@ -141,6 +141,7 @@ localparam [0:29] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
  * we multiply the index by 5 in the following LUTs.
  */
 
+// UB*D0 and UB*D2
 // Red-Green
 localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_RG = '{
     5*6 ,
@@ -181,6 +182,7 @@ localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_B = '{
     5*11
 };
 
+// UB*D1
 // Red-Green
 localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_RG = '{
     5*2 ,
@@ -220,6 +222,7 @@ localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
     5*2 ,
     5*3
 };
+
 /* verilator lint_on LITENDIAN */
 
 /*
@@ -304,12 +307,12 @@ always_ff @(posedge clk or negedge nrst)
  */
 always_comb begin
     for(int i = 0; i < 30; ++i) begin
-        if(i < 20) begin
-            voxel_addr[i] = (rgb_idx == 0) ? DRIVER_LUT1_B[led_idx]
-                                           : DRIVER_LUT1_RG[led_idx];
-        end else begin
+        if(i < 10 && i >= 20) begin
             voxel_addr[i] = (rgb_idx == 0) ? DRIVER_LUT0_B[led_idx]
                                            : DRIVER_LUT0_RG[led_idx];
+        end else begin
+            voxel_addr[i] = (rgb_idx == 0) ? DRIVER_LUT1_B[led_idx]
+                                           : DRIVER_LUT1_RG[led_idx];
         end
     end
 end

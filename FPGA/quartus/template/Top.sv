@@ -21,8 +21,8 @@ module Top
  output logic        drv_lat_a,
  output logic        drv_lat_b,
  output logic [29:0] drv_sin,
- input logic [7:0]   fpga_mul_a,
- input logic [7:0]   fpga_mul_b,
+ output logic [7:0]   fpga_mul_a,
+ output logic [7:0]   fpga_mul_b,
 
  // SPI
  input logic         som_cs,
@@ -47,7 +47,5 @@ module Top
  output logic        pt_26,
  output logic        pt_27
 );
-
-// Put your code here
 
 endmodule
