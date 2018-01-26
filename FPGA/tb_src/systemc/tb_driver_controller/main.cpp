@@ -54,8 +54,6 @@ int sc_main(int argc, char** argv) {
     sc_signal<bool> clk_enable;
 
     sc_signal<unsigned int> driversSin("drivers_sin");
-    sc_signal<bool> driverSout;
-    sc_signal<unsigned int> driverSoutMux;
 
     sc_signal<uint64_t> serializedConf;
 
@@ -88,8 +86,6 @@ int sc_main(int argc, char** argv) {
     dut.driver_gclk(driverGclk);
     dut.driver_lat(driverLat);
     dut.drivers_sin(driversSin);
-    dut.driver_sout(driverSout);
-    dut.driver_sout_mux(driverSoutMux);
     dut.serialized_conf(serializedConf);
     dut.new_configuration_ready(newConfigurationReady);
     dut.position_sync(positionSync);

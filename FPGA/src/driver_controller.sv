@@ -6,17 +6,15 @@ module driver_controller #(
     input nrst,
 
     // Framebuffer access, 30b wide
+    /* verilator lint_off UNUSED */
     input [29:0] framebuffer_dat,
+    /* verilator lint_on UNUSED */
 
     // Drivers direct output
     output driver_sclk,
     output driver_gclk,
     output driver_lat,
     output [29:0] drivers_sin,
-
-    // LOD procedure
-    input driver_sout,
-    output [4:0] driver_sout_mux,
 
     // Indicates that the position has changed
     input position_sync,
@@ -127,6 +125,7 @@ always_ff @(posedge clk or negedge nrst)
                     driver_state_counter <= driver_state_counter + 1'b1;
                     if(driver_state_counter == 47+5) begin
                         driver_state_counter <= '0;
+                        driver_state <= WAIT_FOR_NEXT_SLICE;
                     end
                 end
 
@@ -177,7 +176,7 @@ always_ff @(posedge clk or negedge nrst)
 
             if(new_configuration_ready && (driver_state == BLANKING
                || driver_state == WAIT_FOR_NEXT_SLICE
-            || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
+               || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
                 driver_state_counter <= '0;
                 driver_state <= PREPARE_CONFIG;
             end
@@ -228,9 +227,9 @@ always_comb begin
 
         WAIT_FOR_NEXT_SLICE: begin
             driver_sclk = '0;
-            driver_gclk <= '0;
-            if(driver_state_counter < 512) begin
-                driver_gclk <= clk_enable;
+            driver_gclk = '0;
+            if(driver_state_counter > 0 && driver_state_counter <= 512) begin
+                driver_gclk = clk_enable;
             end
         end
 
@@ -272,7 +271,7 @@ end
  * LATGS on STREAM state (TODO for LOD state)
  *
  * driver_lat is generated on the falling edge ofthe main clock to respect
- * the hold time after the driver clock **falling edge** see TLC5957 
+ * the hold time after the driver clock **falling edge** see TLC5957
  * datasheet page...
  */
 localparam FCWRTEN=15, READFC=11, WRTFC=5, WRTGS=1, LATGS=3, NO_LAT=0;
@@ -322,7 +321,9 @@ always_comb begin
             end
         end
         SHIFT_REGISTER: begin
+            /* verilator lint_off WIDTH */
             drivers_sin = driver_state_counter == 1;
+            /* verilator lint_on WIDTH */
         end
         default: begin
             drivers_sin = '0;
