@@ -47,6 +47,8 @@ compile/10_single_led:
 compile/11_hall_sensor:
 	cd 11_hall_sensor && $(QUARTUS131) --flow compile hall_sensor_test
 
+compile/12_spi_display:
+	cd 12_spi_display && $(QUARTUS131) --flow compile spi_display
 
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose
