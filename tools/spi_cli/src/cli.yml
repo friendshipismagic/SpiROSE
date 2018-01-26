@@ -32,18 +32,20 @@ subcommands:
             help: "LED Drivers configuration file, TOML format"
             required: true
    - enable_mux:
-      about: "Enable a led multiplexer"
+      about: "Enable one or several led multiplexers"
       args:
          - mux_id:
             value_name: mux_id
             multiple: true
+            required: true
             possible_values: ["0", "1", "2", "3", "4", "5", "6", "7"]
    - disable_mux:
-      about: "Disable a led multiplexer"
+      about: "Disable one or several led multiplexers"
       args:
          - mux_id:
             value_name: mux_id
             multiple: true
+            required: true
             possible_values: ["0", "1", "2", "3", "4", "5", "6", "7"]
    - send_driver_data:
       about: "Send data to a driver, then latch"
@@ -54,4 +56,3 @@ subcommands:
          - driver_data:
             help: "The data (in binary) to send to the driver"
             required: true
-
