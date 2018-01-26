@@ -16,7 +16,9 @@ SC_MODULE(Monitor) {
           speedData("speed_data"),
           debugData("debug_data"),
           configuration("configuration"),
-          newConfigAvailable("new_config_available") {
+          newConfigAvailable("new_config_available"),
+          rgbEnable("rgb_enable"),
+          mux("mux") {
         SC_THREAD(runTests);
         SC_THREAD(handleSck);
         SC_THREAD(handleSs);
@@ -39,6 +41,7 @@ SC_MODULE(Monitor) {
     sc_in<uint64_t> configuration;
     sc_in<bool> newConfigAvailable;
     sc_in<bool> rgbEnable;
+    sc_in<uint64_t> mux;
 
     void sendCommand(char value);
     void handleSck();

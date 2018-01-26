@@ -22,7 +22,10 @@ module spi_decoder (
     output [47:0] configuration,
 
     output new_config_available,
-    output rgb_enable
+    output rgb_enable,
+
+    // Mux statuses
+    output [7:0] mux
 );
 
 localparam CONFIG_COMMAND = 'hBF;
@@ -31,6 +34,8 @@ localparam SPEED_COMMAND = 'h4D;
 localparam DISABLE_RGB_COMMAND = 'hD0;
 localparam ENABLE_RGB_COMMAND = 'hE0;
 localparam DEBUG_COMMAND = 'hDE;
+localparam ENABLE_MUX_COMMAND = 'hE1;
+localparam DISABLE_MUX_COMMAND = 'hD1;
 
 `include "drivers_conf.svh"
 
@@ -81,6 +86,12 @@ always_ff @(posedge clk or negedge nrst)
             end else if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == DISABLE_RGB_COMMAND) begin
                 rgb_enable <= '0;
+            end else if (last_cmd_len_bytes == 2
+                && last_cmd_read[15:8] == ENABLE_MUX_COMMAND) begin
+                mux[last_cmd_read[2:0]] <= 1;
+            end else if (last_cmd_len_bytes == 2
+                && last_cmd_read[15:8] == DISABLE_MUX_COMMAND) begin
+                mux[last_cmd_read[2:0]] <= 0;
             end
         end
     end
