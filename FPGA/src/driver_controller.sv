@@ -37,8 +37,6 @@ module driver_controller #(
  * WRTFC_TIMING we wait 5 cycle to meet timing requirements after a WRTFC
  * PREPARE_DUMP_CONFIG state is the state where we send READFC command
  * DUMP_CONFIG state is the state where we read the config on sout
- * LOD is the LED Open Detection procedure
- * STREAM state is the state used to stream LEDs data to the drivers
  * WAIT_FOR_NEXT_SLICE we pause gclk and wait for position_sync
  *
  * Boot-time transition is:
@@ -49,15 +47,14 @@ module driver_controller #(
  * WRTFC_TIMING for 5 cycles
  * PREPARE_DUMP_CONFIG for 11 cycles
  * DUMP_CONFIG for 48+5 cycles
- * LOD for 1 clock cycle (TODO), then waits for position_sync signal
- * alternate between STREAM and WAIT_FOR_NEXT_SLICE until reset
  */
-enum logic[3:0] {
+enum logic[6:0] {
     STALL,
     PREPARE_CONFIG,
     CONFIG,
-    STREAM,
-    LOD,
+    BLANKING,
+    SHIFT_REGISTER,
+    PAUSE_SCLK,
     PREPARE_DUMP_CONFIG,
     DUMP_CONFIG,
     WRTFC_TIMING,
@@ -65,10 +62,14 @@ enum logic[3:0] {
 } driver_state;
 
 integer driver_state_counter;
+integer wrtgs_cnt;
+integer mux_counter;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         driver_state <= STALL;
         driver_state_counter <= '0;
+        wrtgs_cnt <= '0;
+        mux_counter <= '0;
     end else begin
         if (clk_enable) begin
             case(driver_state)
@@ -125,26 +126,46 @@ always_ff @(posedge clk or negedge nrst)
                      */
                     driver_state_counter <= driver_state_counter + 1'b1;
                     if(driver_state_counter == 47+5) begin
-                        driver_state <= LOD;
                         driver_state_counter <= '0;
                     end
                 end
 
-                LOD: begin
-                    // TODO
-                    driver_state <= WAIT_FOR_NEXT_SLICE;
+                BLANKING: begin
+                   wrtgs_cnt <= '0;
+                   driver_state_counter <= driver_state_counter + 1'b1;
+                   if(driver_state_counter == BLANKING_TIME - 1) begin
+                      driver_state_counter <= '0;
+                      driver_state <= PAUSE_SCLK;
+                   end
                 end
 
-                STREAM: begin
-                    // If we have sent the whole slice wait for the next
-                    if(mux_counter == 7 && segment_counter == 512) begin
-                        driver_state <= WAIT_FOR_NEXT_SLICE;
-                    end
+                SHIFT_REGISTER: begin
+                   driver_state_counter <= driver_state_counter + 1'b1;
+                   if(driver_state_counter == 47) begin
+                      driver_state_counter <= '0;
+                      wrtgs_cnt <= wrtgs_cnt + 1'b1;
+                      driver_state <= PAUSE_SCLK;
+                      if(wrtgs_cnt == 9) begin
+                         wrtgs_cnt <= 0;
+                         mux_counter <= mux_counter + 1'b1;
+                         driver_state <= BLANKING;
+                         if(mux_counter == 7) begin
+                            mux_counter <= '0;
+                            driver_state <= WAIT_FOR_NEXT_SLICE;
+                         end
+                      end
+                   end
+                end
+
+                PAUSE_SCLK: begin
+                   driver_state <= SHIFT_REGISTER;
                 end
 
                 WAIT_FOR_NEXT_SLICE: begin
+                   driver_state_counter <= driver_state_counter + 1'b1;
                     if(position_sync) begin
-                        driver_state <= STREAM;
+                        driver_state <= BLANKING;
+                        driver_state_counter <= '0;
                     end
                 end
 
@@ -154,110 +175,12 @@ always_ff @(posedge clk or negedge nrst)
                 end
             endcase
 
-            if(new_configuration_ready && (driver_state == STREAM || driver_state == WAIT_FOR_NEXT_SLICE)) begin
+            if(new_configuration_ready && (driver_state == BLANKING
+               || driver_state == WAIT_FOR_NEXT_SLICE
+            || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
                 driver_state_counter <= '0;
                 driver_state <= PREPARE_CONFIG;
             end
-        end
-    end
-
-/*
- * GCLK cycle counter. This process counts the number of GCLK clock cycles in
- * STREAM state. In 9-bit poker mode a segment should be 512 cycle. To meet the
- * timing requirement it is necessary to pause GCLK for one cycle after a LATGS
- * or LINERESET, thus the segment counter goes up to 512 instead of 511 to
- * count this extra one cycle.
- */
-integer segment_counter;
-integer mux_counter;
-logic stop_gclk;
-always_ff @(posedge clk or negedge nrst)
-    if(~nrst) begin
-        segment_counter <= '0;
-        mux_counter <= '0;
-        stop_gclk <= '0;
-    end else begin
-        if (clk_enable) begin
-            case(driver_state)
-                STREAM: begin
-                    stop_gclk <= '0;
-                    segment_counter <= segment_counter + 1'b1;
-                    if(segment_counter == 512) begin
-                        segment_counter <= '0;
-                        mux_counter <= mux_counter + 1'b1;
-                        if(mux_counter == 7) begin
-                            mux_counter <= '0;
-                        end
-                    end
-                end
-                WAIT_FOR_NEXT_SLICE: begin
-                    segment_counter <= segment_counter + 1'b1;
-                    if(segment_counter == 512) begin
-                        segment_counter <= '0;
-                        stop_gclk <= '1;
-                    end
-                end
-                default: begin
-                    stop_gclk <= '0;
-                    segment_counter <= '0;
-                    mux_counter <= '0;
-                end
-            endcase
-        end
-    end
-
-/*
- * Blanking mode. The GCLK segment must be 512 clock cycles, but we send
- * 9(bits) * 48 (R+G+B channel) + 8 timing cycle = 440 SCLK cycles. Thus we
- * need to wait for 512 - 440 = 72 SCLK cycles. This blanking time should be
- * done at the beginning to avoid latching issues.
- */
-wire blanking_period;
-assign blanking_period = nrst & (segment_counter < BLANKING_TIME);
-
-/*
- * SCLK data counter. This process counts the number of SCLK clock cycles in
- * STREAM and CONFIG state. In 9-bit poker mode a segment should be 512 cycle.
- * To meet the timing requirement it is necessary to pause SCLK for one cycle
- * after a WRTGS or WRTFC, thus the counter goes up to 48 instead of 47 to
- * count this extra one cycle.
- */
-integer shift_register_counter;
-always_ff @(posedge clk or negedge nrst)
-    if(~nrst) begin
-        shift_register_counter <= '0;
-    end else begin
-        if (clk_enable) begin
-            case(driver_state)
-                CONFIG: begin
-                    shift_register_counter <= shift_register_counter + 1'b1;
-                    if(shift_register_counter == 48) begin
-                        shift_register_counter <= '0;
-                    end
-                end
-
-                DUMP_CONFIG: begin
-                    shift_register_counter <= shift_register_counter + 1'b1;
-                    if(shift_register_counter == 47+5) begin
-                        shift_register_counter <= '0;
-                    end
-                end
-
-                STREAM: begin
-                    // Final state
-                    shift_register_counter <= '0;
-                    if(~blanking_period) begin
-                        shift_register_counter <= shift_register_counter + 1'b1;
-                        if(shift_register_counter == 48) begin
-                            shift_register_counter <= '0;
-                        end
-                    end
-                end
-
-                default: begin
-                    shift_register_counter <= '0;
-                end
-            endcase
         end
     end
 
@@ -280,7 +203,7 @@ always_comb begin
              * After the WRTFC command we pause SCLK for one cycle to meet
              * timing requirement
              */
-            if(shift_register_counter == 0) begin
+            if(driver_state_counter == 0) begin
                 driver_sclk = '0;
             end
             driver_gclk = '0;
@@ -297,45 +220,35 @@ always_comb begin
              * After the READFC command we pause SCLK for five cycles to meet
              * timing requirement
              */
-            if(shift_register_counter < 5) begin
+            if(driver_state_counter < 5) begin
                 driver_sclk = '0;
             end
             driver_gclk = '0;
-        end
-
-        STREAM: begin
-            /*
-             * After the WRTGS command we pause SCLK for one cycle to meet
-             * timing requirement. After a LATGS we need more than one cycle
-             * thus it is easier to just pause SCLK for the whole blanking
-             * period.
-             */
-            driver_sclk = clk_enable & ~blanking_period;
-            if(shift_register_counter == 0) begin
-                driver_sclk = '0;
-            end
-            driver_gclk = clk_enable;
-            /*
-             * After the LATGS command we pause GCLK for one cycle to meet
-             * timing requirement
-             */
-            if(segment_counter == 0) begin
-                driver_gclk = '0;
-            end
         end
 
         WAIT_FOR_NEXT_SLICE: begin
             driver_sclk = '0;
             driver_gclk <= '0;
-            if(~stop_gclk) begin
+            if(driver_state_counter < 512) begin
                 driver_gclk <= clk_enable;
             end
         end
 
-        LOD: begin
-            driver_sclk = '0;
-            driver_gclk = '0;
+        BLANKING: begin
+           driver_sclk = '0;
+           driver_gclk = clk_enable & driver_state_counter != 0;
         end
+
+        PAUSE_SCLK: begin
+           driver_sclk = '0;
+           driver_gclk = clk_enable;
+        end
+
+        SHIFT_REGISTER: begin
+           driver_sclk = clk_enable;
+           driver_gclk = clk_enable;
+        end
+
 
         default: begin
             driver_sclk = clk_enable;
@@ -377,20 +290,16 @@ end else begin
         CONFIG: begin
             driver_lat <= 1'b0;
             // Send the WRTFC during the 5 last bits to trigger latch at EOT
-            if(shift_register_counter >= 49 - WRTFC) begin
+            if(driver_state_counter >= 49 - WRTFC) begin
                 driver_lat <= 1'b1;
             end
         end
 
-        STREAM: begin
-            driver_lat <= 1'b0;
-            // Send 8 WRTGS, 1 every 48 SCLK cycles, except for the last one
-            // Send 1 LATGS, at the end
-            // TODO: LINERESET
-            if((shift_register_counter >= 49 - WRTGS)
-                || (segment_counter >= 513 - LATGS)) begin
-                driver_lat <= 1'b1;
-            end
+        SHIFT_REGISTER: begin
+           driver_lat <= '0;
+           if(driver_state_counter == 47 || (driver_state_counter >= 45 && wrtgs_cnt == 9)) begin
+              driver_lat <= '1;
+           end
         end
 
         default: driver_lat <= 1'b0;
@@ -404,36 +313,25 @@ end
 always_comb begin
     case(driver_state)
         CONFIG: begin
-            driver_sout_mux = '0;
-            if(shift_register_counter != 0) begin
+            if(driver_state_counter != 0) begin
                 for(int i = 0; i < 30; i++) begin
-                    drivers_sin[i] = serialized_conf[48-shift_register_counter];
+                    drivers_sin[i] = serialized_conf[48-driver_state_counter];
                 end
             end else begin
                 drivers_sin = '0;
             end
         end
-        STREAM: begin
-            drivers_sin = framebuffer_dat;
-            driver_sout_mux = '0;
-        end
-        LOD: begin
-            drivers_sin = '0;
-            // TODO: LOD procedure
-            driver_sout_mux = 5'(driver_sout);
+        SHIFT_REGISTER: begin
+            drivers_sin = driver_state_counter == 1;
         end
         default: begin
             drivers_sin = '0;
-            driver_sout_mux = '0;
         end
     endcase
 end
 
-assign driver_ready = driver_state == STREAM
-                      && shift_register_counter != 0
-                      && ~blanking_period
-                      && ~clk_enable;
-assign column_ready = (driver_state == STREAM || driver_state == WAIT_FOR_NEXT_SLICE)
-                      && segment_counter == 512;
+assign driver_ready = driver_state == SHIFT_REGISTER && ~clk_enable;
+assign column_ready = (driver_state == SHIFT_REGISTER &&  wrtgs_cnt == 9 && driver_state_counter == 47)
+                       || (driver_state == WAIT_FOR_NEXT_SLICE && driver_state_counter == 512);
 
 endmodule
