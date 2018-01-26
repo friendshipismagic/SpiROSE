@@ -31,7 +31,8 @@ module driver_controller_spi_driven #(
 // UB*D0 and UB*D2
 // Red-Green
 /* verilator lint_off WIDTHCONCAT */
-localparam [15:0] [31:0] DRIVER_LUT0_RG = '{
+/* verilator lint_off LITENDIAN */
+localparam [0:15] [31:0] DRIVER_LUT0_RG = '{
     3*6 ,
     3*7 ,
     3*9 ,
@@ -51,7 +52,7 @@ localparam [15:0] [31:0] DRIVER_LUT0_RG = '{
 };
 
 //Blue
-localparam [15:0] [31:0] DRIVER_LUT0_B = '{
+localparam [0:15] [31:0] DRIVER_LUT0_B = '{
    3*8 ,
    3*9 ,
    3*14,
@@ -72,7 +73,7 @@ localparam [15:0] [31:0] DRIVER_LUT0_B = '{
 
 // UB*D1
 // Red-Green
-localparam [15:0] [31:0] DRIVER_LUT1_RG = '{
+localparam [0:15] [31:0] DRIVER_LUT1_RG = '{
    3*2 ,
    3*3 ,
    3*5 ,
@@ -92,7 +93,7 @@ localparam [15:0] [31:0] DRIVER_LUT1_RG = '{
 };
 
 //Blue
-localparam [15:0] [31:0] DRIVER_LUT1_B = '{
+localparam [0:15] [31:0] DRIVER_LUT1_B = '{
    3*0 ,
    3*1 ,
    3*6 ,
@@ -111,6 +112,7 @@ localparam [15:0] [31:0] DRIVER_LUT1_B = '{
    3*3
 };
 
+/* verilator lint_on LITENDIAN */
 /* verilator lint_on WIDTHCONCAT */
 
 
