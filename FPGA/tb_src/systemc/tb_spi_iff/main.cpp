@@ -1,8 +1,11 @@
+#include <cstdio>
+#include <iostream>
+
 #include <systemc.h>
 #include <verilated.h>
 
-#include "Vspi_iff.h"
 #include "Vspi_decoder.h"
+#include "Vspi_iff.h"
 
 #include "monitor.hpp"
 #include "report_handler.hpp"
@@ -40,6 +43,8 @@ int sc_main(int argc, char** argv) {
     sc_signal<uint64_t> spiDriverConfig;
     sc_signal<bool> spiConfigAvailable;
     sc_signal<bool> rgbEnable;
+    sc_signal<uint32_t> mux;
+    sc_signal<uint64_t> driver_data[30];
 
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("spi");
@@ -60,6 +65,10 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, spiDriverConfig, "configuration");
     sc_trace(traceFile, spiConfigAvailable, "new_config_available");
     sc_trace(traceFile, rgbEnable, "rgb_enable");
+    sc_trace(traceFile, mux, "mux");
+    for (int i = 0; i < 30; i++)
+        sc_trace(traceFile, driver_data[i],
+                 "driver_data(" + std::to_string(i) + ")");
 
     Vspi_iff dut1("spi_iff");
     dut1.clk(clk);
@@ -86,6 +95,8 @@ int sc_main(int argc, char** argv) {
     dut2.configuration(spiDriverConfig);
     dut2.new_config_available(spiConfigAvailable);
     dut2.rgb_enable(rgbEnable);
+    dut2.mux(mux);
+    for (int i = 0; i < 30; i++) dut2.driver_data[i](driver_data[i]);
 
     Monitor monitor("monitor");
     monitor.clk(clkLse);
@@ -101,6 +112,8 @@ int sc_main(int argc, char** argv) {
     monitor.configuration(spiDriverConfig);
     monitor.newConfigAvailable(spiConfigAvailable);
     monitor.rgbEnable(rgbEnable);
+    monitor.mux(mux);
+    for (int i = 0; i < 30; i++) monitor.driver_data[i](driver_data[i]);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;

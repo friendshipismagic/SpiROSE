@@ -13,15 +13,21 @@ extern crate toml;
 use std::io;
 use std::io::prelude::*;
 use std::fs::File;
+use std::num;
+use std::str::FromStr;
+
 use clap::App;
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
+use std::mem::transmute;
+
 
 mod errors {
     error_chain! {
         foreign_links {
             Toml(::toml::de::Error);
             Io(::io::Error);
+            ParseInt(::std::num::ParseIntError);
         }
     }
 }
@@ -94,10 +100,13 @@ impl SpiCommand {
         match command {
             "enable_rgb" => SpiCommand::new(0xe0),
             "disable_rgb" => SpiCommand::new(0xd0),
+            "enable_mux" => SpiCommand::new_with_len(0xe1, 1),
+            "disable_mux" => SpiCommand::new_with_len(0xd1, 1),
             "get_rotation" => SpiCommand::new_with_len(0x4c, 2),
             "get_speed" => SpiCommand::new_with_len(0x4d, 2),
             "get_config" => SpiCommand::new_with_len(0xbf, 6),
             "get_debug" => SpiCommand::new_with_len(0xde, 4),
+            "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
             _ => unreachable!(),
         }
     }
@@ -121,33 +130,78 @@ fn run() -> errors::Result<()> {
     let verbose = matches.is_present("verbose");
     let dummy = spi_dev == "none";
     let mut spi = create_spi(if dummy { "/dev/null" } else { spi_dev }, !dummy)?;
-    if let Some(command_args) = matches.subcommand_matches("send_config") {
-        let config_file_url = command_args.value_of("config_file").unwrap();
-        let mut config_file = File::open(config_file_url).map_err(|e| {
-            format!(
-                "Cannot open configuration file `{}': {}",
-                config_file_url, e
-            )
-        })?;
-        let mut serialized_conf = String::new();
-        config_file.read_to_string(&mut serialized_conf)?;
-        // Unwrapping inside a LEDDriverConfig forces the full configuration to be available
-        let led_config: LEDDriverConfig = toml::from_str(&serialized_conf)?;
-        transfer(
-            &mut spi,
-            &SpiCommand::decode("get_config"),
-            &led_config.pack(),
-            verbose,
-            dummy,
-        )?;
-    } else {
-        for c in COMMANDS.iter() {
-            if matches.subcommand_matches(c).is_some() {
-                transfer(&mut spi, &SpiCommand::decode(c), &[], verbose, dummy)?;
+
+    match matches.subcommand() {
+        ("send_config", Some(command_args)) => {
+            let config_file_url = command_args.value_of("config_file").unwrap();
+            let mut config_file = File::open(config_file_url).map_err(|e| {
+                format!(
+                    "Cannot open configuration file `{}': {}",
+                    config_file_url, e
+                    )
+            })?;
+            let mut serialized_conf = String::new();
+            config_file.read_to_string(&mut serialized_conf)?;
+            // Unwrapping inside a LEDDriverConfig forces the full configuration to be available
+            let led_config: LEDDriverConfig = toml::from_str(&serialized_conf)?;
+            transfer(
+                &mut spi,
+                &SpiCommand::decode("get_config"),
+                &led_config.pack(),
+                verbose,
+                dummy,
+                )?;
+            Ok(())
+        },
+
+        ("enable_mux", Some(command_args)) => {
+            let mux_ids = command_args.values_of("mux_id")
+                .unwrap()
+                .map(|mux_id| u8::from_str(mux_id).unwrap());
+            for mux_id in mux_ids {
+                transfer(&mut spi, &SpiCommand::decode("enable_mux"), &[mux_id], verbose, dummy)?;
             }
+            Ok(())
+        },
+
+        ("disable_mux", Some(command_args)) => {
+            let mux_ids = command_args.values_of("mux_id")
+                .unwrap()
+                .map(|mux_id| u8::from_str(mux_id).unwrap());
+            for mux_id in mux_ids {
+                transfer(&mut spi, &SpiCommand::decode("disable_mux"), &[mux_id], verbose, dummy)?;
+            }
+            Ok(())
+        },
+
+        ("send_driver_data", Some(command_args)) => {
+            let driver_id : u8 = u8::from_str(command_args.value_of("driver_id").unwrap())?;
+            let driver_data : u64 = command_args.value_of("driver_data")
+                .unwrap()
+                .chars()
+                .fold(0, |value, bit_str| {
+                    assert!(bit_str == '0' || bit_str == '1');
+                    let bit : u64 = u64::from(char::to_digit(bit_str, 2).unwrap());
+                    (value << 1) + bit
+                });
+            let data_bytes : [u8; 8] = unsafe { transmute(driver_data.to_be()) };
+            let mut transaction = Vec::with_capacity(7);
+            transaction.push(driver_id);
+            transaction.extend(data_bytes[2..8].iter());
+
+            transfer(&mut spi, &SpiCommand::decode("send_driver_data"), &transaction, verbose, dummy)?;
+            Ok(())
+        },
+
+        (name, _) =>  {
+            for c in COMMANDS.iter() {
+                if c == &name {
+                    transfer(&mut spi, &SpiCommand::decode(c), &[], verbose, dummy)?;
+                }
+            }
+            Ok(())
         }
     }
-    Ok(())
 }
 
 fn create_spi(spi_dev: &str, configure: bool) -> errors::Result<Spidev> {

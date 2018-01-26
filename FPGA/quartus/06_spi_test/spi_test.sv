@@ -31,8 +31,8 @@ module spi_test
 logic clk, nrst;
 
 // spi_iff output signals
-logic [55:0] cmd_read;
-logic [2:0]  cmd_len_bytes;
+logic [63:0] cmd_read;
+logic [3:0]  cmd_len_bytes;
 logic [47:0] cmd_write;
 logic        cmd_valid;
 
