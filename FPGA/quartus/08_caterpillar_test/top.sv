@@ -93,32 +93,14 @@ clock_enable main_clk_enable (
     .clk_enable(clk_enable)
 );
 
-// RAM emulator module, produces a caterpillar animation
-ram_emulator main_ram_emulator (
-    .clk(clk),
-    .r_addr(ram_raddr),
-    .r_data(ram_rdata),
-    .light_pixel_index(light_pixel_index)
-);
-
-framebuffer #(.SLICES_IN_RAM(1)) main_fb (
-    .clk(clk),
-    .nrst(nrst),
-    .data(framebuffer_data),
-    .stream_ready(stream_ready),
-    .driver_ready(driver_ready),
-    .position_sync(position_sync),
-    .ram_addr(ram_raddr),
-    .ram_data(ram_rdata)
-);
-
 logic [29:0] drv_sin_tolut;
 driver_sin_lut main_drv_sin_lut (
     .drv_sin_tolut(drv_sin_tolut),
     .drv_sin(drv_sin)
 );
 
-driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
+logic [47:0] data_in [29:0];
+driver_controller_spi #(.BLANKING_TIME(72)) main_driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),
     .nrst(nrst),
@@ -130,6 +112,7 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .position_sync(position_sync),
     .driver_ready(driver_ready),
     .serialized_conf(serialized_conf),
+    .data_in(data_in),
     .new_configuration_ready(new_configuration_ready),
     .column_ready(column_ready)
 );
@@ -166,6 +149,12 @@ always_ff @(posedge clk_enable or negedge nrst)
 
 integer caterpillar_cnt;
 integer light_pixel_index;
+always_comb begin
+    for(int i = 0; i < 30; i++) begin
+        data_in[i] = 1'b1 << light_pixel_index;
+    end
+end
+
 always_ff @(posedge clk_enable or negedge nrst)
     if(~nrst) begin
         caterpillar_cnt <= '0;
@@ -175,7 +164,7 @@ always_ff @(posedge clk_enable or negedge nrst)
         if(caterpillar_cnt == 256) begin
             caterpillar_cnt <= '0;
             light_pixel_index <= light_pixel_index + 1'b1;
-            if(light_pixel_index == 40*48) begin
+            if(light_pixel_index == 47) begin
                 light_pixel_index <= '0;
             end
         end
