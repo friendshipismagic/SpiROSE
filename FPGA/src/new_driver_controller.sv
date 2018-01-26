@@ -192,7 +192,7 @@ integer shift_register_counter;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         shift_register_counter <= '0;
-    end else if (clk_enable & ~blanking_period) begin
+    end else if (drv_sclk) begin
         shift_register_counter <= shift_register_counter + 1'b1;
         if(shift_register_counter == 48) begin
            shift_register_counter <= '0;
@@ -210,7 +210,7 @@ always_comb begin
              * After the WRTFC command we pause SCLK for one cycle to meet
              * timing requirement
              */
-            if(shift_register_counter != 0) begin
+            if(segment_counter != 0) begin
                 drv_sclk = clk_enable;
             end
         end
