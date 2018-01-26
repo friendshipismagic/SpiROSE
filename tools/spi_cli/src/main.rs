@@ -13,6 +13,7 @@ extern crate toml;
 use std::io;
 use std::io::prelude::*;
 use std::fs::File;
+use std::num;
 use std::str::FromStr;
 
 use clap::App;
@@ -26,6 +27,7 @@ mod errors {
         foreign_links {
             Toml(::toml::de::Error);
             Io(::io::Error);
+            ParseInt(::std::num::ParseIntError);
         }
     }
 }
@@ -70,9 +72,7 @@ pub struct LEDDriverConfig {
     lgse2: Integer<u8, ::packed_bits::Bits3>,
 }
 
-static COMMANDS: [&'static str; 8] = [
-    "enable_mux",
-    "disable_mux",
+static COMMANDS: [&'static str; 6] = [
     "enable_rgb",
     "disable_rgb",
     "get_rotation",
@@ -106,6 +106,7 @@ impl SpiCommand {
             "get_speed" => SpiCommand::new_with_len(0x4d, 2),
             "get_config" => SpiCommand::new_with_len(0xbf, 6),
             "get_debug" => SpiCommand::new_with_len(0xde, 4),
+            "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
             _ => unreachable!(),
         }
     }
@@ -174,15 +175,22 @@ fn run() -> errors::Result<()> {
         },
 
         ("send_driver_data", Some(command_args)) => {
-            let driver_data : u64 = command_args.values_of("driver_data")
+            let driver_id : u8 = u8::from_str(command_args.value_of("driver_id").unwrap())?;
+            let driver_data : u64 = command_args.value_of("driver_data")
                 .unwrap()
+                .chars()
                 .fold(0, |value, bit_str| {
                     assert!(bit_str == '0' || bit_str == '1');
-                    let bit = char::to_digit(bit_str);
-                    if value == 0 {(value << 1)} else {(value << 1) | bit}
+                    let bit : u64 = u64::from(char::to_digit(bit_str, 2).unwrap());
+                    (value << 1) + bit
                 });
-            let data_bytes : [u8; 6] = unsafe { transmute(driver_data.to_be()) };
-            transfer(&mut spi, &SpiCommand::decode("send_driver_data"), &data_bytes, verbose, dummy)
+            let data_bytes : [u8; 8] = unsafe { transmute(driver_data.to_be()) };
+            let mut transaction = Vec::with_capacity(7);
+            transaction.push(driver_id);
+            transaction.extend(data_bytes[2..8].iter());
+
+            transfer(&mut spi, &SpiCommand::decode("send_driver_data"), &transaction, verbose, dummy)?;
+            Ok(())
         },
 
         (name, _) =>  {

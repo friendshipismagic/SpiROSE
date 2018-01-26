@@ -45,4 +45,13 @@ subcommands:
             value_name: mux_id
             multiple: true
             possible_values: ["0", "1", "2", "3", "4"]
+   - send_driver_data:
+      about: "Send data to a driver, then latch"
+      args:
+         - driver_id:
+            help: "The driver id, from 0 to 30"
+            required: true
+         - driver_data:
+            help: "The data (in binary) to send to the driver"
+            required: true
 
