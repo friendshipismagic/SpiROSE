@@ -324,28 +324,29 @@ end
 assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
 assign color_addr = color_bit_idx + 32'(COLOR_BASE[rgb_idx]);
 
-always_comb begin
-    /*
-     * Since we only have 16 bit per led, but the poker mode ask for 27
-     * bits, we have to pad with 0.
-     */
-    //data = '0;
-    /*
-     * If we haven't sent 16 bit yet we don't pad with 0.
-     * bit_idx > 3 means that we don't send the 4 first LSB.
-     */
-    if(/*stream_ready && driver_ready &&*/ bit_idx > 3) begin
-        for(int i = 0; i < 30; ++i) begin
-            if(current_buffer) begin
-                data[i] = buffer2[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
-            end else begin
-                data[i] = buffer1[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
+always_ff @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        data <= '0;
+    end else begin
+        /*
+         * Since we only have 16 bit per led, but the poker mode ask for 27
+         * bits, we have to pad with 0.
+         */
+        data <= '0;
+        /*
+         * If we haven't sent 16 bit yet we don't pad with 0.
+         * bit_idx > 3 means that we don't send the 4 first LSB.
+         */
+        if(stream_ready && driver_ready && bit_idx > 3) begin
+            for(int i = 0; i < 30; ++i) begin
+                if(current_buffer) begin
+                    data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
+                end else begin
+                    data[i] <= buffer1[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
+                end
             end
         end
-    end else begin
-        data = '0;
     end
-end
 
 // column_sent indicates that we need to fill a new buffer
 always_ff @(posedge clk or negedge nrst)
@@ -410,7 +411,7 @@ always_ff @(posedge clk or negedge nrst)
                               * assert the correct ram address.
                               */
                              slice_cnt <= slice_cnt + 1'b1;
-                             if(slice_cnt == SLICES_IN_RAM-1) begin
+                             if(slice_cnt == SLICES_IN_RAM) begin
                                  slice_cnt <= 0;
                              end
                          end
