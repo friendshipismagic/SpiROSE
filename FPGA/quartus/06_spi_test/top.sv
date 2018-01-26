@@ -12,7 +12,7 @@
 // Altera or its authorized distributors.  Please refer to the
 // applicable agreement for further details.
 
-module spi_test
+module Top
 (
     input       rgb_clk,
     input       pt_39,
