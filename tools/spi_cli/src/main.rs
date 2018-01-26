@@ -69,7 +69,9 @@ pub struct LEDDriverConfig {
     lgse2: Integer<u8, ::packed_bits::Bits3>,
 }
 
-static COMMANDS: [&'static str; 6] = [
+static COMMANDS: [&'static str; 8] = [
+    "enable_mux",
+    "disable_mux",
     "enable_rgb",
     "disable_rgb",
     "get_rotation",
@@ -150,6 +152,16 @@ fn run() -> errors::Result<()> {
             Ok(())
         },
 
+        ("enable_mux", Some(command_args)) => {
+            let mux_ids = command_args.values_of("mux_id")
+                .unwrap()
+                .map(|mux_id| u8::from_str(mux_id).unwrap());
+            for mux_id in mux_ids {
+                transfer(&mut spi, &SpiCommand::decode("enable_mux"), &[mux_id], verbose, dummy)?;
+            }
+            Ok(())
+        },
+
         ("disable_mux", Some(command_args)) => {
             let mux_ids = command_args.values_of("mux_id")
                 .unwrap()
@@ -162,7 +174,7 @@ fn run() -> errors::Result<()> {
 
         (name, _) =>  {
             for c in COMMANDS.iter() {
-                if matches.subcommand_matches(c).is_some() {
+                if c == &name {
                     transfer(&mut spi, &SpiCommand::decode(c), &[], verbose, dummy)?;
                 }
             }
