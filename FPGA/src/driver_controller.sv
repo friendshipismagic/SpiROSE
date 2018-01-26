@@ -6,9 +6,7 @@ module driver_controller #(
     input nrst,
 
     // Framebuffer access, 30b wide
-    /* verilator lint_off UNUSED */
     input [29:0] framebuffer_dat,
-    /* verilator lint_on UNUSED */
 
     // Drivers direct output
     output driver_sclk,
@@ -24,8 +22,91 @@ module driver_controller #(
     output driver_ready,
 
     input [47:0] serialized_conf,
+    input [47:0] data_in [29:0],
     input new_configuration_ready
 );
+// UB*D0 and UB*D2
+// Red-Green
+localparam [15:0] [31:0] DRIVER_LUT0_RG = '{
+    3*6 ,
+    3*7 ,
+    3*9 ,
+    3*8 ,
+    3*10,
+    3*11,
+    3*13,
+    3*12,
+    3*14,
+    3*15,
+    3*1 ,
+    3*0 ,
+    3*2 ,
+    3*3 ,
+    3*5 ,
+    3*4
+};
+
+//Blue
+localparam [15:0] [31:0] DRIVER_LUT0_B = '{
+   3*8 ,
+   3*9 ,
+   3*14,
+   3*15,
+   3*12,
+   3*13,
+   3*2 ,
+   3*3 ,
+   3*0 ,
+   3*1 ,
+   3*6 ,
+   3*7 ,
+   3*4 ,
+   3*5 ,
+   3*10,
+   3*11
+};
+
+// UB*D1
+// Red-Green
+localparam [15:0] [31:0] DRIVER_LUT1_RG = '{
+   3*2 ,
+   3*3 ,
+   3*5 ,
+   3*4 ,
+   3*6 ,
+   3*7 ,
+   3*9 ,
+   3*8 ,
+   3*10,
+   3*11,
+   3*13,
+   3*12,
+   3*14,
+   3*15,
+   3*1 ,
+   3*0
+};
+
+//Blue
+localparam [15:0] [31:0] DRIVER_LUT1_B = '{
+   3*0 ,
+   3*1 ,
+   3*6 ,
+   3*7 ,
+   3*4 ,
+   3*5 ,
+   3*9 ,
+   3*11,
+   3*8 ,
+   3*10,
+   3*14,
+   3*15,
+   3*12,
+   3*13,
+   3*2 ,
+   3*3
+};
+
 
 /*
  * List of the possible states of the drivers
@@ -62,12 +143,16 @@ enum logic[6:0] {
 integer driver_state_counter;
 integer wrtgs_cnt;
 integer mux_counter;
+integer rgb_idx;
+integer led_idx;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         driver_state <= STALL;
         driver_state_counter <= '0;
         wrtgs_cnt <= '0;
         mux_counter <= '0;
+        rgb_idx <= '0;
+        led_idx <= '0;
     end else begin
         if (clk_enable) begin
             case(driver_state)
@@ -124,8 +209,8 @@ always_ff @(posedge clk or negedge nrst)
                      */
                     driver_state_counter <= driver_state_counter + 1'b1;
                     if(driver_state_counter == 47+5) begin
+                       driver_state <= WAIT_FOR_NEXT_SLICE;
                         driver_state_counter <= '0;
-                        driver_state <= WAIT_FOR_NEXT_SLICE;
                     end
                 end
 
@@ -154,6 +239,14 @@ always_ff @(posedge clk or negedge nrst)
                          end
                       end
                    end
+                   rgb_idx <= rgb_idx + 1'b1;
+                   if(rgb_idx == 2) begin
+                      rgb_idx <= '0;
+                      led_idx <= led_idx + 1'b1;
+                      if(led_idx == 15) begin
+                         led_idx <= '0;
+                      end
+                   end
                 end
 
                 PAUSE_SCLK: begin
@@ -176,7 +269,7 @@ always_ff @(posedge clk or negedge nrst)
 
             if(new_configuration_ready && (driver_state == BLANKING
                || driver_state == WAIT_FOR_NEXT_SLICE
-               || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
+            || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
                 driver_state_counter <= '0;
                 driver_state <= PREPARE_CONFIG;
             end
@@ -227,9 +320,9 @@ always_comb begin
 
         WAIT_FOR_NEXT_SLICE: begin
             driver_sclk = '0;
-            driver_gclk = '0;
-            if(driver_state_counter > 0 && driver_state_counter <= 512) begin
-                driver_gclk = clk_enable;
+            driver_gclk <= '0;
+            if(driver_state_counter < 512) begin
+                driver_gclk <= clk_enable;
             end
         end
 
@@ -271,7 +364,7 @@ end
  * LATGS on STREAM state (TODO for LOD state)
  *
  * driver_lat is generated on the falling edge ofthe main clock to respect
- * the hold time after the driver clock **falling edge** see TLC5957
+ * the hold time after the driver clock **falling edge** see TLC5957 
  * datasheet page...
  */
 localparam FCWRTEN=15, READFC=11, WRTFC=5, WRTGS=1, LATGS=3, NO_LAT=0;
@@ -321,9 +414,24 @@ always_comb begin
             end
         end
         SHIFT_REGISTER: begin
-            /* verilator lint_off WIDTH */
-            drivers_sin = driver_state_counter == 1;
-            /* verilator lint_on WIDTH */
+           for(int i = 0; i < 30; i++) begin
+              if(i < 10) begin
+                 drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[led_idx]];
+                 if(rgb_idx == 0) begin
+                    drivers_sin[i] = data_in[i][DRIVER_LUT0_B[led_idx]];
+                 end
+              end else if(i >= 10 || i < 20) begin
+                 drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]];
+                 if(rgb_idx == 0) begin
+                    drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]];
+                 end
+              end else begin
+                 drivers_sin[i] = data_in[i][DRIVER_LUT0_B[led_idx]];
+                 if(rgb_idx == 0) begin
+                    drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[led_idx]];
+                 end
+              end
+           end
         end
         default: begin
             drivers_sin = '0;
@@ -331,7 +439,7 @@ always_comb begin
     endcase
 end
 
-assign driver_ready = driver_state == SHIFT_REGISTER && ~clk_enable;
+assign driver_ready = driver_state == SHIFT_REGISTER && clk_enable;
 assign column_ready = (driver_state == SHIFT_REGISTER &&  wrtgs_cnt == 9 && driver_state_counter == 47)
                        || (driver_state == WAIT_FOR_NEXT_SLICE && driver_state_counter == 512);
 

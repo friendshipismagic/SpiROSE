@@ -1,3 +1,5 @@
+`default_nettype none
+
 module Top
 (
  // RGB
@@ -105,7 +107,7 @@ framebuffer #(.SLICES_IN_RAM(1)) main_fb (
 );
 
 // Light only the led number 20
-assign ram_rdata = (ram_raddr == 20) ? '1 : '0;
+assign ram_rdata = (ram_raddr == 4) ? '1 : '0;
 
 logic [29:0] drv_sin_tolut;
 driver_sin_lut main_drv_sin_lut (
@@ -113,6 +115,8 @@ driver_sin_lut main_drv_sin_lut (
     .drv_sin(drv_sin)
 );
 
+logic [47:0] data_in [29:0];
+assign data_in[0] = 48'b000_111_000_000_000_000_000_000_000_000_000_000_000_000_000_000;
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),
@@ -126,6 +130,7 @@ driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .driver_ready(driver_ready),
     .serialized_conf(serialized_conf),
     .new_configuration_ready(new_configuration_ready),
+    .data_in(data_in),
     .column_ready(column_ready)
 );
 
