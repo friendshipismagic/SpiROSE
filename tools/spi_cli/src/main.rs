@@ -13,13 +13,11 @@ extern crate toml;
 use std::io;
 use std::io::prelude::*;
 use std::fs::File;
-use std::num;
 use std::str::FromStr;
 
 use clap::App;
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
-use std::mem::transmute;
 
 
 mod errors {
@@ -175,19 +173,11 @@ fn run() -> errors::Result<()> {
         },
 
         ("send_driver_data", Some(command_args)) => {
-            let driver_id : u8 = u8::from_str(command_args.value_of("driver_id").unwrap())?;
-            let driver_data : u64 = command_args.value_of("driver_data")
-                .unwrap()
-                .chars()
-                .fold(0, |value, bit_str| {
-                    assert!(bit_str == '0' || bit_str == '1');
-                    let bit : u64 = u64::from(char::to_digit(bit_str, 2).unwrap());
-                    (value << 1) + bit
-                });
-            let data_bytes : [u8; 8] = unsafe { transmute(driver_data.to_be()) };
+            let driver_id = u8::from_str(command_args.value_of("driver_id").unwrap())?;
+            let driver_data = u64::from_str_radix(command_args.value_of("driver_data").unwrap(), 2)?;
             let mut transaction = Vec::with_capacity(7);
             transaction.push(driver_id);
-            transaction.extend(data_bytes[2..8].iter());
+            transaction.extend((2..8).map(|n| (driver_data >> ((7-n)*8)) as u8));
 
             transfer(&mut spi, &SpiCommand::decode("send_driver_data"), &transaction, verbose, dummy)?;
             Ok(())
