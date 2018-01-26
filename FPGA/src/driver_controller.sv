@@ -6,7 +6,10 @@ module driver_controller #(
     input nrst,
 
     // Framebuffer access, 30b wide
+    // unused because of framebuffer tests
+    /* verilator lint_off UNUSED */
     input [29:0] framebuffer_dat,
+    /* verilator lint_on UNUSED */
 
     // Drivers direct output
     output driver_sclk,
@@ -27,6 +30,7 @@ module driver_controller #(
 );
 // UB*D0 and UB*D2
 // Red-Green
+/* verilator lint_off WIDTHCONCAT */
 localparam [15:0] [31:0] DRIVER_LUT0_RG = '{
     3*6 ,
     3*7 ,
@@ -106,6 +110,8 @@ localparam [15:0] [31:0] DRIVER_LUT1_B = '{
    3*2 ,
    3*3
 };
+
+/* verilator lint_on WIDTHCONCAT */
 
 
 /*
@@ -293,7 +299,7 @@ always_comb begin
              * After the WRTFC command we pause SCLK for one cycle to meet
              * timing requirement
              */
-            if(driver_state_counter == 0) begin
+            if(driver_state_counter == 'd0) begin
                 driver_sclk = '0;
             end
             driver_gclk = '0;
@@ -310,7 +316,7 @@ always_comb begin
              * After the READFC command we pause SCLK for five cycles to meet
              * timing requirement
              */
-            if(driver_state_counter < 5) begin
+            if(driver_state_counter < 'd5) begin
                 driver_sclk = '0;
             end
             driver_gclk = '0;
@@ -318,9 +324,9 @@ always_comb begin
 
         WAIT_FOR_NEXT_SLICE: begin
             driver_sclk = '0;
-            driver_gclk <= '0;
-            if(driver_state_counter < 512) begin
-                driver_gclk <= clk_enable;
+            driver_gclk = '0;
+            if(driver_state_counter < 'd512) begin
+                driver_gclk = clk_enable;
             end
         end
 
