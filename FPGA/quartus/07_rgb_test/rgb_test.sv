@@ -1,3 +1,4 @@
+`default_nettype none
 // Copyright (C) 1991-2014 Altera Corporation
 // Your use of Altera Corporation's design tools, logic functions
 // and other software and tools, and its AMPP partner logic
@@ -78,39 +79,45 @@ logic        driver_new_conf_available;
 logic        rgb_enable;
 logic [31:0] debug_data;
 
-// Clock domains crossings
-logic        hsync, vsync;
-logic [23:0] data;
-sync_sig sync_hsync (.nrst(nrst), .clk(clk), .in_sig(rgb_hsync), .out_sig(hsync));
-sync_sig sync_vsync (.nrst(nrst), .clk(clk), .in_sig(rgb_vsync), .out_sig(vsync));
-sync_sig #(.SIZE(32)) sync_data (
-    .nrst(nrst),
-    .clk(clk),
-    .in_sig(rgb_d),
-    .out_sig(data)
+assign r_addr = 2;
+
+always_ff @(posedge clk or negedge nrst)
+   if(~nrst) begin
+      debug_data <= '0;
+   end else begin
+      debug_data <= w_data;
+   end
+
+// RAM
+logic [15:0] w_data;
+logic [15:0] r_addr;
+logic [15:0] w_addr;
+logic [15:0] r_data;
+logic write_enable;
+logic stream_ready;
+ram_dual_port main_ram (
+   .data(w_data),
+   .rdaddress(r_addr),
+   .rdclock(clk),
+   .wraddress(w_addr),
+   .wrclock(rgb_clk),
+   .wren(write_enable),
+   .q(r_data)
 );
 
-// In this test, we read the first pixel of the image and send it in the debug
-// buffer.
-logic last_hsync, last_vsync;
-always_ff @(posedge clk or negedge nrst)
-    if (~nrst) begin
-        last_hsync <= 0;
-        last_vsync <= 0;
-        debug_data <= 32'h0;
-    end else begin
-        // Update hsync and vsync
-        last_hsync <= hsync;
-        last_vsync <= vsync;
-
-        if (~last_hsync && hsync && ~last_vsync && vsync) begin
-            debug_data[23:0] <= data;
-        end
-    end
-
-always_ff @(posedge clk)
-    pt_6 <= ~pt_6;
-
+// RGB Input
+rgb_logic #(.IMAGE_IN_RAM(16)) main_rgb_in (
+    .rgb_clk(rgb_clk),
+    .nrst(nrst),
+    .rgb(rgb_d),
+    .hsync(rgb_hsync),
+    .vsync(rgb_vsync),
+    .ram_addr(w_addr),
+    .ram_data(w_data),
+    .write_enable(write_enable),
+    .rgb_enable(rgb_enable),
+    .stream_ready(stream_ready)
+);
 
 clock_66 main_clock_66 (
     .inclk0(rgb_clk),
