@@ -39,7 +39,7 @@ set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/project_assignment.
 set_global_assignment -name SYSTEMVERILOG_FILE top.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/spi_iff.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/spi_decoder.sv
-set_global_assignment -name SYSTEMVERILOG_FILE ../../src/driver_controller.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../src/driver_controller_spi_driven.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/clock_enable.sv
 
 
