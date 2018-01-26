@@ -1,4 +1,4 @@
-module driver_controller (
+module new_driver_controller (
     input clk,
     input clk_enable,
     input nrst,
@@ -18,7 +18,6 @@ module driver_controller (
     output column_ready,
     // Tells the framebuffer module that the drivers are ready to receive data
     output driver_ready,
-    input [47:0] data_in,
 
     // Configuration input
     input [47:0] serialized_conf,
@@ -194,10 +193,9 @@ always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         shift_register_counter <= '0;
     end else if (drv_sclk) begin
-            shift_register_counter <= shift_register_counter + 1'b1;
-            if(shift_register_counter == 48) begin
-               shift_register_counter <= '0;
-            end
+        shift_register_counter <= shift_register_counter + 1'b1;
+        if(shift_register_counter == 48) begin
+           shift_register_counter <= '0;
         end
     end
 
@@ -234,8 +232,12 @@ always_comb begin
                || segment_counter == 72+5*49 || segment_counter == 72+6*49
                || segment_counter == 72+7*49 || segment_counter == 72+8*49
                ) begin
-                driver_sclk = 1'b0;
+                drv_sclk = 1'b0;
             end
+        end
+
+        default: begin
+           drv_sclk = '0;
         end
 
     endcase
@@ -253,7 +255,7 @@ always_comb begin
             * timing requirement
             */
             if(segment_counter != 0) begin
-                driver_gclk = clk_enable;
+                drv_gclk = clk_enable;
             end
        end
 
@@ -261,6 +263,10 @@ always_comb begin
             if(~stop_gclk && segment_counter != 0) begin
                 drv_gclk <= clk_enable;
             end
+        end
+
+        default: begin
+           drv_gclk = 1'b0;
         end
     endcase
 end
@@ -311,6 +317,10 @@ always_comb begin
               drv_lat = 1'b1;
           end
       end
+
+      default: begin
+         drv_lat = 1'b0;
+      end
    endcase
 end
 
@@ -318,6 +328,7 @@ end
  * drivers_sin write the LEDs data or the configuration data depending on the
  * current running state.
  */
+logic [29:0] drv_sin_tolut;
 always_comb begin
     drv_sin_tolut = '0;
     // If configurating, send config
@@ -325,12 +336,12 @@ always_comb begin
         for(int i = 0; i < 30; i++) begin
            drv_sin_tolut[i] = serialized_conf[48-shift_register_counter];
         end
-    end else if(driver_state == STREAM) begin
+    end else if(driver_state == STREAM || driver_state == WAIT_FOR_NEXT_SLICE) begin
         drv_sin_tolut = framebuffer_dat;
     end
 end
 
-drv_sin_lut ublock_lut (
+driver_sin_lut ublock_lut (
    .drv_sin_tolut(drv_sin_tolut),
    .drv_sin(drv_sin)
 );
