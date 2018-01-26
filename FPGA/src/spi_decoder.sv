@@ -27,7 +27,7 @@ module spi_decoder (
     // Mux statuses
     output [7:0] mux,
 
-    output [47:0] driver_data [30]
+    output [47:0] driver_data [29:0]
 );
 
 localparam CONFIG_COMMAND = 'hBF;
@@ -97,8 +97,8 @@ always_ff @(posedge clk or negedge nrst)
                 mux[last_cmd_read[2:0]] <= 0;
             end else if (last_cmd_len_bytes == 8
                          && last_cmd_read[63:56] == DRIVER_DATA_COMMAND) begin
-                if (last_cmd_read[55:48] < 30)
-                    driver_data[last_cmd_read[55:48]] = last_cmd_read[47:0];
+                if (last_cmd_read[55:48] < 8'd30)
+                    driver_data[last_cmd_read[52:48]] <= last_cmd_read[47:0];
             end
         end
     end
