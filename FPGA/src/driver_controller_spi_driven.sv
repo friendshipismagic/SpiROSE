@@ -1,4 +1,4 @@
-module driver_controller #(
+module driver_controller_spi_driven #(
     parameter BLANKING_TIME=72
 )(
     input clk,
@@ -25,8 +25,94 @@ module driver_controller #(
     output driver_ready,
 
     input [47:0] serialized_conf,
+    input [47:0] data_in [29:0],
     input new_configuration_ready
 );
+// UB*D0 and UB*D2
+// Red-Green
+/* verilator lint_off WIDTHCONCAT */
+localparam [15:0] [31:0] DRIVER_LUT0_RG = '{
+    3*6 ,
+    3*7 ,
+    3*9 ,
+    3*8 ,
+    3*10,
+    3*11,
+    3*13,
+    3*12,
+    3*14,
+    3*15,
+    3*1 ,
+    3*0 ,
+    3*2 ,
+    3*3 ,
+    3*5 ,
+    3*4
+};
+
+//Blue
+localparam [15:0] [31:0] DRIVER_LUT0_B = '{
+   3*8 ,
+   3*9 ,
+   3*14,
+   3*15,
+   3*12,
+   3*13,
+   3*2 ,
+   3*3 ,
+   3*0 ,
+   3*1 ,
+   3*6 ,
+   3*7 ,
+   3*4 ,
+   3*5 ,
+   3*10,
+   3*11
+};
+
+// UB*D1
+// Red-Green
+localparam [15:0] [31:0] DRIVER_LUT1_RG = '{
+   3*2 ,
+   3*3 ,
+   3*5 ,
+   3*4 ,
+   3*6 ,
+   3*7 ,
+   3*9 ,
+   3*8 ,
+   3*10,
+   3*11,
+   3*13,
+   3*12,
+   3*14,
+   3*15,
+   3*1 ,
+   3*0
+};
+
+//Blue
+localparam [15:0] [31:0] DRIVER_LUT1_B = '{
+   3*0 ,
+   3*1 ,
+   3*6 ,
+   3*7 ,
+   3*4 ,
+   3*5 ,
+   3*9 ,
+   3*11,
+   3*8 ,
+   3*10,
+   3*14,
+   3*15,
+   3*12,
+   3*13,
+   3*2 ,
+   3*3
+};
+
+/* verilator lint_on WIDTHCONCAT */
+
 
 /*
  * List of the possible states of the drivers
@@ -282,7 +368,7 @@ end
  * LATGS on STREAM state (TODO for LOD state)
  *
  * driver_lat is generated on the falling edge ofthe main clock to respect
- * the hold time after the driver clock **falling edge** see TLC5957
+ * the hold time after the driver clock **falling edge** see TLC5957 
  * datasheet page...
  */
 localparam FCWRTEN=15, READFC=11, WRTFC=5, WRTGS=1, LATGS=3, NO_LAT=0;
@@ -332,7 +418,24 @@ always_comb begin
             end
         end
         SHIFT_REGISTER: begin
-            drivers_sin = framebuffer_dat;
+           for(int i = 0; i < 30; i++) begin
+              if(i < 10) begin
+                 drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[led_idx]];
+                 if(rgb_idx == 0) begin
+                    drivers_sin[i] = data_in[i][DRIVER_LUT1_B[led_idx]];
+                 end
+              end else if(i >= 10 || i < 20) begin
+                 drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]];
+                 if(rgb_idx == 0) begin
+                    drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]];
+                 end
+              end else begin
+                 drivers_sin[i] = data_in[i][DRIVER_LUT0_B[led_idx]];
+                 if(rgb_idx == 0) begin
+                    drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[led_idx]];
+                 end
+              end
+           end
         end
         default: begin
             drivers_sin = '0;
