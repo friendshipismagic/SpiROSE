@@ -100,21 +100,20 @@ driver_sin_lut main_drv_sin_lut (
 );
 
 logic [47:0] data_in [29:0];
-driver_controller_spi #(.BLANKING_TIME(72)) main_driver_controller (
+driver_controller_spi_driven driver_controller (
     .clk(clk),
-    .clk_enable(clk_enable),
     .nrst(nrst),
-    .framebuffer_dat(framebuffer_data),
+    .clk_enable(clk_enable),
     .driver_sclk(drv_sclk),
     .driver_gclk(drv_gclk),
     .driver_lat(drv_lat),
     .drivers_sin(drv_sin_tolut),
     .position_sync(position_sync),
+    .column_ready(column_ready),
     .driver_ready(driver_ready),
     .serialized_conf(serialized_conf),
     .data_in(data_in),
-    .new_configuration_ready(new_configuration_ready),
-    .column_ready(column_ready)
+    .new_configuration_ready(new_configuration_ready)
 );
 
 column_mux main_column_mux (
