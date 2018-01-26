@@ -68,7 +68,7 @@ int sc_main(int argc, char** argv) {
     sc_trace(traceFile, mux, "mux");
     for (int i = 0; i < 30; i++)
         sc_trace(traceFile, driver_data[i],
-                 "driver_data[" + std::to_string(i) + "]");
+                 "driver_data(" + std::to_string(i) + ")");
 
     Vspi_iff dut1("spi_iff");
     dut1.clk(clk);
@@ -113,7 +113,7 @@ int sc_main(int argc, char** argv) {
     monitor.newConfigAvailable(spiConfigAvailable);
     monitor.rgbEnable(rgbEnable);
     monitor.mux(mux);
-    for (int i = 0; i < 30; i++) (*monitor.driver_data[i])(driver_data[i]);
+    for (int i = 0; i < 30; i++) monitor.driver_data[i](driver_data[i]);
 
     while (sc_time_stamp() < simulationTime) {
         if (Verilated::gotFinish()) return 1;
