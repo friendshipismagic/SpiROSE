@@ -7,14 +7,14 @@ module spi_iff(
     input  spi_mosi,
     output spi_miso,
 
-    output [55:0] cmd_read,
-    output [2:0] cmd_len_bytes,
+    output [63:0] cmd_read,
+    output [3:0] cmd_len_bytes,
     input  [47:0] cmd_write,
 
     output valid
 );
 
-logic [55:0] in_reg;
+logic [63:0] in_reg;
 logic [47:0] out_reg;
 logic [5:0] cmd_len_bits;
 

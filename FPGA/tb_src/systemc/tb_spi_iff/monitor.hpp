@@ -19,6 +19,10 @@ SC_MODULE(Monitor) {
           newConfigAvailable("new_config_available"),
           rgbEnable("rgb_enable"),
           mux("mux") {
+        driver_data.reserve(30);
+        for (int i = 0; i < driver_data.size(); i++)
+            driver_data[i] = std::make_unique<sc_in<uint64_t>>(
+                ("driver_data[" + std::to_string(i) + "]").c_str());
         SC_THREAD(runTests);
         SC_THREAD(handleSck);
         SC_THREAD(handleSs);
@@ -41,7 +45,8 @@ SC_MODULE(Monitor) {
     sc_in<uint64_t> configuration;
     sc_in<bool> newConfigAvailable;
     sc_in<bool> rgbEnable;
-    sc_in<uint64_t> mux;
+    sc_in<uint32_t> mux;
+    std::vector<std::unique_ptr<sc_in<uint64_t>>> driver_data;
 
     void sendCommand(char value);
     void handleSck();
