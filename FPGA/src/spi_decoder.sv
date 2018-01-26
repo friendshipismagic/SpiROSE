@@ -64,6 +64,10 @@ always_ff @(posedge clk or negedge nrst)
         configuration <= serialized_conf;
         new_config_available <= 1;       // This will be high for one cycle (STALL)
         rgb_enable <= 0;
+        mux <= '0;
+        for (int i=0; i<30; ++i) begin
+            driver_data[i] <= '0;
+        end
     end else begin
         new_config_available <= '0;
         if (last_valid) begin
