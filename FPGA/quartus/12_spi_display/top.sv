@@ -68,16 +68,14 @@ module Top
 logic clk, nrst;
 
 // spi_iff output signals
-logic [55:0] cmd_read;
-logic [2:0]  cmd_len_bytes;
+logic [63:0] cmd_read;
+logic [3:0]  cmd_len_bytes;
 logic [47:0] cmd_write;
 logic        cmd_valid;
 
 // spi_decoder I/O signals
 logic [15:0] rotation_data;
 logic [15:0] speed_data;
-logic [47:0] driver_conf;
-logic        driver_new_conf_available;
 logic        rgb_enable;
 logic [7:0]  mux_command;
 logic [47:0] driver_data [29:0];
@@ -91,7 +89,7 @@ logic [29:0] drivers_sin;
 logic position_sync;
 logic column_ready;
 logic driver_ready;
-logic [47:0] serialized_conf;
+logic [47:0] driver_conf;
 logic new_configuration_ready;
 
 // In this test, we assign predefined value to rotation data and
@@ -104,6 +102,13 @@ logic [7:0] mux_statuses;
 
 assign fpga_mul_a = mux_statuses & mux_command;
 assign fpga_mul_b = mux_statuses & mux_command;
+assign drv_gclk_a = driver_gclk;
+assign drv_gclk_b = driver_gclk;
+assign drv_sclk_a = driver_sclk;
+assign drv_sclk_b = driver_sclk;
+assign drv_lat_a = driver_lat;
+assign drv_lat_b = driver_lat;
+
 
 always_ff @(posedge clk)
     pt_6 <= ~pt_6;
@@ -119,6 +124,12 @@ clock_enable clock_enable (
     .clk(clk),
     .nrst(nrst),
     .clk_enable(clk_enable)
+);
+
+hall_sensor_emulator main_hs_emulator (
+    .clk(clk_enable),
+    .nrst(nrst),
+    .position_sync(position_sync)
 );
 
 spi_iff spi_iff (
@@ -147,12 +158,15 @@ spi_decoder spi_decoder (
     // FPGA state signals
     .rotation_data(rotation_data),
     .configuration(driver_conf),
-    .new_config_available(driver_new_conf_available),
+    .new_config_available(new_configuration_ready),
     .rgb_enable(rgb_enable),
     .mux(mux_command),
+    .pt(pt_23),
     .driver_data(driver_data)
 );
 
+logic [47:0] data_in [29:0];
+assign data_in[0] = 48'b111_111_000_000_000_000_000_000_000_000_000_000_000_000_000_000;
 driver_controller driver_controller (
     .clk(clk),
     .nrst(nrst),
@@ -164,9 +178,17 @@ driver_controller driver_controller (
     .position_sync(position_sync),
     .column_ready(column_ready),
     .driver_ready(driver_ready),
-    .serialized_conf(serialized_conf),
+    .serialized_conf(driver_conf),
+    .data_in(driver_data),
     .new_configuration_ready(new_configuration_ready)
 );
+
+logic [29:0] drv_sin_tolut;
+driver_sin_lut main_drv_sin_lut (
+    .drv_sin_tolut(drivers_sin),
+    .drv_sin(drv_sin)
+);
+
 
 column_mux column_mux (
     .clk(clk),

@@ -116,7 +116,7 @@ driver_sin_lut main_drv_sin_lut (
 );
 
 logic [47:0] data_in [29:0];
-assign data_in[0] = 48'b000_111_000_000_000_000_000_000_000_000_000_000_000_000_000_000;
+assign data_in[0] = 48'b100_010_001_100_010_001_100_010_001_100_010_001_100_010_001_100;
 driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),

@@ -157,9 +157,7 @@ always_ff @(posedge clk or negedge nrst)
         if (clk_enable) begin
             case(driver_state)
                 STALL: begin
-                    if (new_configuration_ready) begin
-                        driver_state <= PREPARE_CONFIG;
-                    end
+                   driver_state <= PREPARE_CONFIG;
                 end
 
                 PREPARE_CONFIG: begin
@@ -269,7 +267,7 @@ always_ff @(posedge clk or negedge nrst)
 
             if(new_configuration_ready && (driver_state == BLANKING
                || driver_state == WAIT_FOR_NEXT_SLICE
-            || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
+               || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
                 driver_state_counter <= '0;
                 driver_state <= PREPARE_CONFIG;
             end
@@ -416,9 +414,9 @@ always_comb begin
         SHIFT_REGISTER: begin
            for(int i = 0; i < 30; i++) begin
               if(i < 10) begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[led_idx]];
+                 drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[led_idx]];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT0_B[led_idx]];
+                    drivers_sin[i] = data_in[i][DRIVER_LUT1_B[led_idx]];
                  end
               end else if(i >= 10 || i < 20) begin
                  drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]];
