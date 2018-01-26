@@ -422,19 +422,19 @@ always_comb begin
         SHIFT_REGISTER: begin
            for(int i = 0; i < 30; i++) begin
               if(i < 10) begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]+rgb_idx];
+                 drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[15-led_idx]+2-rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]+rgb_idx];
+                    drivers_sin[i] = data_in[i][DRIVER_LUT0_B[15-led_idx]+2-rgb_idx];
                  end
               end else if(i >= 10 || i < 20) begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[15-led_idx]+rgb_idx];
+                 drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]+2-rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT0_B[15-led_idx]+rgb_idx];
+                    drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]+2-rgb_idx];
                  end
               end else begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]+rgb_idx];
+                 drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[15-led_idx]+2-rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]+rgb_idx];
+                    drivers_sin[i] = data_in[i][DRIVER_LUT0_B[15-led_idx]+2-rgb_idx];
                  end
               end
            end
