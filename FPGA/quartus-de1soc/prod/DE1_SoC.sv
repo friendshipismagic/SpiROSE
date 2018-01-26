@@ -84,8 +84,8 @@ logic        spi_mosi               ;
 logic        spi_miso               ;
 logic [15:0] rotation_data          ;
 logic        valid                  ;
-logic [55:0] cmd_read               ;
-logic [2:0]  cmd_len_bytes          ;
+logic [63:0] cmd_read               ;
+logic [3:0]  cmd_len_bytes          ;
 logic [47:0] cmd_write              ;
 
 

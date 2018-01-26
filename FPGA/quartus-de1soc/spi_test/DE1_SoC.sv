@@ -55,8 +55,8 @@ logic        driver_ready           ;
 logic        column_ready           ;
 logic        rgb_enable             ;
 logic        valid                  ;
-logic [55:0] cmd_read               ;
-logic [2:0]  cmd_len_bytes          ;
+logic [63:0] cmd_read               ;
+logic [3:0]  cmd_len_bytes          ;
 logic [47:0] cmd_write              ;
 
 assign position_sync = 1'b1;
