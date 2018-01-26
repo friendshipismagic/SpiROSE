@@ -368,7 +368,7 @@ end
  * LATGS on STREAM state (TODO for LOD state)
  *
  * driver_lat is generated on the falling edge ofthe main clock to respect
- * the hold time after the driver clock **falling edge** see TLC5957 
+ * the hold time after the driver clock **falling edge** see TLC5957
  * datasheet page...
  */
 localparam FCWRTEN=15, READFC=11, WRTFC=5, WRTGS=1, LATGS=3, NO_LAT=0;
@@ -420,19 +420,19 @@ always_comb begin
         SHIFT_REGISTER: begin
            for(int i = 0; i < 30; i++) begin
               if(i < 10) begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[led_idx]];
+                 drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]+rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT1_B[led_idx]];
+                    drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]+rgb_idx];
                  end
               end else if(i >= 10 || i < 20) begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]];
+                 drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[15-led_idx]+rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]];
+                    drivers_sin[i] = data_in[i][DRIVER_LUT0_B[15-led_idx]+rgb_idx];
                  end
               end else begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT0_B[led_idx]];
+                 drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]+rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[led_idx]];
+                    drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]+rgb_idx];
                  end
               end
            end
