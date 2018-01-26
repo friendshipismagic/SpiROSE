@@ -112,6 +112,47 @@ localparam [0:15] [31:0] DRIVER_LUT1_B = '{
    3*3
 };
 
+// UB*D2
+// Red-Green
+localparam [0:15] [31:0] DRIVER_LUT2_RG = '{
+   3*0 ,
+   3*1 ,
+   3*2 ,
+   3*3 ,
+   3*4 ,
+   3*5 ,
+   3*6 ,
+   3*7 ,
+   3*8 ,
+   3*9 ,
+   3*10,
+   3*11,
+   3*12,
+   3*13,
+   3*14,
+   3*15
+};
+
+//Blue
+localparam [0:15] [31:0] DRIVER_LUT2_B = '{
+   3*3 ,
+   3*2 ,
+   3*0 ,
+   3*1 ,
+   3*7 ,
+   3*6 ,
+   3*4 ,
+   3*5 ,
+   3*8 ,
+   3*10 ,
+   3*11 ,
+   3*9 ,
+   3*15 ,
+   3*14 ,
+   3*12 ,
+   3*13
+};
+
 /* verilator lint_on LITENDIAN */
 /* verilator lint_on WIDTHCONCAT */
 
@@ -426,15 +467,15 @@ always_comb begin
                  if(rgb_idx == 0) begin
                     drivers_sin[i] = data_in[i][DRIVER_LUT0_B[15-led_idx]+2-rgb_idx];
                  end
-              end else if(i >= 10 || i < 20) begin
+              end else if(i >= 10 && i < 20) begin
                  drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]+2-rgb_idx];
                  if(rgb_idx == 0) begin
                     drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]+2-rgb_idx];
                  end
               end else begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[15-led_idx]+2-rgb_idx];
+                 drivers_sin[i] = data_in[i][DRIVER_LUT2_RG[15-led_idx]+2-rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT0_B[15-led_idx]+2-rgb_idx];
+                    drivers_sin[i] = data_in[i][DRIVER_LUT2_B[15-led_idx]+2-rgb_idx];
                  end
               end
            end

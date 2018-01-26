@@ -160,7 +160,7 @@ always_ff @(posedge clk_enable or negedge nrst)
         light_pixel_index <= 0;
     end else if(position_sync) begin
         caterpillar_cnt <= caterpillar_cnt + 1'b1;
-        if(caterpillar_cnt == 256) begin
+        if(caterpillar_cnt == 4096) begin
             caterpillar_cnt <= '0;
             light_pixel_index <= light_pixel_index + 1'b1;
             if(light_pixel_index == 47) begin
