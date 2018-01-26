@@ -192,7 +192,7 @@ integer shift_register_counter;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         shift_register_counter <= '0;
-    end else if (drv_sclk) begin
+    end else if (clk_enable & ~blanking_period) begin
         shift_register_counter <= shift_register_counter + 1'b1;
         if(shift_register_counter == 48) begin
            shift_register_counter <= '0;
