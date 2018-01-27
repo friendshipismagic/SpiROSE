@@ -74,8 +74,6 @@ assign nrst = locked;
 `include "drivers_conf.svh"
 
 logic [29:0]    framebuffer_dat;
-logic           driver_sout;
-logic [4:0]     driver_sout_mux;
 logic drv_sclk;
 logic drv_gclk;
 logic drv_lat;
@@ -144,8 +142,6 @@ driver_controller main_driver_controller (
     .driver_gclk(drv_gclk),
     .driver_lat(drv_lat),
     .drivers_sin(drv_sin_tolut),
-    .driver_sout(driver_sout),
-    .driver_sout_mux(driver_sout_mux),
     .position_sync(position_sync),
     .column_ready(column_ready),
     .driver_ready(driver_ready),

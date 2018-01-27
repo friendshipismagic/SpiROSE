@@ -161,13 +161,12 @@ spi_decoder spi_decoder (
     .new_config_available(new_configuration_ready),
     .rgb_enable(rgb_enable),
     .mux(mux_command),
-    .pt(pt_23),
     .driver_data(driver_data)
 );
 
 logic [47:0] data_in [29:0];
 assign data_in[0] = 48'b111_111_000_000_000_000_000_000_000_000_000_000_000_000_000_000;
-driver_controller driver_controller (
+driver_controller_spi_driven driver_controller (
     .clk(clk),
     .nrst(nrst),
     .clk_enable(clk_enable),

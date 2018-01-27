@@ -93,45 +93,27 @@ clock_enable main_clk_enable (
     .clk_enable(clk_enable)
 );
 
-// RAM emulator module, produces a caterpillar animation
-ram_emulator main_ram_emulator (
-    .clk(clk),
-    .r_addr(ram_raddr),
-    .r_data(ram_rdata),
-    .light_pixel_index(light_pixel_index)
-);
-
-framebuffer #(.SLICES_IN_RAM(1)) main_fb (
-    .clk(clk),
-    .nrst(nrst),
-    .data(framebuffer_data),
-    .stream_ready(stream_ready),
-    .driver_ready(driver_ready),
-    .position_sync(position_sync),
-    .ram_addr(ram_raddr),
-    .ram_data(ram_rdata)
-);
-
 logic [29:0] drv_sin_tolut;
 driver_sin_lut main_drv_sin_lut (
     .drv_sin_tolut(drv_sin_tolut),
     .drv_sin(drv_sin)
 );
 
-driver_controller #(.BLANKING_TIME(72)) main_driver_controller (
+logic [47:0] data_in [29:0];
+driver_controller_spi_driven driver_controller (
     .clk(clk),
-    .clk_enable(clk_enable),
     .nrst(nrst),
-    .framebuffer_dat(framebuffer_data),
+    .clk_enable(clk_enable),
     .driver_sclk(drv_sclk),
     .driver_gclk(drv_gclk),
     .driver_lat(drv_lat),
     .drivers_sin(drv_sin_tolut),
     .position_sync(position_sync),
+    .column_ready(column_ready),
     .driver_ready(driver_ready),
     .serialized_conf(serialized_conf),
-    .new_configuration_ready(new_configuration_ready),
-    .column_ready(column_ready)
+    .data_in(data_in),
+    .new_configuration_ready(new_configuration_ready)
 );
 
 column_mux main_column_mux (
@@ -166,16 +148,22 @@ always_ff @(posedge clk_enable or negedge nrst)
 
 integer caterpillar_cnt;
 integer light_pixel_index;
+always_comb begin
+    for(int i = 0; i < 30; i++) begin
+        data_in[i] = 1'b1 << light_pixel_index;
+    end
+end
+
 always_ff @(posedge clk_enable or negedge nrst)
     if(~nrst) begin
         caterpillar_cnt <= '0;
         light_pixel_index <= 0;
     end else if(position_sync) begin
         caterpillar_cnt <= caterpillar_cnt + 1'b1;
-        if(caterpillar_cnt == 256) begin
+        if(caterpillar_cnt == 4096) begin
             caterpillar_cnt <= '0;
             light_pixel_index <= light_pixel_index + 1'b1;
-            if(light_pixel_index == 40*48) begin
+            if(light_pixel_index == 47) begin
                 light_pixel_index <= '0;
             end
         end

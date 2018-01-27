@@ -25,7 +25,7 @@
 
 set_global_assignment -name FAMILY "Cyclone III"
 set_global_assignment -name DEVICE EP3C40Q240C8
-set_global_assignment -name TOP_LEVEL_ENTITY spi_test
+set_global_assignment -name TOP_LEVEL_ENTITY Top
 set_global_assignment -name ORIGINAL_QUARTUS_VERSION 13.1
 set_global_assignment -name PROJECT_CREATION_TIME_DATE "16:48:45  JANUARY 23, 2018"
 set_global_assignment -name LAST_QUARTUS_VERSION 13.1
@@ -36,7 +36,7 @@ set_global_assignment -name SEARCH_PATH ../../src
 
 set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/project_assignment.tcl
 
-set_global_assignment -name SYSTEMVERILOG_FILE spi_test.sv
+set_global_assignment -name SYSTEMVERILOG_FILE top.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/spi_iff.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/spi_decoder.sv
 
