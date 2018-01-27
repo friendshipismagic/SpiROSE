@@ -32,125 +32,35 @@ module driver_controller_spi_driven #(
 // Red-Green
 /* verilator lint_off WIDTHCONCAT */
 /* verilator lint_off LITENDIAN */
-localparam [0:15] [31:0] DRIVER_LUT0_RG = '{
-    3*6 ,
-    3*7 ,
-    3*9 ,
-    3*8 ,
-    3*10,
-    3*11,
-    3*13,
-    3*12,
-    3*14,
-    3*15,
-    3*1 ,
-    3*0 ,
-    3*2 ,
-    3*3 ,
-    3*5 ,
-    3*4
+localparam integer DRIVER_LUT0_RG [0:15] = '{
+   6 , 7 , 9 , 8 , 10, 11, 13, 12, 14, 15, 1 , 0 , 2 , 3 , 5 , 4
 };
 
 //Blue
-localparam [0:15] [31:0] DRIVER_LUT0_B = '{
-   3*8 ,
-   3*9 ,
-   3*14,
-   3*15,
-   3*12,
-   3*13,
-   3*2 ,
-   3*3 ,
-   3*0 ,
-   3*1 ,
-   3*6 ,
-   3*7 ,
-   3*4 ,
-   3*5 ,
-   3*10,
-   3*11
+localparam integer DRIVER_LUT0_B [0:15]= '{
+   8 , 9 , 14, 15, 12, 13, 2 , 3 , 0 , 1 , 6 , 7 , 4 , 5 , 10, 11
 };
 
 // UB*D1
 // Red-Green
-localparam [0:15] [31:0] DRIVER_LUT1_RG = '{
-   3*2 ,
-   3*3 ,
-   3*5 ,
-   3*4 ,
-   3*6 ,
-   3*7 ,
-   3*9 ,
-   3*8 ,
-   3*10,
-   3*11,
-   3*13,
-   3*12,
-   3*14,
-   3*15,
-   3*1 ,
-   3*0
+localparam integer DRIVER_LUT1_RG [0:15] = '{
+   2 , 3 , 5 , 4 , 6 , 7 , 9 , 8 , 10, 11, 13, 12, 14, 15, 1 , 0
 };
 
 //Blue
-localparam [0:15] [31:0] DRIVER_LUT1_B = '{
-   3*0 ,
-   3*1 ,
-   3*6 ,
-   3*7 ,
-   3*4 ,
-   3*5 ,
-   3*9 ,
-   3*11,
-   3*8 ,
-   3*10,
-   3*14,
-   3*15,
-   3*12,
-   3*13,
-   3*2 ,
-   3*3
+localparam integer DRIVER_LUT1_B [0:15] = '{
+   0 , 1 , 6 , 7 , 4 , 5 , 9 , 11, 8 , 10, 14, 15, 12, 13, 2 , 3
 };
 
 // UB*D2
 // Red-Green
-localparam [0:15] [31:0] DRIVER_LUT2_RG = '{
-   3*0 ,
-   3*1 ,
-   3*2 ,
-   3*3 ,
-   3*4 ,
-   3*5 ,
-   3*6 ,
-   3*7 ,
-   3*8 ,
-   3*9 ,
-   3*10,
-   3*11,
-   3*12,
-   3*13,
-   3*14,
-   3*15
+localparam integer DRIVER_LUT2_RG [0:15] = '{
+    2 ,3 ,4 ,5 ,6 ,7 ,8 ,9 ,10 ,11 ,12 ,13 ,14 ,15, 0, 1
 };
 
-//Blue
-localparam [0:15] [31:0] DRIVER_LUT2_B = '{
-   3*3 ,
-   3*2 ,
-   3*0 ,
-   3*1 ,
-   3*7 ,
-   3*6 ,
-   3*4 ,
-   3*5 ,
-   3*8 ,
-   3*10 ,
-   3*11 ,
-   3*9 ,
-   3*15 ,
-   3*14 ,
-   3*12 ,
-   3*13
+// Blue
+localparam integer DRIVER_LUT2_B [0:15] = '{
+    1, 0, 6, 7, 5, 4, 8, 11, 9, 10, 14, 15, 13, 12, 2, 3
 };
 
 /* verilator lint_on LITENDIAN */
@@ -461,24 +371,26 @@ always_comb begin
             end
         end
         SHIFT_REGISTER: begin
-           for(int i = 0; i < 30; i++) begin
-              if(i < 10) begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT0_RG[15-led_idx]+2-rgb_idx];
+            for(int i = 0; i < 10; i++) begin
+                 drivers_sin[i] = data_in[i][3*DRIVER_LUT0_RG[15-led_idx]+2-rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT0_B[15-led_idx]+2-rgb_idx];
+                    drivers_sin[i] = data_in[i][3*DRIVER_LUT0_B[15-led_idx]+2-rgb_idx];
                  end
-              end else if(i >= 10 && i < 20) begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT1_RG[15-led_idx]+2-rgb_idx];
+            end
+
+            for(int i=10; i<20; i++) begin
+                 drivers_sin[i] = data_in[i][3*DRIVER_LUT1_RG[15-led_idx]+2-rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT1_B[15-led_idx]+2-rgb_idx];
+                    drivers_sin[i] = data_in[i][3*DRIVER_LUT1_B[15-led_idx]+2-rgb_idx];
                  end
-              end else begin
-                 drivers_sin[i] = data_in[i][DRIVER_LUT2_RG[15-led_idx]+2-rgb_idx];
+            end
+
+            for(int i=20; i<30; i++) begin
+                 drivers_sin[i] = data_in[i][3*DRIVER_LUT2_RG[15-led_idx]+2-rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][DRIVER_LUT2_B[15-led_idx]+2-rgb_idx];
+                    drivers_sin[i] = data_in[i][3*DRIVER_LUT2_B[15-led_idx] + 2-rgb_idx];
                  end
-              end
-           end
+             end
         end
         default: begin
             drivers_sin = '0;
