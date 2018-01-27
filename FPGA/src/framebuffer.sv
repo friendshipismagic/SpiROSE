@@ -2,14 +2,13 @@ module framebuffer #(
     parameter RAM_ADDR_WIDTH=32,
     parameter RAM_DATA_WIDTH=16,
     parameter RAM_BASE=0,
-    parameter POKER_MODE=9,
     parameter SLICES_IN_RAM=18
 )(
     input clk,
     input nrst,
 
     // Data signal for the driver main controller
-    output [29:0] data,
+    output [47:0] data_out [29:0],
 
     /*
      * Sync signal indicating the beginning of the stream. Since we have to
@@ -31,6 +30,7 @@ module framebuffer #(
     input  [RAM_DATA_WIDTH-1:0] ram_data
 );
 
+localparam POKER_MODE = 9;
 localparam MULTIPLEXING = 8;
 localparam LED_PER_DRIVER = 16;
 localparam BUFF_SIZE = 15*LED_PER_DRIVER;
@@ -96,7 +96,7 @@ localparam [2:0] [15:0] COLOR_BASE = '{0,6,11};
  *   as said above they are facing each other.
  */
 /* verilator lint_off LITENDIAN */
-localparam [0:29] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
+localparam integer DRIVER_BASE [0:29] = '{
     0 + 0*5*LED_PER_DRIVER,
     0 + 0*5*LED_PER_DRIVER,
     1 + 0*5*LED_PER_DRIVER,
@@ -128,101 +128,6 @@ localparam [0:29] [BUFF_SIZE_LOG-1:0] DRIVER_BASE = '{
     4 + 2*5*LED_PER_DRIVER,
     4 + 2*5*LED_PER_DRIVER
 };
-
-/*
- * Drivers' LUT.
- *
- * There are two types of driver and for each one a LUT for red and green, and
- * a LUT for blue. Drivers 1 to 20 are part of group 1, drivers 21 to 30 are
- * part of group 0.
- *
- * If a driver starts at address n, his first voxel is at address n, the second
- * one is at address n+5 because of the buffers' layout described above, hence
- * we multiply the index by 5 in the following LUTs.
- */
-
-// UB*D0 and UB*D2
-// Red-Green
-localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_RG = '{
-    5*6 ,
-    5*7 ,
-    5*9 ,
-    5*8 ,
-    5*10,
-    5*11,
-    5*13,
-    5*12,
-    5*14,
-    5*15,
-    5*1 ,
-    5*0 ,
-    5*2 ,
-    5*3 ,
-    5*5 ,
-    5*4
-};
-
-//Blue
-localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT0_B = '{
-    5*8 ,
-    5*9 ,
-    5*14,
-    5*15,
-    5*12,
-    5*13,
-    5*2 ,
-    5*3 ,
-    5*0 ,
-    5*1 ,
-    5*6 ,
-    5*7 ,
-    5*4 ,
-    5*5 ,
-    5*10,
-    5*11
-};
-
-// UB*D1
-// Red-Green
-localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_RG = '{
-    5*2 ,
-    5*3 ,
-    5*5 ,
-    5*4 ,
-    5*6 ,
-    5*7 ,
-    5*9 ,
-    5*8 ,
-    5*10,
-    5*11,
-    5*13,
-    5*12,
-    5*14,
-    5*15,
-    5*1 ,
-    5*0
-};
-
-//Blue
-localparam [0:15] [BUFF_SIZE_LOG-1:0] DRIVER_LUT1_B = '{
-    5*0 ,
-    5*1 ,
-    5*6 ,
-    5*7 ,
-    5*4 ,
-    5*5 ,
-    5*9 ,
-    5*11,
-    5*8 ,
-    5*10,
-    5*14,
-    5*15,
-    5*12,
-    5*13,
-    5*2 ,
-    5*3
-};
-
 /* verilator lint_on LITENDIAN */
 
 /*
@@ -240,28 +145,18 @@ logic current_buffer;
 integer write_idx;
 // The column we are currently sending (relatively to a driver)
 integer mul_idx;
-// The led we are currently sending data to
-integer led_idx;
 // The current bit to send to the driver main controller
 integer bit_idx;
-// The color (red green or blue) we are currently sending
-integer rgb_idx;
 
-// The three following logics help to compute the correct voxel and bit address
-/* verilator lint_off UNUSED */
-integer color_addr;
-/* verilator lint_on UNUSED */
-logic [29:0] [BUFF_SIZE_LOG-1:0] voxel_addr;
 integer color_bit_idx;
-// Indicates that we have written a whole slice in the buffer
-logic has_reached_end;
 // Start address of the next image to display
 integer image_start_addr;
 // Indicates which slice we need to read from the ram
 integer slice_cnt;
 // Indicates that we have sent a column, so we need to fill a new buffer
 logic column_sent;
-
+// Indicates that we have written a whole slice in the buffer
+logic has_reached_end;
 // State entered by the framebuffer when it has sent the whole slice
 logic wait_for_next_slice;
 
@@ -288,133 +183,79 @@ always_ff @(posedge clk or negedge nrst)
                 end else begin
                     buffer2[write_idx] <= ram_data;
                 end
-            // We have sent all data so we fill a new buffer
-            end else if(column_sent) begin
-                // We will fill the new buffer with the next column
-                ram_addr <= image_start_addr + 32'(mul_idx);
-                write_idx <= '0;
-            end
-        //end
+        end else if(column_sent) begin
+            /*
+             * We have sent all data so we fill a new buffer
+             * We will fill the new buffer with the next column
+             */
+            ram_addr <= image_start_addr + 32'(mul_idx);
+            write_idx <= '0;
+        end
     end else begin
         write_idx <= '0;
         ram_addr <= RAM_BASE;
     end
 
 /*
- * There are two types of driver and for each one a LUT for red and green, and
- * a LUT for blue. Drivers 1 to 20 are part of group 1, drivers 21 to 30 are
- * part of group 0. rgb_idx == 0 means that we are sending blue color.
- */
-always_comb begin
-    for(int i = 0; i < 30; ++i) begin
-        if(i < 10 && i >= 20) begin
-            voxel_addr[i] = (rgb_idx == 0) ? DRIVER_LUT0_B[led_idx]
-                                           : DRIVER_LUT0_RG[led_idx];
-        end else begin
-            voxel_addr[i] = (rgb_idx == 0) ? DRIVER_LUT1_B[led_idx]
-                                           : DRIVER_LUT1_RG[led_idx];
-        end
-    end
-end
-
-/*
  * The color_bit_idx goes from 4 to 0, thus if we add the base address for the
  * green color for instance we get bits 9 to 5.
  */
 assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
-assign color_addr = color_bit_idx + 32'(COLOR_BASE[rgb_idx]);
 
-always_ff @(posedge clk or negedge nrst)
-    if(~nrst) begin
-        data <= '0;
-    end else begin
-        /*
-         * Since we only have 16 bit per led, but the poker mode ask for 27
-         * bits, we have to pad with 0.
-         */
-        data <= '0;
-        /*
-         * If we haven't sent 16 bit yet we don't pad with 0.
-         * bit_idx > 3 means that we don't send the 4 first LSB.
-         */
-        if(stream_ready && driver_ready && bit_idx > 3) begin
-            for(int i = 0; i < 30; ++i) begin
+always_comb
+    for(int i = 0; i < 30; ++i) begin
+        data_out[i] = '0;
+        if(bit_idx > 3) begin
+            for(int led = 0; led < 16; ++led) begin
+                data_out[i][3*led]   = buffer1[DRIVER_BASE[i]+5*led][0  + color_bit_idx];
+                data_out[i][3*led+1] = buffer1[DRIVER_BASE[i]+5*led][6  + color_bit_idx];
+                data_out[i][3*led+2] = buffer1[DRIVER_BASE[i]+5*led][11 + color_bit_idx];
                 if(current_buffer) begin
-                    data[i] <= buffer2[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
-                end else begin
-                    data[i] <= buffer1[DRIVER_BASE[i] + voxel_addr[i]][color_addr];
+                    data_out[i][3*led]   = buffer2[DRIVER_BASE[i]+5*led][0  + color_bit_idx];
+                    data_out[i][3*led+1] = buffer2[DRIVER_BASE[i]+5*led][6  + color_bit_idx];
+                    data_out[i][3*led+2] = buffer2[DRIVER_BASE[i]+5*led][11 + color_bit_idx];
                 end
             end
         end
     end
 
 // column_sent indicates that we need to fill a new buffer
-always_ff @(posedge clk or negedge nrst)
-    if(~nrst) begin
-        column_sent <= '0;
-    end else begin
-        column_sent <= driver_ready && rgb_idx == 2
-                                    && led_idx == 0
-                                    && bit_idx == 0;
-    end
+assign column_sent = driver_ready && bit_idx == 0;
 
 /*
  * Generate counters to send the right data.
- *
- * - mul_idx is the current column
- * - led_idx is the current led
- * - bit_idx is the current bit
- * - rgb_idx is the current color
- *
- * In poker mode we send the MSB of each led first, thus bit_idx is decreased
- * every 16 cycles. When it reaches 0 we change the current column.
  */
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
-        rgb_idx <= '0;
         mul_idx <= '0;
         bit_idx <= POKER_MODE-1;
-        led_idx <= LED_PER_DRIVER-1;
         current_buffer <= '0;
         wait_for_next_slice <= 1'b1;
         slice_cnt <= '0;
     end else if(stream_ready) begin
         if(wait_for_next_slice) begin
-             rgb_idx <= '0;
              mul_idx <= '0;
              bit_idx <= POKER_MODE-1;
-             led_idx <= LED_PER_DRIVER-1;
              current_buffer <= '0;
              wait_for_next_slice <= ~position_sync;
          end else if(driver_ready) begin
-             rgb_idx <= rgb_idx + 1'b1;
-             // We have sent the three colors, time to go to the next led
-             if(rgb_idx == 2) begin
-                 rgb_idx <= '0;
-                 led_idx <= led_idx - 1'b1;
-                 // We have sent the right bit for each leds in the column
-                 if(led_idx == 0) begin
-                     led_idx <= LED_PER_DRIVER-1;
-                     bit_idx <= bit_idx - 1'b1;
-                     // We have sent all the bits for each led
-                     if(bit_idx == 0) begin
-                         bit_idx <= POKER_MODE-1;
-                         // Go to next column, swap buffers
-                         mul_idx <= mul_idx + 1'b1;
-                         current_buffer <= ~current_buffer;
-                         // We have sent the whole slice
-                         if(mul_idx == MULTIPLEXING-1) begin
-                             mul_idx <= '0;
-                             wait_for_next_slice <= 1'b1;
-                             /*
-                              * Count the number of slices read so far, so we
-                              * assert the correct ram address.
-                              */
-                             slice_cnt <= slice_cnt + 1'b1;
-                             if(slice_cnt == SLICES_IN_RAM) begin
-                                 slice_cnt <= 0;
-                             end
-                         end
+             bit_idx <= bit_idx - 1'b1;
+             if(bit_idx == 0) begin
+                 bit_idx <= POKER_MODE-1;
+                 // Go to next column, swap buffers
+                 mul_idx <= mul_idx + 1'b1;
+                 current_buffer <= ~current_buffer;
+                 // We have sent the whole slice
+                 if(mul_idx == MULTIPLEXING-1) begin
+                     mul_idx <= '0;
+                     wait_for_next_slice <= 1'b1;
+                     /*
+                      * Count the number of slices read so far, so we
+                      * assert the correct ram address.
+                      */
+                     slice_cnt <= slice_cnt + 1'b1;
+                     if(slice_cnt == SLICES_IN_RAM) begin
+                         slice_cnt <= 0;
                      end
                  end
              end
