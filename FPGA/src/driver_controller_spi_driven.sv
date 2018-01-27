@@ -398,7 +398,7 @@ always_comb begin
     endcase
 end
 
-assign driver_ready = driver_state == SHIFT_REGISTER && clk_enable;
+assign driver_ready = driver_state == PAUSE_SCLK && clk_enable;
 assign column_ready = (driver_state == SHIFT_REGISTER &&  wrtgs_cnt == 9 && driver_state_counter == 47)
                        || (driver_state == WAIT_FOR_NEXT_SLICE && driver_state_counter == 512);
 

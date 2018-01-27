@@ -200,7 +200,7 @@ always_ff @(posedge clk or negedge nrst)
  * The color_bit_idx goes from 4 to 0, thus if we add the base address for the
  * green color for instance we get bits 9 to 5.
  */
-assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
+assign color_bit_idx = (bit_idx > 2) ? bit_idx - 3 : 0;
 
 always_comb
     for(int i = 0; i < 30; ++i) begin
