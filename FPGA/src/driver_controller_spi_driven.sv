@@ -112,6 +112,7 @@ always_ff @(posedge clk or negedge nrst)
         mux_counter <= '0;
         rgb_idx <= '0;
         led_idx <= '0;
+        driver_ready <= '0;
     end else begin
         if (clk_enable) begin
             case(driver_state)
@@ -184,6 +185,7 @@ always_ff @(posedge clk or negedge nrst)
                    driver_state_counter <= driver_state_counter + 1'b1;
                    if(driver_state_counter == 47) begin
                       driver_state_counter <= '0;
+                      driver_ready <= '1;
                       wrtgs_cnt <= wrtgs_cnt + 1'b1;
                       driver_state <= PAUSE_SCLK;
                       if(wrtgs_cnt == 9) begin
@@ -221,6 +223,7 @@ always_ff @(posedge clk or negedge nrst)
                 default: begin
                     driver_state <= STALL;
                     driver_state_counter <= '0;
+                    driver_ready <= '0;
                 end
             endcase
 
@@ -398,8 +401,9 @@ always_comb begin
     endcase
 end
 
-assign driver_ready = driver_state == PAUSE_SCLK && clk_enable;
-assign column_ready = (driver_state == SHIFT_REGISTER &&  wrtgs_cnt == 9 && driver_state_counter == 47)
-                       || (driver_state == WAIT_FOR_NEXT_SLICE && driver_state_counter == 512);
+assign column_ready = (driver_state == SHIFT_REGISTER && wrtgs_cnt == 9
+                       && driver_state_counter == 47)
+                       || (driver_state == WAIT_FOR_NEXT_SLICE
+                       && driver_state_counter == 512);
 
 endmodule

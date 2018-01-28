@@ -222,7 +222,6 @@ always_comb
 /*
  * Generate counters to send the right data.
  */
-logic first_driver_ready;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         mul_idx <= '0;
@@ -231,7 +230,6 @@ always_ff @(posedge clk or negedge nrst)
         wait_for_next_slice <= 1'b1;
         slice_cnt <= '0;
         column_sent <= '0;
-        first_driver_ready <= '0;
     end else if(stream_ready) begin
         column_sent <= '0;
         if(wait_for_next_slice) begin
@@ -239,10 +237,7 @@ always_ff @(posedge clk or negedge nrst)
              bit_idx <= POKER_MODE-1;
              current_buffer <= '0;
              wait_for_next_slice <= ~position_sync;
-             first_driver_ready <= '0;
-         end else if (driver_ready && ~first_driver_ready) begin
-             first_driver_ready <= '1;
-         end else if(driver_ready && first_driver_ready) begin
+         end else if(driver_ready) begin
              bit_idx <= bit_idx - 1'b1;
              if(bit_idx == 0) begin
                  bit_idx <= POKER_MODE-1;
