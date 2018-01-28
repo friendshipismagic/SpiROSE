@@ -115,6 +115,7 @@ always_ff @(posedge clk or negedge nrst)
         driver_ready <= '0;
     end else begin
         if (clk_enable) begin
+            driver_ready <= '0;
             case(driver_state)
                 STALL: begin
                    driver_state <= PREPARE_CONFIG;
@@ -188,7 +189,7 @@ always_ff @(posedge clk or negedge nrst)
                       driver_ready <= '1;
                       wrtgs_cnt <= wrtgs_cnt + 1'b1;
                       driver_state <= PAUSE_SCLK;
-                      if(wrtgs_cnt == 9) begin
+                      if(wrtgs_cnt == 8) begin
                          wrtgs_cnt <= 0;
                          mux_counter <= mux_counter + 1'b1;
                          driver_state <= BLANKING;
@@ -223,7 +224,6 @@ always_ff @(posedge clk or negedge nrst)
                 default: begin
                     driver_state <= STALL;
                     driver_state_counter <= '0;
-                    driver_ready <= '0;
                 end
             endcase
 
