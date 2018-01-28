@@ -188,7 +188,7 @@ always_ff @(posedge clk or negedge nrst)
              * We have sent all data so we fill a new buffer
              * We will fill the new buffer with the next column
              */
-            ram_addr <= image_start_addr + 32'(mul_idx);
+            ram_addr <= image_start_addr + mul_idx;
             write_idx <= '0;
         end
     end else begin
@@ -200,7 +200,7 @@ always_ff @(posedge clk or negedge nrst)
  * The color_bit_idx goes from 4 to 0, thus if we add the base address for the
  * green color for instance we get bits 9 to 5.
  */
-assign color_bit_idx = (bit_idx > 2) ? bit_idx - 3 : 0;
+assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
 
 always_comb
     for(int i = 0; i < 30; ++i) begin
@@ -219,12 +219,10 @@ always_comb
         end
     end
 
-// column_sent indicates that we need to fill a new buffer
-assign column_sent = driver_ready && bit_idx == 0;
-
 /*
  * Generate counters to send the right data.
  */
+logic first_driver_ready;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         mul_idx <= '0;
@@ -232,19 +230,26 @@ always_ff @(posedge clk or negedge nrst)
         current_buffer <= '0;
         wait_for_next_slice <= 1'b1;
         slice_cnt <= '0;
+        column_sent <= '0;
+        first_driver_ready <= '0;
     end else if(stream_ready) begin
+        column_sent <= '0;
         if(wait_for_next_slice) begin
              mul_idx <= '0;
              bit_idx <= POKER_MODE-1;
              current_buffer <= '0;
              wait_for_next_slice <= ~position_sync;
-         end else if(driver_ready) begin
+             first_driver_ready <= '0;
+         end else if (driver_ready && ~first_driver_ready) begin
+             first_driver_ready <= '1;
+         end else if(driver_ready && first_driver_ready) begin
              bit_idx <= bit_idx - 1'b1;
              if(bit_idx == 0) begin
                  bit_idx <= POKER_MODE-1;
                  // Go to next column, swap buffers
                  mul_idx <= mul_idx + 1'b1;
                  current_buffer <= ~current_buffer;
+                 column_sent <= 1;
                  // We have sent the whole slice
                  if(mul_idx == MULTIPLEXING-1) begin
                      mul_idx <= '0;
@@ -254,7 +259,7 @@ always_ff @(posedge clk or negedge nrst)
                       * assert the correct ram address.
                       */
                      slice_cnt <= slice_cnt + 1'b1;
-                     if(slice_cnt == SLICES_IN_RAM) begin
+                     if(slice_cnt == SLICES_IN_RAM-1) begin
                          slice_cnt <= 0;
                      end
                  end
