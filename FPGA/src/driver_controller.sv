@@ -185,7 +185,7 @@ always_ff @(posedge clk or negedge nrst)
                     if(gclk_cnt == 512) begin
                         driver_state <= BLANKING;
                         if(should_send_config) begin
-                            driver_state = PREPARE_CONFIG;
+                            driver_state <= PREPARE_CONFIG;
                         end
                     end
                 end
@@ -336,7 +336,7 @@ always_ff @(posedge clk or negedge nrst)
     end else begin
         mux_out <= 8'b1000_0000;
         if(mux_counter > 0) begin
-            mux_out = 1'b1 << (mux_counter - 1);
+            mux_out <= 1'b1 << (mux_counter - 1);
         end
     end
 

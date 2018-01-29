@@ -31,7 +31,7 @@ module spi_decoder (
     output [431:0] debug_driver,
 
     // Signals that the topmodule should use debugging data signals from the spi_decoder
-    logic manage
+    output manage
 );
 
 localparam CONFIG_COMMAND = 'hBF;

@@ -76,20 +76,24 @@ logic        cmd_valid;
 logic [15:0] rotation_data;
 logic [15:0] speed_data;
 logic        rgb_enable;
-logic [7:0]  mux_command;
 
 // driver_controller signals
 logic clk_enable;
+logic [431:0] driver_data [14:0];
 logic driver_sclk;
 logic driver_gclk;
 logic driver_lat;
 logic [29:0] drivers_sin;
 logic SOF;
 logic EOC;
-logic [431:0] driver_data [14:0];
 logic [47:0] driver_conf;
 logic start_config;
 logic end_config;
+
+// Spi debug signals
+logic spi_manage;
+logic [7:0] spi_mux_state;
+logic [431:0] spi_debug_driver;
 
 // In this test, we assign predefined value to rotation data and
 // check that SPI I/O is sending it back when asked
@@ -99,8 +103,8 @@ assign speed_data = 'hDEAD;
 // Column mux signals
 logic [7:0] mux_out;
 
-assign fpga_mul_a = mux_out & mux_command;
-assign fpga_mul_b = mux_out & mux_command;
+assign fpga_mul_a = spi_manage ? mux_out : spi_mux_state;
+assign fpga_mul_b = spi_manage ? mux_out : spi_mux_state;
 assign drv_gclk_a = driver_gclk;
 assign drv_gclk_b = driver_gclk;
 assign drv_sclk_a = driver_sclk;
@@ -132,12 +136,12 @@ hall_sensor_emulator main_hs_emulator (
 spi_iff spi_iff (
     .clk(clk),
     .nrst(nrst),
-    // SPI I/O signals
+    // SPI physical interface signals
     .spi_clk(som_sclk),
     .spi_ss(som_cs),
     .spi_mosi(som_mosi),
     .spi_miso(som_miso),
-    // Data signals
+    // Data signals to SPI decoder
     .data_mosi(data_mosi),
     .data_miso(data_miso),
     .data_len_bytes(data_len_bytes),
@@ -147,19 +151,31 @@ spi_iff spi_iff (
 spi_decoder spi_decoder (
     .clk(clk),
     .nrst(nrst),
-    // SPI output signals
+    // Data signals from spi_iff
     .data_mosi(data_mosi),
     .data_miso(data_miso),
     .data_len_bytes(data_len_bytes),
     .valid(cmd_valid),
-    // FPGA state signals
+    // Hall sensor effect signal
     .rotation_data(rotation_data),
+    .speed_data(speed_data),
+    // Driver controller signal
     .configuration(driver_conf),
     .new_config_available(start_config),
+    // Display control to rgb_logic
     .rgb_enable(rgb_enable),
-    .mux(mux_command),
-    .driver_data(driver_data)
+    // 432bit signal with full column driver data
+    .debug_driver(spi_debug_driver),
+    // Managing signals for debugging mux
+    .manage(spi_manage),
+    .mux(spi_mux_state)
 );
+
+always_comb begin
+    for(int i=0; i<14; ++i) begin
+        driver_data[i] = spi_debug_driver;
+    end
+end
 
 driver_controller driver_controller (
     .clk(clk),
