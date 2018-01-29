@@ -189,7 +189,7 @@ always_ff @(posedge clk or negedge nrst)
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         slice_cnt <= '0;
-    end else if(mul_idx == 7 && column_ready) begin
+    end else if(mul_idx == 8 && column_ready) begin
         /*
          * Count the number of slices read so far, so we
          * assert the correct ram address.
@@ -212,7 +212,7 @@ always_ff @(posedge clk or negedge nrst)
         mul_idx <= '0;
     end else if(column_ready) begin
         mul_idx <= mul_idx + 1'b1;
-        if(mul_idx == 7) begin
+        if(mul_idx == 8) begin
             mul_idx <= '0;
         end
     end
