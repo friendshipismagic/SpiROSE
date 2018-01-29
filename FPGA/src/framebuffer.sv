@@ -1,7 +1,4 @@
 module framebuffer #(
-    parameter RAM_ADDR_WIDTH=32,
-    parameter RAM_DATA_WIDTH=16,
-    parameter RAM_BASE=0,
     parameter SLICES_IN_RAM=18
 )(
     input clk,
@@ -22,19 +19,21 @@ module framebuffer #(
      * meaning that it has been configured and is not in a blanking cycle.
      */
     input driver_ready,
+    /*
+     * Sync signal indicating that the driver has sent the data for a whole
+     * column, so here we neet to swap our buffers.
+     */
+    input column_ready,
     // Position sync signal, indicates that the position has changed
-    input position_sync,
 
     // Ram access
-    output [RAM_ADDR_WIDTH-1:0] ram_addr,
-    input  [RAM_DATA_WIDTH-1:0] ram_data
+    output [31:0] ram_addr,
+    input  [15:0] ram_data
 );
 
 localparam POKER_MODE = 9;
-localparam MULTIPLEXING = 8;
 localparam LED_PER_DRIVER = 16;
 localparam BUFF_SIZE = 15*LED_PER_DRIVER;
-localparam BUFF_SIZE_LOG = $clog2(BUFF_SIZE);
 
 /*
  * As explained below, the drivers of one panel faces the ones on the other
@@ -43,8 +42,6 @@ localparam BUFF_SIZE_LOG = $clog2(BUFF_SIZE);
 localparam ROW_SIZE = 40;
 localparam COLUMN_SIZE = 48;
 localparam IMAGE_SIZE = ROW_SIZE*COLUMN_SIZE;
-// We use 15-bits rgb : 5 bits red, 5 bits green, 5 bit blue.
-localparam [2:0] [15:0] COLOR_BASE = '{0,6,11};
 /*
  * The drivers are layout as follow (driver 1 and 2 are at the smae place, so
  * they should receive the same data):
@@ -136,11 +133,11 @@ localparam integer DRIVER_BASE [0:29] = '{
  * for each driver, hence we have to swap buffer when we change the
  * multiplexing.
  */
-logic [RAM_DATA_WIDTH-1:0] buffer1 [BUFF_SIZE-1:0];
-logic [RAM_DATA_WIDTH-1:0] buffer2 [BUFF_SIZE-1:0];
+logic [BUFF_SIZE-1:0][15:0] buffer1;
+logic [BUFF_SIZE-1:0][15:0] buffer2;
 
 // The index of the buffer we are currently using
-logic current_buffer;
+logic write_buffer_is_1;
 // The write index of the buffer reading the ram
 integer write_idx;
 // The column we are currently sending (relatively to a driver)
@@ -153,12 +150,8 @@ integer color_bit_idx;
 integer image_start_addr;
 // Indicates which slice we need to read from the ram
 integer slice_cnt;
-// Indicates that we have sent a column, so we need to fill a new buffer
-logic column_sent;
 // Indicates that we have written a whole slice in the buffer
 logic has_reached_end;
-// State entered by the framebuffer when it has sent the whole slice
-logic wait_for_next_slice;
 
 /*
  * Read ram to fill the reading buffer.
@@ -168,22 +161,22 @@ logic wait_for_next_slice;
  * which is part of driver j+2.
  */
 assign has_reached_end = write_idx == BUFF_SIZE;
-assign image_start_addr = slice_cnt*IMAGE_SIZE + RAM_BASE;
+assign image_start_addr = slice_cnt*IMAGE_SIZE ;
 
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
-        ram_addr <= RAM_BASE;
+        ram_addr <= '0;
     end else if(stream_ready) begin
         if(~has_reached_end) begin
-                ram_addr <= ram_addr + MULTIPLEXING;
-                write_idx <= write_idx + 1'b1;
-                if(current_buffer) begin
-                    buffer1[write_idx] <= ram_data;
-                end else begin
-                    buffer2[write_idx] <= ram_data;
-                end
-        end else if(column_sent) begin
+            ram_addr <= ram_addr + 8;
+            write_idx <= write_idx + 1'b1;
+            if(write_buffer_is_1) begin
+                buffer1 <= {ram_data, buffer1[BUFF_SIZE-1:1]};
+            end else begin
+                buffer2 <= {ram_data, buffer2[BUFF_SIZE-1:1]};
+            end
+        end else if(column_ready) begin
             /*
              * We have sent all data so we fill a new buffer
              * We will fill the new buffer with the next column
@@ -193,7 +186,7 @@ always_ff @(posedge clk or negedge nrst)
         end
     end else begin
         write_idx <= '0;
-        ram_addr <= RAM_BASE;
+        ram_addr <= '0;
     end
 
 /*
@@ -210,7 +203,7 @@ always_comb
                 data_out[i][3*led]   = buffer1[DRIVER_BASE[i]+5*led][0  + color_bit_idx];
                 data_out[i][3*led+1] = buffer1[DRIVER_BASE[i]+5*led][6  + color_bit_idx];
                 data_out[i][3*led+2] = buffer1[DRIVER_BASE[i]+5*led][11 + color_bit_idx];
-                if(current_buffer) begin
+                if(write_buffer_is_1) begin
                     data_out[i][3*led]   = buffer2[DRIVER_BASE[i]+5*led][0  + color_bit_idx];
                     data_out[i][3*led+1] = buffer2[DRIVER_BASE[i]+5*led][6  + color_bit_idx];
                     data_out[i][3*led+2] = buffer2[DRIVER_BASE[i]+5*led][11 + color_bit_idx];
@@ -219,47 +212,48 @@ always_comb
         end
     end
 
+always_ff @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        slice_cnt <= '0;
+    end else if(mul_idx == 7) begin
+        /*
+         * Count the number of slices read so far, so we
+         * assert the correct ram address.
+         */
+        slice_cnt <= slice_cnt + 1'b1;
+        if(slice_cnt == SLICES_IN_RAM-1) begin
+            slice_cnt <= 0;
+        end
+    end
+
+always_ff @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        write_buffer_is_1 <= '0;
+    end else if(column_ready) begin
+        write_buffer_is_1 <= ~write_buffer_is_1;
+    end
+
+always_ff @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        mul_idx <= '0;
+    end else if(column_ready) begin
+        mul_idx <= mul_idx + 1'b1;
+        if(mul_idx == 7) begin
+            mul_idx <= '0;
+        end
+    end
+
 /*
  * Generate counters to send the right data.
  */
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
-        mul_idx <= '0;
         bit_idx <= POKER_MODE-1;
-        current_buffer <= '0;
-        wait_for_next_slice <= 1'b1;
-        slice_cnt <= '0;
-        column_sent <= '0;
-    end else if(stream_ready) begin
-        column_sent <= '0;
-        if(wait_for_next_slice) begin
-             mul_idx <= '0;
-             bit_idx <= POKER_MODE-1;
-             current_buffer <= '0;
-             wait_for_next_slice <= ~position_sync;
-         end else if(driver_ready) begin
-             bit_idx <= bit_idx - 1'b1;
-             if(bit_idx == 0) begin
-                 bit_idx <= POKER_MODE-1;
-                 // Go to next column, swap buffers
-                 mul_idx <= mul_idx + 1'b1;
-                 current_buffer <= ~current_buffer;
-                 column_sent <= 1;
-                 // We have sent the whole slice
-                 if(mul_idx == MULTIPLEXING-1) begin
-                     mul_idx <= '0;
-                     wait_for_next_slice <= 1'b1;
-                     /*
-                      * Count the number of slices read so far, so we
-                      * assert the correct ram address.
-                      */
-                     slice_cnt <= slice_cnt + 1'b1;
-                     if(slice_cnt == SLICES_IN_RAM-1) begin
-                         slice_cnt <= 0;
-                     end
-                 end
-             end
-         end
-     end
+    end else if(driver_ready) begin
+        bit_idx <= bit_idx - 1'b1;
+        if(column_ready) begin
+            bit_idx <= POKER_MODE-1;
+        end
+    end
 
 endmodule
