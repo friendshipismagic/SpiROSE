@@ -90,6 +90,7 @@ enum logic[6:0] {
     PREPARE_DUMP_CONFIG,
     DUMP_CONFIG,
     WRTFC_TIMING,
+    WAIT_END_GCLK_SEGMENT,
     WAIT_FOR_NEXT_SLICE
 } driver_state;
 
@@ -98,7 +99,6 @@ integer wrtgs_cnt;
 integer mux_counter;
 integer rgb_idx;
 integer led_idx;
-logic first_latch_done;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         driver_state <= STALL;
@@ -107,7 +107,6 @@ always_ff @(posedge clk or negedge nrst)
         mux_counter <= '0;
         rgb_idx <= '0;
         led_idx <= '0;
-        first_latch_done <= '0;
     end else begin
         if (clk_enable) begin
             case(driver_state)
@@ -208,15 +207,17 @@ always_ff @(posedge clk or negedge nrst)
                 end
 
                 WAIT_FOR_NEXT_SLICE: begin
-                    mux_counter <= '0;
                     driver_state_counter <= driver_state_counter + 1'b1;
-                    if(driver_state_counter == 512) begin
-                        driver_state_counter <= '0;
-                    end
                     if(position_sync) begin
-                        driver_state <= BLANKING;
+                        driver_state <= WAIT_END_GCLK_SEGMENT;
                         driver_state_counter <= '0;
-                        first_latch_done <= '1;
+                        mux_counter <= '0;
+                    end
+                end
+
+                WAIT_END_GCLK_SEGMENT: begin
+                    if(gclk_cnt == 512) begin
+                        driver_state <= BLANKING;
                     end
                 end
 
@@ -231,7 +232,6 @@ always_ff @(posedge clk or negedge nrst)
                 || driver_state == WAIT_FOR_NEXT_SLICE
                 || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
                 driver_state_counter <= '0;
-                first_latch_done <= '0;
                 driver_state <= PREPARE_CONFIG;
             end
         end
@@ -266,7 +266,7 @@ always_comb begin
             end
         end
 
-        WAIT_FOR_NEXT_SLICE, BLANKING, PAUSE_SCLK, WRTFC_TIMING: begin
+        WAIT_FOR_NEXT_SLICE, BLANKING, PAUSE_SCLK, WRTFC_TIMING, WAIT_END_GCLK_SEGMENT: begin
             driver_sclk = '0;
         end
 
@@ -276,31 +276,25 @@ always_comb begin
     endcase
 end
 
-/*
- * driver_gclk drives the GCLK of the drivers.
- * The GCLK clock must be enabled only when the device is in STREAM and LOD
- * modes. The clock must be enabled after the GS data bank have already been
- * written.
- */
-always_comb begin
-    case(driver_state)
-        WAIT_FOR_NEXT_SLICE: begin
-            driver_gclk = clk_enable && driver_state_counter != 0;
-        end
+integer gclk_cnt;
+logic display_on;
+assign display_on = driver_state == WAIT_FOR_NEXT_SLICE
+                    || driver_state == PAUSE_SCLK
+                    || driver_state == WAIT_END_GCLK_SEGMENT
+                    || driver_state == BLANKING
+                    || driver_state == SHIFT_REGISTER;
 
-        BLANKING: begin
-            driver_gclk = clk_enable && driver_state_counter != 0 && mux_counter > 0;
+always_ff @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        gclk_cnt <= '0;
+    end else if(clk_enable && display_on) begin
+        gclk_cnt <= gclk_cnt + 1'b1;
+        if(gclk_cnt == 512) begin
+            gclk_cnt <= '0;
         end
+    end
 
-        PAUSE_SCLK, SHIFT_REGISTER: begin
-            driver_gclk = clk_enable;
-        end
-
-        default: begin
-            driver_gclk = '0;
-        end
-    endcase
-end
+assign driver_gclk = gclk_cnt != 0 && clk_enable;
 
 /*
  * The LAT is a command signal for latching. It does the states transitions.
