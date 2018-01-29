@@ -64,7 +64,6 @@ module Top
  output logic        pt_27
 );
 
-
 logic clk, nrst;
 
 // spi_iff output signals
@@ -78,7 +77,6 @@ logic [15:0] rotation_data;
 logic [15:0] speed_data;
 logic        rgb_enable;
 logic [7:0]  mux_command;
-logic [47:0] driver_data [29:0];
 
 // driver_controller signals
 logic clk_enable;
@@ -86,11 +84,12 @@ logic driver_sclk;
 logic driver_gclk;
 logic driver_lat;
 logic [29:0] drivers_sin;
-logic position_sync;
-logic column_ready;
-logic driver_ready;
+logic SOF;
+logic EOC;
+logic [431:0] driver_data [14:0];
 logic [47:0] driver_conf;
-logic new_configuration_ready;
+logic start_config;
+logic end_config;
 
 // In this test, we assign predefined value to rotation data and
 // check that SPI I/O is sending it back when asked
@@ -98,10 +97,10 @@ assign rotation_data = 'hBEEF;
 assign speed_data = 'hDEAD;
 
 // Column mux signals
-logic [7:0] mux_statuses;
+logic [7:0] mux_out;
 
-assign fpga_mul_a = mux_statuses & mux_command;
-assign fpga_mul_b = mux_statuses & mux_command;
+assign fpga_mul_a = mux_out & mux_command;
+assign fpga_mul_b = mux_out & mux_command;
 assign drv_gclk_a = driver_gclk;
 assign drv_gclk_b = driver_gclk;
 assign drv_sclk_a = driver_sclk;
@@ -109,10 +108,8 @@ assign drv_sclk_b = driver_sclk;
 assign drv_lat_a = driver_lat;
 assign drv_lat_b = driver_lat;
 
-
 always_ff @(posedge clk)
     pt_6 <= ~pt_6;
-
 
 clock_66 main_clock_66 (
     .inclk0(rgb_clk),
@@ -129,7 +126,7 @@ clock_enable clock_enable (
 hall_sensor_emulator main_hs_emulator (
     .clk(clk_enable),
     .nrst(nrst),
-    .position_sync(position_sync)
+    .SOF(SOF)
 );
 
 spi_iff spi_iff (
@@ -158,42 +155,33 @@ spi_decoder spi_decoder (
     // FPGA state signals
     .rotation_data(rotation_data),
     .configuration(driver_conf),
-    .new_config_available(new_configuration_ready),
+    .new_config_available(start_config),
     .rgb_enable(rgb_enable),
     .mux(mux_command),
     .driver_data(driver_data)
 );
 
-logic [47:0] data_in [29:0];
-assign data_in[0] = 48'b111_111_000_000_000_000_000_000_000_000_000_000_000_000_000_000;
-driver_controller_spi_driven driver_controller (
+driver_controller driver_controller (
     .clk(clk),
-    .nrst(nrst),
     .clk_enable(clk_enable),
+    .nrst(nrst),
     .driver_sclk(driver_sclk),
     .driver_gclk(driver_gclk),
     .driver_lat(driver_lat),
     .drivers_sin(drivers_sin),
-    .position_sync(position_sync),
-    .column_ready(column_ready),
-    .driver_ready(driver_ready),
-    .serialized_conf(driver_conf),
-    .data_in(driver_data),
-    .new_configuration_ready(new_configuration_ready)
+    .mux_out(mux_out),
+    .SOF(SOF),
+    .EOC(EOC),
+    .data(driver_data),
+    .config_data(driver_conf),
+    .start_config(start_config),
+    .end_config(end_config)
 );
 
 logic [29:0] drv_sin_tolut;
 driver_sin_lut main_drv_sin_lut (
     .drv_sin_tolut(drivers_sin),
     .drv_sin(drv_sin)
-);
-
-
-column_mux column_mux (
-    .clk(clk),
-    .nrst(nrst),
-    .mux_out(mux_statuses),
-    .column_ready(column_ready)
 );
 
 endmodule

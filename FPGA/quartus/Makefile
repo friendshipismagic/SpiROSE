@@ -54,6 +54,10 @@ compile/11_hall_sensor:
 compile/12_spi_display:
 	cd 12_spi_display && $(QUARTUS131) --flow compile spi_display
 
+
+compile/13_caterpillar_white:
+	cd 13_caterpillar_white && $(QUARTUS131) --flow compile caterpillar_white
+
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose
 

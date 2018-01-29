@@ -175,10 +175,10 @@ always_ff @(posedge clk or negedge nrst)
             write_idx <= write_idx + 1'b1;
             if(write_buffer_is_1) begin
                 buffer1[BUFF_SIZE-2:0] <= buffer1[BUFF_SIZE-1:1];
-                buffer1[BUFF_SIZE-1] <= write_idx % 2 == 0 ? blue : black;
+                buffer1[BUFF_SIZE-1] <= ram_data;
             end else begin
                 buffer2[BUFF_SIZE-2:0] <= buffer2[BUFF_SIZE-1:1];
-                buffer2[BUFF_SIZE-1] <= write_idx % 2 == 0 ? green : black;
+                buffer2[BUFF_SIZE-1] <= ram_data;
             end
         end else if(column_ready) begin
             /*
