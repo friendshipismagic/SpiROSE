@@ -215,7 +215,7 @@ always_comb
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         slice_cnt <= '0;
-    end else if(mul_idx == 7) begin
+    end else if(mul_idx == 7 && column_ready) begin
         /*
          * Count the number of slices read so far, so we
          * assert the correct ram address.
