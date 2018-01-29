@@ -133,8 +133,8 @@ localparam integer DRIVER_BASE [0:29] = '{
  * for each driver, hence we have to swap buffer when we change the
  * multiplexing.
  */
-logic [BUFF_SIZE-1:0][15:0] buffer1;
-logic [BUFF_SIZE-1:0][15:0] buffer2;
+logic [15:0] buffer1 [BUFF_SIZE-1:0];
+logic [15:0] buffer2 [BUFF_SIZE-1:0];
 
 // The index of the buffer we are currently using
 logic write_buffer_is_1;
@@ -164,6 +164,9 @@ assign has_reached_end = write_idx == BUFF_SIZE;
 assign image_start_addr = slice_cnt*IMAGE_SIZE ;
 assign ram_addr = image_start_addr + mul_idx + 8*write_idx;
 
+localparam blue  = 16'b11111_000000_00000;
+localparam green = 16'b00000_111111_00000;
+localparam black = 16'b00000_000000_00000;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
@@ -171,9 +174,11 @@ always_ff @(posedge clk or negedge nrst)
         if(~has_reached_end) begin
             write_idx <= write_idx + 1'b1;
             if(write_buffer_is_1) begin
-                buffer1 <= {ram_data, buffer1[BUFF_SIZE-1:1]};
+                buffer1[BUFF_SIZE-2:0] <= buffer1[BUFF_SIZE-1:1];
+                buffer1[BUFF_SIZE-1] <= write_idx % 2 == 0 ? blue : black;
             end else begin
-                buffer2 <= {ram_data, buffer2[BUFF_SIZE-1:1]};
+                buffer2[BUFF_SIZE-2:0] <= buffer2[BUFF_SIZE-1:1];
+                buffer2[BUFF_SIZE-1] <= write_idx % 2 == 0 ? green : black;
             end
         end else if(column_ready) begin
             /*
@@ -189,7 +194,7 @@ always_ff @(posedge clk or negedge nrst)
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         slice_cnt <= '0;
-    end else if(mul_idx == 8 && column_ready) begin
+    end else if(mul_idx == 7 && column_ready) begin
         /*
          * Count the number of slices read so far, so we
          * assert the correct ram address.
@@ -212,7 +217,7 @@ always_ff @(posedge clk or negedge nrst)
         mul_idx <= '0;
     end else if(column_ready) begin
         mul_idx <= mul_idx + 1'b1;
-        if(mul_idx == 8) begin
+        if(mul_idx == 7) begin
             mul_idx <= '0;
         end
     end
