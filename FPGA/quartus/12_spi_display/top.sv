@@ -94,6 +94,7 @@ logic end_config;
 logic spi_manage;
 logic [7:0] spi_mux_state;
 logic [431:0] spi_debug_driver;
+logic [431:0] spi_debug_driver_poker_mode;
 
 // In this test, we assign predefined value to rotation data and
 // check that SPI I/O is sending it back when asked
@@ -173,7 +174,7 @@ spi_decoder spi_decoder (
 
 always_comb begin
     for(int i=0; i<14; ++i) begin
-        driver_data[i] = spi_debug_driver;
+        driver_data[i] = spi_debug_driver_poker_mode;
     end
 end
 
@@ -192,6 +193,11 @@ driver_controller driver_controller (
     .config_data(driver_conf),
     .start_config(start_config),
     .end_config(end_config)
+);
+
+framebuffer_poker_lut framebuffer_poker_lut (
+    .data_in(spi_debug_driver),
+    .data_out(spi_debug_driver_poker_mode)
 );
 
 logic [29:0] drv_sin_tolut;
