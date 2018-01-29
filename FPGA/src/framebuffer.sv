@@ -162,14 +162,13 @@ logic has_reached_end;
  */
 assign has_reached_end = write_idx == BUFF_SIZE;
 assign image_start_addr = slice_cnt*IMAGE_SIZE ;
+assign ram_addr = image_start_addr + mul_idx + 8*write_idx;
 
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
-        ram_addr <= '0;
     end else if(stream_ready) begin
         if(~has_reached_end) begin
-            ram_addr <= ram_addr + 8;
             write_idx <= write_idx + 1'b1;
             if(write_buffer_is_1) begin
                 buffer1 <= {ram_data, buffer1[BUFF_SIZE-1:1]};
@@ -181,35 +180,10 @@ always_ff @(posedge clk or negedge nrst)
              * We have sent all data so we fill a new buffer
              * We will fill the new buffer with the next column
              */
-            ram_addr <= image_start_addr + mul_idx;
             write_idx <= '0;
         end
     end else begin
         write_idx <= '0;
-        ram_addr <= '0;
-    end
-
-/*
- * The color_bit_idx goes from 4 to 0, thus if we add the base address for the
- * green color for instance we get bits 9 to 5.
- */
-assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
-
-always_comb
-    for(int i = 0; i < 30; ++i) begin
-        data_out[i] = '0;
-        if(bit_idx > 3) begin
-            for(int led = 0; led < 16; ++led) begin
-                data_out[i][3*led]   = buffer1[DRIVER_BASE[i]+5*led][0  + color_bit_idx];
-                data_out[i][3*led+1] = buffer1[DRIVER_BASE[i]+5*led][6  + color_bit_idx];
-                data_out[i][3*led+2] = buffer1[DRIVER_BASE[i]+5*led][11 + color_bit_idx];
-                if(write_buffer_is_1) begin
-                    data_out[i][3*led]   = buffer2[DRIVER_BASE[i]+5*led][0  + color_bit_idx];
-                    data_out[i][3*led+1] = buffer2[DRIVER_BASE[i]+5*led][6  + color_bit_idx];
-                    data_out[i][3*led+2] = buffer2[DRIVER_BASE[i]+5*led][11 + color_bit_idx];
-                end
-            end
-        end
     end
 
 always_ff @(posedge clk or negedge nrst)
@@ -253,6 +227,29 @@ always_ff @(posedge clk or negedge nrst)
         bit_idx <= bit_idx - 1'b1;
         if(column_ready) begin
             bit_idx <= POKER_MODE-1;
+        end
+    end
+
+/*
+ * The color_bit_idx goes from 4 to 0, thus if we add the base address for the
+ * green color for instance we get bits 9 to 5.
+ */
+assign color_bit_idx = (bit_idx > 3) ? bit_idx - 4 : 0;
+
+always_comb
+    for(int i = 0; i < 30; ++i) begin
+        data_out[i] = '0;
+        if(bit_idx > 3) begin
+            for(int led = 0; led < 16; ++led) begin
+                data_out[i][3*led]   = buffer1[DRIVER_BASE[i]+5*led][0  + color_bit_idx];
+                data_out[i][3*led+1] = buffer1[DRIVER_BASE[i]+5*led][6  + color_bit_idx];
+                data_out[i][3*led+2] = buffer1[DRIVER_BASE[i]+5*led][11 + color_bit_idx];
+                if(write_buffer_is_1) begin
+                    data_out[i][3*led]   = buffer2[DRIVER_BASE[i]+5*led][0  + color_bit_idx];
+                    data_out[i][3*led+1] = buffer2[DRIVER_BASE[i]+5*led][6  + color_bit_idx];
+                    data_out[i][3*led+2] = buffer2[DRIVER_BASE[i]+5*led][11 + color_bit_idx];
+                end
+            end
         end
     end
 
