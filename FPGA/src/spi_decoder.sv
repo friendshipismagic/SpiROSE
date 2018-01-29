@@ -28,7 +28,10 @@ module spi_decoder (
     output [7:0] mux,
 
     output [47:0] driver_data [29:0],
-    output [431:0] debug_driver
+    output [431:0] debug_driver,
+
+    // Signals that the topmodule should use debugging data signals from the spi_decoder
+    logic manage
 );
 
 localparam CONFIG_COMMAND = 'hBF;
@@ -41,6 +44,8 @@ localparam ENABLE_MUX_COMMAND = 'hE1;
 localparam DISABLE_MUX_COMMAND = 'hD1;
 localparam DRIVER_DATA_COMMAND = 'hDD;
 localparam DRIVER_COMMAND = 'hEE;
+localparam MANAGE_COMMAND = 'hFA;
+localparam RELEASE_COMMAND = 'hFE;
 
 `include "drivers_conf.svh"
 
@@ -77,6 +82,12 @@ always_ff @(posedge clk or negedge nrst)
                 configuration <= last_cmd_read[47:0];
                 new_config_available <= '1;
                 cmd_write <= configuration;
+            end else if (last_cmd_len_bytes == 1
+                         && last_cmd_read[7:0] == MANAGE_COMMAND) begin
+                manage <= 1;
+            end else if (last_cmd_len_bytes == 1
+                         && last_cmd_read[7:0] == MANAGE_COMMAND) begin
+                manage <= 0;
             end else if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == CONFIG_COMMAND) begin
                 cmd_write <= configuration;
