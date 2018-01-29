@@ -56,3 +56,9 @@ subcommands:
          - driver_data:
             help: "The data (in binary) to send to the driver"
             required: true
+   - send_driver:
+      about: "Send full data to drivers"
+      args:
+         - filename:
+            help: "The filename to read and send"
+            required: true

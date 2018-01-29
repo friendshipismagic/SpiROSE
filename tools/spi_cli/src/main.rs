@@ -104,6 +104,7 @@ impl SpiCommand {
             "get_speed" => SpiCommand::new_with_len(0x4d, 2),
             "get_config" => SpiCommand::new_with_len(0xbf, 6),
             "get_debug" => SpiCommand::new_with_len(0xde, 4),
+            "send_driver" => SpiCommand::new_with_len(0xee, 72),
             "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
             _ => unreachable!(),
         }
@@ -183,6 +184,34 @@ fn run() -> errors::Result<()> {
             Ok(())
         },
 
+        ("send_driver", Some(command_args)) => {
+            let file_name = command_args.value_of("filename").unwrap();
+            let mut driver_file = File::open(file_name).map_err(|e| {
+                format!(
+                    "Cannot open configuration file `{}': {}",
+                    file_name, e
+                    )
+            })?;
+
+            let mut data = String::new();
+            driver_file.read_to_string(&mut data);
+            if data.len() < 432 {
+                let mut pad = String::new();
+                while data.len() + pad.len() < 432 {
+                    pad.push('0');
+                }
+                pad.push_str(&data);
+                data = String::from(pad);
+            }
+            let mut transaction = Vec::with_capacity(54);
+            for i in 0..54 {
+                let word = &data[i*8..(i+1)*8-1];
+                transaction.push(u8::from_str_radix(&word, 2).unwrap());
+            }
+
+            transfer(&mut spi, &SpiCommand::decode("send_driver"), &transaction, verbose, dummy)?;
+            Ok(())
+        },
         (name, _) =>  {
             for c in COMMANDS.iter() {
                 if c == &name {

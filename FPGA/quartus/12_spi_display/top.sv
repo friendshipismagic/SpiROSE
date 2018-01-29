@@ -68,8 +68,8 @@ module Top
 logic clk, nrst;
 
 // spi_iff output signals
-logic [63:0] cmd_read;
-logic [3:0]  cmd_len_bytes;
+logic [439:0] cmd_read;
+logic [10:0]  cmd_len_bytes;
 logic [47:0] cmd_write;
 logic        cmd_valid;
 
