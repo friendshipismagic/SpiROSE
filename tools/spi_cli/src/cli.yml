@@ -56,3 +56,13 @@ subcommands:
          - driver_data:
             help: "The data (in binary) to send to the driver"
             required: true
+   - send_driver:
+      about: "Send full data to drivers"
+      args:
+         - filename:
+            help: "The filename to read and send"
+            required: true
+   - manage:
+      about: "Tell the FPGA to send debugging signals from the SPI to the other module, for example to send data to a driver"
+   - release:
+     about: "Do the opposite of manage, tell the FPGA that it shouldn't use SPI's debugging signals as input for the other modules"
