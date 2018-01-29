@@ -68,9 +68,9 @@ module Top
 logic clk, nrst;
 
 // spi_iff output signals
-logic [439:0] cmd_read;
-logic [10:0]  cmd_len_bytes;
-logic [47:0] cmd_write;
+logic [439:0] data_mosi;
+logic [10:0]  data_len_bytes;
+logic [47:0] data_miso;
 logic        cmd_valid;
 
 // spi_decoder I/O signals
@@ -141,9 +141,9 @@ spi_iff spi_iff (
     .spi_mosi(som_mosi),
     .spi_miso(som_miso),
     // Data signals
-    .cmd_read(cmd_read),
-    .cmd_write(cmd_write),
-    .cmd_len_bytes(cmd_len_bytes),
+    .data_mosi(data_mosi),
+    .data_miso(data_miso),
+    .data_len_bytes(data_len_bytes),
     .valid(cmd_valid)
 );
 
@@ -151,9 +151,9 @@ spi_decoder spi_decoder (
     .clk(clk),
     .nrst(nrst),
     // SPI output signals
-    .cmd_read(cmd_read),
-    .cmd_write(cmd_write),
-    .cmd_len_bytes(cmd_len_bytes),
+    .data_mosi(data_mosi),
+    .data_miso(data_miso),
+    .data_len_bytes(data_len_bytes),
     .valid(cmd_valid),
     // FPGA state signals
     .rotation_data(rotation_data),
