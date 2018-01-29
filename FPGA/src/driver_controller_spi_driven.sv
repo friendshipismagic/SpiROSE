@@ -5,12 +5,6 @@ module driver_controller_spi_driven #(
     input clk_enable,
     input nrst,
 
-    // Framebuffer access, 30b wide
-    // unused because of framebuffer tests
-    /* verilator lint_off UNUSED */
-    input [29:0] framebuffer_dat,
-    /* verilator lint_on UNUSED */
-
     // Drivers direct output
     output driver_sclk,
     output driver_gclk,
@@ -112,13 +106,11 @@ always_ff @(posedge clk or negedge nrst)
         mux_counter <= '0;
         rgb_idx <= '0;
         led_idx <= '0;
-        driver_ready <= '0;
     end else begin
         if (clk_enable) begin
-            driver_ready <= '0;
             case(driver_state)
                 STALL: begin
-                   driver_state <= PREPARE_CONFIG;
+                    driver_state <= PREPARE_CONFIG;
                 end
 
                 PREPARE_CONFIG: begin
@@ -149,7 +141,6 @@ always_ff @(posedge clk or negedge nrst)
                         driver_state <= PREPARE_DUMP_CONFIG;
                         driver_state_counter <= '0;
                     end
-
                 end
 
                 PREPARE_DUMP_CONFIG: begin
@@ -174,47 +165,46 @@ always_ff @(posedge clk or negedge nrst)
                 end
 
                 BLANKING: begin
-                   wrtgs_cnt <= '0;
-                   driver_state_counter <= driver_state_counter + 1'b1;
-                   if(driver_state_counter == BLANKING_TIME - 1) begin
-                      driver_state_counter <= '0;
-                      driver_state <= PAUSE_SCLK;
-                   end
+                    wrtgs_cnt <= '0;
+                    driver_state_counter <= driver_state_counter + 1'b1;
+                    if(driver_state_counter == BLANKING_TIME - 1) begin
+                        driver_state_counter <= '0;
+                        driver_state <= PAUSE_SCLK;
+                    end
                 end
 
                 SHIFT_REGISTER: begin
-                   driver_state_counter <= driver_state_counter + 1'b1;
-                   if(driver_state_counter == 47) begin
-                      driver_state_counter <= '0;
-                      driver_ready <= '1;
-                      wrtgs_cnt <= wrtgs_cnt + 1'b1;
-                      driver_state <= PAUSE_SCLK;
-                      if(wrtgs_cnt == 8) begin
-                         wrtgs_cnt <= 0;
-                         mux_counter <= mux_counter + 1'b1;
-                         driver_state <= BLANKING;
-                         if(mux_counter == 7) begin
-                            mux_counter <= '0;
-                            driver_state <= WAIT_FOR_NEXT_SLICE;
-                         end
-                      end
-                   end
-                   rgb_idx <= rgb_idx + 1'b1;
-                   if(rgb_idx == 2) begin
-                      rgb_idx <= '0;
-                      led_idx <= led_idx + 1'b1;
-                      if(led_idx == 15) begin
-                         led_idx <= '0;
-                      end
-                   end
+                    driver_state_counter <= driver_state_counter + 1'b1;
+                    if(driver_state_counter == 47) begin
+                        driver_state_counter <= '0;
+                        wrtgs_cnt <= wrtgs_cnt + 1'b1;
+                        driver_state <= PAUSE_SCLK;
+                        if(wrtgs_cnt == 8) begin
+                            wrtgs_cnt <= 0;
+                            mux_counter <= mux_counter + 1'b1;
+                            driver_state <= BLANKING;
+                            if(mux_counter == 7) begin
+                                mux_counter <= '0;
+                                driver_state <= WAIT_FOR_NEXT_SLICE;
+                            end
+                        end
+                    end
+                    rgb_idx <= rgb_idx + 1'b1;
+                    if(rgb_idx == 2) begin
+                        rgb_idx <= '0;
+                        led_idx <= led_idx + 1'b1;
+                        if(led_idx == 15) begin
+                            led_idx <= '0;
+                        end
+                    end
                 end
 
                 PAUSE_SCLK: begin
-                   driver_state <= SHIFT_REGISTER;
+                    driver_state <= SHIFT_REGISTER;
                 end
 
                 WAIT_FOR_NEXT_SLICE: begin
-                   driver_state_counter <= driver_state_counter + 1'b1;
+                    driver_state_counter <= driver_state_counter + 1'b1;
                     if(position_sync) begin
                         driver_state <= BLANKING;
                         driver_state_counter <= '0;
@@ -227,9 +217,10 @@ always_ff @(posedge clk or negedge nrst)
                 end
             endcase
 
-            if(new_configuration_ready && (driver_state == BLANKING
-               || driver_state == WAIT_FOR_NEXT_SLICE
-               || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
+            if(new_configuration_ready
+                && (driver_state == BLANKING
+                || driver_state == WAIT_FOR_NEXT_SLICE
+                || driver_state == PAUSE_SCLK || driver_state == SHIFT_REGISTER)) begin
                 driver_state_counter <= '0;
                 driver_state <= PREPARE_CONFIG;
             end
@@ -240,12 +231,6 @@ always_ff @(posedge clk or negedge nrst)
  * driver_sclk drives the SCLK of the drivers.
  * There is no difference between the configuration mode and the stream mode.
  * The SCLK is on when device is not in reset and not in blanking mode.
- *
- * driver_gclk drives the GCLK of the drivers.
- * The GCLK clock must be enabled only when the device is in STREAM and LOD
- * modes. The clock must be enabled after the GS data bank have already been
- * written.
- * TODO check GS data default value (SLVUAF0 p.16)
  */
 always_comb begin
     case(driver_state)
@@ -258,12 +243,6 @@ always_comb begin
             if(driver_state_counter == 'd0) begin
                 driver_sclk = '0;
             end
-            driver_gclk = '0;
-        end
-
-        WRTFC_TIMING:begin
-            driver_sclk = '0;
-            driver_gclk = '0;
         end
 
         DUMP_CONFIG: begin
@@ -275,11 +254,27 @@ always_comb begin
             if(driver_state_counter < 'd5) begin
                 driver_sclk = '0;
             end
-            driver_gclk = '0;
         end
 
-        WAIT_FOR_NEXT_SLICE: begin
+        WAIT_FOR_NEXT_SLICE, BLANKING, PAUSE_SCLK, WRTFC_TIMING: begin
             driver_sclk = '0;
+        end
+
+        default: begin
+            driver_sclk = clk_enable;
+        end
+    endcase
+end
+
+/*
+ * driver_gclk drives the GCLK of the drivers.
+ * The GCLK clock must be enabled only when the device is in STREAM and LOD
+ * modes. The clock must be enabled after the GS data bank have already been
+ * written.
+ */
+always_comb begin
+    case(driver_state)
+        WAIT_FOR_NEXT_SLICE: begin
             driver_gclk = '0;
             if(driver_state_counter < 'd512) begin
                 driver_gclk = clk_enable;
@@ -287,23 +282,14 @@ always_comb begin
         end
 
         BLANKING: begin
-           driver_sclk = '0;
-           driver_gclk = clk_enable & driver_state_counter != 0;
+           driver_gclk = clk_enable & driver_state_counter != 0 && mux_counter > 0;
         end
 
-        PAUSE_SCLK: begin
-           driver_sclk = '0;
-           driver_gclk = clk_enable;
+        PAUSE_SCLK, SHIFT_REGISTER: begin
+           driver_gclk = clk_enable && mux_counter > 0;
         end
-
-        SHIFT_REGISTER: begin
-           driver_sclk = clk_enable;
-           driver_gclk = clk_enable;
-        end
-
 
         default: begin
-            driver_sclk = clk_enable;
             driver_gclk = '0;
         end
     endcase
@@ -321,13 +307,13 @@ end
  *   first GS bank to the second
  *
  * Sends FCWRTEN on PREPARE_CONFIG state, WRTFC on CONFIG state, and WRTGS and
- * LATGS on STREAM state (TODO for LOD state)
+ * LATGS on STREAM state
  *
  * driver_lat is generated on the falling edge ofthe main clock to respect
  * the hold time after the driver clock **falling edge** see TLC5957
  * datasheet page...
  */
-localparam FCWRTEN=15, READFC=11, WRTFC=5, WRTGS=1, LATGS=3, NO_LAT=0;
+localparam FCWRTEN=15, READFC=11, WRTFC=5, WRTGS=1, LATGS=3, LINERESET=7, NO_LAT=0;
 
 always_ff @(negedge clk or negedge nrst)
 if(!nrst)
@@ -349,7 +335,9 @@ end else begin
 
         SHIFT_REGISTER: begin
            driver_lat <= '0;
-           if(driver_state_counter == 47 || (driver_state_counter >= 45 && wrtgs_cnt == 9)) begin
+           if(driver_state_counter == 47
+                || (driver_state_counter >= 48 - LATGS && wrtgs_cnt == 8)
+                || (driver_state_counter >= 48 - LINERESET && wrtgs_cnt == 8 && mux_counter == 7)) begin
               driver_lat <= '1;
            end
         end
@@ -391,7 +379,7 @@ always_comb begin
             for(int i=20; i<30; i++) begin
                  drivers_sin[i] = data_in[i][3*DRIVER_LUT2_RG[15-led_idx]+2-rgb_idx];
                  if(rgb_idx == 0) begin
-                    drivers_sin[i] = data_in[i][3*DRIVER_LUT2_B[15-led_idx] + 2-rgb_idx];
+                    drivers_sin[i] = data_in[i][3*DRIVER_LUT2_B[15-led_idx]+2-rgb_idx];
                  end
              end
         end
@@ -401,9 +389,9 @@ always_comb begin
     endcase
 end
 
-assign column_ready = (driver_state == SHIFT_REGISTER && wrtgs_cnt == 9
-                       && driver_state_counter == 47)
-                       || (driver_state == WAIT_FOR_NEXT_SLICE
-                       && driver_state_counter == 512);
+assign driver_ready = driver_state == SHIFT_REGISTER
+                      && driver_state_counter == 47 && clk_enable;
+assign column_ready = driver_state == SHIFT_REGISTER && wrtgs_cnt == 8
+                      && driver_state_counter == 47 && clk_enable;
 
 endmodule
