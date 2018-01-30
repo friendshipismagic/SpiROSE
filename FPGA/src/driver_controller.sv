@@ -283,8 +283,7 @@ end else begin
         SHIFT_REGISTER: begin
            driver_lat <= '0;
            if(driver_state_counter == 47
-               || (driver_state_counter >= 45 && wrtgs_cnt == 8)
-               || (driver_state_counter >= 41 && wrtgs_cnt == 8 && column_counter == 7)) begin
+               || (driver_state_counter >= 45 && wrtgs_cnt == 8)) begin
               driver_lat <= '1;
           end
         end
