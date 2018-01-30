@@ -19,7 +19,6 @@ use clap::App;
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
 
-
 mod errors {
     error_chain! {
         foreign_links {
@@ -78,7 +77,7 @@ static COMMANDS: [&'static str; 8] = [
     "get_config",
     "get_debug",
     "manage",
-    "release"
+    "release",
 ];
 
 #[derive(Debug)]
@@ -134,7 +133,12 @@ fn run() -> errors::Result<()> {
     let verbose = matches.is_present("verbose");
     let dummy = spi_dev == "none";
     let freq = matches.value_of("frequency").unwrap().parse::<u32>()?;
-    let mut spi = create_spi(if dummy { "/dev/null" } else { spi_dev }, freq, !dummy, verbose)?;
+    let mut spi = create_spi(
+        if dummy { "/dev/null" } else { spi_dev },
+        freq,
+        !dummy,
+        verbose,
+    )?;
 
     match matches.subcommand() {
         ("send_config", Some(command_args)) => {
@@ -143,7 +147,7 @@ fn run() -> errors::Result<()> {
                 format!(
                     "Cannot open configuration file `{}': {}",
                     config_file_url, e
-                    )
+                )
             })?;
             let mut serialized_conf = String::new();
             config_file.read_to_string(&mut serialized_conf)?;
@@ -155,50 +159,81 @@ fn run() -> errors::Result<()> {
                 &led_config.pack(),
                 verbose,
                 dummy,
-                )?;
+            )?;
             Ok(())
-        },
+        }
 
         ("enable_mux", Some(command_args)) => {
-            let mux_ids = command_args.values_of("mux_id")
+            let mux_ids = command_args
+                .values_of("mux_id")
                 .unwrap()
                 .map(|mux_id| u8::from_str(mux_id).unwrap());
             for mux_id in mux_ids {
-                transfer(&mut spi, &SpiCommand::decode("enable_mux"), &[mux_id], verbose, dummy)?;
+                transfer(
+                    &mut spi,
+                    &SpiCommand::decode("enable_mux"),
+                    &[mux_id],
+                    verbose,
+                    dummy,
+                )?;
             }
             Ok(())
-        },
+        }
 
         ("disable_mux", Some(command_args)) => {
-            let mux_ids = command_args.values_of("mux_id")
+            let mux_ids = command_args
+                .values_of("mux_id")
                 .unwrap()
                 .map(|mux_id| u8::from_str(mux_id).unwrap());
             for mux_id in mux_ids {
-                transfer(&mut spi, &SpiCommand::decode("disable_mux"), &[mux_id], verbose, dummy)?;
+                transfer(
+                    &mut spi,
+                    &SpiCommand::decode("disable_mux"),
+                    &[mux_id],
+                    verbose,
+                    dummy,
+                )?;
             }
             Ok(())
-        },
+        }
 
         ("send_driver_data", Some(command_args)) => {
             let driver_id = u8::from_str(command_args.value_of("driver_id").unwrap())?;
-            let driver_data = u64::from_str_radix(command_args.value_of("driver_data").unwrap(), 2)?;
+            let driver_data =
+                u64::from_str_radix(command_args.value_of("driver_data").unwrap(), 2)?;
             let mut transaction = Vec::with_capacity(7);
             transaction.push(driver_id);
-            transaction.extend((2..8).map(|n| (driver_data >> ((7-n)*8)) as u8));
+            transaction.extend((2..8).map(|n| (driver_data >> ((7 - n) * 8)) as u8));
 
-            transfer(&mut spi, &SpiCommand::decode("send_driver_data"), &transaction, verbose, dummy)?;
+            transfer(
+                &mut spi,
+                &SpiCommand::decode("send_driver_data"),
+                &transaction,
+                verbose,
+                dummy,
+            )?;
             Ok(())
-        },
+        }
 
-        ("send_driver_pokered", Some(command_args)) => {
-            send_binary_file(&mut spi, "send_driver_pokered", command_args.value_of("filename").unwrap(), 54, verbose, dummy)
-        },
+        ("send_driver_pokered", Some(command_args)) => send_binary_file(
+            &mut spi,
+            "send_driver_pokered",
+            command_args.value_of("filename").unwrap(),
+            54,
+            verbose,
+            dummy,
+        ),
 
-        ("send_driver_rgb", Some(command_args)) => {
-            send_binary_file(&mut spi, "send_driver_rgb", command_args.value_of("filename").unwrap(), 48, verbose, dummy)
-        },
+        ("send_driver_rgb", Some(command_args)) => send_binary_file(
+            &mut spi,
+            "send_driver_rgb",
+            command_args.value_of("filename").unwrap(),
+            48,
+            verbose,
+            dummy,
+        ),
 
-        (name, _) =>  {
+        (name, _) => {
             for c in COMMANDS.iter() {
                 if c == &name {
                     transfer(&mut spi, &SpiCommand::decode(c), &[], verbose, dummy)?;
@@ -211,7 +246,12 @@ fn run() -> errors::Result<()> {
 
 fn create_spi(spi_dev: &str, freq: u32, configure: bool, verbose: bool) -> errors::Result<Spidev> {
     if verbose {
-        println!("Opening SPI device {} at {} bit/s{}", spi_dev, freq, if configure { "" } else { " (dummy mode)" });
+        println!(
+            "Opening SPI device {} at {} bit/s{}",
+            spi_dev,
+            freq,
+            if configure { "" } else { " (dummy mode)" }
+        );
     }
     let mut spi =
         Spidev::open(spi_dev).map_err(|e| format!("Cannot open SPI device `{}': {}", spi_dev, e))?;
@@ -269,20 +309,32 @@ fn transfer<T: Write + Read>(
     Ok(read_vec)
 }
 
-fn send_binary_file(spi: &mut Spidev, command: &str, file: &str, payload_size: usize, verbose: bool, dummy: bool) -> errors::Result<()> {
-    let mut file = File::open(file).map_err(|e| {
-        format!("Cannot open data file `{}': {}", file, e)
-    })?;
+fn send_binary_file(
+    spi: &mut Spidev,
+    command: &str,
+    file: &str,
+    payload_size: usize,
+    verbose: bool,
+    dummy: bool,
+) -> errors::Result<()> {
+    let mut file =
+        File::open(file).map_err(|e| format!("Cannot open data file `{}': {}", file, e))?;
 
     let mut data = String::new();
     file.read_to_string(&mut data)?;
     let data = data.trim();
     let mut transaction = vec![0; payload_size];
-    for i in 0..payload_size.min(data.len()/8) {
-        let word = &data[i*8..(i+1)*8];
+    for i in 0..payload_size.min(data.len() / 8) {
+        let word = &data[i * 8..(i + 1) * 8];
         transaction[i] = u8::from_str_radix(&word, 2)?;
     }
-    transfer(spi, &SpiCommand::decode(command), &transaction, verbose, dummy)?;
+    transfer(
+        spi,
+        &SpiCommand::decode(command),
+        &transaction,
+        verbose,
+        dummy,
+    )?;
     Ok(())
 }
 
