@@ -11,6 +11,7 @@ extern crate spidev;
 extern crate toml;
 
 use std::io;
+use std::iter;
 use std::io::prelude::*;
 use std::fs::File;
 use std::str::FromStr;
@@ -198,21 +199,15 @@ fn run() -> errors::Result<()> {
             })?;
 
             let mut data = String::new();
-            driver_file.read_to_string(&mut data);
-            if data.len() < 385 {
-                let mut pad = String::new();
-                while data.len() + pad.len() < 385 {
-                    pad.push('0');
-                }
-                pad.push_str(&data);
-                data = String::from(pad);
-            }
+            driver_file.read_to_string(&mut data)?;
+            let data = data.trim();
             let mut transaction = Vec::with_capacity(49);
-            for i in 0..48 {
+            for i in 0..48.min(data.len()/8) {
                 let word = &data[i*8..(i+1)*8];
                 transaction.push(u8::from_str_radix(&word, 2).unwrap());
             }
-
+            let missing = 49 - transaction.len();
+            transaction.extend(iter::repeat(0).take(missing));
             transfer(&mut spi, &SpiCommand::decode("send_driver"), &transaction, verbose, dummy)?;
             Ok(())
         },
