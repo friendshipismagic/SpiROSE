@@ -16,6 +16,7 @@ args:
       help: "SPI speed in bit/s"
       short: f
       long: frequency
+      takes_value: true
       default_value: "200000"
 subcommands:
    - enable_rgb:
