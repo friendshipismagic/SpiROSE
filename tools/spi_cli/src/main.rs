@@ -10,6 +10,8 @@ extern crate serde_derive;
 extern crate spidev;
 extern crate toml;
 
+mod units;
+
 use std::io;
 use std::io::prelude::*;
 use std::fs::File;
@@ -134,7 +136,7 @@ fn run() -> errors::Result<()> {
     let spi_dev = matches.value_of("device").unwrap();
     let verbose = matches.is_present("verbose");
     let dummy = spi_dev == "none";
-    let freq = matches.value_of("frequency").unwrap().parse::<u32>()?;
+    let freq = units::parse(matches.value_of("frequency").unwrap())?;
     let mut spi = create_spi(
         if dummy { "/dev/null" } else { spi_dev },
         freq,
@@ -249,9 +251,9 @@ fn run() -> errors::Result<()> {
 fn create_spi(spi_dev: &str, freq: u32, configure: bool, verbose: bool) -> errors::Result<Spidev> {
     if verbose {
         println!(
-            "Opening SPI device {} at {} bit/s{}",
+            "Opening SPI device {} at {}bps{}",
             spi_dev,
-            freq,
+            units::display(freq),
             if configure { "" } else { " (dummy mode)" }
         );
     }
