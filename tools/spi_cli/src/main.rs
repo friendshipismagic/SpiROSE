@@ -69,7 +69,7 @@ pub struct LEDDriverConfig {
     lgse2: Integer<u8, ::packed_bits::Bits3>,
 }
 
-static COMMANDS: [&'static str; 8] = [
+static COMMANDS: [&'static str; 9] = [
     "enable_rgb",
     "disable_rgb",
     "get_rotation",
@@ -78,6 +78,7 @@ static COMMANDS: [&'static str; 8] = [
     "get_debug",
     "manage",
     "release",
+    "reset",
 ];
 
 #[derive(Debug)]
@@ -110,6 +111,7 @@ impl SpiCommand {
             "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
             "manage" => SpiCommand::new(0xfa),
             "release" => SpiCommand::new(0xfe),
+            "reset" => SpiCommand::new(0xa0),
             _ => unreachable!(),
         }
     }
