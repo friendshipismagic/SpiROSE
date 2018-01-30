@@ -19,10 +19,10 @@ localparam RAM_SIZE = 8 * 16;
 
 // MUX signals to discriminate the read and write ram. Those two should always
 // be different
-logic [2:0] write_ram;
-logic [2:0]  read_ram;
+logic [1:0] write_ram;
+logic [1:0]  read_ram;
 // This is the next ram to use (i.e. the least recently used)
-logic [2:0]  free_ram;
+logic [1:0]  free_ram;
 
 // Internal RAM signals
 logic  [6:0] internal_write_addr;
@@ -72,7 +72,7 @@ always_ff @(posedge clk or negedge nrst)
 			internal_write_addr <= internal_write_addr;
 
 		internal_write_data <= write_data;
-		for (int i = 0; i < 3; i++) internal_write_ena[i] <= write_ram == i;
+		for (int i = 0; i < 3; i++) internal_write_ena[i] <= write_ram == i[1:0];
 	end
 
 // RAM switching logic
