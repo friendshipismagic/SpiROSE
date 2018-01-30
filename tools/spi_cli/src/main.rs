@@ -210,6 +210,9 @@ fn run() -> errors::Result<()> {
 }
 
 fn create_spi(spi_dev: &str, freq: u32, configure: bool, verbose: bool) -> errors::Result<Spidev> {
+    if verbose {
+        println!("Opening SPI device {} at {} bit/s{}", spi_dev, freq, if configure { "" } else { " (dummy mode)" });
+    }
     let mut spi =
         Spidev::open(spi_dev).map_err(|e| format!("Cannot open SPI device `{}': {}", spi_dev, e))?;
 
