@@ -22,7 +22,7 @@ use std::str::FromStr;
 
 use clap::App;
 use commands::*;
-use framebuffer::{color, read_pixel, send_image, write_pixel, Pixel};
+use framebuffer::{color, get_image, read_pixel, send_image, write_pixel, Pixel};
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
 
@@ -187,6 +187,14 @@ fn run() -> errors::Result<()> {
             let file = command_args.value_of("filename").unwrap();
             let img = image::open(file)?;
             send_image(&mut spi, &img, verbose, dummy)
+        }
+
+        ("get_image", Some(command_args)) => {
+            let file = command_args.value_of("filename").unwrap();
+            let img = get_image(&mut spi, verbose, dummy)?;
+            let mut file = File::create(file)?;
+            img.save(&mut file, image::PNG)?;
+            Ok(())
         }
 
         (name, _) => {

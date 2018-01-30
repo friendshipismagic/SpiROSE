@@ -129,6 +129,17 @@ pub fn send_image(
     release(spi, verbose, dummy)
 }
 
+pub fn get_image(spi: &mut Spidev, verbose: bool, dummy: bool) -> errors::Result<DynamicImage> {
+    manage(spi, verbose, dummy)?;
+    let mut imgbuf = image::ImageBuffer::new(40, 48);
+    for (x, y, pixel) in imgbuf.enumerate_pixels_mut() {
+        let p = read_single_pixel(spi, x as u8, y as u8, verbose, dummy)?;
+        *pixel = image::Rgb([p.r, p.g, p.b]);
+    }
+    release(spi, verbose, dummy)?;
+    Ok(image::ImageRgb8(imgbuf))
+}
+
 fn block_offset(x: u8, y: u8) -> (u8, u8) {
     let block = 5 * (y / 16) + (x % 40) / 8;
     let offset = (y % 16) * 8 + (x % 8);

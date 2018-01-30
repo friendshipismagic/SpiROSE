@@ -116,3 +116,9 @@ subcommands:
          - filename:
             help: "The image to read and send"
             required: true
+   - get_image:
+      about: "Receive a 40x48 image from the display"
+      args:
+         - filename:
+            help: "The PNG file to write"
+            required: true
