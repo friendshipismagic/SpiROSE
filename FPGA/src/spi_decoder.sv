@@ -28,7 +28,8 @@ module spi_decoder (
     output [7:0] mux,
 
     output [47:0] driver_data [29:0],
-    output [383:0] debug_driver,
+    output [431:0] debug_driver,
+    output         debug_driver_override_lut,
 
     // Signals that the topmodule should use debugging data signals from the spi_decoder
     output manage
@@ -43,7 +44,8 @@ localparam DEBUG_COMMAND = 'hDE;
 localparam ENABLE_MUX_COMMAND = 'hE1;
 localparam DISABLE_MUX_COMMAND = 'hD1;
 localparam DRIVER_DATA_COMMAND = 'hDD;
-localparam DRIVER_COMMAND = 'hEE;
+localparam DRIVER_COMMAND_RGB = 'hEE;   // Still uses the LUTs
+localparam DRIVER_COMMAND_POKER = 'hEF; // Overrides output LUTs
 localparam MANAGE_COMMAND = 'hFA;
 localparam RELEASE_COMMAND = 'hFE;
 
@@ -73,6 +75,7 @@ always_ff @(posedge clk or negedge nrst)
         rgb_enable <= 0;
         mux <= '0;
         debug_driver <= '0;
+        debug_driver_override_lut <= '0;
         manage <= '0;
         for (int i=0; i<30; ++i) begin
             driver_data[i] <= '0;
@@ -103,8 +106,13 @@ always_ff @(posedge clk or negedge nrst)
                          && last_cmd_read[7:0] == DEBUG_COMMAND) begin
                 data_miso <= {16'b0, debug_data};
             end else if (last_cmd_len_bytes == 49
-                         && last_cmd_read[391:384] == DRIVER_COMMAND) begin
+                         && last_cmd_read[391:384] == DRIVER_COMMAND_RGB) begin
                 debug_driver <= last_cmd_read[383:0];
+                debug_driver_override_lut <= 0;
+            end else if (last_cmd_len_bytes == 55
+                         && last_cmd_read[439:432] == DRIVER_COMMAND_POKER) begin
+                debug_driver <= last_cmd_read[431:0];
+                debug_driver_override_lut <= 1;
             end else if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == ENABLE_RGB_COMMAND) begin
                 rgb_enable <= '1;
