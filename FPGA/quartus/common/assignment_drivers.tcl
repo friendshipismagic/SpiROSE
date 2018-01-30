@@ -35,7 +35,6 @@ set_location_assignment PIN_44 -to drv_sin[9]
 #============================================================
 # LED DRIVERS (CONTROL)
 #============================================================
-set_location_assignment PIN_216 -to drv_sout_data
 set_location_assignment PIN_214 -to drv_gclk_a
 set_location_assignment PIN_52 -to drv_gclk_b
 set_location_assignment PIN_226 -to drv_lat_a
