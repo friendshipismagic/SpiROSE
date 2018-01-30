@@ -205,15 +205,15 @@ end
 always_comb begin
     case(driver_state)
         SHIFT_REGISTER, PAUSE_SCLK: begin
-            driver_gclk <= clk_enable && first_latgs;
+            driver_gclk = clk_enable && first_latgs;
         end
 
         BLANKING: begin
-            driver_gclk <= clk_enable && first_latgs && driver_state_counter != 0;
+            driver_gclk = clk_enable && first_latgs && driver_state_counter != 0;
         end
 
         WAIT_FOR_SOF: begin
-            driver_gclk <= clk_enable && first_latgs && driver_state_counter != 0 && driver_state_counter < 513;
+            driver_gclk = clk_enable && first_latgs && driver_state_counter != 0 && driver_state_counter < 513;
         end
 
         default: begin
