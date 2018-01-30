@@ -160,7 +160,7 @@ spi_decoder spi_decoder (
     .new_config_available(start_config),
     // Display control to rgb_logic
     .rgb_enable(rgb_enable),
-    // 432bit signal with full column driver data
+    // 384bit signal with full column driver data
     .debug_driver(spi_debug_driver),
     // Managing signals for debugging mux
     .manage(spi_manage),
