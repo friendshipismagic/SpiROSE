@@ -108,7 +108,7 @@ always_ff @(posedge clk or negedge nrst)
                 data_miso <= {16'b0, debug_data};
             end else if (last_cmd_len_bytes == 49
                          && last_cmd_read[391:384] == DRIVER_COMMAND_RGB) begin
-                debug_driver <= last_cmd_read[383:0];
+                debug_driver <= {48'b0, last_cmd_read[383:0]};
                 debug_driver_poker_mode <= 0;
             end else if (last_cmd_len_bytes == 55
                          && last_cmd_read[439:432] == DRIVER_COMMAND_POKER) begin
