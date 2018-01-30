@@ -1,4 +1,4 @@
-QUARTUS131 = /comelec/softs/opt/altera/altera13.1/comelec/quartus_sh
+QUARTUS131 ?= /comelec/softs/opt/altera/altera13.1/comelec/quartus_sh
 
 bundle: compile
 	mkdir -p stapl
