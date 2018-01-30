@@ -72,6 +72,8 @@ always_ff @(posedge clk or negedge nrst)
         new_config_available <= 1;       // This will be high for one cycle (STALL)
         rgb_enable <= 0;
         mux <= '0;
+        debug_driver <= '0;
+        manage <= '0;
         for (int i=0; i<30; ++i) begin
             driver_data[i] <= '0;
         end
@@ -86,7 +88,7 @@ always_ff @(posedge clk or negedge nrst)
                          && last_cmd_read[7:0] == MANAGE_COMMAND) begin
                 manage <= 1;
             end else if (last_cmd_len_bytes == 1
-                         && last_cmd_read[7:0] == MANAGE_COMMAND) begin
+                         && last_cmd_read[7:0] == RELEASE_COMMAND) begin
                 manage <= 0;
             end else if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == CONFIG_COMMAND) begin
@@ -100,7 +102,7 @@ always_ff @(posedge clk or negedge nrst)
             end else if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == DEBUG_COMMAND) begin
                 data_miso <= {16'b0, debug_data};
-            end else if (last_cmd_len_bytes == 9
+            end else if (last_cmd_len_bytes == 55
                          && last_cmd_read[439:432] == DRIVER_COMMAND) begin
                 debug_driver <= last_cmd_read[431:0];
             end else if (last_cmd_len_bytes == 1

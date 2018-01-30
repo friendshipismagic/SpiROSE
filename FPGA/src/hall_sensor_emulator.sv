@@ -5,7 +5,7 @@ module hall_sensor_emulator (
 );
 
 // Slice lenght in cycle
-localparam SLICE_CYCLE = 50000;
+localparam SLICE_CYCLE = 5000;
 
 integer slice_cycle_cnt;
 

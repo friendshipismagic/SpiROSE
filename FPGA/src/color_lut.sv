@@ -43,7 +43,7 @@ localparam integer DRIVER_LUT2_B [0:15] = '{
 
 always_comb
 begin
-    for(int i = 0; i < 10; i++) begin
+    for(int i = 0; i < 5; i++) begin
         for(int bit_idx = 0; bit_idx < 9; bit_idx++) begin
             for(int led = 0; led < 16; led++) begin
                 data_out[i][48*bit_idx + 3*led]   = data_in[i][48*bit_idx + 3*DRIVER_LUT0_RG[led]];
@@ -52,7 +52,7 @@ begin
             end
         end
     end
-    for(int i = 10; i < 20; i++) begin
+    for(int i = 5; i < 10; i++) begin
         for(int bit_idx = 0; bit_idx < 9; bit_idx++) begin
             for(int led = 0; led < 16; led++) begin
                 data_out[i][48*bit_idx + 3*led]   = data_in[i][48*bit_idx + 3*DRIVER_LUT1_RG[led]];
@@ -61,7 +61,7 @@ begin
             end
         end
     end
-    for(int i = 20; i < 30; i++) begin
+    for(int i = 10; i < 15; i++) begin
         for(int bit_idx = 0; bit_idx < 9; bit_idx++) begin
             for(int led = 0; led < 16; led++) begin
                 data_out[i][48*bit_idx + 3*led]   = data_in[i][48*bit_idx + 3*DRIVER_LUT2_RG[led]];

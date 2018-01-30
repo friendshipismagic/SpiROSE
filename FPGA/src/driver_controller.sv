@@ -17,9 +17,11 @@ module driver_controller #(
     input [431:0] data [14:0],
     input [47:0] config_data,
     input start_config,
-    output end_config
+    output end_config,
+    output [3:0] debug
 );
 
+assign debug = {SOF, EOC, end_config, start_config};
 logic should_send_config;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
@@ -65,23 +67,23 @@ enum integer {
     BLANKING,
     SHIFT_REGISTER,
     PAUSE_SCLK,
-    PREPARE_DUMP_CONFIG,
-    DUMP_CONFIG,
     WRTFC_TIMING,
     WAIT_END_GCLK_SEGMENT,
     WAIT_FOR_SOF
 } driver_state;
 
+assign end_config = clk_enable && driver_state == WRTFC_TIMING && driver_state_counter == 0;
+
 integer driver_state_counter;
 integer wrtgs_cnt;
-integer mux_counter;
+integer column_counter;
 integer data_idx;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         driver_state <= STALL;
         driver_state_counter <= '0;
         wrtgs_cnt <= '0;
-        mux_counter <= '0;
+        column_counter <= '0;
         data_idx <= '0;
     end else begin
         if (clk_enable) begin
@@ -115,28 +117,7 @@ always_ff @(posedge clk or negedge nrst)
                     // Here we wait 5 cycles to meet timing requirements
                     driver_state_counter <= driver_state_counter + 1'b1;
                     if(driver_state_counter == 5) begin
-                        driver_state <= PREPARE_DUMP_CONFIG;
-                        driver_state_counter <= '0;
-                    end
-                end
-
-                PREPARE_DUMP_CONFIG: begin
-                    // Here we wait 11 cycles to send the READFC command
-                    driver_state_counter <= driver_state_counter + 1'b1;
-                    if(driver_state_counter == 10) begin
-                        driver_state <= DUMP_CONFIG;
-                        driver_state_counter <= '0;
-                    end
-                end
-
-                DUMP_CONFIG: begin
-                    /*
-                     * Here we wait 5 cycles to meet the timing requirement, and
-                     * then 47 cycle to read the config data.
-                     */
-                    driver_state_counter <= driver_state_counter + 1'b1;
-                    if(driver_state_counter == 47+5) begin
-                       driver_state <= WAIT_FOR_SOF;
+                        driver_state <= WAIT_FOR_SOF;
                         driver_state_counter <= '0;
                     end
                 end
@@ -160,10 +141,10 @@ always_ff @(posedge clk or negedge nrst)
                         driver_state <= PAUSE_SCLK;
                         if(wrtgs_cnt == 8) begin
                             wrtgs_cnt <= 0;
-                            mux_counter <= mux_counter + 1'b1;
+                            column_counter <= column_counter + 1'b1;
                             driver_state <= BLANKING;
-                            if(mux_counter == 7) begin
-                                mux_counter <= '0;
+                            if(column_counter == 7) begin
+                                column_counter <= '0;
                                 driver_state <= WAIT_FOR_SOF;
                             end
                         end
@@ -177,7 +158,7 @@ always_ff @(posedge clk or negedge nrst)
                 WAIT_FOR_SOF: begin
                     if(SOF) begin
                         driver_state <= WAIT_END_GCLK_SEGMENT;
-                        mux_counter <= '0;
+                        column_counter <= '0;
                     end
                 end
 
@@ -212,17 +193,6 @@ always_comb begin
              * timing requirement
              */
             if(driver_state_counter == 'd0) begin
-                driver_sclk = '0;
-            end
-        end
-
-        DUMP_CONFIG: begin
-            driver_sclk = clk_enable;
-            /*
-             * After the READFC command we pause SCLK for five cycles to meet
-             * timing requirement
-             */
-            if(driver_state_counter < 'd5) begin
                 driver_sclk = '0;
             end
         end
@@ -276,7 +246,7 @@ begin
     driver_lat <= 1'b0;
 end else begin
     case(driver_state)
-        PREPARE_CONFIG, PREPARE_DUMP_CONFIG: begin
+        PREPARE_CONFIG: begin
             driver_lat <= 1'b1;
         end
 
@@ -292,7 +262,7 @@ end else begin
            driver_lat <= '0;
            if(driver_state_counter == 47
                || (driver_state_counter >= 45 && wrtgs_cnt == 8)
-               ||(driver_state_counter >= 41 && wrtgs_cnt == 8 && mux_counter == 7)) begin
+               ||(driver_state_counter >= 41 && wrtgs_cnt == 8 && column_counter == 7)) begin
               driver_lat <= '1;
           end
         end
@@ -311,7 +281,7 @@ always_comb begin
             drivers_sin = '0;
             if(driver_state_counter != 0) begin
                 for(int i = 0; i < 30; i++) begin
-                    drivers_sin[i] = config_data[48-driver_state_counter];
+                    drivers_sin[i] = config_buffer[48-driver_state_counter];
                 end
             end
         end
@@ -330,13 +300,30 @@ end
 assign EOC = driver_state == SHIFT_REGISTER && wrtgs_cnt == 8
             && driver_state_counter == 47 && clk_enable;
 
+integer mux_counter;
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+        mux_counter <= 8;
+    end else begin
+        if(EOC) begin
+            mux_counter <= mux_counter + 1'b1;
+            if(mux_counter == 8) begin
+                mux_counter <= '0;
+            end
+        end
+
+        if(SOF || ((gclk_cnt == 512) && (mux_counter == 7))) begin
+            mux_counter <= 8;
+        end
+    end
+
 always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
         mux_out <= '0;
     end else begin
-        mux_out <= 8'b1000_0000;
-        if(mux_counter > 0) begin
-            mux_out <= 1'b1 << (mux_counter - 1);
+        mux_out <= '0;
+        if(mux_counter < 8) begin
+            mux_out <= 1'b1 << mux_counter;
         end
     end
 

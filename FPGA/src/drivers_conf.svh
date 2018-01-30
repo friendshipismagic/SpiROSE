@@ -37,17 +37,17 @@ localparam drivers_conf_t drivers_conf = '{
    SEL_GDLY: 1'b1,
    XREFRESH: 1'b1,
    SEL_GCK_EDGE: 1'b0,
-   SEL_PCHG: 1'b0,
+   SEL_PCHG: 1'b1,
    ESPWM: 1'b1,
-   LGSE3: 1'b0,
+   LGSE3: 1'b1,
    SEL_SCK_EDGE: 1'b0,
-   LGSE1: 3'b000,
+   LGSE1: 3'b100,
    CCB: 9'b1_0000_0000,
    CCG: 9'b1_0000_0000,
    CCR: 9'b1_0000_0000,
    BC: 3'b000,
    POKER_TRANS_MODE: 1'b1,
-   LGSE2: 3'b000
+   LGSE2: 3'b101
 };
 
 // Serialization of the configuration, used for sending the data to SIN.

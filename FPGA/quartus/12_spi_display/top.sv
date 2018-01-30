@@ -113,9 +113,6 @@ assign drv_sclk_b = driver_sclk;
 assign drv_lat_a = driver_lat;
 assign drv_lat_b = driver_lat;
 
-always_ff @(posedge clk)
-    pt_6 <= ~pt_6;
-
 clock_66 main_clock_66 (
     .inclk0(rgb_clk),
     .c0(clk),
@@ -172,11 +169,6 @@ spi_decoder spi_decoder (
     .mux(spi_mux_state)
 );
 
-always_comb begin
-    for(int i=0; i<14; ++i) begin
-        driver_data[i] = spi_debug_driver_poker_mode;
-    end
-end
 
 driver_controller driver_controller (
     .clk(clk),
@@ -192,12 +184,25 @@ driver_controller driver_controller (
     .data(driver_data),
     .config_data(driver_conf),
     .start_config(start_config),
-    .end_config(end_config)
+    .end_config(end_config),
+    .debug({pt_6, pt_23, pt_24, pt_26})
 );
 
 framebuffer_poker_lut framebuffer_poker_lut (
     .data_in(spi_debug_driver),
     .data_out(spi_debug_driver_poker_mode)
+);
+
+always_comb begin
+    for(int i=0; i<14; ++i) begin
+        debug_driver_data_colored[i] = spi_debug_driver_poker_mode;
+    end
+end
+
+logic [431:0] debug_driver_data_colored [14:0];
+color_lut color_lut (
+    .data_in(debug_driver_data_colored),
+    .data_out(driver_data)
 );
 
 logic [29:0] drv_sin_tolut;
