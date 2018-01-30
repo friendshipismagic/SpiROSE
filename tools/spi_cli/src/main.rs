@@ -194,7 +194,7 @@ fn run() -> errors::Result<()> {
             let file_name = command_args.value_of("filename").unwrap();
             let mut driver_file = File::open(file_name).map_err(|e| {
                 format!(
-                    "Cannot open configuration file `{}': {}",
+                    "Cannot open data file `{}': {}",
                     file_name, e
                     )
             })?;
@@ -217,7 +217,7 @@ fn run() -> errors::Result<()> {
             let file_name = command_args.value_of("filename").unwrap();
             let mut driver_file = File::open(file_name).map_err(|e| {
                 format!(
-                    "Cannot open configuration file `{}': {}",
+                    "Cannot open data file `{}': {}",
                     file_name, e
                     )
             })?;
