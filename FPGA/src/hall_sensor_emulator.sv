@@ -1,8 +1,9 @@
 `default_nettype none
 module hall_sensor_emulator (
-        input clk,
-        input nrst,
-        output SOF
+        input  logic clk,
+        input logic  clk_enable,
+        input  logic nrst,
+        output logic SOF
 );
 
 // Slice lenght in cycle
@@ -14,7 +15,7 @@ always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         SOF <= '0;
         slice_cycle_cnt <= '0;
-    end else begin
+    end else if (clk_enable) begin
         SOF <= '0;
         slice_cycle_cnt <= slice_cycle_cnt + 1'b1;
         if(slice_cycle_cnt == SLICE_CYCLE) begin

@@ -1,7 +1,7 @@
 `default_nettype none
 module sync_sig #(
-    parameter RESET_VALUE=0,
-    parameter SIZE=1
+    parameter RESET_VALUE='0,
+    parameter SIZE='1
 )(
     input nrst,
     input clk,
@@ -25,6 +25,8 @@ always @(posedge clk or negedge nrst)
         reg2 <= reg1;
     end
 
-assign out_sig = (reg0 & reg1) | (reg1 & reg2) | (reg0 & reg2);
+// In case of signal integrity, uncomment this
+// assign out_sig = (reg0 & reg1) | (reg1 & reg2) | (reg0 & reg2);
+assign out_sig = reg2;
 
 endmodule

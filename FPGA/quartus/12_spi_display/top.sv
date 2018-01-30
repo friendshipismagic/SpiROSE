@@ -64,49 +64,10 @@ module Top
  output logic        pt_27
 );
 
-// spi_iff output signals
-logic [439:0] data_mosi;
-logic [10:0]  data_len_bytes;
-logic [47:0] data_miso;
-logic        cmd_valid;
-
-// spi_decoder I/O signals
-logic [15:0] rotation_data;
-logic [15:0] speed_data;
-logic        rgb_enable;
-
-// driver_controller signals
-logic clk_enable;
-logic driver_sclk;
-logic driver_gclk;
-logic driver_lat;
-logic [29:0] drivers_sin;
-logic SOF;
-logic EOC;
-logic [47:0] driver_conf;
-logic start_config;
-logic end_config;
-
-// Spi debug signals
-logic spi_manage;
-logic [7:0] spi_mux_state;
-
 // In this test, we assign predefined value to rotation data and
 // check that SPI I/O is sending it back when asked
 assign rotation_data = 'hBEEF;
 assign speed_data = 'hDEAD;
-
-// Column mux signals
-logic [7:0] mux_out;
-
-assign fpga_mul_a = spi_manage ? spi_mux_state : mux_out;
-assign fpga_mul_b = spi_manage ? spi_mux_state : mux_out;
-assign drv_gclk_a = driver_gclk;
-assign drv_gclk_b = driver_gclk;
-assign drv_sclk_a = driver_sclk;
-assign drv_sclk_b = driver_sclk;
-assign drv_lat_a = driver_lat;
-assign drv_lat_b = driver_lat;
 
 // Clock generation
 logic clk, fast_clk, slow_clk, nrst, clk_select;
@@ -125,17 +86,26 @@ clock_switchover clock_switchover (
 
 assign clk_select = '1;
 
+logic clk_enable;
 clock_enable clock_enable (
     .clk(clk),
     .nrst(nrst),
     .clk_enable(clk_enable)
 );
 
+// Hall sensors
 hall_sensor_emulator main_hs_emulator (
-    .clk(clk_enable),
+    .clk(clk),
+    .clk_enable(clk_enable),
     .nrst(nrst),
     .SOF(SOF)
 );
+
+// SBC SOM Interface
+logic [439:0] data_mosi;
+logic [10:0]  data_len_bytes;
+logic [47:0]  data_miso;
+logic         cmd_valid;
 
 spi_iff spi_iff (
     .clk(clk),
@@ -154,6 +124,15 @@ spi_iff spi_iff (
 
 logic [431:0] spi_debug_driver;
 logic         spi_debug_driver_poker_mode;
+logic [15:0] rotation_data;
+logic [15:0] speed_data;
+logic        rgb_enable;
+logic [47:0] driver_conf;
+logic start_config;
+logic end_config;
+logic spi_manage_mux;
+logic [7:0] spi_mux_state;
+
 spi_decoder spi_decoder (
     .clk(clk),
     .nrst(nrst),
@@ -174,11 +153,11 @@ spi_decoder spi_decoder (
     .debug_driver(spi_debug_driver),
     .debug_driver_poker_mode(spi_debug_driver_poker_mode),
     // Managing signals for debugging mux
-    .manage(spi_manage),
+    .manage_mux(spi_manage_mux),
     .mux(spi_mux_state)
 );
 
-// poker_lut adds zeroes to the 9th SIN data
+// poker_formatter adds zeroes to the 9th SIN data
 logic [431:0] data_pokered;
 poker_formatter poker_formatter (
     .data_in(spi_debug_driver),
@@ -197,6 +176,15 @@ color_lut color_lut (
     .data_in(driver_data),
     .data_out(data_reordered)
 );
+
+
+logic driver_sclk;
+logic driver_gclk;
+logic driver_lat;
+logic [29:0] drivers_sin;
+logic SOF;
+logic EOC;
+logic [7:0] mux_out;
 
 driver_controller driver_controller (
     .clk(clk),
@@ -221,5 +209,15 @@ driver_sin_lut main_drv_sin_lut (
     .drv_sin_tolut(drivers_sin),
     .drv_sin(drv_sin)
 );
+
+assign fpga_mul_a = spi_manage_mux ? spi_mux_state : mux_out;
+assign fpga_mul_b = spi_manage_mux ? spi_mux_state : mux_out;
+assign drv_gclk_a = driver_gclk;
+assign drv_gclk_b = driver_gclk;
+assign drv_sclk_a = driver_sclk;
+assign drv_sclk_b = driver_sclk;
+assign drv_lat_a = driver_lat;
+assign drv_lat_b = driver_lat;
+
 
 endmodule
