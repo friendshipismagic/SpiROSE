@@ -12,7 +12,10 @@ module ram_lru (
     // Ram access
     input logic   [6:0] read_addr,
     output logic [23:0] read_data,
-    input logic         read_done
+    input logic         read_done,
+
+    // Whether to bypass the whole LRU thing
+    input logic         bypass_lru
 );
 
 // MUX signals to discriminate the read and write ram. Those two should always
@@ -27,7 +30,7 @@ wire         internal_write_ena [2:0];
 wire  [23:0] internal_read_data [2:0];
 
 // Route signals to the proper RAMs
-assign read_data = internal_read_data[read_ram];
+assign read_data = internal_read_data[bypass_lru ? write_ram : read_ram];
 
 // RAM blocks instanciation
 ram ram0 (
