@@ -11,7 +11,7 @@ module spi_decoder (
     input  clk,
 
     input  valid,
-    input  [391:0] data_mosi,
+    input  [439:0] data_mosi,
     input  [10:0]  data_len_bytes,
     output [47:0] data_miso,
 
@@ -51,7 +51,7 @@ localparam RELEASE_COMMAND = 'hFE;
 
 `include "drivers_conf.svh"
 
-logic [391:0] last_cmd_read;
+logic [439:0] last_cmd_read;
 logic [10:0] last_cmd_len_bytes;
 logic last_valid;
 
