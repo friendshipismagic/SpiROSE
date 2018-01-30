@@ -67,7 +67,7 @@ module Top
 logic clk, nrst;
 
 // spi_iff output signals
-logic [439:0] data_mosi;
+logic [383:0] data_mosi;
 logic [10:0]  data_len_bytes;
 logic [47:0] data_miso;
 logic        cmd_valid;

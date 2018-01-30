@@ -68,7 +68,8 @@ enum integer {
     SHIFT_REGISTER,
     PAUSE_SCLK,
     WRTFC_TIMING,
-    WAIT_FOR_SOF
+    WAIT_FOR_SOF,
+    SEND_TMGRST
 } driver_state;
 
 assign end_config = clk_enable && driver_state == WRTFC_TIMING && driver_state_counter == 0;
@@ -90,7 +91,15 @@ always_ff @(posedge clk or negedge nrst)
         if (clk_enable) begin
             case(driver_state)
                 STALL: begin
-                    driver_state <= PREPARE_CONFIG;
+                    driver_state <= SEND_TMGRST;
+                end
+
+                SEND_TMGRST: begin
+                    driver_state_counter <= driver_state_counter + 1'b1;
+                    if(driver_state_counter == 20) begin
+                        driver_state_counter <= '0;
+                        driver_state <= PREPARE_CONFIG;
+                    end
                 end
 
                 PREPARE_CONFIG: begin
@@ -164,6 +173,9 @@ always_ff @(posedge clk or negedge nrst)
                         driver_state <= BLANKING;
                         column_counter <= '0;
                         first_latgs <= '0;
+                    end
+                    if(should_send_config) begin
+                        driver_state <= SEND_TMGRST;
                     end
                 end
 
@@ -249,6 +261,10 @@ begin
     driver_lat <= 1'b0;
 end else begin
     case(driver_state)
+        SEND_TMGRST: begin
+            driver_lat <= driver_state_counter < 13;
+        end
+
         PREPARE_CONFIG: begin
             driver_lat <= 1'b1;
         end
@@ -264,7 +280,8 @@ end else begin
         SHIFT_REGISTER: begin
            driver_lat <= '0;
            if(driver_state_counter == 47
-               || (driver_state_counter >= 45 && wrtgs_cnt == 8)) begin
+               || (driver_state_counter >= 45 && wrtgs_cnt == 8)
+               || (driver_state_counter >= 41 && wrtgs_cnt == 8 && column_counter == 7)) begin
               driver_lat <= '1;
           end
         end
