@@ -29,7 +29,7 @@ module spi_decoder (
 
     output [47:0] driver_data [29:0],
     output [431:0] debug_driver,
-    output         debug_driver_override_lut,
+    output         debug_driver_poker_mode,
 
     // Signals that the topmodule should use debugging data signals from the spi_decoder
     output manage
@@ -75,7 +75,7 @@ always_ff @(posedge clk or negedge nrst)
         rgb_enable <= 0;
         mux <= '0;
         debug_driver <= '0;
-        debug_driver_override_lut <= '0;
+        debug_driver_poker_mode <= '0;
         manage <= '0;
         for (int i=0; i<30; ++i) begin
             driver_data[i] <= '0;
@@ -108,11 +108,11 @@ always_ff @(posedge clk or negedge nrst)
             end else if (last_cmd_len_bytes == 49
                          && last_cmd_read[391:384] == DRIVER_COMMAND_RGB) begin
                 debug_driver <= last_cmd_read[383:0];
-                debug_driver_override_lut <= 0;
+                debug_driver_poker_mode <= 0;
             end else if (last_cmd_len_bytes == 55
                          && last_cmd_read[439:432] == DRIVER_COMMAND_POKER) begin
                 debug_driver <= last_cmd_read[431:0];
-                debug_driver_override_lut <= 1;
+                debug_driver_poker_mode <= 1;
             end else if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == ENABLE_RGB_COMMAND) begin
                 rgb_enable <= '1;

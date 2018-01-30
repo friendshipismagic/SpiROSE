@@ -144,7 +144,7 @@ spi_iff spi_iff (
 );
 
 logic [431:0] spi_debug_driver;
-logic         spi_debug_driver_override_lut;
+logic         spi_debug_driver_poker_mode;
 spi_decoder spi_decoder (
     .clk(clk),
     .nrst(nrst),
@@ -163,7 +163,7 @@ spi_decoder spi_decoder (
     .rgb_enable(rgb_enable),
     // 431bit signal with full column driver data
     .debug_driver(spi_debug_driver),
-    .debug_driver_override_lut(spi_debug_driver_override_lut),
+    .debug_driver_poker_mode(spi_debug_driver_poker_mode),
     // Managing signals for debugging mux
     .manage(spi_manage),
     .mux(spi_mux_state)
@@ -178,7 +178,7 @@ framebuffer_poker_lut framebuffer_poker_lut (
 logic [431:0] driver_data [14:0];
 always_comb begin
     for(int i=0; i<15; ++i) begin
-        driver_data[i] = spi_debug_driver_override_lut ? spi_debug_driver : data_pokered;
+        driver_data[i] = spi_debug_driver_poker_mode ? spi_debug_driver : data_pokered;
     end
 end
 
@@ -213,4 +213,3 @@ driver_sin_lut main_drv_sin_lut (
 );
 
 endmodule
-
