@@ -169,7 +169,6 @@ spi_decoder spi_decoder (
     .mux(spi_mux_state)
 );
 
-
 driver_controller driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),
@@ -188,22 +187,11 @@ driver_controller driver_controller (
     .debug({pt_6, pt_23, pt_24, pt_26})
 );
 
-framebuffer_poker_lut framebuffer_poker_lut (
-    .data_in(spi_debug_driver),
-    .data_out(spi_debug_driver_poker_mode)
-);
-
 always_comb begin
-    for(int i=0; i<14; ++i) begin
-        debug_driver_data_colored[i] = spi_debug_driver_poker_mode;
+    for(int i=0; i<15; ++i) begin
+        driver_data[i] = spi_debug_driver;
     end
 end
-
-logic [431:0] debug_driver_data_colored [14:0];
-color_lut color_lut (
-    .data_in(debug_driver_data_colored),
-    .data_out(driver_data)
-);
 
 logic [29:0] drv_sin_tolut;
 driver_sin_lut main_drv_sin_lut (

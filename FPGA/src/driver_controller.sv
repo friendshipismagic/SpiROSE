@@ -21,7 +21,7 @@ module driver_controller #(
     output [3:0] debug
 );
 
-assign debug = {SOF, EOC, end_config, start_config};
+assign debug = {SOF, EOC, driver_state == SHIFT_REGISTER, driver_state == BLANKING};
 logic should_send_config;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
@@ -68,7 +68,6 @@ enum integer {
     SHIFT_REGISTER,
     PAUSE_SCLK,
     WRTFC_TIMING,
-    WAIT_END_GCLK_SEGMENT,
     WAIT_FOR_SOF
 } driver_state;
 
@@ -78,6 +77,7 @@ integer driver_state_counter;
 integer wrtgs_cnt;
 integer column_counter;
 integer data_idx;
+logic first_latgs;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         driver_state <= STALL;
@@ -85,6 +85,7 @@ always_ff @(posedge clk or negedge nrst)
         wrtgs_cnt <= '0;
         column_counter <= '0;
         data_idx <= '0;
+        first_latgs <= '0;
     end else begin
         if (clk_enable) begin
             case(driver_state)
@@ -143,6 +144,7 @@ always_ff @(posedge clk or negedge nrst)
                             wrtgs_cnt <= 0;
                             column_counter <= column_counter + 1'b1;
                             driver_state <= BLANKING;
+                            first_latgs <= '1;
                             if(column_counter == 7) begin
                                 column_counter <= '0;
                                 driver_state <= WAIT_FOR_SOF;
@@ -156,18 +158,11 @@ always_ff @(posedge clk or negedge nrst)
                 end
 
                 WAIT_FOR_SOF: begin
+                    driver_state_counter <= driver_state_counter + 1'b1;
                     if(SOF) begin
-                        driver_state <= WAIT_END_GCLK_SEGMENT;
-                        column_counter <= '0;
-                    end
-                end
-
-                WAIT_END_GCLK_SEGMENT: begin
-                    if(gclk_cnt == 512) begin
+                        driver_state_counter <= '0;
                         driver_state <= BLANKING;
-                        if(should_send_config) begin
-                            driver_state <= PREPARE_CONFIG;
-                        end
+                        column_counter <= '0;
                     end
                 end
 
@@ -197,7 +192,7 @@ always_comb begin
             end
         end
 
-        WAIT_FOR_SOF, BLANKING, PAUSE_SCLK, WRTFC_TIMING, WAIT_END_GCLK_SEGMENT: begin
+        WAIT_FOR_SOF, BLANKING, PAUSE_SCLK, WRTFC_TIMING: begin
             driver_sclk = '0;
         end
 
@@ -207,18 +202,25 @@ always_comb begin
     endcase
 end
 
-integer gclk_cnt;
-always_ff @(posedge clk or negedge nrst)
-    if(~nrst) begin
-        gclk_cnt <= '0;
-    end else if(clk_enable) begin
-        gclk_cnt <= gclk_cnt + 1'b1;
-        if(gclk_cnt == 512) begin
-            gclk_cnt <= '0;
+always_comb begin
+    case(driver_state)
+        SHIFT_REGISTER, PAUSE_SCLK: begin
+            driver_gclk <= clk_enable && first_latgs;
         end
-    end
 
-assign driver_gclk = gclk_cnt != 0 && clk_enable;
+        BLANKING: begin
+            driver_gclk <= clk_enable && first_latgs && driver_state_counter != 0;
+        end
+
+        WAIT_FOR_SOF: begin
+            driver_gclk <= clk_enable && first_latgs && driver_state_counter != 0 && driver_state_counter < 513;
+        end
+
+        default: begin
+            driver_gclk = '0;
+        end
+    endcase
+end
 
 /*
  * The LAT is a command signal for latching. It does the states transitions.
@@ -261,8 +263,7 @@ end else begin
         SHIFT_REGISTER: begin
            driver_lat <= '0;
            if(driver_state_counter == 47
-               || (driver_state_counter >= 45 && wrtgs_cnt == 8)
-               ||(driver_state_counter >= 41 && wrtgs_cnt == 8 && column_counter == 7)) begin
+               || (driver_state_counter >= 45 && wrtgs_cnt == 8)) begin
               driver_lat <= '1;
           end
         end
@@ -312,7 +313,7 @@ always_ff @(posedge clk or negedge nrst)
             end
         end
 
-        if(SOF || ((gclk_cnt == 512) && (mux_counter == 7))) begin
+        if(SOF || ((driver_state_counter == 512) && (mux_counter == 7))) begin
             mux_counter <= 8;
         end
     end
