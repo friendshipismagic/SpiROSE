@@ -104,15 +104,11 @@ fn run() -> errors::Result<()> {
 
     match matches.subcommand() {
         ("send_config", Some(command_args)) => {
-            let config_file_url = command_args.value_of("config_file").unwrap();
-            let mut config_file = File::open(config_file_url).map_err(|e| {
-                format!(
-                    "Cannot open configuration file `{}': {}",
-                    config_file_url, e
-                )
-            })?;
+            let file = command_args.value_of("config_file").unwrap();
+            let mut file = File::open(file)
+                .map_err(|e| format!("Cannot open configuration file `{}': {}", file, e))?;
             let mut serialized_conf = String::new();
-            config_file.read_to_string(&mut serialized_conf)?;
+            file.read_to_string(&mut serialized_conf)?;
             // Unwrapping inside a LEDDriverConfig forces the full configuration to be available
             let led_config: LEDDriverConfig = toml::from_str(&serialized_conf)?;
             transfer(&mut spi, &GET_CONFIG, &led_config.pack(), verbose, dummy)?;
@@ -185,14 +181,16 @@ fn run() -> errors::Result<()> {
 
         ("send_image", Some(command_args)) => {
             let file = command_args.value_of("filename").unwrap();
-            let img = image::open(file)?;
+            let img =
+                image::open(file).map_err(|e| format!("Cannot open image `{}': {}", file, e))?;
             send_image(&mut spi, &img, verbose, dummy)
         }
 
         ("get_image", Some(command_args)) => {
             let file = command_args.value_of("filename").unwrap();
             let img = get_image(&mut spi, verbose, dummy)?;
-            let mut file = File::create(file)?;
+            let mut file = File::create(file)
+                .map_err(|e| format!("Cannot create image file `{}': {}", file, e))?;
             img.save(&mut file, image::PNG)?;
             Ok(())
         }
