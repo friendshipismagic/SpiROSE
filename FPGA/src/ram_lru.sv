@@ -9,9 +9,9 @@ module ram_lru (
     input logic        write_enab,
 
     // Ram access
-    input logic  [6:0] read_addr,
-    input logic [23:0] read_data,
-    input logic        read_done
+    input logic   [6:0] read_addr,
+    output logic [23:0] read_data,
+    input logic         read_done
 );
 
 // RAM size in 24 bit words
