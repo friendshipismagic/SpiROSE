@@ -4,18 +4,16 @@ module ram_lru (
     input logic nrst,
 
     // Video stream input
-    input logic [31:0] write_addr,
+    input logic  [6:0] write_addr,
     input logic [23:0] write_data,
     input logic        write_enab,
+    input logic        write_done,
 
     // Ram access
     input logic   [6:0] read_addr,
     output logic [23:0] read_data,
     input logic         read_done
 );
-
-// RAM size in 24 bit words
-localparam RAM_SIZE = 8 * 16;
 
 // MUX signals to discriminate the read and write ram. Those two should always
 // be different
@@ -25,13 +23,8 @@ logic [1:0]  read_ram;
 logic [1:0]  free_ram;
 
 // Internal RAM signals
-logic  [6:0] internal_write_addr;
-logic [23:0] internal_write_data;
-logic        internal_write_ena [2:0];
+wire         internal_write_ena [2:0];
 wire  [23:0] internal_read_data [2:0];
-
-// Whenever the write to a ram has been done
-wire  write_done;
 
 // Route signals to the proper RAMs
 assign read_data = internal_read_data[read_ram];
@@ -40,40 +33,21 @@ assign read_data = internal_read_data[read_ram];
 ram ram0 (
 	.clock(clk),
 	.wren(internal_write_ena[0]),
-	.data(internal_write_data), .wraddress(internal_write_addr),
+	.data(write_data), .wraddress(write_addr),
 	.q(internal_read_data[0]), .rdaddress(read_addr)
 );
 ram ram1 (
 	.clock(clk),
 	.wren(internal_write_ena[1]),
-	.data(internal_write_data), .wraddress(internal_write_addr),
+	.data(write_data), .wraddress(write_addr),
 	.q(internal_read_data[1]), .rdaddress(read_addr)
 );
 ram ram2 (
 	.clock(clk),
 	.wren(internal_write_ena[2]),
-	.data(internal_write_data), .wraddress(internal_write_addr),
+	.data(write_data), .wraddress(write_addr),
 	.q(internal_read_data[2]), .rdaddress(read_addr)
 );
-
-// RAM address counter and write info latcher
-assign write_done = internal_write_addr == RAM_SIZE - 1;
-always_ff @(posedge clk or negedge nrst)
-	if (~nrst) begin
-		internal_write_addr <= 0;
-		internal_write_data <= 0;
-		for (int i = 0; i < 3; i++) internal_write_ena[i] <= 0;
-	end else begin
-		if (write_done)
-			internal_write_addr <= 0;
-		else if (write_enab)
-			internal_write_addr <= internal_write_addr + 1;
-		else
-			internal_write_addr <= internal_write_addr;
-
-		internal_write_data <= write_data;
-		for (int i = 0; i < 3; i++) internal_write_ena[i] <= write_ram == i[1:0];
-	end
 
 // RAM switching logic
 logic old_read_done, old_write_done;
