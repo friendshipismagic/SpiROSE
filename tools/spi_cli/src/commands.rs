@@ -40,7 +40,6 @@ spi_command!(GET_CONFIG, 0xbf, 6);
 spi_command!(GET_DEBUG, 0xde, 4);
 spi_command!(SEND_DRIVER_RGB, 0xee, 48);
 spi_command!(SEND_DRIVER_POKERED, 0xef, 54);
-spi_command!(SEND_DRIVER_DATA, 0xdd, 7);
 spi_command!(MANAGE, 0xfa);
 spi_command!(RELEASE, 0xfe);
 spi_command!(RESET, 0xa0);

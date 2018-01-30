@@ -141,18 +141,6 @@ fn run() -> errors::Result<()> {
             Ok(())
         }
 
-        ("send_driver_data", Some(command_args)) => {
-            let driver_id = u8::from_str(command_args.value_of("driver_id").unwrap())?;
-            let driver_data =
-                u64::from_str_radix(command_args.value_of("driver_data").unwrap(), 2)?;
-            let mut transaction = Vec::with_capacity(7);
-            transaction.push(driver_id);
-            transaction.extend((2..8).map(|n| (driver_data >> ((7 - n) * 8)) as u8));
-
-            transfer(&mut spi, &SEND_DRIVER_DATA, &transaction, verbose, dummy)?;
-            Ok(())
-        }
-
         ("send_driver_pokered", Some(command_args)) => send_binary_file(
             &mut spi,
             &SEND_DRIVER_POKERED,
@@ -178,6 +166,7 @@ fn run() -> errors::Result<()> {
             println!("({}, {}, {})", p.r, p.g, p.b);
             Ok(())
         }
+
         ("write_pixel", Some(command_args)) => {
             let x = command_args.value_of("x").unwrap().parse::<u8>()?;
             let y = command_args.value_of("y").unwrap().parse::<u8>()?;
