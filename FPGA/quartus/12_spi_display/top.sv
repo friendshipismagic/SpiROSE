@@ -101,8 +101,8 @@ assign speed_data = 'hDEAD;
 // Column mux signals
 logic [7:0] mux_out;
 
-assign fpga_mul_a = spi_manage ? mux_out : spi_mux_state;
-assign fpga_mul_b = spi_manage ? mux_out : spi_mux_state;
+assign fpga_mul_a = spi_manage ? spi_mux_state : mux_out;
+assign fpga_mul_b = spi_manage ? spi_mux_state : mux_out;
 assign drv_gclk_a = driver_gclk;
 assign drv_gclk_b = driver_gclk;
 assign drv_sclk_a = driver_sclk;
