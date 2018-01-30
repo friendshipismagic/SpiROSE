@@ -170,7 +170,7 @@ spi_decoder spi_decoder (
 );
 
 logic [431:0] data_pokered;
-framebuffer_poker_lut framebuffer_poker_lut (
+poker_formatter poker_formatter (
     .data_in(spi_debug_driver),
     .data_out(data_pokered)
 );
