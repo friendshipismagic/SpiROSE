@@ -42,35 +42,43 @@ int sc_main(int argc, char** argv) {
 
     sc_clock clk66("clk66", T);
     sc_signal<bool> nrst("nrst");
-    sc_signal<unsigned int> framebufferData("framebuffer_data");
     sc_signal<bool> driverSclk("driver_sclk");
     sc_signal<bool> driverGclk("driver_gclk");
     sc_signal<bool> driverLat("driver_lat");
-    sc_signal<bool> positionSync("position_sync");
-    sc_signal<bool> driverReady("driverReady");
-    sc_signal<bool> columnReady("column_ready");
-    sc_signal<bool> newConfigurationReady("new_configuration_ready");
+    sc_signal<uint32_t> driversSin("drivers_sin");
+
+    sc_signal<bool> sof("start_of_frame");
+    sc_signal<bool> eoc("end_of_column");
+
+    sc_signal<bool> startConfig("start_config");
+    sc_signal<bool> endConfig("end_config");
+    sc_signal<uint64_t> configData("config_data");
+    sc_signal<sc_bv<432>> data[15];
+
+    sc_signal<uint32_t> muxOut("mux_out");
 
     sc_signal<bool> clk_enable;
 
-    sc_signal<unsigned int> driversSin("drivers_sin");
-
-    sc_signal<uint64_t> serializedConf;
+    sc_signal<uint32_t> debug;
 
     sc_trace_file* traceFile;
     traceFile = sc_create_vcd_trace_file("driver_controller");
-    sc_trace(traceFile, serializedConf, "config");
+    sc_trace(traceFile, clk66, "clk_66");
+    sc_trace(traceFile, clk_enable, "clk_enable");
+
     sc_trace(traceFile, driverGclk, "GCLK");
     sc_trace(traceFile, driverSclk, "SCLK");
     sc_trace(traceFile, driverLat, "LAT");
-    sc_trace(traceFile, columnReady, "column_ready");
-    sc_trace(traceFile, driverReady, "driver_ready");
-    sc_trace(traceFile, positionSync, "position_sync");
-    sc_trace(traceFile, newConfigurationReady, "new_configuration_ready");
-    sc_trace(traceFile, clk66, "clk_66");
-    sc_trace(traceFile, clk_enable, "clk_enable");
     sc_trace(traceFile, driversSin, "driversSin");
-    sc_trace(traceFile, framebufferData, "framebufferData");
+
+    sc_trace(traceFile, sof, "start_of_frame");
+    sc_trace(traceFile, eoc, "end_of_column");
+
+    sc_trace(traceFile, configData, "config");
+
+    sc_trace(traceFile, data, "data");
+    sc_trace(traceFile, muxOut, "mux_out");
+    sc_trace(traceFile, debug, "debug");
 
     Vclock_enable main_clock_enable("clock_enable");
     main_clock_enable.clk(clk66);
@@ -81,16 +89,18 @@ int sc_main(int argc, char** argv) {
     dut.clk(clk66);
     dut.clk_enable(clk_enable);
     dut.nrst(nrst);
-    dut.framebuffer_dat(framebufferData);
     dut.driver_sclk(driverSclk);
     dut.driver_gclk(driverGclk);
     dut.driver_lat(driverLat);
     dut.drivers_sin(driversSin);
-    dut.serialized_conf(serializedConf);
-    dut.new_configuration_ready(newConfigurationReady);
-    dut.position_sync(positionSync);
-    dut.driver_ready(driverReady);
-    dut.column_ready(columnReady);
+    dut.config_data(configData);
+    dut.start_config(startConfig);
+    dut.end_config(endConfig);
+    dut.SOF(sof);
+    dut.EOC(eoc);
+    dut.mux_out(muxOut);
+    dut.debug(debug);
+    for (int i = 0; i < 15; ++i) dut.data[i](data[i]);
 
     Monitor monitor("monitor");
     monitor.clk(clk66);
@@ -99,12 +109,12 @@ int sc_main(int argc, char** argv) {
     monitor.lat(driverLat);
     monitor.gclk(driverGclk);
     monitor.sclk(driverSclk);
-    monitor.framebufferData(framebufferData);
-    monitor.positionSync(positionSync);
-    monitor.driverReady(driverReady);
-    monitor.columnReady(columnReady);
-    monitor.config(serializedConf);
-    monitor.newConfigurationReady(newConfigurationReady);
+    monitor.sof(sof);
+    monitor.eoc(eoc);
+    monitor.configData(configData);
+    monitor.startConfig(startConfig);
+    monitor.endConfig(endConfig);
+    for (int i = 0; i < 15; ++i) monitor.data[i](data[i]);
 
     nrst = 0;
     sc_start(T);

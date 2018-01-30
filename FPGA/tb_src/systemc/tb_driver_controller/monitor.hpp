@@ -76,12 +76,13 @@ struct Monitor : public LatHandler {
     sc_in<bool> clk;
     sc_in<bool> sclk;
     sc_in<bool> gclk;
-    sc_out<uint64_t> config;
-    sc_out<uint32_t> framebufferData;
-    sc_out<bool> positionSync;
-    sc_in<bool> columnReady;
-    sc_in<bool> driverReady;
-    sc_out<bool> newConfigurationReady;
+    sc_out<uint64_t> configData;
+    sc_out<bool> sof;
+    sc_in<bool> eoc;
+    sc_out<bool> startConfig;
+    sc_in<bool> endConfig;
+
+    sc_in<sc_bv<432>> data[15];
 
     private:
     void sendPositionSync();

@@ -2,7 +2,7 @@ export SYSTEMC_INCLUDE ?= /usr/include/
 export SYSTEMC_LIBDIR ?= /usr/lib/
 
 # Test disabled "temporarily"
-MODULES := # driver_controller column_mux rgb_logic spi_iff hall_sensor
+MODULES := driver_controller # column_mux rgb_logic spi_iff hall_sensor
 
 SIMULATIONS = $(addsuffix .simu,$(MODULES))
 TESTS = $(addsuffix .test,$(MODULES))
