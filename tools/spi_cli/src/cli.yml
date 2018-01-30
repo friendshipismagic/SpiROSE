@@ -56,12 +56,19 @@ subcommands:
          - driver_data:
             help: "The data (in binary) to send to the driver"
             required: true
-   - send_driver:
-      about: "Send full data to drivers"
+   - send_driver_rgb:
+      about: "Send raw RGB data to drivers"
       args:
          - filename:
             help: "The filename to read and send"
             required: true
+   - send_driver_pokered:
+      about: "Send pokered RGB data to drivers"
+      args:
+         - filename:
+            help: "The filename to read and send"
+            required: true
+
    - manage:
       about: "Tell the FPGA to send debugging signals from the SPI to the other module, for example to send data to a driver"
    - release:

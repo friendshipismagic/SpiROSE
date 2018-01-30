@@ -107,7 +107,8 @@ impl SpiCommand {
             "get_speed" => SpiCommand::new_with_len(0x4d, 2),
             "get_config" => SpiCommand::new_with_len(0xbf, 6),
             "get_debug" => SpiCommand::new_with_len(0xde, 4),
-            "send_driver" => SpiCommand::new_with_len(0xee, 49),
+            "send_driver_rgb" => SpiCommand::new_with_len(0xee, 49),
+            "send_driver_pokered" => SpiCommand::new_with_len(0xef, 55),
             "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
             "manage" => SpiCommand::new(0xfa),
             "release" => SpiCommand::new(0xfe),
@@ -189,7 +190,30 @@ fn run() -> errors::Result<()> {
             Ok(())
         },
 
-        ("send_driver", Some(command_args)) => {
+        ("send_driver_pokered", Some(command_args)) => {
+            let file_name = command_args.value_of("filename").unwrap();
+            let mut driver_file = File::open(file_name).map_err(|e| {
+                format!(
+                    "Cannot open configuration file `{}': {}",
+                    file_name, e
+                    )
+            })?;
+
+            let mut data = String::new();
+            driver_file.read_to_string(&mut data)?;
+            let data = data.trim();
+            let mut transaction = Vec::with_capacity(55);
+            for i in 0..54.min(data.len()/8) {
+                let word = &data[i*8..(i+1)*8];
+                transaction.push(u8::from_str_radix(&word, 2).unwrap());
+            }
+            let missing = 55 - transaction.len();
+            transaction.extend(iter::repeat(0).take(missing));
+            transfer(&mut spi, &SpiCommand::decode("send_driver_pokered"), &transaction, verbose, dummy)?;
+            Ok(())
+        },
+
+        ("send_driver_rgb", Some(command_args)) => {
             let file_name = command_args.value_of("filename").unwrap();
             let mut driver_file = File::open(file_name).map_err(|e| {
                 format!(
@@ -208,9 +232,10 @@ fn run() -> errors::Result<()> {
             }
             let missing = 49 - transaction.len();
             transaction.extend(iter::repeat(0).take(missing));
-            transfer(&mut spi, &SpiCommand::decode("send_driver"), &transaction, verbose, dummy)?;
+            transfer(&mut spi, &SpiCommand::decode("send_driver_rgb"), &transaction, verbose, dummy)?;
             Ok(())
         },
+
         (name, _) =>  {
             for c in COMMANDS.iter() {
                 if c == &name {
