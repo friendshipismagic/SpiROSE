@@ -133,7 +133,8 @@ fn run() -> errors::Result<()> {
     let spi_dev = matches.value_of("device").unwrap();
     let verbose = matches.is_present("verbose");
     let dummy = spi_dev == "none";
-    let mut spi = create_spi(if dummy { "/dev/null" } else { spi_dev }, !dummy)?;
+    let freq = matches.value_of("frequency").unwrap().parse::<u32>()?;
+    let mut spi = create_spi(if dummy { "/dev/null" } else { spi_dev }, freq, !dummy, verbose)?;
 
     match matches.subcommand() {
         ("send_config", Some(command_args)) => {
@@ -208,13 +209,13 @@ fn run() -> errors::Result<()> {
     }
 }
 
-fn create_spi(spi_dev: &str, configure: bool) -> errors::Result<Spidev> {
+fn create_spi(spi_dev: &str, freq: u32, configure: bool, verbose: bool) -> errors::Result<Spidev> {
     let mut spi =
         Spidev::open(spi_dev).map_err(|e| format!("Cannot open SPI device `{}': {}", spi_dev, e))?;
 
     let spi_options = SpidevOptions::new()
         .bits_per_word(8)
-        .max_speed_hz(200_000)
+        .max_speed_hz(freq)
         .mode(spidev::SPI_MODE_0)
         .build();
 

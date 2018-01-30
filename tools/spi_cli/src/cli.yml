@@ -12,6 +12,11 @@ args:
       help: "Trace data sent and received"
       short: v
       long: verbose
+   - frequency:
+      help: "SPI speed in bit/s"
+      short: f
+      long: frequency
+      default_value: "200000"
 subcommands:
    - enable_rgb:
       about: "Start display"
