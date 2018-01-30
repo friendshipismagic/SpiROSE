@@ -92,6 +92,7 @@ always_ff @(posedge clk or negedge nrst)
         if (clk_enable) begin
             case(driver_state)
                 STALL: begin
+                    driver_state_counter <= '0;
                     driver_state <= SEND_TMGRST;
                 end
 
@@ -176,6 +177,7 @@ always_ff @(posedge clk or negedge nrst)
                         first_latgs <= '0;
                     end
                     if(should_send_config) begin
+                        driver_state_counter <= '0;
                         driver_state <= SEND_TMGRST;
                     end
                 end
