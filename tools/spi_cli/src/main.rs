@@ -106,7 +106,7 @@ impl SpiCommand {
             "get_speed" => SpiCommand::new_with_len(0x4d, 2),
             "get_config" => SpiCommand::new_with_len(0xbf, 6),
             "get_debug" => SpiCommand::new_with_len(0xde, 4),
-            "send_driver" => SpiCommand::new_with_len(0xee, 72),
+            "send_driver" => SpiCommand::new_with_len(0xee, 49),
             "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
             "manage" => SpiCommand::new(0xfa),
             "release" => SpiCommand::new(0xfe),
@@ -199,17 +199,17 @@ fn run() -> errors::Result<()> {
 
             let mut data = String::new();
             driver_file.read_to_string(&mut data);
-            if data.len() < 432 {
+            if data.len() < 385 {
                 let mut pad = String::new();
-                while data.len() + pad.len() < 432 {
+                while data.len() + pad.len() < 385 {
                     pad.push('0');
                 }
                 pad.push_str(&data);
                 data = String::from(pad);
             }
-            let mut transaction = Vec::with_capacity(54);
-            for i in 0..54 {
-                let word = &data[i*8..(i+1)*8-1];
+            let mut transaction = Vec::with_capacity(49);
+            for i in 0..48 {
+                let word = &data[i*8..(i+1)*8];
                 transaction.push(u8::from_str_radix(&word, 2).unwrap());
             }
 
