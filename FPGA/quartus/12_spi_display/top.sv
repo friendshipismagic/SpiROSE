@@ -169,6 +169,7 @@ spi_decoder spi_decoder (
     .mux(spi_mux_state)
 );
 
+// poker_lut adds zeroes to the 9th SIN data
 logic [431:0] data_pokered;
 poker_formatter poker_formatter (
     .data_in(spi_debug_driver),

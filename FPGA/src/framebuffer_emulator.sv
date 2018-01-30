@@ -1,3 +1,4 @@
+`default_nettype none
 module framebuffer_emulator #(
     parameter POKER_MODE=9,
     parameter BLANKING_CYCLES=72

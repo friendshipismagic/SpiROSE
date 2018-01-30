@@ -1,3 +1,4 @@
+`default_nettype none
 module ram_lru (
     input clk,
     input nrst,

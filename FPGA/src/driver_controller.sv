@@ -1,3 +1,4 @@
+`default_nettype none
 module driver_controller #(
     parameter BLANKING_TIME=72
 )(

@@ -1,3 +1,4 @@
+`default_nettype none
 module sync_sig #(
     parameter RESET_VALUE=0,
     parameter SIZE=1

@@ -1,3 +1,4 @@
+`default_nettype none
 module framebuffer #(
     parameter SLICES_IN_RAM=18
 )(

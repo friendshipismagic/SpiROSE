@@ -6,6 +6,7 @@
  *   sensors to the SBC
  */
 
+`default_nettype none
 module spi_decoder (
     input  nrst,
     input  clk,

@@ -1,3 +1,4 @@
+`default_nettype none
 module hall_sensor_emulator (
         input clk,
         input nrst,

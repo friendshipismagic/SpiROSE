@@ -1,3 +1,4 @@
+`default_nettype none
 module hall_sensor (
     input clk,
     input nrst,

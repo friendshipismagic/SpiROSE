@@ -1,3 +1,4 @@
+`default_nettype none
 module vga_dumper #(
     parameter RAM_SIZE = 40*48*16
 )(

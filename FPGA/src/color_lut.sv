@@ -1,3 +1,4 @@
+`default_nettype none
 module color_lut (
     input [431:0] data_in [14:0],
     output [431:0] data_out [14:0]

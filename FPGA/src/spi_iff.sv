@@ -1,3 +1,4 @@
+`default_nettype none
 module spi_iff(
     input  nrst,
     input  clk,

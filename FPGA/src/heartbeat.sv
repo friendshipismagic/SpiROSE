@@ -1,3 +1,4 @@
+`default_nettype none
 module heartbeat #(parameter COUNTER=0) (
     input clk,
     input nrst,

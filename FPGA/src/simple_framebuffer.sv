@@ -1,3 +1,4 @@
+`default_nettype none
 module simple_framebuffer (
     input clk,
     input nrst,

@@ -1,3 +1,4 @@
+`default_nettype none
 module driver_sin_lut (
     input [29:0] drv_sin_tolut,
     output [29:0] drv_sin
