@@ -64,8 +64,6 @@ module Top
  output logic        pt_27
 );
 
-logic clk, nrst;
-
 // spi_iff output signals
 logic [439:0] data_mosi;
 logic [10:0]  data_len_bytes;
@@ -110,11 +108,22 @@ assign drv_sclk_b = driver_sclk;
 assign drv_lat_a = driver_lat;
 assign drv_lat_b = driver_lat;
 
-clock_66 main_clock_66 (
+// Clock generation
+logic clk, fast_clk, slow_clk, nrst, clk_select;
+pll pll (
     .inclk0(rgb_clk),
-    .c0(clk),
+    .c0(fast_clk),
+    .c1(slow_clk),
     .locked(nrst)
 );
+
+clock_switchover clock_switchover (
+	.clkselect(clk_select),
+	.inclk0x(slow_clk),
+	.inclk1x(fast_clk),
+	.outclk(clk));
+
+assign clk_select = '1;
 
 clock_enable clock_enable (
     .clk(clk),
