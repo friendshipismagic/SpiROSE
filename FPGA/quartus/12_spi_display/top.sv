@@ -78,13 +78,7 @@ pll pll (
     .locked(nrst)
 );
 
-clock_switchover clock_switchover (
-	.clkselect(clk_select),
-	.inclk0x(slow_clk),
-	.inclk1x(fast_clk),
-	.outclk(clk));
-
-assign clk_select = '1;
+assign clk = fast_clk;
 
 logic clk_enable;
 clock_enable clock_enable (
