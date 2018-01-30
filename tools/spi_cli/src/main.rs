@@ -11,6 +11,7 @@ extern crate serde_derive;
 extern crate spidev;
 extern crate toml;
 
+mod commands;
 mod framebuffer;
 mod units;
 
@@ -20,6 +21,7 @@ use std::fs::File;
 use std::str::FromStr;
 
 use clap::App;
+use commands::*;
 use framebuffer::{color, read_pixel, send_image, write_pixel, Pixel};
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
@@ -75,64 +77,6 @@ pub struct LEDDriverConfig {
     lgse2: Integer<u8, ::packed_bits::Bits3>,
 }
 
-static COMMANDS: [&'static str; 9] = [
-    "enable_rgb",
-    "disable_rgb",
-    "get_rotation",
-    "get_speed",
-    "get_config",
-    "get_debug",
-    "manage",
-    "release",
-    "reset",
-];
-
-#[derive(Clone, Debug)]
-struct SpiCommand {
-    id: u8,
-    recv_len: usize,
-}
-
-impl SpiCommand {
-    fn new(id: u8) -> SpiCommand {
-        SpiCommand::new_with_len(id, 0)
-    }
-
-    fn new_with_len(id: u8, recv_len: usize) -> SpiCommand {
-        SpiCommand { id, recv_len }
-    }
-
-    fn decode(command: &str) -> SpiCommand {
-        match command {
-            "enable_rgb" => SpiCommand::new(0xe0),
-            "disable_rgb" => SpiCommand::new(0xd0),
-            "enable_mux" => SpiCommand::new_with_len(0xe1, 1),
-            "disable_mux" => SpiCommand::new_with_len(0xd1, 1),
-            "get_rotation" => SpiCommand::new_with_len(0x4c, 2),
-            "get_speed" => SpiCommand::new_with_len(0x4d, 2),
-            "get_config" => SpiCommand::new_with_len(0xbf, 6),
-            "get_debug" => SpiCommand::new_with_len(0xde, 4),
-            "send_driver_rgb" => SpiCommand::new_with_len(0xee, 48),
-            "send_driver_pokered" => SpiCommand::new_with_len(0xef, 54),
-            "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
-            "manage" => MANAGE.clone(),
-            "release" => RELEASE.clone(),
-            "reset" => SpiCommand::new(0xa0),
-            _ => unreachable!(),
-        }
-    }
-}
-
-static MANAGE: SpiCommand = SpiCommand {
-    id: 0xfa,
-    recv_len: 0,
-};
-
-static RELEASE: SpiCommand = SpiCommand {
-    id: 0xfe,
-    recv_len: 0,
-};
-
 fn main() {
     match run() {
         Ok(_) => {}
@@ -171,13 +115,7 @@ fn run() -> errors::Result<()> {
             config_file.read_to_string(&mut serialized_conf)?;
             // Unwrapping inside a LEDDriverConfig forces the full configuration to be available
             let led_config: LEDDriverConfig = toml::from_str(&serialized_conf)?;
-            transfer(
-                &mut spi,
-                &SpiCommand::decode("get_config"),
-                &led_config.pack(),
-                verbose,
-                dummy,
-            )?;
+            transfer(&mut spi, &GET_CONFIG, &led_config.pack(), verbose, dummy)?;
             Ok(())
         }
 
@@ -187,13 +125,7 @@ fn run() -> errors::Result<()> {
                 .unwrap()
                 .map(|mux_id| u8::from_str(mux_id).unwrap());
             for mux_id in mux_ids {
-                transfer(
-                    &mut spi,
-                    &SpiCommand::decode("enable_mux"),
-                    &[mux_id],
-                    verbose,
-                    dummy,
-                )?;
+                transfer(&mut spi, &ENABLE_MUX, &[mux_id], verbose, dummy)?;
             }
             Ok(())
         }
@@ -204,13 +136,7 @@ fn run() -> errors::Result<()> {
                 .unwrap()
                 .map(|mux_id| u8::from_str(mux_id).unwrap());
             for mux_id in mux_ids {
-                transfer(
-                    &mut spi,
-                    &SpiCommand::decode("disable_mux"),
-                    &[mux_id],
-                    verbose,
-                    dummy,
-                )?;
+                transfer(&mut spi, &DISABLE_MUX, &[mux_id], verbose, dummy)?;
             }
             Ok(())
         }
@@ -223,19 +149,13 @@ fn run() -> errors::Result<()> {
             transaction.push(driver_id);
             transaction.extend((2..8).map(|n| (driver_data >> ((7 - n) * 8)) as u8));
 
-            transfer(
-                &mut spi,
-                &SpiCommand::decode("send_driver_data"),
-                &transaction,
-                verbose,
-                dummy,
-            )?;
+            transfer(&mut spi, &SEND_DRIVER_DATA, &transaction, verbose, dummy)?;
             Ok(())
         }
 
         ("send_driver_pokered", Some(command_args)) => send_binary_file(
             &mut spi,
-            "send_driver_pokered",
+            &SEND_DRIVER_POKERED,
             command_args.value_of("filename").unwrap(),
             54,
             verbose,
@@ -244,7 +164,7 @@ fn run() -> errors::Result<()> {
 
         ("send_driver_rgb", Some(command_args)) => send_binary_file(
             &mut spi,
-            "send_driver_rgb",
+            &SEND_DRIVER_RGB,
             command_args.value_of("filename").unwrap(),
             48,
             verbose,
@@ -281,12 +201,8 @@ fn run() -> errors::Result<()> {
         }
 
         (name, _) => {
-            for c in COMMANDS.iter() {
-                if c == &name {
-                    transfer(&mut spi, &SpiCommand::decode(c), &[], verbose, dummy)?;
-                }
-            }
-            Ok(())
+            let command = SpiCommand::decode(name).unwrap();
+            transfer(&mut spi, command, &[], verbose, dummy).map(|_| ())
         }
     }
 }
@@ -358,7 +274,7 @@ fn transfer<T: Write + Read>(
 
 fn send_binary_file(
     spi: &mut Spidev,
-    command: &str,
+    command: &SpiCommand,
     file: &str,
     payload_size: usize,
     verbose: bool,
@@ -375,13 +291,7 @@ fn send_binary_file(
         let word = &data[i * 8..(i + 1) * 8];
         transaction[i] = u8::from_str_radix(&word, 2)?;
     }
-    transfer(
-        spi,
-        &SpiCommand::decode(command),
-        &transaction,
-        verbose,
-        dummy,
-    )?;
+    transfer(spi, command, &transaction, verbose, dummy)?;
     Ok(())
 }
 

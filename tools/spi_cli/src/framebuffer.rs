@@ -1,3 +1,4 @@
+use commands::{MANAGE, RELEASE};
 use image::{DynamicImage, GenericImage, Pixel as ImgPixel};
 
 use super::*;
