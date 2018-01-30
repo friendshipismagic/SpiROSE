@@ -11,7 +11,6 @@ extern crate spidev;
 extern crate toml;
 
 use std::io;
-use std::iter;
 use std::io::prelude::*;
 use std::fs::File;
 use std::str::FromStr;
@@ -107,8 +106,8 @@ impl SpiCommand {
             "get_speed" => SpiCommand::new_with_len(0x4d, 2),
             "get_config" => SpiCommand::new_with_len(0xbf, 6),
             "get_debug" => SpiCommand::new_with_len(0xde, 4),
-            "send_driver_rgb" => SpiCommand::new_with_len(0xee, 49),
-            "send_driver_pokered" => SpiCommand::new_with_len(0xef, 55),
+            "send_driver_rgb" => SpiCommand::new_with_len(0xee, 48),
+            "send_driver_pokered" => SpiCommand::new_with_len(0xef, 54),
             "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
             "manage" => SpiCommand::new(0xfa),
             "release" => SpiCommand::new(0xfe),
@@ -191,49 +190,11 @@ fn run() -> errors::Result<()> {
         },
 
         ("send_driver_pokered", Some(command_args)) => {
-            let file_name = command_args.value_of("filename").unwrap();
-            let mut driver_file = File::open(file_name).map_err(|e| {
-                format!(
-                    "Cannot open data file `{}': {}",
-                    file_name, e
-                    )
-            })?;
-
-            let mut data = String::new();
-            driver_file.read_to_string(&mut data)?;
-            let data = data.trim();
-            let mut transaction = Vec::with_capacity(55);
-            for i in 0..54.min(data.len()/8) {
-                let word = &data[i*8..(i+1)*8];
-                transaction.push(u8::from_str_radix(&word, 2).unwrap());
-            }
-            let missing = 54 - transaction.len();
-            transaction.extend(iter::repeat(0).take(missing));
-            transfer(&mut spi, &SpiCommand::decode("send_driver_pokered"), &transaction, verbose, dummy)?;
-            Ok(())
+            send_binary_file(&mut spi, "send_driver_pokered", command_args.value_of("filename").unwrap(), 54, verbose, dummy)
         },
 
         ("send_driver_rgb", Some(command_args)) => {
-            let file_name = command_args.value_of("filename").unwrap();
-            let mut driver_file = File::open(file_name).map_err(|e| {
-                format!(
-                    "Cannot open data file `{}': {}",
-                    file_name, e
-                    )
-            })?;
-
-            let mut data = String::new();
-            driver_file.read_to_string(&mut data)?;
-            let data = data.trim();
-            let mut transaction = Vec::with_capacity(49);
-            for i in 0..48.min(data.len()/8) {
-                let word = &data[i*8..(i+1)*8];
-                transaction.push(u8::from_str_radix(&word, 2).unwrap());
-            }
-            let missing = 48 - transaction.len();
-            transaction.extend(iter::repeat(0).take(missing));
-            transfer(&mut spi, &SpiCommand::decode("send_driver_rgb"), &transaction, verbose, dummy)?;
-            Ok(())
+            send_binary_file(&mut spi, "send_driver_rgb", command_args.value_of("filename").unwrap(), 48, verbose, dummy)
         },
 
         (name, _) =>  {
@@ -302,6 +263,23 @@ fn transfer<T: Write + Read>(
         );
     }
     Ok(read_vec)
+}
+
+fn send_binary_file(spi: &mut Spidev, command: &str, file: &str, payload_size: usize, verbose: bool, dummy: bool) -> errors::Result<()> {
+    let mut file = File::open(file).map_err(|e| {
+        format!("Cannot open data file `{}': {}", file, e)
+    })?;
+
+    let mut data = String::new();
+    file.read_to_string(&mut data)?;
+    let data = data.trim();
+    let mut transaction = vec![0; payload_size];
+    for i in 0..payload_size.min(data.len()/8) {
+        let word = &data[i*8..(i+1)*8];
+        transaction[i] = u8::from_str_radix(&word, 2)?;
+    }
+    transfer(spi, &SpiCommand::decode(command), &transaction, verbose, dummy)?;
+    Ok(())
 }
 
 #[cfg(test)]
