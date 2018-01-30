@@ -74,10 +74,36 @@ subcommands:
          - filename:
             help: "The filename to read and send"
             required: true
-
    - manage:
       about: "Tell the FPGA to send debugging signals from the SPI to the other module, for example to send data to a driver"
    - release:
       about: "Do the opposite of manage, tell the FPGA that it shouldn't use SPI's debugging signals as input for the other modules"
    - reset:
       about: "Reset the FPGA"
+   - read_pixel:
+      about: "Read a pixel"
+      args:
+        - x:
+           help: "The column"
+           required: true
+        - y:
+           help: "The line"
+           required: true
+   - write_pixel:
+      about: "Write a pixel"
+      args:
+        - x:
+           help: "The column"
+           required: true
+        - y:
+           help: "The line"
+           required: true
+        - r:
+           help: "Red component"
+           required: true
+        - g:
+           help: "Green component"
+           required: true
+        - b:
+           help: "Blue component"
+           required: true

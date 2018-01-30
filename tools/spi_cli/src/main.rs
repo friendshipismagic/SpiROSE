@@ -10,6 +10,7 @@ extern crate serde_derive;
 extern crate spidev;
 extern crate toml;
 
+mod framebuffer;
 mod units;
 
 use std::io;
@@ -18,6 +19,7 @@ use std::fs::File;
 use std::str::FromStr;
 
 use clap::App;
+use framebuffer::{read_pixel, write_pixel, Pixel};
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
 
@@ -71,7 +73,7 @@ pub struct LEDDriverConfig {
     lgse2: Integer<u8, ::packed_bits::Bits3>,
 }
 
-static COMMANDS: [&'static str; 9] = [
+static COMMANDS: [&'static str; 11] = [
     "enable_rgb",
     "disable_rgb",
     "get_rotation",
@@ -81,9 +83,11 @@ static COMMANDS: [&'static str; 9] = [
     "manage",
     "release",
     "reset",
+    "read_pixel",
+    "write_pixel",
 ];
 
-#[derive(Debug)]
+#[derive(Clone, Debug)]
 struct SpiCommand {
     id: u8,
     recv_len: usize,
@@ -111,13 +115,22 @@ impl SpiCommand {
             "send_driver_rgb" => SpiCommand::new_with_len(0xee, 48),
             "send_driver_pokered" => SpiCommand::new_with_len(0xef, 54),
             "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
-            "manage" => SpiCommand::new(0xfa),
-            "release" => SpiCommand::new(0xfe),
+            "manage" => Manage.clone(),
+            "release" => Release.clone(),
             "reset" => SpiCommand::new(0xa0),
             _ => unreachable!(),
         }
     }
 }
+
+static Manage: SpiCommand = SpiCommand {
+    id: 0xfa,
+    recv_len: 0,
+};
+static Release: SpiCommand = SpiCommand {
+    id: 0xfe,
+    recv_len: 0,
+};
 
 fn main() {
     match run() {
@@ -236,6 +249,22 @@ fn run() -> errors::Result<()> {
             verbose,
             dummy,
         ),
+
+        ("read_pixel", Some(command_args)) => {
+            let x = command_args.value_of("x").unwrap().parse::<u8>()?;
+            let y = command_args.value_of("y").unwrap().parse::<u8>()?;
+            let p = read_pixel(&mut spi, x, y, verbose, dummy)?;
+            println!("({}, {}, {})", p.r, p.g, p.b);
+            Ok(())
+        }
+        ("write_pixel", Some(command_args)) => {
+            let x = command_args.value_of("x").unwrap().parse::<u8>()?;
+            let y = command_args.value_of("y").unwrap().parse::<u8>()?;
+            let r = command_args.value_of("r").unwrap().parse::<u8>()?;
+            let g = command_args.value_of("g").unwrap().parse::<u8>()?;
+            let b = command_args.value_of("b").unwrap().parse::<u8>()?;
+            write_pixel(&mut spi, x, y, &Pixel { r, g, b }, verbose, dummy)
+        }
 
         (name, _) => {
             for c in COMMANDS.iter() {
