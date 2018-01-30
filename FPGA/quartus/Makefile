@@ -1,5 +1,7 @@
 QUARTUS131 ?= /comelec/softs/opt/altera/altera13.1/comelec/quartus_sh
 
+all: compile/12_spi_display
+
 bundle: compile
 	mkdir -p stapl
 	cp */*/*.jbc stapl/
