@@ -19,7 +19,7 @@ use std::fs::File;
 use std::str::FromStr;
 
 use clap::App;
-use framebuffer::{read_pixel, write_pixel, Pixel};
+use framebuffer::{color, read_pixel, write_pixel, Pixel};
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
 
@@ -264,6 +264,13 @@ fn run() -> errors::Result<()> {
             let g = command_args.value_of("g").unwrap().parse::<u8>()?;
             let b = command_args.value_of("b").unwrap().parse::<u8>()?;
             write_pixel(&mut spi, x, y, &Pixel { r, g, b }, verbose, dummy)
+        }
+
+        ("color", Some(command_args)) => {
+            let r = command_args.value_of("r").unwrap().parse::<u8>()?;
+            let g = command_args.value_of("g").unwrap().parse::<u8>()?;
+            let b = command_args.value_of("b").unwrap().parse::<u8>()?;
+            color(&mut spi, &Pixel { r, g, b }, verbose, dummy)
         }
 
         (name, _) => {

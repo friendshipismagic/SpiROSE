@@ -107,3 +107,15 @@ subcommands:
         - b:
            help: "Blue component"
            required: true
+   - color:
+      about: "Set a uniform color on all pixels"
+      args:
+        - r:
+           help: "Red component"
+           required: true
+        - g:
+           help: "Green component"
+           required: true
+        - b:
+           help: "Blue component"
+           required: true
