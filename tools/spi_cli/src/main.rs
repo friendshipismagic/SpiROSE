@@ -230,7 +230,7 @@ fn run() -> errors::Result<()> {
                 let word = &data[i*8..(i+1)*8];
                 transaction.push(u8::from_str_radix(&word, 2).unwrap());
             }
-            let missing = 49 - transaction.len();
+            let missing = 48 - transaction.len();
             transaction.extend(iter::repeat(0).take(missing));
             transfer(&mut spi, &SpiCommand::decode("send_driver_rgb"), &transaction, verbose, dummy)?;
             Ok(())
