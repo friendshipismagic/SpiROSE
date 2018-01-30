@@ -163,6 +163,7 @@ always_ff @(posedge clk or negedge nrst)
                         driver_state_counter <= '0;
                         driver_state <= BLANKING;
                         column_counter <= '0;
+                        first_latgs <= '0;
                     end
                 end
 

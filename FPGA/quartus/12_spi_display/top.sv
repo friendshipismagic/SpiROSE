@@ -79,7 +79,6 @@ logic        rgb_enable;
 
 // driver_controller signals
 logic clk_enable;
-logic [431:0] driver_data [14:0];
 logic driver_sclk;
 logic driver_gclk;
 logic driver_lat;
@@ -93,8 +92,6 @@ logic end_config;
 // Spi debug signals
 logic spi_manage;
 logic [7:0] spi_mux_state;
-logic [431:0] spi_debug_driver;
-logic [431:0] spi_debug_driver_poker_mode;
 
 // In this test, we assign predefined value to rotation data and
 // check that SPI I/O is sending it back when asked
@@ -146,6 +143,7 @@ spi_iff spi_iff (
     .valid(cmd_valid)
 );
 
+logic [383:0] spi_debug_driver;
 spi_decoder spi_decoder (
     .clk(clk),
     .nrst(nrst),
@@ -169,6 +167,25 @@ spi_decoder spi_decoder (
     .mux(spi_mux_state)
 );
 
+logic [431:0] data_pokered;
+framebuffer_poker_lut framebuffer_poker_lut (
+    .data_in(spi_debug_driver),
+    .data_out(data_pokered)
+);
+
+logic [431:0] driver_data [14:0];
+always_comb begin
+    for(int i=0; i<15; ++i) begin
+        driver_data[i] = data_pokered;
+    end
+end
+
+logic [431:0] data_reordered [14:0];
+color_lut color_lut (
+    .data_in(driver_data),
+    .data_out(data_reordered)
+);
+
 driver_controller driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),
@@ -180,18 +197,12 @@ driver_controller driver_controller (
     .mux_out(mux_out),
     .SOF(SOF),
     .EOC(EOC),
-    .data(driver_data),
+    .data(data_reordered),
     .config_data(driver_conf),
     .start_config(start_config),
     .end_config(end_config),
     .debug({pt_6, pt_23, pt_24, pt_26})
 );
-
-always_comb begin
-    for(int i=0; i<15; ++i) begin
-        driver_data[i] = spi_debug_driver;
-    end
-end
 
 logic [29:0] drv_sin_tolut;
 driver_sin_lut main_drv_sin_lut (
