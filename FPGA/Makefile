@@ -6,7 +6,7 @@ SRCS=$(wildcard src/*.sv)
 $(SRCS):
 
 %.sv.lint:
-	$(LINTER) $(LINTER_ARGS) $* -y src
+	/usr/bin/sh ./tools/lint.sh $*
 
 lint: $(addsuffix .lint,$(SRCS))
 	@echo "Running lint tests"
