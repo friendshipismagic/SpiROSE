@@ -6,11 +6,14 @@ module ram_line_writer (
     input [7:0] offset,
     input [191:0] pixels,
     output [31:0] ram_waddr,
-    output [31:0] ram_wdata
+    output [31:0] ram_wdata,
+    output ram_write_enable
 );
 
 logic [191:0] wdata;
 integer pixel_counter;
+
+assign ram_write_enable = pixel_counter > 0;
 
 always @(posedge clk or negedge nrst)
     if(~nrst) begin

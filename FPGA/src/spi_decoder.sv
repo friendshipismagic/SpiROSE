@@ -41,6 +41,7 @@ module spi_decoder (
     output logic   SOL,
     output [31:0]  ram_raddr,
     output [7:0]   ram_driver,
+    output [7:0]   ram_offset,
     input  [23:0]  ram_rdata,
     output         spi_nrst
 );
@@ -165,6 +166,7 @@ always_ff @(posedge clk or negedge nrst)
                          && last_cmd_read[23:15] == GET_PIXEL_COMMAND) begin
                 ram_raddr <= {24'b0, last_cmd_read[7:0]};
                 ram_driver <= last_cmd_read[15:8];
+                ram_offset <= last_cmd_read[7:0];
                 ram_is_reading <= '1;
             end
         end
