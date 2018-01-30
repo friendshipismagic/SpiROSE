@@ -28,11 +28,21 @@ module spi_decoder (
     // Mux manual control
     output [7:0]   mux,
     output         manage_mux,
+    output         manage,
 
     // TLC controller manual control
     output [47:0]  driver_data [29:0],
     output [431:0] debug_driver,
-    output         debug_driver_poker_mode
+    output         debug_driver_poker_mode,
+
+    // Signals that the topmodule should use debugging data signals from the spi_decoder
+    output logic [191:0] pixel_line,
+    // Signal the beginning of a pixel line send
+    output logic   SOL,
+    output [31:0]  ram_raddr,
+    output [7:0]   ram_driver,
+    input  [23:0]  ram_rdata,
+    output         spi_nrst
 );
 
 localparam CONFIG_COMMAND = 'hBF;
@@ -48,12 +58,18 @@ localparam DRIVER_COMMAND_RGB = 'hEE;   // Still uses the LUTs
 localparam DRIVER_COMMAND_POKER = 'hEF; // Overrides output LUTs
 localparam MANAGE_COMMAND = 'hFA;
 localparam RELEASE_COMMAND = 'hFE;
+localparam GET_PIXEL_COMMAND = 'h20;
+localparam SEND_PIXEL_LINE_COMMAND = 'h21;
+localparam NRST_COMMAND = 'hA0;
 
 `include "drivers_conf.svh"
 
 logic [439:0] last_cmd_read;
 logic [10:0] last_cmd_len_bytes;
 logic last_valid;
+
+// Driver selection and state machine for reading
+logic ram_is_reading;
 
 always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
@@ -77,11 +93,19 @@ always_ff @(posedge clk or negedge nrst)
         debug_driver <= '0;
         debug_driver_poker_mode <= '0;
         manage_mux <= '0;
+        spi_nrst <= '1;
+        ram_raddr <= '0;
+        SOL <= '0;
+        ram_driver <= '0;
         for (int i=0; i<30; ++i) begin
             driver_data[i] <= '0;
         end
     end else begin
         new_config_available <= '0;
+        if (ram_is_reading)
+            data_miso <= {ram_rdata, 24'b0};
+        ram_is_reading <= '0;
+        manage <= '0;
         if (last_valid) begin
             if (last_cmd_len_bytes == 7 && last_cmd_read[55:48] == CONFIG_COMMAND) begin
                 configuration <= last_cmd_read[47:0];
@@ -93,6 +117,9 @@ always_ff @(posedge clk or negedge nrst)
             end else if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == RELEASE_COMMAND) begin
                 manage_mux <= 0;
+            end else if (last_cmd_len_bytes == 1
+                         && last_cmd_read[7:0] == NRST_COMMAND) begin
+                spi_nrst <= 0;
             end else if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == CONFIG_COMMAND) begin
                 data_miso <= configuration;
@@ -129,6 +156,16 @@ always_ff @(posedge clk or negedge nrst)
                          && last_cmd_read[63:56] == DRIVER_DATA_COMMAND) begin
                 if (last_cmd_read[55:48] < 8'd30)
                     driver_data[last_cmd_read[52:48]] <= last_cmd_read[47:0];
+            end else if (last_cmd_len_bytes == 25
+                         && last_cmd_read[199:192] == SEND_PIXEL_LINE_COMMAND) begin
+                SOL <= 1;
+                pixel_line <= last_cmd_read[191:0];
+                manage <= 1;
+            end else if (last_cmd_len_bytes == 3
+                         && last_cmd_read[23:15] == GET_PIXEL_COMMAND) begin
+                ram_raddr <= {24'b0, last_cmd_read[7:0]};
+                ram_driver <= last_cmd_read[15:8];
+                ram_is_reading <= '1;
             end
         end
     end
