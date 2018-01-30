@@ -88,6 +88,7 @@ clock_enable clock_enable (
 );
 
 // Hall sensors
+logic SOF;
 hall_sensor_emulator main_hs_emulator (
     .clk(clk),
     .clk_enable(clk_enable),
@@ -100,7 +101,6 @@ logic [439:0] data_mosi;
 logic [10:0]  data_len_bytes;
 logic [47:0]  data_miso;
 logic         cmd_valid;
-
 spi_iff spi_iff (
     .clk(clk),
     .nrst(nrst),
@@ -118,15 +118,13 @@ spi_iff spi_iff (
 
 logic [431:0] spi_debug_driver;
 logic         spi_debug_driver_poker_mode;
-logic [15:0] rotation_data;
-logic [15:0] speed_data;
-logic        rgb_enable;
-logic [47:0] driver_conf;
-logic start_config;
-logic end_config;
-logic spi_manage_mux;
-logic [7:0] spi_mux_state;
-
+logic [15:0]  rotation_data;
+logic [15:0]  speed_data;
+logic         rgb_enable;
+logic [47:0]  driver_conf;
+logic         start_config;
+logic         spi_manage_mux;
+logic [7:0]   spi_mux_state;
 spi_decoder spi_decoder (
     .clk(clk),
     .nrst(nrst),
@@ -149,6 +147,39 @@ spi_decoder spi_decoder (
     // Managing signals for debugging mux
     .manage_mux(spi_manage_mux),
     .mux(spi_mux_state)
+);
+
+// TODO
+// RAM writer
+logic [6:0]  ram_wraddr;
+logic [23:0] ram_wrdata;
+logic        ram_wrenab;
+
+// RAM and framebuffer
+logic driver_SOF;
+logic [6:0] ram_addr;
+logic [23:0] ram_data;
+logic EOR;
+logic [383:0] framebuffer_data;
+ram ram (
+   .clock(clock),
+   .data(ram_wrdata),
+   .rdaddress(ram_addr),
+   .wraddress(ram_wrdata),
+   .wren(ram_wrenab),
+   .q(ram_data)
+);
+
+framebuffer framebuffer (
+   .clk(clk),
+   .nrst(nrst),
+   .data_out(framebuffer_data),
+   .EOC(EOC),
+   .SOF(SOF),
+   .driver_SOF(driver_SOF),
+   .ram_addr(ram_addr),
+   .ram_data(ram_data),
+   .EOR(EOR)
 );
 
 // poker_formatter adds zeroes to the 9th SIN data
@@ -176,10 +207,9 @@ logic driver_sclk;
 logic driver_gclk;
 logic driver_lat;
 logic [29:0] drivers_sin;
-logic SOF;
-logic EOC;
 logic [7:0] mux_out;
-
+logic EOC;
+logic end_config;
 driver_controller driver_controller (
     .clk(clk),
     .clk_enable(clk_enable),
@@ -198,7 +228,6 @@ driver_controller driver_controller (
     .debug({pt_6, pt_23, pt_24, pt_26})
 );
 
-logic [29:0] drv_sin_tolut;
 driver_sin_lut main_drv_sin_lut (
     .drv_sin_tolut(drivers_sin),
     .drv_sin(drv_sin)
@@ -212,6 +241,5 @@ assign drv_sclk_a = driver_sclk;
 assign drv_sclk_b = driver_sclk;
 assign drv_lat_a = driver_lat;
 assign drv_lat_b = driver_lat;
-
 
 endmodule

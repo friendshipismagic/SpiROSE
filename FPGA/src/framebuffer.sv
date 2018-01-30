@@ -16,7 +16,7 @@ module framebuffer (
     output driver_SOF,
 
     // Ram access
-    output [31:0] ram_addr,
+    output [6:0] ram_addr,
     input  [23:0] ram_data,
     output EOR
 );

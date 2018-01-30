@@ -77,5 +77,6 @@ set_global_assignment -name SOURCE_TCL_SCRIPT_FILE ../common/assignment_spi.tcl
 
 set_global_assignment -name QIP_FILE ../common/pll/pll.qip
 set_global_assignment -name QIP_FILE ../common/pll/clock_switchover.qip
+set_global_assignment -name QIP_FILE ../common/ram/ram.qip
 
 set_global_assignment -name SDC_FILE ../common/timings.sdc
