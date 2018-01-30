@@ -119,3 +119,9 @@ subcommands:
         - b:
            help: "Blue component"
            required: true
+   - send_image:
+      about: "Send a 40x48 image to the display" 
+      args:
+         - filename:
+            help: "The image to read and send"
+            required: true

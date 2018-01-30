@@ -2,6 +2,7 @@
 extern crate clap;
 #[macro_use]
 extern crate error_chain;
+extern crate image;
 extern crate packed_struct;
 #[macro_use]
 extern crate packed_struct_codegen;
@@ -19,7 +20,7 @@ use std::fs::File;
 use std::str::FromStr;
 
 use clap::App;
-use framebuffer::{color, read_pixel, write_pixel, Pixel};
+use framebuffer::{color, read_pixel, send_image, write_pixel, Pixel};
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
 
@@ -29,6 +30,7 @@ mod errors {
             Toml(::toml::de::Error);
             Io(::io::Error);
             ParseInt(::std::num::ParseIntError);
+            Image(::image::ImageError);
         }
     }
 }
@@ -115,19 +117,20 @@ impl SpiCommand {
             "send_driver_rgb" => SpiCommand::new_with_len(0xee, 48),
             "send_driver_pokered" => SpiCommand::new_with_len(0xef, 54),
             "send_driver_data" => SpiCommand::new_with_len(0xdd, 7),
-            "manage" => Manage.clone(),
-            "release" => Release.clone(),
+            "manage" => MANAGE.clone(),
+            "release" => RELEASE.clone(),
             "reset" => SpiCommand::new(0xa0),
             _ => unreachable!(),
         }
     }
 }
 
-static Manage: SpiCommand = SpiCommand {
+static MANAGE: SpiCommand = SpiCommand {
     id: 0xfa,
     recv_len: 0,
 };
-static Release: SpiCommand = SpiCommand {
+
+static RELEASE: SpiCommand = SpiCommand {
     id: 0xfe,
     recv_len: 0,
 };
@@ -271,6 +274,12 @@ fn run() -> errors::Result<()> {
             let g = command_args.value_of("g").unwrap().parse::<u8>()?;
             let b = command_args.value_of("b").unwrap().parse::<u8>()?;
             color(&mut spi, &Pixel { r, g, b }, verbose, dummy)
+        }
+
+        ("send_image", Some(command_args)) => {
+            let file = command_args.value_of("filename").unwrap();
+            let img = image::open(file)?;
+            send_image(&mut spi, &img, verbose, dummy)
         }
 
         (name, _) => {
