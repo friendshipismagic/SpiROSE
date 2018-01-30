@@ -40,20 +40,20 @@ assign read_data = internal_read_data[read_ram];
 ram ram0 (
 	.clock(clk),
 	.wren(internal_write_ena[0]),
-	.data(internal_write_data), .wraddress(internal_write_address),
-	.q(internal_read_data[0]), .rdaddress(read_add)
+	.data(internal_write_data), .wraddress(internal_write_addr),
+	.q(internal_read_data[0]), .rdaddress(read_addr)
 );
 ram ram1 (
 	.clock(clk),
 	.wren(internal_write_ena[1]),
-	.data(internal_write_data), .wraddress(internal_write_address),
-	.q(internal_read_data[1]), .rdaddress(read_add)
+	.data(internal_write_data), .wraddress(internal_write_addr),
+	.q(internal_read_data[1]), .rdaddress(read_addr)
 );
 ram ram2 (
 	.clock(clk),
 	.wren(internal_write_ena[2]),
-	.data(internal_write_data), .wraddress(internal_write_address),
-	.q(internal_read_data[2]), .rdaddress(read_add)
+	.data(internal_write_data), .wraddress(internal_write_addr),
+	.q(internal_read_data[2]), .rdaddress(read_addr)
 );
 
 // RAM address counter and write info latcher
