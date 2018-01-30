@@ -154,6 +154,9 @@ spi_decoder spi_decoder (
 logic [6:0]  ram_wraddr;
 logic [23:0] ram_wrdata;
 logic        ram_wrenab;
+assign ram_wraddr = '0;
+assign ram_wrdata = '0;
+assign ram_wrenab = '0;
 
 // RAM and framebuffer
 logic driver_SOF;
@@ -162,7 +165,7 @@ logic [23:0] ram_data;
 logic EOR;
 logic [383:0] framebuffer_data;
 ram ram (
-   .clock(clock),
+   .clock(clk),
    .data(ram_wrdata),
    .rdaddress(ram_addr),
    .wraddress(ram_wrdata),
