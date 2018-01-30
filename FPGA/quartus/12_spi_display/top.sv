@@ -125,6 +125,10 @@ logic [47:0]  driver_conf;
 logic         start_config;
 logic         spi_manage_mux;
 logic [7:0]   spi_mux_state;
+logic [7:0]   spi_ram_driver;
+logic [7:0]   spi_ram_offset;
+logic [191:0] spi_pixel_line;
+logic         spi_SOL;
 spi_decoder spi_decoder (
     .clk(clk),
     .nrst(nrst),
@@ -146,7 +150,11 @@ spi_decoder spi_decoder (
     .debug_driver_poker_mode(spi_debug_driver_poker_mode),
     // Managing signals for debugging mux
     .manage_mux(spi_manage_mux),
-    .mux(spi_mux_state)
+    .mux(spi_mux_state),
+    .ram_driver(spi_ram_driver),
+    .ram_offset(spi_ram_offset),
+    .pixel_line(spi_pixel_line),
+    .SOL(spi_SOL)
 );
 
 // TODO
@@ -154,9 +162,17 @@ spi_decoder spi_decoder (
 logic [6:0]  ram_wraddr;
 logic [23:0] ram_wrdata;
 logic        ram_wrenab;
-assign ram_wraddr = '0;
-assign ram_wrdata = '0;
-assign ram_wrenab = '0;
+
+ram_line_writer ram_line_writer (
+    .clk(clk),
+    .nrst(nrst),
+    .ram_waddr(ram_wraddr),
+    .ram_wdata(ram_wrdata),
+    .offset(spi_ram_driver),
+    .pixels(spi_pixel_line),
+    .SOL(spi_SOL),
+    .ram_write_enable(ram_wrenab)
+);
 
 // RAM and framebuffer
 logic driver_SOF;
