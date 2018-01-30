@@ -75,7 +75,7 @@ pub struct LEDDriverConfig {
     lgse2: Integer<u8, ::packed_bits::Bits3>,
 }
 
-static COMMANDS: [&'static str; 11] = [
+static COMMANDS: [&'static str; 9] = [
     "enable_rgb",
     "disable_rgb",
     "get_rotation",
@@ -85,8 +85,6 @@ static COMMANDS: [&'static str; 11] = [
     "manage",
     "release",
     "reset",
-    "read_pixel",
-    "write_pixel",
 ];
 
 #[derive(Clone, Debug)]
