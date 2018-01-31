@@ -212,6 +212,10 @@ always_comb begin
             driver_sclk = '0;
         end
 
+        SEND_TMGRST: begin 
+            driver_sclk = driver_state_counter > 12 ? '0 : clk_enable;
+        end
+
         default: begin
             driver_sclk = clk_enable;
         end
