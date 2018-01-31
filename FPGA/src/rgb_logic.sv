@@ -1,99 +1,47 @@
 `default_nettype none
-module rgb_logic #(
-    parameter RAM_ADDR_WIDTH=32,
-    parameter RAM_DATA_WIDTH=16,
-    parameter IMAGE_IN_RAM = 18
-)(
-    input rgb_clk,
-    input nrst,
-    // We won't use every bits of the rgb because of driver bandwidth issue
-    /* verilator lint_off UNUSED */
-    input [23:0] rgb,
-    /* verilator lint_on UNUSED */
-    input hsync,
-    input vsync,
+module rgb_logic (
+    input logic        rgb_clk,
+    input logic        nrst,
 
-    output [RAM_ADDR_WIDTH-1:0] ram_addr,
-    output [RAM_DATA_WIDTH-1:0] ram_data,
-    output logic write_enable,
+    input logic [23:0] rgb,
+    input logic        hsync,
+    input logic        vsync,
 
-    // Signal send by SPI to tell the rgb logic to start writing slices in ram
-    input  rgb_enable,
-    // Indicates that enough slices have been writing in ram to begin display
-    output stream_ready
+    output logic [23:0] pixel_data,
+    output logic [31:0] pixel_idx,
+    output logic        pixel_valid,
+
+    // Signal sent by SPI to tell the RGB logic to mark incoming pixels as valid
+    input logic         rgb_enable
 );
 
-localparam IMAGE_WIDTH = 40;
-localparam IMAGE_HEIGHT = 48;
-localparam IMAGE_SIZE = IMAGE_WIDTH*IMAGE_HEIGHT;
-localparam SLICES_IN_RAM_BEFORE_STREAM = 1;
-
-logic blanking;
-// hsync and vsync drive low when we are on blanking area
-assign blanking = (~hsync | ~vsync);
-
-integer pixel_counter;
-
-logic is_end_of_RAM;
-assign is_end_of_RAM = ram_addr == (IMAGE_SIZE*IMAGE_IN_RAM-1);
-
-logic is_valid_first_frame;
-assign is_valid_first_frame = vsync | (pixel_counter >= IMAGE_SIZE - 1);
-
-/*
- * We don't write anything in blanking area but it is controlled by
- * writeEnable signal. We store 5 bits for the red, 6 for the green,
- * and 5 for the blue. Only 5 bits of the green might be used.
- */
-assign ram_data = {rgb[23:19], rgb[15:10], rgb[7:3]};
-
-// Data is sampled at posedge after module, so we need negedge here
-always_ff @(negedge rgb_clk or negedge nrst)
-    if(~nrst) begin
-        ram_addr <= '0;
-    end else begin
-        ram_addr <= '0;
-        if(rgb_enable && !is_end_of_RAM && is_valid_first_frame) begin
-            if(blanking)
-                ram_addr <= ram_addr;
-            else
-                ram_addr <= ram_addr + 1;
-        end
-    end
-
-assign write_enable = ~blanking && rgb_enable && nrst;
-
+// index position counter
+logic vsync_r;
 always_ff @(posedge rgb_clk or negedge nrst)
-    if(~nrst) begin
-        pixel_counter <= '0;
+    if (~nrst) begin
+        vsync_r <= 0;
+        pixel_idx <= 0;
     end else begin
-        pixel_counter <= '0;
-        /*
-         * when rgb_enable drives high we may be in the middle of a frame, thus
-         * when vsync drives low we check pixel_cnt, if it is not IMAGE_SIZE
-         * we reset it so we are ready for a real start. stream_ready would
-         * not have been sent so we would not have display those unrelevant data
-         * we just write.
-         */
-        if (rgb_enable && !is_end_of_RAM && is_valid_first_frame) begin
-            if(~blanking)
-                pixel_counter <= pixel_counter + 1;
-            else
-                pixel_counter <= pixel_counter;
-        end
+        vsync_r <= vsync;
+
+        // Start of image
+        if (~vsync_r && vsync)
+            pixel_idx <= 0;
+
+        // Normal pixels
+        if (vsync_r && vsync && hsync)
+            pixel_idx <= pixel_idx + 1;
     end
 
+// Pixel data latcher
 always_ff @(posedge rgb_clk or negedge nrst)
-    if(~nrst) begin
-        stream_ready <= '0;
-    end else begin
-        stream_ready <= '0;
-        // We don't do anything until the SPI tells us to start
-        if(rgb_enable) begin
-            // stream ready drives high when we have written enough slices in ram
-            stream_ready <= stream_ready ? 1'b1 : pixel_counter >= SLICES_IN_RAM_BEFORE_STREAM*IMAGE_SIZE;
-        end
-    end
+    if (~nrst) pixel_data <= 0;
+    else       pixel_data <= rgb;
+
+// Pixel valid latcher
+always_ff @(posedge rgb_clk or negedge nrst)
+    if (~nrst) pixel_valid <= 0;
+    else       pixel_valid <= hsync & vsync;
 
 endmodule
 
