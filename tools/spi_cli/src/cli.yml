@@ -17,7 +17,7 @@ args:
       short: f
       long: frequency
       takes_value: true
-      default_value: "14M"
+      default_value: "5M"
    - system-clock:
       help: "FPGA system clock frequency"
       short: c
