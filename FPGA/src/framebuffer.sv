@@ -43,11 +43,13 @@ integer pixel_idx;
 // Indicates that we have written a whole column in the buffer
 logic has_reached_end;
 
-assign has_reached_end = pixel_idx == 17;
+assign has_reached_end = pixel_idx == 16;
 
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         ram_addr <= '0;
+        buffer1 <= '0;
+        buffer2 <= '0;
     end else begin
         if(SOF) begin
             ram_addr <= '0;
@@ -101,7 +103,7 @@ logic write_buffer;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         write_buffer <= '0;
-    end else if(EOC || (mux_cnt == 0 && pixel_idx == 16)) begin
+    end else if(EOC || (mux_cnt == 0 && pixel_idx == 15)) begin
         write_buffer <= ~write_buffer;
     end
 
@@ -113,7 +115,7 @@ always_ff @(posedge clk or negedge nrst)
         if(SOF) begin
             mux_cnt <= '0;
         end
-        if(pixel_idx == 16) begin
+        if(pixel_idx == 15) begin
             mux_cnt <= mux_cnt + 1;
         end
     end
@@ -125,7 +127,7 @@ always_ff @(posedge clk or negedge nrst)
         driver_SOF <= '0;
     end else begin
         driver_SOF <= '0;
-        if(mux_cnt == 0 && pixel_idx == 16) begin
+        if(mux_cnt == 0 && pixel_idx == 15) begin
             driver_SOF <= 1;
         end
     end
