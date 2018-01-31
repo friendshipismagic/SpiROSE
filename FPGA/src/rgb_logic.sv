@@ -48,6 +48,7 @@ always_ff @(posedge rgb_clk or negedge nrst)
         pixel_line <= 0;
         block_col <= 0;
         block_line <= 0;
+        internal_rgb_enable <= 0;
     end else begin
         // Start of image
         if (~vsync_r && vsync) begin
@@ -55,6 +56,7 @@ always_ff @(posedge rgb_clk or negedge nrst)
             pixel_line <= 0;
             block_col <= 0;
             block_line <= 0;
+            internal_rgb_enable <= rgb_enable;
         end else if (vsync && hsync) begin
             pixel_col <= pixel_col + 1;
 
@@ -84,9 +86,11 @@ always_ff @(posedge rgb_clk or negedge nrst)
     else       pixel_data <= rgb;
 
 // Pixel valid latcher
+logic internal_pixel_valid, internal_rgb_enable;
+assign pixel_valid = internal_rgb_enable & internal_pixel_valid;
 always_ff @(posedge rgb_clk or negedge nrst)
-    if (~nrst) pixel_valid <= 0;
-    else       pixel_valid <= hsync & vsync;
+    if (~nrst) internal_pixel_valid <= 0;
+    else       internal_pixel_valid <= hsync & vsync;
 
 endmodule
 
