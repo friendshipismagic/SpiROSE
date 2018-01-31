@@ -113,59 +113,91 @@ always_ff @(posedge clk or negedge nrst)
                 configuration <= last_cmd_read[47:0];
                 new_config_available <= '1;
                 data_miso <= configuration;
-            end else if (last_cmd_len_bytes == 1
+            end
+
+            if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == MANAGE_COMMAND) begin
                 manage_mux <= 1;
-            end else if (last_cmd_len_bytes == 1
+            end
+
+            if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == RELEASE_COMMAND) begin
                 manage_mux <= 0;
-            end else if (last_cmd_len_bytes == 1
+            end
+
+            if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == NRST_COMMAND) begin
                 spi_nrst <= 0;
-            end else if (last_cmd_len_bytes == 1
+            end
+
+            if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == CONFIG_COMMAND) begin
                 data_miso <= configuration;
-            end else if (last_cmd_len_bytes == 1
+            end
+
+            if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == ROTATION_COMMAND) begin
                 data_miso[47:32] <= rotation_data;
-            end else if (last_cmd_len_bytes == 1
+            end
+
+            if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == SPEED_COMMAND) begin
                 data_miso[47:32] <= speed_data;
-            end else if (last_cmd_len_bytes == 1
+            end
+
+            if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == DEBUG_COMMAND) begin
                 data_miso <= {16'b0, debug_data};
-            end else if (last_cmd_len_bytes == 49
+            end
+
+            if (last_cmd_len_bytes == 49
                          && last_cmd_read[391:384] == DRIVER_COMMAND_RGB) begin
                 debug_driver <= {48'b0, last_cmd_read[383:0]};
                 debug_driver_poker_mode <= 0;
-            end else if (last_cmd_len_bytes == 55
+            end
+
+            if (last_cmd_len_bytes == 55
                          && last_cmd_read[439:432] == DRIVER_COMMAND_POKER) begin
                 debug_driver <= last_cmd_read[431:0];
                 debug_driver_poker_mode <= 1;
-            end else if (last_cmd_len_bytes == 1
+            end
+
+            if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == ENABLE_RGB_COMMAND) begin
                 rgb_enable <= '1;
-            end else if (last_cmd_len_bytes == 1
+            end
+
+            if (last_cmd_len_bytes == 1
                          && last_cmd_read[7:0] == DISABLE_RGB_COMMAND) begin
                 rgb_enable <= '0;
-            end else if (last_cmd_len_bytes == 2
+            end
+
+            if (last_cmd_len_bytes == 2
                          && last_cmd_read[15:8] == ENABLE_MUX_COMMAND) begin
                 mux[last_cmd_read[2:0]] <= 1;
-            end else if (last_cmd_len_bytes == 2
+            end
+
+            if (last_cmd_len_bytes == 2
                          && last_cmd_read[15:8] == DISABLE_MUX_COMMAND) begin
                 mux[last_cmd_read[2:0]] <= 0;
-            end else if (last_cmd_len_bytes == 8
+            end
+
+            if (last_cmd_len_bytes == 8
                          && last_cmd_read[63:56] == DRIVER_DATA_COMMAND) begin
                 if (last_cmd_read[55:48] < 8'd30)
                     driver_data[last_cmd_read[52:48]] <= last_cmd_read[47:0];
-            end else if (last_cmd_len_bytes == 6
+            end
+
+            if (last_cmd_len_bytes == 6
                          && last_cmd_read[47:40] == SEND_PIXEL_LINE_COMMAND) begin
                 SOL <= 1;
                 ram_driver <= last_cmd_read[39:32];
                 ram_offset <= last_cmd_read[31:24];
                 pixel      <= last_cmd_read[23:0];
                 manage <= 1;
-            end else if (last_cmd_len_bytes == 3
+            end
+
+            if (last_cmd_len_bytes == 3
                          && last_cmd_read[23:16] == GET_PIXEL_COMMAND) begin
                 ram_raddr <= {24'b0, last_cmd_read[7:0]};
                 ram_driver <= last_cmd_read[15:8];
