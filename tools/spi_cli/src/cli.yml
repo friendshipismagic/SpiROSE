@@ -18,6 +18,12 @@ args:
       long: frequency
       takes_value: true
       default_value: "14M"
+   - system-clock:
+      help: "FPGA system clock frequency"
+      short: c
+      long: system-clock
+      takes_value: true
+      default_value: "59M"
 subcommands:
    - enable_rgb:
       about: "Start display"
@@ -26,7 +32,7 @@ subcommands:
    - get_rotation:
       about: "Read rotation slice index"
    - get_speed:
-      about: "Read speed as 66000nth of a second per turn"
+      about: "Read rotation speed"
    - get_config:
       about: "Get configuration"
    - get_debug:

@@ -10,7 +10,6 @@ impl SpiCommand {
             "enable_rgb" => Some(&ENABLE_RGB),
             "disable_rgb" => Some(&DISABLE_RGB),
             "get_rotation" => Some(&GET_ROTATION),
-            "get_speed" => Some(&GET_SPEED),
             "get_config" => Some(&GET_CONFIG),
             "get_debug" => Some(&GET_DEBUG),
             "manage" => Some(&MANAGE),
@@ -35,7 +34,7 @@ spi_command!(DISABLE_RGB, 0xd0);
 spi_command!(ENABLE_MUX, 0xe1, 1);
 spi_command!(DISABLE_MUX, 0xd1, 1);
 spi_command!(GET_ROTATION, 0x4c, 2);
-spi_command!(GET_SPEED, 0x4d, 2);
+spi_command!(GET_SPEED, 0x4d, 4);
 spi_command!(GET_CONFIG, 0xbf, 6);
 spi_command!(GET_DEBUG, 0xde, 4);
 spi_command!(SEND_DRIVER_RGB, 0xee, 48);

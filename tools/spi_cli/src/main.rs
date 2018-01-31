@@ -101,6 +101,7 @@ fn run() -> errors::Result<()> {
         !dummy,
         verbose,
     )?;
+    let system_clock = units::parse(matches.value_of("system-clock").unwrap())?;
 
     match matches.subcommand() {
         ("send_config", Some(command_args)) => {
@@ -201,6 +202,24 @@ fn run() -> errors::Result<()> {
             let fb_data = read_framebuffer_column(&mut spi, verbose, dummy)?;
             println!("Framebuffer data for column {}", column);
             println!("{:48b}", fb_data);
+            Ok(())
+        }
+
+        ("get_speed", _) => {
+            let data = transfer(&mut spi, &GET_SPEED, &[], verbose, dummy)?;
+            let count = ((data[0] as u32) << 24) | ((data[1] as u32) << 16)
+                | ((data[2] as u32) << 8) | (data[3] as u32);
+            let speed = if count != 0 {
+                format!(
+                    "{:.1} rps ({}Hz / {})",
+                    system_clock as f32 / count as f32,
+                    units::display(system_clock),
+                    count
+                )
+            } else {
+                format!("N/A (system clock: {}Hz)", units::display(system_clock))
+            };
+            println!("Current speed: {}", speed);
             Ok(())
         }
 
