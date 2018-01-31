@@ -70,13 +70,24 @@ assign rotation_data = 'hBEEF;
 assign speed_data = 'hDEAD;
 
 // Clock generation
-logic clk, fast_clk, slow_clk, nrst, clk_select;
+logic clk, fast_clk, slow_clk, locked, clk_select;
 pll pll (
     .inclk0(rgb_clk),
     .c0(fast_clk),
     .c1(slow_clk),
-    .locked(nrst)
+    .locked(locked)
 );
+
+// Reset generation
+logic spi_nrst_reg;
+logic spi_nrst_reg2;
+logic nrst;
+assign nrst = locked && spi_nrst_reg2;
+
+always @(posedge(clk)) begin
+  spi_nrst_reg <= spi_nrst;
+  spi_nrst_reg2 <= spi_nrst_reg;
+end
 
 assign clk = fast_clk;
 
@@ -131,6 +142,7 @@ logic [23:0]  spi_pixel_data;
 logic         spi_SOL;
 logic [23:0]  spi_ram_raddr;
 logic [23:0]  spi_ram_rdata;
+logic         spi_nrst;
 spi_decoder spi_decoder (
     .clk(clk),
     .nrst(nrst),
@@ -159,7 +171,8 @@ spi_decoder spi_decoder (
     .ram_raddr(spi_ram_raddr),
     .ram_rdata(spi_ram_rdata),
     .pixel(spi_pixel_data),
-    .SOL(spi_SOL)
+    .SOL(spi_SOL),
+    .spi_nrst(spi_nrst)
 );
 
 // RAM, framebuffer and poker formatter for the 15 blocks
