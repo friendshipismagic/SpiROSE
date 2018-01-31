@@ -93,18 +93,35 @@ clock_enable clock_enable (
     .clk_enable(clk_enable)
 );
 
-// Hall sensors
-logic SOF;
+// Hall sensors detection
+logic hall_dectected_0;
+logic [31:0] speed_data_0;
+hall_counter hall_counter_0(
+  .clk(clk),
+  .nrst(nrst),
+  .hall(hall[0]),
+  .detected(hall_detected_0),
+  .speed_data(speed_data_0));
+
+logic hall_dectected_1;
+logic [31:0] speed_data_1;
+hall_counter hall_counter_1(
+  .clk(clk),
+  .nrst(nrst),
+  .hall(hall[1]),
+  .detected(hall_detected_1),
+  .speed_data(speed_data_1));
+
+// Hall sensors combination (hall 1 ignored at this time)
 logic SOF_hall;
-hall_sensor (
-    .clk(clk),
-    .nrst(nrst),
-    .hall_1(hall[0]),
-    .hall_2(hall[1]),
-    .slice_cnt(rotation_data),
-    .position_sync(SOF_hall),
-    .speed_data(speed_data)
-);
+assign speed_data = speed_data_0;
+hall_pll hall_pll(
+  .clk(clk),
+  .nrst(nrst),
+  .speed_data(speed_data),
+  .start_of_turn(hall_detected_0),
+  .slice_cnt(slice_cnt),
+  .position_sync(SOF_hall));
 
 logic hall_sync;
 sync_sig(.clk(clk), .nrst(nrst),
