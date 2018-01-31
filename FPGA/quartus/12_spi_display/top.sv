@@ -93,6 +93,9 @@ clock_enable clock_enable (
     .clk_enable(clk_enable)
 );
 
+logic [15:0]  rotation_data;
+logic [31:0]  speed_data;
+
 // Hall sensors detection
 logic hall_detected_0;
 logic [31:0] speed_data_0;
@@ -115,7 +118,7 @@ hall_counter hall_counter_1(
 );
 
 // Hall sensors combination (hall 1 ignored at this time)
-logic SOF_hall;
+logic SOF;
 assign speed_data = speed_data_1;
 hall_pll hall_pll(
     .clk(clk),
@@ -123,7 +126,7 @@ hall_pll hall_pll(
     .speed_data(speed_data),
     .start_of_turn(hall_detected_1),
     .slice_cnt(rotation_data),
-    .position_sync(SOF_hall)
+    .position_sync(SOF)
 );
 
 logic hall_sync_0;
@@ -145,8 +148,6 @@ always @(posedge clk or negedge nrst)
         last_hall_sync <= hall_sync_1;
     end
 
-logic SOF;
-assign SOF = last_hall_sync && ~hall_sync_1;
 
 // SBC SOM Interface
 logic [439:0] data_mosi;
@@ -170,8 +171,6 @@ spi_iff spi_iff (
 
 logic [431:0] spi_debug_driver;
 logic         spi_debug_driver_poker_mode;
-logic [15:0]  rotation_data;
-logic [31:0]  speed_data;
 logic         rgb_enable;
 logic [47:0]  driver_conf;
 logic         start_config;
