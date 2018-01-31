@@ -198,6 +198,43 @@ rgb_logic rgb_logic(
 	.rgb_enable(rgb_enable_sync)
 );
 
+// Sync RGB logic to main clock
+logic [23:0] rgb_pixel_data_sync;
+logic        rgb_pixel_valid_sync;
+logic  [3:0] rgb_pixel_col_sync;
+logic  [4:0] rgb_pixel_line_sync;
+logic  [2:0] rgb_block_col_sync;
+logic  [1:0] rgb_block_line_sync;
+logic        rgb_enable_sync;
+sync_sig #(.SIZE(24)) sync_sig_rgb_pixel_data (
+	.clk(clk), .nrst(nrst),
+	.in_sig(rgb_pixel_data), .out_sig(rgb_pixel_data_sync)
+);
+sync_sig sync_sig_rgb_pixel_valid (
+	.clk(clk), .nrst(nrst),
+	.in_sig(rgb_pixel_valid), .out_sig(rgb_pixel_valid_sync)
+);
+sync_sig #(.SIZE(4)) sync_sig_rgb_pixel_col (
+	.clk(clk), .nrst(nrst),
+	.in_sig(rgb_pixel_col), .out_sig(rgb_pixel_col_sync)
+);
+sync_sig #(.SIZE(5)) sync_sig_rgb_pixel_line (
+	.clk(clk), .nrst(nrst),
+	.in_sig(rgb_pixel_line), .out_sig(rgb_pixel_line_sync)
+);
+sync_sig #(.SIZE(3)) sync_sig_rgb_block_col (
+	.clk(clk), .nrst(nrst),
+	.in_sig(rgb_block_col), .out_sig(rgb_block_col_sync)
+);
+sync_sig #(.SIZE(2)) sync_sig_rgb_block_line (
+	.clk(clk), .nrst(nrst),
+	.in_sig(rgb_block_line), .out_sig(rgb_block_line_sync)
+);
+sync_sig sync_sig_rgb_enable (
+	.clk(rgb_clk), .nrst(nrst),
+	.in_sig(rgb_enable), .out_sig(rgb_enable_sync)
+);
+
 // RAM, framebuffer and poker formatter for the 15 blocks
 logic drivers_SOF;
 logic [431:0] data_pokered [14:0];
