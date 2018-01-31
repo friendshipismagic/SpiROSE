@@ -127,7 +127,7 @@ logic         spi_manage_mux;
 logic [7:0]   spi_mux_state;
 logic [7:0]   spi_ram_driver;
 logic [7:0]   spi_ram_offset;
-logic [23:0]  spi_pixel;
+logic [23:0]  spi_pixel_data;
 logic         spi_SOL;
 logic [23:0]  spi_ram_raddr;
 logic [23:0]  spi_ram_rdata;
@@ -153,64 +153,39 @@ spi_decoder spi_decoder (
     // Managing signals for debugging mux
     .manage_mux(spi_manage_mux),
     .mux(spi_mux_state),
+    // RAM write output
     .ram_driver(spi_ram_driver),
     .ram_offset(spi_ram_offset),
     .ram_raddr(spi_ram_raddr),
     .ram_rdata(spi_ram_rdata),
-    .pixel(spi_pixel),
+    .pixel(spi_pixel_data),
     .SOL(spi_SOL)
 );
 
-// TODO
-// RAM writer
-logic [6:0]  ram_wraddr;
-logic [23:0] ram_wrdata;
-logic        ram_wrenab;
-
-assign ram_wraddr = spi_ram_offset;
-assign ram_wrdata = spi_pixel;
-assign ram_wrenab = spi_SOL;
-
-// RAM and framebuffer
-logic driver_SOF;
-logic [6:0] ram_addr;
-logic [23:0] ram_data;
-logic EOR;
-logic [383:0] framebuffer_data;
-logic ram_mux;
-ram ram (
-   .clock(clk),
-   .data(ram_wrdata),
-   .rdaddress(ram_addr),
-   .wraddress(ram_wraddr),
-   .wren(ram_wrenab),
-   .q(ram_data)
-);
-
-framebuffer framebuffer (
+// RAM, framebuffer and poker formatter for the 15 blocks
+logic drivers_SOF;
+logic [431:0] data_pokered [14:0];
+ram_15 ram_15 (
    .clk(clk),
-   .clk_enable(clk_enable),
    .nrst(nrst),
-   .data_out(framebuffer_data),
+   .clk_enable(clk_enable),
+   // RAM input (TODO: from SPI, will be from RGB after)
+   .block_number(spi_ram_driver),
+   .pixel_number(spi_ram_offset),
+   .ram_data(spi_pixel_data),
+   // Control inputs from driver_controller
    .EOC(EOC),
    .SOF(SOF),
-   .driver_SOF(driver_SOF),
-   .ram_addr(ram_addr),
-   .ram_data(ram_data),
-   .EOR(EOR)
+   // Framebuffer outputs
+   .data_pokered(data_pokered),
+   .drivers_SOF(drivers_SOF)
 );
 
-// poker_formatter adds zeroes to the 9th SIN data
-logic [431:0] data_pokered;
-poker_formatter poker_formatter (
-    .data_in(framebuffer_data),
-    .data_out(data_pokered)
-);
-
+// Bypass multiplexer
 logic [431:0] driver_data [14:0];
 always_comb begin
     for(int i=0; i<15; ++i) begin
-        driver_data[i] = spi_debug_driver_poker_mode ? spi_debug_driver : data_pokered;
+        driver_data[i] = spi_debug_driver_poker_mode ? spi_debug_driver : data_pokered[i];
     end
 end
 
@@ -237,7 +212,7 @@ driver_controller driver_controller (
     .driver_lat(driver_lat),
     .drivers_sin(drivers_sin),
     .mux_out(mux_out),
-    .SOF(driver_SOF),
+    .SOF(drivers_SOF),
     .EOC(EOC),
     .data(data_reordered),
     .config_data(driver_conf),

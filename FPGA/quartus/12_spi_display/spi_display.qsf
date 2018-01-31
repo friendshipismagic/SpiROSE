@@ -46,6 +46,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../../src/poker_formatter.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/hall_sensor_emulator.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/sync_sig.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/driver_sin_lut.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../../src/ram_15.sv
 
 
 
