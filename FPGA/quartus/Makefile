@@ -18,7 +18,8 @@ compile: \
 	compile/09_column_mux \
 	compile/10_single_led \
 	compile/11_hall_sensor \
-	compile/12_spi_display
+	compile/12_spi_display \
+	compile/13_rgb_display
 
 compile/01_stapl_test:
 	cd 01_stapl_test && $(QUARTUS131) --flow compile stapl_test
@@ -56,9 +57,8 @@ compile/11_hall_sensor:
 compile/12_spi_display:
 	cd 12_spi_display && $(QUARTUS131) --flow compile spi_display
 
-
-compile/13_caterpillar_white:
-	cd 13_caterpillar_white && $(QUARTUS131) --flow compile caterpillar_white
+compile/13_rgb_display:
+	cd 13_rgb_display && $(QUARTUS131) --flow compile rgb_display
 
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose
@@ -81,4 +81,5 @@ clean-all: clean
 	compile/09_column_mux \
 	compile/10_single_led \
 	compile/11_hall_sensor \
-	compile/12_spi_display
+	compile/12_spi_display \
+	compile/13_rgb_display
