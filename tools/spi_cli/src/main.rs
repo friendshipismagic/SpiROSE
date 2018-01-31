@@ -205,8 +205,11 @@ fn run() -> errors::Result<()> {
         }
 
         (name, _) => {
-            let command = SpiCommand::decode(name).unwrap();
-            transfer(&mut spi, command, &[], verbose, dummy).map(|_| ())
+            if let Some(command) = SpiCommand::decode(name) {
+                transfer(&mut spi, command, &[], verbose, dummy).map(|_| ())
+            } else {
+                Ok(())
+            }
         }
     }
 }
