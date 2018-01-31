@@ -18,7 +18,7 @@ module ram_15 (
    output [431:0] data_pokered [14:0],
    output drivers_SOF
 );
-
+/* verilator lint_off DECLFILENAME */
 logic [14:0] drivers_SOF_array;
 assign drivers_SOF = drivers_SOF_array[0];
 // Exported for SPI debug
@@ -59,5 +59,6 @@ generate
          );
    end
 endgenerate
+/* verilator lint_on DECLFILENAME */
 
 endmodule

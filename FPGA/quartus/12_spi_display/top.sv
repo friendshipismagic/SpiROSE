@@ -240,7 +240,14 @@ driver_sin_lut main_drv_sin_lut (
     .drv_sin(drv_sin)
 );
 
-assign fpga_mul_a = spi_manage_mux ? spi_mux_state : mux_out;
+assign fpga_mul_a = spi_manage_mux ? spi_mux_state : {mux_out[0],
+                                                      mux_out[1],
+                                                      mux_out[2],
+                                                      mux_out[3],
+                                                      mux_out[4],
+                                                      mux_out[5],
+                                                      mux_out[6],
+                                                      mux_out[7]};
 assign fpga_mul_b = spi_manage_mux ? spi_mux_state : mux_out;
 assign drv_gclk_a = driver_gclk;
 assign drv_gclk_b = driver_gclk;
