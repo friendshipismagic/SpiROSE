@@ -33,6 +33,7 @@ spi_command!(ENABLE_RGB, 0xe0);
 spi_command!(DISABLE_RGB, 0xd0);
 spi_command!(ENABLE_MUX, 0xe1, 1);
 spi_command!(DISABLE_MUX, 0xd1, 1);
+spi_command!(MANAGE_OPTIONS, 0x30, 0);
 spi_command!(GET_ROTATION, 0x4c, 2);
 spi_command!(GET_SPEED, 0x4d, 4);
 spi_command!(GET_CONFIG, 0xbf, 6);

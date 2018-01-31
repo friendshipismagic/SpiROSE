@@ -134,3 +134,9 @@ subcommands:
          - column:
             help: "The column to profile"
             required: true
+   - manage_options:
+      about: "Set mux state between SPI and other components to take control over them"
+      args:
+         - mask:
+            help: "The mask of option to control"
+            required: true

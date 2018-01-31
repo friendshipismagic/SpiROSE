@@ -223,6 +223,12 @@ fn run() -> errors::Result<()> {
             Ok(())
         }
 
+        ("manage_options", Some(command_args)) => {
+            let mask = command_args.value_of("mask").unwrap().parse::<u8>()?;
+            transfer(&mut spi, &MANAGE_OPTIONS, &[mask], verbose, dummy)?;
+            Ok(())
+        }
+
         (name, _) => {
             if let Some(command) = SpiCommand::decode(name) {
                 transfer(&mut spi, command, &[], verbose, dummy).map(|_| ())
