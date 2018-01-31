@@ -166,7 +166,7 @@ always_ff @(posedge clk or negedge nrst)
                 pixel      <= last_cmd_read[23:0];
                 manage <= 1;
             end else if (last_cmd_len_bytes == 3
-                         && last_cmd_read[23:15] == GET_PIXEL_COMMAND) begin
+                         && last_cmd_read[23:16] == GET_PIXEL_COMMAND) begin
                 ram_raddr <= {24'b0, last_cmd_read[7:0]};
                 ram_driver <= last_cmd_read[15:8];
                 ram_offset <= last_cmd_read[7:0];
