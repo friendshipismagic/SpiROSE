@@ -3,10 +3,13 @@ module hall_counter(
   input clk,
   input nrst,
   input hall,
+  output logic detected,
   output logic [31:0] speed_data);
 
 logic [31:0] counter;
 logic prev_hall;
+
+assign detected = prev_hall && ~hall;
 
 always_ff @(posedge clk or negedge nrst) begin
   if (~nrst) begin
@@ -14,7 +17,7 @@ always_ff @(posedge clk or negedge nrst) begin
     speed_data <= '0;
     prev_hall <= '1;
   end else begin 
-    if (prev_hall && ~hall) begin
+    if (detected) begin
       speed_data <= counter;
       counter <= '0;
     end else begin
