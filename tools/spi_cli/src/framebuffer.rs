@@ -11,7 +11,7 @@ pub struct Pixel {
     pub b: u8,
 }
 
-#[derive(Clone, Debug)]
+#[derive(Debug)]
 pub struct FramebufferColumn(Vec<u8>);
 
 impl fmt::Binary for FramebufferColumn {
