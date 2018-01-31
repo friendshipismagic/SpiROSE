@@ -89,7 +89,7 @@ always_ff @(posedge clk or negedge nrst)
         end
         if(~has_reached_end) begin
             pixel_idx <= pixel_idx + 1'b1;
-        end else if(EOC) begin
+        end else if(EOC || (pixel_idx == 16 && mux_cnt == 1)) begin
             /*
              * We have sent all data so we fill a new buffer
              * We will fill the new buffer with the next column
