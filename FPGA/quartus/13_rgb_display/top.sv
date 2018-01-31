@@ -175,6 +175,18 @@ spi_decoder spi_decoder (
     .spi_nrst(spi_nrst)
 );
 
+// RGB sync
+logic [23:0] rgb_data_sync;
+logic        rgb_hsync_sync;
+logic        rgb_vsync_sync;
+logic        rgb_fifo_empty;
+fifo fifo_rgb(
+	.wrclk(rgb_clk), .wrreq(1),
+	.data({rgb_hsync, rgb_vsync, rgb_d}),
+	.rdclk(clk), .rdreq(1), .rdempty(rgb_fifo_empty),
+	.q({rgb_hsync_sync, rgb_vsync_sync, rgb_data_sync})
+);
+
 // RGB logic
 logic [23:0] rgb_pixel_data;
 logic        rgb_pixel_valid;
@@ -183,10 +195,11 @@ logic  [3:0] rgb_pixel_line;
 logic  [2:0] rgb_block_col;
 logic  [1:0] rgb_block_line;
 rgb_logic rgb_logic(
-	.rgb_clk(rgb_clk), .nrst(nrst),
+	.rgb_clk(clk), .nrst(nrst),
 
 	// RGB data
-	.rgb(rgb_d), .hsync(rgb_hsync), .vsync(rgb_vsync),
+	.rgb(rgb_data_sync), .hsync(rgb_hsync_sync), .vsync(rgb_vsync_sync),
+	// TODO: use rgb_fifo_empty
 
 	// Output
 	.pixel_data(rgb_pixel_data),
@@ -195,44 +208,7 @@ rgb_logic rgb_logic(
 	.block_col(rgb_block_col), .block_line(rgb_block_line),
 
 	// RGB enable
-	.rgb_enable(rgb_enable_sync)
-);
-
-// Sync RGB logic to main clock
-logic [23:0] rgb_pixel_data_sync;
-logic        rgb_pixel_valid_sync;
-logic  [2:0] rgb_pixel_col_sync;
-logic  [3:0] rgb_pixel_line_sync;
-logic  [2:0] rgb_block_col_sync;
-logic  [1:0] rgb_block_line_sync;
-logic        rgb_enable_sync;
-sync_sig #(.SIZE(24)) sync_sig_rgb_pixel_data (
-	.clk(clk), .nrst(nrst),
-	.in_sig(rgb_pixel_data), .out_sig(rgb_pixel_data_sync)
-);
-sync_sig sync_sig_rgb_pixel_valid (
-	.clk(clk), .nrst(nrst),
-	.in_sig(rgb_pixel_valid), .out_sig(rgb_pixel_valid_sync)
-);
-sync_sig #(.SIZE(3)) sync_sig_rgb_pixel_col (
-	.clk(clk), .nrst(nrst),
-	.in_sig(rgb_pixel_col), .out_sig(rgb_pixel_col_sync)
-);
-sync_sig #(.SIZE(4)) sync_sig_rgb_pixel_line (
-	.clk(clk), .nrst(nrst),
-	.in_sig(rgb_pixel_line), .out_sig(rgb_pixel_line_sync)
-);
-sync_sig #(.SIZE(3)) sync_sig_rgb_block_col (
-	.clk(clk), .nrst(nrst),
-	.in_sig(rgb_block_col), .out_sig(rgb_block_col_sync)
-);
-sync_sig #(.SIZE(2)) sync_sig_rgb_block_line (
-	.clk(clk), .nrst(nrst),
-	.in_sig(rgb_block_line), .out_sig(rgb_block_line_sync)
-);
-sync_sig sync_sig_rgb_enable (
-	.clk(rgb_clk), .nrst(nrst),
-	.in_sig(rgb_enable), .out_sig(rgb_enable_sync)
+	.rgb_enable(rgb_enable)
 );
 
 // RAM, framebuffer and poker formatter for the 15 blocks
@@ -243,10 +219,10 @@ ram_15 ram_15 (
    .nrst(nrst),
    .clk_enable(clk_enable),
    // RAM input (TODO: from SPI, will be from RGB after)
-   .block_number(rgb_block_col_sync + rgb_block_line_sync * 5),
-   .pixel_number({4'b0, rgb_pixel_col_sync} + rgb_pixel_line_sync * 8),
-   .ram_data(rgb_pixel_data_sync),
-   .block_write_enable(rgb_pixel_valid_sync),
+   .block_number(rgb_block_col + rgb_block_line * 5),
+   .pixel_number({4'b0, rgb_pixel_col} + rgb_pixel_line * 8),
+   .ram_data(rgb_pixel_data),
+   .block_write_enable(rgb_pixel_valid),
    // Control inputs from driver_controller
    .EOC(EOC),
    .SOF(SOF),
