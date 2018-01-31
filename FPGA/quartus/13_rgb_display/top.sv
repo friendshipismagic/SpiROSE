@@ -175,6 +175,29 @@ spi_decoder spi_decoder (
     .spi_nrst(spi_nrst)
 );
 
+// RGB logic
+logic [23:0] rgb_pixel_data;
+logic        rgb_pixel_valid;
+logic  [3:0] rgb_pixel_col;
+logic  [4:0] rgb_pixel_line;
+logic  [2:0] rgb_block_col;
+logic  [1:0] rgb_block_line;
+rgb_logic rgb_logic(
+	.rgb_clk(rgb_clk), .nrst(nrst),
+
+	// RGB data
+	.rgb(rgb_d), .hsync(rgb_hsync), .vsync(rgb_vsync),
+
+	// Output
+	.pixel_data(rgb_pixel_data),
+	.pixel_valid(rgb_pixel_valid),
+	.pixel_col(rgb_pixel_col), .pixel_line(rgb_pixel_line),
+	.block_col(rgb_block_col), .block_line(rgb_block_line),
+
+	// RGB enable
+	.rgb_enable(rgb_enable_sync)
+);
+
 // RAM, framebuffer and poker formatter for the 15 blocks
 logic drivers_SOF;
 logic [431:0] data_pokered [14:0];
