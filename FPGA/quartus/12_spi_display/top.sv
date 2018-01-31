@@ -95,15 +95,31 @@ clock_enable clock_enable (
 
 // Hall sensors
 logic SOF;
+logic SOF_hall;
 hall_sensor (
     .clk(clk),
     .nrst(nrst),
     .hall_1(hall[0]),
     .hall_2(hall[1]),
     .slice_cnt(rotation_data),
-    .position_sync(SOF),
+    .position_sync(SOF_hall),
     .speed_data(speed_data)
 );
+
+logic hall_sync;
+sync_sig(.clk(clk), .nrst(nrst),
+    .in_sig(hall[0] | hall[1]),
+    .out_sig(hall_sync));
+
+logic last_hall_sync;
+always @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        last_hall_sync <= '1;
+    end else begin 
+        last_hall_sync <= hall_sync;
+    end
+
+assign SOF = last_hall_sync && ~hall_sync;
 
 // SBC SOM Interface
 logic [439:0] data_mosi;
@@ -238,20 +254,20 @@ driver_sin_lut main_drv_sin_lut (
     .drv_sin(drv_sin)
 );
 
-assign fpga_mul_a = spi_manage_mux ? spi_mux_state : {mux_out[0],
+assign fpga_mul_a = '0; /*spi_manage_mux ? spi_mux_state : {mux_out[0],
                                                       mux_out[1],
                                                       mux_out[2],
                                                       mux_out[3],
                                                       mux_out[4],
                                                       mux_out[5],
                                                       mux_out[6],
-                                                      mux_out[7]};
+                                                      mux_out[7]};*/
 assign fpga_mul_b = spi_manage_mux ? spi_mux_state : mux_out;
-assign drv_gclk_a = driver_gclk;
+assign drv_gclk_a = '0;
 assign drv_gclk_b = driver_gclk;
-assign drv_sclk_a = driver_sclk;
+assign drv_sclk_a = '0;
 assign drv_sclk_b = driver_sclk;
-assign drv_lat_a = driver_lat;
+assign drv_lat_a = '0;
 assign drv_lat_b = driver_lat;
 
 endmodule
