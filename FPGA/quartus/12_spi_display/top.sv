@@ -173,6 +173,7 @@ ram_15 ram_15 (
    .block_number(spi_ram_driver),
    .pixel_number(spi_ram_offset),
    .ram_data(spi_pixel_data),
+   .block_write_enable(spi_SOL),
    // Control inputs from driver_controller
    .EOC(EOC),
    .SOF(SOF),

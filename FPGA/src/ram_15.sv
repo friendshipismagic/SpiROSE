@@ -8,6 +8,7 @@ module ram_15 (
    input [3:0] block_number,
    input [6:0] pixel_number,
    input [23:0] ram_data,
+   input block_write_enable,
 
    // Control inputs
    input EOC,
@@ -24,7 +25,7 @@ assign drivers_SOF = drivers_SOF_array[0];
 generate
    genvar ram_number;
    for(ram_number = 0; ram_number < 15; ram_number++) begin: for_ram
-         wire write_enable = (ram_number == block_number);
+         wire write_enable = (ram_number == block_number) && block_write_enable;
          wire ram_read_addr;
          wire [23:0] ram_read_data;
          ram ram(
