@@ -19,7 +19,7 @@ always_ff @(posedge clk or negedge nrst) begin
   end else begin 
     if (detected) begin
       speed_data <= counter;
-      counter <= '0;
+      counter <= '1;
     end else begin
       counter <= counter + 1;
     end
