@@ -17,7 +17,7 @@ args:
       short: f
       long: frequency
       takes_value: true
-      default_value: "200k"
+      default_value: "14M"
 subcommands:
    - enable_rgb:
       about: "Start display"
