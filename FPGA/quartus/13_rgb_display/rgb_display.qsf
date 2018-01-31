@@ -48,6 +48,7 @@ set_global_assignment -name SYSTEMVERILOG_FILE ../../src/sync_sig.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/driver_sin_lut.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/ram_15.sv
 set_global_assignment -name SYSTEMVERILOG_FILE ../../src/rgb_logic.sv
+set_global_assignment -name SYSTEMVERILOG_FILE ../common/fifo/fifo.v
 
 set_global_assignment -name TIMEQUEST_MULTICORNER_ANALYSIS OFF
 set_global_assignment -name SMART_RECOMPILE ON
