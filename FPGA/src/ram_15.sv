@@ -18,9 +18,12 @@ module ram_15 (
    output [431:0] data_pokered [14:0],
    output drivers_SOF
 );
-/* verilator lint_off DECLFILENAME */
+
+/* verilator lint_off UNUSED */
 logic [14:0] drivers_SOF_array;
+/* verilator lint_on UNUSED */
 assign drivers_SOF = drivers_SOF_array[0];
+
 // Exported for SPI debug
 wire [23:0] ram_read_data [14:0];
 wire [6:0] ram_read_addr [14:0];
@@ -39,7 +42,9 @@ generate
          );
 
          wire [383:0] framebuffer_data;
+         /* verilator lint_off UNUSED */
          wire EOR;
+         /* verilator lint_on UNUSED */
          framebuffer framebuffer(
             .clk(clk),
             .clk_enable(clk_enable),
@@ -59,6 +64,5 @@ generate
          );
    end
 endgenerate
-/* verilator lint_on DECLFILENAME */
 
 endmodule
