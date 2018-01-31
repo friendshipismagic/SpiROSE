@@ -13,8 +13,8 @@ module rgb_logic (
     output logic        pixel_valid,
 
     // Coordinates of the pixels in a µblock
-    output logic  [3:0] pixel_col,
-    output logic  [4:0] pixel_line,
+    output logic  [2:0] pixel_col,
+    output logic  [3:0] pixel_line,
     // Coordinates of the µblock
     output logic  [2:0] block_col,
     output logic  [1:0] block_line,

@@ -178,8 +178,8 @@ spi_decoder spi_decoder (
 // RGB logic
 logic [23:0] rgb_pixel_data;
 logic        rgb_pixel_valid;
-logic  [3:0] rgb_pixel_col;
-logic  [4:0] rgb_pixel_line;
+logic  [2:0] rgb_pixel_col;
+logic  [3:0] rgb_pixel_line;
 logic  [2:0] rgb_block_col;
 logic  [1:0] rgb_block_line;
 rgb_logic rgb_logic(
@@ -201,8 +201,8 @@ rgb_logic rgb_logic(
 // Sync RGB logic to main clock
 logic [23:0] rgb_pixel_data_sync;
 logic        rgb_pixel_valid_sync;
-logic  [3:0] rgb_pixel_col_sync;
-logic  [4:0] rgb_pixel_line_sync;
+logic  [2:0] rgb_pixel_col_sync;
+logic  [3:0] rgb_pixel_line_sync;
 logic  [2:0] rgb_block_col_sync;
 logic  [1:0] rgb_block_line_sync;
 logic        rgb_enable_sync;
@@ -214,11 +214,11 @@ sync_sig sync_sig_rgb_pixel_valid (
 	.clk(clk), .nrst(nrst),
 	.in_sig(rgb_pixel_valid), .out_sig(rgb_pixel_valid_sync)
 );
-sync_sig #(.SIZE(4)) sync_sig_rgb_pixel_col (
+sync_sig #(.SIZE(3)) sync_sig_rgb_pixel_col (
 	.clk(clk), .nrst(nrst),
 	.in_sig(rgb_pixel_col), .out_sig(rgb_pixel_col_sync)
 );
-sync_sig #(.SIZE(5)) sync_sig_rgb_pixel_line (
+sync_sig #(.SIZE(4)) sync_sig_rgb_pixel_line (
 	.clk(clk), .nrst(nrst),
 	.in_sig(rgb_pixel_line), .out_sig(rgb_pixel_line_sync)
 );
