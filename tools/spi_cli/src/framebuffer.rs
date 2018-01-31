@@ -1,25 +1,8 @@
-use commands::{MANAGE, RELEASE};
+use commands::*;
 use image::{DynamicImage, GenericImage, Pixel as ImgPixel};
 
 use super::*;
 use std::fmt;
-
-static READ_PIXEL: SpiCommand = SpiCommand {
-    id: 0x20,
-    recv_len: 3,
-};
-static WRITE_PIXEL: SpiCommand = SpiCommand {
-    id: 0x21,
-    recv_len: 0,
-};
-static SELECT_FRAMEBUFFER_COLUMN: SpiCommand = SpiCommand {
-    id: 0x24,
-    recv_len: 1
-};
-static READ_FRAMEBUFFER_COLUMN: SpiCommand = SpiCommand {
-    id: 0x25,
-    recv_len: 48
-};
 
 #[derive(Clone, Debug)]
 pub struct Pixel {
@@ -29,12 +12,18 @@ pub struct Pixel {
 }
 
 #[derive(Clone, Debug)]
-pub struct FramebufferColumn (Vec<u8>);
+pub struct FramebufferColumn(Vec<u8>);
 
 impl fmt::Binary for FramebufferColumn {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         for led in 0..16 {
-            write!(f, "{:b}:{:b}:{:b}", self.0[3*led], self.0[3*led+1], self.0[3*led+2])?;
+            write!(
+                f,
+                "{:b}:{:b}:{:b}",
+                self.0[3 * led],
+                self.0[3 * led + 1],
+                self.0[3 * led + 2]
+            )?;
             if led != 15 {
                 write!(f, ", ")?;
             }
@@ -170,16 +159,23 @@ fn block_offset(x: u8, y: u8) -> (u8, u8) {
     (block, offset)
 }
 
-///
 /// Select the column to profile for other framebuffer read commands
 /// Return the last profiled column
-///
-pub fn select_framebuffer_column(spi: &mut Spidev, column: u8, verbose: bool, dummy: bool) -> errors::Result<u8> {
-    Ok(transfer(spi, &SELECT_FRAMEBUFFER_COLUMN, &[column], verbose, dummy)?[0])
+pub fn select_framebuffer_column(
+    spi: &mut Spidev,
+    column: u8,
+    verbose: bool,
+    dummy: bool,
+) -> errors::Result<u8> {
+    transfer(spi, &SELECT_FRAMEBUFFER_COLUMN, &[column], verbose, dummy).map(|r| r[0])
 }
 
-pub fn read_framebuffer_column(spi: &mut Spidev, verbose: bool, dummy: bool) -> errors::Result<FramebufferColumn> {
-    Ok(FramebufferColumn(transfer(spi, &READ_FRAMEBUFFER_COLUMN, &[], verbose, dummy)?))
+pub fn read_framebuffer_column(
+    spi: &mut Spidev,
+    verbose: bool,
+    dummy: bool,
+) -> errors::Result<FramebufferColumn> {
+    transfer(spi, &READ_FRAMEBUFFER_COLUMN, &[], verbose, dummy).map(FramebufferColumn)
 }
 
 #[cfg(test)]

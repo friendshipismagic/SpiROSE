@@ -43,3 +43,7 @@ spi_command!(SEND_DRIVER_POKERED, 0xef, 54);
 spi_command!(MANAGE, 0xfa);
 spi_command!(RELEASE, 0xfe);
 spi_command!(RESET, 0xa0);
+spi_command!(READ_PIXEL, 0x20, 3);
+spi_command!(WRITE_PIXEL, 0x21);
+spi_command!(SELECT_FRAMEBUFFER_COLUMN, 0x24, 1);
+spi_command!(READ_FRAMEBUFFER_COLUMN, 0x25, 48);

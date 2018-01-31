@@ -22,7 +22,7 @@ use std::str::FromStr;
 
 use clap::App;
 use commands::*;
-use framebuffer::{color, get_image, read_pixel, send_image, write_pixel, Pixel, select_framebuffer_column, read_framebuffer_column};
+use framebuffer::*;
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
 
