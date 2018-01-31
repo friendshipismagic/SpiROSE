@@ -31,6 +31,7 @@ module spi_decoder #(
     output [7:0]   mux,
     output         manage_mux,
     output         manage,
+    output [7:0]   manage_options,
 
     // TLC controller manual control
     output [47:0]  driver_data [29:0],
@@ -60,8 +61,11 @@ localparam SPEED_COMMAND = 'h4D;
 localparam DISABLE_RGB_COMMAND = 'hD0;
 localparam ENABLE_RGB_COMMAND = 'hE0;
 localparam DEBUG_COMMAND = 'hDE;
+
 localparam ENABLE_MUX_COMMAND = 'hE1;
 localparam DISABLE_MUX_COMMAND = 'hD1;
+localparam MANAGE_OPTIONS_COMMAND = 'h30;
+
 localparam DRIVER_DATA_COMMAND = 'hDD;
 localparam DRIVER_COMMAND_RGB = 'hEE;   // Still uses the LUTs
 localparam DRIVER_COMMAND_POKER = 'hEF; // Overrides output LUTs
@@ -231,8 +235,12 @@ always_ff @(posedge clk or negedge nrst)
                 profiled_framebuffer_column <= 32'(last_cmd_read[7:0]);
             end
 
-            if (last_cmd_read[7:0] == 1 && last_cmd_len_bytes == READ_FRAMEBUFFER_COLUMN_COMMAND) begin
+            if (last_cmd_read[7:0] == READ_FRAMEBUFFER_COLUMN_COMMAND && last_cmd_len_bytes == 1) begin
                 data_miso[MISO_SIZE-1 -: 384] <= profiled_framebuffer_data;
+            end
+
+            if (last_cmd_read[15:8] == MANAGE_OPTIONS_COMMAND && last_cmd_len_bytes == 2) begin
+                manage_options <= last_cmd_read[7:0];
             end
         end
     end
