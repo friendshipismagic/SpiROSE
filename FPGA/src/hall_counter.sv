@@ -13,13 +13,13 @@ assign detected = prev_hall && ~hall;
 
 always_ff @(posedge clk or negedge nrst) begin
   if (~nrst) begin
-    counter <= '0;
-    speed_data <= '0;
+    counter <= 0;
+    speed_data <= 0;
     prev_hall <= '1;
   end else begin 
     if (detected) begin
       speed_data <= counter;
-      counter <= '1;
+      counter <= 1;
     end else begin
       counter <= counter + 1;
     end

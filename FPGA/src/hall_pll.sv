@@ -20,18 +20,18 @@ integer ticks_counter;
 
 always @(posedge clk or negedge nrst) begin
   if (~nrst) begin
-    ticks_per_frame <= '0;
-    ticks_counter <= '0;
+    ticks_per_frame <= 0;
+    ticks_counter <= 0;
     slice_cnt <= '0;
     position_sync <= '0;
   end else begin
     if (start_of_turn) begin
       ticks_per_frame <= speed_data >> 8;
-      ticks_counter <= '1;
+      ticks_counter <= 1;
       slice_cnt <= '0;
       position_sync <= '1;
     end else if (ticks_counter == ticks_per_frame) begin
-      ticks_counter <= '1;
+      ticks_counter <= 1;
       slice_cnt <= slice_cnt + 1;
       position_sync <= '1;
     end else begin
