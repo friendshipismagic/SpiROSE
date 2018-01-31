@@ -1,11 +1,12 @@
 `default_nettype none
 module rgb_logic (
-    input logic        rgb_clk,
+    input logic        clk,
     input logic        nrst,
 
     input logic [23:0] rgb,
     input logic        hsync,
     input logic        vsync,
+    input logic        empty,
 
     // Pixel output
     output logic [23:0] pixel_data,
@@ -25,11 +26,11 @@ module rgb_logic (
 
 // index position counter
 logic vsync_r;
-always_ff @(posedge rgb_clk or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
         vsync_r <= 0;
         pixel_idx <= 0;
-    end else begin
+    end else if (!empty) begin
         vsync_r <= vsync;
 
         // Start of image
@@ -42,14 +43,14 @@ always_ff @(posedge rgb_clk or negedge nrst)
     end
 
 // Coordinate counters
-always_ff @(posedge rgb_clk or negedge nrst)
+always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
         pixel_col <= 0;
         pixel_line <= 0;
         block_col <= 0;
         block_line <= 0;
         internal_rgb_enable <= 0;
-    end else begin
+    end else if (!empty) begin
         // Start of image
         if (~vsync_r && vsync) begin
             pixel_col <= 0;
@@ -81,16 +82,16 @@ always_ff @(posedge rgb_clk or negedge nrst)
     end
 
 // Pixel data latcher
-always_ff @(posedge rgb_clk or negedge nrst)
-    if (~nrst) pixel_data <= 0;
-    else       pixel_data <= rgb;
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst)       pixel_data <= 0;
+    else if (!empty) pixel_data <= rgb;
 
 // Pixel valid latcher
 logic internal_pixel_valid, internal_rgb_enable;
 assign pixel_valid = internal_rgb_enable & internal_pixel_valid;
-always_ff @(posedge rgb_clk or negedge nrst)
-    if (~nrst) internal_pixel_valid <= 0;
-    else       internal_pixel_valid <= hsync & vsync;
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst)       internal_pixel_valid <= 0;
+    else if (!empty) internal_pixel_valid <= hsync & vsync;
 
 endmodule
 

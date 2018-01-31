@@ -195,11 +195,11 @@ logic  [3:0] rgb_pixel_line;
 logic  [2:0] rgb_block_col;
 logic  [1:0] rgb_block_line;
 rgb_logic rgb_logic(
-	.rgb_clk(clk), .nrst(nrst),
+	.clk(clk), .nrst(nrst),
 
 	// RGB data
 	.rgb(rgb_data_sync), .hsync(rgb_hsync_sync), .vsync(rgb_vsync_sync),
-	// TODO: use rgb_fifo_empty
+	.empty(rgb_fifo_empty),
 
 	// Output
 	.pixel_data(rgb_pixel_data),
