@@ -66,7 +66,7 @@ always_ff @(posedge clk or negedge nrst)
             end
         end else begin
             // We want to read the next column
-            ram_addr <= mux_cnt;
+            ram_addr <= mux_cnt[6:0];
         end
     end
 
