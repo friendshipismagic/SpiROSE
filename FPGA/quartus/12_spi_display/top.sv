@@ -64,11 +64,6 @@ module Top
  output logic        pt_27
 );
 
-// In this test, we assign predefined value to rotation data and
-// check that SPI I/O is sending it back when asked
-assign rotation_data = 'hBEEF;
-assign speed_data = 'hDEAD;
-
 // Clock generation
 logic clk, fast_clk, slow_clk, locked, clk_select;
 pll pll (
@@ -100,11 +95,14 @@ clock_enable clock_enable (
 
 // Hall sensors
 logic SOF;
-hall_sensor_emulator main_hs_emulator (
+hall_sensor (
     .clk(clk),
-    .clk_enable(clk_enable),
     .nrst(nrst),
-    .SOF(SOF)
+    .hall_1(hall[0]),
+    .hall_2(hall[1]),
+    .slice_cnt(rotation_data),
+    .position_sync(SOF),
+    .speed_data(speed_data)
 );
 
 // SBC SOM Interface
@@ -130,7 +128,7 @@ spi_iff spi_iff (
 logic [431:0] spi_debug_driver;
 logic         spi_debug_driver_poker_mode;
 logic [15:0]  rotation_data;
-logic [15:0]  speed_data;
+logic [31:0]  speed_data;
 logic         rgb_enable;
 logic [47:0]  driver_conf;
 logic         start_config;
