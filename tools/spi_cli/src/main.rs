@@ -22,7 +22,7 @@ use std::str::FromStr;
 
 use clap::App;
 use commands::*;
-use framebuffer::{color, get_image, read_pixel, send_image, write_pixel, Pixel};
+use framebuffer::{color, get_image, read_pixel, send_image, write_pixel, Pixel, select_framebuffer_column, read_framebuffer_column};
 use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
 
@@ -192,6 +192,15 @@ fn run() -> errors::Result<()> {
             let mut file = File::create(file)
                 .map_err(|e| format!("Cannot create image file `{}': {}", file, e))?;
             img.save(&mut file, image::PNG)?;
+            Ok(())
+        }
+
+        ("read_framebuffer_column", Some(command_args)) => {
+            let column: u8 = command_args.value_of("column").unwrap().parse::<u8>()?;
+            select_framebuffer_column(&mut spi, column, verbose, dummy)?;
+            let fb_data = read_framebuffer_column(&mut spi, verbose, dummy)?;
+            println!("Framebuffer data for column {}", column);
+            println!("{:48b}", fb_data);
             Ok(())
         }
 

@@ -111,7 +111,7 @@ subcommands:
            help: "Blue component"
            required: true
    - send_image:
-      about: "Send a 40x48 image to the display" 
+      about: "Send a 40x48 image to the display"
       args:
          - filename:
             help: "The image to read and send"
@@ -121,4 +121,10 @@ subcommands:
       args:
          - filename:
             help: "The PNG file to write"
+            required: true
+   - read_framebuffer_column:
+      about: "Read the output of framebuffer for the given column"
+      args:
+         - column:
+            help: "The column to profile"
             required: true
