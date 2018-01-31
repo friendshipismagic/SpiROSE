@@ -135,6 +135,7 @@ logic         rgb_enable;
 logic [47:0]  driver_conf;
 logic         start_config;
 logic         spi_manage_mux;
+logic         spi_manage;
 logic [7:0]   spi_mux_state;
 logic [7:0]   spi_ram_driver;
 logic [7:0]   spi_ram_offset;
@@ -164,6 +165,7 @@ spi_decoder spi_decoder (
     .debug_driver_poker_mode(spi_debug_driver_poker_mode),
     // Managing signals for debugging mux
     .manage_mux(spi_manage_mux),
+    .manage(spi_manage),
     .mux(spi_mux_state),
     // RAM write output
     .ram_driver(spi_ram_driver),
@@ -214,15 +216,29 @@ rgb_logic rgb_logic(
 // RAM, framebuffer and poker formatter for the 15 blocks
 logic drivers_SOF;
 logic [431:0] data_pokered [14:0];
+
+logic [3:0] ram_block_number;
+logic [6:0] ram_pixel_number;
+assign ram_block_number = rgb_block_col + rgb_block_line * 5;
+assign ram_pixel_number = {4'b0, rgb_pixel_col} + rgb_pixel_line * 8;
+
+logic  [3:0] ram_block_number_mux;
+logic  [6:0] ram_pixel_number_mux;
+logic [23:0] ram_data_mux;
+logic        ram_block_write_enable_mux;
+assign ram_block_number_mux = spi_manage ? spi_ram_driver : ram_block_number;
+assign ram_pixel_number_mux = spi_manage ? spi_ram_offset : ram_pixel_number;
+assign ram_data_mux = spi_manage ? spi_pixel_data : rgb_pixel_data;
+assign ram_block_write_enable_mux = spi_manage ? spi_SOL : rgb_pixel_valid;
 ram_15 ram_15 (
    .clk(clk),
    .nrst(nrst),
    .clk_enable(clk_enable),
    // RAM input (TODO: from SPI, will be from RGB after)
-   .block_number(rgb_block_col + rgb_block_line * 5),
-   .pixel_number({4'b0, rgb_pixel_col} + rgb_pixel_line * 8),
-   .ram_data(rgb_pixel_data),
-   .block_write_enable(rgb_pixel_valid),
+   .block_number(ram_block_number_mux),
+   .pixel_number(ram_pixel_number_mux),
+   .ram_data(ram_data_mux),
+   .block_write_enable(ram_block_write_enable_mux),
    // Control inputs from driver_controller
    .EOC(EOC),
    .SOF(SOF),
