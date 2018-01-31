@@ -243,10 +243,10 @@ ram_15 ram_15 (
    .nrst(nrst),
    .clk_enable(clk_enable),
    // RAM input (TODO: from SPI, will be from RGB after)
-   .block_number(spi_ram_driver),
-   .pixel_number(spi_ram_offset),
-   .ram_data(spi_pixel_data),
-   .block_write_enable(spi_SOL),
+   .block_number(rgb_block_col_sync + rgb_block_line_sync * 5),
+   .pixel_number({4'b0, rgb_pixel_col_sync} + rgb_pixel_line_sync * 8),
+   .ram_data(rgb_pixel_data_sync),
+   .block_write_enable(rgb_pixel_valid_sync),
    // Control inputs from driver_controller
    .EOC(EOC),
    .SOF(SOF),
