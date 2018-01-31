@@ -94,49 +94,59 @@ clock_enable clock_enable (
 );
 
 // Hall sensors detection
-logic hall_dectected_0;
+logic hall_detected_0;
 logic [31:0] speed_data_0;
 hall_counter hall_counter_0(
-  .clk(clk),
-  .nrst(nrst),
-  .hall(hall[0]),
-  .detected(hall_detected_0),
-  .speed_data(speed_data_0));
+    .clk(clk),
+    .nrst(nrst),
+    .hall(hall_sync_0),
+    .detected(hall_detected_0),
+    .speed_data(speed_data_0)
+);
 
-logic hall_dectected_1;
+logic hall_detected_1;
 logic [31:0] speed_data_1;
 hall_counter hall_counter_1(
-  .clk(clk),
-  .nrst(nrst),
-  .hall(hall[1]),
-  .detected(hall_detected_1),
-  .speed_data(speed_data_1));
+    .clk(clk),
+    .nrst(nrst),
+    .hall(hall_sync_1),
+    .detected(hall_detected_1),
+    .speed_data(speed_data_1)
+);
 
 // Hall sensors combination (hall 1 ignored at this time)
 logic SOF_hall;
-assign speed_data = speed_data_0;
+assign speed_data = speed_data_1;
 hall_pll hall_pll(
-  .clk(clk),
-  .nrst(nrst),
-  .speed_data(speed_data),
-  .start_of_turn(hall_detected_0),
-  .slice_cnt(slice_cnt),
-  .position_sync(SOF_hall));
+    .clk(clk),
+    .nrst(nrst),
+    .speed_data(speed_data),
+    .start_of_turn(hall_detected_1),
+    .slice_cnt(rotation_data),
+    .position_sync(SOF_hall)
+);
 
-logic hall_sync;
-sync_sig(.clk(clk), .nrst(nrst),
+logic hall_sync_0;
+sync_sig sync_sig0 (.clk(clk), .nrst(nrst),
     .in_sig(hall[0]),
-    .out_sig(hall_sync));
+    .out_sig(hall_sync_0));
+
+
+logic hall_sync_1;
+sync_sig sync_sig1 (.clk(clk), .nrst(nrst),
+    .in_sig(pt_39),
+    .out_sig(hall_sync_1));
 
 logic last_hall_sync;
 always @(posedge clk or negedge nrst)
     if(~nrst) begin
         last_hall_sync <= '1;
     end else begin
-        last_hall_sync <= hall_sync;
+        last_hall_sync <= hall_sync_1;
     end
 
-assign SOF = last_hall_sync && ~hall_sync;
+logic SOF;
+assign SOF = last_hall_sync && ~hall_sync_1;
 
 // SBC SOM Interface
 logic [439:0] data_mosi;
