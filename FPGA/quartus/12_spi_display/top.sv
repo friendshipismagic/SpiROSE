@@ -108,14 +108,14 @@ hall_sensor (
 
 logic hall_sync;
 sync_sig(.clk(clk), .nrst(nrst),
-    .in_sig(hall[0] | hall[1]),
+    .in_sig(hall[0]),
     .out_sig(hall_sync));
 
 logic last_hall_sync;
 always @(posedge clk or negedge nrst)
     if(~nrst) begin
         last_hall_sync <= '1;
-    end else begin 
+    end else begin
         last_hall_sync <= hall_sync;
     end
 
