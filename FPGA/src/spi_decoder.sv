@@ -45,6 +45,11 @@ module spi_decoder #(
     output [7:0]   ram_driver,
     output [7:0]   ram_offset,
     input  [23:0]  ram_rdata,
+
+    // Framebuffer control
+    input [383:0]  framebuffer_data,
+    input integer  framebuffer_column,
+
     // Reset from the SPI
     output         spi_nrst
 );
@@ -65,6 +70,8 @@ localparam RELEASE_COMMAND = 'hFE;
 localparam GET_PIXEL_COMMAND = 'h20;
 localparam SEND_PIXEL_LINE_COMMAND = 'h21;
 localparam NRST_COMMAND = 'hA0;
+localparam SELECT_FRAMEBUFFER_COLUMN_COMMAND = 'h24;
+localparam READ_FRAMEBUFFER_COLUMN_COMMAND = 'h25;
 
 `include "drivers_conf.svh"
 
@@ -74,6 +81,17 @@ logic last_valid;
 
 // Driver selection and state machine for reading
 logic ram_is_reading;
+
+logic [383:0] profiled_framebuffer_data;
+integer       profiled_framebuffer_column;
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+        profiled_framebuffer_data   <= 0;
+    end else begin
+        if (framebuffer_column == profiled_framebuffer_column) begin
+            profiled_framebuffer_data <= framebuffer_data;
+        end
+    end
 
 always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
@@ -101,6 +119,7 @@ always_ff @(posedge clk or negedge nrst)
         ram_raddr <= '0;
         SOL <= '0;
         ram_driver <= '0;
+        profiled_framebuffer_column <= 0;
         for (int i=0; i<30; ++i) begin
             driver_data[i] <= '0;
         end
@@ -206,6 +225,14 @@ always_ff @(posedge clk or negedge nrst)
                 ram_driver <= last_cmd_read[15:8];
                 ram_offset <= last_cmd_read[7:0];
                 ram_is_reading <= '1;
+            end
+
+            if (last_cmd_len_bytes == 2 && last_cmd_read[15:8] == SELECT_FRAMEBUFFER_COLUMN_COMMAND) begin
+                profiled_framebuffer_column <= 32'(last_cmd_read[7:0]);
+            end
+
+            if (last_cmd_read[7:0] == 1 && last_cmd_len_bytes == READ_FRAMEBUFFER_COLUMN_COMMAND) begin
+                data_miso[MISO_SIZE-1 -: 384] <= profiled_framebuffer_data;
             end
         end
     end
