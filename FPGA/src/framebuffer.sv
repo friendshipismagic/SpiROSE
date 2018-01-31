@@ -1,6 +1,7 @@
 `default_nettype none
 module framebuffer (
     input clk,
+    input clk_enable,
     input nrst,
 
     // Data signal for the driver main controller
@@ -38,8 +39,6 @@ logic [383:0] buffer2;
  * which is part of driver j+2.
  */
 
-// The pixel index of the buffer reading the ram
-integer pixel_idx;
 // Indicates that we have written a whole column in the buffer
 logic has_reached_end;
 
@@ -53,16 +52,20 @@ always_ff @(posedge clk or negedge nrst)
     end else begin
         if(SOF) begin
             ram_addr <= '0;
-        end
-        if(~has_reached_end) begin
-            // We read a column, hence the + 8
-            ram_addr <= ram_addr + 8;
-            if(write_buffer == 1) begin
-                buffer1[383:24] <= buffer1[383-24:0];
-                buffer1[23:0] <= ram_data;
+        end else if (clk_enable) begin
+            if(~has_reached_end) begin
+                // We read a column, hence the + 8
+                ram_addr <= ram_addr + 8;
+                if(write_buffer == 1) begin
+                    buffer1[383-24:0] <= buffer1[383:24];
+                    buffer1[383:384-24] <= ram_data;
+                end else begin
+                    buffer2[383-24:0] <= buffer2[383:24];
+                    buffer2[383:384-24] <= ram_data;
+                end
             end else begin
-                buffer2[383:24] <= buffer2[383-24:0];
-                buffer2[23:0] <= ram_data;
+                // We want to read the next column
+                ram_addr <= mux_cnt[6:0];
             end
         end else begin
             // We want to read the next column
@@ -80,21 +83,23 @@ always_ff @(posedge clk or negedge nrst)
         end
     end
 
+integer pixel_idx;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
-        pixel_idx <= '0;
+        pixel_idx <= 16;
     end else begin
         if(SOF) begin
             pixel_idx <= '0;
-        end
-        if(~has_reached_end) begin
-            pixel_idx <= pixel_idx + 1'b1;
-        end else if(EOC || (pixel_idx == 16 && mux_cnt == 1)) begin
-            /*
-             * We have sent all data so we fill a new buffer
-             * We will fill the new buffer with the next column
-             */
-            pixel_idx <= '0;
+        end else if(clk_enable) begin
+            if(~has_reached_end) begin
+                pixel_idx <= pixel_idx + 1'b1;
+            end else if(EOC || (has_reached_end && mux_cnt == 1)) begin
+                /*
+                * We have sent all data so we fill a new buffer
+                * We will fill the new buffer with the next column
+                */
+                pixel_idx <= '0;
+            end
         end
     end
 
@@ -103,8 +108,10 @@ logic write_buffer;
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         write_buffer <= '0;
-    end else if(EOC || (mux_cnt == 0 && pixel_idx == 15)) begin
-        write_buffer <= ~write_buffer;
+    end else if(clk_enable) begin
+        if(EOC || (mux_cnt == 1 && has_reached_end)) begin
+            write_buffer <= ~write_buffer;
+        end
     end
 
 integer mux_cnt;
@@ -114,9 +121,10 @@ always_ff @(posedge clk or negedge nrst)
     end else begin
         if(SOF) begin
             mux_cnt <= '0;
-        end
-        if(pixel_idx == 15) begin
-            mux_cnt <= mux_cnt + 1;
+        end else if(clk_enable) begin
+            if(pixel_idx == 15) begin
+                mux_cnt <= mux_cnt + 1;
+            end
         end
     end
 
@@ -127,7 +135,7 @@ always_ff @(posedge clk or negedge nrst)
         driver_SOF <= '0;
     end else begin
         driver_SOF <= '0;
-        if(mux_cnt == 0 && pixel_idx == 15) begin
+        if(mux_cnt == 1 && has_reached_end) begin
             driver_SOF <= 1;
         end
     end

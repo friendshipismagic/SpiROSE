@@ -184,6 +184,7 @@ ram ram (
 
 framebuffer framebuffer (
    .clk(clk),
+   .clk_enable(clk_enable),
    .nrst(nrst),
    .data_out(framebuffer_data),
    .EOC(EOC),
@@ -231,7 +232,7 @@ driver_controller driver_controller (
     .driver_lat(driver_lat),
     .drivers_sin(drivers_sin),
     .mux_out(mux_out),
-    .SOF(SOF),
+    .SOF(driver_SOF),
     .EOC(EOC),
     .data(data_reordered),
     .config_data(driver_conf),
