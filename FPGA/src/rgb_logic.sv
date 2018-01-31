@@ -10,7 +10,6 @@ module rgb_logic (
 
     // Pixel output
     output logic [23:0] pixel_data,
-    output logic [31:0] pixel_idx,
     output logic        pixel_valid,
 
     // Coordinates of the pixels in a µblock
@@ -24,24 +23,6 @@ module rgb_logic (
     input logic         rgb_enable
 );
 
-// index position counter
-logic vsync_r;
-always_ff @(posedge clk or negedge nrst)
-    if (~nrst) begin
-        vsync_r <= 0;
-        pixel_idx <= 0;
-    end else if (!empty) begin
-        vsync_r <= vsync;
-
-        // Start of image
-        if (~vsync_r && vsync)
-            pixel_idx <= 0;
-
-        // Normal pixels
-        if (vsync_r && vsync && hsync)
-            pixel_idx <= pixel_idx + 1;
-    end
-
 // Coordinate counters
 always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
@@ -49,7 +30,6 @@ always_ff @(posedge clk or negedge nrst)
         pixel_line <= 0;
         block_col <= 0;
         block_line <= 0;
-        internal_rgb_enable <= 0;
     end else if (!empty) begin
         // Start of image
         if (~vsync_r && vsync) begin
@@ -57,7 +37,6 @@ always_ff @(posedge clk or negedge nrst)
             pixel_line <= 0;
             block_col <= 0;
             block_line <= 0;
-            internal_rgb_enable <= rgb_enable;
         end else if (vsync && hsync) begin
             pixel_col <= pixel_col + 1;
 
@@ -80,6 +59,23 @@ always_ff @(posedge clk or negedge nrst)
             end
         end
     end
+
+// Vsync edge detector
+logic vsync_r;
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+        vsync_r <= 0;
+    end else if (!empty) begin
+        vsync_r <= vsync;
+    end
+
+
+// Internal RGB enable latcher
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst)
+        internal_rgb_enable <= 0;
+    else if (!empty && ~vsync_r && vsync)
+        internal_rgb_enable <= rgb_enable;
 
 // Pixel data latcher
 always_ff @(posedge clk or negedge nrst)
