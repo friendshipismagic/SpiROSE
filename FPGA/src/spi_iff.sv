@@ -1,6 +1,6 @@
 `default_nettype none
 module spi_iff #(
-    parameter MISO_SIZE=432
+    parameter MISO_SIZE=440
 )(
     input  nrst,
     input  clk,
