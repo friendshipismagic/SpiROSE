@@ -36,7 +36,7 @@ module spi_decoder (
     output         debug_driver_poker_mode,
 
     // Signals that the topmodule should use debugging data signals from the spi_decoder
-    output logic [191:0] pixel_line,
+    output [23:0]  pixel,
     // Signal the beginning of a pixel line send
     output logic   SOL,
     output [31:0]  ram_raddr,
@@ -107,6 +107,7 @@ always_ff @(posedge clk or negedge nrst)
             data_miso <= {ram_rdata, 24'b0};
         ram_is_reading <= '0;
         manage <= '0;
+        SOL <= '0;
         if (last_valid) begin
             if (last_cmd_len_bytes == 7 && last_cmd_read[55:48] == CONFIG_COMMAND) begin
                 configuration <= last_cmd_read[47:0];
@@ -157,10 +158,12 @@ always_ff @(posedge clk or negedge nrst)
                          && last_cmd_read[63:56] == DRIVER_DATA_COMMAND) begin
                 if (last_cmd_read[55:48] < 8'd30)
                     driver_data[last_cmd_read[52:48]] <= last_cmd_read[47:0];
-            end else if (last_cmd_len_bytes == 25
-                         && last_cmd_read[199:192] == SEND_PIXEL_LINE_COMMAND) begin
+            end else if (last_cmd_len_bytes == 6
+                         && last_cmd_read[47:40] == SEND_PIXEL_LINE_COMMAND) begin
                 SOL <= 1;
-                pixel_line <= last_cmd_read[191:0];
+                ram_driver <= last_cmd_read[39:32];
+                ram_offset <= last_cmd_read[31:24];
+                pixel      <= last_cmd_read[23:0];
                 manage <= 1;
             end else if (last_cmd_len_bytes == 3
                          && last_cmd_read[23:15] == GET_PIXEL_COMMAND) begin

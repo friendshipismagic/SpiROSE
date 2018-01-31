@@ -127,7 +127,7 @@ logic         spi_manage_mux;
 logic [7:0]   spi_mux_state;
 logic [7:0]   spi_ram_driver;
 logic [7:0]   spi_ram_offset;
-logic [191:0] spi_pixel_line;
+logic [23:0]  spi_pixel;
 logic         spi_SOL;
 spi_decoder spi_decoder (
     .clk(clk),
@@ -153,7 +153,7 @@ spi_decoder spi_decoder (
     .mux(spi_mux_state),
     .ram_driver(spi_ram_driver),
     .ram_offset(spi_ram_offset),
-    .pixel_line(spi_pixel_line),
+    .pixel(spi_pixel),
     .SOL(spi_SOL)
 );
 
@@ -163,16 +163,9 @@ logic [6:0]  ram_wraddr;
 logic [23:0] ram_wrdata;
 logic        ram_wrenab;
 
-ram_line_writer ram_line_writer (
-    .clk(clk),
-    .nrst(nrst),
-    .ram_waddr(ram_wraddr),
-    .ram_wdata(ram_wrdata),
-    .offset(spi_ram_driver),
-    .pixels(spi_pixel_line),
-    .SOL(spi_SOL),
-    .ram_write_enable(ram_wrenab)
-);
+assign ram_wraddr = spi_ram_offset;
+assign ram_wrdata = spi_pixel;
+assign ram_wrenab = spi_SOL;
 
 // RAM and framebuffer
 logic driver_SOF;
@@ -184,7 +177,7 @@ ram ram (
    .clock(clk),
    .data(ram_wrdata),
    .rdaddress(ram_addr),
-   .wraddress(ram_wrdata),
+   .wraddress(ram_wraddr),
    .wren(ram_wrenab),
    .q(ram_data)
 );
@@ -204,7 +197,7 @@ framebuffer framebuffer (
 // poker_formatter adds zeroes to the 9th SIN data
 logic [431:0] data_pokered;
 poker_formatter poker_formatter (
-    .data_in(spi_debug_driver),
+    .data_in(framebuffer_data),
     .data_out(data_pokered)
 );
 
