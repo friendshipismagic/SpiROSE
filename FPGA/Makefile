@@ -1,12 +1,12 @@
 LINTER=verilator
-LINTER_ARGS=--lint-only -Wall
+LINTER_ARGS=--lint-only -Wall -y src/stubs
 
 SRCS=$(wildcard src/*.sv)
 
 $(SRCS):
 
 %.sv.lint:
-	/usr/bin/sh ./tools/lint.sh $*
+	$(LINTER) $(LINTER_ARGS) $* -y src
 
 lint: $(addsuffix .lint,$(SRCS))
 	@echo "Running lint tests"

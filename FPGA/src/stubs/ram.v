@@ -10,4 +10,6 @@ module ram (
     output [23:0] q
 );
 
+assign q = 24'h0;
+
 endmodule
