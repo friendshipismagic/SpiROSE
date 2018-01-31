@@ -1,5 +1,7 @@
 `default_nettype none
-module spi_iff(
+module spi_iff #(
+    parameter MISO_SIZE=432
+)(
     input  nrst,
     input  clk,
 
@@ -10,13 +12,13 @@ module spi_iff(
 
     output [439:0] data_mosi,
     output [10:0] data_len_bytes,
-    input  [47:0] data_miso,
+    input  [MISO_SIZE-1:0] data_miso,
 
     output valid
 );
 
 logic [439:0] in_reg;
-logic [47:0] out_reg;
+logic [MISO_SIZE-1:0] out_reg;
 logic [20:0] cmd_len_bits;
 
 logic sync_mosi, sync_sck, sync_ss;
@@ -28,7 +30,7 @@ assign negedge_sck = last_sck & ~sync_sck;
 assign posedge_ss = ~last_ss & sync_ss;
 assign negedge_ss = last_ss & ~sync_ss;
 
-assign spi_miso = sync_ss ? 'z : out_reg[47];
+assign spi_miso = sync_ss ? 'z : out_reg[MISO_SIZE-1];
 assign data_len_bytes = cmd_len_bits[13:3];
 
 /*
@@ -105,7 +107,7 @@ always @(posedge clk or negedge nrst)
         end else if (posedge_ss) begin
             out_reg <= '0;
         end else if (~sync_ss && negedge_sck) begin
-            out_reg <= { out_reg[46:0], 1'b0 };
+            out_reg <= { out_reg[MISO_SIZE-2:0], 1'b0 };
         end
     end
 

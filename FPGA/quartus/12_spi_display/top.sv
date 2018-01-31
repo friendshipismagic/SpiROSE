@@ -99,7 +99,7 @@ hall_sensor_emulator main_hs_emulator (
 // SBC SOM Interface
 logic [439:0] data_mosi;
 logic [10:0]  data_len_bytes;
-logic [47:0]  data_miso;
+logic [439:0]  data_miso;
 logic         cmd_valid;
 spi_iff spi_iff (
     .clk(clk),
@@ -129,6 +129,8 @@ logic [7:0]   spi_ram_driver;
 logic [7:0]   spi_ram_offset;
 logic [23:0]  spi_pixel;
 logic         spi_SOL;
+logic [23:0]  spi_ram_raddr;
+logic [23:0]  spi_ram_rdata;
 spi_decoder spi_decoder (
     .clk(clk),
     .nrst(nrst),
@@ -153,6 +155,8 @@ spi_decoder spi_decoder (
     .mux(spi_mux_state),
     .ram_driver(spi_ram_driver),
     .ram_offset(spi_ram_offset),
+    .ram_raddr(spi_ram_raddr),
+    .ram_rdata(spi_ram_rdata),
     .pixel(spi_pixel),
     .SOL(spi_SOL)
 );
@@ -173,6 +177,7 @@ logic [6:0] ram_addr;
 logic [23:0] ram_data;
 logic EOR;
 logic [383:0] framebuffer_data;
+logic ram_mux;
 ram ram (
    .clock(clk),
    .data(ram_wrdata),
