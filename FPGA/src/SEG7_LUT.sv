@@ -1,3 +1,4 @@
+`default_nettype none
 module SEG7_LUT (
     oSEG,
     iDIG

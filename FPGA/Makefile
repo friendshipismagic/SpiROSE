@@ -1,5 +1,5 @@
 LINTER=verilator
-LINTER_ARGS=--lint-only -Wall
+LINTER_ARGS=--lint-only -Wall -y src/stubs
 
 SRCS=$(wildcard src/*.sv)
 

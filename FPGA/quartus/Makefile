@@ -1,4 +1,6 @@
-QUARTUS131 = /comelec/softs/opt/altera/altera13.1/comelec/quartus_sh
+QUARTUS131 ?= /comelec/softs/opt/altera/altera13.1/comelec/quartus_sh
+
+all: compile/12_spi_display
 
 bundle: compile
 	mkdir -p stapl
@@ -53,6 +55,10 @@ compile/11_hall_sensor:
 
 compile/12_spi_display:
 	cd 12_spi_display && $(QUARTUS131) --flow compile spi_display
+
+
+compile/13_caterpillar_white:
+	cd 13_caterpillar_white && $(QUARTUS131) --flow compile caterpillar_white
 
 test:
 	cd prod && $(QUARTUS131) --flow compile spirose

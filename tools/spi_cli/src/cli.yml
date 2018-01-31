@@ -12,6 +12,18 @@ args:
       help: "Trace data sent and received"
       short: v
       long: verbose
+   - frequency:
+      help: "SPI speed in bit/s"
+      short: f
+      long: frequency
+      takes_value: true
+      default_value: "14M"
+   - system-clock:
+      help: "FPGA system clock frequency"
+      short: c
+      long: system-clock
+      takes_value: true
+      default_value: "59M"
 subcommands:
    - enable_rgb:
       about: "Start display"
@@ -20,7 +32,7 @@ subcommands:
    - get_rotation:
       about: "Read rotation slice index"
    - get_speed:
-      about: "Read speed as 66000nth of a second per turn"
+      about: "Read rotation speed"
    - get_config:
       about: "Get configuration"
    - get_debug:
@@ -47,12 +59,78 @@ subcommands:
             multiple: true
             required: true
             possible_values: ["0", "1", "2", "3", "4", "5", "6", "7"]
-   - send_driver_data:
-      about: "Send data to a driver, then latch"
+   - send_driver_rgb:
+      about: "Send raw RGB data to drivers"
       args:
-         - driver_id:
-            help: "The driver id, from 0 to 30"
+         - filename:
+            help: "The filename to read and send"
             required: true
-         - driver_data:
-            help: "The data (in binary) to send to the driver"
+   - send_driver_pokered:
+      about: "Send pokered RGB data to drivers"
+      args:
+         - filename:
+            help: "The filename to read and send"
+            required: true
+   - manage:
+      about: "Tell the FPGA to send debugging signals from the SPI to the other module, for example to send data to a driver"
+   - release:
+      about: "Do the opposite of manage, tell the FPGA that it shouldn't use SPI's debugging signals as input for the other modules"
+   - reset:
+      about: "Reset the FPGA"
+   - read_pixel:
+      about: "Read a pixel"
+      args:
+        - x:
+           help: "The column"
+           required: true
+        - y:
+           help: "The line"
+           required: true
+   - write_pixel:
+      about: "Write a pixel"
+      args:
+        - x:
+           help: "The column"
+           required: true
+        - y:
+           help: "The line"
+           required: true
+        - r:
+           help: "Red component"
+           required: true
+        - g:
+           help: "Green component"
+           required: true
+        - b:
+           help: "Blue component"
+           required: true
+   - color:
+      about: "Set a uniform color on all pixels"
+      args:
+        - r:
+           help: "Red component"
+           required: true
+        - g:
+           help: "Green component"
+           required: true
+        - b:
+           help: "Blue component"
+           required: true
+   - send_image:
+      about: "Send a 40x48 image to the display"
+      args:
+         - filename:
+            help: "The image to read and send"
+            required: true
+   - get_image:
+      about: "Receive a 40x48 image from the display"
+      args:
+         - filename:
+            help: "The PNG file to write"
+            required: true
+   - read_framebuffer_column:
+      about: "Read the output of framebuffer for the given column"
+      args:
+         - column:
+            help: "The column to profile"
             required: true

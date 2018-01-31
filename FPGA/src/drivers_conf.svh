@@ -37,7 +37,7 @@ localparam drivers_conf_t drivers_conf = '{
    SEL_GDLY: 1'b1,
    XREFRESH: 1'b1,
    SEL_GCK_EDGE: 1'b0,
-   SEL_PCHG: 1'b0,
+   SEL_PCHG: 1'b1,
    ESPWM: 1'b1,
    LGSE3: 1'b0,
    SEL_SCK_EDGE: 1'b0,

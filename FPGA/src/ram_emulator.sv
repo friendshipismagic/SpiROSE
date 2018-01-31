@@ -1,3 +1,4 @@
+`default_nettype none
 module ram_emulator #(
     parameter RAM_ADDR_WIDTH=32,
     parameter RAM_DATA_WIDTH=16
