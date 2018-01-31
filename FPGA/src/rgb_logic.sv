@@ -73,7 +73,7 @@ always_ff @(posedge clk or negedge nrst)
                         pixel_line <= 0;
                         block_line <= block_line + 1;
 
-                        if (block_line == 3)
+                        if (block_line == 2)
                             block_line <= 0;
                     end
                 end
@@ -84,7 +84,7 @@ always_ff @(posedge clk or negedge nrst)
 // Pixel data latcher
 always_ff @(posedge clk or negedge nrst)
     if (~nrst)       pixel_data <= 0;
-    else if (!empty) pixel_data <= rgb;
+    else if (!empty) pixel_data <= {rgb[7:0], rgb[15:8], rgb[23:16]};
 
 // Pixel valid latcher
 logic internal_pixel_valid, internal_rgb_enable;
