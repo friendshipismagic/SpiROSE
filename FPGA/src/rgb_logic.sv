@@ -78,9 +78,7 @@ always_ff @(posedge clk or negedge nrst)
         internal_rgb_enable <= rgb_enable;
 
 // Pixel data latcher
-always_ff @(posedge clk or negedge nrst)
-    if (~nrst)       pixel_data <= 0;
-    else if (!empty) pixel_data <= {rgb[7:0], rgb[15:8], rgb[23:16]};
+assign pixel_data = {rgb[7:0], rgb[15:8], rgb[23:16]};
 
 // Pixel valid latcher
 logic internal_pixel_valid, internal_rgb_enable;
