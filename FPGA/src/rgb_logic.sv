@@ -81,11 +81,8 @@ always_ff @(posedge clk or negedge nrst)
 assign pixel_data = {rgb[7:0], rgb[15:8], rgb[23:16]};
 
 // Pixel valid latcher
-logic internal_pixel_valid, internal_rgb_enable;
-assign pixel_valid = internal_rgb_enable & internal_pixel_valid;
-always_ff @(posedge clk or negedge nrst)
-    if (~nrst)       internal_pixel_valid <= 0;
-    else if (!empty) internal_pixel_valid <= hsync & vsync;
+logic internal_rgb_enable;
+assign pixel_valid = internal_rgb_enable & hsync & vsync;
 
 endmodule
 
