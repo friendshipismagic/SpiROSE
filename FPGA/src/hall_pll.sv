@@ -17,28 +17,43 @@ module hall_pll (
 
 integer ticks_per_frame;
 integer ticks_counter;
+integer position_sync_guard;
 
-always @(posedge clk or negedge nrst) begin
-  if (~nrst) begin
-    ticks_per_frame <= 0;
-    ticks_counter <= 0;
-    slice_cnt <= '0;
-    position_sync <= '0;
-  end else begin
-    if (start_of_turn) begin
-      ticks_per_frame <= speed_data >> 8;
-      ticks_counter <= 1;
-      slice_cnt <= '0;
-      position_sync <= '1;
-    end else if (ticks_counter == ticks_per_frame) begin
-      ticks_counter <= 1;
-      slice_cnt <= slice_cnt + 1;
-      position_sync <= '1;
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+        position_sync_guard <= '0;
     end else begin
-      ticks_counter <= ticks_counter + 1;
-      position_sync <= '0;
+        if(start_of_turn) begin
+            position_sync_guard <= 1;
+        end else if(position_sync_guard > 0) begin
+            position_sync_guard <= position_sync_guard + 1'b1;
+            if(position_sync_guard == 32) begin
+                position_sync_guard <= '0;
+            end
+        end
     end
-  end
-end
+
+always_ff @(posedge clk or negedge nrst)
+    if (~nrst) begin
+        ticks_per_frame <= 0;
+        ticks_counter <= 0;
+        slice_cnt <= '0;
+        position_sync <= '0;
+    end else begin
+        if (start_of_turn) begin
+            ticks_per_frame <= speed_data >> 8;
+            ticks_counter <= 1;
+            slice_cnt <= '0;
+        end else if(position_sync_guard == 32) begin
+            position_sync <= 1;
+        end else if (ticks_counter == ticks_per_frame) begin
+            ticks_counter <= 1;
+            slice_cnt <= slice_cnt + 1;
+            position_sync <= '1;
+        end else begin
+            ticks_counter <= ticks_counter + 1;
+            position_sync <= '0;
+        end
+    end
 
 endmodule

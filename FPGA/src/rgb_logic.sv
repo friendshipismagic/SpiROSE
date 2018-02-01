@@ -7,6 +7,7 @@ module rgb_logic (
     input logic        hsync,
     input logic        vsync,
     input logic        empty,
+    output [7:0] wslice_cnt,
 
     // Pixel output
     output logic [23:0] pixel_data,
@@ -30,6 +31,7 @@ always_ff @(posedge clk or negedge nrst)
         pixel_line <= 0;
         block_col <= 0;
         block_line <= 0;
+        wslice_cnt <= '0;
     end else if (!empty) begin
         // Start of image
         if (~vsync_r && vsync) begin
@@ -37,6 +39,7 @@ always_ff @(posedge clk or negedge nrst)
             pixel_line <= 0;
             block_col <= 0;
             block_line <= 0;
+            wslice_cnt <= '0;
         end else if (vsync && hsync) begin
             pixel_col <= pixel_col + 1;
 
@@ -52,8 +55,10 @@ always_ff @(posedge clk or negedge nrst)
                         pixel_line <= 0;
                         block_line <= block_line + 1;
 
-                        if (block_line == 2)
+                        if (block_line == 2) begin
                             block_line <= 0;
+                            wslice_cnt <= wslice_cnt + 1'b1;
+                        end
                     end
                 end
             end

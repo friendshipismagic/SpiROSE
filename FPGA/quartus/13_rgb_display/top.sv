@@ -118,6 +118,7 @@ hall_counter hall_counter_1(
 );
 
 // Hall sensors combination (hall 1 ignored at this time)
+logic SOF;
 assign speed_data = speed_data_1;
 hall_pll hall_pll(
     .clk(clk),
@@ -138,14 +139,6 @@ logic hall_sync_1;
 sync_sig sync_sig1 (.clk(clk), .nrst(nrst),
     .in_sig(pt_39),
     .out_sig(hall_sync_1));
-
-logic last_hall_sync;
-always @(posedge clk or negedge nrst)
-    if(~nrst) begin
-        last_hall_sync <= '1;
-    end else begin
-        last_hall_sync <= hall_sync_1;
-    end
 
 // SBC SOM Interface
 logic [439:0] data_mosi;
@@ -234,12 +227,14 @@ logic  [2:0] rgb_pixel_col;
 logic  [3:0] rgb_pixel_line;
 logic  [2:0] rgb_block_col;
 logic  [1:0] rgb_block_line;
+logic [7:0] wslice_cnt;
 rgb_logic rgb_logic(
 	.clk(clk), .nrst(nrst),
 
 	// RGB data
 	.rgb(rgb_data_sync), .hsync(rgb_hsync_sync), .vsync(rgb_vsync_sync),
 	.empty(rgb_fifo_empty),
+    .wslice_cnt(wslice_cnt),
 
 	// Output
 	.pixel_data(rgb_pixel_data),
@@ -277,6 +272,8 @@ ram_15 ram_15 (
    .pixel_number(ram_pixel_number_mux),
    .ram_data(ram_data_mux),
    .block_write_enable(ram_block_write_enable_mux),
+   .wslice_cnt(wslice_cnt),
+   .rslice_cnt(rotation_data),
    // Control inputs from driver_controller
    .EOC(EOC),
    .SOF(SOF),
