@@ -64,7 +64,8 @@ logic [23:0] mux_rdata [7:0];
 generate
 genvar slice;
 for(slice = 0; slice < 8; slice++) begin: for_slice
-    wire write_enable = slice == write_idx;
+    // write_idx[2:0] to overflow after 7
+    wire write_enable = (slice == write_idx[2:0]) && wenable && (wslice_number == next_slice_to_read);
     ram ram(
         .clock(clk),
         .data(wdata),
