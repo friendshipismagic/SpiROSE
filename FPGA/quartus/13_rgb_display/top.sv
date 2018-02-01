@@ -227,13 +227,15 @@ logic  [2:0] rgb_pixel_col;
 logic  [3:0] rgb_pixel_line;
 logic  [2:0] rgb_block_col;
 logic  [1:0] rgb_block_line;
-logic [7:0] wslice_cnt;
+logic [7:0]  wslice_cnt;
+logic         EOS;
 rgb_logic rgb_logic(
 	.clk(clk), .nrst(nrst),
 
 	// RGB data
 	.rgb(rgb_data_sync), .hsync(rgb_hsync_sync), .vsync(rgb_vsync_sync),
 	.empty(rgb_fifo_empty),
+    .EOS(EOS),
     .wslice_cnt(wslice_cnt),
 
 	// Output
@@ -277,6 +279,7 @@ ram_15 ram_15 (
    // Control inputs from driver_controller
    .EOC(EOC),
    .SOF(SOF),
+   .EOS(EOS),
    // Framebuffer outputs
    .data_pokered(data_pokered),
    .drivers_SOF(drivers_SOF)

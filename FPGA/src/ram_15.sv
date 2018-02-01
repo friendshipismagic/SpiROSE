@@ -15,6 +15,7 @@ module ram_15 (
    // Control inputs
    input EOC,
    input SOF,
+   input EOS,
 
    // Framebuffer outputs
    output [431:0] data_pokered [14:0],
@@ -44,7 +45,8 @@ for(ram_number = 0; ram_number < 15; ram_number++) begin: for_ram
         .wslice_number(wslice_cnt),
         .rslice_number(rslice_cnt),
         .SOF_in(SOF),
-        .SOF_out(SOF_fifo)
+        .SOF_out(SOF_fifo),
+        .EOS(EOS)
     );
 
     wire [383:0] framebuffer_data;
