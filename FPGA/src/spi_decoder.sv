@@ -114,7 +114,7 @@ always_ff @(posedge clk or negedge nrst)
     if (~nrst) begin
         configuration <= serialized_conf;
         new_config_available <= 1;       // This will be high for one cycle (STALL)
-        rgb_enable <= 0;
+        rgb_enable <= 1;
         mux <= '0;
         debug_driver <= '0;
         debug_driver_poker_mode <= '0;
