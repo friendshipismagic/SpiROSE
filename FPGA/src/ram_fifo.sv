@@ -1,43 +1,39 @@
 module ram_fifo (
     input clk,
     input nrst,
-    input [7:0] raddr,
-    input [7:0] waddr,
+    input [6:0] raddr,
+    input [6:0] waddr,
     output [23:0] rdata,
     input [23:0] wdata,
     input wenable,
-    input [7:0] wslice_number,
-    input [7:0] rslice_number,
+    input [6:0] wslice_number,
+    input [6:0] rslice_number,
     input SOF_in,
     output SOF_out,
     input EOS
 );
 
-logic full, empty;
-integer write_idx;
-integer read_idx;
-integer next_slice_to_write;
-integer next_slice_to_read;
+localparam STRIPE = 7'(31);
 
-assign empty = (write_idx == read_idx);
-assign full = (write_idx == read_idx - 1);
+logic full, empty;
+logic [2:0] write_idx;
+logic [2:0] read_idx;
+logic [6:0] current_slice_to_write;
+logic [6:0] next_slice_to_read;
+
+assign empty = (read_idx + 1) == write_idx;
+assign full = (write_idx + 1) == read_idx;
 
 logic can_write;
-assign can_write = (~full) & (wslice_number == next_slice_to_write) & EOS;
+assign can_write = (~full) && (wslice_number == current_slice_to_write) && (EOS);
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
-        next_slice_to_write <= '0;
+        current_slice_to_write <= '0;
     end else begin
         if(can_write) begin
             write_idx <= write_idx + 1'b1;
-            if(write_idx == 7) begin
-                write_idx <= '0;
-            end
-            next_slice_to_write <= next_slice_to_write + 1'b1;
-            if(next_slice_to_write == 127) begin
-                next_slice_to_write <= '0;
-            end
+            current_slice_to_write <= current_slice_to_write + STRIPE;
         end
     end
 
@@ -45,18 +41,12 @@ logic can_read;
 assign can_read = (~empty) & (rslice_number == next_slice_to_read) & (SOF_in);
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
-        read_idx <= 0;
+        read_idx <= '1;
         next_slice_to_read <= '0;
     end else begin
         if(can_read) begin
             read_idx <= read_idx + 1'b1;
-            if(read_idx == 7) begin
-                read_idx <= '0;
-            end
-            next_slice_to_read <= next_slice_to_read + 1'b1;
-            if(next_slice_to_read == 127) begin
-                next_slice_to_read <= '0;
-            end
+            next_slice_to_read <= next_slice_to_read + STRIPE;
         end
     end
 
@@ -78,6 +68,6 @@ end
 endgenerate
 
 assign rdata = mux_rdata[read_idx];
-assign SOF_out = SOF_in & can_read;
+assign SOF_out = can_read;
 
 endmodule
