@@ -11,7 +11,7 @@ module hall_pll (
      * It is the slice counted after the Hall effect sensor 1 (arbitrarily)
      * is triggered.
      */
-    output logic [7:0] slice_cnt,
+    output logic [6:0] slice_cnt,
     output logic position_sync
 );
 
@@ -41,7 +41,7 @@ always_ff @(posedge clk or negedge nrst)
         position_sync <= '0;
     end else begin
         if (start_of_turn) begin
-            ticks_per_frame <= speed_data >> 8;
+            ticks_per_frame <= speed_data >> 7;
             ticks_counter <= 1;
             slice_cnt <= '0;
         end else if(position_sync_guard == 32) begin

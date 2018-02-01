@@ -55,7 +55,7 @@ generate
 genvar slice;
 for(slice = 0; slice < 8; slice++) begin: for_slice
     // write_idx[2:0] to overflow after 7
-    wire write_enable = (slice == write_idx[2:0]) && wenable && (wslice_number == next_slice_to_read);
+    wire write_enable = (slice == write_idx) && wenable && (wslice_number == current_slice_to_write);
     ram ram(
         .clock(clk),
         .data(wdata),

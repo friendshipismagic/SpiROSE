@@ -9,7 +9,7 @@ module rgb_logic (
     input logic        empty,
     // End Of Slice
     output logic EOS,
-    output [7:0] wslice_cnt,
+    output [6:0] wslice_cnt,
 
     // Pixel output
     output logic [23:0] pixel_data,
