@@ -64,11 +64,6 @@ module Top
  output logic        pt_27
 );
 
-// In this test, we assign predefined value to rotation data and
-// check that SPI I/O is sending it back when asked
-assign rotation_data = 'hBEEF;
-assign speed_data = 'hDEAD;
-
 // Clock generation
 logic clk, fast_clk, slow_clk, locked, clk_select;
 pll pll (
@@ -98,14 +93,59 @@ clock_enable clock_enable (
     .clk_enable(clk_enable)
 );
 
-// Hall sensors
-logic SOF;
-hall_sensor_emulator main_hs_emulator (
+logic [15:0]  rotation_data;
+logic [31:0]  speed_data;
+
+// Hall sensors detection
+logic hall_detected_0;
+logic [31:0] speed_data_0;
+hall_counter hall_counter_0(
     .clk(clk),
-    .clk_enable(clk_enable),
     .nrst(nrst),
-    .SOF(SOF)
+    .hall(hall_sync_0),
+    .detected(hall_detected_0),
+    .speed_data(speed_data_0)
 );
+
+logic hall_detected_1;
+logic [31:0] speed_data_1;
+hall_counter hall_counter_1(
+    .clk(clk),
+    .nrst(nrst),
+    .hall(hall_sync_1),
+    .detected(hall_detected_1),
+    .speed_data(speed_data_1)
+);
+
+// Hall sensors combination (hall 1 ignored at this time)
+assign speed_data = speed_data_1;
+hall_pll hall_pll(
+    .clk(clk),
+    .nrst(nrst),
+    .speed_data(speed_data),
+    .start_of_turn(hall_detected_1),
+    .slice_cnt(rotation_data),
+    .position_sync(SOF)
+);
+
+logic hall_sync_0;
+sync_sig sync_sig0 (.clk(clk), .nrst(nrst),
+    .in_sig(hall[0]),
+    .out_sig(hall_sync_0));
+
+
+logic hall_sync_1;
+sync_sig sync_sig1 (.clk(clk), .nrst(nrst),
+    .in_sig(pt_39),
+    .out_sig(hall_sync_1));
+
+logic last_hall_sync;
+always @(posedge clk or negedge nrst)
+    if(~nrst) begin
+        last_hall_sync <= '1;
+    end else begin
+        last_hall_sync <= hall_sync_1;
+    end
 
 // SBC SOM Interface
 logic [439:0] data_mosi;
@@ -129,8 +169,6 @@ spi_iff spi_iff (
 
 logic [431:0] spi_debug_driver;
 logic         spi_debug_driver_poker_mode;
-logic [15:0]  rotation_data;
-logic [15:0]  speed_data;
 logic         rgb_enable;
 logic [47:0]  driver_conf;
 logic         start_config;
@@ -292,20 +330,13 @@ driver_sin_lut main_drv_sin_lut (
     .drv_sin(drv_sin)
 );
 
-assign fpga_mul_a = spi_manage_mux ? spi_mux_state : {mux_out[0],
-                                                      mux_out[1],
-                                                      mux_out[2],
-                                                      mux_out[3],
-                                                      mux_out[4],
-                                                      mux_out[5],
-                                                      mux_out[6],
-                                                      mux_out[7]};
+assign fpga_mul_a = 0;
 assign fpga_mul_b = spi_manage_mux ? spi_mux_state : mux_out;
-assign drv_gclk_a = driver_gclk;
+assign drv_gclk_a = 0;
 assign drv_gclk_b = driver_gclk;
-assign drv_sclk_a = driver_sclk;
+assign drv_sclk_a = 0;
 assign drv_sclk_b = driver_sclk;
-assign drv_lat_a = driver_lat;
+assign drv_lat_a = 0;
 assign drv_lat_b = driver_lat;
 
 endmodule
