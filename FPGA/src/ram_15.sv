@@ -26,51 +26,26 @@ logic [14:0] drivers_SOF_array;
 /* verilator lint_on UNUSED */
 assign drivers_SOF = drivers_SOF_array[0];
 
-logic [4:0] slice_shifter;
-logic end_of_read, end_of_write;
-
-always_ff @(posedge clk or negedge nrst)
-    if(~nrst) begin
-        slice_shifter <= '0;
-        end_of_read <= '0;
-        end_of_write <= '0;
-    end else begin
-        if(rslice_cnt == 255) begin
-            end_of_read <= '1;
-        end
-        if(wslice_cnt == 255) begin
-            end_of_write <= '1;
-        end
-        if(end_of_read && end_of_write) begin
-            end_of_read   <= '0;
-            end_of_write  <= '0;
-            slice_shifter <= slice_shifter + 1'b1;
-        end
-    end
-
-wire [2:0] write_idx = wslice_cnt[7 -: 3];
-wire [2:0] read_idx  = rslice_cnt[7 -: 3];
-wire slice_block_w_ok = (slice_shifter == wslice_cnt%32);
-wire slice_block_r_ok = (slice_shifter == rslice_cnt%32);
-
 generate
 genvar ram_number, slice_block;
 for(ram_number = 0; ram_number < 15; ram_number++) begin: for_ram
-    wire [23:0] ram_read_data [15:0];
+    wire [23:0] ram_read_data;
     wire [6:0] ram_read_addr;
-    for(slice_block = 0; slice_block < 7; slice_block++) begin: for_slice
-        wire write_enable = (ram_number == block_number)
-                         && block_write_enable
-                         && (write_idx == slice_block && slice_block_w_ok);
-        ram ram(
-            .clock(clk),
-            .data(ram_data),
-            .rdaddress(ram_read_addr),
-            .wraddress(pixel_number),
-            .wren(write_enable),
-            .q(ram_read_data[slice_block])
-        );
-    end
+    logic SOF_fifo;
+    wire write_enable = (ram_number == block_number);
+    ram_fifo rf (
+        .clk(clk),
+        .nrst(nrst),
+        .raddr(ram_read_addr),
+        .waddr(pixel_number),
+        .rdata(ram_read_data),
+        .wdata(ram_data),
+        .wenable(write_enable),
+        .wslice_number(wslice_cnt),
+        .rslice_number(rslice_cnt),
+        .SOF_in(SOF),
+        .SOF_out(SOF_fifo)
+    );
 
     wire [383:0] framebuffer_data;
     /* verilator lint_off UNUSED */
@@ -82,10 +57,10 @@ for(ram_number = 0; ram_number < 15; ram_number++) begin: for_ram
         .nrst(nrst),
         .data_out(framebuffer_data),
         .EOC(EOC),
-        .SOF(SOF && slice_block_r_ok),
+        .SOF(SOF_fifo),
         .driver_SOF(drivers_SOF_array[ram_number]),
         .ram_addr(ram_read_addr),
-        .ram_data(ram_read_data[read_idx]),
+        .ram_data(ram_read_data),
         .EOR(EOR)
     );
 

@@ -8,8 +8,8 @@ module ram_fifo (
     input wenable,
     input [7:0] wslice_number,
     input [7:0] rslice_number,
-    input SOF_hall,
-    output SOF
+    input SOF_in,
+    output SOF_out
 );
 
 logic full, empty;
@@ -18,14 +18,15 @@ integer read_idx;
 integer next_slice_to_write;
 integer next_slice_to_read;
 
-assign empty = write_idx == read_idx;
-assign full = ~empty;
+assign empty = (write_idx == read_idx);
+assign full = (write_idx == read_idx - 1) || ((write_idx == 7) & (read_idx == 0));
 
 logic can_write;
 assign can_write = wenable & (~full) & (wslice_number == next_slice_to_write);
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
+        next_slice_to_write <= '0;
     end else begin
         if(can_write) begin
             write_idx <= write_idx + 1'b1;
@@ -44,6 +45,7 @@ assign can_read = (~empty) & (rslice_number == next_slice_to_read);
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         read_idx <= 0;
+        next_slice_to_read <= '0;
     end else begin
         if(can_read) begin
             read_idx <= read_idx + 1'b1;
@@ -60,7 +62,7 @@ always_ff @(posedge clk or negedge nrst)
 logic [23:0] mux_rdata [7:0];
 generate
 genvar slice;
-for(slice = 0; slice < 7; slice++) begin: for_slice
+for(slice = 0; slice < 8; slice++) begin: for_slice
     wire write_enable = slice == write_idx;
     ram ram(
         .clock(clk),
@@ -74,6 +76,6 @@ end
 endgenerate
 
 assign rdata = mux_rdata[read_idx];
-assign SOF = SOF_hall & can_read;
+assign SOF_out = SOF_in & can_read;
 
 endmodule
