@@ -33,7 +33,7 @@ for(ram_number = 0; ram_number < 15; ram_number++) begin: for_ram
     wire [23:0] ram_read_data;
     wire [6:0] ram_read_addr;
     logic SOF_fifo;
-    wire write_enable = (ram_number == block_number);
+    wire write_enable = (ram_number == block_number) && block_write_enable;
     ram_fifo rf (
         .clk(clk),
         .nrst(nrst),

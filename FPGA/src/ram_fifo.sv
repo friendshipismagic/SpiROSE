@@ -38,7 +38,7 @@ always_ff @(posedge clk or negedge nrst)
     end
 
 logic can_read;
-assign can_read = (~empty) & (rslice_number == next_slice_to_read) & (SOF_in);
+assign can_read = (~empty) & (rslice_number == 1) & (SOF_in);
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         read_idx <= '1;
@@ -54,8 +54,7 @@ logic [23:0] mux_rdata [7:0];
 generate
 genvar slice;
 for(slice = 0; slice < 8; slice++) begin: for_slice
-    // write_idx[2:0] to overflow after 7
-    wire write_enable = (slice == write_idx) && wenable && (wslice_number == current_slice_to_write);
+    wire write_enable = (~full) && (slice == write_idx) && wenable && (wslice_number == current_slice_to_write);
     ram ram(
         .clock(clk),
         .data(wdata),
