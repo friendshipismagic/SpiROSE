@@ -9,8 +9,8 @@ module ram_15 (
    input [6:0] pixel_number,
    input [23:0] ram_data,
    input block_write_enable,
-   input [7:0] wslice_cnt,
-   input [7:0] rslice_cnt,
+   input [6:0] wslice_cnt,
+   input [6:0] rslice_cnt,
 
    // Control inputs
    input EOC,

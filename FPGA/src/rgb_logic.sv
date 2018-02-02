@@ -35,34 +35,36 @@ always_ff @(posedge clk or negedge nrst)
         block_line <= 0;
         wslice_cnt <= '0;
         EOS <= '0;
-    end else if (!empty) begin
+    end else begin
         EOS <= '0;
-        // Start of image
-        if (~vsync_r && vsync) begin
-            pixel_col <= 0;
-            pixel_line <= 0;
-            block_col <= 0;
-            block_line <= 0;
-            wslice_cnt <= '0;
-        end else if (vsync && hsync) begin
-            pixel_col <= pixel_col + 1;
-
-            if (pixel_col == 7) begin
+        if (!empty) begin
+            // Start of image
+            if (~vsync_r && vsync) begin
                 pixel_col <= 0;
-                block_col <= block_col + 1;
+                pixel_line <= 0;
+                block_col <= 0;
+                block_line <= 0;
+                wslice_cnt <= '0;
+            end else if (vsync && hsync) begin
+                pixel_col <= pixel_col + 1;
 
-                if (block_col == 4) begin
-                    block_col <= 0;
-                    pixel_line <= pixel_line + 1;
+                if (pixel_col == 7) begin
+                    pixel_col <= 0;
+                    block_col <= block_col + 1;
 
-                    if (pixel_line == 15) begin
-                        pixel_line <= 0;
-                        block_line <= block_line + 1;
+                    if (block_col == 4) begin
+                        block_col <= 0;
+                        pixel_line <= pixel_line + 1;
 
-                        if (block_line == 2) begin
-                            block_line <= 0;
-                            wslice_cnt <= wslice_cnt + 1'b1;
-                            EOS <= 1;
+                        if (pixel_line == 15) begin
+                            pixel_line <= 0;
+                            block_line <= block_line + 1;
+
+                            if (block_line == 2) begin
+                                block_line <= 0;
+                                wslice_cnt <= wslice_cnt + 1'b1;
+                                EOS <= 1;
+                            end
                         end
                     end
                 end
@@ -92,7 +94,7 @@ assign pixel_data = {rgb[7:0], rgb[15:8], rgb[23:16]};
 
 // Pixel valid latcher
 logic internal_rgb_enable;
-assign pixel_valid = internal_rgb_enable & hsync & vsync;
+assign pixel_valid = internal_rgb_enable & hsync & vsync & (!empty);
 
 endmodule
 
