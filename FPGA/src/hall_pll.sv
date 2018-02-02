@@ -7,7 +7,7 @@ module hall_pll (
     input        start_of_turn,
 
     /*
-     * Slice that is meant to be displayed (over a full 256-slice turn).
+     * Slice that is meant to be displayed (over a full 128-slice turn).
      * It is the slice counted after the Hall effect sensor 1 (arbitrarily)
      * is triggered.
      */
