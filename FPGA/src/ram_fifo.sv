@@ -13,7 +13,7 @@ module ram_fifo (
     input EOS
 );
 
-localparam STRIPE = 7'(31);
+localparam STRIPE = 7'(7);
 
 logic full, empty;
 logic [2:0] write_idx;
@@ -25,7 +25,7 @@ assign empty = (read_idx + 1) == write_idx;
 assign full = (write_idx + 1) == read_idx;
 
 logic can_write;
-assign can_write = (~full) && (wslice_number == current_slice_to_write) && (EOS);
+assign can_write = (~full) && (wslice_number == (current_slice_to_write + 1)) && (EOS);
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
         write_idx <= '0;
@@ -41,7 +41,7 @@ logic can_read;
 assign can_read = (~empty) & (rslice_number == next_slice_to_read) & (SOF_in);
 always_ff @(posedge clk or negedge nrst)
     if(~nrst) begin
-        read_idx <= '1;
+        read_idx <= -1;
         next_slice_to_read <= '0;
     end else begin
         if(can_read) begin
