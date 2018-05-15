@@ -1,5 +1,5 @@
 use commands::*;
-use image::{DynamicImage, GenericImage, Pixel as ImgPixel};
+use image::{DynamicImage, GenericImageView, Pixel as ImgPixel};
 
 use super::*;
 use std::fmt;

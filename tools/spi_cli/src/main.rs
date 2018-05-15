@@ -1,4 +1,5 @@
 #![allow(unused_parens)]
+#![cfg_attr(feature = "cargo-clippy", allow(many_single_char_names))]
 #![deny(warnings)]
 
 #[macro_use]
@@ -195,7 +196,7 @@ fn run() -> errors::Result<()> {
             let img = get_image(&mut spi, verbose, dummy)?;
             let mut file = File::create(file)
                 .map_err(|e| format!("Cannot create image file `{}': {}", file, e))?;
-            img.save(&mut file, image::PNG)?;
+            img.write_to(&mut file, image::PNG)?;
             Ok(())
         }
 
