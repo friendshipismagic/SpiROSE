@@ -19,6 +19,7 @@
 // CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 #![allow(unused_parens)]
+#![cfg_attr(feature = "cargo-clippy", allow(many_single_char_names))]
 #![deny(warnings)]
 
 #[macro_use]
@@ -38,16 +39,16 @@ mod commands;
 mod framebuffer;
 mod units;
 
+use std::fs::File;
 use std::io;
 use std::io::prelude::*;
-use std::fs::File;
 use std::str::FromStr;
 
 use clap::App;
 use commands::*;
 use framebuffer::*;
-use spidev::{Spidev, SpidevOptions};
 use packed_struct::prelude::*;
+use spidev::{Spidev, SpidevOptions};
 
 mod errors {
     error_chain! {
@@ -215,7 +216,7 @@ fn run() -> errors::Result<()> {
             let img = get_image(&mut spi, verbose, dummy)?;
             let mut file = File::create(file)
                 .map_err(|e| format!("Cannot create image file `{}': {}", file, e))?;
-            img.save(&mut file, image::PNG)?;
+            img.write_to(&mut file, image::PNG)?;
             Ok(())
         }
 
@@ -230,8 +231,10 @@ fn run() -> errors::Result<()> {
 
         ("get_speed", _) => {
             let data = transfer(&mut spi, &GET_SPEED, &[], verbose, dummy)?;
-            let count = ((data[0] as u32) << 24) | ((data[1] as u32) << 16)
-                | ((data[2] as u32) << 8) | (data[3] as u32);
+            let count = (u32::from(data[0]) << 24)
+                | (u32::from(data[1]) << 16)
+                | (u32::from(data[2]) << 8)
+                | (u32::from(data[3]));
             let speed = if count != 0 {
                 format!(
                     "{:.1} rps ({}Hz / {})",
@@ -265,8 +268,8 @@ fn create_spi(spi_dev: &str, freq: u32, configure: bool, verbose: bool) -> error
             if configure { "" } else { " (dummy mode)" }
         );
     }
-    let mut spi =
-        Spidev::open(spi_dev).map_err(|e| format!("Cannot open SPI device `{}': {}", spi_dev, e))?;
+    let mut spi = Spidev::open(spi_dev)
+        .map_err(|e| format!("Cannot open SPI device `{}': {}", spi_dev, e))?;
 
     let spi_options = SpidevOptions::new()
         .bits_per_word(8)

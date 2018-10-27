@@ -136,35 +136,28 @@ libspirose/bundle:
 
 spi-cli/build:
   stage: build
-  image: tuetuopay/rust-cc-armv7
+  image: rust
   script:
-    - export CARGO_HOME="$PWD/.cargo"
-    - cd tools/spi_cli && cargo build
-  cache:
-    key: cargo
-    paths:
-      - .cargo/
+    - rustup install stable
+    - cd tools/spi_cli && cargo +stable build
 
 spi-cli/test:
   stage: test
-  image: tuetuopay/rust-cc-armv7
+  image: rust
   script:
-    - export CARGO_HOME="$PWD/.cargo"
-    - cd tools/spi_cli && cargo test
-  cache:
-    key: cargo
-    paths:
-      - .cargo/
+    - rustup install stable
+    - cd tools/spi_cli && cargo +stable test
 
 spi-cli/bundle:
   stage: bundle
-  image: tuetuopay/rust-cc-armv7
+  image: rust
   script:
-    - export CARGO_HOME="$PWD/.cargo"
+    - rustup install stable
+    - rustup target add armv7-unknown-linux-gnueabihf
     - echo '[target.armv7-unknown-linux-gnueabihf]' > "$CARGO_HOME/config"
     - echo 'linker = "arm-linux-gnueabihf-gcc"' >> "$CARGO_HOME/config"
     - cd tools/spi_cli
-    - cargo build --release --target=armv7-unknown-linux-gnueabihf
+    - cargo +stable build --release --target=armv7-unknown-linux-gnueabihf
     - mv target/armv7-unknown-linux-gnueabihf/release/spi_cli .
   artifacts:
     paths:
