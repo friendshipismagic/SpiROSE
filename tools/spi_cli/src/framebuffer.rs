@@ -117,7 +117,8 @@ fn write_single_pixel(
         &[block, offset, p.b, p.g, p.r],
         verbose,
         dummy,
-    ).map(|_| ())
+    )
+    .map(|_| ())
 }
 
 pub fn send_image(
@@ -130,7 +131,8 @@ pub fn send_image(
         return Err(format!(
             "Image dimension should be (40, 48), but is {:?} instead",
             img.dimensions()
-        ).into());
+        )
+        .into());
     }
     manage(spi, verbose, dummy)?;
     for x in 0..40 {

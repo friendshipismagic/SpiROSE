@@ -25,8 +25,11 @@ macro_rules! spi_command {
         spi_command!($name, $id, 0);
     };
     ($name:ident, $id:expr, $recv_len:expr) => {
-        pub static $name: SpiCommand = SpiCommand { id: $id, recv_len: $recv_len };
-    }
+        pub static $name: SpiCommand = SpiCommand {
+            id: $id,
+            recv_len: $recv_len,
+        };
+    };
 }
 
 spi_command!(ENABLE_RGB, 0xe0);
