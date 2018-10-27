@@ -211,10 +211,10 @@ fn run() -> errors::Result<()> {
 
         ("get_speed", _) => {
             let data = transfer(&mut spi, &GET_SPEED, &[], verbose, dummy)?;
-            let count = ((data[0] as u32) << 24)
-                | ((data[1] as u32) << 16)
-                | ((data[2] as u32) << 8)
-                | (data[3] as u32);
+            let count = (u32::from(data[0]) << 24)
+                | (u32::from(data[1]) << 16)
+                | (u32::from(data[2]) << 8)
+                | (u32::from(data[3]));
             let speed = if count != 0 {
                 format!(
                     "{:.1} rps ({}Hz / {})",
